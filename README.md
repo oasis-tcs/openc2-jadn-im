@@ -1,7 +1,5 @@
 ## README
 
-_This file provides a template for creating a new README.md for an OpenC2 TC work product repository. The initial generic logo graphic should be replaced with one specific for the work product, and internal content should be edited to name, describe, and link to the proper information for the work product. GitHub links in the source should be edited to reference the repository for **this** work product._
-
 ![Work Product ReadMe Logo](images/jadn-im-cn-logo-header.png)
 
 ## ![oasis-avatar](https://avatars.githubusercontent.com/u/47402065?s=24&v=4) An OASIS [Work Product](https://www.oasis-open.org/policies-guidelines/oasis-defined-terms-2018-05-22/#dWorkProduct) Repository ![oasis-avatar](https://avatars.githubusercontent.com/u/47402065?s=24&v=4) 
@@ -16,9 +14,9 @@ licensing. For more details, see the
 [Contributions](#contributions) and [Licensing](#licensing)
 sections below. 
 
-## :blue_book: _OpenC2 TC Work Product Title_ :blue_book:
+## :blue_book: _Information Modeling with JADN_ :blue_book:
 
-_Provide a 1-2 sentence summary of the work product contained in this repo._
+The [JSON Abstract Data Notation (JADN) specification](https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html) defines an information modeling (IM) language by specifying a vocabulary to describe the meaning of structured data, to provide hints for user interfaces working with structured data, and to make assertions about what a valid instance must look like. This respository hosts a companion [OASIS Committee Note](https://www.oasis-open.org/policies-guidelines/oasis-defined-terms-2018-05-22/#dCommitteeNote) that provides context and explanatory material to assist with applying JADN in practice.
 
 ### :twisted_rightwards_arrows: Repository Organization :twisted_rightwards_arrows:
 
