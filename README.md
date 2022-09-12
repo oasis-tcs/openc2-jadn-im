@@ -16,7 +16,16 @@ sections below.
 
 ## :blue_book: _Information Modeling with JADN_ :blue_book:
 
-The [JSON Abstract Data Notation (JADN) specification](https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html) defines an information modeling (IM) language by specifying a vocabulary to describe the meaning of structured data, to provide hints for user interfaces working with structured data, and to make assertions about what a valid instance must look like. This respository hosts a companion [OASIS Committee Note](https://www.oasis-open.org/policies-guidelines/oasis-defined-terms-2018-05-22/#dCommitteeNote) that provides context and explanatory material to assist with applying JADN in practice.
+The [JSON Abstract Data Notation (JADN)
+specification](https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html)
+defines an information modeling (IM) language by specifying a
+vocabulary to describe the meaning of structured data, to provide
+hints for user interfaces working with structured data, and to
+make assertions about what a valid instance must look like. This
+respository hosts a companion [OASIS Committee
+Note](https://www.oasis-open.org/policies-guidelines/oasis-defined-terms-2018-05-22/#dCommitteeNote)
+that provides context and explanatory material to assist with
+applying JADN in practice.
 
 ### :twisted_rightwards_arrows: Repository Organization :twisted_rightwards_arrows:
 
@@ -43,7 +52,15 @@ Norms](https://github.com/oasis-tcs/openc2-tc-ops/blob/main/Documentation-Norms.
 
 ### :left_speech_bubble: Description :left_speech_bubble:
 
-_Provide a 1-2 paragraph summary of the work product contained in this repo._
+Information models (IMs) are used to define and generate physical
+data models, validate information instances, and enable lossless
+translation across data formats. JSON Abstract Data Notation
+(JADN) is a UML-based information modeling language that defines
+data structure independently of data format. This Committee Note
+describes the use of IMs, explains how to construct IMs using
+JADN, and contrasts IMs with other modeling approaches, such as
+Entity-Relationship models for databases, and knowledge models /
+ontologies.
 
 ### :writing_hand: Contributions :writing_hand:
 <div>
