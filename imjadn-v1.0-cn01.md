@@ -113,6 +113,116 @@ _Specification for Transfer of OpenC2 Messages via HTTPS Version 1.0_. Edited by
 ###### [OpenC2-SLPF-v1.0]
 _Open Command and Control (OpenC2) Profile for Stateless Packet Filtering Version 1.0_. Edited by Joe Brule, Duncan Sparrell, and Alex Everett. Latest version: http://docs.oasis-open.org/openc2/oc2slpf/v1.0/oc2slpf-v1.0.html
 
+
+# 2 Information Modeling Overview
+
+# 2.1 Information Models And Data Models 
+
+# 2.2 Benefits of Information Models
+
+# 2.3 Information Modeling Languages
+
+# 2.4 Information Modeling Tools 
+
+# 3 Creating Information Models with JADN
+
+# 3.1 JADN Overview
+
+# 3.2 Information Modeling Process
+
+# 3.3 Information Modeling Example
+
+# 4 Advanced Techniques
+
+-------
+
+# Appendix A. Informative References
+
+<!-- Required section -->
+
+This appendix contains the informative references that are used in this document.
+
+
+While any hyperlinks included in this appendix were valid at the time of publication, OASIS cannot guarantee their long-term validity.
+
+(Reference sources:
+For references to IETF RFCs, use the approved citation formats at:  
+http://docs.oasis-open.org/templates/ietf-rfc-list/ietf-rfc-list.html.  
+For references to W3C Recommendations, use the approved citation formats at:  
+http://docs.oasis-open.org/templates/w3c-recommendations-list/w3c-recommendations-list.html.  
+Remove this note before submitting for publication.)
+
+###### [OpenC2-HTTPS-v1.0]
+_Specification for Transfer of OpenC2 Messages via HTTPS Version 1.0_. Edited by David Lemire. Latest version: http://docs.oasis-open.org/openc2/open-impl-https/v1.0/open-impl-https-v1.0.html
+###### [OpenC2-SLPF-v1.0]
+_Open Command and Control (OpenC2) Profile for Stateless Packet Filtering Version 1.0_. Edited by Joe Brule, Duncan Sparrell, and Alex Everett. Latest version: http://docs.oasis-open.org/openc2/oc2slpf/v1.0/oc2slpf-v1.0.html
+
+-------
+
+# Appendix B. Acknowledgments
+
+(Note: A Work Product approved by the TC must include a list of people who participated in the development of the Work Product. This is generally done by collecting the list of names in this appendix. This list shall be initially compiled by the Chair, and any Member of the TC may add or remove their names from the list by request.  
+Remove this note before submitting for publication.)
+
+## B.1 Special Thanks
+
+<!-- This is an optional subsection to call out contributions from TC members. If a TC wants to thank non-TC members then they should avoid using the term "contribution" and instead thank them for their "expertise" or "assistance". -->
+
+Substantial contributions to this document from the following individuals are gratefully acknowledged:
+
+Participant Name, Affiliation or "Individual Member"
+
+## B.2 Participants
+
+<!-- A TC can determine who they list here, however, TC Observers must not be listed. It is common practice for TCs to list everyone that was part of the TC during the creation of the document, but this is ultimately a TC decision on who they want to list and not list, and in what order. -->
+
+The following individuals have participated in the creation of this document and are gratefully acknowledged:
+
+**tc-full-name TC Members:**
+
+| First Name | Last Name | Company |
+| :--- | :--- | :--- |
+Philippe | Alcon | Marvelous Networks
+Alex | Amir | Viacat
+Kris | Anders | Trend Mission
+Darren | Anysteel | Macro Networks
+
+-------
+
+# Appendix D. Frequently Asked Questions
+
+
+-------
+
+# Appendix E. Revision History
+| Revision | Date | Editor | Changes Made |
+| :--- | :--- | :--- | :--- |
+| filename-v1.0-wd01 | yyyy-mm-dd | Editor Name | Initial working draft |
+
+------
+
+# Appendix F. Notices
+
+Copyright &copy; OASIS Open 2021. All Rights Reserved.
+
+All capitalized terms in the following text have the meanings assigned to them in the OASIS Intellectual Property Rights Policy (the "OASIS IPR Policy"). The full [Policy](https://www.oasis-open.org/policies-guidelines/ipr) may be found at the OASIS website.
+
+This document and translations of it may be copied and furnished to others, and derivative works that comment on or otherwise explain it or assist in its implementation may be prepared, copied, published, and distributed, in whole or in part, without restriction of any kind, provided that the above copyright notice and this section are included on all such copies and derivative works. However, this document itself may not be modified in any way, including by removing the copyright notice or references to OASIS, except as needed for the purpose of developing any document or deliverable produced by an OASIS Technical Committee (in which case the rules applicable to copyrights, as set forth in the OASIS IPR Policy, must be followed) or as required to translate it into languages other than English.
+
+The limited permissions granted above are perpetual and will not be revoked by OASIS or its successors or assigns.
+
+This document and the information contained herein is provided on an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+
+The name "OASIS" is a trademark of [OASIS](https://www.oasis-open.org/), the owner and developer of this specification, and should be used only to refer to the organization and its official outputs. OASIS welcomes reference to, and implementation and use of, specifications, while reserving the right to enforce its marks against misleading uses. Please see https://www.oasis-open.org/policies-guidelines/trademark for above guidance.
+
+
+----------------
+
+
+
+
+
+
 ## 1.3 Some markdown usage examples
 
 **Text.**
@@ -263,77 +373,3 @@ This is the deepest level, because six # gets transformed into a Reference tag.
 ## 2.2 Next Heading
 text.
 
--------
-
-# Appendix A. Informative References
-
-<!-- Required section -->
-
-This appendix contains the informative references that are used in this document.
-
-While any hyperlinks included in this appendix were valid at the time of publication, OASIS cannot guarantee their long-term validity.
-
-(Reference sources:
-For references to IETF RFCs, use the approved citation formats at:  
-http://docs.oasis-open.org/templates/ietf-rfc-list/ietf-rfc-list.html.  
-For references to W3C Recommendations, use the approved citation formats at:  
-http://docs.oasis-open.org/templates/w3c-recommendations-list/w3c-recommendations-list.html.  
-Remove this note before submitting for publication.)
-
-###### [OpenC2-HTTPS-v1.0]
-_Specification for Transfer of OpenC2 Messages via HTTPS Version 1.0_. Edited by David Lemire. Latest version: http://docs.oasis-open.org/openc2/open-impl-https/v1.0/open-impl-https-v1.0.html
-###### [OpenC2-SLPF-v1.0]
-_Open Command and Control (OpenC2) Profile for Stateless Packet Filtering Version 1.0_. Edited by Joe Brule, Duncan Sparrell, and Alex Everett. Latest version: http://docs.oasis-open.org/openc2/oc2slpf/v1.0/oc2slpf-v1.0.html
-
--------
-
-# Appendix B. Acknowledgments
-
-(Note: A Work Product approved by the TC must include a list of people who participated in the development of the Work Product. This is generally done by collecting the list of names in this appendix. This list shall be initially compiled by the Chair, and any Member of the TC may add or remove their names from the list by request.  
-Remove this note before submitting for publication.)
-
-## B.1 Special Thanks
-
-<!-- This is an optional subsection to call out contributions from TC members. If a TC wants to thank non-TC members then they should avoid using the term "contribution" and instead thank them for their "expertise" or "assistance". -->
-
-Substantial contributions to this document from the following individuals are gratefully acknowledged:
-
-Participant Name, Affiliation or "Individual Member"
-
-## B.2 Participants
-
-<!-- A TC can determine who they list here, however, TC Observers must not be listed. It is common practice for TCs to list everyone that was part of the TC during the creation of the document, but this is ultimately a TC decision on who they want to list and not list, and in what order. -->
-
-The following individuals have participated in the creation of this document and are gratefully acknowledged:
-
-**tc-full-name TC Members:**
-
-| First Name | Last Name | Company |
-| :--- | :--- | :--- |
-Philippe | Alcon | Marvelous Networks
-Alex | Amir | Viacat
-Kris | Anders | Trend Mission
-Darren | Anysteel | Macro Networks
-
--------
-
-# Appendix C. Revision History
-| Revision | Date | Editor | Changes Made |
-| :--- | :--- | :--- | :--- |
-| filename-v1.0-wd01 | yyyy-mm-dd | Editor Name | Initial working draft |
-
-------
-
-# Appendix D. Notices
-
-Copyright &copy; OASIS Open 2021. All Rights Reserved.
-
-All capitalized terms in the following text have the meanings assigned to them in the OASIS Intellectual Property Rights Policy (the "OASIS IPR Policy"). The full [Policy](https://www.oasis-open.org/policies-guidelines/ipr) may be found at the OASIS website.
-
-This document and translations of it may be copied and furnished to others, and derivative works that comment on or otherwise explain it or assist in its implementation may be prepared, copied, published, and distributed, in whole or in part, without restriction of any kind, provided that the above copyright notice and this section are included on all such copies and derivative works. However, this document itself may not be modified in any way, including by removing the copyright notice or references to OASIS, except as needed for the purpose of developing any document or deliverable produced by an OASIS Technical Committee (in which case the rules applicable to copyrights, as set forth in the OASIS IPR Policy, must be followed) or as required to translate it into languages other than English.
-
-The limited permissions granted above are perpetual and will not be revoked by OASIS or its successors or assigns.
-
-This document and the information contained herein is provided on an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
-
-The name "OASIS" is a trademark of [OASIS](https://www.oasis-open.org/), the owner and developer of this specification, and should be used only to refer to the organization and its official outputs. OASIS welcomes reference to, and implementation and use of, specifications, while reserving the right to enforce its marks against misleading uses. Please see https://www.oasis-open.org/policies-guidelines/trademark for above guidance.
