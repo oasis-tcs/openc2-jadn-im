@@ -85,17 +85,10 @@ For complete copyright information please see the full Notices section in an App
 
 # 1 Introduction
 
-Introductory material.
+ * nature of information modeling
+ * motivation for JADN
+ * overview of document content
 
-Here is a customized command line which will generate HTML from this markdown file (named imjadn-v1.0-cn01.md):
-
-pandoc -f gfm -t html imjadn-v1.0-cn01.md -c styles/markdown-styles-v1.8-cn.css --toc --toc-depth=5 -s -o imjadn-v1.0-cn01.html --metadata title="Information Modeling with JADN Version 1.0"
-
-We are currently using pandoc 2.6 from https://github.com/jgm/pandoc/releases/tag/2.6.
-
-This also requires the presence of a .css file containing the HTML styles (The current Committee Note stylesheet is styles/markdown-styles-v1.8-cn.css).
-
-Note this command generates a Table of Contents (TOC) in HTML which is located at the top of the HTML document, and which requires additional editing in order to be published in the expected OASIS style. This editing will be handled by OASIS staff during publication. Alternatively, the TC may generate a TOC via other tools or processes.
 
 ## 1.1 Terminology
 
