@@ -89,6 +89,16 @@ For complete copyright information please see the full Notices section in an App
  * motivation for JADN
  * overview of document content
 
+> 1) What is information modeling (RFC 3444)
+> 2) Why would you want an information model (RFC 8477) 
+> 3) How does an IM compare to other modeling approaches, such as
+>    Entity-Relationship models for databases, and knowledge
+>    models / ontologies.  This is where the building block /
+>    lego thought we discussed comes in.
+> 4) How to create and use an IM.  This is where the JADN spec
+>    and JADN tools come in.
+
+
 
 ## 1.1 Terminology
 
