@@ -98,6 +98,8 @@ For complete copyright information please see the full Notices section in an App
  - Entity Relationship Diagram
  - Schema
  - JSON Abstract Data Notation
+ - Knowledge Model
+ - Ontology
 
 # 2 Information Modeling Overview
 
