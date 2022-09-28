@@ -92,7 +92,12 @@ For complete copyright information please see the full Notices section in an App
 
 ## 1.1 Terminology
 
-
+ - Information Model
+ - Data Model
+ - Directed Acyclic Graph
+ - Entity Relationship Diagram
+ - Schema
+ - JSON Abstract Data Notation
 
 # 2 Information Modeling Overview
 
