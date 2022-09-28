@@ -7,7 +7,7 @@
 
 ## Committee Note 01
 
-## 13 October 2021
+## xx Mmmmm 2022
 
 &nbsp;
 
@@ -32,11 +32,11 @@ URI list end (commented out except during publication by OASIS TC Admin) -->
 [OASIS Open Command and Control (OpenC2) TC](https://www.oasis-open.org/committees/openc2/)
 
 #### Chair:
-Duncan Sparrell (duncan@sfractal.com), [sFractal Consulting LLC](http://www.sfractal.com/)
+Duncan Sparrell (duncan@sfractal.com), [sFractal Consulting LLC](http://www.sfractal.com/) \
+Michael Rosa (mjrosa@nsa.gov), [National Security Agency](https://www.nsa.gov)
 
 #### Editors:
-David Kemp (d.kemp@cyber.nsa.gov), [National Security Agency](https://www.nsa.gov/) \
-Dan Johnson (dj@sfractal.com), [sFractal Consulting LLC](http://www.sfractal.com/)
+David Kemp (d.kemp@cyber.nsa.gov), [National Security Agency](https://www.nsa.gov/)
 
 #### Additional artifacts:
 This prose document is one component of a Work Product that also includes:
@@ -111,13 +111,24 @@ _Open Command and Control (OpenC2) Profile for Stateless Packet Filtering Versio
 
 # 2.1 Information Models And Data Models 
 
+ > discussion based on RFC 3444
+
 # 2.2 Benefits of Information Models
+
+> discussion based on RFC 8477
 
 # 2.3 Information Modeling Languages
 
+> JADN and other IM languages
+> What languages aren't really IM languages
+
 # 2.4 Information Modeling Tools 
 
+> benefits of combining IMs with automated tooling for validation, translation
+
 # 3 Creating Information Models with JADN
+
+
 
 # 3.1 JADN Overview
 
