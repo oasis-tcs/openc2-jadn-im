@@ -85,18 +85,41 @@ For complete copyright information please see the full Notices section in an App
 
 # 1 Introduction
 
- * nature of information modeling
- * motivation for JADN
- * overview of document content
+> want to address
+> * basic nature of information modeling
+> * motivation for JADN
+> * overview of document content
 
-> 1) What is information modeling (RFC 3444)
-> 2) Why would you want an information model (RFC 8477) 
-> 3) How does an IM compare to other modeling approaches, such as
->    Entity-Relationship models for databases, and knowledge
->    models / ontologies.  This is where the building block /
->    lego thought we discussed comes in.
-> 4) How to create and use an IM.  This is where the JADN spec
->    and JADN tools come in.
+
+An Information Model (IM) defines the essential content of
+entities used in computing, independently of how those entities
+are represented (i.e., serialized) for communication or storage.
+This Committee Note (CN) describes the nature of an IM, and the
+application of the JSON Abstract Data Notation (JADN) information
+modeling language in the creation and use of IMs.
+
+As an IM language, JADN is a syntax-independent, or abstract,
+schema language. Abstract schema languages separate structure
+definitions from encoding rules. JADN is oriented to work well
+with common Internet data formats, such as 
+
+ - JSON (Javascript Object Notation)
+ - XMS (eXtensible Markup Language)
+ - CBOR (Concise Binary Object Representation)
+
+JADN is based rigorously on information theory, and an IM
+composed in JADN formally defines equivalence (information
+content) between data in different formats.
+
+This CN discusses:
+
+1) What is information modeling?
+2) The value of an information model?
+3) The distinction between an IM compare and other modeling approaches.
+4) The creation and use of an IM using JADN and
+    associated automated tools .
+
+
 
 
 
@@ -124,7 +147,15 @@ For complete copyright information please see the full Notices section in an App
 # 2.3 Information Modeling Languages
 
 > JADN and other IM languages
+
+ - JADN
+ - ASN.1
+
 > What languages aren't really IM languages
+
+ - UML
+ - IDEF1X
+ - Schema languages
 
 # 2.4 Information Modeling Tools 
 
