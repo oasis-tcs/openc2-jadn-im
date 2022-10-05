@@ -95,8 +95,9 @@ An Information Model (IM) defines the essential content of
 entities used in computing, independently of how those entities
 are represented (i.e., serialized) for communication or storage.
 This Committee Note (CN) describes the nature of an IM, and the
-application of the JSON Abstract Data Notation (JADN) information
-modeling language in the creation and use of IMs.
+application of the [JSON Abstract Data Notation
+(JADN)](#jadn-v10) information modeling language in the creation
+and use of IMs.
 
 As an IM language, JADN is a syntax-independent, or abstract,
 schema language. Abstract schema languages separate structure
@@ -207,6 +208,15 @@ encourages interoperability between applications by capturing
 agreement about what the information conveys and how it can be
 used, deferring decisions on storage and transmission matters
 until a clear understanding of purpose has been reached.
+
+[[YTLee](#ytlee)] identifies the key benefit of an information model:
+
+> "The advantage of using an information model is that it can
+> provide sharable, stable, and organized structure of
+> information requirements for the domain context."
+
+
+
 
 > discussion based on RFC 8477
 
