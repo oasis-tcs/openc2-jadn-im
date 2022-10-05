@@ -253,7 +253,7 @@ concluding Recommendations section includes the following:
 
 The notion of "express[ing] exactly the same infomration in ways
 that are algorithmically translatable" is a fundamental purpose
-of inofrmation modeling.
+of information modeling.
 
 
 # 2.3 Information Modeling Languages
