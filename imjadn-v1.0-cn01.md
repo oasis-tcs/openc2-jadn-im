@@ -174,10 +174,7 @@ and an IM:
 
 > "An information model is a representation of concepts,
 > relationships, constraints, rules, and operations to specify
-> data semantics for a chosen domain of discourse. The advantage
-> of using an information model is that it can provide sharable,
-> stable, and organized structure of information requirements for
-> the domain context. 
+> data semantics for a chosen domain of discourse. 
 
 [[RFC3444](#rfc3444)] contrasts IMs with data models (DMs):
 
