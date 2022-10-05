@@ -251,7 +251,7 @@ concluding Recommendations section includes the following:
 > using the same abstract information model, would be very
 > beneficial.
 
-The notion of "express[ing] exactly the same infomration in ways
+The notion of "express[ing] exactly the same information in ways
 that are algorithmically translatable" is a fundamental purpose
 of information modeling.
 
