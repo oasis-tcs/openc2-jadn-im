@@ -268,7 +268,10 @@ Developing Organizations in defining application layer data,
 attributing it to the lack of an encoding-independent
 standardization of the information represented by that data. The
 JADN information modeling language is intended to address that
-gap. 
+gap. Abstract Syntax Notation One (ASN.1) is another example of
+an abstract schema language.
+
+
 
 
 
@@ -277,11 +280,46 @@ gap.
  - JADN
  - ASN.1
 
+> Piecing together a description of JADN
+
+JADN is a syntax-independent schema language, based on UML
+datatypes. JADN is designed to work with common Internet data
+formats (JSON, XML, CBOR), providing a  schema to support them.
+JADN is also graph oriented to align with the web and database
+design practices - the concept of primary and foreign keys (URLs)
+is fundamental.
+
+JADN's native format is structured JSON, and a broad variety of tools exist for creating and manipulating information in JSON format. 
+
+ - a JADN schema is structured data that can be generated and transformed programmatically 
+ - JADN schema's employ a  simple, regular structure (every type definition has the same five fields)
+
+
+
+> ASN.1 description from ITU-T Introduction, excerpted from 
+> https://www.itu.int/en/ITU-T/asn1/Pages/introduction.aspx
+
+​ASN.1 is a formal notation used for describing data transmitted
+by telecommunications protocols, regardless of language
+implementation and physical representation of these data,
+whatever the application, whether complex or very simple. The
+notation provides a certain number of pre-defined basic types,
+and makes it possible to define constructed types. Subtyping
+constraints can be also applied on any ASN.1 type in order to
+restrict its set of values. Data described in ASN.1 is serialized
+and deserialized based on set of encoding rules, which are
+defined for a broad variety of formats including the Basic
+Encoding Rules (BER) and similar, which are closely associated
+with ASN.1, as well as less closely tied standards such as XML
+and JSON.
+
+
 > What languages aren't really IM languages
+
+Other languages have been used for information modeling, although that is not their primary puposes.  Some examples are
 
  - UML
  - IDEF1X
- - Schema languages
 
 # 2.4 Information Modeling Tools 
 
