@@ -126,15 +126,37 @@ This CN uses the definitions contained in the [[JADN
 Specification](#jadn-v10)], section 1.2.1. The following
 additional terms are defined for this document:
 
-> TBD; this is a preliminary list; eliminate any terms not
-> needed as document matures.
+> TBD; this is a preliminary list; eliminate any terms not needed
+> as document matures.
 
- - Directed Acyclic Graph
- - Entity Relationship Diagram
- - Schema
- - JSON Abstract Data Notation
- - Knowledge Model
- - Ontology
+ - **Directed Acyclic Graph:** a directed acyclic graph (DAG) is
+   a directed graph with no directed cycles. That is, it consists
+   of vertices and edges (also called arcs), with each edge
+   directed from one vertex to another, such that following those
+   directions will never form a closed loop. A directed graph is
+   a DAG if and only if it can be topologically ordered, by
+   arranging the vertices as a linear ordering that is consistent
+   with all edge directions (Wikipedia)
+
+ - **Entity Relationship Model:** An entity–relationship model
+   (or ER model) describes interrelated things of interest in a
+   specific domain of knowledge. A basic ER model is composed of
+   entity types (which classify the things of interest) and
+   specifies relationships that can exist between entities
+   (instances of those entity types). (Wikipedia)
+  
+ - **Schema:**  *(markup languages)* A formal description of
+   data, data types, and data file structures, such as XML
+   schemas for XML files. (Wiktionary)
+ 
+ - **Ontology:** (information science) A representation, formal
+   naming, and definition of the categories, properties, and
+   relations between the concepts, data, and entities that
+   substantiate one, many, or all domains of discourse. More
+   simply, an ontology is a way of showing the properties of a
+   subject area and how they are related, by defining a set of
+   concepts and categories that represent the subject.
+   (Wikipedia)
 
 # 2 Information Modeling Overview
 
