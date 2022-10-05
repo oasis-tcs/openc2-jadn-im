@@ -206,6 +206,9 @@ encourages interoperability between applications by capturing
 agreement about what the information conveys and how it can be
 used, deferring decisions on storage and transmission matters
 until a clear understanding of purpose has been reached.
+Referring back to the example of the IPv4 address, regardless of
+representation the address identifies the label applied to a
+network interface within an available address space of 2^32.
 
 [[YTLee](#ytlee)] identifies the key benefit of an IM:
 
@@ -231,8 +234,25 @@ inconsistent with, or c) insignificant with respect to, the model.
 
 > discussion based on RFC 8477
 
+In [DThaler's](#dthaler) paper on _IoT Bridge Taxonomy_, which
+addresses the challenges created when "many organizations develop
+and implement different schemas for the same kind of things", the
+concluding Recommendations section includes the following:
 
+> To ... increase semantic interoperability, it is desirable that
+> different data models for the same type of thing (e.g., light
+> bulbs) are as similar as possible for basic functionality. In
+> an ideal world, data models used by different protocols and
+> organizations would express exactly the same information in
+> ways that are algorithmically translatable by a dynamic schema
+> bridge with no domain-specific knowledge. Sharing data models
+> more widely, and having agreements in principle of at least
+> using the same abstract information model, would be very
+> beneficial.
 
+The notion of "express[ing] exactly the same infomration in ways
+that are algorithmically translatable" is a fundamental purpose
+of inofrmation modeling.
 
 
 # 2.3 Information Modeling Languages
@@ -296,6 +316,13 @@ http://docs.oasis-open.org/templates/ietf-rfc-list/ietf-rfc-list.html.
 For references to W3C Recommendations, use the approved citation formats at:  
 http://docs.oasis-open.org/templates/w3c-recommendations-list/w3c-recommendations-list.html.  
 Remove this note before submitting for publication.)
+
+###### [DThaler]
+
+"IoT Bridge Taxonomy", D. Thaler, submission to Internet of
+Things (IoT) Semantic Interoperability (IOTSI) Workshop 2016,
+https://www.iab.org/wp-content/IAB-uploads/2016/03/DThaler-IOTSI.pdf
+
 
 ###### [JADN-v1.0]
 JSON Abstract Data Notation Version 1.0. Edited by David Kemp. 17 August 2021. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
