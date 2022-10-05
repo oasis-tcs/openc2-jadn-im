@@ -336,13 +336,37 @@ Other languages have been used for information modeling, although that is not th
 
 # 2.4 Information Modeling Tools 
 
-> benefits of combining IMs with automated tooling for validation, translation
+> benefits of combining IMs with automated tooling for
+> validation, translation
+
+The value of an IM language multiplies when automated tooling
+support creation, maintenance, and use of models created in that
+language. The need for tools is discussed in [[RFC
+8477](#rfc8477)], citing particularly the need for code
+generation and debugging tools. A tool set to support an IM
+should provide
+
+ - Creation capabilities
+ - Validation capabilities
+ - Translation among alternative representations of the IM
+   (e.g., textual, graphical)
+ - Generation of language-specific schemas from an IM
+ - Translation to language- or protocol-specific serialization /
+   deserialization capabilities
+ 
+
+
 
 # 3 Creating Information Models with JADN
 
 
 
 # 3.1 JADN Overview
+
+Figure 3-1 summarizes the structure of a JADN Type Definition, and identifies values for each of the five elements in the definition.
+
+###### Figure 3-1 -- JADN Type Definition Structure
+![JADN Type Definition Structure](images/JADN-Structure_2022-09-28a-overlay.png)
 
 # 3.2 Information Modeling Process
 
