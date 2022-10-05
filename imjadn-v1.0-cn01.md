@@ -293,7 +293,7 @@ is fundamental.
 JADN's native format is structured JSON, and a broad variety of tools exist for creating and manipulating information in JSON format. 
 
  - a JADN schema is structured data that can be generated and transformed programmatically 
- - JADN schema's employ a  simple, regular structure (every type definition has the same five fields)
+ - JADN schemas employ a simple, regular structure (every type definition has the same five fields)
 
 
 
