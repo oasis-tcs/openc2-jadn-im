@@ -144,11 +144,67 @@ information modeling.
 
  > discussion based on RFC 3444
 
+ As described in the introduction, IMs are a means to understand
+ and document the essential infomation content relevant to a
+ system, application, or protocol exchange without regard to how
+ that information is represented in actual implementations.
+ Having a clear view of the information required provides clarity
+ regarding the goals that the eventual implementation must
+ satisfy.
+
+ [[RFC 3444](#rfc3444)] describes the purpose of an IM as:
+
+ > "to model managed objects at a conceptual level, independent
+ > of any specific implementations or protocols used to transport
+ > the data. ... Another important characteristic of an IM is
+ > that it defines relationships between managed objects." 
+
+In her 2008 paper on information modeling, [[YTLee](#ytlee)]
+describes the concept of a "conceptual schema", a "logically
+neutral" view of the information in a system:
+
+> "The conceptual view is a single, integrated definition of the
+> data within an enterprise that is unbiased toward any single
+> application of data and independent of how the data is
+> physically stored or accessed."
+
+and an IM:
+
+> "An information model is a representation of concepts,
+> relationships, constraints, rules, and operations to specify
+> data semantics for a chosen domain of discourse. The advantage
+> of using an information model is that it can provide sharable,
+> stable, and organized structure of information requirements for
+> the domain context. 
+
+[[RFC3444](#rfc3444)] contrasts IMs with data models (DMs):
+
+> "Compared to IMs, DMs define managed objects at a lower level
+> of abstraction.  They include implementation- and
+> protocol-specific details, e.g. rules that explain how to map
+> managed objects onto lower-level protocol constructs."
+
+and states DMs are "intended for implementors and include protocol-specific constructs". 
+
+
 # 2.2 Benefits of Information Models
 
 > discussion based on RFC 8477
 
+
+
+
+
 # 2.3 Information Modeling Languages
+
+[[YTLee](#ytlee)] describes an IM language as follows:
+
+> "An information modeling language is a formal syntax that
+> allows users to capture data semantics and constraints.""
+
+
+
+
 
 > JADN and other IM languages
 
@@ -200,6 +256,9 @@ JSON Abstract Data Notation Version 1.0. Edited by David Kemp. 17 August 2021. O
 
 ###### [JSON-Schema]
 "JSON Schema, a vocabulary that allows you to annotate and validate JSON documents.", retrieved 9/26/2022, https://json-schema.org/
+
+###### [YTLee]
+Lee, Y. (1999), Information Modeling: From Design to Implementation, IEEE Transactions on Robotics and Automation, [online], https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=821265 (Accessed October 5, 2022)
 
 ###### [RFC3444] 
 Pras, A., Schoenwaelder, J., "On the Difference between Information Models and Data Models", RFC 3444, January 2003, https://tools.ietf.org/html/rfc3444.
