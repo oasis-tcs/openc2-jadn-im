@@ -186,8 +186,16 @@ and an IM:
 
 and states DMs are "intended for implementors and include protocol-specific constructs". 
 
-
 # 2.2 Benefits of Information Models
+
+A key point in all of the IM definitions and descriptions in the
+previous section is the ability for the model to represent
+information with a focus on its _meaning_, and without concern
+for how that information will be represented. Focusing on meaning
+encourages interoperability between applications by capturing
+agreement about what the information conveys and how it can be
+used, deferring decisions on storage and transmission matters
+until a clear understanding of purpose has been reached.
 
 > discussion based on RFC 8477
 
