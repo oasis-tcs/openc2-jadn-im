@@ -263,9 +263,17 @@ of information modeling.
 > "An information modeling language is a formal syntax that
 > allows users to capture data semantics and constraints."
 
-[RFC 8477](#rfc8477), "IoT Semantic Interoperability Workshop
-2016", describes a lack of consistency across Standards
-Developing Organizations in defining application layer data,
+and defines their importance:
+
+> "Formal information modeling languages that describe
+> information requirements unambiguously is an enabling
+> technology that facilitates the development of a large scale,
+> networked, computer environment that behaves consistently and
+> correctly."
+
+[RFC 8477](#rfc8477), _IoT Semantic Interoperability Workshop
+2016_, describes a lack of consistency across Standards
+Developing Organizations (SDOs) in defining application layer data,
 attributing it to the lack of an encoding-independent
 standardization of the information represented by that data. The
 JADN information modeling language is intended to address that
