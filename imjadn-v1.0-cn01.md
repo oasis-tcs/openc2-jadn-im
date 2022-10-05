@@ -490,6 +490,20 @@ Darren | Anysteel | Macro Networks
 # Appendix D. Frequently Asked Questions
 
 
+## D.1 JADN vs. UML Primitive Data Types
+
+Table D-1 maps basic data types between UML and JADN.
+
+|        UML       |      JADN      |
+|:----------------:|:--------------:|
+|      Integer     |     Integer    |
+|      Boolean     |     Integer    |
+|      String      |     String     |
+| UnlimitedNatural | Integer {0..*} |
+|      Real        |     Number     |
+|        _xxx_     |     Binary     |
+
+
 -------
 
 # Appendix E. Revision History
