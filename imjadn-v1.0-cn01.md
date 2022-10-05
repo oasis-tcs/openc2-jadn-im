@@ -142,7 +142,7 @@ This section discusses the nature and benefits of IMs, types of
 available modeling languages, and the tools that can be used in
 information modeling.
 
-# 2.1 Information Models And Data Models 
+## 2.1 Information Models And Data Models 
 
  > discussion based on RFC 3444
 
@@ -197,7 +197,7 @@ and states DMs are "intended for implementors and include
 protocol-specific constructs". 
 
 
-# 2.2 Benefits of Information Models
+## 2.2 Benefits of Information Models
 
 A key point in all of the IM definitions and descriptions in the
 previous section is the ability for the model to represent
@@ -256,7 +256,7 @@ that are algorithmically translatable" is a fundamental purpose
 of information modeling.
 
 
-# 2.3 Information Modeling Languages
+## 2.3 Information Modeling Languages
 
 [[YTLee](#ytlee)] describes an IM language as follows:
 
@@ -334,7 +334,7 @@ Other languages have been used for information modeling, although that is not th
  - UML
  - IDEF1X
 
-# 2.4 Information Modeling Tools 
+## 2.4 Information Modeling Tools 
 
 > benefits of combining IMs with automated tooling for
 > validation, translation
@@ -361,16 +361,19 @@ language should provide
 
 
 
-# 3.1 JADN Overview
+## 3.1 JADN Overview
+
+
+
 
 Figure 3-1 summarizes the structure of a JADN Type Definition, and identifies values for each of the five elements in the definition.
 
 ###### Figure 3-1 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Structure_2022-09-28a-overlay.png)
 
-# 3.2 Information Modeling Process
+## 3.2 Information Modeling Process
 
-# 3.3 Information Modeling Example
+## 3.3 Information Modeling Example
 
 # 4 Advanced Techniques
 
