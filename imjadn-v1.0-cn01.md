@@ -171,7 +171,7 @@ define the IPv4 address type as a byte sequence of length 4.
  > the data. ... Another important characteristic of an IM is
  > that it defines relationships between managed objects." 
 
-In her 2008 paper on information modeling, [[YTLee](#ytlee)]
+In a 2008 paper on information modeling, [[YTLee](#ytlee)]
 describes the concept of a "conceptual schema", a "logically
 neutral" view of the information in a system:
 
