@@ -497,7 +497,7 @@ Table D-1 maps basic data types between UML and JADN.
 |        UML       |      JADN      |
 |:----------------:|:--------------:|
 |      Integer     |     Integer    |
-|      Boolean     |     Integer    |
+|      Boolean     |     Boolean    |
 |      String      |     String     |
 | UnlimitedNatural | Integer {0..*} |
 |      Real        |     Number     |
