@@ -120,14 +120,12 @@ This CN discusses:
 4) The creation and use of an IM using JADN and associated
     automated tools.
 
-
-
-
-
 ## 1.1 Terminology
 
- - Information Model
- - Data Model
+This CN uses the definitions contained in the [[JADN
+Specification](#jadn-v10)], section 1.2.1. The following
+additional terms are defined for this document:
+
  - Directed Acyclic Graph
  - Entity Relationship Diagram
  - Schema
@@ -209,14 +207,27 @@ agreement about what the information conveys and how it can be
 used, deferring decisions on storage and transmission matters
 until a clear understanding of purpose has been reached.
 
-[[YTLee](#ytlee)] identifies the key benefit of an information model:
+[[YTLee](#ytlee)] identifies the key benefit of an IM:
 
 > "The advantage of using an information model is that it can
 > provide sharable, stable, and organized structure of
 > information requirements for the domain context."
 
+and describes a "quality" IM as being:
 
+ - complete, 
+ - sharable,
+ - stable,
+ - extensible, 
+ - well-structured, 
+ - precise, and
+ - unambiguous.
 
+An IM classifies the validity of serialized data with zero false
+positives and zero false negatives. That is, an information model
+is the authoritative definition of essential content, and any
+serialized data is unambiguously one of: a) consistent with, b)
+inconsistent with, or c) insignificant with respect to, the model.
 
 > discussion based on RFC 8477
 
@@ -231,7 +242,13 @@ until a clear understanding of purpose has been reached.
 > "An information modeling language is a formal syntax that
 > allows users to capture data semantics and constraints.""
 
-
+[RFC 8477](#rfc8477), "IoT Semantic Interoperability Workshop
+2016", describes a lack of consistency across Standards
+Developing Organizations in defining application layer data,
+attributing it to the lack of an encoding-independent
+standardization of the information represented by that data. The
+JADN information modeling language is intended to address that
+gap. 
 
 
 
