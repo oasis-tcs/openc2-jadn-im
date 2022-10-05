@@ -184,7 +184,18 @@ and an IM:
 > protocol-specific details, e.g. rules that explain how to map
 > managed objects onto lower-level protocol constructs."
 
-and states DMs are "intended for implementors and include protocol-specific constructs". 
+and states DMs are "intended for implementors and include
+protocol-specific constructs". 
+
+A small example may help clarify the concept of information. The
+information content of an instance can be no greater than the
+smallest data instance for which lossless round-trip conversion
+is possible. For example, an IPv4 address presented in dotted
+quad format is 17 bytes of JSON string data ("192.168.101.213"),
+but can be converted to 4 byte RFC 791 format and back without
+loss. The information content of an IPv4 address can therefore be
+no greater than 4 bytes (32 bits), and an information model would
+define the IPv4 address type as a byte sequence of length 4.
 
 # 2.2 Benefits of Information Models
 
