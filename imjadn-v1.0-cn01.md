@@ -355,13 +355,21 @@ language should provide
    serialization / deserialization capabilities
  
 
-
-
 # 3 Creating Information Models with JADN
 
-
+This section provides a brief overview of JADN, and describes the
+use of JADN in information modeling.
 
 ## 3.1 JADN Overview
+
+The JADN information modeling language was developed against specific objectives:
+
+ 1) Core types represent application-relevant "information", not "data"
+ 2) Single specification unambiguously defines multiple data formats
+ 3) Specification uses named type definitions equivalent to property tables
+ 4) Specification is data that can be serialized
+ 5) Specification has a fixed structure designed for extensibility
+
 
 
 
