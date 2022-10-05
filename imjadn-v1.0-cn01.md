@@ -261,7 +261,7 @@ of information modeling.
 [[YTLee](#ytlee)] describes an IM language as follows:
 
 > "An information modeling language is a formal syntax that
-> allows users to capture data semantics and constraints.""
+> allows users to capture data semantics and constraints."
 
 [RFC 8477](#rfc8477), "IoT Semantic Interoperability Workshop
 2016", describes a lack of consistency across Standards
