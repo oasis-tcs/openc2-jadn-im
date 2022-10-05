@@ -114,10 +114,10 @@ content) between data in different formats.
 This CN discusses:
 
 1) What is information modeling?
-2) The value of an information model?
-3) The distinction between an IM compare and other modeling approaches.
-4) The creation and use of an IM using JADN and
-    associated automated tools .
+2) The value of an information model.
+3) The distinction between an IM and other modeling approaches.
+4) The creation and use of an IM using JADN and associated
+    automated tools.
 
 
 
