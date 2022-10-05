@@ -126,6 +126,9 @@ This CN uses the definitions contained in the [[JADN
 Specification](#jadn-v10)], section 1.2.1. The following
 additional terms are defined for this document:
 
+> TBD; this is a preliminary list; elimnating any terms not
+> needed as document matures.
+
  - Directed Acyclic Graph
  - Entity Relationship Diagram
  - Schema
