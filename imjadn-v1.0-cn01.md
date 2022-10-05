@@ -344,15 +344,15 @@ support creation, maintenance, and use of models created in that
 language. The need for tools is discussed in [[RFC
 8477](#rfc8477)], citing particularly the need for code
 generation and debugging tools. A tool set to support an IM
-should provide
+language should provide
 
- - Creation capabilities
- - Validation capabilities
- - Translation among alternative representations of the IM
-   (e.g., textual, graphical)
+ - Model creation capabilities
+ - Model validation capabilities
+ - Translation among alternative representations of the IM (e.g.,
+   textual, graphical)
  - Generation of language-specific schemas from an IM
- - Translation to language- or protocol-specific serialization /
-   deserialization capabilities
+ - Model translation to language- or protocol-specific
+   serialization / deserialization capabilities
  
 
 
