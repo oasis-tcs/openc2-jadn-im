@@ -395,7 +395,7 @@ The JADN information modeling language was developed against specific objectives
 As described in the JADN specification introduction:
 
 > JADN is a formal description technique that combines type
-> constraints from the Unified Modeling Language UML with data
+> constraints from the Unified Modeling Language (UML) with data
 > abstraction based on information theory and structural
 > organization using results from graph theory.
 
@@ -408,8 +408,10 @@ way that can be validated and signed.  The JADN use of the UML primtive types de
 Another other significant UML concept is that JADN distinguishes
 among all four multiplicity types ([UML](#uml), Table 7.1), while
 class-based models typically support only sets.  JADN's
-interpretation of this is summarized in the following table:
+interpretation of this is summarized in the Table 3-1.
 
+
+###### Table 3-1 -- Multiplicity Types
 |            |                  Ordered                 |             Unordered             |
 |:----------:|:----------------------------------------:|:---------------------------------:|
 |   Unique   | Ordered Set, Record<br>JADN: ArrayOf+_unique_ | Set, Map<br>JADN: ArrayOf+_set_, MapOf |
