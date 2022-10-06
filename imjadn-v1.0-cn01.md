@@ -392,6 +392,40 @@ The JADN information modeling language was developed against specific objectives
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
 
+As described in the JADN specification introduction:
+
+> JADN is a formal description technique that combines type
+> constraints from the Unified Modeling Language UML with data
+> abstraction based on information theory and structural
+> organization using results from graph theory.
+
+From UML JADN takes the concept of modeling information/data
+using Simple Classifiers (see [UML](#uml), 10.2 Datatypes) as
+opposed to the common practice of using Structured Classifiers
+([UML](#uml), 11.4 Classes) which do not define data in a unique
+way that can be validated and signed.  The JADN use of the UML primtive types defined in [UML](#uml), Table 21.1 can be found in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
+
+Another other significant UML concept is that JADN distinguishes
+among all four multiplicity types ([UML](#uml), Table 7.1), while
+class-based models typically support only sets.  JADN's
+interpretation of this is summarized in the following table:
+
+|            |                  Ordered                 |             Unordered             |
+|:----------:|:----------------------------------------:|:---------------------------------:|
+|   Unique   | Ordered Set, Record<br>JADN: ArrayOf+_unique_ | Set, Map<br>JADN: ArrayOf+_set_, MapOf |
+| Non-Unique |       Sequence, List<br>JADN: ArrayOf       |    Bag<br>JADN: ArrayOf+*unordered*    |
+
+JADN accepts the UML philosophy that schemas are classifiers that
+take a unit of data and determine whether it is an instance of a
+datatype, and recognizes the idea of generalization ([UML](#uml),
+9.9.7) through use of the Choice type.
+
+Beyond these UML concepts, JADN recognizes that information
+models are directed graphs with a small predefined set of base
+datatypes and only two kinds of relationship: "contain" and
+"reference". 
+
+
 ### 3.1.1 Type Definitions
 
 Figure 3-1 summarizes the structure of a JADN Type Definition, and identifies values for each of the five elements in the definition.
@@ -404,7 +438,9 @@ Figure 3-1 summarizes the structure of a JADN Type Definition, and identifies va
 
 ### 3.1.3 Item / Field Definitions
 
-### 3.1.4  Basic Examples
+### 3.1.4 Defnition Formats
+
+### 3.1.5 Basic Examples
 
 ## 3.2 Information Modeling Process
 
