@@ -503,6 +503,225 @@ Table D-1 maps basic data types between UML and JADN.
 |      Real        |     Number     |
 |        _xxx_     |     Binary     |
 
+## D.2 Why JADN and not RDF?
+
+This section discusses the relationshipo between JADN and RDF, and why RDF does not serve the purpose of an Information Model
+
+
+### Comment
+The following
+[comment](https://lists.oasis-open.org/archives/openc2-comment/202106/msg00002.html)
+was submitted in response to the OASIS JADN [public
+review](https://lists.oasis-open.org/archives/openc2/202106/msg00019.html):
+
+> *Have you considered the following specifications from W3C:
+> **RDF, RDFS, JSON-LD, SHACL**? RDF, RDFS (and potentially OWL
+> and BFO) should take care of your information modelling needs,
+> JSON-LD provides a JSON serialisations, SHACL provides
+> extensive validation capabilities. I would be interested to see
+> the analysis why these technologies were eliminated after your
+> consideration.*
+
+### Response
+The short answer (RDF models *knowledge* while JADN models
+*information*) is provided in the JADN
+[introduction](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html#1-introduction):
+
+> *UML class models and diagrams are commonly referred to as
+> "Data Models", but they model knowledge of real-world entities
+> using classes. In contrast, information models model data
+> itself using datatypes.*
+
+An RDF graph is a knowledge model / ontology consisting of
+(subject, predicate, object) triples, where each member of the
+triple can be an International Resource Identifier (IRI), blank
+node, or literal. An RDF triple encodes a statement—a simple
+logical expression, or claim about the world. A JADN graph, in
+contrast, consists of DataType definitions that define the
+information content of data instances.
+
+In order to understand why RDF is not suitable as an information
+modeling language, one must understand two things about
+information:
+
+ 1. **[Information](https://www.quantamagazine.org/how-claude-shannons-information-theory-invented-the-future-20201222/)**
+    distinguishes *significant* data from *insignificant* data.
+    (In Shannon's original context signal and noise are in the
+    analog domain, but entropy is meaningful even in purely
+    digital communication.)
+ 
+ 3. Information defines *loss*. Lossless transformations across
+    data formats preserve information; after a round trip
+    significant data is unchanged and insignificant data can be
+    ignored. A lossy round trip is lossy not because it alters
+    data, but because it alters significant data.
+
+Information models define the information capacity of data
+instances; two data formats are *equivalent* if conversion
+between them is lossless.
+
+![The Mona Lisa](images/JADN-RDF-Mona-Lisa.png)
+
+
+Resources can be physical or digital entities. Both can be
+subjects of knowledge model statements, but only digital
+resources can be modeled as information instances and serialized
+for transmission and storage. The RDF primer contains the
+following example statements about resources:
+
+ - \<Bob> \<is a> \<person>.
+ - \<Bob> \<is a friend of> \<Alice>.
+ - \<Bob> \<is born on> \<the 4th of July 1990>.
+ - \<Bob> \<is interested in> \<the Mona Lisa>.
+
+From context we can infer that \<the Mona Lisa>, like \<Bob> and
+\<Alice>, is intended to be a physical resource.
+
+### Extreme Example
+The physical painting can never be serialized losslessly, because
+even a multi-band 3D camera that captures near-infrared images of
+pencil sketches beneath the paint and elevation contours of the
+brush strokes still does not capture, for example, the chemical
+and physical properties of the canvas, pencils, washes, pigments,
+binders, or other materials used in the painting. But though
+physical entities can never be modeled completely as data, camera
+images of them can be. A 1920x1080 image contains 2 million
+pixels that could be serialized in the lossless PNG format, or as
+2 million XML/RDF statements of the form \<mona lisa pixel
+192,13> \<has color> \<#32b82f>. The raw image data can be
+serialized as RDF and deserialized back to raw without loss, but
+is it useful to do so? RDF is useful for statements like the
+painting was created by da Vinci in 1503-1506, is housed in the
+Louvre, depicts a smiling woman, and has cedar trees in the
+background.  But if an application needs the image, PNG
+serialization is an appropriate tool for the job, RDF is not.
+
+### Practical Example
+JADN defines specific digital resources that can be stored,
+communicated, and referenced by an RDF graph.  If Bob is a
+physical \<person> and \<person> is a Class, an information model
+specifies selected details about Person entities in terms of
+their format-independent information content:
+
+```
+People = ArrayOf(Person)
+
+Person = Record
+1 name       String
+2 id         Key(PersonId)
+3 dob        Integer /date-adhoc
+4 weight     Weight optional
+5 hair_color Color optional
+6 eye_color  Color optional
+
+Color = Enumerated
+1 red
+2 green
+3 blue
+4 brown
+5 black
+6 white
+
+Weight = Integer 		// unit = grams
+
+PersonId = String{pattern="..."}
+```
+
+This defines a set of properties of the Person datatype and the
+collection characteristics of those properties: "Record" means
+that the collection is both ordered and unique, which in turn
+means that the properties could be serialized in JSON as either
+maps or arrays. Formats (in this case the hypothetical
+/date-adhoc) indicate that the "date of birth" property is the
+integer number of [seconds since the
+epoch](https://www.epochconverter.com/) and can be serialized
+using the folksy string format from the RDF example. Defining
+times and durations as integers in the information model allows
+date strings of various text representations to be compared and
+ordered. The Color vocabulary could contain the 140 [web-safe
+color names](https://www.w3schools.com/colors/colors_names.asp),
+or a defined set of [fashion
+colors](https://www.latest-hairstyles.com/color/chart.html) such
+as "medium golden blonde". Enumerations allow Color strings to be
+both validated for semantic meaningfulness and serialized as 8-
+or 16-bit values.
+
+### Measuring Information
+If a data instance can be losslessly converted among
+serializations A, B, and C, then by definition the instance
+conveys no more information than the smallest of its
+serializations.
+
+JSON verbose serialization of \<People>:
+```
+[{
+  "weight": 79546,
+  "dob": "the 4th of July 1990",
+  "id": "K193-3498-234",
+  "name": "Bob"
+}, {
+  "name": "Alice",
+  "dob": "the 27th of June 1982",
+  "id": "B239-5921-348"
+}]
+```
+
+JSON compact serialization of \<People>:
+```
+[
+  ["Bob", "K193-3498-234", "the 4th of July 1990", 79546],
+  ["Alice", "B239-5921-348", "the 27th of June 1982"]
+]
+```
+JSON concise serialization of \<People>:
+```
+[
+  ["Bob", "K193-3498-234", 647049600, 79546],
+  ["Alice", "B239-5921-348", 393984000]
+]
+```
+
+CBOR serialization of \<People> ([converted](http://cbor.me/)
+from concise JSON):
+
+```
+56 Bytes:
+82                         # array(2)
+84                         # array(4)
+63                         # text(3)
+426F62                     # "Bob"
+6D                         # text(13)
+4B3139332D333439382D323334 # "K193-3498-234"
+1A 26913180                # unsigned(647049600)
+1A 000136BA                # unsigned(79546)
+83                         # array(3)
+65                         # text(5)
+416C696365                 # "Alice"
+6D                         # text(13)
+423233392D353932312D333438 # "B239-5921-348"
+1A 177BB800                # unsigned(393984000)
+```
+
+This illustrates that regardless of serialization, the properties
+of Bob and Alice convey less than 56 bytes of information, or on
+average 28 bytes per person. An RDF/XML serialization could be
+lossless but would not supply any additional information.
+Information instances can be stored in a database, transmitted as
+XML, JSON, CBOR, or other formats, referenced by RDF graphs and
+included in other structured data. As with the PNG example, this
+suggests that information can be serialized in any suitable
+format, with RDF statements generated from it dynamically if
+needed to satisfy queries. Although this Person example does not
+include Bob's friends or interests, relationships can be defined
+within the information model or specified independently with RDF.
+[JADN section
+5.3](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html#53-entity-relationship-diagrams)
+includes a slightly larger information model example with three
+types and four container and reference relationships among them.
+
+
+## D.3 Why JADN and not OWL?
+
 
 -------
 
