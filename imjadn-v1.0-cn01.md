@@ -392,14 +392,19 @@ The JADN information modeling language was developed against specific objectives
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
 
-
-
-
+### 3.1.1 Type Definitions
 
 Figure 3-1 summarizes the structure of a JADN Type Definition, and identifies values for each of the five elements in the definition.
 
 ###### Figure 3-1 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Structure_2022-09-28a-overlay.png)
+
+
+### 3.1.2 Type Options
+
+### 3.1.3 Item / Field Definitions
+
+### 3.1.4  Basic Examples
 
 ## 3.2 Information Modeling Process
 
