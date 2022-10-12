@@ -430,13 +430,37 @@ datatypes and only two kinds of relationship: "contain" and
 
 ### 3.1.1 Type Definitions
 
-Figure 3-1 summarizes the structure of a JADN Type Definition, and identifies values for each of the five elements in the definition.
+Figure 3-1 summarizes the structure of a JADN Type Definition,
+and identifies values for each of the five elements in the
+definition. The five elements are:
+
+ 1. A `TypeName`, which is simply a string used to refer to that
+type. 
+ 1. The `BaseType` of the type, which is one of the either the
+five "Primitive" (or, altneratively, "scalar") type or one of the
+seven "Complex" (or, alternatively, "compound" types), as shown
+in Figure 3-1.
+ 1. Zero or more of the available JADN `TypeOptions` that refine
+    the base types to fit particular needs.
+ 2. An optional `TypeDescription` string that provides additional
+    information about the type.
+ 3. For any of the Complex types, a set of Item or Field options
+    that define the items that comprise the complex type. 
 
 ###### Figure 3-1 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Structure_2022-09-28a-overlay.png)
 
 
 ### 3.1.2 Type Options
+
+The third elment of a JADN type definition is zero or more of the
+TypeOptions definined in section 3.2.1 of the [JADN](#jadn-v10)
+Specification. TypeOptions are classifiers that, along with the
+base type, determine whether data values are instances of the
+defined type. For example, the `pattern` TypeOption is used with
+the `string` BaseType to define valid instances of that string
+type using a regular expression conforming to
+[ECAMScript](#ecmascript) grammar.
 
 ### 3.1.3 Item / Field Definitions
 
@@ -474,6 +498,9 @@ Remove this note before submitting for publication.)
 Things (IoT) Semantic Interoperability (IOTSI) Workshop 2016,
 https://www.iab.org/wp-content/IAB-uploads/2016/03/DThaler-IOTSI.pdf
 
+###### [ECMAScript]
+
+ECMA International, "ECMAScript 2018 Language Specification", ECMA-262 9th Edition, June 2018, https://www.ecma-international.org/ecma-262.
 
 ###### [JADN-v1.0]
 JSON Abstract Data Notation Version 1.0. Edited by David Kemp. 17 August 2021. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
