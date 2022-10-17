@@ -568,8 +568,22 @@ making it a good format for the initial creation of a JADN model.
 This section provides illustrative examples of the JADN types and their representations in JIDL and table formats.
 
 
-
 #### 3.1.5.1 Binary 
+
+A binary type would be defined as follows:
+
+```json
+["FileData", "Binary", [], "Binary contents of file", []]
+```
+
+The corresponding JIDL representation would be:
+
+```json
+// Example definition of a binary datatype
+
+  FileData = Binary   // Binary contents of file
+```
+
 
 #### 3.1.5.1 Boolean
 
