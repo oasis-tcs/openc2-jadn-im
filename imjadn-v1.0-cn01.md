@@ -168,7 +168,7 @@ information modeling.
  > discussion based on RFC 3444
 
  As described in the introduction, IMs are a means to understand
- and document the essential infomation content relevant to a
+ and document the essential information content relevant to a
  system, application, or protocol exchange without regard to how
  that information is represented in actual implementations.
  Having a clear view of the information required provides clarity
@@ -350,7 +350,7 @@ and JSON.
 
 > What languages aren't really IM languages
 
-Other languages have been used for information modeling, although that is not their primary puposes.  Some examples are
+Other languages have been used for information modeling, although that is not their primary purposes.  Some examples are
 
  - UML
  - IDEF1X
@@ -402,7 +402,9 @@ From UML JADN takes the concept of modeling information/data
 using Simple Classifiers (see [UML](#uml), 10.2 Datatypes) as
 opposed to the common practice of using Structured Classifiers
 ([UML](#uml), 11.4 Classes) which do not define data in a unique
-way that can be validated and signed.  The JADN use of the UML primtive types defined in [UML](#uml), Table 21.1 can be found in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
+way that can be validated and signed.  The JADN use of the UML
+primitive types defined in [UML](#uml), Table 21.1 can be found
+in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 Another other significant UML concept is that JADN distinguishes
 among all four multiplicity types ([UML](#uml), Table 7.1), while
@@ -436,7 +438,7 @@ definition. The five elements are:
  1. A `TypeName`, which is simply a string used to refer to that
 type. 
  1. The `BaseType` of the type, which is one of the either the
-five "Primitive" (or, altneratively, "scalar") type or one of the
+five "Primitive" (or, alternatively, "scalar") type or one of the
 seven "Complex" (or, alternatively, "compound" types), as shown
 in Figure 3-1.
  1. Zero or more of the available JADN `TypeOptions` that refine
@@ -452,8 +454,8 @@ in Figure 3-1.
 
 ### 3.1.2 Type Options
 
-The third elment of a JADN type definition is zero or more of the
-TypeOptions definined in section 3.2.1 of the [JADN](#jadn-v10)
+The third element of a JADN type definition is zero or more of the
+TypeOptions defined in section 3.2.1 of the [JADN](#jadn-v10)
 Specification. TypeOptions are classifiers that, along with the
 base type, determine whether data values are instances of the
 defined type. For example, the `pattern` TypeOption is used with
@@ -598,7 +600,7 @@ Table D-1 maps basic data types between UML and JADN.
 
 ## D.2 Why JADN and not RDF?
 
-This section discusses the relationshipo between JADN and RDF, and why RDF does not serve the purpose of an Information Model
+This section discusses the relationship between JADN and RDF, and why RDF does not serve the purpose of an Information Model
 
 
 ### Comment
@@ -610,7 +612,7 @@ review](https://lists.oasis-open.org/archives/openc2/202106/msg00019.html):
 > *Have you considered the following specifications from W3C:
 > **RDF, RDFS, JSON-LD, SHACL**? RDF, RDFS (and potentially OWL
 > and BFO) should take care of your information modelling needs,
-> JSON-LD provides a JSON serialisations, SHACL provides
+> JSON-LD provides a JSON serializations, SHACL provides
 > extensive validation capabilities. I would be interested to see
 > the analysis why these technologies were eliminated after your
 > consideration.*
