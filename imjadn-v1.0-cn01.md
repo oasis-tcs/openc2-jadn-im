@@ -578,7 +578,7 @@ A binary type would be defined as follows:
 
 The corresponding JIDL representation would be:
 
-```json
+```
 // Example definition of a binary datatype
 
   FileData = Binary   // Binary contents of file
