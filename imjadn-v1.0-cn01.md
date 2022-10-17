@@ -1,4 +1,3 @@
-
 ![OASIS Logo](https://docs.oasis-open.org/templates/OASISLogo-v3.0.png)
 # OASIS Committee Note
 -------
@@ -63,7 +62,7 @@ When referencing this document the following citation format should be used:
 
 **[IM-JADN-v1.0]**
 
-_Information Modeling with JADN Version 1.0_. Edited by David Kemp and Dan Johnson. 13 October 2021. OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.html. Latest stage: https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html.
+_Information Modeling with JADN Version 1.0_. Edited by David Kemp. 13 October 2021. OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.html. Latest stage: https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html.
 
 #### Notices
 Copyright &copy; OASIS Open 2021. All Rights Reserved.
@@ -464,9 +463,33 @@ type using a regular expression conforming to
 
 ### 3.1.3 Item / Field Definitions
 
-### 3.1.4 Defnition Formats
+### 3.1.4 Definition Formats
 
 ### 3.1.5 Basic Examples
+
+#### 3.1.5.1 Binary 
+
+#### 3.1.5.1 Boolean
+
+#### 3.1.5.1 Integer
+
+#### 3.1.5.1 Number
+
+#### 3.1.5.1 String 
+
+#### 3.1.5.1 Array
+
+#### 3.1.5.1 ArrayOf(_vtype_)
+
+#### 3.1.5.1 Map
+
+#### 3.1.5.1 MapOf(_ktype_,_vtype_)
+
+#### 3.1.5.1 Record
+
+#### 3.1.5.1 Choice 
+
+#### 3.1.5.1 Enumerated 
 
 ## 3.2 Information Modeling Process
 
