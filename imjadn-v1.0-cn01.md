@@ -512,6 +512,10 @@ is empty:
 [TypeName, BaseType, [TypeOption, ...], TypeDescription, []]
 ```
 
+###### Figure 3-2 -- JADN for Primitive, ArrayOf, MapOf Types
+![JADN for Primitive, ArrayOf, MapOf Types](images/JADN-primitive-json.drawio.png)
+
+
 With the Enumerated BaseType, each item definition in the **Fields** array has three elements:
 
 ```json
