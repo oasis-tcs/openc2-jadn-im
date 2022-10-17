@@ -461,11 +461,59 @@ base type, determine whether data values are instances of the
 defined type. For example, the `pattern` TypeOption is used with
 the `string` BaseType to define valid instances of that string
 type using a regular expression conforming to
-[ECAMScript](#ecmascript) grammar.
+[ECMAScript](#ecmascript) grammar.
 
-### 3.1.3 Item / Field Definitions
+### 3.1.3 Item Or Field Definitions
 
-### 3.1.4 Definition Formats
+The use of the **Fields** element to convey Item or Field
+Definitions is dependent on the **BaseType** selected, as
+illustrated in [Figure
+3-1](#figure-3-1----jadn-type-definition-structure). The rules
+pertaining to the **Fields** array are as follows:
+
+* If BaseType is a Primitive type, ArrayOf, or MapOf, the
+  **Fields** array MUST be empty:
+
+
+* If BaseType is Enumerated, each item definition in the
+  **Fields** array MUST have three elements:
+
+    1. **ItemID:** the integer identifier of the item
+    2. **ItemValue:** the string value of the item
+    3. **ItemDescription:** a non-normative comment
+
+
+* If BaseType is Array, Choice, Map, or Record, each field
+  definition in the **Fields** array MUST have five elements:
+    1. **FieldID:** the integer identifier of the field
+    2. **FieldName:** the name or label of the field
+    3. **FieldType:** the type of the field, a predefined type or
+       a TypeName with optional Namespace ID prefix
+       **NSID:TypeName**
+    4. **FieldOptions:** an array of zero or more **FieldOption**
+       or **TypeOption** ([JADN Specifciation](#jadn-v10)
+       sections 3.2.2, or 3.2.1, respectively) applicable to the
+       field
+    5. **FieldDescription:** a non-normative comment
+
+### 3.1.4 JADN Representations
+
+The native format of JADN is JSON, but JADN content can be
+represented in others ways that are more useful for
+documentation. The [JADN Specification](#jadn-v10) identifies
+three formats (Section 5) in addition to the native format:
+
+ - JADN Interface Definition Language (JIDL)
+ - Table Style 
+ - Entity Relationship Diagrams 
+
+Automated tooling makes it straightforward to translate among all
+four of these formats. Table style presentation is often used in
+specifications (e.g., as property tables such as are found in the
+body of this specification). Entity relationship diagrams are
+helpful for visualization of an information model. The JIDL
+format, a simple text structure, is easy to edit, making it a
+good format for the initial creation of a JADN model.
 
 ### 3.1.5 Basic Examples
 
