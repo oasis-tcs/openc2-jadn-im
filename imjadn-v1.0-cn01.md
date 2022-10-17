@@ -500,20 +500,64 @@ pertaining to the **Fields** array are as follows:
 
 The native format of JADN is JSON, but JADN content can be
 represented in others ways that are more useful for
-documentation. The [JADN Specification](#jadn-v10) identifies
-three formats (Section 5) in addition to the native format:
+documentation. Corresponding to the description in the previous section of how the **Fields** array is used, the JSON representations are:
+
+> EDITOR'S: consider creating labeled diagrams in place of the
+> text to help clarify what's being illustrated.
+
+For any Primitive BaseType, ArrayOf, or MapOf, the **Fields** array
+is empty:
+
+  ```
+[TypeName, BaseType, [TypeOption, ...], TypeDescription, []]
+```
+
+With the Enumerated BaseType, each item definition in the **Fields** array has three elements:
+
+```
+[TypeName, BaseType, [TypeOption, ...], TypeDescription, 
+[
+    [ItemId, ItemValue, ItemDescription],
+    ...
+]]
+```
+
+With a BaseType of Array, Choice, Map, or Record, each field
+definition in the **Fields** array has five elements:
+
+```
+[TypeName, BaseType, [TypeOption, ...], TypeDescription, 
+[
+    [FieldID, FieldName, FieldType, [FieldOption, TypeOption, ...], FieldDescription],
+    ...
+]]
+```
+
+
+The [JADN Specification](#jadn-v10) identifies three formats
+(Section 5) in addition to the native format:
 
  - JADN Interface Definition Language (JIDL)
  - Table Style 
  - Entity Relationship Diagrams 
 
+The formal definitions of each of these types are found in
+sections 5.1, 5.2, and 5.3, respectively, of the [JADN
+Specification](#jadn-v10).
+
 Automated tooling makes it straightforward to translate among all
-four of these formats. Table style presentation is often used in
+four of these formats in a lossless manner, and each format has
+its advantages:
+
+ - JADN in native JSON format can be readily processed by common
+   JSON tooling.
+ - JADN in table style presentation is often used in
 specifications (e.g., as property tables such as are found in the
-body of this specification). Entity relationship diagrams are
-helpful for visualization of an information model. The JIDL
-format, a simple text structure, is easy to edit, making it a
-good format for the initial creation of a JADN model.
+body of this specification).
+ - JADN presented in entity relationship diagrams aids with
+visualization of an information model. 
+ - JADN in JIDL format, a simple text structure, is easy to edit,
+making it a good format for the initial creation of a JADN model.
 
 ### 3.1.5 Basic Examples
 
