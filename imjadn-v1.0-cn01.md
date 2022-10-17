@@ -556,8 +556,8 @@ its advantages:
  - JADN in native JSON format can be readily processed by common
    JSON tooling.
  - JADN in table style presentation is often used in
-specifications (e.g., as property tables such as are found in the
-body of this specification).
+specifications (e.g., as property tables such as are commonly
+found in specifications).
  - JADN presented in entity relationship diagrams aids with
 visualization of an information model. 
  - JADN in JIDL format, a simple text structure, is easy to edit,
@@ -565,7 +565,8 @@ making it a good format for the initial creation of a JADN model.
 
 ### 3.1.5 Basic Examples
 
-This section provides illustrative examples of the JADN types and their representations in JIDL and table formats.
+This section provides illustrative examples of the JADN types and
+their representations in JIDL and table formats.
 
 
 #### 3.1.5.1 Binary 
