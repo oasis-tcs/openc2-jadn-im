@@ -205,6 +205,8 @@ additional terms are defined for this document:
    concepts and categories that represent the subject.
    (Wikipedia)
 
+-------
+
 # 2 Information Modeling Overview
 
 This section discusses the nature and benefits of IMs, types of
@@ -423,6 +425,7 @@ language should provide
  - Model translation to language- or protocol-specific
    serialization / deserialization capabilities
  
+-------
 
 # 3 Creating Information Models with JADN
 
@@ -983,6 +986,7 @@ are applicable to the Record data type.
 
 ## 3.3 Information Modeling Example
 
+-------
 # 4 Advanced Techniques
 
 -------
