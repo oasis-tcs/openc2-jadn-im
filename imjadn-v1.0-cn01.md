@@ -585,6 +585,7 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
+The `minv`, `maxv`, and `format` type options are applicable to the binary data type.
 
 #### 3.1.5.1 Boolean
 
