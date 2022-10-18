@@ -527,13 +527,8 @@ Figure 3-4 illustrates the structure of JADN for defining a
 **BaseType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
-```
-[TypeName, BaseType, [TypeOption, ...], TypeDescription, 
-[
-    [FieldID, FieldName, FieldType, [FieldOption, TypeOption, ...], FieldDescription],
-    ...
-]]
-```
+###### Figure 3-3 -- JADN for Types with Fields
+![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
 The [JADN Specification](#jadn-v10) identifies three formats
