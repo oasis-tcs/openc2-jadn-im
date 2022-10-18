@@ -573,7 +573,7 @@ octets.
 are applicable to the Binary data type.
 
 **Example:**  The Binary type is used for representing
-arbitrary binary data.  An information item fitting a binary type
+arbitrary binary data.  An information item fitting a Binary type
 would be defined as follows:
 
 ```json
@@ -587,6 +587,8 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
+> EDITOR'S NOTE:  need examples of applying the TypeOptions
+
 #### 3.1.5.2 Boolean
 
 **Definition:**  An element with one of two values: true or
@@ -595,8 +597,22 @@ false.
 **TypeOptions:** No TypeOptions are applicable to the Boolean
 data type.
 
-**Example:**  The Boolean type is used for representing
-bi-valued (i.e., true/false, yes/no, on/off) information.
+**Example:**  The Boolean type is used for representing bi-valued
+(i.e., true/false, yes/no, on/off) information. An information
+item fitting a Boolean type would be defined as follows:
+
+```json
+["AccessGranted", "Boolean", [], "Result of access control decision", []]
+```
+
+
+The corresponding JIDL representation would be:
+
+```
+// Example definition of a boolean datatype
+  AccessGranted = Boolean   // Result of access control decision
+```
+
 
 #### 3.1.5.3 Integer
 
@@ -605,7 +621,26 @@ bi-valued (i.e., true/false, yes/no, on/off) information.
 **TypeOptions:** The *minv*, *maxv*, and *format* TypeOptions
 are applicable to the Integer data type.
 
-**Example:**  The Integer type 
+**Example:**  The Integer type is used for representing numerical
+information with discrete integer values.  An information item
+fitting an Integer type would be defined as follows:
+
+
+```json
+["TrackNumber", "Integer", [], "Track number for current song", []]
+```
+
+
+The corresponding JIDL representation would be:
+
+```
+// Example definition of an Integer datatype
+  TrackNumber = Integer   // Track number for current song
+```
+
+> EDITOR'S NOTE:  need examples of applying the TypeOptions
+
+
 
 #### 3.1.5.4 Number
 
@@ -614,7 +649,24 @@ are applicable to the Integer data type.
 **TypeOptions:** The *minf*, *maxf*, and *format* TypeOptions
 are applicable to the Number data type.
 
-**Example:**  The Number type 
+**Example:**  The Number type is used for representing numerical
+information with continuous values.  An information item fitting
+a Number type would be defined as follows:
+
+
+```json
+["Temperature", "Number", [], "Current temperature observation in degrees C", []]
+```
+
+
+The corresponding JIDL representation would be:
+
+```
+// Example definition of an Number datatype
+  Temperature = Number   // Current temperature observation in degrees C
+```
+
+> EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 #### 3.1.5.5 String 
 
@@ -624,7 +676,24 @@ Unicode codepoint. Length is the number of characters.
 **TypeOptions:** The *minv*, *maxv*, *format*, and *pattern*
 TypeOptions are applicable to the String data type.
 
-**Example:**  The String type 
+**Example:**  The String type is used for representing
+information best presented as text.  An information item fitting
+a String type would be defined as follows:
+
+
+```json
+["TrackTitle", "String", [], "Title of the song in the selected track", []]
+```
+
+
+The corresponding JIDL representation would be:
+
+```
+// Example definition of an String datatype
+  TrackTitle = String   // Title of the song in the selected track
+```
+
+> EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 #### 3.1.5.6 Enumerated 
 
@@ -634,7 +703,36 @@ and a string value.
 **TypeOptions:** The *id*, *enum*, *pointer*, and *extend*
 TypeOptions are applicable to the Enumerated data type.
 
-**Example:**  The Enumerated type 
+**Example:**  The Enumerated type is used to represent
+information that has a finite set of applicable values. An
+information item fitting the Enumerated type would be defined as
+follows:
+
+
+```json
+["L4-Protocol", "Enumerated", [], "Value of the protocol (IPv4) or next header (IPv6) field in an IP packet. Any IANA value, [[RFC5237]](#rfc5237)", [
+    [1, "icmp", "Internet Control Message Protocol - [RFC0792]"],
+    [6, "tcp", "Transmission Control Protocol - [RFC0793]"],
+    [17, "udp", "User Datagram Protocol - [RFC0768]"],
+    [132, "sctp", "Stream Control Transmission Protocol - [RFC4960]"]
+]]
+```
+
+
+The corresponding JIDL representation would be:
+
+```
+// Example definition of an Enumerated datatype
+L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
+                          // field in an IP packet. Any IANA value per RFC5237
+   1 icmp                 // Internet Control Message Protocol - [RFC0792]
+   6 tcp                  // Transmission Control Protocol - [RFC0793]
+  17 udp                  // User Datagram Protocol - [RFC0768]
+ 132 sctp                 // Stream Control Transmission Protocol - [RFC4960]
+
+```
+
+> EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 #### 3.1.5.7 Choice 
 
