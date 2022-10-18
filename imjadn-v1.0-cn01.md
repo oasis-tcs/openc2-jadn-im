@@ -499,25 +499,32 @@ pertaining to the **Fields** array are as follows:
 ### 3.1.4 JADN Representations
 
 The native format of JADN is JSON, but JADN content can be
-represented in others ways that are more useful for
-documentation. Corresponding to the description in the previous section of how the **Fields** array is used, the JSON representations are:
+represented in others ways that are often more useful for
+documentation. Corresponding to the description in the previous
+section of how the **Fields** array is used, the JSON
+representations are of the various BaseTypes are depicted here.
 
-Figure 3-2 illustrates the structure of JADN for defining any Primitive BaseType, or ArrayOf or MapOf type; for all of these the **Fields** array
-is empty:
+Figure 3-2 illustrates the structure of JADN for defining any
+Primitive BaseType, or ArrayOf or MapOf type; for all of these
+the **Fields** array is empty:
 
 ###### Figure 3-2 -- JADN for Primitive, ArrayOf, MapOf Types
-![JADN for Primitive, ArrayOf, MapOf Types](images/JADN-primitive-json.drawio.png)
+![JADN for Primitive, ArrayOf, MapOf
+Types](images/JADN-primitive-json.drawio.png)
 
 
-Figure 3-3 illustrates the structure of JADN for defining an Enumerated BaseType; for enumerations each item definition in the **Fields** array has three elements:
+Figure 3-3 illustrates the structure of JADN for defining an
+Enumerated BaseType; for enumerations each item definition in the
+**Fields** array has three elements:
 
 ###### Figure 3-3 -- JADN for Enumerated Types
-![JADN for Enumerated Types](images/JADN-with-items-json.drawio.png)
+![JADN for Enumerated
+Types](images/JADN-with-items-json.drawio.png)
 
 
-
-With a BaseType of Array, Choice, Map, or Record, each field
-definition in the **Fields** array has five elements:
+Figure 3-4 illustrates the structure of JADN for defining a
+BaseType of Array, Choice, Map, or Record; for these types each
+field definition in the **Fields** array has five elements:
 
 ```
 [TypeName, BaseType, [TypeOption, ...], TypeDescription, 
@@ -584,29 +591,104 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
-
-
 #### 3.1.5.1 Boolean
+
+**Definition:**  
+
+**TypeOptions:** The `minv`, `maxv`, and `format` type options
+are applicable to the ___ data type.
+
+**Example:**  The **Binary** type 
 
 #### 3.1.5.1 Integer
 
+**Definition:**  
+
+**TypeOptions:** The `minv`, `maxv`, and `format` type options
+are applicable to the ___ data type.
+
+**Example:**  The **Binary** type 
+
 #### 3.1.5.1 Number
+
+**Definition:**  
+
+**TypeOptions:** The `minv`, `maxv`, and `format` type options
+are applicable to the ___ data type.
+
+**Example:**  The **Binary** type 
 
 #### 3.1.5.1 String 
 
+**Definition:**  
+
+**TypeOptions:** The `minv`, `maxv`, and `format` type options
+are applicable to the ___ data type.
+
+**Example:**  The **Binary** type 
+
 #### 3.1.5.1 Array
+
+**Definition:**  
+
+**TypeOptions:** The `minv`, `maxv`, and `format` type options
+are applicable to the ___ data type.
+
+**Example:**  The **Binary** type 
 
 #### 3.1.5.1 ArrayOf(_vtype_)
 
+**Definition:**  
+
+**TypeOptions:** The `minv`, `maxv`, and `format` type options
+are applicable to the ___ data type.
+
+**Example:**  The **Binary** type 
+
 #### 3.1.5.1 Map
+
+**Definition:**  
+
+**TypeOptions:** The `minv`, `maxv`, and `format` type options
+are applicable to the ___ data type.
+
+**Example:**  The **Binary** type 
 
 #### 3.1.5.1 MapOf(_ktype_,_vtype_)
 
+**Definition:**  
+
+**TypeOptions:** The `minv`, `maxv`, and `format` type options
+are applicable to the ___ data type.
+
+**Example:**  The **Binary** type 
+
 #### 3.1.5.1 Record
+
+**Definition:**  
+
+**TypeOptions:** The `minv`, `maxv`, and `format` type options
+are applicable to the ___ data type.
+
+**Example:**  The **Binary** type 
 
 #### 3.1.5.1 Choice 
 
+**Definition:**  
+
+**TypeOptions:** The `minv`, `maxv`, and `format` type options
+are applicable to the ___ data type.
+
+**Example:**  The **Binary** type 
+
 #### 3.1.5.1 Enumerated 
+
+**Definition:**  
+
+**TypeOptions:** The `minv`, `maxv`, and `format` type options
+are applicable to the ___ data type.
+
+**Example:**  The **Binary** type 
 
 ## 3.2 Information Modeling Process
 
