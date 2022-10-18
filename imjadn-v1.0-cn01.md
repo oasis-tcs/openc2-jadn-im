@@ -672,10 +672,10 @@ making it a good format for both the initial creation and the
 documentation of a JADN model. JIDL is also more compact than
 table style presentation.
 
-### 3.1.6 Basic Examples
+### 3.1.6 Base Type Examples
 
-This section provides illustrative examples of the JADN types and
-their representations in JIDL and table formats.
+This section provides illustrative examples of the JADN base
+types and their representations in JIDL and table formats.
 
 
 #### 3.1.6.1 Binary 
