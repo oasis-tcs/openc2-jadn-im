@@ -626,8 +626,8 @@ are applicable to the Number data type.
 **Definition:**  A sequence of characters, each of which has a
 Unicode codepoint. Length is the number of characters.
 
-**TypeOptions:** The *minv*, *maxv*, *format*, and *pattern* type
-options are applicable to the String data type.
+**TypeOptions:** The *minv*, *maxv*, *format*, and *pattern*
+TypeOptions are applicable to the String data type.
 
 **Example:**  The String type 
 
@@ -636,8 +636,8 @@ options are applicable to the String data type.
 **Definition:**  A vocabulary of items where each item has an id
 and a string value.
 
-**TypeOptions:** The *id*, *enum*, *pointer*, and *extend* type
-options are applicable to the Enumerated data type.
+**TypeOptions:** The *id*, *enum*, *pointer*, and *extend*
+TypeOptions are applicable to the Enumerated data type.
 
 **Example:**  The Enumerated type 
 
@@ -657,8 +657,8 @@ applicable to the Choice data type.
 positionally-defined semantics. Each field has a position, label,
 and type.
 
-**TypeOptions:** The *extend*, *minv*, *maxv*, and *format* type
-options are applicable to the Array data type.
+**TypeOptions:** The *extend*, *minv*, *maxv*, and *format*
+TypeOptions are applicable to the Array data type.
 
 **Example:**  The Array type 
 
@@ -669,7 +669,7 @@ Each field has type *vtype*. Ordering and uniqueness are
 specified by a collection option.
 
 **TypeOptions:** The *vtype*, *minv*, *maxv*, *unique*, *set*,and
-`unordered` TypeOptions are applicable to the ArrayOf data
+*unordered* TypeOptions are applicable to the ArrayOf data
 type.
 
 **Example:**  The ArrayOf type 
@@ -680,8 +680,8 @@ type.
 values with semantics bound to each key. Each key has an id and
 name or label, and is mapped to a value type.
 
-**TypeOptions:** The *id*, *extend* *minv*, and *maxv* type
-options are applicable to the Map data type.
+**TypeOptions:** The *id*, *extend* *minv*, and *maxv*
+TypeOptions are applicable to the Map data type.
 
 **Example:**  The Map type 
 
@@ -691,8 +691,8 @@ options are applicable to the Map data type.
 type to values with the same semantics. Each key has key type
 *ktype*, and is mapped to value type *vtype*.
 
-**TypeOptions:** The *ktype*, *vtype*, *minv*, and *maxv* type
-options are applicable to the MapOf data type.
+**TypeOptions:** The *ktype*, *vtype*, *minv*, and *maxv*
+TypeOptions are applicable to the MapOf data type.
 
 **Example:**  The MapOf type 
 
