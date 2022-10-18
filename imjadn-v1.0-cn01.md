@@ -548,7 +548,7 @@ Compound types containing Items or Fields support field options
 in addition to the type options describe in [Section
 3.1.2](#312-typeoptions). JADN defines six field options.
 
-| Option |    Type    | Description | JADN Spec Section |
+| **Option** |    **Type**    | **Description** | **JADN Specification Section** |
 |:------:|:----------:|:-----------|:-------:|
 |  minc  |   Integer  | Minimum cardinality, default = 1, 0 = optional | 3.2.2.1 |
 |  maxc  |   Integer  | Maximum cardinality, default = 1, 0 = default max, >1 = array | 3.2.2.1 |
