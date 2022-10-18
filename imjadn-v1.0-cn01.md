@@ -398,13 +398,33 @@ As described in the JADN specification introduction:
 > abstraction based on information theory and structural
 > organization using results from graph theory.
 
+> EDITOR'S NOTE: consider whether the following adds clarity or
+> confusion; it might need to be re-written to guide the reader
+> through the concepts a bit more.
+
 From UML JADN takes the concept of modeling information/data
 using Simple Classifiers (see [UML](#uml), 10.2 Datatypes) as
 opposed to the common practice of using Structured Classifiers
 ([UML](#uml), 11.4 Classes) which do not define data in a unique
 way that can be validated and signed.  The JADN use of the UML
-primitive types defined in [UML](#uml), Table 21.1 can be found
+primitive types defined in [UML](#uml), Table 21.1, can be found
 in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
+
+The [[JADN Specification](#jadn-v10)] defines twelve base types:
+
+ - Binary
+ - Boolean
+ - Integer
+ - Number
+ - String
+ - Enmerated
+ - Choice
+ - Array
+ - ArrayOf
+ - Map
+ - MapOf
+ - Record
+
 
 Another other significant UML concept is that JADN distinguishes
 among all four multiplicity types ([UML](#uml), Table 7.1), while
@@ -462,6 +482,30 @@ defined type. For example, the *pattern* TypeOption is used with
 the String BaseType to define valid instances of that string type
 using a regular expression conforming to
 [ECMAScript](#ecmascript) grammar.
+
+The following is the complete set of type options:
+
+|   **Option**  |   **Type**  | **Description** |
+|:---------:|:-------:|:-----------|
+|     id    | Boolean | Items and Fields are denoted by FieldID rather than FieldName |
+|   vtype   |  String | Value type for ArrayOf and MapOf  |
+|   ktype   |  String | Key type for MapOf |
+|    enum   |  String | Extension: Enumerated type derived from a specified type |
+|  pointer  |  String | Extension: Enumerated type pointers derived from a specified type |
+|   format  |  String | Semantic validation keyword |
+|  pattern  |  String | Regular expression used to validate a String type |
+|    minf   |  Number | Minimum real number value |
+|    maxf   |  Number | Maximum real number value |
+|    minv   | Integer | Minimum integer value, octet or character count, or element count |
+|    maxv   | Integer | Maximum integer value, octet or character count, or element count |
+|   unique  | Boolean | ArrayOf instance must not contain duplicate values |
+|    set    | Boolean | ArrayOf instance is unordered and unique |
+| unordered | Boolean | ArrayOf instance is unordered |
+|   extend  | Boolean | Type is extensible; new Items or Fields may be appended |
+|  default  |  String | Default value |
+
+Detailed explanations of each type option can be found in Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
+
 
 ### 3.1.3 Item Or Field Definitions
 
