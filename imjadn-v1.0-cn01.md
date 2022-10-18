@@ -504,7 +504,8 @@ The following is the complete set of type options:
 |   extend  | Boolean | Type is extensible; new Items or Fields may be appended |
 |  default  |  String | Default value |
 
-Detailed explanations of each type option can be found in Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
+Detailed explanations of each type option can be found in
+Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
 
 
 ### 3.1.3 Item Or Field Definitions
@@ -541,7 +542,25 @@ pertaining to the **Fields** array are as follows:
        field
     5. **FieldDescription:** a non-normative comment
 
-### 3.1.4 JADN Representations
+### 3.1.4  Field Options 
+
+Compound types containing Items or Fields support field options
+in addition to the type options describe in [Section
+3.1.2](#312-typeoptions). JADN defines six field options.
+
+| Option |    Type    | Description | JADN Spec Section |
+|:------:|:----------:|:-----------|:-------:|
+|  minc  |   Integer  | Minimum cardinality, default = 1, 0 = optional | 3.2.2.1 |
+|  maxc  |   Integer  | Maximum cardinality, default = 1, 0 = default max, >1 = array | 3.2.2.1 |
+|  tagid | Enumerated | Field containing an explicit tag for this Choice type | 3.2.2.2 |
+|   dir  |   Boolean  | Pointer enumeration treats field as a group of items | 3.3.5 |
+|   key  |   Boolean  | Field is a primary key for this type | 3.3.6 |
+|  link  |   Boolean  | Field is a foreign key reference to a type instance | 3.3.6 |
+
+
+
+
+### 3.1.5 JADN Representations
 
 The native format of JADN is JSON, but JADN content can be
 represented in others ways that are often more useful for
@@ -602,13 +621,13 @@ making it a good format for both the initial creation and the
 documentation of a JADN model. JIDL is also more compact than
 table style presentation.
 
-### 3.1.5 Basic Examples
+### 3.1.6 Basic Examples
 
 This section provides illustrative examples of the JADN types and
 their representations in JIDL and table formats.
 
 
-#### 3.1.5.1 Binary 
+#### 3.1.6.1 Binary 
 
 **Definition:** A sequence of octets. Length is the number of
 octets. 
@@ -633,7 +652,7 @@ The corresponding JIDL representation would be:
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.5.2 Boolean
+#### 3.1.6.2 Boolean
 
 **Definition:**  An element with one of two values: true or
 false.
@@ -658,7 +677,7 @@ The corresponding JIDL representation would be:
 ```
 
 
-#### 3.1.5.3 Integer
+#### 3.1.6.3 Integer
 
 **Definition:**  A positive or negative whole number.
 
@@ -686,7 +705,7 @@ The corresponding JIDL representation would be:
 
 
 
-#### 3.1.5.4 Number
+#### 3.1.6.4 Number
 
 **Definition:**  A real number.
 
@@ -712,7 +731,7 @@ The corresponding JIDL representation would be:
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.5.5 String 
+#### 3.1.6.5 String 
 
 **Definition:**  A sequence of characters, each of which has a
 Unicode codepoint. Length is the number of characters.
@@ -739,7 +758,7 @@ The corresponding JIDL representation would be:
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.5.6 Enumerated 
+#### 3.1.6.6 Enumerated 
 
 **Definition:**  A vocabulary of items where each item has an id
 and a string value.
@@ -777,7 +796,7 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.5.7 Choice 
+#### 3.1.6.7 Choice 
 
 **Definition:**  A discriminated union: one type selected from a
 set of named or labeled types.
@@ -815,7 +834,7 @@ ElementType = Choice
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 
-#### 3.1.5.8 Array
+#### 3.1.6.8 Array
 
 **Definition:**  An ordered list of labeled fields with
 positionally-defined semantics. Each field has a position, label,
@@ -826,7 +845,7 @@ TypeOptions are applicable to the Array data type.
 
 **Example:**  The Array type 
 
-#### 3.1.5.9 ArrayOf(_vtype_)
+#### 3.1.6.9 ArrayOf(_vtype_)
 
 **Definition:**  A collection of fields with the same semantics.
 Each field has type *vtype*. Ordering and uniqueness are
@@ -838,7 +857,7 @@ type.
 
 **Example:**  The ArrayOf type 
 
-#### 3.1.5.10 Map
+#### 3.1.6.10 Map
 
 **Definition:**  An unordered map from a set of specified keys to
 values with semantics bound to each key. Each key has an id and
@@ -854,11 +873,11 @@ follows:
 
 
 ```json
-["Hashes", "Map", [], "", [
-    [1, "md5", "Binary{16..16}", "/x optional",""],
-    [2, "sha1", "Binary{20..20}", "/x optional",""],
-    [3, "sha246", "Binary{32..32}", "/x optional",""],
-    ]]
+ ["Hashes", "Map", ["{1"], "Multiple discriminated unions with intrinsic tags is a Map", [
+    [1, "md5", "Binary", ["/x", "{16", "}16", "[0"], ""],
+    [2, "sha1", "Binary", ["/x", "{20", "}20", "[0"], ""],
+    [3, "sha256", "Binary", ["/x", "{32", "}32", "[0"], ""]
+  ]]
 ```
 
 
@@ -875,7 +894,7 @@ Hashes = Map{1..*}
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 
-#### 3.1.5.11 MapOf(_ktype_,_vtype_)
+#### 3.1.6.11 MapOf(_ktype_,_vtype_)
 
 **Definition:**  An unordered map from a set of keys of the same
 type to values with the same semantics. Each key has key type
@@ -886,7 +905,7 @@ TypeOptions are applicable to the MapOf data type.
 
 **Example:**  The MapOf type 
 
-#### 3.1.5.12 Record
+#### 3.1.6.12 Record
 
 **Definition:**  An ordered map from a list of keys with
 positions to values with positionally-defined semantics. Each key
@@ -1314,14 +1333,14 @@ text.
 
 #### 1.3.2.3 Table with a caption which can be referenced
 
-###### Table 1-5. See reference label construction
+###### Table 1.6. See reference label construction
 
 | Name | Description |
 | :--- | :--- |
 | **content** | Message body as specified by content_type and msg_type. |
 
 Here is a reference to the table caption:
-Please see [Table 1-5 or other meaningful label](#table-1-5-see-reference-label-construction) 
+Please see [Table 1.6.or other meaningful label](#table-1.6.see-reference-label-construction) 
 
 
 ### 1.3.3 Lists
