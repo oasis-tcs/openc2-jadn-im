@@ -1169,6 +1169,7 @@ types and four container and reference relationships among them.
 
 ## D.3 Why JADN and not OWL?
 
+Capture from Google Doc at https://docs.google.com/document/d/1gY8ZaQJmJTpx8468Conchc2XVzTKE8x0WFSQT1qtB8o/edit#heading=h.ru8h2khtb5aw
 
 -------
 
