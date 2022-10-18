@@ -900,6 +900,17 @@ are applicable to the Record data type.
 
 ## 3.2 Information Modeling Process
 
+> rough outline, starting from YTLee paper
+
+ 1) Define the scope of the model, identifying the domain of discourse and the processes to be supported by the IM.
+ 2) Conduct a requirements analysis to define information requirements.
+ 3) Develop the model, transforming information requirements into a conceptual model. This may employ a top-down, bottom-up, or mixed / inside-out approach.
+ 4) Group concepts to identify units of functionality
+ 5) Structure information requirements into entities, objects, or classes
+ 6) Capture the model in the chosen modeling language
+
+
+
 ## 3.3 Information Modeling Example
 
 # 4 Advanced Techniques
