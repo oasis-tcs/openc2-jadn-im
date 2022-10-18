@@ -502,29 +502,14 @@ The native format of JADN is JSON, but JADN content can be
 represented in others ways that are more useful for
 documentation. Corresponding to the description in the previous section of how the **Fields** array is used, the JSON representations are:
 
-> EDITOR'S: consider creating labeled diagrams in place of the
-> text to help clarify what's being illustrated.
-
-For any Primitive BaseType, ArrayOf, or MapOf, the **Fields** array
+Figure 3-2 illustrates the structure of JADN for defining any Primitive BaseType, or ArrayOf or MapOf type; for all of these the **Fields** array
 is empty:
-
-```
-[TypeName, BaseType, [TypeOption, ...], TypeDescription, []]
-```
 
 ###### Figure 3-2 -- JADN for Primitive, ArrayOf, MapOf Types
 ![JADN for Primitive, ArrayOf, MapOf Types](images/JADN-primitive-json.drawio.png)
 
 
-With the Enumerated BaseType, each item definition in the **Fields** array has three elements:
-
-```
-[TypeName, BaseType, [TypeOption, ...], TypeDescription, 
-[
-    [ItemId, ItemValue, ItemDescription],
-    ...
-]]
-```
+Figure 3-3 illustrates the structure of JADN for defining an Enumerated BaseType; for enumerations each item definition in the **Fields** array has three elements:
 
 ###### Figure 3-3 -- JADN for Enumerated Types
 ![JADN for Enumerated Types](images/JADN-with-items-json.drawio.png)
