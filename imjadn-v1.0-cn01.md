@@ -567,8 +567,8 @@ found in specifications).
 visualization of an information model. 
  - JADN in JIDL format, a simple text structure, is easy to edit,
 making it a good format for both the initial creation and the
-documentation of a JADN model. JIDL is easy to edit and more
-compact than table style presentation.
+documentation of a JADN model. JIDL is also more compact than
+table style presentation.
 
 ### 3.1.5 Basic Examples
 
