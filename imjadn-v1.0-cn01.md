@@ -508,7 +508,7 @@ documentation. Corresponding to the description in the previous section of how t
 For any Primitive BaseType, ArrayOf, or MapOf, the **Fields** array
 is empty:
 
-```json
+```
 [TypeName, BaseType, [TypeOption, ...], TypeDescription, []]
 ```
 
@@ -518,7 +518,7 @@ is empty:
 
 With the Enumerated BaseType, each item definition in the **Fields** array has three elements:
 
-```json
+```
 [TypeName, BaseType, [TypeOption, ...], TypeDescription, 
 [
     [ItemId, ItemValue, ItemDescription],
@@ -534,7 +534,7 @@ With the Enumerated BaseType, each item definition in the **Fields** array has t
 With a BaseType of Array, Choice, Map, or Record, each field
 definition in the **Fields** array has five elements:
 
-```json
+```
 [TypeName, BaseType, [TypeOption, ...], TypeDescription, 
 [
     [FieldID, FieldName, FieldType, [FieldOption, TypeOption, ...], FieldDescription],
