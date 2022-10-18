@@ -592,7 +592,7 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
-#### 3.1.5.1 Boolean
+#### 3.1.5.2 Boolean
 
 **Definition:**  An element with one of two values: true or
 false.
@@ -603,7 +603,7 @@ data type.
 **Example:**  The Boolean type is used for representing
 bi-valued (i.e., true/false, yes/no, on/off) information.
 
-#### 3.1.5.1 Integer
+#### 3.1.5.3 Integer
 
 **Definition:**  A positive or negative whole number.
 
@@ -612,7 +612,7 @@ are applicable to the Integer data type.
 
 **Example:**  The Integer type 
 
-#### 3.1.5.1 Number
+#### 3.1.5.4 Number
 
 **Definition:**  A real number.
 
@@ -621,7 +621,7 @@ are applicable to the Number data type.
 
 **Example:**  The Number type 
 
-#### 3.1.5.1 String 
+#### 3.1.5.5 String 
 
 **Definition:**  A sequence of characters, each of which has a
 Unicode codepoint. Length is the number of characters.
@@ -631,7 +631,27 @@ options are applicable to the String data type.
 
 **Example:**  The String type 
 
-#### 3.1.5.1 Array
+#### 3.1.5.6 Enumerated 
+
+**Definition:**  A vocabulary of items where each item has an id
+and a string value.
+
+**TypeOptions:** The *id*, *enum*, *pointer*, and *extend* type
+options are applicable to the Enumerated data type.
+
+**Example:**  The Enumerated type 
+
+#### 3.1.5.7 Choice 
+
+**Definition:**  A discriminated union: one type selected from a
+set of named or labeled types.
+
+**TypeOptions:** The *id*  and *extend* TypeOptions are
+applicable to the Choice data type.
+
+**Example:**  The Choice type 
+
+#### 3.1.5.8 Array
 
 **Definition:**  An ordered list of labeled fields with
 positionally-defined semantics. Each field has a position, label,
@@ -642,7 +662,7 @@ options are applicable to the Array data type.
 
 **Example:**  The Array type 
 
-#### 3.1.5.1 ArrayOf(_vtype_)
+#### 3.1.5.9 ArrayOf(_vtype_)
 
 **Definition:**  A collection of fields with the same semantics.
 Each field has type *vtype*. Ordering and uniqueness are
@@ -654,7 +674,7 @@ type.
 
 **Example:**  The ArrayOf type 
 
-#### 3.1.5.1 Map
+#### 3.1.5.10 Map
 
 **Definition:**  An unordered map from a set of specified keys to
 values with semantics bound to each key. Each key has an id and
@@ -665,7 +685,7 @@ options are applicable to the Map data type.
 
 **Example:**  The Map type 
 
-#### 3.1.5.1 MapOf(_ktype_,_vtype_)
+#### 3.1.5.11 MapOf(_ktype_,_vtype_)
 
 **Definition:**  An unordered map from a set of keys of the same
 type to values with the same semantics. Each key has key type
@@ -676,7 +696,7 @@ options are applicable to the MapOf data type.
 
 **Example:**  The MapOf type 
 
-#### 3.1.5.1 Record
+#### 3.1.5.12 Record
 
 **Definition:**  An ordered map from a list of keys with
 positions to values with positionally-defined semantics. Each key
@@ -687,26 +707,6 @@ Represents a row in a spreadsheet or database table.
 are applicable to the Record data type.
 
 **Example:**  The Record type 
-
-#### 3.1.5.1 Choice 
-
-**Definition:**  A discriminated union: one type selected from a
-set of named or labeled types.
-
-**TypeOptions:** The *id*  and *extend* TypeOptions are
-applicable to the Choice data type.
-
-**Example:**  The Choice type 
-
-#### 3.1.5.1 Enumerated 
-
-**Definition:**  A vocabulary of items where each item has an id
-and a string value.
-
-**TypeOptions:** The *id*, *enum*, *pointer*, and *extend* type
-options are applicable to the Enumerated data type.
-
-**Example:**  The Enumerated type 
 
 ## 3.2 Information Modeling Process
 
