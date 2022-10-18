@@ -557,7 +557,10 @@ in addition to the type options describe in [Section
 |   key  |   Boolean  | Field is a primary key for this type | 3.3.6 |
 |  link  |   Boolean  | Field is a foreign key reference to a type instance | 3.3.6 |
 
-
+Type options also apply to fields, with the constraint that the
+type option must be applicable to the field's type, as described
+in the base type examples in [Section
+3.1.6](#316-basic-examples).
 
 
 ### 3.1.5 JADN Representations
