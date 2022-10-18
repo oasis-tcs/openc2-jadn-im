@@ -790,10 +790,14 @@ that {FILL IN: characteristics of information suitable for a
 *choice*}. An information item fitting the Choice type would be
 defined as follows:
 
+```json
+>>> need JSON for the ElementType choice item <<<
+```
 
 The corresponding JIDL representation would be:
 
 ```
+// Example definition of a Choice datatype
 ElementType = Choice
    1 annotation       Annotation
    2 relationship     Relationship
