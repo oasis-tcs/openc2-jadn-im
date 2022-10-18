@@ -574,7 +574,7 @@ their representations in JIDL and table formats.
 octets. 
 
 **TypeOptions:** The `minv`, `maxv`, and `format` type options
-are applicable to the binary data type.
+are applicable to the **Binary** data type.
 
 **Example:**  The **Binary** type is used for representing
 arbitrary binary data.  An information item fitting a binary type
@@ -596,17 +596,18 @@ The corresponding JIDL representation would be:
 **Definition:**  An element with one of two values: true or
 false.
 
-**TypeOptions:** The `minv`, `maxv`, and `format` type options
-are applicable to the ___ data type.
+**TypeOptions:** No TypeOptions are applicable to the **Boolean**
+data type.
 
-**Example:**  The **Binary** type 
+**Example:**  The **Boolean** type is used for representing
+bi-valued (i.e., true/false, yes/no, on/off) information.
 
 #### 3.1.5.1 Integer
 
 **Definition:**  A positive or negative whole number.
 
 **TypeOptions:** The `minv`, `maxv`, and `format` type options
-are applicable to the ___ data type.
+are applicable to the **Integer** data type.
 
 **Example:**  The **Binary** type 
 
@@ -614,20 +615,20 @@ are applicable to the ___ data type.
 
 **Definition:**  A real number.
 
-**TypeOptions:** The `minv`, `maxv`, and `format` type options
-are applicable to the ___ data type.
+**TypeOptions:** The `minf`, `maxf`, and `format` type options
+are applicable to the **Number** data type.
 
-**Example:**  The **Binary** type 
+**Example:**  The **Number** type 
 
 #### 3.1.5.1 String 
 
 **Definition:**  A sequence of characters, each of which has a
 Unicode codepoint. Length is the number of characters.
 
-**TypeOptions:** The `minv`, `maxv`, and `format` type options
-are applicable to the ___ data type.
+**TypeOptions:** The `minv`, `maxv`, `format`, and `pattern` type
+options are applicable to the **String** data type.
 
-**Example:**  The **Binary** type 
+**Example:**  The **String** type 
 
 #### 3.1.5.1 Array
 
@@ -635,10 +636,10 @@ are applicable to the ___ data type.
 positionally-defined semantics. Each field has a position, label,
 and type.
 
-**TypeOptions:** The `minv`, `maxv`, and `format` type options
-are applicable to the ___ data type.
+**TypeOptions:** The `extend`, `minv`, `maxv`, and `format` type
+options are applicable to the **Array** data type.
 
-**Example:**  The **Binary** type 
+**Example:**  The **Array** type 
 
 #### 3.1.5.1 ArrayOf(_vtype_)
 
@@ -646,10 +647,11 @@ are applicable to the ___ data type.
 Each field has type *vtype*. Ordering and uniqueness are
 specified by a collection option.
 
-**TypeOptions:** The `minv`, `maxv`, and `format` type options
-are applicable to the ___ data type.
+**TypeOptions:** The `vtype`, `minv`, `maxv`, `unique`, `set`,and
+`unordered` type options are applicable to the **ArrayOf** data
+type.
 
-**Example:**  The **Binary** type 
+**Example:**  The **ArrayOf** type 
 
 #### 3.1.5.1 Map
 
@@ -657,10 +659,10 @@ are applicable to the ___ data type.
 values with semantics bound to each key. Each key has an id and
 name or label, and is mapped to a value type.
 
-**TypeOptions:** The `minv`, `maxv`, and `format` type options
-are applicable to the ___ data type.
+**TypeOptions:** The `id`, `extend` `minv`, and `maxv` type
+options are applicable to the **Map** data type.
 
-**Example:**  The **Binary** type 
+**Example:**  The **Map** type 
 
 #### 3.1.5.1 MapOf(_ktype_,_vtype_)
 
@@ -668,10 +670,10 @@ are applicable to the ___ data type.
 type to values with the same semantics. Each key has key type
 *ktype*, and is mapped to value type *vtype*.
 
-**TypeOptions:** The `minv`, `maxv`, and `format` type options
-are applicable to the ___ data type.
+**TypeOptions:** The `ktype`, `vtype`, `minv`, and `maxv` type
+options are applicable to the **MapOf** data type.
 
-**Example:**  The **Binary** type 
+**Example:**  The **MapOf** type 
 
 #### 3.1.5.1 Record
 
@@ -680,30 +682,30 @@ positions to values with positionally-defined semantics. Each key
 has a position and name, and is mapped to a value type.
 Represents a row in a spreadsheet or database table.
 
-**TypeOptions:** The `minv`, `maxv`, and `format` type options
-are applicable to the ___ data type.
+**TypeOptions:** The `extend`, `minv`, and `maxv` type options
+are applicable to the **Record** data type.
 
-**Example:**  The **Binary** type 
+**Example:**  The **Record** type 
 
 #### 3.1.5.1 Choice 
 
 **Definition:**  A discriminated union: one type selected from a
 set of named or labeled types.
 
-**TypeOptions:** The `minv`, `maxv`, and `format` type options
-are applicable to the ___ data type.
+**TypeOptions:** The `id`  and `extend` type options are
+applicable to the **Choice** data type.
 
-**Example:**  The **Binary** type 
+**Example:**  The **Choice** type 
 
 #### 3.1.5.1 Enumerated 
 
 **Definition:**  A vocabulary of items where each item has an id
 and a string value.
 
-**TypeOptions:** The `minv`, `maxv`, and `format` type options
-are applicable to the ___ data type.
+**TypeOptions:** The `id`, `enum`, `pointer`, and `extend` type
+options are applicable to the **Enumerated** data type.
 
-**Example:**  The **Binary** type 
+**Example:**  The **Enumerated** type 
 
 ## 3.2 Information Modeling Process
 
