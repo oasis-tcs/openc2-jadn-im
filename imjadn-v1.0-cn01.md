@@ -435,17 +435,17 @@ Figure 3-1 summarizes the structure of a JADN Type Definition,
 and identifies values for each of the five elements in the
 definition. The five elements are:
 
- 1. A `TypeName`, which is simply a string used to refer to that
+ 1. A **TypeName**, which is simply a string used to refer to that
 type. 
- 1. The `BaseType` of the type, which is one of the either the
+ 1. The **BaseType** of the type, which is one of the either the
 five "Primitive" (or, alternatively, "scalar") type or one of the
 seven "Complex" (or, alternatively, "compound" types), as shown
 in Figure 3-1.
- 1. Zero or more of the available JADN `TypeOptions` that refine
+ 1. Zero or more of the available JADN **TypeOptions** that refine
     the base types to fit particular needs.
- 2. An optional `TypeDescription` string that provides additional
+ 2. An optional **TypeDescription** string that provides additional
     information about the type.
- 3. For any of the Complex types, a set of Item or Field options
+ 3. For any of the Complex types, a set of **Item** or **Field** options
     that define the items that comprise the complex type. 
 
 ###### Figure 3-1 -- JADN Type Definition Structure
@@ -454,13 +454,13 @@ in Figure 3-1.
 
 ### 3.1.2 TypeOptions
 
-The third element of a JADN type definition is zero or more of the
-TypeOptions defined in section 3.2.1 of the [JADN](#jadn-v10)
+The third element of a JADN type definition is zero or more of
+the TypeOptions defined in section 3.2.1 of the [JADN](#jadn-v10)
 Specification. TypeOptions are classifiers that, along with the
 base type, determine whether data values are instances of the
-defined type. For example, the `pattern` TypeOption is used with
-the `string` BaseType to define valid instances of that string
-type using a regular expression conforming to
+defined type. For example, the *pattern* TypeOption is used with
+the String BaseType to define valid instances of that string type
+using a regular expression conforming to
 [ECMAScript](#ecmascript) grammar.
 
 ### 3.1.3 Item Or Field Definitions
@@ -471,11 +471,11 @@ illustrated in [Figure
 3-1](#figure-3-1----jadn-type-definition-structure). The rules
 pertaining to the **Fields** array are as follows:
 
-* If BaseType is a Primitive type, ArrayOf, or MapOf, the
+* If the **BaseType** is a Primitive type, ArrayOf, or MapOf, the
   **Fields** array MUST be empty:
 
 
-* If BaseType is Enumerated, each item definition in the
+* If the **BaseType** is Enumerated, each item definition in the
   **Fields** array MUST have three elements:
 
     1. **ItemID:** the integer identifier of the item
@@ -483,8 +483,9 @@ pertaining to the **Fields** array are as follows:
     3. **ItemDescription:** a non-normative comment
 
 
-* If BaseType is Array, Choice, Map, or Record, each field
-  definition in the **Fields** array MUST have five elements:
+* If the **BaseType** is Array, Choice, Map, or Record, each
+  field definition in the **Fields** array MUST have five
+  elements:
     1. **FieldID:** the integer identifier of the field
     2. **FieldName:** the name or label of the field
     3. **FieldType:** the type of the field, a predefined type or
@@ -505,7 +506,7 @@ section of how the **Fields** array is used, the JSON
 representations are of the various BaseTypes are depicted here.
 
 Figure 3-2 illustrates the structure of JADN for defining any
-Primitive BaseType, or ArrayOf or MapOf type; for all of these
+Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
 ###### Figure 3-2 -- JADN for Primitive, ArrayOf, MapOf Types
@@ -514,7 +515,7 @@ Types](images/JADN-primitive-json.drawio.png)
 
 
 Figure 3-3 illustrates the structure of JADN for defining an
-Enumerated BaseType; for enumerations each item definition in the
+Enumerated **BaseType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
 ###### Figure 3-3 -- JADN for Enumerated Types
@@ -523,7 +524,7 @@ Types](images/JADN-with-items-json.drawio.png)
 
 
 Figure 3-4 illustrates the structure of JADN for defining a
-BaseType of Array, Choice, Map, or Record; for these types each
+**BaseType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
 ```
@@ -573,10 +574,10 @@ their representations in JIDL and table formats.
 **Definition:** A sequence of octets. Length is the number of
 octets. 
 
-**TypeOptions:** The `minv`, `maxv`, and `format` TypeOptions
-are applicable to the **Binary** data type.
+**TypeOptions:** The *minv*, *maxv*, and *format* TypeOptions
+are applicable to the Binary data type.
 
-**Example:**  The **Binary** type is used for representing
+**Example:**  The Binary type is used for representing
 arbitrary binary data.  An information item fitting a binary type
 would be defined as follows:
 
@@ -596,39 +597,39 @@ The corresponding JIDL representation would be:
 **Definition:**  An element with one of two values: true or
 false.
 
-**TypeOptions:** No TypeOptions are applicable to the **Boolean**
+**TypeOptions:** No TypeOptions are applicable to the Boolean
 data type.
 
-**Example:**  The **Boolean** type is used for representing
+**Example:**  The Boolean type is used for representing
 bi-valued (i.e., true/false, yes/no, on/off) information.
 
 #### 3.1.5.1 Integer
 
 **Definition:**  A positive or negative whole number.
 
-**TypeOptions:** The `minv`, `maxv`, and `format` TypeOptions
-are applicable to the **Integer** data type.
+**TypeOptions:** The *minv*, *maxv*, and *format* TypeOptions
+are applicable to the Integer data type.
 
-**Example:**  The **Binary** type 
+**Example:**  The Integer type 
 
 #### 3.1.5.1 Number
 
 **Definition:**  A real number.
 
-**TypeOptions:** The `minf`, `maxf`, and `format` TypeOptions
-are applicable to the **Number** data type.
+**TypeOptions:** The *minf*, *maxf*, and *format* TypeOptions
+are applicable to the Number data type.
 
-**Example:**  The **Number** type 
+**Example:**  The Number type 
 
 #### 3.1.5.1 String 
 
 **Definition:**  A sequence of characters, each of which has a
 Unicode codepoint. Length is the number of characters.
 
-**TypeOptions:** The `minv`, `maxv`, `format`, and `pattern` type
-options are applicable to the **String** data type.
+**TypeOptions:** The *minv*, *maxv*, *format*, and *pattern* type
+options are applicable to the String data type.
 
-**Example:**  The **String** type 
+**Example:**  The String type 
 
 #### 3.1.5.1 Array
 
@@ -636,10 +637,10 @@ options are applicable to the **String** data type.
 positionally-defined semantics. Each field has a position, label,
 and type.
 
-**TypeOptions:** The `extend`, `minv`, `maxv`, and `format` type
-options are applicable to the **Array** data type.
+**TypeOptions:** The *extend*, *minv*, *maxv*, and *format* type
+options are applicable to the Array data type.
 
-**Example:**  The **Array** type 
+**Example:**  The Array type 
 
 #### 3.1.5.1 ArrayOf(_vtype_)
 
@@ -647,11 +648,11 @@ options are applicable to the **Array** data type.
 Each field has type *vtype*. Ordering and uniqueness are
 specified by a collection option.
 
-**TypeOptions:** The `vtype`, `minv`, `maxv`, `unique`, `set`,and
-`unordered` TypeOptions are applicable to the **ArrayOf** data
+**TypeOptions:** The *vtype*, *minv*, *maxv*, *unique*, *set*,and
+`unordered` TypeOptions are applicable to the ArrayOf data
 type.
 
-**Example:**  The **ArrayOf** type 
+**Example:**  The ArrayOf type 
 
 #### 3.1.5.1 Map
 
@@ -659,10 +660,10 @@ type.
 values with semantics bound to each key. Each key has an id and
 name or label, and is mapped to a value type.
 
-**TypeOptions:** The `id`, `extend` `minv`, and `maxv` type
-options are applicable to the **Map** data type.
+**TypeOptions:** The *id*, *extend* *minv*, and *maxv* type
+options are applicable to the Map data type.
 
-**Example:**  The **Map** type 
+**Example:**  The Map type 
 
 #### 3.1.5.1 MapOf(_ktype_,_vtype_)
 
@@ -670,10 +671,10 @@ options are applicable to the **Map** data type.
 type to values with the same semantics. Each key has key type
 *ktype*, and is mapped to value type *vtype*.
 
-**TypeOptions:** The `ktype`, `vtype`, `minv`, and `maxv` type
-options are applicable to the **MapOf** data type.
+**TypeOptions:** The *ktype*, *vtype*, *minv*, and *maxv* type
+options are applicable to the MapOf data type.
 
-**Example:**  The **MapOf** type 
+**Example:**  The MapOf type 
 
 #### 3.1.5.1 Record
 
@@ -682,30 +683,30 @@ positions to values with positionally-defined semantics. Each key
 has a position and name, and is mapped to a value type.
 Represents a row in a spreadsheet or database table.
 
-**TypeOptions:** The `extend`, `minv`, and `maxv` TypeOptions
-are applicable to the **Record** data type.
+**TypeOptions:** The *extend*, *minv*, and *maxv* TypeOptions
+are applicable to the Record data type.
 
-**Example:**  The **Record** type 
+**Example:**  The Record type 
 
 #### 3.1.5.1 Choice 
 
 **Definition:**  A discriminated union: one type selected from a
 set of named or labeled types.
 
-**TypeOptions:** The `id`  and `extend` TypeOptions are
-applicable to the **Choice** data type.
+**TypeOptions:** The *id*  and *extend* TypeOptions are
+applicable to the Choice data type.
 
-**Example:**  The **Choice** type 
+**Example:**  The Choice type 
 
 #### 3.1.5.1 Enumerated 
 
 **Definition:**  A vocabulary of items where each item has an id
 and a string value.
 
-**TypeOptions:** The `id`, `enum`, `pointer`, and `extend` type
-options are applicable to the **Enumerated** data type.
+**TypeOptions:** The *id*, *enum*, *pointer*, and *extend* type
+options are applicable to the Enumerated data type.
 
-**Example:**  The **Enumerated** type 
+**Example:**  The Enumerated type 
 
 ## 3.2 Information Modeling Process
 
