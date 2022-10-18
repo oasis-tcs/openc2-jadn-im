@@ -773,7 +773,6 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
    6 tcp                  // Transmission Control Protocol - [RFC0793]
   17 udp                  // User Datagram Protocol - [RFC0768]
  132 sctp                 // Stream Control Transmission Protocol - [RFC4960]
-
 ```
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
@@ -786,7 +785,31 @@ set of named or labeled types.
 **TypeOptions:** The *id*  and *extend* TypeOptions are
 applicable to the Choice data type.
 
-**Example:**  The Choice type 
+**Example:**  The Choice type is used to represent information
+that {FILL IN: characteristics of information suitable for a
+*choice*}. An information item fitting the Choice type would be
+defined as follows:
+
+
+The corresponding JIDL representation would be:
+
+```
+ElementType = Choice
+   1 annotation       Annotation
+   2 relationship     Relationship
+   3 identity         IdentityType                // Abstract "Subject"
+   4 actor            Empty
+   5 spdxDocument     SpdxDocument                // <- Collection: A file containing serialized element values
+   6 bom              BOM                         // <- Collection
+  10 snippet          Snippet                     // <- Artifact: pkg:Software
+  11 file             File                        // <- Artifact: pkg:Software
+  12 package          Package                     // <- Artifact: pkg:Software
+  13 sbom             SBOM                        // <- BOM: pkg:Software
+  14 license          License                     // pkg:License
+```
+
+> EDITOR'S NOTE:  need examples of applying the TypeOptions
+
 
 #### 3.1.5.8 Array
 
@@ -820,7 +843,33 @@ name or label, and is mapped to a value type.
 **TypeOptions:** The *id*, *extend* *minv*, and *maxv*
 TypeOptions are applicable to the Map data type.
 
-**Example:**  The Map type 
+**Example:**  The Map type  is used to represent information that
+{FILL IN: characteristics of information suitable for a *map*}.
+An information item fitting the Map type would be defined as
+follows:
+
+
+```json
+["Hashes", "Map", [], "", [
+    [1, "md5", "Binary{16..16}", "/x optional",""],
+    [2, "sha1", "Binary{20..20}", "/x optional",""],
+    [3, "sha246", "Binary{32..32}", "/x optional",""],
+    ]]
+```
+
+
+The corresponding JIDL representation would be:
+
+```
+// Example definition of an Map datatype
+Hashes = Map{1..*}
+   1 md5              Binary{16..16} /x optional
+   2 sha1             Binary{20..20} /x optional
+   3 sha256           Binary{32..32} /x optional
+```
+
+> EDITOR'S NOTE:  need examples of applying the TypeOptions
+
 
 #### 3.1.5.11 MapOf(_ktype_,_vtype_)
 
