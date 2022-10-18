@@ -526,6 +526,11 @@ With the Enumerated BaseType, each item definition in the **Fields** array has t
 ]]
 ```
 
+###### Figure 3-3 -- JADN for Enumerated Types
+![JADN for Enumerated Types](images/JADN-with-items-json.drawio.png)
+
+
+
 With a BaseType of Array, Choice, Map, or Record, each field
 definition in the **Fields** array has five elements:
 
