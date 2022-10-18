@@ -593,7 +593,8 @@ The corresponding JIDL representation would be:
 
 #### 3.1.5.1 Boolean
 
-**Definition:**  
+**Definition:**  An element with one of two values: true or
+false.
 
 **TypeOptions:** The `minv`, `maxv`, and `format` type options
 are applicable to the ___ data type.
@@ -602,7 +603,7 @@ are applicable to the ___ data type.
 
 #### 3.1.5.1 Integer
 
-**Definition:**  
+**Definition:**  A positive or negative whole number.
 
 **TypeOptions:** The `minv`, `maxv`, and `format` type options
 are applicable to the ___ data type.
@@ -611,7 +612,7 @@ are applicable to the ___ data type.
 
 #### 3.1.5.1 Number
 
-**Definition:**  
+**Definition:**  A real number.
 
 **TypeOptions:** The `minv`, `maxv`, and `format` type options
 are applicable to the ___ data type.
@@ -620,7 +621,8 @@ are applicable to the ___ data type.
 
 #### 3.1.5.1 String 
 
-**Definition:**  
+**Definition:**  A sequence of characters, each of which has a
+Unicode codepoint. Length is the number of characters.
 
 **TypeOptions:** The `minv`, `maxv`, and `format` type options
 are applicable to the ___ data type.
@@ -629,7 +631,9 @@ are applicable to the ___ data type.
 
 #### 3.1.5.1 Array
 
-**Definition:**  
+**Definition:**  An ordered list of labeled fields with
+positionally-defined semantics. Each field has a position, label,
+and type.
 
 **TypeOptions:** The `minv`, `maxv`, and `format` type options
 are applicable to the ___ data type.
@@ -638,7 +642,9 @@ are applicable to the ___ data type.
 
 #### 3.1.5.1 ArrayOf(_vtype_)
 
-**Definition:**  
+**Definition:**  A collection of fields with the same semantics.
+Each field has type *vtype*. Ordering and uniqueness are
+specified by a collection option.
 
 **TypeOptions:** The `minv`, `maxv`, and `format` type options
 are applicable to the ___ data type.
@@ -647,7 +653,9 @@ are applicable to the ___ data type.
 
 #### 3.1.5.1 Map
 
-**Definition:**  
+**Definition:**  An unordered map from a set of specified keys to
+values with semantics bound to each key. Each key has an id and
+name or label, and is mapped to a value type.
 
 **TypeOptions:** The `minv`, `maxv`, and `format` type options
 are applicable to the ___ data type.
@@ -656,7 +664,9 @@ are applicable to the ___ data type.
 
 #### 3.1.5.1 MapOf(_ktype_,_vtype_)
 
-**Definition:**  
+**Definition:**  An unordered map from a set of keys of the same
+type to values with the same semantics. Each key has key type
+*ktype*, and is mapped to value type *vtype*.
 
 **TypeOptions:** The `minv`, `maxv`, and `format` type options
 are applicable to the ___ data type.
@@ -665,7 +675,10 @@ are applicable to the ___ data type.
 
 #### 3.1.5.1 Record
 
-**Definition:**  
+**Definition:**  An ordered map from a list of keys with
+positions to values with positionally-defined semantics. Each key
+has a position and name, and is mapped to a value type.
+Represents a row in a spreadsheet or database table.
 
 **TypeOptions:** The `minv`, `maxv`, and `format` type options
 are applicable to the ___ data type.
@@ -674,7 +687,8 @@ are applicable to the ___ data type.
 
 #### 3.1.5.1 Choice 
 
-**Definition:**  
+**Definition:**  A discriminated union: one type selected from a
+set of named or labeled types.
 
 **TypeOptions:** The `minv`, `maxv`, and `format` type options
 are applicable to the ___ data type.
@@ -683,7 +697,8 @@ are applicable to the ___ data type.
 
 #### 3.1.5.1 Enumerated 
 
-**Definition:**  
+**Definition:**  A vocabulary of items where each item has an id
+and a string value.
 
 **TypeOptions:** The `minv`, `maxv`, and `format` type options
 are applicable to the ___ data type.
