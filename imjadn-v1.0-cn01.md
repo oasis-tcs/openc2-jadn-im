@@ -452,7 +452,7 @@ in Figure 3-1.
 ![JADN Type Definition Structure](images/JADN-Structure_2022-09-28a-overlay.png)
 
 
-### 3.1.2 Type Options
+### 3.1.2 TypeOptions
 
 The third element of a JADN type definition is zero or more of the
 TypeOptions defined in section 3.2.1 of the [JADN](#jadn-v10)
@@ -573,7 +573,7 @@ their representations in JIDL and table formats.
 **Definition:** A sequence of octets. Length is the number of
 octets. 
 
-**TypeOptions:** The `minv`, `maxv`, and `format` type options
+**TypeOptions:** The `minv`, `maxv`, and `format` TypeOptions
 are applicable to the **Binary** data type.
 
 **Example:**  The **Binary** type is used for representing
@@ -606,7 +606,7 @@ bi-valued (i.e., true/false, yes/no, on/off) information.
 
 **Definition:**  A positive or negative whole number.
 
-**TypeOptions:** The `minv`, `maxv`, and `format` type options
+**TypeOptions:** The `minv`, `maxv`, and `format` TypeOptions
 are applicable to the **Integer** data type.
 
 **Example:**  The **Binary** type 
@@ -615,7 +615,7 @@ are applicable to the **Integer** data type.
 
 **Definition:**  A real number.
 
-**TypeOptions:** The `minf`, `maxf`, and `format` type options
+**TypeOptions:** The `minf`, `maxf`, and `format` TypeOptions
 are applicable to the **Number** data type.
 
 **Example:**  The **Number** type 
@@ -648,7 +648,7 @@ Each field has type *vtype*. Ordering and uniqueness are
 specified by a collection option.
 
 **TypeOptions:** The `vtype`, `minv`, `maxv`, `unique`, `set`,and
-`unordered` type options are applicable to the **ArrayOf** data
+`unordered` TypeOptions are applicable to the **ArrayOf** data
 type.
 
 **Example:**  The **ArrayOf** type 
@@ -682,7 +682,7 @@ positions to values with positionally-defined semantics. Each key
 has a position and name, and is mapped to a value type.
 Represents a row in a spreadsheet or database table.
 
-**TypeOptions:** The `extend`, `minv`, and `maxv` type options
+**TypeOptions:** The `extend`, `minv`, and `maxv` TypeOptions
 are applicable to the **Record** data type.
 
 **Example:**  The **Record** type 
@@ -692,7 +692,7 @@ are applicable to the **Record** data type.
 **Definition:**  A discriminated union: one type selected from a
 set of named or labeled types.
 
-**TypeOptions:** The `id`  and `extend` type options are
+**TypeOptions:** The `id`  and `extend` TypeOptions are
 applicable to the **Choice** data type.
 
 **Example:**  The **Choice** type 
