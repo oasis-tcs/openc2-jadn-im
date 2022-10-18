@@ -455,18 +455,18 @@ Figure 3-1 summarizes the structure of a JADN Type Definition,
 and identifies values for each of the five elements in the
 definition. The five elements are:
 
- 1. A **TypeName**, which is simply a string used to refer to that
-type. 
+ 1. A **TypeName**, which is simply a string used to refer to
+that type. 
  1. The **BaseType** of the type, which is one of the either the
-five "Primitive" (or, alternatively, "scalar") type or one of the
-seven "Complex" (or, alternatively, "compound" types), as shown
-in Figure 3-1.
- 1. Zero or more of the available JADN **TypeOptions** that refine
-    the base types to fit particular needs.
- 2. An optional **TypeDescription** string that provides additional
-    information about the type.
- 3. For any of the Complex types, a set of **Item** or **Field** options
-    that define the items that comprise the complex type. 
+five "Primitive" (or, alternatively, "scalar") types or one of
+the seven "Compound" types, as shown in Figure 3-1.
+ 1. Zero or more of the available JADN **TypeOptions** that
+    refine the base types to fit particular needs.
+ 2. An optional **TypeDescription** string that provides
+    additional information about the type.
+ 3. For any of the Compound types, a set of **Item** or **Field**
+    options that define the items that comprise the compound
+    type. 
 
 ###### Figure 3-1 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Structure_2022-09-28a-overlay.png)
