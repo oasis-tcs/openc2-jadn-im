@@ -566,7 +566,9 @@ found in specifications).
  - JADN presented in entity relationship diagrams aids with
 visualization of an information model. 
  - JADN in JIDL format, a simple text structure, is easy to edit,
-making it a good format for the initial creation of a JADN model.
+making it a good format for both the initial creation and the
+documentation of a JADN model. JIDL is easy to edit and more
+compact than table style presentation.
 
 ### 3.1.5 Basic Examples
 
@@ -576,7 +578,15 @@ their representations in JIDL and table formats.
 
 #### 3.1.5.1 Binary 
 
-A binary type would be defined as follows:
+**Definition:** A sequence of octets. Length is the number of
+octets. 
+
+**TypeOptions:** The `minv`, `maxv`, and `format` type options
+are applicable to the binary data type.
+
+**Example:**  The **Binary** type is used for representing
+arbitrary binary data.  An information item fitting a binary type
+would be defined as follows:
 
 ```json
 ["FileData", "Binary", [], "Binary contents of file", []]
@@ -586,11 +596,10 @@ The corresponding JIDL representation would be:
 
 ```
 // Example definition of a binary datatype
-
   FileData = Binary   // Binary contents of file
 ```
 
-The `minv`, `maxv`, and `format` type options are applicable to the binary data type.
+
 
 #### 3.1.5.1 Boolean
 
