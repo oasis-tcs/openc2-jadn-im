@@ -1075,6 +1075,7 @@ Possible example subjects:
  - Boutique Manufacturer (catalog, customization options, supply chain, orders, builds, shipping)
  - Website Message Board (users, accounts, forums, threads, messages)
  - Simplified SBOM (start from SPDX3 model and limit to high-level aspects)
+ - SDO management system (similar to OASIS Kavi)
 
 -------
 # 4 Advanced Techniques
