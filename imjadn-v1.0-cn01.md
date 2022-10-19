@@ -957,9 +957,10 @@ TypeOptions are applicable to the Map data type.
 
 **Example:**  The Map type is used to represent information that
 can be represented as (key, value) pairs. Another term for this
-type of information structure is an "associative array". An
-information item fitting the Map type would be defined as
-follows:
+type of information structure is an "associative array". The Map
+base type always uses an integer identifier as the key, with each
+integer associated with a specific value. An information item
+fitting the Map type would be defined as follows:
 
 
 ```json
@@ -992,8 +993,22 @@ type to values with the same semantics. Each key has key type
 **TypeOptions:** The *ktype*, *vtype*, *minv*, and *maxv*
 TypeOptions are applicable to the MapOf data type.
 
-**Example:**  The MapOf type 
+**Example:**  The MapOf type is used to represent information
+that can be represented as (key, value) pairs, where the types
+for the keys and the values in the MapOf are of specific types
+and are defined using type options.  An information item fitting
+the Map type would be defined as follows:
 
+
+```json
+   <<< NEED JSON FOR MapOf EXAMPLE>>>
+```
+
+The corresponding JIDL representation would be:
+
+```
+  <<< NEED JIDL FOR MapOf EXAMPLE>>>
+```
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
@@ -1007,7 +1022,10 @@ Represents a row in a spreadsheet or database table.
 **TypeOptions:** The *extend*, *minv*, and *maxv* TypeOptions
 are applicable to the Record data type.
 
-**Example:**  The Record type 
+**Example:**  The Record type is used to represent information
+that has a consistent repeated structure, such as a database
+record. Elements of a record can be accessed by either position
+or value. 
 
 ```json
   ["IPv4-Connection", "Record", ["{1"], "5-tuple that specifies a tcp/ip connection", [
