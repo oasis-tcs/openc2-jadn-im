@@ -969,28 +969,28 @@ name or label, and is mapped to a value type.
 TypeOptions are applicable to the Map data type.
 
 **Example:**  The Map type is used to represent information that
-{FILL IN: characteristics of information suitable for a *map*}.
-An information item fitting the Map type would be defined as
+can be represented as (key, value) pairs. Another term for this
+type of information structure is an "associative array". An
+information item fitting the Map type would be defined as
 follows:
 
 
 ```json
- ["Hashes", "Map", ["{1"], "Multiple discriminated unions with intrinsic tags is a Map", [
-    [1, "md5", "Binary", ["/x", "{16", "}16", "[0"], ""],
-    [2, "sha1", "Binary", ["/x", "{20", "}20", "[0"], ""],
-    [3, "sha256", "Binary", ["/x", "{32", "}32", "[0"], ""]
+  ["Hashes", "Map", ["{1"], "Cryptographic hash values", [
+    [1, "md5", "Binary", ["/x", "{16", "}16", "[0"], "MD5 hash as defined in [[RFC1321]](#rfc1321)"],
+    [2, "sha1", "Binary", ["/x", "{20", "}20", "[0"], "SHA1 hash as defined in [[RFC6234]](#rfc6234)"],
+    [3, "sha256", "Binary", ["/x", "{32", "}32", "[0"], "SHA256 hash as defined in [[RFC6234]](#rfc6234)"]
   ]]
 ```
-
 
 The corresponding JIDL representation would be:
 
 ```
 // Example JIDL definition of an Map datatype
-Hashes = Map{1..*}    // Multiple discriminated unions with intrinsic tags is a Map
-   1 md5              Binary{16..16} /x optional
-   2 sha1             Binary{20..20} /x optional
-   3 sha256           Binary{32..32} /x optional
+Hashes = Map{1..*}    // Cryptographic hash values
+   1 md5        Binary{16..16} /x optional   // MD5 hash as defined in RFC1321
+   2 sha1       Binary{20..20} /x optional   // SHA1 hash as defined in RFC6234
+   3 sha256     Binary{32..32} /x optional   // SHAs26 hash as defined in RFC6234
 ```
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
