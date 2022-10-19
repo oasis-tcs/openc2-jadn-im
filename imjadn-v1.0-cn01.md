@@ -864,7 +864,19 @@ that {FILL IN: characteristics of information suitable for a
 defined as follows:
 
 ```json
->>> need JSON for the ElementType choice item <<<
+  ["ElementType", "Choice", [], "", [
+    [1, "annotation", "Annotation", [], ""],
+    [2, "relationship", "Relationship", [], ""],
+    [3, "identity", "IdentityType", [], "Abstract \"Subject\""],
+    [4, "actor", "Empty", [], ""],
+    [5, "spdxDocument", "SpdxDocument", [], "<- Collection: A file containing serialized element values"],
+    [6, "bom", "BOM", [], "<- Collection"],
+    [10, "snippet", "Snippet", [], "<- Artifact: pkg:Software"],
+    [11, "file", "File", [], "<- Artifact: pkg:Software"],
+    [12, "package", "Package", [], "<- Artifact: pkg:Software"],
+    [13, "sbom", "SBOM", [], "<- BOM: pkg:Software"],
+    [14, "license", "License", [], "pkg:License"]
+  ]]
 ```
 
 The corresponding JIDL representation would be:
@@ -897,7 +909,36 @@ and type.
 **TypeOptions:** The *extend*, *minv*, *maxv*, and *format*
 TypeOptions are applicable to the Array data type.
 
-**Example:**  The Array type 
+**Example:**  The Array type is used to represent information
+where it is appropriate to group related information elements
+together, even if the elements of the array are heterogeneous.
+Each element in the array is defined as a field, using the field
+definitions described in [Section
+3.1.3](#313-item-or-field-definitions) and refined using the
+field options described in [Section 3.1.4](#314--field-options).
+An information item fitting the Array base type would be defined
+as follows:
+
+```json
+  ["IPv4-Net", "Array", ["/ipv4-net"], "IPv4 address and prefix length", [
+    [1, "ipv4_addr", "IPv4-Addr", [], "IPv4 address as defined in [[RFC0791]](#rfc0791)"],
+    [2, "prefix_length", "Integer", ["[0"], "CIDR prefix-length. If omitted, refers to a single host address."]
+  ]]
+```
+
+Note this example also uses a type option for semantic validation
+(the `ipv4-net` keyword). The corresponding JIDL representation
+would be:
+
+```
+// Example definition of an Array datatype with heterogenous elements
+// the IPv4-Net type is an array used to represent a CIDR block
+
+IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
+   1  IPv4-Addr              // ipv4_addr:: IPv4 address as defined in [RFC0791]
+   2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
+```
+
 
 #### 3.1.6.9 ArrayOf(_vtype_)
 
@@ -920,7 +961,7 @@ name or label, and is mapped to a value type.
 **TypeOptions:** The *id*, *extend* *minv*, and *maxv*
 TypeOptions are applicable to the Map data type.
 
-**Example:**  The Map type  is used to represent information that
+**Example:**  The Map type is used to represent information that
 {FILL IN: characteristics of information suitable for a *map*}.
 An information item fitting the Map type would be defined as
 follows:
