@@ -859,42 +859,26 @@ set of named or labeled types.
 applicable to the Choice data type.
 
 **Example:**  The Choice type is used to represent information
-that {FILL IN: characteristics of information suitable for a
-*choice*}. An information item fitting the Choice type would be
-defined as follows:
+limited to selecting one type from a defined set of named or
+labeled types. An information item fitting the Choice type would
+be defined as follows:
 
 ```json
-  ["ElementType", "Choice", [], "", [
-    [1, "annotation", "Annotation", [], ""],
-    [2, "relationship", "Relationship", [], ""],
-    [3, "identity", "IdentityType", [], "Abstract \"Subject\""],
-    [4, "actor", "Empty", [], ""],
-    [5, "spdxDocument", "SpdxDocument", [], "<- Collection: A file containing serialized element values"],
-    [6, "bom", "BOM", [], "<- Collection"],
-    [10, "snippet", "Snippet", [], "<- Artifact: pkg:Software"],
-    [11, "file", "File", [], "<- Artifact: pkg:Software"],
-    [12, "package", "Package", [], "<- Artifact: pkg:Software"],
-    [13, "sbom", "SBOM", [], "<- BOM: pkg:Software"],
-    [14, "license", "License", [], "pkg:License"]
-  ]]
+["IdentityType", "Choice", [], "Nature of the referenced identity", [
+  [1, "person", "Person", [], "Identity refers to a person"],
+  [2, "organization", "Organization", [], "Identity refers to an organization"],
+  [3, "tool", "Tool", [], "Identity refers to an automated tool"]
+]]
 ```
 
 The corresponding JIDL representation would be:
 
 ```
 // Example JIDL definition of a Choice datatype
-ElementType = Choice
-   1 annotation       Annotation
-   2 relationship     Relationship
-   3 identity         IdentityType                // Abstract "Subject"
-   4 actor            Empty
-   5 spdxDocument     SpdxDocument                // <- Collection: A file containing serialized element values
-   6 bom              BOM                         // <- Collection
-  10 snippet          Snippet                     // <- Artifact: pkg:Software
-  11 file             File                        // <- Artifact: pkg:Software
-  12 package          Package                     // <- Artifact: pkg:Software
-  13 sbom             SBOM                        // <- BOM: pkg:Software
-  14 license          License                     // pkg:License
+IdentityType = Choice                // Nature of the referenced identity
+   1 person           Person         // Identity refers to a person
+   2 organization     Organization   // Identity refers to an organization
+   3 tool             Tool           // Identity refers to an automated tool
 ```
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
@@ -954,7 +938,7 @@ type.
 **Example:**  The ArrayOf type is used to represent information
 where it is appropriate to group a set of uniform  information
 elements together. The fields if the array are defined by the
-*vtype*, which can be  primitive or compound. An information item
+*vtype*, which can be primitive or compound. An information item
 fitting the ArrayOf base type would be defined as follows:
 
 
