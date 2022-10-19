@@ -700,7 +700,7 @@ would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example definition of a binary datatype
+// Example JIDL definition of a binary datatype
   FileData = Binary   // Binary contents of file
 ```
 
@@ -726,7 +726,7 @@ item fitting a Boolean type would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example definition of a boolean datatype
+// Example JIDL definition of a boolean datatype
   AccessGranted = Boolean   // Result of access control decision
 ```
 
@@ -751,7 +751,7 @@ fitting an Integer type would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example definition of an Integer datatype
+// Example JIDL definition of an Integer datatype
   TrackNumber = Integer   // Track number for current song
 ```
 
@@ -779,7 +779,7 @@ a Number type would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example definition of an Number datatype
+// Example JIDL definition of an Number datatype
   Temperature = Number   // Current temperature observation in degrees C
 ```
 
@@ -806,7 +806,7 @@ a String type would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example definition of an String datatype
+// Example JIDL definition of an String datatype
   TrackTitle = String   // Title of the song in the selected track
 ```
 
@@ -839,7 +839,7 @@ follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example definition of an Enumerated datatype
+// Example JIDL definition of an Enumerated datatype
 L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
                           // field in an IP packet. Any IANA value per RFC5237
    1 icmp                 // Internet Control Message Protocol - [RFC0792]
@@ -882,7 +882,7 @@ defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example definition of a Choice datatype
+// Example JIDL definition of a Choice datatype
 ElementType = Choice
    1 annotation       Annotation
    2 relationship     Relationship
@@ -931,11 +931,11 @@ Note this example also uses a type option for semantic validation
 would be:
 
 ```
-// Example definition of an Array datatype with heterogenous elements
+// Example JIDL definition of an Array datatype with heterogenous elements
 // the IPv4-Net type is an array used to represent a CIDR block
 
 IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
-   1  IPv4-Addr              // ipv4_addr:: IPv4 address as defined in [RFC0791]
+   1  IPv4-Addr              // ipv4_addr:: IPv4 address as defined in RFC0791
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
 
@@ -950,7 +950,14 @@ specified by a collection option.
 *unordered* TypeOptions are applicable to the ArrayOf data
 type.
 
-**Example:**  The ArrayOf type 
+**Example:**  The ArrayOf type is used to represent information
+where it is appropriate to group a set of uniform  information
+elements together. The fields if the array are defined by the
+*vtype*, which can be  primitive or compound. An information item
+fitting the ArrayOf base type would be defined as follows:
+
+
+
 
 #### 3.1.6.10 Map
 
@@ -979,8 +986,8 @@ follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example definition of an Map datatype
-Hashes = Map{1..*}
+// Example JIDL definition of an Map datatype
+Hashes = Map{1..*}    // Multiple discriminated unions with intrinsic tags is a Map
    1 md5              Binary{16..16} /x optional
    2 sha1             Binary{20..20} /x optional
    3 sha256           Binary{32..32} /x optional
@@ -1011,6 +1018,31 @@ Represents a row in a spreadsheet or database table.
 are applicable to the Record data type.
 
 **Example:**  The Record type 
+
+```json
+  ["IPv4-Connection", "Record", ["{1"], "5-tuple that specifies a tcp/ip connection", [
+    [1, "src_addr", "IPv4-Net", ["[0"], "IPv4 source address range"],
+    [2, "src_port", "Port", ["[0"], "Source service per RFC6335"],
+    [3, "dst_addr", "IPv4-Net", ["[0"], "IPv4 destination address range"],
+    [4, "dst_port", "Port", ["[0"], "Destination service per RFC6335"],
+    [5, "protocol", "L4-Protocol", ["[0"], "Layer 4 protocol (e.g., TCP)"]
+  ]]
+  ```
+
+The corresponding JIDL representation would be:
+
+```
+// Example JIDL definition of a record datatype
+// the IPv4-Connection type is a record
+
+IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tcp/ip connection
+   1 src_addr         IPv4-Net optional           // IPv4 source address range
+   2 src_port         Port optional               // Source service per RFC6335
+   3 dst_addr         IPv4-Net optional           // IPv4 destination address range
+   4 dst_port         Port optional               // Destination service per RFC6335
+   5 protocol         L4-Protocol optional        // Layer 4 protocol (e.g., TCP)
+```
+
 
 ## 3.2 Information Modeling Process
 
