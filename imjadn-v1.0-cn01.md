@@ -1068,6 +1068,13 @@ IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tc
 
 ## 3.3 Information Modeling Example
 
+Possible example subjects:
+ - University (people, departments, classes, buildings, rooms, schedules) -- extension from [diagram in JADN Spec](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html#53-entity-relationship-diagrams)
+ - Shopping Website (customers, accounts, catalogs, carts, payment processing, shipping)
+ - Vehicle Rental Management (customers, accounts, vehicles, rentals, check-out, check-in, billing)
+ - Boutique Manufacturer (catalog, customization options, supply chain, orders, builds, shipping)
+ - Website Message Board (users, accounts, forums, threads, messages)
+
 -------
 # 4 Advanced Techniques
 
