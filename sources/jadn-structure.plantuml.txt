@@ -1,0 +1,59 @@
+' ************  JADN Structure figure for JADN-IM CN *************************
+'  Source code for the WBS portion of the JADN-Structure-Overlay.png diagram
+'  Use with the PlantUML online server to generate PNG
+'  Overlay was added using PowerPoint
+' ****************************************************************************
+
+@startwbs
+*[#yellow] <size:15>**JADN Type Definition**</size>
+**[#lightgreen] **TypeName**\n{string}
+**[#indianred] <color:white>**BaseType**</color>\n<color:white>{choice}</color>
+***_ Binary
+***_ Boolean
+***_ Integer
+***_ Number
+***_ String
+***_ Array
+***_ ArrayOf(//vtype//)
+***_ Map
+***_ MapOf(//ktype//, //vtype//)
+***_ Record
+***_ Choice
+***_ Enumerated
+**[#violet] **TypeOptions**\nArray {0..n}
+***_ id (61)
+***_ vtype (42)
+***_ ktype (43)
+***_ enum (35)
+***_ pointer (62)
+***_ format (47)
+***_ pattern (37)
+***_ minf (121)
+***_ maxf (122)
+***_ minv (123)
+***_ maxv (125)
+***_ unique (113)
+***_ set (115)
+***_ unordered (98)
+***_ extend (88)
+***_ default (33)
+**[#lightgreen] **TypeDescription**\n{string}
+**[#cyan] **Fields**
+***[#lightcyan] **For Any Of:**\n{Array, Choice,\nMap, or Record}
+****[#PaleTurquoise]< FieldID\n{integer}
+****[#PaleTurquoise]< FieldName\n{string}
+****[#PaleTurquoise]< FieldType\n{predefined\nor TypeName}
+****[#PaleTurquoise]< FieldOptions\n{0..n}
+*****_ minc (91)
+*****_ maxc (93)
+*****_ tagid (38)
+*****_ dir (60)
+*****_ key (75)
+*****_ link (76)
+****[#PaleTurquoise]< FieldDescription\n{string}
+***[#lightcyan]< **Unused for:**\n{Binary, Boolean,\nInteger, Number,\nString, Array,,\nArrayOf, MapOf}
+***[#Aquamarine]< **For**\n{Enumerated}
+****[#Aquamarine]< ItemID\n{integer}
+****[#Aquamarine]< ItemValue\n{string}
+****[#Aquamarine]< ItemDescription\n{string}
+@endwbs
