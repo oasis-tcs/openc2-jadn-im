@@ -520,7 +520,7 @@ the seven "Compound" types, as shown in Figure 3-1.
     type. 
 
 ###### Figure 3-1 -- JADN Type Definition Structure
-![JADN Type Definition Structure](images/JADN-Structure_2022-09-28a-overlay.png)
+![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
 
 
 ### 3.1.2 TypeOptions
