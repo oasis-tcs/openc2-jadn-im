@@ -152,7 +152,7 @@ definitions from encoding rules. JADN is oriented to work well
 with common Internet data formats, such as 
 
  - JSON (Javascript Object Notation)
- - XMS (eXtensible Markup Language)
+ - XML (eXtensible Markup Language)
  - CBOR (Concise Binary Object Representation)
 
 JADN is based rigorously on information theory, and an IM
@@ -342,7 +342,7 @@ and defines their importance:
 > networked, computer environment that behaves consistently and
 > correctly."
 
-[RFC 8477](#rfc8477), _IoT Semantic Interoperability Workshop
+[RFC 8477](#rfc8477), _Report fromIoT Semantic Interoperability Workshop
 2016_, describes a lack of consistency across Standards
 Developing Organizations (SDOs) in defining application layer data,
 attributing it to the lack of an encoding-independent
@@ -477,7 +477,7 @@ The [[JADN Specification](#jadn-v10)] defines twelve base types:
  - Record
 
 
-Another other significant UML concept is that JADN distinguishes
+Another significant UML concept is that JADN distinguishes
 among all four multiplicity types ([UML](#uml), Table 7.1), while
 class-based models typically support only sets.  JADN's
 interpretation of this is summarized in the Table 3-1.
