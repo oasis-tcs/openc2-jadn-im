@@ -1163,10 +1163,23 @@ Darren | Anysteel | Macro Networks
 
 -------
 
-# Appendix D. Frequently Asked Questions
+# Appendix D. Frequently Asked Questions (FAQ)
 
+This appendix responds to a variety of Frequently Asked Questions
+regarding JADN.
 
 ## D.1 JADN vs. UML Primitive Data Types
+
+[[UML](#uml)] section 21 says "The PrimitiveTypes package is an
+independent package that defines a set of reusable PrimitiveTypes
+that are commonly used in the definition of metamodels."  JADN
+defines an additional Binary type (a sequence of octets/bytes)
+because it is needed. Unlike UML, JADN does not define a separate
+type for UnlimitedNatural because the Integer type can be given
+upper and lower bounds, and natural numbers are the set of
+non-negative integers.  The equivalent in JADN uses
+Integer{0..\*} for natural numbers, and the Integer value -1 for
+the "unlimited" value (*) of UnlimitedNatural.
 
 Table D-1 maps basic data types between UML and JADN.
 
