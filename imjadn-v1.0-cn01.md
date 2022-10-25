@@ -217,13 +217,13 @@ information modeling.
 
  > discussion based on RFC 3444
 
- As described in the introduction, IMs are a means to understand
- and document the essential information content relevant to a
- system, application, or protocol exchange without regard to how
- that information is represented in actual implementations.
- Having a clear view of the information required provides clarity
- regarding the goals that the eventual implementation must
- satisfy.
+As described in the introduction, IMs are a means to understand
+and document the essential information content relevant to a
+system, application, or protocol exchange without regard to how
+that information is represented in actual implementations.
+Having a clear view of the information required provides clarity
+regarding the goals that the eventual implementation must
+satisfy.
 
 A small example may help clarify the concept of information. The
 information content of an instance can be no greater than the
@@ -266,6 +266,25 @@ and an IM:
 
 and states DMs are "intended for implementors and include
 protocol-specific constructs". 
+
+The following key principles apply to IMs:
+
+ - An information model classifies the validity of serialized
+   data with zero false positives and zero false negatives. That
+   is, an information model is the authoritative definition of
+   essential content, and any serialized data is unambiguously
+   one of: a) consistent with, b) inconsistent with, or c)
+   insignificant with respect to, the model.
+
+ - Information instances are values that can be compared for
+   equality. An application compares instances in accordance with
+   the UML properties defined by their datatype. Two instances
+   are equal if they have the same datatype and the same value.
+ 
+ - If an instance can be losslessly converted among multiple
+   serializations, then its information content is no greater
+   than the smallest of those serializations.
+
 
 
 ## 2.2 Benefits of Information Models
