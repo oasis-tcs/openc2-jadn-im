@@ -627,7 +627,7 @@ in addition to the type options describe in [Section
 |   key  |   Boolean  | Field is a primary key for this type | 3.3.6 |
 |  link  |   Boolean  | Field is a foreign key reference to a type instance | 3.3.6 |
 
-Type options also apply to fields, with the constraint that the
+Type options can also apply to fields, with the constraint that the
 type option must be applicable to the field's type, as described
 in the base type examples in [Section
 3.1.6](#316-basic-examples).
@@ -697,8 +697,12 @@ table style presentation.
 ### 3.1.6 Base Type Examples
 
 This section provides illustrative examples of the JADN base
-types and their representations in JIDL and table formats.
+types. For each type, the definition from the [[JADN
+Specification](#jadn-v10)] is quoted, the relevant type options
+are listed, and an example is provided using the JADN and JIDL
+formats.
 
+> EDITOR'S NOTE: do we also want to provide the table format?
 
 #### 3.1.6.1 Binary 
 
