@@ -1107,7 +1107,6 @@ Possible example subjects:
 
 This appendix contains the informative references that are used in this document.
 
-
 While any hyperlinks included in this appendix were valid at the time of publication, OASIS cannot guarantee their long-term validity.
 
 (Reference sources:
@@ -1118,37 +1117,60 @@ http://docs.oasis-open.org/templates/w3c-recommendations-list/w3c-recommendation
 Remove this note before submitting for publication.)
 
 ###### [DThaler]
-
 "IoT Bridge Taxonomy", D. Thaler, submission to Internet of
 Things (IoT) Semantic Interoperability (IOTSI) Workshop 2016,
 https://www.iab.org/wp-content/IAB-uploads/2016/03/DThaler-IOTSI.pdf
 
 ###### [ECMAScript]
-
-ECMA International, "ECMAScript 2018 Language Specification", ECMA-262 9th Edition, June 2018, https://www.ecma-international.org/ecma-262.
+CMA International, "ECMAScript 2018 Language Specification",
+ECMA-262 9th Edition, June 2018,
+https://www.ecma-international.org/ecma-262.
 
 ###### [JADN-v1.0]
-JSON Abstract Data Notation Version 1.0. Edited by David Kemp. 17 August 2021. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
+JSON Abstract Data Notation Version 1.0. Edited by David Kemp. 17
+August 2021. OASIS Committee Specification 01.
+https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html.
+Latest stage:
+https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 
 ###### [JSON-Schema]
-"JSON Schema, a vocabulary that allows you to annotate and validate JSON documents.", retrieved 9/26/2022, https://json-schema.org/
+"JSON Schema, a vocabulary that allows you to annotate and
+validate JSON documents.", retrieved 9/26/2022,
+https://json-schema.org/
 
-###### [YTLee]
-Lee, Y. (1999), Information Modeling: From Design to Implementation, IEEE Transactions on Robotics and Automation, [online], https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=821265 (Accessed October 5, 2022)
+###### [OWL]
+"OWL 2 Web Ontology Language Primer (Second Edition)", retrieved
+10/25/2022, https://www.w3.org/TR/owl-primer/
 
 ###### [RFC3444] 
-Pras, A., Schoenwaelder, J., "On the Difference between Information Models and Data Models", RFC 3444, January 2003, https://tools.ietf.org/html/rfc3444.
+Pras, A., Schoenwaelder, J., "On the Difference between
+Information Models and Data Models", RFC 3444, January 2003,
+https://tools.ietf.org/html/rfc3444.
 
 ###### [RFC8477] 
-Jimenez, J., Tschofenig, H., and D. Thaler, "Report from the Internet of Things (IoT) Semantic Interoperability (IOTSI) Workshop 2016", RFC 8477, DOI 10.17487/RFC8477, October 2018, <https://www.rfc-editor.org/info/rfc8477>.
+Jimenez, J., Tschofenig, H., and D. Thaler, "Report from the
+Internet of Things (IoT) Semantic Interoperability (IOTSI)
+Workshop 2016", RFC 8477, DOI 10.17487/RFC8477, October 2018,
+<https://www.rfc-editor.org/info/rfc8477>.
 
 ###### [RFC8610]
-
-Birkholz, H., Vigano, C. and Bormann, C., "Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures", RFC 8610, DOI 10.17487/RFC8610, June 2019, https://www.rfc-editor.org/info/rfc8610
+Birkholz, H., Vigano, C. and Bormann, C., "Concise Data
+Definition Language (CDDL): A Notational Convention to Express
+Concise Binary Object Representation (CBOR) and JSON Data
+Structures", RFC 8610, DOI 10.17487/RFC8610, June 2019,
+https://www.rfc-editor.org/info/rfc8610
 
 ###### [UML]
+"Unified Modeling Language", Version 2.5.1, December 2017,
+https://www.omg.org/spec/UML/2.5.1/About-UML/
 
-"Unified Modeling Language", Version 2.5.1, December 2017, https://www.omg.org/spec/UML/2.5.1/About-UML/
+###### [YTLee]
+Lee, Y. (1999), Information Modeling: From Design to
+Implementation, IEEE Transactions on Robotics and Automation,
+[online],
+https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=821265
+(Accessed October 5, 2022)
+
 
 -------
 
@@ -1431,6 +1453,11 @@ types and four container and reference relationships among them.
 ## D.3 Why JADN and not OWL?
 
 Capture from Google Doc at https://docs.google.com/document/d/1gY8ZaQJmJTpx8468Conchc2XVzTKE8x0WFSQT1qtB8o/edit#heading=h.ru8h2khtb5aw
+
+
+
+
+
 
 -------
 
