@@ -342,7 +342,7 @@ and defines their importance:
 > networked, computer environment that behaves consistently and
 > correctly."
 
-[RFC 8477](#rfc8477), _Report fromIoT Semantic Interoperability Workshop
+[RFC 8477](#rfc8477), _Report from IoT Semantic Interoperability Workshop
 2016_, describes a lack of consistency across Standards
 Developing Organizations (SDOs) in defining application layer data,
 attributing it to the lack of an encoding-independent
