@@ -1093,6 +1093,7 @@ Possible example subjects:
  - Website Message Board (users, accounts, forums, threads, messages)
  - Simplified SBOM (start from SPDX3 model and limit to high-level aspects)
  - SDO management system (similar to OASIS Kavi)
+ - Music Database (artists, albums, songs, tracks, metadata, guest artists)
 
 -------
 # 4 Advanced Techniques
