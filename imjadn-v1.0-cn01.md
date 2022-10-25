@@ -91,7 +91,7 @@ For complete copyright information please see the full Notices section in an App
     - [3.1.3 Item Or Field Definitions](#313-item-or-field-definitions)
     - [3.1.4  Field Options](#314--field-options)
     - [3.1.5 JADN Representations](#315-jadn-representations)
-    - [3.1.6 Basic Examples](#316-basic-examples)
+    - [3.1.6 Base Type Examples](#316-base-type-examples)
       - [3.1.6.1 Binary](#3161-binary)
       - [3.1.6.2 Boolean](#3162-boolean)
       - [3.1.6.3 Integer](#3163-integer)
@@ -109,12 +109,19 @@ For complete copyright information please see the full Notices section in an App
 - [4 Advanced Techniques](#4-advanced-techniques)
 - [Appendix A. Informative References](#appendix-a-informative-references)
 - [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
-  - [B.1 Special Thanks](#b1-special-thanks)
-  - [B.2 Participants](#b2-participants)
-- [Appendix D. Frequently Asked Questions](#appendix-d-frequently-asked-questions)
+- [Appendix D. Frequently Asked Questions (FAQ)](#appendix-d-frequently-asked-questions-faq)
   - [D.1 JADN vs. UML Primitive Data Types](#d1-jadn-vs-uml-primitive-data-types)
   - [D.2 Why JADN and not RDF?](#d2-why-jadn-and-not-rdf)
+    - [Comment](#comment)
+    - [Response](#response)
+    - [Extreme Example](#extreme-example)
+    - [Practical Example](#practical-example)
+    - [Measuring Information](#measuring-information)
   - [D.3 Why JADN and not OWL?](#d3-why-jadn-and-not-owl)
+    - [Directionality:](#directionality)
+    - [Multiplicity:](#multiplicity)
+    - [Referenceability:](#referenceability)
+    - [Individuality:](#individuality)
 - [Appendix E. Revision History](#appendix-e-revision-history)
 - [Appendix F. Notices](#appendix-f-notices)
 
@@ -1204,6 +1211,13 @@ Darren | Anysteel | Macro Networks
 
 -------
 
+# Appendix C. Revision History
+| Revision | Date | Editor | Changes Made |
+| :--- | :--- | :--- | :--- |
+| filename-v1.0-wd01 | yyyy-mm-dd | Editor Name | Initial working draft |
+
+-------
+
 # Appendix D. Frequently Asked Questions (FAQ)
 
 This appendix responds to a variety of Frequently Asked Questions
@@ -1637,16 +1651,9 @@ constructing an information graph from an ontology graph:
     fungible contained node to a referenceable individual node.
 
 
--------
-
-# Appendix E. Revision History
-| Revision | Date | Editor | Changes Made |
-| :--- | :--- | :--- | :--- |
-| filename-v1.0-wd01 | yyyy-mm-dd | Editor Name | Initial working draft |
-
 ------
 
-# Appendix F. Notices
+# Appendix E. Notices
 
 Copyright &copy; OASIS Open 2021. All Rights Reserved.
 
