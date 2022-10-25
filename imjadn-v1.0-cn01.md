@@ -820,11 +820,9 @@ TypeOptions are applicable to the String data type.
 information best presented as text.  An information item fitting
 a String type would be defined as follows:
 
-
 ```json
 ["TrackTitle", "String", [], "Title of the song in the selected track", []]
 ```
-
 
 The corresponding JIDL representation would be:
 
@@ -848,7 +846,6 @@ information that has a finite set of applicable values. An
 information item fitting the Enumerated type would be defined as
 follows:
 
-
 ```json
 ["L4-Protocol", "Enumerated", [], "Value of the protocol (IPv4) or next header (IPv6) field in an IP packet. Any IANA value, [[RFC5237]](#rfc5237)", [
     [1, "icmp", "Internet Control Message Protocol - [RFC0792]"],
@@ -857,7 +854,6 @@ follows:
     [132, "sctp", "Stream Control Transmission Protocol - [RFC4960]"]
 ]]
 ```
-
 
 The corresponding JIDL representation would be:
 
