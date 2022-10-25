@@ -1082,6 +1082,26 @@ IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tc
  6) Capture the model in the chosen modeling language
 
 
+> Alternate approach, from Frederiks / van der Weide
+> https://www.sciencedirect.com/science/article/abs/pii/S0169023X05000753
+
+Process has two roles (which may be filled by groups):
+ - A **Domain Expert**: someone with superior detailed knowledge
+of the Universe of Discourse (UoD) but often minor powers of
+abstraction from that same UoD
+ - A **System Analyst**: someone with superior powers of
+   abstraction, but limited knowledge of the UoD.
+
+Process has four phases:
+ 1. *Elicitation*: used to drive creation of a requirements document, an informal specification in natural language.
+ 2. *Modeling*: the creation of a conceptual model based on the requirements document.
+ 3. *Verification*: confirmation that the formal specification correctly applies the formal syntax rules of the chosen modeling technique.
+ 4. *Validation*: confirmation with the domain expert that the formal model properly represents the requirements document.
+
+
+The process is executed in an iterative sequence of modeling, verification and validation. At least one iteration of the modeling loop is required.
+
+
 
 ## 3.3 Information Modeling Example
 
