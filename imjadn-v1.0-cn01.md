@@ -1138,7 +1138,7 @@ https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 validate JSON documents.", retrieved 9/26/2022,
 https://json-schema.org/
 
-###### [OWL]
+###### [OWL-Primer]
 "OWL 2 Web Ontology Language Primer (Second Edition)", retrieved
 10/25/2022, https://www.w3.org/TR/owl-primer/
 
@@ -1454,9 +1454,187 @@ types and four container and reference relationships among them.
 
 Capture from Google Doc at https://docs.google.com/document/d/1gY8ZaQJmJTpx8468Conchc2XVzTKE8x0WFSQT1qtB8o/edit#heading=h.ru8h2khtb5aw
 
+The [[OWL Primer](#owl-primer)] describes OWL as follows:
+
+> The W3C OWL 2 Web Ontology Language (OWL) is a Semantic Web
+> language designed to represent rich and complex knowledge about
+> things, groups of things, and relations between things. OWL is
+> a computational logic-based language such that knowledge
+> expressed in OWL can be reasoned with by computer programs
+> either to verify the consistency of that knowledge or to make
+> implicit knowledge explicit.
+
+Ontologies represent "knowledge about things", whereas IMs
+represent digital "things" themselves. As discussed in the body
+of this CN, an IM defines the essential content of entities used
+in computing independently of how those entities are serialized
+for communication or storage.
+
+OWL has "object properties" and "data properties". Object
+properties are relationships between two entities and data
+properties are relations between an entity and a simple type.
+There is a rough correspondence between OWL terminology and
+concepts from Entity-Relationship modeling, Object Oriented
+Programming, and Information Modeling.
+
+An information model models data, and the only entities in an
+information model are datatypes, where datatypes are either
+simple (a single value like string or integer) or structured (a
+collection of values like list or map). Translating an ontology's
+objects or classes into an information model's datatypes is often
+straightforward, but when there are alternative ways of
+representing the same objects as datatypes, an information model
+captures design decisions that are left unspecified in the
+ontology.
+
+Some primary distinctions between knowledge and information
+models are *directionality*, *multiplicity*, *referenceability*,
+and *individuality*.
+
+### Directionality:
+Although it may appear otherwise, an ontology is an undirected
+graph. Classes are connected by associations, and class
+associations are symmetric. If "car" and "part" are classes and a
+car is a composition of parts, then parts are components of car.
+If rose is a specialization of flower, then flower is a
+generalization of rose. If A is a parent of B, then B is a child
+of A. Arrows in an ontology diagram indicate which association
+term applies in the indicated direction, but the direction and
+term can be reversed together without changing the semantics of
+the graph. In contrast, an information model is a directed graph
+where direction determines syntax, and it has only two
+association types: contain and reference. 
+
+As an example, if a City datatype with name, elevation, and
+location properties contains a Coordinate datatype with latitude
+and longitude properties, one could say that Coordinate is
+contained_by City without changing the  model. The association
+direction is always container to contained, or referencing to
+referenced. A City instance with this graph direction is
+serialized as:
+
+```
+{ 'name': 'Hamilton',
+  'elevation': 20,
+  'location': { 'latitude': 32.2912, 'longitude': -64.7864 } }
+```
+
+Reversing the direction changes the model. If Coordinate were the
+container it would have place, latitude, and longitude
+properties, while City would have just name and elevation:
+
+```
+{ 'place': { 'name': 'Hamilton', 'elevation': 20 },
+  'latitude': 32.2912,
+  'longitude': -64.7864 }
+```
+
+### Multiplicity:
+OWL defines multiplicity as an attribute of associations.
+Collections (associations with a maximum cardinality greater than
+one) also have collection attributes ordered and unique, about
+which OWL says:
+
+ - By default, all associations are sets; that is, the objects in
+   them are unordered and repetitions are disallowed.
+ - The {ordered, nonunique} attribute is placed next to the
+   association ends that are ordered and in which repetitions are
+   allowed. Such associations have the semantics of lists.
+
+In an information model, collection attributes are intrinsic to
+the datatype itself and don't depend on associations with other
+datatypes.  Just as a string type always has a string value, a
+list type always is an ordered, nonunique collection of values.
+In an information model both "object properties'' and "data
+properties" are datatypes, and a collection datatype has fixed
+collection attributes regardless of where it is used.
+
+For whatever reason, {ordered, nonunique} almost never appears in
+ontologies.  In contrast, lists are a fundamental variable type
+in computing and a fundamental data type in data interchange.
+List elements have an ordinal position and can be referenced by
+position. Collections that are {ordered, unique} have elements
+that can be referenced by either position or name, used when
+modeling data that can be structured as tables.
+
+The datatype names commonly applied to collection attributes are:
+
+| **collection attributes** |     **datatype**    |
+|:-------------------------:|:-------------------:|
+|    ordered, non-unique    |   sequence / list   |
+|     unordered, unique     |       set, map      |
+|      ordered, unique      | ordered set, record |
+|   unordered, non-unique   |         bag         |
 
 
+An information model specifies collection attributes that are not
+explicit in an ontology in order to ensure equivalence across
+syntaxes. 
 
+Continuing the City example, Coordinate was assumed to
+be the default map type. But an information model would generally
+make it a list type, resulting in more compact serialized
+instances. All properties of type Coordinate would be serialized
+as lists without having to individually designate every
+association as {ordered, nonunique}:
+
+```
+{ 'name': 'Hamilton',
+  'elevation': 20,
+  'location': [32.2912, -64.7864] }
+```
+
+Defining both City and Coordinate as record types (values are
+{ordered, unique}) allows them to be serialized either with
+property names or as table rows with "name", "elevation", and
+"location" columns:
+
+```
+[ 'Hamilton', 20, [32.2912, -64.7864] ]
+```
+
+The record datatype specifies data that can be losslessly
+converted between map and table serializations (an
+object-relational mapping - ORM), unlike an ontology's default
+unordered properties which are two-column sets of key:value
+pairs.
+
+### Referenceability: 
+Ontologies treat all objects as referenceable graph nodes, which
+requires every object to be assigned a primary key / unique
+identifier. Information models represent data structures using
+both referenceable and non-referenceable graph nodes. Containers
+are used by default to define serialization. References (foreign
+keys) are used when necessary to avoid data duplication and
+recursive structures.
+
+### Individuality:
+All datatypes are distinguished only by their value, but some
+datatypes may be individually identified by having a primary key
+as part of their value.  The terms used for non-individual types
+vary, but to avoid overloaded terms such as "class type" or "type
+type", types can be classified as either individual or fungible.
+People and bank accounts are examples of individual datatypes.
+Measurements, observations, mass-produced parts, currency, and IP
+addresses are examples of fungible datatypes. Coins are fungible
+unless grouped by mint; bills are fungible unless an application
+such as fraud detection requires identification by serial number.
+
+These characteristics result in design guidelines for
+constructing an information graph from an ontology graph:
+
+ 1. Fungible nodes may have more than one parent.
+ 1. Each individual node should have exactly one parent. A node
+    with no parent has nowhere for its instances to be
+    serialized, so any references will be dead links. An
+    individual node with more than one parent needs a mechanism
+    to ensure that ids are unique and a mechanism to dereference
+    an id to the correct parent.
+ 2. The container associations in an information model must form
+    a set of directed acyclic graphs.  Any container cycles must
+    be broken by converting a container association to a
+    reference, which in turn may require converting an otherwise
+    fungible contained node to a referenceable individual node.
 
 
 -------
