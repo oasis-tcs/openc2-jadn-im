@@ -1072,7 +1072,8 @@ IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tc
 
 ## 3.2 Information Modeling Process
 
-> rough outline, starting from YTLee paper
+> rough outline, starting from YTLee paper \
+> https://www.nist.gov/publications/information-modeling-design-implementation
 
  1) Define the scope of the model, identifying the domain of discourse and the processes to be supported by the IM.
  2) Conduct a requirements analysis to define information requirements.
@@ -1082,7 +1083,7 @@ IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tc
  6) Capture the model in the chosen modeling language
 
 
-> Alternate approach, from Frederiks / van der Weide
+> Alternate approach, from Frederiks / van der Weide \
 > https://www.sciencedirect.com/science/article/abs/pii/S0169023X05000753
 
 Process has two roles (which may be filled by groups):
