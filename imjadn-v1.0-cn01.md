@@ -543,13 +543,13 @@ the seven "Compound" types, as shown in Figure 3-1.
 ### 3.1.2 TypeOptions
 
 The third element of a JADN type definition is zero or more of
-the TypeOptions defined in section 3.2.1 of the [JADN](#jadn-v10)
-Specification. TypeOptions are classifiers that, along with the
+the TypeOptions defined in section 3.2.1 of the [[JADN](#jadn-v10)
+Specification]. TypeOptions are classifiers that, along with the
 base type, determine whether data values are instances of the
 defined type. For example, the *pattern* TypeOption is used with
 the String BaseType to define valid instances of that string type
 using a regular expression conforming to
-[ECMAScript](#ecmascript) grammar.
+[[ECMAScript](#ecmascript)] grammar.
 
 The following is the complete set of type options:
 
@@ -575,6 +575,27 @@ The following is the complete set of type options:
 Detailed explanations of each type option can be found in
 Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
 
+The following table summarizes the applicability of type options
+to JADN base types.
+
+|  | Binary | Boolean | Integer | Number | String | Array | ArrayOf | Map | MapOf | Record | Choice | Enumerated |
+|---:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| id |  |  |  |  |  |  |  | X |  |  | X | X |
+| vtype |  |  |  |  |  |  | X |  | X |  |  |  |
+| ktype |  |  |  |  |  |  |  |  | X |  |  |  |
+| enum |  |  |  |  |  |  |  |  |  |  |  | X |
+| pointer |  |  |  |  |  |  |  |  |  |  |  | X |
+| format | X |  | X | X | X | X |  |  |  |  |  |  |
+| pattern |  |  |  |  | X |  |  |  |  |  |  |  |
+| minf |  |  |  | X |  |  |  |  |  |  |  |  |
+| maxf |  |  |  | X |  |  |  |  |  |  |  |  |
+| minv | X |  | X |  | X | X | X | X | X | X |  |  |
+| maxv | X |  | X |  | X | X | X | X | X | X |  |  |
+| unique |  |  |  |  |  |  | X |  |  |  |  |  |
+| set |  |  |  |  |  |  | X |  |  |  |  |  |
+| unordered |  |  |  |  |  |  | X |  |  |  |  |  |
+| extend |  |  |  |  |  | X |  | X |  | X | X | X |
+| default |  |  |  |  |  |  |  |  |  |  |  |  |
 
 ### 3.1.3 Item Or Field Definitions
 
