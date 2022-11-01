@@ -731,8 +731,6 @@ Specification](#jadn-v10)] is quoted, the relevant type options
 are listed, and an example is provided using the JADN and JIDL
 formats.
 
-> EDITOR'S NOTE: do we also want to provide the table format?
-
 #### 3.1.6.1 Binary 
 
 **Definition:** A sequence of octets. Length is the number of
