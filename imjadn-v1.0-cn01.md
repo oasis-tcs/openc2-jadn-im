@@ -1034,8 +1034,11 @@ TypeOptions are applicable to the MapOf data type.
 **Example:**  The MapOf type is used to represent information
 that can be represented as (key, value) pairs, where the types
 for the keys and the values in the MapOf are of specific types
-and are defined using type options.  An information item fitting
-the Map type would be defined as follows:
+and are defined using type options. MapOf is suitable when the
+collection of items can't be represented as an enumeration, such
+as the connection of employee identification numbers to
+employees.  An information item fitting the Map type would be
+defined as follows:
 
 
 ```json
@@ -1045,7 +1048,19 @@ the Map type would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-  <<< NEED JIDL FOR MapOf EXAMPLE>>>
+// Map employee identifier numbers to employee information
+Employees = MapOf(EID, Employee)
+
+// Employee identifier numbers
+EID = Integer{0..1000}        // will need new system when exceed 1,000 employees
+
+// Employee information
+Employee = Record
+  1 Name        String         // usually "First I. Last"
+  2 StartDate   Date           // always record start date
+  3 EndDate     Date optional  // EndDate present = former employee
+
+Date = String /date
 ```
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
@@ -1139,6 +1154,10 @@ Possible example subjects:
 
 -------
 # 4 Advanced Techniques
+
+## 4.1 Packages, Namespaces, and Referencing
+
+## 4.2 From Logical Models to IMs
 
 -------
 
