@@ -1155,7 +1155,15 @@ Possible example subjects:
 -------
 # 4 Advanced Techniques
 
-## 4.1 Packages, Namespaces, and Referencing
+## 4.1 Namespaces, Packages, and Referencing
+
+### 4.1.1 Namespaces
+
+### 4.1.2 Packages
+
+### 4.1.3 Referencing
+
+### 4.1.4 Linking Between Projects
 
 ## 4.2 From Logical Models to IMs
 
