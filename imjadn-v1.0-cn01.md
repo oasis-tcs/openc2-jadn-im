@@ -656,9 +656,17 @@ in the base type examples in [Section
 
 The native format of JADN is JSON, but JADN content can be
 represented in others ways that are often more useful for
-documentation. Corresponding to the description in the previous
-section of how the **Fields** array is used, the JSON
-representations are of the various BaseTypes are depicted here.
+documentation. This section describes the JSON content used for
+each of the JADN basic types, and then illustrates the other
+representations using a simple example.   
+
+#### 3.1.5.1 Native JSON Representation
+
+This section illustrates the JSON representations of the Base
+Type described in [Section 3.1](#31-jadn-overview). Depictions
+are provided for each of three ways that the **Fields** array is
+used, depending on the base type used in a particular type
+definition.
 
 Figure 3-2 illustrates the structure of JADN for defining any
 Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
@@ -686,7 +694,9 @@ field definition in the **Fields** array has five elements:
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
-The [JADN Specification](#jadn-v10) identifies three formats
+#### 3.1.5.2 Alternative JADN Representations
+
+The [[JADN Specification](#jadn-v10)] identifies three formats
 (Section 5) in addition to the native format:
 
  - JADN Interface Definition Language (JIDL)
@@ -694,8 +704,8 @@ The [JADN Specification](#jadn-v10) identifies three formats
  - Entity Relationship Diagrams 
 
 The formal definitions of each of these types are found in
-sections 5.1, 5.2, and 5.3, respectively, of the [JADN
-Specification](#jadn-v10).
+sections 5.1, 5.2, and 5.3, respectively, of the [[JADN
+Specification](#jadn-v10)].
 
 Automated tooling makes it straightforward to translate among all
 four of these formats in a lossless manner, and each format has
