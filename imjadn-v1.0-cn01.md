@@ -1056,7 +1056,8 @@ defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Map employee identifier numbers to employee information
+// Example JIDL definition of a MapOf datatype
+// Maps employee identifier numbers to employee information
 Employees = MapOf(EID, Employee)
 
 // Employee identifier numbers
