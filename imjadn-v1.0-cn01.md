@@ -1172,9 +1172,36 @@ Possible example subjects:
 
 ## 4.1 Namespaces, Packages, and Referencing
 
-### 4.1.1 Namespaces
+> discuss how JADN IMs may be broken into components (packages)
+> and connections made between components (namespaces &
+> referencing)
 
-### 4.1.2 Packages
+### 4.1.1 Packages
+
+> complex models are divided into packages
+
+> package header defined in JADN spec section 6
+
+> essential information element of package header is namespace
+
+> packages can explicitly export types defined within; this isn't
+> a rigorous public / private type distinction, but provides a
+> means for schema authors to indicate the intended public types,
+> and allows JADN schema tools to detect discrepancies
+
+### 4.1.2 Namespaces
+
+> Namespace Identifier (NSID) by default is a 1-8 character
+> string beginning with a letter and containing only letters and
+> numbers. Default formatting can be overridden by inserting an
+> alternative definition into a JADN schema
+
+> A namespace is associated with a package, and used in other
+> packages to refer to types defined in that package
+
+> JADN uses the common convention of using the NSID followed by a
+> colon to link an item to the namespace where it is defined
+> (e.g., NSID:TypeName)
 
 ### 4.1.3 Referencing
 
