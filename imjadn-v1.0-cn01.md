@@ -91,6 +91,8 @@ For complete copyright information please see the full Notices section in an App
     - [3.1.3 Item Or Field Definitions](#313-item-or-field-definitions)
     - [3.1.4  Field Options](#314--field-options)
     - [3.1.5 JADN Representations](#315-jadn-representations)
+      - [3.1.5.1 Native JSON Representation](#3151-native-json-representation)
+      - [3.1.5.2 Alternative JADN Representations](#3152-alternative-jadn-representations)
     - [3.1.6 Base Type Examples](#316-base-type-examples)
       - [3.1.6.1 Binary](#3161-binary)
       - [3.1.6.2 Boolean](#3162-boolean)
@@ -107,8 +109,16 @@ For complete copyright information please see the full Notices section in an App
   - [3.2 Information Modeling Process](#32-information-modeling-process)
   - [3.3 Information Modeling Example](#33-information-modeling-example)
 - [4 Advanced Techniques](#4-advanced-techniques)
+  - [4.1 Namespaces, Packages, and Referencing](#41-namespaces-packages-and-referencing)
+    - [4.1.1 Packages](#411-packages)
+    - [4.1.2 Namespaces](#412-namespaces)
+    - [4.1.3 Referencing](#413-referencing)
+    - [4.1.4 Linking Between Projects](#414-linking-between-projects)
+  - [4.2 From Logical Models to IMs](#42-from-logical-models-to-ims)
 - [Appendix A. Informative References](#appendix-a-informative-references)
 - [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
+  - [B.1 Special Thanks](#b1-special-thanks)
+  - [B.2 Participants](#b2-participants)
 - [Appendix C. Revision History](#appendix-c-revision-history)
 - [Appendix D. Frequently Asked Questions (FAQ)](#appendix-d-frequently-asked-questions-faq)
   - [D.1 JADN vs. UML Primitive Data Types](#d1-jadn-vs-uml-primitive-data-types)
@@ -117,10 +127,10 @@ For complete copyright information please see the full Notices section in an App
 - [Appendix E. Notices](#appendix-e-notices)
 
 **List of Figures**
- - [Figure 3-1 -- JADN Type Definition Structure](#figure-3-1----jadn-type-definition-structure)
- - [Figure 3-2 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-2----jadn-for-primitive-arrayof-mapof-types)
- - [Figure 3-3 -- JADN for Enumerated Types](#figure-3-3----jadn-for-enumerated-types)
- - [Figure 3-3 -- JADN for Types with Fields](#figure-3-3----jadn-for-types-with-fields)
+- [Figure 3-1 -- JADN Type Definition Structure](#figure-3-1----jadn-type-definition-structure)
+- [Figure 3-2 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-2----jadn-for-primitive-arrayof-mapof-types)
+- [Figure 3-3 -- JADN for Enumerated Types](#figure-3-3----jadn-for-enumerated-types)
+- [Figure 3-4 -- JADN for Types with Fields](#figure-3-4----jadn-for-types-with-fields)
 
 
 
