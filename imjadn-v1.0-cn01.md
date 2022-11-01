@@ -717,7 +717,7 @@ The [[JADN Specification](#jadn-v10)] identifies three formats
 
  - JADN Interface Definition Language (JIDL)
  - Table Style 
- - Entity Relationship Diagrams 
+ - Entity Relationship Diagrams (ERDs)
 
 The formal definitions of each of these types are found in
 sections 5.1, 5.2, and 5.3, respectively, of the [[JADN
@@ -738,6 +738,49 @@ visualization of an information model.
 making it a good format for both the initial creation and the
 documentation of a JADN model. JIDL is also more compact than
 table style presentation.
+
+This section provides excerpts from an example IM based on the
+University ERD shown in Section 5.3 of the JADN Specification.
+The complete example is included in Appendix E. The specification
+example begins with the ERD for the model:
+
+> INSERT:  ERD for modified "University" example
+
+The package (see [Section 4.1](#41-namespaces-packages-and-referencing)) containing the   JADN corresponding to the ERD is shown here:
+
+```json
+{
+ "info": {
+  "package": "http://example.com/uni",
+  "exports": ["University"]
+ },
+ "types": [
+  ["University", "Record", [], "", [
+    [1, "name", "String", [], ""],
+    [2, "classes", "Class", ["]0"], ""],
+    [3, "people", "Person", ["]0"], ""]
+  ]],
+  ["Class", "Record", [], "", [
+    [1, "name", "String", [], ""],
+    [2, "room", "String", [], ""],
+    [3, "teachers", "Person", ["L", "]0"], ""],
+    [4, "students", "Person", ["L", "]0"], ""]
+  ]],
+  ["Person", "Record", [], "", [
+    [1, "name", "String", [], ""],
+    [2, "univ_id", "UnivId", ["K"], ""],
+    [3, "email", "String", ["/email"], ""]
+  ]],
+  ["UnivId", "String", ["%^U-\\d{6}$"], "", []]
+ ]
+}
+```
+
+> INSERT: JIDL for at least part of the example
+
+> INSERT:  property tables for at least part of the example
+
+
 
 ### 3.1.6 Base Type Examples
 
