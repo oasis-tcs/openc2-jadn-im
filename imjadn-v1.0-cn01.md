@@ -130,12 +130,6 @@ For complete copyright information please see the full Notices section in an App
 
 # 1 Introduction
 
-> want to address
-> * basic nature of information modeling
-> * motivation for JADN
-> * overview of document content
-
-
 An Information Model (IM) defines the essential content of
 entities used in computing, independently of how those entities
 are represented (i.e., serialized) for communication or storage.
@@ -156,6 +150,18 @@ with common Internet data formats, such as
 JADN is based rigorously on information theory, and an IM
 composed in JADN formally defines equivalence (information
 content) between data in different formats.
+
+Information modeling, generally, and JADN, specifically can be
+applied to a broad variety of situations, such as:
+
+ - Abstract languages, such as the Open Command and Control
+   (OpenC2) language
+ - Complex information structures such software bills of
+   materials (SBOMs); examples would be the SPDX and CycloneDX
+   SBOM formats
+ - Formal definition of structured information exchanges, such as
+   are defined using the NIEM approach.
+
 
 This CN discusses:
 
