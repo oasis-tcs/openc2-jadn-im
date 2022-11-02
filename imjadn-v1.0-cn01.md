@@ -91,6 +91,8 @@ For complete copyright information please see the full Notices section in an App
     - [3.1.3 Item Or Field Definitions](#313-item-or-field-definitions)
     - [3.1.4  Field Options](#314--field-options)
     - [3.1.5 JADN Representations](#315-jadn-representations)
+      - [3.1.5.1 Native JSON Representation](#3151-native-json-representation)
+      - [3.1.5.2 Alternative JADN Representations](#3152-alternative-jadn-representations)
     - [3.1.6 Base Type Examples](#316-base-type-examples)
       - [3.1.6.1 Binary](#3161-binary)
       - [3.1.6.2 Boolean](#3162-boolean)
@@ -107,8 +109,16 @@ For complete copyright information please see the full Notices section in an App
   - [3.2 Information Modeling Process](#32-information-modeling-process)
   - [3.3 Information Modeling Example](#33-information-modeling-example)
 - [4 Advanced Techniques](#4-advanced-techniques)
+  - [4.1 Namespaces, Packages, and Referencing](#41-namespaces-packages-and-referencing)
+    - [4.1.1 Packages](#411-packages)
+    - [4.1.2 Namespaces](#412-namespaces)
+    - [4.1.3 Referencing](#413-referencing)
+    - [4.1.4 Linking Between Projects](#414-linking-between-projects)
+  - [4.2 From Logical Models to IMs](#42-from-logical-models-to-ims)
 - [Appendix A. Informative References](#appendix-a-informative-references)
 - [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
+  - [B.1 Special Thanks](#b1-special-thanks)
+  - [B.2 Participants](#b2-participants)
 - [Appendix C. Revision History](#appendix-c-revision-history)
 - [Appendix D. Frequently Asked Questions (FAQ)](#appendix-d-frequently-asked-questions-faq)
   - [D.1 JADN vs. UML Primitive Data Types](#d1-jadn-vs-uml-primitive-data-types)
@@ -117,10 +127,10 @@ For complete copyright information please see the full Notices section in an App
 - [Appendix E. Notices](#appendix-e-notices)
 
 **List of Figures**
- - [Figure 3-1 -- JADN Type Definition Structure](#figure-3-1----jadn-type-definition-structure)
- - [Figure 3-2 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-2----jadn-for-primitive-arrayof-mapof-types)
- - [Figure 3-3 -- JADN for Enumerated Types](#figure-3-3----jadn-for-enumerated-types)
- - [Figure 3-3 -- JADN for Types with Fields](#figure-3-3----jadn-for-types-with-fields)
+- [Figure 3-1 -- JADN Type Definition Structure](#figure-3-1----jadn-type-definition-structure)
+- [Figure 3-2 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-2----jadn-for-primitive-arrayof-mapof-types)
+- [Figure 3-3 -- JADN for Enumerated Types](#figure-3-3----jadn-for-enumerated-types)
+- [Figure 3-4 -- JADN for Types with Fields](#figure-3-4----jadn-for-types-with-fields)
 
 
 
@@ -129,12 +139,6 @@ For complete copyright information please see the full Notices section in an App
 <!-- Insert a "line rule" (three or more hyphens alone on a new line, following a blank line) before each major section. This is used to generate a page break in the PDF format. -->
 
 # 1 Introduction
-
-> want to address
-> * basic nature of information modeling
-> * motivation for JADN
-> * overview of document content
-
 
 An Information Model (IM) defines the essential content of
 entities used in computing, independently of how those entities
@@ -156,6 +160,18 @@ with common Internet data formats, such as
 JADN is based rigorously on information theory, and an IM
 composed in JADN formally defines equivalence (information
 content) between data in different formats.
+
+Information modeling, generally, and JADN, specifically can be
+applied to a broad variety of situations, such as:
+
+ - Abstract languages, such as the Open Command and Control
+   (OpenC2) language
+ - Complex information structures such software bills of
+   materials (SBOMs); examples would be the SPDX and CycloneDX
+   SBOM formats
+ - Formal definition of structured information exchanges, such as
+   are defined using the NIEM approach.
+
 
 This CN discusses:
 
@@ -656,9 +672,17 @@ in the base type examples in [Section
 
 The native format of JADN is JSON, but JADN content can be
 represented in others ways that are often more useful for
-documentation. Corresponding to the description in the previous
-section of how the **Fields** array is used, the JSON
-representations are of the various BaseTypes are depicted here.
+documentation. This section describes the JSON content used for
+each of the JADN basic types, and then illustrates the other
+representations using a simple example.   
+
+#### 3.1.5.1 Native JSON Representation
+
+This section illustrates the JSON representations of the Base
+Type described in [Section 3.1](#31-jadn-overview). Depictions
+are provided for each of three ways that the **Fields** array is
+used, depending on the base type used in a particular type
+definition.
 
 Figure 3-2 illustrates the structure of JADN for defining any
 Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
@@ -682,20 +706,22 @@ Figure 3-4 illustrates the structure of JADN for defining a
 **BaseType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
-###### Figure 3-3 -- JADN for Types with Fields
+###### Figure 3-4 -- JADN for Types with Fields
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
-The [JADN Specification](#jadn-v10) identifies three formats
+#### 3.1.5.2 Alternative JADN Representations
+
+The [[JADN Specification](#jadn-v10)] identifies three formats
 (Section 5) in addition to the native format:
 
  - JADN Interface Definition Language (JIDL)
  - Table Style 
- - Entity Relationship Diagrams 
+ - Entity Relationship Diagrams (ERDs)
 
 The formal definitions of each of these types are found in
-sections 5.1, 5.2, and 5.3, respectively, of the [JADN
-Specification](#jadn-v10).
+sections 5.1, 5.2, and 5.3, respectively, of the [[JADN
+Specification](#jadn-v10)].
 
 Automated tooling makes it straightforward to translate among all
 four of these formats in a lossless manner, and each format has
@@ -713,6 +739,49 @@ making it a good format for both the initial creation and the
 documentation of a JADN model. JIDL is also more compact than
 table style presentation.
 
+This section provides excerpts from an example IM based on the
+University ERD shown in Section 5.3 of the JADN Specification.
+The complete example is included in Appendix E. The specification
+example begins with the ERD for the model:
+
+> INSERT:  ERD for modified "University" example
+
+The package (see [Section 4.1](#41-namespaces-packages-and-referencing)) containing the   JADN corresponding to the ERD is shown here:
+
+```json
+{
+ "info": {
+  "package": "http://example.com/uni",
+  "exports": ["University"]
+ },
+ "types": [
+  ["University", "Record", [], "", [
+    [1, "name", "String", [], ""],
+    [2, "classes", "Class", ["]0"], ""],
+    [3, "people", "Person", ["]0"], ""]
+  ]],
+  ["Class", "Record", [], "", [
+    [1, "name", "String", [], ""],
+    [2, "room", "String", [], ""],
+    [3, "teachers", "Person", ["L", "]0"], ""],
+    [4, "students", "Person", ["L", "]0"], ""]
+  ]],
+  ["Person", "Record", [], "", [
+    [1, "name", "String", [], ""],
+    [2, "univ_id", "UnivId", ["K"], ""],
+    [3, "email", "String", ["/email"], ""]
+  ]],
+  ["UnivId", "String", ["%^U-\\d{6}$"], "", []]
+ ]
+}
+```
+
+> INSERT: JIDL for at least part of the example
+
+> INSERT:  property tables for at least part of the example
+
+
+
 ### 3.1.6 Base Type Examples
 
 This section provides illustrative examples of the JADN base
@@ -720,8 +789,6 @@ types. For each type, the definition from the [[JADN
 Specification](#jadn-v10)] is quoted, the relevant type options
 are listed, and an example is provided using the JADN and JIDL
 formats.
-
-> EDITOR'S NOTE: do we also want to provide the table format?
 
 #### 3.1.6.1 Binary 
 
@@ -1034,8 +1101,11 @@ TypeOptions are applicable to the MapOf data type.
 **Example:**  The MapOf type is used to represent information
 that can be represented as (key, value) pairs, where the types
 for the keys and the values in the MapOf are of specific types
-and are defined using type options.  An information item fitting
-the Map type would be defined as follows:
+and are defined using type options. MapOf is suitable when the
+collection of items can't be represented as an enumeration, such
+as the connection of employee identification numbers to
+employees.  An information item fitting the Map type would be
+defined as follows:
 
 
 ```json
@@ -1045,7 +1115,20 @@ the Map type would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-  <<< NEED JIDL FOR MapOf EXAMPLE>>>
+// Example JIDL definition of a MapOf datatype
+// Maps employee identifier numbers to employee information
+Employees = MapOf(EID, Employee)
+
+// Employee identifier numbers
+EID = Integer{0..1000}        // will need new system when exceed 1,000 employees
+
+// Employee information
+Employee = Record
+  1 Name        String         // usually "First I. Last"
+  2 StartDate   Date           // always record start date
+  3 EndDate     Date optional  // EndDate present = former employee
+
+Date = String /date
 ```
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
@@ -1139,6 +1222,45 @@ Possible example subjects:
 
 -------
 # 4 Advanced Techniques
+
+## 4.1 Namespaces, Packages, and Referencing
+
+> discuss how JADN IMs may be broken into components (packages)
+> and connections made between components (namespaces &
+> referencing)
+
+### 4.1.1 Packages
+
+> complex models are divided into packages
+
+> package header defined in JADN spec section 6
+
+> essential information element of package header is namespace
+
+> packages can explicitly export types defined within; this isn't
+> a rigorous public / private type distinction, but provides a
+> means for schema authors to indicate the intended public types,
+> and allows JADN schema tools to detect discrepancies
+
+### 4.1.2 Namespaces
+
+> Namespace Identifier (NSID) by default is a 1-8 character
+> string beginning with a letter and containing only letters and
+> numbers. Default formatting can be overridden by inserting an
+> alternative definition into a JADN schema
+
+> A namespace is associated with a package, and used in other
+> packages to refer to types defined in that package
+
+> JADN uses the common convention of using the NSID followed by a
+> colon to link an item to the namespace where it is defined
+> (e.g., NSID:TypeName)
+
+### 4.1.3 Referencing
+
+### 4.1.4 Linking Between Projects
+
+## 4.2 From Logical Models to IMs
 
 -------
 
