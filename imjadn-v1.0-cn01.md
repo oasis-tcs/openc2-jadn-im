@@ -151,7 +151,7 @@ and use of IMs.
 As an IM language, JADN is a syntax-independent, or abstract,
 schema language. Abstract schema languages separate structure
 definitions from encoding rules. JADN is oriented to work well
-with common Internet data formats, such as 
+with common Internet data formats, such as
 
  - JSON (Javascript Object Notation)
  - XML (eXtensible Markup Language)
@@ -205,11 +205,11 @@ additional terms are defined for this document:
    entity types (which classify the things of interest) and
    specifies relationships that can exist between entities
    (instances of those entity types). (Wikipedia)
-  
+
  - **Schema:**  *(markup languages)* A formal description of
    data, data types, and data file structures, such as XML
    schemas for XML files. (Wiktionary)
- 
+
  - **Ontology:** (information science) A representation, formal
    naming, and definition of the categories, properties, and
    relations between the concepts, data, and entities that
@@ -227,7 +227,7 @@ This section discusses the nature and benefits of IMs, types of
 available modeling languages, and the tools that can be used in
 information modeling.
 
-## 2.1 Information Models And Data Models 
+## 2.1 Information Models And Data Models
 
  > discussion based on RFC 3444
 
@@ -254,7 +254,7 @@ define the IPv4 address type as a byte sequence of length 4.
  > "to model managed objects at a conceptual level, independent
  > of any specific implementations or protocols used to transport
  > the data. ... Another important characteristic of an IM is
- > that it defines relationships between managed objects." 
+ > that it defines relationships between managed objects."
 
 In a 2008 paper on information modeling, [[YTLee](#ytlee)]
 describes the concept of a "conceptual schema", a "logically
@@ -269,7 +269,7 @@ and an IM:
 
 > "An information model is a representation of concepts,
 > relationships, constraints, rules, and operations to specify
-> data semantics for a chosen domain of discourse. 
+> data semantics for a chosen domain of discourse.
 
 [[RFC3444](#rfc3444)] contrasts IMs with data models (DMs):
 
@@ -279,7 +279,7 @@ and an IM:
 > managed objects onto lower-level protocol constructs."
 
 and states DMs are "intended for implementors and include
-protocol-specific constructs". 
+protocol-specific constructs".
 
 The following key principles apply to IMs:
 
@@ -294,7 +294,7 @@ The following key principles apply to IMs:
    equality. An application compares instances in accordance with
    the UML properties defined by their datatype. Two instances
    are equal if they have the same datatype and the same value.
- 
+
  - If an instance can be losslessly converted among multiple
    serializations, then its information content is no greater
    than the smallest of those serializations.
@@ -323,11 +323,11 @@ network interface within an available address space of 2^32.
 
 and describes a "quality" IM as being:
 
- - complete, 
+ - complete,
  - sharable,
  - stable,
- - extensible, 
- - well-structured, 
+ - extensible,
+ - well-structured,
  - precise, and
  - unambiguous.
 
@@ -404,16 +404,16 @@ is fundamental.
 
 JADN's native format is structured JSON, and a broad variety of
 tools exist for creating and manipulating information in JSON
-format. 
+format.
 
  - a JADN schema is structured data that can be generated and
-   transformed programmatically 
+   transformed programmatically
  - JADN schemas employ a simple, regular structure (every type
    definition has the same five fields)
 
 
 
-> ASN.1 description from ITU-T Introduction, excerpted from 
+> ASN.1 description from ITU-T Introduction, excerpted from
 > https://www.itu.int/en/ITU-T/asn1/Pages/introduction.aspx
 
 ​ASN.1 is a formal notation used for describing data transmitted
@@ -438,7 +438,7 @@ Other languages have been used for information modeling, although that is not th
  - UML
  - IDEF1X
 
-## 2.4 Information Modeling Tools 
+## 2.4 Information Modeling Tools
 
 > benefits of combining IMs with automated tooling for
 > validation, translation
@@ -457,7 +457,7 @@ language should provide
  - Generation of language-specific schemas from an IM
  - Model translation to language- or protocol-specific
    serialization / deserialization capabilities
- 
+
 -------
 
 # 3 Creating Information Models with JADN
@@ -530,7 +530,7 @@ datatype, and recognizes the idea of generalization ([UML](#uml),
 Beyond these UML concepts, JADN recognizes that information
 models are directed graphs with a small predefined set of base
 datatypes and only two kinds of relationship: "contain" and
-"reference". 
+"reference".
 
 
 ### 3.1.1 Type Definitions
@@ -540,7 +540,7 @@ and identifies values for each of the five elements in the
 definition. The five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
-that type. 
+that type.
  1. The **BaseType** of the type, which is one of the either the
 five "Primitive" (or, alternatively, "scalar") types or one of
 the seven "Compound" types, as shown in Figure 3-1.
@@ -550,7 +550,7 @@ the seven "Compound" types, as shown in Figure 3-1.
     additional information about the type.
  3. For any of the Compound types, a set of **Item** or **Field**
     options that define the items that comprise the compound
-    type. 
+    type.
 
 ###### Figure 3-1 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
@@ -647,7 +647,7 @@ pertaining to the **Fields** array are as follows:
        field
     5. **FieldDescription:** a non-normative comment
 
-### 3.1.4  Field Options 
+### 3.1.4  Field Options
 
 Compound types containing Items or Fields support field options
 in addition to the type options describe in [Section
@@ -674,7 +674,7 @@ The native format of JADN is JSON, but JADN content can be
 represented in others ways that are often more useful for
 documentation. This section describes the JSON content used for
 each of the JADN basic types, and then illustrates the other
-representations using a simple example.   
+representations using a simple example.
 
 #### 3.1.5.1 Native JSON Representation
 
@@ -716,7 +716,7 @@ The [[JADN Specification](#jadn-v10)] identifies three formats
 (Section 5) in addition to the native format:
 
  - JADN Interface Definition Language (JIDL)
- - Table Style 
+ - Table Style
  - Entity Relationship Diagrams (ERDs)
 
 The formal definitions of each of these types are found in
@@ -733,21 +733,31 @@ its advantages:
 specifications (e.g., as property tables such as are commonly
 found in specifications).
  - JADN presented in entity relationship diagrams aids with
-visualization of an information model. 
+visualization of an information model.
  - JADN in JIDL format, a simple text structure, is easy to edit,
 making it a good format for both the initial creation and the
 documentation of a JADN model. JIDL is also more compact than
 table style presentation.
 
-This section provides excerpts from an example IM based on the
-University ERD shown in Section 5.3 of the JADN Specification.
-The complete example is included in Appendix E. The specification
-example begins with the ERD for the model:
+#### 3.1.5.3 Multiple Representation Example
 
-> INSERT:  ERD for modified "University" example
+This section uses a slightly extended version of an example IM
+based on the University ERD shown in Section 5.3 of the JADN
+Specification. The example begins with the ERD for the model:
 
-The package (see [Section 4.1](#41-namespaces-packages-and-referencing)) containing the   JADN corresponding to the ERD is shown here:
+###### Figure 3-5 -- Simple University Example ERD
 
+> NOTE:  Placeholder ERD for modified "University" example.
+> To be replaced with version without description fields.
+
+![Simple University Example ERD](images/spec_test-extended.jadn.png)
+
+
+The package (see [Section
+4.1](#41-namespaces-packages-and-referencing)) containing the
+JADN corresponding to the above ERD is shown here:
+
+###### Figure 3-6 -- Simple University Example JADN (JSON format)
 ```json
 {
  "info": {
@@ -755,30 +765,135 @@ The package (see [Section 4.1](#41-namespaces-packages-and-referencing)) contain
   "exports": ["University"]
  },
  "types": [
-  ["University", "Record", [], "", [
-    [1, "name", "String", [], ""],
-    [2, "classes", "Class", ["]0"], ""],
-    [3, "people", "Person", ["]0"], ""]
+  ["University", "Record", [], "A place of learning", [
+    [1, "name", "String", [], "University Name"],
+    [2, "classes", "ArrayOf", ["*Class"], "Available classes"],
+    [3, "people", "ArrayOf", ["*Person"], "Students and faculty"]
   ]],
-  ["Class", "Record", [], "", [
-    [1, "name", "String", [], ""],
-    [2, "room", "String", [], ""],
-    [3, "teachers", "Person", ["L", "]0"], ""],
-    [4, "students", "Person", ["L", "]0"], ""]
+  ["Class", "Record", [], "Pertinent info about classes", [
+    [1, "name", "String", [], "Name of class"],
+    [2, "room", "String", [], "Where it happens"],
+    [3, "teachers", "ArrayOf", ["*Person", "L"], "Teacher(s) for this class"],
+    [4, "students", "ArrayOf", ["*Person", "L", "unique"], "Students attending this class"]
+    [5, "syllabus", "String", ["url"], "Link to class syllabus on the web"]
   ]],
   ["Person", "Record", [], "", [
-    [1, "name", "String", [], ""],
-    [2, "univ_id", "UnivId", ["K"], ""],
-    [3, "email", "String", ["/email"], ""]
+    [1, "name", "String", [], "Student / faculty member name"],
+    [2, "univ_id", "UnivId", ["K"], "Unique ID for student / faculty member"],
+    [3, "email", "String", ["/email"], "Student / faculty member email"]
   ]],
-  ["UnivId", "String", ["%^U-\\d{6}$"], "", []]
+  ["UnivId", "String", ["%^U-\\d{6}$"], "University ID (U-nnnnnn)", []]
  ]
 }
 ```
 
-> INSERT: JIDL for at least part of the example
+Converting the JSON to JIDL yields a representation that is both
+more readable and easier to edit:
 
-> INSERT:  property tables for at least part of the example
+###### Figure 3-7 -- Simple University Example JADN (JIDL format)
+
+``` json
+ package:  "http://example.com/uni"
+ exports:  ["University"]
+
+University = Record                    // A place of learning
+    1  name     String                 // University Name
+    2  classes  ArrayOf(Class){0..*}   // Available classes
+    3  people   ArrayOf(Person){0..*}  // Students and faculty
+
+Class = Record                                 // Pertinent info about classes
+    1  name      String                        // Name of class
+    2  room      String                        // Where it happens
+    3  teachers  ArrayOf(Person){0..*}         // Teacher(s) for this class
+    4  students  ArrayOf(Person){0..*} unique  // Students attending this class
+    5  syllabus  String /uri                   // Link to class syllabus on the web
+
+Person = Record
+    1  name     String         // Student / faculty member name
+    2  univ_id  UnivId         // Unique ID for student / faculty member
+    3  email    String /email  // Student / faculty member email
+
+UnivId = String (%^U-\d{6}$%)  // University ID (U-nnnnnn)
+
+```
+
+Property tables are a common representation of data structures in
+specifications. JADN is easily converted to property tables,
+which are quite readable but somewhat more challenging to edit
+than JIDL (the package information has been omitted from the set
+of property tables).
+
+###### Figure 3-8 -- Simple University Example JADN (table format)
+
+**_Type: University (Record)_**
+
+| ID | Name        | Type            | # | Description          |
+|---:|:------------|:----------------|--:|:---------------------|
+|  1 | **name**    | String          | 1 | University Name      |
+|  2 | **classes** | ArrayOf(Class)  | 1 | Available classes    |
+|  3 | **people**  | ArrayOf(Person) | 1 | Students and faculty |
+
+**_Type: Class (Record)_**
+
+| ID | Name         | Type                   | # | Description                       |
+|---:|:-------------|:-----------------------|--:|:----------------------------------|
+|  1 | **name**     | String                 | 1 | Name of class                     |
+|  2 | **room**     | String                 | 1 | Where it happens                  |
+|  3 | **teachers** | ArrayOf(Person)        | 1 | Teacher(s) for this class         |
+|  4 | **students** | ArrayOf(Person) unique | 1 | Students attending this class     |
+|  5 | **syllabus** | String /uri            | 1 | Link to class syllabus on the web |
+
+**_Type: Person (Record)_**
+
+| ID | Name        | Type          | # | Description                            |
+|---:|:------------|:--------------|--:|:---------------------------------------|
+|  1 | **name**    | String        | 1 | Student / faculty member name          |
+|  2 | **univ_id** | UnivId        | 1 | Unique ID for student / faculty member |
+|  3 | **email**   | String /email | 1 | Student / faculty member email         |
+
+
+| Type Name  | Type Definition      | Description              |
+|:-----------|:---------------------|:-------------------------|
+| **UnivId** | String (%^U-\d{6}$%) | University ID (U-nnnnnn) |
+
+Finally, the code to generate the ERD presented at the beginning
+of the example is easily generated from the JADN model.  In this
+specific example code for the widely-used GraphViz tool is
+provided, however the HTML to generate the label tables for the
+three nodes has been excerpted for readability.
+
+###### Figure 3-9 -- Simple University Example ERD Source Code (GraphViz)
+```
+# package: http://example.com/uni
+# exports: ["University"]
+
+digraph G {
+    graph [fontname=Times fontsize=12]
+    node [fillcolor=lightskyblue1 fontname=Arial fontsize=8 shape=box style=filled]
+    edge [arrowsize=0.5 fontname=Arial fontsize=7 labelangle=45.0 labeldistance=0.9]
+    bgcolor=white
+
+    n0 [label=<
+        <table ...>
+      > shape=rectangle]
+      n0 -> n1 [label="vtype: classes"]
+      n0 -> n2 [label="vtype: people"]
+
+    n1 [label=<
+        <table ...>
+      > shape=rectangle]
+      n1 -> n2 [label="vtype: teachers"]
+      n1 -> n2 [label="vtype: students"]
+
+    n2 [label=<
+        <table ...>
+      > shape=rectangle]
+      n2 -> n3 [label=univ_id]
+
+    n3 [label="UnivId = String(%^U-\d{6}$%)" fillcolor=palegreen shape=ellipse]
+}
+
+```
 
 
 
@@ -790,10 +905,10 @@ Specification](#jadn-v10)] is quoted, the relevant type options
 are listed, and an example is provided using the JADN and JIDL
 formats.
 
-#### 3.1.6.1 Binary 
+#### 3.1.6.1 Binary
 
 **Definition:** A sequence of octets. Length is the number of
-octets. 
+octets.
 
 **TypeOptions:** The *minv*, *maxv*, and *format* TypeOptions
 are applicable to the Binary data type.
@@ -894,7 +1009,7 @@ The corresponding JIDL representation would be:
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.6.5 String 
+#### 3.1.6.5 String
 
 **Definition:**  A sequence of characters, each of which has a
 Unicode codepoint. Length is the number of characters.
@@ -919,7 +1034,7 @@ The corresponding JIDL representation would be:
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.6.6 Enumerated 
+#### 3.1.6.6 Enumerated
 
 **Definition:**  A vocabulary of items where each item has an id
 and a string value.
@@ -955,7 +1070,7 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.6.7 Choice 
+#### 3.1.6.7 Choice
 
 **Definition:**  A discriminated union: one type selected from a
 set of named or labeled types.
@@ -1050,7 +1165,7 @@ fitting the ArrayOf base type would be defined as follows:
 
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
-> 
+>
 #### 3.1.6.10 Map
 
 **Definition:**  An unordered map from a set of specified keys to
@@ -1146,7 +1261,7 @@ are applicable to the Record data type.
 **Example:**  The Record type is used to represent information
 that has a consistent repeated structure, such as a database
 record. Elements of a record can be accessed by either position
-or value. 
+or value.
 
 ```json
   ["IPv4-Connection", "Record", ["{1"], "5-tuple that specifies a tcp/ip connection", [
@@ -1273,10 +1388,10 @@ This appendix contains the informative references that are used in this document
 While any hyperlinks included in this appendix were valid at the time of publication, OASIS cannot guarantee their long-term validity.
 
 (Reference sources:
-For references to IETF RFCs, use the approved citation formats at:  
-http://docs.oasis-open.org/templates/ietf-rfc-list/ietf-rfc-list.html.  
-For references to W3C Recommendations, use the approved citation formats at:  
-http://docs.oasis-open.org/templates/w3c-recommendations-list/w3c-recommendations-list.html.  
+For references to IETF RFCs, use the approved citation formats at:
+http://docs.oasis-open.org/templates/ietf-rfc-list/ietf-rfc-list.html.
+For references to W3C Recommendations, use the approved citation formats at:
+http://docs.oasis-open.org/templates/w3c-recommendations-list/w3c-recommendations-list.html.
 Remove this note before submitting for publication.)
 
 ###### [DThaler]
@@ -1305,12 +1420,12 @@ https://json-schema.org/
 "OWL 2 Web Ontology Language Primer (Second Edition)", retrieved
 10/25/2022, https://www.w3.org/TR/owl-primer/
 
-###### [RFC3444] 
+###### [RFC3444]
 Pras, A., Schoenwaelder, J., "On the Difference between
 Information Models and Data Models", RFC 3444, January 2003,
 https://tools.ietf.org/html/rfc3444.
 
-###### [RFC8477] 
+###### [RFC8477]
 Jimenez, J., Tschofenig, H., and D. Thaler, "Report from the
 Internet of Things (IoT) Semantic Interoperability (IOTSI)
 Workshop 2016", RFC 8477, DOI 10.17487/RFC8477, October 2018,
@@ -1339,7 +1454,7 @@ https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=821265
 
 # Appendix B. Acknowledgments
 
-(Note: A Work Product approved by the TC must include a list of people who participated in the development of the Work Product. This is generally done by collecting the list of names in this appendix. This list shall be initially compiled by the Chair, and any Member of the TC may add or remove their names from the list by request.  
+(Note: A Work Product approved by the TC must include a list of people who participated in the development of the Work Product. This is generally done by collecting the list of names in this appendix. This list shall be initially compiled by the Chair, and any Member of the TC may add or remove their names from the list by request.
 Remove this note before submitting for publication.)
 
 ## B.1 Special Thanks
@@ -1449,7 +1564,7 @@ information:
     (In Shannon's original context signal and noise are in the
     analog domain, but entropy is meaningful even in purely
     digital communication.)
- 
+
  3. Information defines *loss*. Lossless transformations across
     data formats preserve information; after a round trip
     significant data is unchanged and insignificant data can be
@@ -1673,7 +1788,7 @@ term applies in the indicated direction, but the direction and
 term can be reversed together without changing the semantics of
 the graph. In contrast, an information model is a directed graph
 where direction determines syntax, and it has only two
-association types: contain and reference. 
+association types: contain and reference.
 
 As an example, if a City datatype with name, elevation, and
 location properties contains a Coordinate datatype with latitude
@@ -1739,7 +1854,7 @@ The datatype names commonly applied to collection attributes are:
 
 An information model specifies collection attributes that are not
 explicit in an ontology in order to ensure equivalence across
-syntaxes. 
+syntaxes.
 
 Continuing the City example, Coordinate was assumed to
 be the default map type. But an information model would generally
@@ -1769,7 +1884,7 @@ object-relational mapping - ORM), unlike an ontology's default
 unordered properties which are two-column sets of key:value
 pairs.
 
-### Referenceability: 
+### Referenceability:
 Ontologies treat all objects as referenceable graph nodes, which
 requires every object to be assigned a primary key / unique
 identifier. Information models represent data structures using
@@ -1840,9 +1955,9 @@ Note that text paragraphs in markdown should be separated by a blank line betwee
 Otherwise the separate paragraphs will be joined together when the HTML is generated.
 Even if the text appears to be separate lines in the markdown source.
 
-To avoid having the usual vertical space between paragraphs,  
-append two or more space characters to the end of the lines  
-which will generate an HTML break tag instead of a new paragraph tag  
+To avoid having the usual vertical space between paragraphs,
+append two or more space characters to the end of the lines
+which will generate an HTML break tag instead of a new paragraph tag
 (as demonstrated here).
 
 ### 1.3.1 Figures and Captions
@@ -1886,7 +2001,7 @@ text.
 | **content** | Message body as specified by content_type and msg_type. |
 
 Here is a reference to the table caption:
-Please see [Table 1.6.or other meaningful label](#table-1.6.see-reference-label-construction) 
+Please see [Table 1.6.or other meaningful label](#table-1.6.see-reference-label-construction)
 
 
 ### 1.3.3 Lists
@@ -1917,21 +2032,21 @@ _Specification for Transfer of OpenC2 Messages via HTTPS Version 1.0_. Edited by
 
 - reference text has to be on a separate line below the tag
 
-- format cross-references (citations of the references) like: `see [[OpenC2-HTTPS-v1.0](#openc2-https-v10)]`  
-"see [[OpenC2-HTTPS-v1.0](#openc2-https-v10)]"  
+- format cross-references (citations of the references) like: `see [[OpenC2-HTTPS-v1.0](#openc2-https-v10)]`
+"see [[OpenC2-HTTPS-v1.0](#openc2-https-v10)]"
 (note the outer square brackets in markdown will appear in the visible HTML text)
 
-- The text in the Reference tag (following ###### ) will become an HTML anchor using the following conversion rules:  
--- punctuation marks will be dropped (including "[" )  
--- leading white spaces will be dropped  
--- upper case will be converted to lower  
+- The text in the Reference tag (following ###### ) will become an HTML anchor using the following conversion rules:
+-- punctuation marks will be dropped (including "[" )
+-- leading white spaces will be dropped
+-- upper case will be converted to lower
 -- spaces between letters will be converted to a single hyphen
 
-- The same HTML anchor construction rules apply to cross-references and to section headings.  
--- Thus, a section heading like "## 1.2 References"  
--- becomes an anchor in HTML like `<a href="#12-references">`  
--- referenced in the markdown like: see [Section 1.2](#12-references)  
--- (in markdown: `"see [Section 1.2](#12-references"`)  
+- The same HTML anchor construction rules apply to cross-references and to section headings.
+-- Thus, a section heading like "## 1.2 References"
+-- becomes an anchor in HTML like `<a href="#12-references">`
+-- referenced in the markdown like: see [Section 1.2](#12-references)
+-- (in markdown: `"see [Section 1.2](#12-references"`)
 -- similar HTML anchors are also used in constructing the TOC
 
 ### 1.3.5 Code Blocks
@@ -1941,7 +2056,7 @@ Text to appear as an indented code block with grey background and monospace font
 Note the actual backticks will not appear in the HTML version. If it's necessary to display visible backticks, place a back-slash before them like: \``` .
 
 ```
-{   
+{
     "target": {
         "x_kmip_2.0": {
             {"kmip_type": "json"},
@@ -1952,7 +2067,7 @@ Note the actual backticks will not appear in the HTML version. If it's necessary
 }
 ```
 
-Text to be highlighted as code can also be surrounded by a single "backtick" character: 
+Text to be highlighted as code can also be surrounded by a single "backtick" character:
 `code text`
 
 ## 1.4 Page Breaks
