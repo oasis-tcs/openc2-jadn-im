@@ -478,6 +478,22 @@ the associated data.
 
 ![Parsing and Serializing With An IM](images/parse-serialize.drawio.png)
 
+The internal representation, illustrated in Figure 2-1 as a tree, is guided by rules associated with applying the IM:
+
+ - the internal representation conforms to the IM
+ - each node in the internal representation has an abstract core
+   type from the IM
+ - each core type has associated serialization rules for each
+   external representation format
+
+The [JADN Specification](#jadn-v10) defines 12 core types, which
+are described in [Section 3.1.6](#316-base-type-examples) of this
+CN. The JADN Specification also defines serialization rules for
+JSON (with three levels of verbosity) and CBOR. Supporting a new
+data format ("external representation") requires defining
+serialization rules to translate each core type to that data
+format.
+
 As an example, consider an information element defined as a
 boolean type, which is the simplest core type. The essential
 nature of a boolean is that it is limited to only two values,
