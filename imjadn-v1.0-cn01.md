@@ -517,10 +517,10 @@ interpretation of this is summarized in the Table 3-1.
 
 
 ###### Table 3-1 -- Multiplicity Types
-|            |                  Ordered                 |             Unordered             |
+|            |                  **Ordered**                 |             **Unordered**             |
 |:----------:|:----------------------------------------:|:---------------------------------:|
-|   Unique   | Ordered Set, Record<br>JADN: ArrayOf+_unique_ | Set, Map<br>JADN: ArrayOf+_set_, MapOf |
-| Non-Unique |       Sequence, List<br>JADN: ArrayOf       |    Bag<br>JADN: ArrayOf+*unordered*    |
+|   **Unique**   | Ordered Set, Record<br>JADN: ArrayOf+_unique_ | Set, Map<br>JADN: ArrayOf+_set_, MapOf |
+| **Non-Unique** |       Sequence, List<br>JADN: ArrayOf       |    Bag<br>JADN: ArrayOf+*unordered*    |
 
 JADN accepts the UML philosophy that schemas are classifiers that
 take a unit of data and determine whether it is an instance of a
