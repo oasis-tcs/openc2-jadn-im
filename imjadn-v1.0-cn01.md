@@ -489,10 +489,10 @@ The internal representation, illustrated in Figure 2-1 as a tree, is guided by r
 The [JADN Specification](#jadn-v10) defines 12 core types, which
 are described in [Section 3.1.6](#316-base-type-examples) of this
 CN. The JADN Specification also defines serialization rules for
-JSON (with three levels of verbosity) and CBOR. Supporting a new
-data format ("external representation") requires defining
-serialization rules to translate each core type to that data
-format.
+JSON (with three levels of verbosity) and CBOR
+[[RFC7409](#rfc7049)]. Supporting a new data format ("external
+representation") requires defining serialization rules to
+translate each core type to that data format.
 
 As an example, consider an information element defined as a
 boolean type, which is the simplest core type. The essential
