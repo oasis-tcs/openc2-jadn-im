@@ -743,7 +743,9 @@ table style presentation.
 
 This section uses a slightly extended version of an example IM
 based on the University ERD shown in Section 5.3 of the JADN
-Specification. The example begins with the ERD for the model:
+Specification to illustrate the representations described in
+[Section 3.1.5.2](#3152-alternative-jadn-representations). The
+example begins with the ERD for the model:
 
 ###### Figure 3-5 -- Simple University Example ERD
 
