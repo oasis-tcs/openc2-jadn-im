@@ -775,7 +775,7 @@ JADN corresponding to the above ERD is shown here:
     [2, "room", "String", [], "Where it happens"],
     [3, "teachers", "ArrayOf", ["*Person", "L"], "Teacher(s) for this class"],
     [4, "students", "ArrayOf", ["*Person", "L", "q"], "Students attending this class"]
-    [5, "syllabus", "String", ["uri"], "Link to class syllabus on the web"]
+    [5, "syllabus", "String", ["/uri"], "Link to class syllabus on the web"]
   ]],
   ["Person", "Record", [], "", [
     [1, "name", "String", [], "Student / faculty member name"],
