@@ -541,8 +541,8 @@ definition. The five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
 that type.
- 1. The **BaseType** of the type, which is one of the either the
-five "Primitive" (or, alternatively, "scalar") types or one of
+ 1. The **BaseType** of the type, which is one of either the
+five "Primitive" (or, alternatively, "scalar") types or
 the seven "Compound" types, as shown in Figure 3-1.
  1. Zero or more of the available JADN **TypeOptions** that
     refine the base types to fit particular needs.
