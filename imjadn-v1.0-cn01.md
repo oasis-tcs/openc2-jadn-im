@@ -1485,6 +1485,11 @@ Pras, A., Schoenwaelder, J., "On the Difference between
 Information Models and Data Models", RFC 3444, January 2003,
 https://tools.ietf.org/html/rfc3444.
 
+###### [RFC7049]
+Bormann, C., Hoffman, P., *"Concise Binary Object Representation
+(CBOR)"*, RFC 7049, October 2013,
+https://tools.ietf.org/html/rfc7049.
+
 ###### [RFC8477]
 Jimenez, J., Tschofenig, H., and D. Thaler, "Report from the
 Internet of Things (IoT) Semantic Interoperability (IOTSI)
