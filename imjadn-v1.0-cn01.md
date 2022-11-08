@@ -470,7 +470,7 @@ the chosen programming language. The IM also guides the creation
 of routines to parse and validate data being input from storage
 or through communications, and to serialize data being output to
 storage or transmission. Deriving the processing capabilities
-form the IM ensures consistency as the data is manipulated.
+from the IM ensures consistency as the data is manipulated.
 Figure 2-1 illustrates the concept of applying an IM to manage
 the associated data.
 
