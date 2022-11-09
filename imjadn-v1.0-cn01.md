@@ -458,6 +458,64 @@ language should provide
  - Model translation to language- or protocol-specific
    serialization / deserialization capabilities
 
+## 2.5 Applying an Information Model
+
+A primary application of an IM is in the translation of data into
+and out of in-memory representation and serialized formats for
+storage and transmission. The IM defines the types, organization,
+and validation requirements for the information manipulated by an
+application or protocol. Within an application the IM is
+instantiated through the data structures and types supported by
+the chosen programming language. The IM also guides the creation
+of routines to parse and validate data being input from storage
+or through communications, and to serialize data being output to
+storage or transmission. Deriving the processing capabilities
+from the IM ensures consistency as the data is manipulated.
+Figure 2-1 illustrates the concept of applying an IM to manage
+the associated data.
+
+###### Figure 2-1 -- Parsing and Serializing With An IM
+
+![Parsing and Serializing With An IM](images/parse-serialize.drawio.png)
+
+The internal representation, illustrated in Figure 2-1 as a tree, is guided by rules associated with applying the IM:
+
+ - the internal representation conforms to the IM
+ - each node in the internal representation has an abstract core
+   type from the IM
+ - each core type has associated serialization rules for each
+   external representation format
+
+The [JADN Specification](#jadn-v10) defines 12 core types, which
+are described in [Section 3.1.6](#316-base-type-examples) of this
+CN. The JADN Specification also defines serialization rules for
+JSON (with three levels of verbosity) and CBOR
+[[RFC7409](#rfc7049)]. Supporting a new data format ("external
+representation") requires defining serialization rules to
+translate each core type to that data format.
+
+As an example, consider an information element defined as a
+boolean type, which is the simplest core type. The essential
+nature of a boolean is that it is limited to only two values,
+usually identified as "true" and "false". However, the *data*
+representing a Boolean value is determined by serialization
+rules, and could be any of "false" and "true", 0 and 1, "n" and
+"y", etc. In a programming language, many variable types and
+values may evaluate as "true":
+
+ - Non-zero integers
+ - Non-empty strings
+ - Non-empty arrays
+
+An abstract representation of an IM does not capture data types
+and values for a Boolean node, e.g. integer 0 or 37 or string
+"yes". It has only the characteristics of the node type: false or
+true. A JSON representation can use  a Boolean type with values
+'false' and 'true', but for efficient serialization might also
+use the JSON number type with values 0 and 1.
+
+
+
 -------
 
 # 3 Creating Information Models with JADN
@@ -1426,6 +1484,11 @@ https://json-schema.org/
 Pras, A., Schoenwaelder, J., "On the Difference between
 Information Models and Data Models", RFC 3444, January 2003,
 https://tools.ietf.org/html/rfc3444.
+
+###### [RFC7049]
+Bormann, C., Hoffman, P., *"Concise Binary Object Representation
+(CBOR)"*, RFC 7049, October 2013,
+https://tools.ietf.org/html/rfc7049.
 
 ###### [RFC8477]
 Jimenez, J., Tschofenig, H., and D. Thaler, "Report from the
