@@ -1400,39 +1400,40 @@ Possible example subjects:
 This example shows a simple IM for a digital music library. The
 model assumes that each track is stored as a file with its audio
 in one of several formats. The library organizes tracks into
-albums, which as associated with a UPC-A barcode (a 12-digit
+albums, which are associated with a UPC-A barcode (a 12-digit
 number). The model is loosely based on the ID3 metadata used with
 MP3 audio files. 
 
 At the top level, the library is map of barcodes to albums. 
 
-> insert top level JIDL: package, Library, Barcode
+> insert top level JIDL: **package, Library, Barcode**
 
 Each album is then represented by a record of artist, title,
 publication data, cover art and an array of individual audio
 tracks. Multiple digital image formats are supported for the
 cover art.
 
-> Insert JIDL: Album, Pubdata, Cover art, imageFormat
+> Insert JIDL: **Album, Pubdata, Cover art, imageFormat**
 
 Artists have a name and one or more associated instruments that
 they perform on.
 
-> Insert JIDL: Artist, Instrument
+> Insert JIDL: **Artist, Instrument**
 
 Each track is stored in a file, and has a track number within the
 album, title, length, potentially "featured" artists, and the
 audio data.  Multiple digital audio  formats are supported for
 the audio content.
 
-> Insert JIDL: Track, Audio, Audio format
+> Insert JIDL: **Track, Audio, Audio format**
 
 The entity relationship diagram in Figure 3-10 illustrates how
 the model components connect. The complete JIDL and JADN for the
 model are presented in Appendix *X*. 
 
 ###### Figure 3-10 -- Music Library Example ERD
-> image to be supplied
+> image to be supplied \
+> appendix content to be supplied
 
 -------
 # 4 Advanced Techniques
