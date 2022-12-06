@@ -1414,7 +1414,7 @@ At the top level, the library is map of barcodes to albums.
      version: "1.0"
  description: "This information model defines a library of audio tracks, organized by album"
      license: "CC0-1.0"
-     exports: ["Library", "Album", "Track"]
+     exports: ["Library"]
 
 
 // Top level of the library is a map of CDs by barcode
