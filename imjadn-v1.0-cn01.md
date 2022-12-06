@@ -1420,7 +1420,7 @@ At the top level, the library is map of barcodes to albums.
 // Top level of the library is a map of CDs by barcode
 Library = MapOf(barcode, Album){1..*}
 
-Barcode = String /regex {%^\d{12}$%}    // A UPC-A barcode is 12 digits
+Barcode = String{pattern="^\d{12}$"}    // A UPC-A barcode is 12 digits
 ```
 
 Each album is then represented by a record of artist, title,
