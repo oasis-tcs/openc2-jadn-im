@@ -1294,7 +1294,7 @@ defined as follows:
   [3, "end_date", "Date", ["[0"], "if end_date is present = former employee"]
 ]]
 
-["Date", "String", ["%date"], "", []]
+["Date", "String", ["/date"], "", []]
 ```
 
 The corresponding JIDL representation would be:
