@@ -614,6 +614,33 @@ the seven "Compound" types, as shown in Figure 3-1.
 ![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
 
 
+
+A firm requirement of JADN is that a TypeName must not be a JADN
+predefined type. There are also conventions intended to improve
+the consistency and readability of JADN specifications. These
+conventions are defined in JADN but can be overridden within a
+JADN schema if desired (see section 3.1.2 of the
+[[JADN](#jadn-v10) Specification]):
+
+ - **TypeNames** are written in PascalCase or Train-Case (using
+   hyphens) with an initial upper case letter, and are limited to
+   64 upper case, lower case or numeric characters, or the
+   "system" character (used for tool-generated type definitions).
+
+ - **FieldNames** are written in camelCase or snake_case (using
+   underscores) with an initial lower case letter, and are
+   limited to 64 upper case, lower case or numeric characters.
+
+ - **Name space identifiers** (nsids) are limited to 8 upper
+   case, lower case or numeric characters and must begin with a
+   letter.
+
+ - The **"system character"** (which defaults to `$`) is used by
+   JADN processing tools when generating derived types while
+   processing a JADN model; it is not normally used by JADN
+   schema authors.
+
+
 ### 3.1.2 TypeOptions
 
 The third element of a JADN type definition is zero or more of
