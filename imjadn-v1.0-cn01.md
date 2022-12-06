@@ -1279,7 +1279,7 @@ for the keys and the values in the MapOf are of specific types
 and are defined using type options. MapOf is suitable when the
 collection of items can't be represented as an enumeration, such
 as the connection of employee identification numbers to
-employees.  An information item fitting the Map type would be
+employees.  An information item fitting the MapOf type would be
 defined as follows:
 
 
