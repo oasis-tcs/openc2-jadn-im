@@ -1138,6 +1138,17 @@ The corresponding JIDL representation would be:
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
+When applying the *pattern* option in JIDL, it should be directly
+connected to the String type. The entire pattern specification is
+surrounded with braces "{ }", containing `pattern="REGEX"` where
+`REGEX` is the regular expression that governs the format of the
+string.
+
+```
+Barcode = String{pattern="^\d{12}$"}    // A UPC-A barcode is 12 digits
+```
+
+
 #### 3.1.6.6 Enumerated
 
 **Definition:**  A vocabulary of items where each item has an id
