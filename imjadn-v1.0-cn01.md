@@ -1484,7 +1484,7 @@ the audio content.
 
 ```
 Track = Record                  // information about the individual audio tracks
-    1 t_number  Number          // track sequence number
+    1 t_number  Integer{0..*}   // track sequence number
     2 title     String          // track title
     3 length    String /time    // length of track
     4 featured  ArrayOf(Artist){0..*} // important guest performers
