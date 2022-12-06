@@ -1284,7 +1284,17 @@ defined as follows:
 
 
 ```json
-   <<< NEED JSON FOR MapOf EXAMPLE>>>
+["Employees","MapOf", ["EID","Employee"], "Maps employee identifier numbers to employee information", []]
+
+["EID", "Integer", ["{0","}1000"], "will need new system when exceed 1,000 employees", []]
+
+["Employee", "Record","", "Employee Information",[
+  [1, "name", "String", "", "Usually First M. Last"]
+  [2, "start_date", "Date", "", "always record start date"]
+  [3, "end_date", "Date", ["[0"], "if end_date is present = former employee"]
+]]
+
+["Date", "String", ["%date"], "", []]
 ```
 
 The corresponding JIDL representation would be:
@@ -1299,9 +1309,9 @@ EID = Integer{0..1000}        // will need new system when exceed 1,000 employee
 
 // Employee information
 Employee = Record
-  1 Name        String         // usually "First I. Last"
-  2 StartDate   Date           // always record start date
-  3 EndDate     Date optional  // EndDate present = former employee
+  1 name        String         // usually "First M. Last"
+  2 start_date  Date           // always record start date
+  3 end_date    Date optional  // if end_date is present = former employee
 
 Date = String /date
 ```
