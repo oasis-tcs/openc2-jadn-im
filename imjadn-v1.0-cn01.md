@@ -1395,6 +1395,120 @@ Possible example subjects:
  - SDO management system (similar to OASIS Kavi)
  - Music Database (artists, albums, songs, tracks, metadata, guest artists)
 
+### 3.3.1 Example 1: A Digital Music Library
+
+This example shows a simple IM for a digital music library. The
+model assumes that each track is stored as a file with its audio
+in one of several formats. The library organizes tracks into
+albums, which are associated with a UPC-A barcode (a 12-digit
+number). The model is loosely based on the ID3 metadata used with
+MP3 audio files. 
+
+At the top level, the library is map of barcodes to albums. 
+
+> insert top level JIDL: **package, Library, Barcode**
+
+```
+       title: "Music Library"
+     package: "http://fake-audio.org/music-lib"
+     version: "1.0"
+ description: "This information model defines a library of audio tracks, organized by album"
+     license: "CC0-1.0"
+     exports: ["Library"]
+
+
+// Top level of the library is a map of CDs by barcode
+Library = MapOf(barcode, Album){1..*}
+
+Barcode = String{pattern="^\d{12}$"}    // A UPC-A barcode is 12 digits
+```
+
+Each album is then represented by a record of artist, title,
+publication data, cover art and an array of individual audio
+tracks. Multiple digital image formats are supported for the
+cover art.
+
+> Insert JIDL: **Album, Pubdata, Cover art, imageFormat**
+
+```
+Album = Record                          // model for the album
+    1 artist    Artist                  // artist associated with this album
+    2 title     String                  // commonly known title for this album
+    3 pub_data  Publication-Data        // metadata about album publication
+    4 tracks    ArrayOf(Track)[1..*]    // individual track descriptions
+    5 cover_art Cover-Art               // cover art image for this album
+
+Publication-Data = Record       // who and when of publication
+    1 label     String          // name of record label 
+    2 rel_date  String /date    // and when did they let this drop
+
+Cover-Art = Record              // pretty picture for the album
+    1 i_format  Image-Format    // what type of image file?
+    2 i_content Binary          // the image data in the identified format
+
+
+Image-Format = Enumerated extend    	// can only be one, but can extend list
+    1 PNG
+    2 JPG
+```
+
+Artists have a name and one or more associated instruments that
+they perform on.
+
+> Insert JIDL: **Artist, Instrument**
+
+```
+Artist = Record                                 // interesting information about the performers
+    1 artist_name   String                      // who is this person
+    2 instruments   ArrayOf(Instrument)[1..*]   // and what do they play
+
+Instrument = Enumerated extend   // collection of instruments (non-exhaustive)
+    1 vocals
+    2 guitar
+    3 bass
+    4 drums
+    5 keyboards
+    6 percussion
+    7 brass
+    8 woodwinds
+    9 harmonica
+```
+
+
+Each track is stored in a file, and has a track number within the
+album, title, length, potentially "featured" artists, and the
+audio data.  Multiple digital audio  formats are supported for
+the audio content.
+
+> Insert JIDL: **Track, Audio, Audio format**
+
+```
+Track = Record                  // information about the individual audio tracks
+    1 t_number  Integer{0..*}   // track sequence number
+    2 title     String          // track title
+    3 length    String /time    // length of track
+    4 featured  ArrayOf(Artist){0..*} // important guest performers
+    5 audio     Audio           // the all important content
+
+Audio = Record			// information about what gets played
+    1 a_format  Audio-Format    // what type of audio file?
+    2 a_content Binary          // the audio data in the identified format
+
+
+Audio-Format = Enumerated extend	// can only be one, but can extend list
+    1 MP3
+    2 OGG
+    3 FLAC
+```
+
+The entity relationship diagram in Figure 3-10 illustrates how
+the model components connect. The complete JIDL and JADN for the
+model are presented in Appendix *X*. 
+
+###### Figure 3-10 -- Music Library Example ERD
+> image to be supplied \
+> appendix content to be supplied
+
 -------
 # 4 Advanced Techniques
 
