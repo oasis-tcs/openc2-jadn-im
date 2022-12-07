@@ -614,6 +614,33 @@ the seven "Compound" types, as shown in Figure 3-1.
 ![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
 
 
+
+A firm requirement of JADN is that a TypeName must not be a JADN
+predefined type. There are also conventions intended to improve
+the consistency and readability of JADN specifications. These
+conventions are defined in JADN but can be overridden within a
+JADN schema if desired (see section 3.1.2 of the
+[[JADN](#jadn-v10) Specification]):
+
+ - **TypeNames** are written in PascalCase or Train-Case (using
+   hyphens) with an initial upper case letter, and are limited to
+   64 upper case, lower case or numeric characters, or the
+   "system" character (used for tool-generated type definitions).
+
+ - **FieldNames** are written in camelCase or snake_case (using
+   underscores) with an initial lower case letter, and are
+   limited to 64 upper case, lower case or numeric characters.
+
+ - **Name space identifiers** (nsids) are limited to 8 upper
+   case, lower case or numeric characters and must begin with a
+   letter.
+
+ - The **"system character"** (which defaults to `$`) is used by
+   JADN processing tools when generating derived types while
+   processing a JADN model; it is not normally used by JADN
+   schema authors.
+
+
 ### 3.1.2 TypeOptions
 
 The third element of a JADN type definition is zero or more of
@@ -796,6 +823,23 @@ visualization of an information model.
 making it a good format for both the initial creation and the
 documentation of a JADN model. JIDL is also more compact than
 table style presentation.
+
+
+When defining elements of type Array or Enum.ID in JIDL, no field
+names are used. These types are defined using a field ID and a
+TypeName. For documentation and debugging purposes a FieldName
+can be included in the JIDL comment field, immediately following
+the `//` and followed by a double colon delimiter (i.e., `::`).
+For more information see the [[JADN](#jadn-v10) Specification]
+descriptions of Field Identifiers (section 3.2.1.1) and JADN-IDL
+format (section 5.1). Here is a brief JIDL example of this format:
+
+```
+Publication-Data = Array         // who and when of publication
+    1 String          // label:: name of record label 
+    2 String /date    // rel_date:: and when did they let this drop
+```
+
 
 #### 3.1.5.3 Multiple Representation Example
 
@@ -1093,6 +1137,17 @@ The corresponding JIDL representation would be:
 ```
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
+
+When applying the *pattern* option in JIDL, it should be directly
+connected to the String TypeName. The entire pattern
+specification is surrounded with braces "{ }", containing
+`pattern="REGEX"` where `REGEX` is the regular expression that
+governs the format of the string.
+
+```
+Barcode = String{pattern="^\d{12}$"}    // A UPC-A barcode is 12 digits
+```
+
 
 #### 3.1.6.6 Enumerated
 
