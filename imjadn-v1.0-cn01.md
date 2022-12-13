@@ -1576,8 +1576,6 @@ the model components connect.
 ###### Figure 3-10 -- Music Library Example ERD
 
 ![Music Library Example ERD](images/music-database.jadn.puml.png)
-> image to be supplied \
-> appendix content to be supplied
 
 -------
 # 4 Advanced Techniques
