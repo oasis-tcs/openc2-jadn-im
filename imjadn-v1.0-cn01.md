@@ -1463,11 +1463,16 @@ Possible example subjects:
 ### 3.3.1 Example 1: A Digital Music Library
 
 This example shows a simple IM for a digital music library. The
-model assumes that each track is stored as a file with its audio
-in one of several formats. The library organizes tracks into
-albums, which are associated with a UPC-A barcode (a 12-digit
-number). The model is loosely based on the ID3 metadata used with
-MP3 audio files. 
+components of the library are described here along with the
+associated JIDL. The ERD for the library appears at the end of
+this section. The complete, consolidate JADN, JIDL, and property
+tables can be found in [Appendix E.1](#e1-music-library).
+
+The model assumes that each track is stored as a file with its
+audio in one of several formats. The library organizes tracks
+into albums, which are associated with a UPC-A barcode (a
+12-digit number). The model is loosely based on the ID3 metadata
+used with MP3 audio files. 
 
 At the top level, the library is map of barcodes to albums. 
 
@@ -1556,10 +1561,11 @@ Audio-Format = Enumerated extend	// can only be one, but can extend list
 ```
 
 The entity relationship diagram in Figure 3-10 illustrates how
-the model components connect. The complete JIDL and JADN for the
-model are presented in Appendix *X*. 
+the model components connect.
 
 ###### Figure 3-10 -- Music Library Example ERD
+
+![Music Library Example ERD](images/music-database.jadn.puml.png)
 > image to be supplied \
 > appendix content to be supplied
 
@@ -2307,7 +2313,6 @@ Image-Format = Enumerated                       // can only be one, but can exte
 
 ### E.1.3 Music Library Tables
 
-## Schema
 | . | . |
 | ---: | :--- |
 | **title:** | Music Library |
@@ -2405,9 +2410,6 @@ Image-Format = Enumerated                       // can only be one, but can exte
 | 2 | **JPG** |  |
 
 
-### E.1.1 Music Library ERD
-
-![Music Library ERD](images/music-database.jadn.puml.png)
 
 ------
 
