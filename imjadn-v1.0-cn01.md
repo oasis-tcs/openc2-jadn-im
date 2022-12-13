@@ -1471,8 +1471,6 @@ MP3 audio files.
 
 At the top level, the library is map of barcodes to albums. 
 
-> insert top level JIDL: **package, Library, Barcode**
-
 ```
        title: "Music Library"
      package: "http://fake-audio.org/music-lib"
@@ -1493,8 +1491,6 @@ publication data, cover art and an array of individual audio
 tracks. Multiple digital image formats are supported for the
 cover art.
 
-> Insert JIDL: **Album, Pubdata, Cover art, imageFormat**
-
 ```
 Album = Record                          // model for the album
     1 artist    Artist                  // artist associated with this album
@@ -1511,7 +1507,6 @@ Cover-Art = Record              // pretty picture for the album
     1 i_format  Image-Format    // what type of image file?
     2 i_content Binary          // the image data in the identified format
 
-
 Image-Format = Enumerated extend    	// can only be one, but can extend list
     1 PNG
     2 JPG
@@ -1519,8 +1514,6 @@ Image-Format = Enumerated extend    	// can only be one, but can extend list
 
 Artists have a name and one or more associated instruments that
 they perform on.
-
-> Insert JIDL: **Artist, Instrument**
 
 ```
 Artist = Record                                 // interesting information about the performers
@@ -1539,26 +1532,22 @@ Instrument = Enumerated extend   // collection of instruments (non-exhaustive)
     9 harmonica
 ```
 
-
 Each track is stored in a file, and has a track number within the
 album, title, length, potentially "featured" artists, and the
 audio data.  Multiple digital audio  formats are supported for
 the audio content.
-
-> Insert JIDL: **Track, Audio, Audio format**
 
 ```
 Track = Record                  // information about the individual audio tracks
     1 t_number  Integer{0..*}   // track sequence number
     2 title     String          // track title
     3 length    String /time    // length of track
-    4 featured  ArrayOf(Artist){0..*} // important guest performers
+    4 featured  ArrayOf(Artist) // important guest performers
     5 audio     Audio           // the all important content
 
 Audio = Record			// information about what gets played
     1 a_format  Audio-Format    // what type of audio file?
     2 a_content Binary          // the audio data in the identified format
-
 
 Audio-Format = Enumerated extend	// can only be one, but can extend list
     1 MP3
@@ -2165,10 +2154,264 @@ constructing an information graph from an ontology graph:
     reference, which in turn may require converting an otherwise
     fungible contained node to a referenceable individual node.
 
+------
+
+# Appendix E. Example Information Model Source
+
+## E.1 Music Library
+
+### E.1.1 Music Library JADN
+
+```
+{
+ "info": {
+  "title": "Music Library",
+  "package": "http://fake-audio.org/music-lib",
+  "version": "1.0",
+  "description": "This information model defines a library of audio tracks, organized by album",
+  "license": "CC0-1.0",
+  "exports": ["Library", "Album", "Track"]
+ },
+
+ "types": [
+  ["Library", "MapOf", ["+Barcode", "*Album", "{1"], "", []],
+
+  ["Barcode", "String", ["%\\d{12}"], "A UPC-A barcode is 12 digits", []],
+
+  ["Album", "Record", [], "model for the album", [
+    [1, "artist", "Artist", [], "artist associated with this album"],
+    [2, "title", "String", [], "commonly known title for this album"],
+    [3, "pub_data", "Publication-Data", [], "metadata about album publication"],
+    [4, "tracks", "ArrayOf", ["*Track", "]0"], "individual track descriptions"],
+    [5, "cover_art", "Cover-Art", [], "cover art image for this album"]
+  ]],
+
+  ["Artist", "Record", [], "interesting information about the performers", [
+    [1, "artist_name", "String", [], "who is this person"],
+    [2, "instruments", "ArrayOf", ["*Instrument", "]0"], "and what do they play"]
+  ]],
+
+  ["Instrument", "Enumerated", [], "collection of instruments (non-exhaustive)", [
+    [1, "vocals", ""],
+    [2, "guitar", ""],
+    [3, "bass", ""],
+    [4, "drums", ""],
+    [5, "keyboards", ""],
+    [6, "percussion", ""],
+    [7, "brass", ""],
+    [8, "woodwinds", ""],
+    [9, "harmonica", ""]
+  ]],
+
+  ["Publication-Data", "Record", [], "who and when of publication", [
+    [1, "label", "String", [], "name of record label"],
+    [2, "rel_date", "String", ["/date"], "and when did they let this drop"]
+  ]],
+
+  ["Track", "Record", [], "information about the individual audio tracks", [
+    [1, "t_number", "Number", [], "track sequence number"],
+    [2, "title", "String", [], "track title"],
+    [3, "length", "String", ["/time"], "length of track"],
+    [4, "featured", "ArrayOf", ["*Artist"], "important guest performers"],
+    [5, "audio", "Audio", [], "the all important content"]
+  ]],
+
+  ["Audio", "Record", [], "information about what gets played", [
+    [1, "a_format", "Audio-Format", [], "what type of audio file?"],
+    [2, "a_content", "Binary", [], "the audio data in the identified format"]
+  ]],
+
+  ["Audio-Format", "Enumerated", [], "can only be one, but can extend list", [
+    [1, "MP3", ""],
+    [2, "OGG", ""],
+    [3, "FLAC", ""]
+  ]],
+
+  ["Cover-Art", "Record", [], "pretty picture for the album", [
+    [1, "i_format", "Image-Format", [], "what type of image file?"],
+    [2, "i_content", "Binary", [], "the image data in the identified format"]
+  ]],
+
+  ["Image-Format", "Enumerated", [], "can only be one, but can extend list", [
+    [1, "PNG", ""],
+    [2, "JPG", ""]
+  ]]
+ ]
+}
+```
+
+### E.1.2 Music Library JIDL
+
+```
+       title: "Music Library"
+     package: "http://fake-audio.org/music-lib"
+     version: "1.0"
+ description: "This information model defines a library of audio tracks, organized by album"
+     license: "CC0-1.0"
+     exports: ["Library", "Album", "Track"]
+
+Library = MapOf(Barcode, Album){1..*}
+
+Barcode = String{pattern="\d{12}"}              // A UPC-A barcode is 12 digits
+
+Album = Record                                  // model for the album
+   1 artist           Artist                    // artist associated with this album
+   2 title            String                    // commonly known title for this album
+   3 pub_data         Publication-Data          // metadata about album publication
+   4 tracks           ArrayOf(Track) [1..*]     // individual track descriptions
+   5 cover_art        Cover-Art                 // cover art image for this album
+
+Artist = Record                                 // interesting information about the performers
+   1 artist_name      String                    // who is this person
+   2 instruments      ArrayOf(Instrument) [1..*]// and what do they play
+
+Instrument = Enumerated                         // collection of instruments (non-exhaustive)
+   1 vocals
+   2 guitar
+   3 bass
+   4 drums
+   5 keyboards
+   6 percussion
+   7 brass
+   8 woodwinds
+   9 harmonica
+
+Publication-Data = Record                       // who and when of publication
+   1 label            String                    // name of record label
+   2 rel_date         String /date              // and when did they let this drop
+
+Track = Record                                  // information about the individual audio tracks
+   1 t_number         Number                    // track sequence number
+   2 title            String                    // track title
+   3 length           String /time              // length of track
+   4 featured         ArrayOf(Artist)           // important guest performers
+   5 audio            Audio                     // the all important content
+
+Audio = Record                                  // information about what gets played
+   1 a_format         Audio-Format              // what type of audio file?
+   2 a_content        Binary                    // the audio data in the identified format
+
+Audio-Format = Enumerated                       // can only be one, but can extend list
+   1 MP3
+   2 OGG
+   3 FLAC
+
+Cover-Art = Record                              // pretty picture for the album
+   1 i_format         Image-Format              // what type of image file?
+   2 i_content        Binary                    // the image data in the identified format
+
+Image-Format = Enumerated                       // can only be one, but can extend list
+   1 PNG
+   2 JPG
+```
+
+### E.1.3 Music Library Tables
+
+## Schema
+| . | . |
+| ---: | :--- |
+| **title:** | Music Library |
+| **package:** | http://fake-audio.org/music-lib |
+| **version:** | 1.0 |
+| **description:** | This information model defines a library of audio tracks, organized by album |
+| **license:** | CC0-1.0 |
+| **exports:** | Library, Album, Track |
+
+
+| Type Name | Type Definition | Description |
+| :--- | :--- | :--- |
+| **Library** | MapOf(Barcode, Album){1..*} |  |
+
+
+| Type Name | Type Definition | Description |
+| :--- | :--- | :--- |
+| **Barcode** | String{pattern="\d{12}"} | A UPC-A barcode is 12 digits |
+
+**_Type: Album (Record)_**
+
+| ID | Name | Type | # | Description |
+| ---: | :--- | :--- | ---: | :--- |
+| 1 | **artist** | Artist | 1 | artist associated with this album |
+| 2 | **title** | String | 1 | commonly known title for this album |
+| 3 | **pub_data** | Publication-Data | 1 | metadata about album publication |
+| 4 | **tracks** | ArrayOf(Track) | 1..* | individual track descriptions |
+| 5 | **cover_art** | Cover-Art | 1 | cover art image for this album |
+
+**_Type: Artist (Record)_**
+
+| ID | Name | Type | # | Description |
+| ---: | :--- | :--- | ---: | :--- |
+| 1 | **artist_name** | String | 1 | who is this person |
+| 2 | **instruments** | ArrayOf(Instrument) | 1..* | and what do they play |
+
+**_Type: Instrument (Enumerated)_**
+
+| ID | Name | Description |
+| ---: | :--- | :--- |
+| 1 | **vocals** |  |
+| 2 | **guitar** |  |
+| 3 | **bass** |  |
+| 4 | **drums** |  |
+| 5 | **keyboards** |  |
+| 6 | **percussion** |  |
+| 7 | **brass** |  |
+| 8 | **woodwinds** |  |
+| 9 | **harmonica** |  |
+
+**_Type: Publication-Data (Record)_**
+
+| ID | Name | Type | # | Description |
+| ---: | :--- | :--- | ---: | :--- |
+| 1 | **label** | String | 1 | name of record label |
+| 2 | **rel_date** | String /date | 1 | and when did they let this drop |
+
+**_Type: Track (Record)_**
+
+| ID | Name | Type | # | Description |
+| ---: | :--- | :--- | ---: | :--- |
+| 1 | **t_number** | Number | 1 | track sequence number |
+| 2 | **title** | String | 1 | track title |
+| 3 | **length** | String /time | 1 | length of track |
+| 4 | **featured** | ArrayOf(Artist) | 1 | important guest performers |
+| 5 | **audio** | Audio | 1 | the all important content |
+
+**_Type: Audio (Record)_**
+
+| ID | Name | Type | # | Description |
+| ---: | :--- | :--- | ---: | :--- |
+| 1 | **a_format** | Audio-Format | 1 | what type of audio file? |
+| 2 | **a_content** | Binary | 1 | the audio data in the identified format |
+
+**_Type: Audio-Format (Enumerated)_**
+
+| ID | Name | Description |
+| ---: | :--- | :--- |
+| 1 | **MP3** |  |
+| 2 | **OGG** |  |
+| 3 | **FLAC** |  |
+
+**_Type: Cover-Art (Record)_**
+
+| ID | Name | Type | # | Description |
+| ---: | :--- | :--- | ---: | :--- |
+| 1 | **i_format** | Image-Format | 1 | what type of image file? |
+| 2 | **i_content** | Binary | 1 | the image data in the identified format |
+
+**_Type: Image-Format (Enumerated)_**
+
+| ID | Name | Description |
+| ---: | :--- | :--- |
+| 1 | **PNG** |  |
+| 2 | **JPG** |  |
+
+
+### E.1.1 Music Library ERD
+
+![Music Library ERD](images/music-database.jadn.puml.png)
 
 ------
 
-# Appendix E. Notices
+# Appendix F. Notices
 
 Copyright &copy; OASIS Open 2021. All Rights Reserved.
 
