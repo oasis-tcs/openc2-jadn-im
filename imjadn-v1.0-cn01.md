@@ -279,7 +279,7 @@ and an IM:
 
 > "An information model is a representation of concepts,
 > relationships, constraints, rules, and operations to specify
-> data semantics for a chosen domain of discourse.
+> data semantics for a chosen domain of discourse."
 
 [[RFC3444](#rfc3444)] contrasts IMs with data models (DMs):
 
@@ -313,7 +313,7 @@ The following key principles apply to IMs:
 
 ## 2.2 Benefits of Information Models
 
-A key point in all of the IM definitions and descriptions in the
+A key point in all the IM definitions and descriptions in the
 previous section is the ability for the model to represent
 information with a focus on its _meaning_, and without concern
 for how that information will be represented. Focusing on meaning
@@ -585,10 +585,10 @@ interpretation of this is summarized in the Table 3-1.
 
 
 ###### Table 3-1 -- Multiplicity Types
-|            |                  **Ordered**                 |             **Unordered**             |
-|:----------:|:----------------------------------------:|:---------------------------------:|
+|                |                  **Ordered**                  |             **Unordered**              |
+|:--------------:|:---------------------------------------------:|:--------------------------------------:|
 |   **Unique**   | Ordered Set, Record<br>JADN: ArrayOf+_unique_ | Set, Map<br>JADN: ArrayOf+_set_, MapOf |
-| **Non-Unique** |       Sequence, List<br>JADN: ArrayOf       |    Bag<br>JADN: ArrayOf+*unordered*    |
+| **Non-Unique** |        Sequence, List<br>JADN: ArrayOf        |    Bag<br>JADN: ArrayOf+*unordered*    |
 
 JADN accepts the UML philosophy that schemas are classifiers that
 take a unit of data and determine whether it is an instance of a
@@ -609,14 +609,14 @@ definition. The five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
 that type.
- 1. The **BaseType** of the type, which is one of either the
+ 2. The **BaseType** of the type, which is one of either the
 five "Primitive" (or, alternatively, "scalar") types or
 the seven "Compound" types, as shown in Figure 3-1.
- 1. Zero or more of the available JADN **TypeOptions** that
+ 3. Zero or more of the available JADN **TypeOptions** that
     refine the base types to fit particular needs.
- 2. An optional **TypeDescription** string that provides
+ 4. An optional **TypeDescription** string that provides
     additional information about the type.
- 3. For any of the Compound types, a set of **Item** or **Field**
+ 5. For any of the Compound types, a set of **Item** or **Field**
     options that define the items that comprise the compound
     type.
 
@@ -664,24 +664,24 @@ using a regular expression conforming to
 
 The following is the complete set of type options:
 
-|   **Option**  |   **Type**  | **Description** |
-|:---------:|:-------:|:-----------|
-|     id    | Boolean | Items and Fields are denoted by FieldID rather than FieldName |
-|   vtype   |  String | Value type for ArrayOf and MapOf  |
-|   ktype   |  String | Key type for MapOf |
-|    enum   |  String | Extension: Enumerated type derived from a specified type |
-|  pointer  |  String | Extension: Enumerated type pointers derived from a specified type |
-|   format  |  String | Semantic validation keyword |
-|  pattern  |  String | Regular expression used to validate a String type |
-|    minf   |  Number | Minimum real number value |
-|    maxf   |  Number | Maximum real number value |
-|    minv   | Integer | Minimum integer value, octet or character count, or element count |
-|    maxv   | Integer | Maximum integer value, octet or character count, or element count |
-|   unique  | Boolean | ArrayOf instance must not contain duplicate values |
-|    set    | Boolean | ArrayOf instance is unordered and unique |
-| unordered | Boolean | ArrayOf instance is unordered |
-|   extend  | Boolean | Type is extensible; new Items or Fields may be appended |
-|  default  |  String | Default value |
+| **Option** | **Type** | **Description**                                                   |
+|:----------:|:--------:|:------------------------------------------------------------------|
+|     id     | Boolean  | Items and Fields are denoted by FieldID rather than FieldName     |
+|   vtype    |  String  | Value type for ArrayOf and MapOf                                  |
+|   ktype    |  String  | Key type for MapOf                                                |
+|    enum    |  String  | Extension: Enumerated type derived from a specified type          |
+|  pointer   |  String  | Extension: Enumerated type pointers derived from a specified type |
+|   format   |  String  | Semantic validation keyword                                       |
+|  pattern   |  String  | Regular expression used to validate a String type                 |
+|    minf    |  Number  | Minimum real number value                                         |
+|    maxf    |  Number  | Maximum real number value                                         |
+|    minv    | Integer  | Minimum integer value, octet or character count, or element count |
+|    maxv    | Integer  | Maximum integer value, octet or character count, or element count |
+|   unique   | Boolean  | ArrayOf instance must not contain duplicate values                |
+|    set     | Boolean  | ArrayOf instance is unordered and unique                          |
+| unordered  | Boolean  | ArrayOf instance is unordered                                     |
+|   extend   | Boolean  | Type is extensible; new Items or Fields may be appended           |
+|  default   |  String  | Default value                                                     |
 
 Detailed explanations of each type option can be found in
 Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
@@ -748,20 +748,18 @@ Compound types containing Items or Fields support field options
 in addition to the type options describe in [Section
 3.1.2](#312-typeoptions). JADN defines six field options.
 
-| **Option** |    **Type**    | **Description** | **JADN Specification Section** |
-|:------:|:----------:|:-----------|:-------:|
-|  minc  |   Integer  | Minimum cardinality, default = 1, 0 = optional | 3.2.2.1 |
-|  maxc  |   Integer  | Maximum cardinality, default = 1, 0 = default max, >1 = array | 3.2.2.1 |
-|  tagid | Enumerated | Field containing an explicit tag for this Choice type | 3.2.2.2 |
-|   dir  |   Boolean  | Pointer enumeration treats field as a group of items | 3.3.5 |
-|   key  |   Boolean  | Field is a primary key for this type | 3.3.6 |
-|  link  |   Boolean  | Field is a foreign key reference to a type instance | 3.3.6 |
+| **Option** |  **Type**  | **Description**                                               | **JADN Specification Section** |
+|:----------:|:----------:|:--------------------------------------------------------------|:------------------------------:|
+|    minc    |  Integer   | Minimum cardinality, default = 1, 0 = optional                |            3.2.2.1             |
+|    maxc    |  Integer   | Maximum cardinality, default = 1, 0 = default max, >1 = array |            3.2.2.1             |
+|   tagid    | Enumerated | Field containing an explicit tag for this Choice type         |            3.2.2.2             |
+|    dir     |  Boolean   | Pointer enumeration treats field as a group of items          |             3.3.5              |
+|    key     |  Boolean   | Field is a primary key for this type                          |             3.3.6              |
+|    link    |  Boolean   | Field is a foreign key reference to a type instance           |             3.3.6              |
 
 Type options can also apply to fields, with the constraint that the
 type option must be applicable to the field's type, as described
-in the base type examples in [Section
-3.1.6](#316-basic-examples).
-
+in the base type examples in [Section 3.1.6](#316-base-type-examples).
 
 ### 3.1.5 JADN Representations
 
@@ -906,7 +904,7 @@ more readable and easier to edit:
 
 ###### Figure 3-7 -- Simple University Example JADN (JIDL format)
 
-``` json
+```
  package:  "http://example.com/uni"
  exports:  ["University"]
 
@@ -1349,17 +1347,19 @@ defined as follows:
 
 
 ```json
-["Employees","MapOf", ["EID","Employee"], "Maps employee identifier numbers to employee information", []]
+[
+  ["Employees","MapOf", ["EID","Employee"], "Maps employee identifier numbers to employee information", []],
 
-["EID", "Integer", ["{0","}1000"], "will need new system when exceed 1,000 employees", []]
+  ["EID", "Integer", ["{0","}1000"], "will need new system when exceed 1,000 employees", []],
 
-["Employee", "Record","", "Employee Information",[
-  [1, "name", "String", "", "Usually First M. Last"]
-  [2, "start_date", "Date", "", "always record start date"]
-  [3, "end_date", "Date", ["[0"], "if end_date is present = former employee"]
-]]
+  ["Employee", "Record","", "Employee Information",[
+    [1, "name", "String", "", "Usually First M. Last"],
+    [2, "start_date", "Date", "", "always record start date"],
+    [3, "end_date", "Date", ["[0"], "if end_date is present = former employee"]
+  ]],
 
-["Date", "String", ["/date"], "", []]
+  ["Date", "String", ["/date"], "", []] 
+]
 ```
 
 The corresponding JIDL representation would be:
@@ -1720,18 +1720,18 @@ The following individuals have participated in the creation of this document and
 
 **tc-full-name TC Members:**
 
-| First Name | Last Name | Company |
-| :--- | :--- | :--- |
-Philippe | Alcon | Marvelous Networks
-Alex | Amir | Viacat
-Kris | Anders | Trend Mission
-Darren | Anysteel | Macro Networks
+| First Name | Last Name | Company            |
+|:-----------|:----------|:-------------------|
+| Philippe   | Alcon     | Marvelous Networks |
+| Alex       | Amir      | Viacat             |
+| Kris       | Anders    | Trend Mission      |
+| Darren     | Anysteel  | Macro Networks     |
 
 -------
 
 # Appendix C. Revision History
-| Revision | Date | Editor | Changes Made |
-| :--- | :--- | :--- | :--- |
+| Revision           | Date       | Editor      | Changes Made          |
+|:-------------------|:-----------|:------------|:----------------------|
 | filename-v1.0-wd01 | yyyy-mm-dd | Editor Name | Initial working draft |
 
 -------
@@ -1756,14 +1756,14 @@ the "unlimited" value (*) of UnlimitedNatural.
 
 Table D-1 maps basic data types between UML and JADN.
 
-|        UML       |      JADN      |
+|       UML        |      JADN      |
 |:----------------:|:--------------:|
-|      Integer     |     Integer    |
-|      Boolean     |     Boolean    |
+|     Integer      |    Integer     |
+|     Boolean      |    Boolean     |
 |      String      |     String     |
 | UnlimitedNatural | Integer {0..*} |
-|      Real        |     Number     |
-|        _xxx_     |     Binary     |
+|       Real       |     Number     |
+|      _xxx_       |     Binary     |
 
 ## D.2 Why JADN and not RDF?
 
@@ -1812,7 +1812,7 @@ information:
     analog domain, but entropy is meaningful even in purely
     digital communication.)
 
- 3. Information defines *loss*. Lossless transformations across
+ 2. Information defines *loss*. Lossless transformations across
     data formats preserve information; after a round trip
     significant data is unchanged and insignificant data can be
     ignored. A lossy round trip is lossy not because it alters
@@ -2091,10 +2091,10 @@ modeling data that can be structured as tables.
 
 The datatype names commonly applied to collection attributes are:
 
-| **collection attributes** |     **datatype**    |
+| **collection attributes** |    **datatype**     |
 |:-------------------------:|:-------------------:|
 |    ordered, non-unique    |   sequence / list   |
-|     unordered, unique     |       set, map      |
+|     unordered, unique     |      set, map       |
 |      ordered, unique      | ordered set, record |
 |   unordered, non-unique   |         bag         |
 
@@ -2156,13 +2156,13 @@ These characteristics result in design guidelines for
 constructing an information graph from an ontology graph:
 
  1. Fungible nodes may have more than one parent.
- 1. Each individual node should have exactly one parent. A node
+ 2. Each individual node should have exactly one parent. A node
     with no parent has nowhere for its instances to be
     serialized, so any references will be dead links. An
     individual node with more than one parent needs a mechanism
     to ensure that ids are unique and a mechanism to dereference
     an id to the correct parent.
- 2. The container associations in an information model must form
+ 3. The container associations in an information model must form
     a set of directed acyclic graphs.  Any container cycles must
     be broken by converting a container association to a
     reference, which in turn may require converting an otherwise
@@ -2321,101 +2321,101 @@ Image-Format = Enumerated                       // can only be one, but can exte
 
 ### E.1.3 Music Library Tables
 
-| . | . |
-| ---: | :--- |
-| **title:** | Music Library |
-| **package:** | http://fake-audio.org/music-lib |
-| **version:** | 1.0 |
+|                . | .                                                                            |
+|-----------------:|:-----------------------------------------------------------------------------|
+|       **title:** | Music Library                                                                |
+|     **package:** | http://fake-audio.org/music-lib                                              |
+|     **version:** | 1.0                                                                          |
 | **description:** | This information model defines a library of audio tracks, organized by album |
-| **license:** | CC0-1.0 |
-| **exports:** | Library, Album, Track |
+|     **license:** | CC0-1.0                                                                      |
+|     **exports:** | Library, Album, Track                                                        |
 
 
-| Type Name | Type Definition | Description |
-| :--- | :--- | :--- |
-| **Library** | MapOf(Barcode, Album){1..*} |  |
+| Type Name   | Type Definition             | Description |
+|:------------|:----------------------------|:------------|
+| **Library** | MapOf(Barcode, Album){1..*} |             |
 
 
-| Type Name | Type Definition | Description |
-| :--- | :--- | :--- |
+| Type Name   | Type Definition          | Description                  |
+|:------------|:-------------------------|:-----------------------------|
 | **Barcode** | String{pattern="\d{12}"} | A UPC-A barcode is 12 digits |
 
 **_Type: Album (Record)_**
 
-| ID | Name | Type | # | Description |
-| ---: | :--- | :--- | ---: | :--- |
-| 1 | **artist** | Artist | 1 | artist associated with this album |
-| 2 | **title** | String | 1 | commonly known title for this album |
-| 3 | **pub_data** | Publication-Data | 1 | metadata about album publication |
-| 4 | **tracks** | ArrayOf(Track) | 1..* | individual track descriptions |
-| 5 | **cover_art** | Cover-Art | 1 | cover art image for this album |
+|  ID | Name          | Type             |    # | Description                         |
+|----:|:--------------|:-----------------|-----:|:------------------------------------|
+|   1 | **artist**    | Artist           |    1 | artist associated with this album   |
+|   2 | **title**     | String           |    1 | commonly known title for this album |
+|   3 | **pub_data**  | Publication-Data |    1 | metadata about album publication    |
+|   4 | **tracks**    | ArrayOf(Track)   | 1..* | individual track descriptions       |
+|   5 | **cover_art** | Cover-Art        |    1 | cover art image for this album      |
 
 **_Type: Artist (Record)_**
 
-| ID | Name | Type | # | Description |
-| ---: | :--- | :--- | ---: | :--- |
-| 1 | **artist_name** | String | 1 | who is this person |
-| 2 | **instruments** | ArrayOf(Instrument) | 1..* | and what do they play |
+|  ID | Name            | Type                |    # | Description           |
+|----:|:----------------|:--------------------|-----:|:----------------------|
+|   1 | **artist_name** | String              |    1 | who is this person    |
+|   2 | **instruments** | ArrayOf(Instrument) | 1..* | and what do they play |
 
 **_Type: Instrument (Enumerated)_**
 
-| ID | Name | Description |
-| ---: | :--- | :--- |
-| 1 | **vocals** |  |
-| 2 | **guitar** |  |
-| 3 | **bass** |  |
-| 4 | **drums** |  |
-| 5 | **keyboards** |  |
-| 6 | **percussion** |  |
-| 7 | **brass** |  |
-| 8 | **woodwinds** |  |
-| 9 | **harmonica** |  |
+|  ID | Name           | Description |
+|----:|:---------------|:------------|
+|   1 | **vocals**     |             |
+|   2 | **guitar**     |             |
+|   3 | **bass**       |             |
+|   4 | **drums**      |             |
+|   5 | **keyboards**  |             |
+|   6 | **percussion** |             |
+|   7 | **brass**      |             |
+|   8 | **woodwinds**  |             |
+|   9 | **harmonica**  |             |
 
 **_Type: Publication-Data (Record)_**
 
-| ID | Name | Type | # | Description |
-| ---: | :--- | :--- | ---: | :--- |
-| 1 | **label** | String | 1 | name of record label |
-| 2 | **rel_date** | String /date | 1 | and when did they let this drop |
+|  ID | Name         | Type         |   # | Description                     |
+|----:|:-------------|:-------------|----:|:--------------------------------|
+|   1 | **label**    | String       |   1 | name of record label            |
+|   2 | **rel_date** | String /date |   1 | and when did they let this drop |
 
 **_Type: Track (Record)_**
 
-| ID | Name | Type | # | Description |
-| ---: | :--- | :--- | ---: | :--- |
-| 1 | **t_number** | Number | 1 | track sequence number |
-| 2 | **title** | String | 1 | track title |
-| 3 | **length** | String /time | 1 | length of track |
-| 4 | **featured** | ArrayOf(Artist) | 1 | important guest performers |
-| 5 | **audio** | Audio | 1 | the all important content |
+|  ID | Name         | Type            |   # | Description                |
+|----:|:-------------|:----------------|----:|:---------------------------|
+|   1 | **t_number** | Number          |   1 | track sequence number      |
+|   2 | **title**    | String          |   1 | track title                |
+|   3 | **length**   | String /time    |   1 | length of track            |
+|   4 | **featured** | ArrayOf(Artist) |   1 | important guest performers |
+|   5 | **audio**    | Audio           |   1 | the all important content  |
 
 **_Type: Audio (Record)_**
 
-| ID | Name | Type | # | Description |
-| ---: | :--- | :--- | ---: | :--- |
-| 1 | **a_format** | Audio-Format | 1 | what type of audio file? |
-| 2 | **a_content** | Binary | 1 | the audio data in the identified format |
+|  ID | Name          | Type         |   # | Description                             |
+|----:|:--------------|:-------------|----:|:----------------------------------------|
+|   1 | **a_format**  | Audio-Format |   1 | what type of audio file?                |
+|   2 | **a_content** | Binary       |   1 | the audio data in the identified format |
 
 **_Type: Audio-Format (Enumerated)_**
 
-| ID | Name | Description |
-| ---: | :--- | :--- |
-| 1 | **MP3** |  |
-| 2 | **OGG** |  |
-| 3 | **FLAC** |  |
+|  ID | Name     | Description |
+|----:|:---------|:------------|
+|   1 | **MP3**  |             |
+|   2 | **OGG**  |             |
+|   3 | **FLAC** |             |
 
 **_Type: Cover-Art (Record)_**
 
-| ID | Name | Type | # | Description |
-| ---: | :--- | :--- | ---: | :--- |
-| 1 | **i_format** | Image-Format | 1 | what type of image file? |
-| 2 | **i_content** | Binary | 1 | the image data in the identified format |
+|  ID | Name          | Type         |   # | Description                             |
+|----:|:--------------|:-------------|----:|:----------------------------------------|
+|   1 | **i_format**  | Image-Format |   1 | what type of image file?                |
+|   2 | **i_content** | Binary       |   1 | the image data in the identified format |
 
 **_Type: Image-Format (Enumerated)_**
 
-| ID | Name | Description |
-| ---: | :--- | :--- |
-| 1 | **PNG** |  |
-| 2 | **JPG** |  |
+|  ID | Name    | Description |
+|----:|:--------|:------------|
+|   1 | **PNG** |             |
+|   2 | **JPG** |             |
 
 
 
@@ -2474,18 +2474,18 @@ FIGURE EXAMPLE:
 #### 1.3.2.1 Basic Table
 **Table 1-1. Table Label**
 
-| Item | Description |
-| :--- | :--- |
+| Item   | Description                |
+|:-------|:---------------------------|
 | Item 1 | Something<br>(second line) |
-| Item 2 | Something |
+| Item 2 | Something                  |
 | Item 3 | Something<br>(second line) |
-| Item 4 | text |
+| Item 4 | text                       |
 
 #### 1.3.2.2 Table with Three Columns and Some Bold Text
 text.
 
-| Title 1 | Title 2 | title 3 |
-| :--- | :--- | :--- |
+| Title 1   | Title 2   | title 3   |
+|:----------|:----------|:----------|
 | something | something | something else that is a long string of text that **might** need to wrap around inside the table box and will just continue until the column divider is reached |
 | something | something | something |
 
@@ -2493,8 +2493,8 @@ text.
 
 ###### Table 1.6. See reference label construction
 
-| Name | Description |
-| :--- | :--- |
+| Name        | Description                                             |
+|:------------|:--------------------------------------------------------|
 | **content** | Message body as specified by content_type and msg_type. |
 
 Here is a reference to the table caption:
