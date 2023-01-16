@@ -143,7 +143,6 @@ For complete copyright information please see the full Notices section in an App
 - [Figure 3-9 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-9----simple-university-example-erd-source-code-graphviz)
 - [Figure 3-10 -- Music Library Example ERD](#figure-3-10----music-library-example-erd)
 
-
 -------
 
 <!-- Insert a "line rule" (three or more hyphens alone on a new line, following a blank line) before each major section. This is used to generate a page break in the PDF format. -->
@@ -181,7 +180,6 @@ applied to a broad variety of situations, such as:
    SBOM formats
  - Formal definition of structured information exchanges, such as
    are defined using the NIEM approach.
-
 
 This CN discusses:
 
@@ -309,8 +307,6 @@ The following key principles apply to IMs:
    serializations, then its information content is no greater
    than the smallest of those serializations.
 
-
-
 ## 2.2 Benefits of Information Models
 
 A key point in all the IM definitions and descriptions in the
@@ -369,7 +365,6 @@ The notion of "express[ing] exactly the same information in ways
 that are algorithmically translatable" is a fundamental purpose
 of information modeling.
 
-
 ## 2.3 Information Modeling Languages
 
 [[YTLee](#ytlee)] describes an IM language as follows:
@@ -394,10 +389,6 @@ JADN information modeling language is intended to address that
 gap. Abstract Syntax Notation One (ASN.1) is another example of
 an abstract schema language.
 
-
-
-
-
 > JADN and other IM languages
 
  - JADN
@@ -421,8 +412,6 @@ format.
  - JADN schemas employ a simple, regular structure (every type
    definition has the same five fields)
 
-
-
 > ASN.1 description from ITU-T Introduction, excerpted from
 > https://www.itu.int/en/ITU-T/asn1/Pages/introduction.aspx
 
@@ -440,10 +429,10 @@ Encoding Rules (BER) and similar, which are closely associated
 with ASN.1, as well as less closely tied standards such as XML
 and JSON.
 
-
 > What languages aren't really IM languages
 
-Other languages have been used for information modeling, although that is not their primary purposes.  Some examples are
+Other languages have been used for information modeling, although
+that is not their primary purposes.  Some examples are
 
  - UML
  - IDEF1X
@@ -488,7 +477,8 @@ the associated data.
 
 ![Parsing and Serializing With An IM](images/parse-serialize.drawio.png)
 
-The internal representation, illustrated in Figure 2-1 as a tree, is guided by rules associated with applying the IM:
+The internal representation, illustrated in Figure 2-1 as a tree,
+is guided by rules associated with applying the IM:
 
  - the internal representation conforms to the IM
  - each node in the internal representation has an abstract core
@@ -523,8 +513,6 @@ and values for a Boolean node, e.g. integer 0 or 37 or string
 true. A JSON representation can use  a Boolean type with values
 'false' and 'true', but for efficient serialization might also
 use the JSON number type with values 0 and 1.
-
-
 
 -------
 
@@ -564,25 +552,88 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 The [[JADN Specification](#jadn-v10)] defines twelve base types:
 
+**Primitive:**
  - Binary
  - Boolean
  - Integer
  - Number
  - String
- - Enmerated
- - Choice
+
+**Compound:**
  - Array
  - ArrayOf
  - Map
  - MapOf
  - Record
 
+**Selection / Union:**
+ - Enumerated
+ - Choice
+
+Each of the compound types is a *container*, a named group of related items
+such as the latitude and longitude of a geographic coordinate, or the set of
+properties of an object. In addition to its individual items, every container
+has *multiplicity* attributes, including limits on the number of items,
+whether the items have a sequential ordering, and whether duplicate items
+are allowed.
+
+The JADN compound type and its options are chosen for an IM based on the
+information characteristics to be modeled:
+
+* Array and ArrayOf contain a group of values.
+* Map, MapOf and Record contain a group of keys and corresponding values (a mapping)
+* All items in ArrayOf and MapOf groups have the same value (and key) type
+* Each item in Array, Map, and Record groups has an individual value (and key) type
+
+and the decision tree for which compound type to use is:
+
+| Value / Mapping | Same / Individual | JADN Type                |
+|:---------------:|:-----------------:|--------------------------|
+|      Value      |       Same        | ArrayOf(ValueType)       |
+|      Value      |    Individual     | Array                    |
+|    Key:Value    |       Same        | MapOf(KeyType, ValueType |
+|    Key:Value    |    Individual     | Map or Record            |
+
+For the last information type - containers of individually-defined key:value pairs -
+JADN provides two types: Map and Record. The difference is that Record keys have a
+sequential ordering while Map keys do not. Map instances are always serialized as
+key:value pairs, while Record instances may be serialized as either key:value pairs
+or table rows with values in column position, depending on data format.
+
+For example Location Record values with name, state, latitude and longitude are
+serialized using *verbose* JSON data format as:
+```json
+[
+  {
+    "name": "St. Louis",
+    "state": "Missouri",
+    "latitude": "38.627003",
+    "longitude": "-90.199402"
+  },
+  {
+    "name": "Seattle",
+    "state": "Washington",
+    "latitude": "47.60621",
+    "longitude": "-122.33207"
+  }
+]
+```
+The same Record values are serialized using *compact* JSON data format as:
+```json
+[
+  ["St. Louis", "Missouri", "38.627003", "-90.199402"],
+  ["Seattle", "Washington", "47.60621", "-122.33207"]
+]
+```
+If Location is a Map type, it would always be serialized as key:value pairs
+regardless of data format.
+
+**
 
 Another significant UML concept is that JADN distinguishes
 among all four multiplicity types ([UML](#uml), Table 7.1), while
-class-based models typically support only sets.  JADN's
+logical models typically support only sets.  JADN's
 interpretation of this is summarized in the Table 3-1.
-
 
 ###### Table 3-1 -- Multiplicity Types
 |                |                  **Ordered**                  |             **Unordered**              |
@@ -599,7 +650,6 @@ Beyond these UML concepts, JADN recognizes that information
 models are directed graphs with a small predefined set of base
 datatypes and only two kinds of relationship: "contain" and
 "reference".
-
 
 ### 3.1.1 Type Definitions
 
@@ -622,8 +672,6 @@ the seven "Compound" types, as shown in Figure 3-1.
 
 ###### Figure 3-1 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
-
-
 
 A firm requirement of JADN is that a TypeName must not be a JADN
 predefined type. There are also conventions intended to improve
@@ -689,24 +737,24 @@ Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
 The following table summarizes the applicability of type options
 to JADN base types.
 
-|  | Binary | Boolean | Integer | Number | String | Array | ArrayOf | Map | MapOf | Record | Choice | Enumerated |
-|---:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| id |  |  |  |  |  |  |  | X |  |  | X | X |
-| vtype |  |  |  |  |  |  | X |  | X |  |  |  |
-| ktype |  |  |  |  |  |  |  |  | X |  |  |  |
-| enum |  |  |  |  |  |  |  |  |  |  |  | X |
-| pointer |  |  |  |  |  |  |  |  |  |  |  | X |
-| format | X |  | X | X | X | X |  |  |  |  |  |  |
-| pattern |  |  |  |  | X |  |  |  |  |  |  |  |
-| minf |  |  |  | X |  |  |  |  |  |  |  |  |
-| maxf |  |  |  | X |  |  |  |  |  |  |  |  |
-| minv | X |  | X |  | X | X | X | X | X | X |  |  |
-| maxv | X |  | X |  | X | X | X | X | X | X |  |  |
-| unique |  |  |  |  |  |  | X |  |  |  |  |  |
-| set |  |  |  |  |  |  | X |  |  |  |  |  |
-| unordered |  |  |  |  |  |  | X |  |  |  |  |  |
-| extend |  |  |  |  |  | X |  | X |  | X | X | X |
-| default |  |  |  |  |  |  |  |  |  |  |  |  |
+|           | Binary | Boolean | Integer | Number | String | Array | ArrayOf | Map | MapOf | Record | Choice | Enumerated |
+|----------:|:------:|:-------:|:-------:|:------:|:------:|:-----:|:-------:|:---:|:-----:|:------:|:------:|:----------:|
+|        id |        |         |         |        |        |       |         |  X  |       |        |   X    |     X      |
+|     vtype |        |         |         |        |        |       |    X    |     |   X   |        |        |            |
+|     ktype |        |         |         |        |        |       |         |     |   X   |        |        |            |
+|      enum |        |         |         |        |        |       |         |     |       |        |        |     X      |
+|   pointer |        |         |         |        |        |       |         |     |       |        |        |     X      |
+|    format |   X    |         |    X    |   X    |   X    |   X   |         |     |       |        |        |            |
+|   pattern |        |         |         |        |   X    |       |         |     |       |        |        |            |
+|      minf |        |         |         |   X    |        |       |         |     |       |        |        |            |
+|      maxf |        |         |         |   X    |        |       |         |     |       |        |        |            |
+|      minv |   X    |         |    X    |        |   X    |   X   |    X    |  X  |   X   |   X    |        |            |
+|      maxv |   X    |         |    X    |        |   X    |   X   |    X    |  X  |   X   |   X    |        |            |
+|    unique |        |         |         |        |        |       |    X    |     |       |        |        |            |
+|       set |        |         |         |        |        |       |    X    |     |       |        |        |            |
+| unordered |        |         |         |        |        |       |    X    |     |       |        |        |            |
+|    extend |        |         |         |        |        |   X   |         |  X  |       |   X    |   X    |     X      |
+|   default |        |         |         |        |        |       |         |     |       |        |        |            |
 
 ### 3.1.3 Item Or Field Definitions
 
