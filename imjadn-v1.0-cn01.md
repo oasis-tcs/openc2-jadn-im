@@ -337,14 +337,6 @@ and describes a "quality" IM as being:
  - precise, and
  - unambiguous.
 
-An IM classifies the validity of serialized data with zero false
-positives and zero false negatives. That is, an information model
-is the authoritative definition of essential content, and any
-serialized data is unambiguously one of: a) consistent with, b)
-inconsistent with, or c) insignificant with respect to, the model.
-
-> discussion based on RFC 8477
-
 In [DThaler's](#dthaler) paper on _IoT Bridge Taxonomy_, which
 addresses the challenges created when "many organizations develop
 and implement different schemas for the same kind of things", the
