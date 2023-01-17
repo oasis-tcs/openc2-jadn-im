@@ -424,10 +424,10 @@ that is not their primary purposes.  Some examples are
 
 ## 2.4 Information Modeling Tools
 
-The value of an IM language multiplies when automated tooling
-support creation, maintenance, and use of models created in that
-language. The need for tools is discussed in [[RFC
-8477](#rfc8477)], citing particularly the need for code
+The value of an IM language multiplies when automated tooling is
+available to support creation, maintenance, and use of models
+created in that language. The need for tools is discussed in
+[[RFC 8477](#rfc8477)], citing particularly the need for code
 generation and debugging tools. A tool set to support an IM
 language should provide
 
