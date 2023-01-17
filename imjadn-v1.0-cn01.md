@@ -4,9 +4,9 @@
 
 # Information Modeling with JADN Version 1.0
 
-## Committee Note 01
+## Committee Note Draft 01
 
-## xx Mmmmm 2022
+## 18 January 2023
 
 &nbsp;
 
@@ -87,7 +87,6 @@ For complete copyright information please see the full Notices section in an App
   - [2.5 Applying an Information Model](#25-applying-an-information-model)
 - [3 Creating Information Models with JADN](#3-creating-information-models-with-jadn)
   - [3.1 JADN Overview](#31-jadn-overview)
-          - [Table 3-1 -- Multiplicity Types](#table-3-1----multiplicity-types)
     - [3.1.1 Type Definitions](#311-type-definitions)
     - [3.1.2 TypeOptions](#312-typeoptions)
     - [3.1.3 Item Or Field Definitions](#313-item-or-field-definitions)
@@ -337,14 +336,6 @@ and describes a "quality" IM as being:
  - precise, and
  - unambiguous.
 
-An IM classifies the validity of serialized data with zero false
-positives and zero false negatives. That is, an information model
-is the authoritative definition of essential content, and any
-serialized data is unambiguously one of: a) consistent with, b)
-inconsistent with, or c) insignificant with respect to, the model.
-
-> discussion based on RFC 8477
-
 In [DThaler's](#dthaler) paper on _IoT Bridge Taxonomy_, which
 addresses the challenges created when "many organizations develop
 and implement different schemas for the same kind of things", the
@@ -389,13 +380,6 @@ JADN information modeling language is intended to address that
 gap. Abstract Syntax Notation One (ASN.1) is another example of
 an abstract schema language.
 
-> JADN and other IM languages
-
- - JADN
- - ASN.1
-
-> Piecing together a description of JADN
-
 JADN is a syntax-independent schema language, based on UML
 datatypes. JADN is designed to work with common Internet data
 formats (JSON, XML, CBOR), providing a  schema to support them.
@@ -439,13 +423,10 @@ that is not their primary purposes.  Some examples are
 
 ## 2.4 Information Modeling Tools
 
-> benefits of combining IMs with automated tooling for
-> validation, translation
-
-The value of an IM language multiplies when automated tooling
-support creation, maintenance, and use of models created in that
-language. The need for tools is discussed in [[RFC
-8477](#rfc8477)], citing particularly the need for code
+The value of an IM language multiplies when automated tooling is
+available to support creation, maintenance, and use of models
+created in that language. The need for tools is discussed in
+[[RFC 8477](#rfc8477)], citing particularly the need for code
 generation and debugging tools. A tool set to support an IM
 language should provide
 
@@ -510,7 +491,7 @@ values may evaluate as "true":
 An abstract representation of an IM does not capture data types
 and values for a Boolean node, e.g. integer 0 or 37 or string
 "yes". It has only the characteristics of the node type: false or
-true. A JSON representation can use  a Boolean type with values
+true. A JSON representation can use a Boolean type with values
 'false' and 'true', but for efficient serialization might also
 use the JSON number type with values 0 and 1.
 
@@ -2483,162 +2464,4 @@ The limited permissions granted above are perpetual and will not be revoked by O
 This document and the information contained herein is provided on an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
 
 The name "OASIS" is a trademark of [OASIS](https://www.oasis-open.org/), the owner and developer of this specification, and should be used only to refer to the organization and its official outputs. OASIS welcomes reference to, and implementation and use of, specifications, while reserving the right to enforce its marks against misleading uses. Please see https://www.oasis-open.org/policies-guidelines/trademark for above guidance.
-
-
-----------------
-
-
-
-
-
-
-## 1.3 Some markdown usage examples
-
-**Text.**
-
-Note that text paragraphs in markdown should be separated by a blank line between them -
-
-Otherwise the separate paragraphs will be joined together when the HTML is generated.
-Even if the text appears to be separate lines in the markdown source.
-
-To avoid having the usual vertical space between paragraphs,
-append two or more space characters to the end of the lines
-which will generate an HTML break tag instead of a new paragraph tag
-(as demonstrated here).
-
-### 1.3.1 Figures and Captions
-
-FIGURE EXAMPLE:
-<note caption is best ABOVE figure, to allow a link to it to display image - same for table captions>
-
-###### Figure 1 -- Title of Figure
-![image-label should be meaningful](images/image_0.png) (this image is missing)
-
-###### Figure 2 -- OpenC2 Message Exchange
-![message exchange](images/image_1.png)
-
-
-### 1.3.2 Tables
-
-#### 1.3.2.1 Basic Table
-**Table 1-1. Table Label**
-
-| Item   | Description                |
-|:-------|:---------------------------|
-| Item 1 | Something<br>(second line) |
-| Item 2 | Something                  |
-| Item 3 | Something<br>(second line) |
-| Item 4 | text                       |
-
-#### 1.3.2.2 Table with Three Columns and Some Bold Text
-text.
-
-| Title 1   | Title 2   | title 3   |
-|:----------|:----------|:----------|
-| something | something | something else that is a long string of text that **might** need to wrap around inside the table box and will just continue until the column divider is reached |
-| something | something | something |
-
-#### 1.3.2.3 Table with a caption which can be referenced
-
-###### Table 1.6. See reference label construction
-
-| Name        | Description                                             |
-|:------------|:--------------------------------------------------------|
-| **content** | Message body as specified by content_type and msg_type. |
-
-Here is a reference to the table caption:
-Please see [Table 1.6.or other meaningful label](#table-1.6.see-reference-label-construction)
-
-
-### 1.3.3 Lists
-
-Bulleted list:
-* bullet item 1.
-* **Bold** bullet item 2.
-* bullet item 3.
-* bullet item 4.
-
-Indented or multi-level bullet list - add two spaces per level before bullet character (* or -):
-* main bullet type
-  * Example second bullet
-    * See third level
-      * fourth level
-
-Numbered list:
-1. item 1
-2. item 2
-3. item 3
-
-### 1.3.4 Reference Label Construction
-
-REFERENCES and ANCHORS
-- in markdown source, format the Reference tags as level 6 headings like: `###### [OpenC2-HTTPS-v1.0]`
-###### [OpenC2-HTTPS-v1.0]
-_Specification for Transfer of OpenC2 Messages via HTTPS Version 1.0_. Edited by...
-
-- reference text has to be on a separate line below the tag
-
-- format cross-references (citations of the references) like: `see [[OpenC2-HTTPS-v1.0](#openc2-https-v10)]`
-"see [[OpenC2-HTTPS-v1.0](#openc2-https-v10)]"
-(note the outer square brackets in markdown will appear in the visible HTML text)
-
-- The text in the Reference tag (following ###### ) will become an HTML anchor using the following conversion rules:
--- punctuation marks will be dropped (including "[" )
--- leading white spaces will be dropped
--- upper case will be converted to lower
--- spaces between letters will be converted to a single hyphen
-
-- The same HTML anchor construction rules apply to cross-references and to section headings.
--- Thus, a section heading like "## 1.2 References"
--- becomes an anchor in HTML like `<a href="#12-references">`
--- referenced in the markdown like: see [Section 1.2](#12-references)
--- (in markdown: `"see [Section 1.2](#12-references"`)
--- similar HTML anchors are also used in constructing the TOC
-
-### 1.3.5 Code Blocks
-
-Text to appear as an indented code block with grey background and monospace font - use three back-ticks before and after the code block).
-
-Note the actual backticks will not appear in the HTML version. If it's necessary to display visible backticks, place a back-slash before them like: \``` .
-
-```
-{
-    "target": {
-        "x_kmip_2.0": {
-            {"kmip_type": "json"},
-            {"operation": "RekeyKeyPair"},
-            {"name": "publicWebKey11DEC2017"}
-        }
-    }
-}
-```
-
-Text to be highlighted as code can also be surrounded by a single "backtick" character:
-`code text`
-
-## 1.4 Page Breaks
-Add horizontal rule lines where page breaks are desired in the PDF - before each major section
-- insert the line rules in markdown by inserting 3 or more hyphens on a line by themselves:  ---
-- place these before each main section in markdown (usually "#" - which generates the HTML `<h1>` tag)
-
--------
-
-# 2 Section Heading
-text.
-
-## 2.1 Level 2 Heading
-text.
-
-### 2.1.1 Level 3 Heading
-text.
-
-#### 2.1.1.1 Level 4 Heading
-text.
-
-##### 2.1.1.1.1 Level 5 Heading
-This is the deepest level, because six # gets transformed into a Reference tag.
-
-
-## 2.2 Next Heading
-text.
 
