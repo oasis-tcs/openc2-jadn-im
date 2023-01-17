@@ -492,7 +492,7 @@ values may evaluate as "true":
 An abstract representation of an IM does not capture data types
 and values for a Boolean node, e.g. integer 0 or 37 or string
 "yes". It has only the characteristics of the node type: false or
-true. A JSON representation can use  a Boolean type with values
+true. A JSON representation can use a Boolean type with values
 'false' and 'true', but for efficient serialization might also
 use the JSON number type with values 0 and 1.
 
@@ -562,7 +562,7 @@ are allowed.
 The JADN compound type and its options are chosen for an IM based on the
 information characteristics to be modeled:
 
-* Array and ArrayOf contain a group of values.
+* Array and ArrayOf contain a group of values
 * Map, MapOf and Record contain a group of keys and corresponding values (a mapping)
 * All items in ArrayOf and MapOf groups have the same value (and key) type
 * Each item in Array, Map, and Record groups has an individual value (and key) type
