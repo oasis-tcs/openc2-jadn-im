@@ -424,9 +424,6 @@ that is not their primary purposes.  Some examples are
 
 ## 2.4 Information Modeling Tools
 
-> benefits of combining IMs with automated tooling for
-> validation, translation
-
 The value of an IM language multiplies when automated tooling
 support creation, maintenance, and use of models created in that
 language. The need for tools is discussed in [[RFC
