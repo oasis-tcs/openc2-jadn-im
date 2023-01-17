@@ -381,13 +381,6 @@ JADN information modeling language is intended to address that
 gap. Abstract Syntax Notation One (ASN.1) is another example of
 an abstract schema language.
 
-> JADN and other IM languages
-
- - JADN
- - ASN.1
-
-> Piecing together a description of JADN
-
 JADN is a syntax-independent schema language, based on UML
 datatypes. JADN is designed to work with common Internet data
 formats (JSON, XML, CBOR), providing a  schema to support them.
