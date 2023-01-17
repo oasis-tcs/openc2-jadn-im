@@ -87,7 +87,6 @@ For complete copyright information please see the full Notices section in an App
   - [2.5 Applying an Information Model](#25-applying-an-information-model)
 - [3 Creating Information Models with JADN](#3-creating-information-models-with-jadn)
   - [3.1 JADN Overview](#31-jadn-overview)
-          - [Table 3-1 -- Multiplicity Types](#table-3-1----multiplicity-types)
     - [3.1.1 Type Definitions](#311-type-definitions)
     - [3.1.2 TypeOptions](#312-typeoptions)
     - [3.1.3 Item Or Field Definitions](#313-item-or-field-definitions)
@@ -562,7 +561,7 @@ are allowed.
 The JADN compound type and its options are chosen for an IM based on the
 information characteristics to be modeled:
 
-* Array and ArrayOf contain a group of values
+* Array and ArrayOf contain a group of values.
 * Map, MapOf and Record contain a group of keys and corresponding values (a mapping)
 * All items in ArrayOf and MapOf groups have the same value (and key) type
 * Each item in Array, Map, and Record groups has an individual value (and key) type
