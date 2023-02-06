@@ -192,7 +192,7 @@ that manner.
 
 The IETF, in the _Report from the Internet of Things (IoT)
 Semantic Interoperability (IOTSI) Workshop 2016_ ([RFC
-8477](https://www.rfc-editor.org/info/rfc8477)) attributed
+8477](https://www.rfc-editor.org/info/rfc8477)), attributed
 challenges in achieving interoperability to a lack of information
 modeling:
 
@@ -201,19 +201,23 @@ modeling:
 > model. Another problem is the strong relationship between data
 > formats and the underlying communication architecture_
 
-Information models (IMs) are used to define and generate physical
-data models, validate information instances, and enable lossless
-translation across data formats. An IM defines the essential
-content of entities used in computing, independently of how those
-entities are represented (i.e., serialized) for communication or
-storage.  While JADN was created by the OpenC2 TC, it is entirely
-general purpose in its design and can be used to create IMs for
-nearly any purpose. Examples of other possible JADN applications
-include defining:
+A key term in the above is "encoding-independent".  An IM defines
+the essential content of entities used in computing,
+independently of how those entities are represented (i.e.,
+serialized) for communication or storage. IMs are used to define
+and generate physical data models, validate information
+instances, and enable lossless translation across data formats.
+While JADN was created by the OpenC2 TC, it is entirely general
+purpose in its design and can be used to create IMs for nearly
+any purpose. Examples of other possible JADN applications include
+defining:
 
- - Data structures, such as [Software Bills of Materials
-   (SBOMs)](https://www.ntia.doc.gov/report/2021/minimum-elements-software-bill-materials-sbom)
- - Information exchanges, such as are described by
+ - Complex information structures structures, such as [Software
+   Bills of Materials
+   (SBOMs)](https://www.ntia.doc.gov/report/2021/minimum-elements-software-bill-materials-sbom);
+   examples would be the SPDX and CycloneDX SBOM formats
+ - Formal definition of structured information exchanges, such as
+   are described by
    [NIEM](https://github.com/niemopen/oasis-open-project#readme)
 
 RFC 8477 defines information models and data models to clarify
@@ -236,22 +240,24 @@ the differences (emphasis added):
       (LwM2M) Schemas, Open Connectivity Foundation (OCF)
       Schemas, and so on.
 
-In contrast to the RFC 8477 hierarchy, a JADN information model is
-positioned within three abstraction levels, the highest being:
+Expanding somewhat on the RFC 8477 hierarchy, a JADN information
+model is positioned within _three_ abstraction levels, the highest
+being:
 
  - **Logical Model** -- A logical model defines the semantics
       (knowledge/meaning) assigned to things being modeled.
       Logical models are defined using languages such as the
       W3C Web Ontology Language ([OWL](https://www.w3.org/OWL/)).
 
-JADN is based on
-[Information Theory](https://en.wikipedia.org/wiki/Entropy_(information_theory)),
+JADN is based on [Information
+Theory](https://en.wikipedia.org/wiki/Entropy_(information_theory)),
 which provides a concrete way of quantifying information that is
-explicitly independent of both semantic meaning and data representation.
-A JADN IM links model-defined semantic types with JADN-defined core
-information types, providing an unambiguous bridge between semantics and data.
-This supports implementation flexibility while maintaining
-interoperable information exchange across implementations.
+explicitly independent of both semantic meaning and data
+representation. A JADN IM links model-defined semantic types with
+JADN-defined core information types, providing an unambiguous
+bridge between semantics and data. This supports implementation
+flexibility while maintaining interoperable information exchange
+across implementations.
 
 ## 1.2 Purpose
 
@@ -265,19 +271,8 @@ with common Internet data formats, such as
  - CBOR (Concise Binary Object Representation)
 
 JADN is based rigorously on information theory, and an IM
-composed in JADN formally defines equivalence (information
-content) between data in different formats.
-
-Information modeling, generally, and JADN, specifically can be
-applied to a broad variety of situations, such as:
-
- - Abstract languages, such as the Open Command and Control
-   (OpenC2) language
- - Complex information structures such software bills of
-   materials (SBOMs); examples would be the SPDX and CycloneDX
-   SBOM formats
- - Formal definition of structured information exchanges, such as
-   are defined using the NIEM approach.
+composed in JADN formally defines equivalence of information
+content between data in different formats.
 
 This CN discusses:
 
@@ -335,7 +330,63 @@ information modeling.
 
 ## 2.1 Defining "Information"
 
+A basic problem with discussing information models is that the
+terms "information" and "data" are used widely but defined
+imprecisely. The use of these terms across technical literature
+has considerable variation and overlap. As described in _What is
+Shannon information?_ [[Lombardi](#lombardi)], a precise
+definition of "information" is a a relatively recent development:
 
+> Nevertheless, it is traditionally agreed that the seminal work
+for the mathematical view of information is the paper where
+Claude Shannon (1948) introduces a precise formalism designed to
+solve certain specific technological problems in communication
+engineering. ... Nowadays, Shannon’s theory is a basic ingredient
+of the communication engineers training. 
+
+Shannon's original article was later published as a book and gave
+rise to the field of Information Theory [[Shannnon](#shannon)].
+
+For the purpose of understanding information modeling, it is
+helpful to think in terms of different levels of representation:
+
+ - External
+ - Internal
+ - Conceptual
+
+The external representation requires a data model to describes
+how information is transmitted or stored; such a data model
+provides specific formats and syntax (e.g., defining a
+serialization) that permits moving the data out of the system
+where it is being processed. The internal representation depends
+on an information model, which uses abstract terminology to focus
+on what the information represents (e.g., a name, an address). As
+described in [[YTLee](#ytlee)]'s 2008 paper on information
+modeling: 
+
+> The conceptual view is a single, integrated definition of the
+data within an enterprise that is unbiased toward any single
+application of data and independent of how the data is physically
+stored or accessed. It provides a consistent definition of the
+meanings and interrelationship of the data in order to share,
+integrate, and manage the data.
+
+Note that while this description uses the term "data", the more
+important terms are "unbiased", "independent", "consistent", and
+"meanings and interrelationship". 
+
+A common language for defining conceptual models is OWL (Web
+Ontology Language, see [OWL-Primer](#owl-primer)).  An abstract
+information model, such as can be created with JADN, bridges
+between the conceptual model (described using OWL or similar
+languages), and and the external (or concrete) representation in
+a selected data format.  JADN directly models the Shannon
+information for creating serialized data in one or more desired
+formats. By creating the information model to bridge concept to
+representation, the concept of **"information equivalence"** is
+applied:  the same information model can be used to generate both
+self-describing (verbose) data and concise data for production
+environments.
 
 
 ## 2.2 Information Models And Data Models
@@ -367,9 +418,8 @@ define the IPv4 address type as a byte sequence of length 4.
  > the data. ... Another important characteristic of an IM is
  > that it defines relationships between managed objects."
 
-In a 2008 paper on information modeling, [[YTLee](#ytlee)]
-describes the concept of a "conceptual schema", a "logically
-neutral" view of the information in a system:
+[[YTLee](#ytlee)] describes the concept of a "conceptual schema",
+a "logically neutral" view of the information in a system:
 
 > "The conceptual view is a single, integrated definition of the
 > data within an enterprise that is unbiased toward any single
@@ -458,7 +508,7 @@ concluding Recommendations section includes the following:
 
 The notion of "express[ing] exactly the same information in ways
 that are algorithmically translatable" is a fundamental purpose
-of information modeling.
+of information modeling, and aligns with the JADN concept of _information equivalence_.
 
 ## 2.4 Information Modeling Languages
 
@@ -1792,9 +1842,18 @@ https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 validate JSON documents.", retrieved 9/26/2022,
 https://json-schema.org/
 
+###### [Lombardi]
+Lombardi, Olimpia ; Holik, Federico & Vanni, Leonardo (2016).
+What is Shannon information? _Synthese_ 193 (7):1983-2012,
+https://www.researchgate.net/publication/279780496_What_is_Shannon_information
+
 ###### [OWL-Primer]
 "OWL 2 Web Ontology Language Primer (Second Edition)", retrieved
 10/25/2022, https://www.w3.org/TR/owl-primer/
+
+###### [Shannon]
+"A Mathematical Theory of Communication", 
+https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication
 
 ###### [RFC3444]
 Pras, A., Schoenwaelder, J., "On the Difference between
