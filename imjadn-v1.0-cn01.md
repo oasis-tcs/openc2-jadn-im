@@ -234,7 +234,10 @@ This section discusses the nature and benefits of IMs, types of
 available modeling languages, and the tools that can be used in
 information modeling.
 
-## 2.1 Information Models And Data Models
+## 2.1 Defining "Information"
+
+
+## 2.2 Information Models And Data Models
 
  > discussion based on RFC 3444
 
@@ -306,7 +309,7 @@ The following key principles apply to IMs:
    serializations, then its information content is no greater
    than the smallest of those serializations.
 
-## 2.2 Benefits of Information Models
+## 2.3 Benefits of Information Models
 
 A key point in all the IM definitions and descriptions in the
 previous section is the ability for the model to represent
@@ -356,7 +359,7 @@ The notion of "express[ing] exactly the same information in ways
 that are algorithmically translatable" is a fundamental purpose
 of information modeling.
 
-## 2.3 Information Modeling Languages
+## 2.4 Information Modeling Languages
 
 [[YTLee](#ytlee)] describes an IM language as follows:
 
@@ -421,7 +424,7 @@ that is not their primary purposes.  Some examples are
  - UML
  - IDEF1X
 
-## 2.4 Information Modeling Tools
+## 2.5 Information Modeling Tools
 
 The value of an IM language multiplies when automated tooling is
 available to support creation, maintenance, and use of models
@@ -438,7 +441,7 @@ language should provide
  - Model translation to language- or protocol-specific
    serialization / deserialization capabilities
 
-## 2.5 Applying an Information Model
+## 2.6 Applying an Information Model
 
 A primary application of an IM is in the translation of data into
 and out of in-memory representation and serialized formats for
