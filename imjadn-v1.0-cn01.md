@@ -814,21 +814,21 @@ illustrated in [Figure
 3-1](#figure-3-1----jadn-type-definition-structure). The rules
 pertaining to the **Fields** array are as follows:
 
-* If the **BaseType** is a Primitive type, ArrayOf, or MapOf, the
-  **Fields** array must be empty:
+* If the **BaseType** is a Primitive type, ArrayOf, or MapOf, no
+  fields are permitted (i.e., the **Fields** array must be empty).
 
 
-* If the **BaseType** is Enumerated, each item definition in the
-  **Fields** array must have three elements:
+* If the **BaseType** is Enumerated, the fields for each item
+  definition in the **Fields** array are described with three
+  elements:
 
     1. **ItemID:** the integer identifier of the item
     2. **ItemValue:** the string value of the item
     3. **ItemDescription:** a non-normative comment
 
-
-* If the **BaseType** is Array, Choice, Map, or Record, each
-  field definition in the **Fields** array must have five
-  elements:
+* If the **BaseType** is Array, Choice, Map, or Record, the
+  fields for each item definition in the **Fields** array are
+  described with five elements:
     1. **FieldID:** the integer identifier of the field
     2. **FieldName:** the name or label of the field
     3. **FieldType:** the type of the field, a predefined type or
