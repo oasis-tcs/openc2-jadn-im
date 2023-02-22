@@ -686,39 +686,50 @@ JADN schema if desired (see section 3.1.2 of the
 
 ### 3.1.2 TypeOptions
 
-The third element of a JADN type definition is an array of zero or
-more of the TypeOptions defined in section 3.2.1 of the
-[[JADN](#jadn-v10) Specification]. TypeOptions are classifiers
-that, along with the base type, determine whether data values are
-instances of the defined type. For example, the *pattern*
-TypeOption is used with the String BaseType to define valid
-instances of that string type using a regular expression
-conforming to [[ECMAScript](#ecmascript)] grammar.
+The third element of a JADN type definition is an array of zero
+or more of the TypeOptions defined in section 3.2.1 of the
+[[JADN](#jadn-v10) Specification]. JADN includes options for both
+_types_ (discussed in this section) and _fields_ (discussed in
+[section 3.1.4](#314-field-options)). As explained in the JADN
+Specification:
+
+Each option is a text string that may be included in TypeOptions
+or FieldOptions, encoded as follows:
+
+ - The first character is the option ID.
+ - The remaining characters are the option value.
+
+TypeOptions are classifiers that, along with the base type,
+determine whether data values are instances of the defined type.
+For example, the *pattern* TypeOption is used with the String
+BaseType to define valid instances of that string type using a
+regular expression conforming to [[ECMAScript](#ecmascript)]
+grammar.
 
 The following is the complete set of type options, including the
-option name, type, shorthand character, and description; the
-shortcut characters are used in standard JADN representation
-([section 3.1.5.1](#3151-native-json-representation)) when
-specifying type options:
+option name, type, ID character, and description; the ID
+characters are used in standard JADN representation 
+([section 3.1.5.1](#3151-native-json-representation)) when specifying type
+options:
 
-| **Option** | **Type** | **Shorthand** | **Description**                                                   |
-|:----------:|:--------:|:-------------:|:------------------------------------------------------------------|
-|     id     | Boolean  |     `=`       | Items and Fields are denoted by FieldID rather than FieldName     |
-|   vtype    |  String  |     `*`       | Value type for ArrayOf and MapOf                                  |
-|   ktype    |  String  |     `+`       | Key type for MapOf                                                |
-|    enum    |  String  |     `#`       | Extension: Enumerated type derived from a specified type          |
-|  pointer   |  String  |     `>`       | Extension: Enumerated type pointers derived from a specified type |
-|   format   |  String  |     `/`       | Semantic validation keyword                                       |
-|  pattern   |  String  |     `%`       | Regular expression used to validate a String type                 |
-|    minf    |  Number  |     `y`       | Minimum real number value                                         |
-|    maxf    |  Number  |     `z`       | Maximum real number value                                         |
-|    minv    | Integer  |     `{`       | Minimum integer value, octet or character count, or element count |
-|    maxv    | Integer  |     `}`       | Maximum integer value, octet or character count, or element count |
-|   unique   | Boolean  |     `q`       | ArrayOf instance must not contain duplicate values                |
-|    set     | Boolean  |     `s`       | ArrayOf instance is unordered and unique                          |
-| unordered  | Boolean  |     `b`       | ArrayOf instance is unordered                                     |
-|   extend   | Boolean  |     `X`       | Type is extensible; new Items or Fields may be appended           |
-|  default   |  String  |     `!`       | Default value                                                     |
+| **Option** | **Type** | **ID** | **Description**                                                   |
+|:----------:|:--------:|:------:|:------------------------------------------------------------------|
+|     id     | Boolean  |   `=`  | Items and Fields are denoted by FieldID rather than FieldName     |
+|   vtype    |  String  |   `*`  | Value type for ArrayOf and MapOf                                  |
+|   ktype    |  String  |   `+`  | Key type for MapOf                                                |
+|    enum    |  String  |   `#`  | Extension: Enumerated type derived from a specified type          |
+|  pointer   |  String  |   `>`  | Extension: Enumerated type pointers derived from a specified type |
+|   format   |  String  |   `/`  | Semantic validation keyword                                       |
+|  pattern   |  String  |   `%`  | Regular expression used to validate a String type                 |
+|    minf    |  Number  |   `y`  | Minimum real number value                                         |
+|    maxf    |  Number  |   `z`  | Maximum real number value                                         |
+|    minv    | Integer  |   `{`  | Minimum integer value, octet or character count, or element count |
+|    maxv    | Integer  |   `}`  | Maximum integer value, octet or character count, or element count |
+|   unique   | Boolean  |   `q`  | ArrayOf instance must not contain duplicate values                |
+|    set     | Boolean  |   `s`  | ArrayOf instance is unordered and unique                          |
+| unordered  | Boolean  |   `b`  | ArrayOf instance is unordered                                     |
+|   extend   | Boolean  |   `X`  | Type is extensible; new Items or Fields may be appended           |
+|  default   |  String  |   `!`  | Default value                                                     |
 
 Detailed explanations of each type option can be found in
 Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
@@ -826,18 +837,18 @@ Compound types containing Items or Fields support field options
 in addition to the type options describe in [Section
 3.1.2](#312-typeoptions). JADN defines six field options. As with
 the type options described in [section 3.1.2](#312-typeoptions);
-the shortcut characters are used in standard JADN representation
+the ID characters are used in standard JADN representation
 ([section 3.1.5.1](#3151-native-json-representation)) when
 specifying field options.
 
-| **Option** |  **Type**  |  **Shortcut**  | **Description**                                               | **JADN Specification Section** |
-|:----------:|:----------:|:--------------:|:--------------------------------------------------------------|:------------------------------:|
-|    minc    |  Integer   |     `[`        | Minimum cardinality, default = 1, 0 = optional                |            3.2.2.1             |
-|    maxc    |  Integer   |     `]`        | Maximum cardinality, default = 1, 0 = default max, >1 = array |            3.2.2.1             |
-|   tagid    | Enumerated |     `&`        | Field containing an explicit tag for this Choice type         |            3.2.2.2             |
-|    dir     |  Boolean   |     `<`        | Pointer enumeration treats field as a group of items          |             3.3.5              |
-|    key     |  Boolean   |     `K`        | Field is a primary key for this type                          |             3.3.6              |
-|    link    |  Boolean   |     `L`        | Field is a foreign key reference to a type instance           |             3.3.6              |
+| **Option** |  **Type**  |  **ID**  | **Description**                                               | **JADN Specification Section** |
+|:----------:|:----------:|:--------:|:--------------------------------------------------------------|:------------------------------:|
+|    minc    |  Integer   |   `[`    | Minimum cardinality, default = 1, 0 = optional                |            3.2.2.1             |
+|    maxc    |  Integer   |   `]`    | Maximum cardinality, default = 1, 0 = default max, >1 = array |            3.2.2.1             |
+|   tagid    | Enumerated |   `&`    | Field containing an explicit tag for this Choice type         |            3.2.2.2             |
+|    dir     |  Boolean   |   `<`    | Pointer enumeration treats field as a group of items          |             3.3.5              |
+|    key     |  Boolean   |   `K`    | Field is a primary key for this type                          |             3.3.6              |
+|    link    |  Boolean   |   `L`    | Field is a foreign key reference to a type instance           |             3.3.6              |
 
 The type options described in [Section 3.1.3](#312-typeoptions)
 can also apply to fields, with the constraint that the type
