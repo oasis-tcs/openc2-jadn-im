@@ -815,11 +815,11 @@ illustrated in [Figure
 pertaining to the **Fields** array are as follows:
 
 * If the **BaseType** is a Primitive type, ArrayOf, or MapOf, the
-  **Fields** array MUST be empty:
+  **Fields** array must be empty:
 
 
 * If the **BaseType** is Enumerated, each item definition in the
-  **Fields** array MUST have three elements:
+  **Fields** array must have three elements:
 
     1. **ItemID:** the integer identifier of the item
     2. **ItemValue:** the string value of the item
@@ -827,7 +827,7 @@ pertaining to the **Fields** array are as follows:
 
 
 * If the **BaseType** is Array, Choice, Map, or Record, each
-  field definition in the **Fields** array MUST have five
+  field definition in the **Fields** array must have five
   elements:
     1. **FieldID:** the integer identifier of the field
     2. **FieldName:** the name or label of the field
