@@ -696,7 +696,10 @@ instances of that string type using a regular expression
 conforming to [[ECMAScript](#ecmascript)] grammar.
 
 The following is the complete set of type options, including the
-option name, type, shorthand character, and description:
+option name, type, shorthand character, and description; the
+shortcut characters are used in standard JADN representation
+([section 3.1.5.1](#3151-native-json-representation)) when
+specifying type options:
 
 | **Option** | **Type** | **Shorthand** | **Description**                                                   |
 |:----------:|:--------:|:-------------:|:------------------------------------------------------------------|
@@ -821,7 +824,11 @@ pertaining to the **Fields** array are as follows:
 
 Compound types containing Items or Fields support field options
 in addition to the type options describe in [Section
-3.1.2](#312-typeoptions). JADN defines six field options.
+3.1.2](#312-typeoptions). JADN defines six field options. As with
+the type options described in [section 3.1.2](#312-typeoptions);
+the shortcut characters are used in standard JADN representation
+([section 3.1.5.1](#3151-native-json-representation)) when
+specifying field options.
 
 | **Option** |  **Type**  |  **Shortcut**  | **Description**                                               | **JADN Specification Section** |
 |:----------:|:----------:|:--------------:|:--------------------------------------------------------------|:------------------------------:|
