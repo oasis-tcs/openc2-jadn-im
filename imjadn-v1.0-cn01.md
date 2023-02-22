@@ -695,29 +695,51 @@ the String BaseType to define valid instances of that string type
 using a regular expression conforming to
 [[ECMAScript](#ecmascript)] grammar.
 
-The following is the complete set of type options:
+The following is the complete set of type options, including the
+option name, type, shorthand character, and description:
 
-| **Option** | **Type** | **Description**                                                   |
-|:----------:|:--------:|:------------------------------------------------------------------|
-|     id     | Boolean  | Items and Fields are denoted by FieldID rather than FieldName     |
-|   vtype    |  String  | Value type for ArrayOf and MapOf                                  |
-|   ktype    |  String  | Key type for MapOf                                                |
-|    enum    |  String  | Extension: Enumerated type derived from a specified type          |
-|  pointer   |  String  | Extension: Enumerated type pointers derived from a specified type |
-|   format   |  String  | Semantic validation keyword                                       |
-|  pattern   |  String  | Regular expression used to validate a String type                 |
-|    minf    |  Number  | Minimum real number value                                         |
-|    maxf    |  Number  | Maximum real number value                                         |
-|    minv    | Integer  | Minimum integer value, octet or character count, or element count |
-|    maxv    | Integer  | Maximum integer value, octet or character count, or element count |
-|   unique   | Boolean  | ArrayOf instance must not contain duplicate values                |
-|    set     | Boolean  | ArrayOf instance is unordered and unique                          |
-| unordered  | Boolean  | ArrayOf instance is unordered                                     |
-|   extend   | Boolean  | Type is extensible; new Items or Fields may be appended           |
-|  default   |  String  | Default value                                                     |
+| **Option** | **Type** | **Shorthand** | **Description**                                                   |
+|:----------:|:--------:|:-------------:|:------------------------------------------------------------------|
+|     id     | Boolean  |      `=`       | Items and Fields are denoted by FieldID rather than FieldName     |
+|   vtype    |  String  |     `*`       | Value type for ArrayOf and MapOf                                  |
+|   ktype    |  String  |     `+`       | Key type for MapOf                                                |
+|    enum    |  String  |     `#`       | Extension: Enumerated type derived from a specified type          |
+|  pointer   |  String  |     `>`       | Extension: Enumerated type pointers derived from a specified type |
+|   format   |  String  |     `/`       | Semantic validation keyword                                       |
+|  pattern   |  String  |     `%`       | Regular expression used to validate a String type                 |
+|    minf    |  Number  |     `y`       | Minimum real number value                                         |
+|    maxf    |  Number  |     `z`       | Maximum real number value                                         |
+|    minv    | Integer  |     `{`       | Minimum integer value, octet or character count, or element count |
+|    maxv    | Integer  |     `}`       | Maximum integer value, octet or character count, or element count |
+|   unique   | Boolean  |     `q`       | ArrayOf instance must not contain duplicate values                |
+|    set     | Boolean  |     `s`       | ArrayOf instance is unordered and unique                          |
+| unordered  | Boolean  |     `b`       | ArrayOf instance is unordered                                     |
+|   extend   | Boolean  |     `X`       | Type is extensible; new Items or Fields may be appended           |
+|  default   |  String  |     `!`       | Default value                                                     |
 
 Detailed explanations of each type option can be found in
 Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
+
+The `minv` and `maxv` type options are distinctive in that they can apply to both primitive and compound types, with a different meaning in these two applications:
+
+ - When applied to a primitive type (Binary, Integer or String), the `minv` and `maxv` type options constrain the *values* an instance of that type may hold. For example, the following specifies an Integer type that can be assigned values between `1` and `1000`:
+
+```
+["count","integer",["{1", "}1000"], "count of objects",[]]
+```
+
+ - When applied to a compound type (Array, ArrayOf, Map, MapOf, Record), the `minv` and `maxv` type options constrain the *number of elements* an instance of that type may have. For example, the following specifies a Record type that must have at least two fields populated, even though only one field is required (fields `_2` and `_3` are indicated as optional by the `["[0"]` type option):
+
+```
+  ["RecordType", "Record", ["{2"], "", [
+    [1, "field_1", "String", [], ""],
+    [2, "field_2", "String", ["[0"], ""],
+    [3, "field_3", "String", ["[0"], ""],
+    ]]
+```
+
+
+
 
 The following table summarizes the applicability of type options
 to JADN base types.
