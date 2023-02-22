@@ -761,14 +761,14 @@ meaning in these two applications:
    the `["[0"]` *field* option [see [Section 3.1.4](#314-field-options)]):
 
 ```
-["RecordType", "Record", ["{2"], "", [
+["RecordType", "Record", ["{2"], "requires field_1 and either or both field_2 and field_3", [
   [1, "field_1", "String", [], ""],
   [2, "field_2", "String", ["[0"], ""],
   [3, "field_3", "String", ["[0"], ""],
 ]]
 
 
-RecordType = Record {2..*}
+RecordType = Record {2..*} // requires field_1 and either or both field_2 and field_3
   1 field_1   String
   2 field_2   String optional
   3 field_3   String optional  
