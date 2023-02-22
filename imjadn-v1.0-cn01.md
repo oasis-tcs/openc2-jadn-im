@@ -686,14 +686,14 @@ JADN schema if desired (see section 3.1.2 of the
 
 ### 3.1.2 TypeOptions
 
-The third element of a JADN type definition is zero or more of
-the TypeOptions defined in section 3.2.1 of the [[JADN](#jadn-v10)
-Specification]. TypeOptions are classifiers that, along with the
-base type, determine whether data values are instances of the
-defined type. For example, the *pattern* TypeOption is used with
-the String BaseType to define valid instances of that string type
-using a regular expression conforming to
-[[ECMAScript](#ecmascript)] grammar.
+The third element of a JADN type definition is an array of zero or
+more of the TypeOptions defined in section 3.2.1 of the
+[[JADN](#jadn-v10) Specification]. TypeOptions are classifiers
+that, along with the base type, determine whether data values are
+instances of the defined type. For example, the *pattern*
+TypeOption is used with the String BaseType to define valid
+instances of that string type using a regular expression
+conforming to [[ECMAScript](#ecmascript)] grammar.
 
 The following is the complete set of type options, including the
 option name, type, shorthand character, and description:
@@ -728,10 +728,14 @@ meaning in these two applications:
    the `minv` and `maxv` type options constrain the *values* an
    instance of that type may hold. For example, the following
    specifies an Integer type that can be assigned values between
-   `1` and `1000`:
+   `1` and `1000`, using both JADN and JIDL notation (see
+   [section 3.5.1.2](#3152-alternative-jadn-representations)):
 
 ```
 ["count","integer",["{1", "}1000"], "count of objects",[]]
+
+// define a restricted count value
+  count = integer {1..1000}  // count of objects
 ```
 
  - When applied to a compound type (Array, ArrayOf, Map, MapOf,
@@ -740,15 +744,21 @@ meaning in these two applications:
    example, the following specifies a Record type that must have
    at least two fields populated, even though only one field is
    required (fields `_2` and `_3` are indicated as optional by
-   the `["[0"]` field option [see [Section
-   3.1.4](#314-field-options)]):
+   the `["[0"]` *field* option [see [Section 3.1.4](#314-field-options)]):
 
 ```
-  ["RecordType", "Record", ["{2"], "", [
-    [1, "field_1", "String", [], ""],
-    [2, "field_2", "String", ["[0"], ""],
-    [3, "field_3", "String", ["[0"], ""],
-    ]]
+["RecordType", "Record", ["{2"], "", [
+  [1, "field_1", "String", [], ""],
+  [2, "field_2", "String", ["[0"], ""],
+  [3, "field_3", "String", ["[0"], ""],
+]]
+
+
+RecordType = Record {2..*}
+  1 field_1   String
+  2 field_2   String optional
+  3 field_3   String optional
+  
 ```
 
 
