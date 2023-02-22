@@ -233,7 +233,7 @@ the differences (emphasis added):
 
  - **Data Model** -- A data model defines concrete data
       representations *at a lower level of abstraction, including
-      implementation- and protocol- specific details*.  Some
+      implementation- and protocol-specific details*.  Some
       examples are SNMP Management Information Base (MIB)
       modules, World Wide Web Consortium (W3C) Thing Description
       (TD) Things, YANG modules, Lightweight Machine-to-Machine
