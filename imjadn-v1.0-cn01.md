@@ -740,10 +740,19 @@ meaning in these two applications:
 
  - When applied to a primitive type (Binary, Integer or String),
    the `minv` and `maxv` type options constrain the *values* an
-   instance of that type may hold. For example, the following
-   specifies an Integer type that can be assigned values between
-   `1` and `1000`, using both JADN (see [section 3.5.1.1](#3151-native-json-representation)) 
-   and JIDL notation (see [section 3.5.1.2](#3152-alternative-jadn-representations)):
+   instance of that type may hold. Specifically, when applied to:
+   - An Integer type, the `minv` and `maxv` type options constrain
+     the values an instance of that type may hold.
+   - A String type, the `minv` and `maxv` type options constrain the
+     number of characters in the string.
+   - A Binary type, the `minv` and `maxv` type options constrain the
+     number of octets (bytes) in the binary value.
+   
+For example, the following specifies an Integer type that can be
+assigned values between `1` and `1000`, using both JADN (see
+[section 3.5.1.1](#3151-native-json-representation)) and JIDL
+notation (see [section
+3.5.1.2](#3152-alternative-jadn-representations)):
 
 ```
 ["count","integer",["{1", "}1000"], "count of objects",[]]
