@@ -728,8 +728,8 @@ meaning in these two applications:
    the `minv` and `maxv` type options constrain the *values* an
    instance of that type may hold. For example, the following
    specifies an Integer type that can be assigned values between
-   `1` and `1000`, using both JADN and JIDL notation (see
-   [section 3.5.1.2](#3152-alternative-jadn-representations)):
+   `1` and `1000`, using both JADN (see [section 3.5.1.1](#3151-native-json-representation)) 
+   and JIDL notation (see [section 3.5.1.2](#3152-alternative-jadn-representations)):
 
 ```
 ["count","integer",["{1", "}1000"], "count of objects",[]]
@@ -757,8 +757,7 @@ meaning in these two applications:
 RecordType = Record {2..*}
   1 field_1   String
   2 field_2   String optional
-  3 field_3   String optional
-  
+  3 field_3   String optional  
 ```
 
 
@@ -824,14 +823,14 @@ Compound types containing Items or Fields support field options
 in addition to the type options describe in [Section
 3.1.2](#312-typeoptions). JADN defines six field options.
 
-| **Option** |  **Type**  | **Description**                                               | **JADN Specification Section** |
-|:----------:|:----------:|:--------------------------------------------------------------|:------------------------------:|
-|    minc    |  Integer   | Minimum cardinality, default = 1, 0 = optional                |            3.2.2.1             |
-|    maxc    |  Integer   | Maximum cardinality, default = 1, 0 = default max, >1 = array |            3.2.2.1             |
-|   tagid    | Enumerated | Field containing an explicit tag for this Choice type         |            3.2.2.2             |
-|    dir     |  Boolean   | Pointer enumeration treats field as a group of items          |             3.3.5              |
-|    key     |  Boolean   | Field is a primary key for this type                          |             3.3.6              |
-|    link    |  Boolean   | Field is a foreign key reference to a type instance           |             3.3.6              |
+| **Option** |  **Type**  |  **Shortcut**  | **Description**                                               | **JADN Specification Section** |
+|:----------:|:----------:|:--------------:|:--------------------------------------------------------------|:------------------------------:|
+|    minc    |  Integer   |     `[`        | Minimum cardinality, default = 1, 0 = optional                |            3.2.2.1             |
+|    maxc    |  Integer   |     `]`        | Maximum cardinality, default = 1, 0 = default max, >1 = array |            3.2.2.1             |
+|   tagid    | Enumerated |     `&`        | Field containing an explicit tag for this Choice type         |            3.2.2.2             |
+|    dir     |  Boolean   |     `<`        | Pointer enumeration treats field as a group of items          |             3.3.5              |
+|    key     |  Boolean   |     `K`        | Field is a primary key for this type                          |             3.3.6              |
+|    link    |  Boolean   |     `L`        | Field is a foreign key reference to a type instance           |             3.3.6              |
 
 Type options can also apply to fields, with the constraint that the
 type option must be applicable to the field's type, as described
