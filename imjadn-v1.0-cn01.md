@@ -848,7 +848,7 @@ representations using a simple example.
 #### 3.1.5.1 Native JSON Representation
 
 This section illustrates the JSON representations of the Base
-Type described in [Section 3.1](#31-jadn-overview). Depictions
+Types described in [Section 3.1](#31-jadn-overview). Depictions
 are provided for each of three ways that the **Fields** array is
 used, depending on the base type used in a particular type
 definition.
