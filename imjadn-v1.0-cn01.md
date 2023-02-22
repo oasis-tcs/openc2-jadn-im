@@ -741,7 +741,7 @@ meaning in these two applications:
    the `minv` and `maxv` type options constrain the *values* an
    instance of that type may hold. Specifically, when applied to:
    - An Integer type, the `minv` and `maxv` type options constrain
-     the values an instance of that type may hold.
+     the numeric values an instance of that type may hold.
    - A String type, the `minv` and `maxv` type options constrain the
      number of characters in the string.
    - A Binary type, the `minv` and `maxv` type options constrain the
