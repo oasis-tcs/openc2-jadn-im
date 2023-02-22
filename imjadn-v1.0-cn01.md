@@ -356,13 +356,13 @@ helpful to think in terms of different levels of representation:
 
 The external representation requires a data model to describes
 how information is transmitted or stored; such a data model
-provides specific formats and syntax (e.g., defining a
-serialization) that permits moving the data out of the system
-where it is being processed. The internal representation depends
-on an information model, which uses abstract terminology to focus
-on what the information represents (e.g., a name, an address). As
-described in [[YTLee](#ytlee)]'s 2008 paper on information
-modeling: 
+provides specific formats and syntax (e.g., defining
+serialization rules) that permit moving the data out of the
+system where it is being processed. The internal representation
+depends on an information model, which uses abstract terminology
+to focus on what the information represents (e.g., a name, an
+address). As described in [[YTLee](#ytlee)]'s 2008 paper on
+information modeling: 
 
 > The conceptual view is a single, integrated definition of the
 data within an enterprise that is unbiased toward any single
