@@ -335,7 +335,7 @@ terms "information" and "data" are used widely but defined
 imprecisely. The use of these terms across technical literature
 has considerable variation and overlap. As described in _What is
 Shannon information?_ [[Lombardi](#lombardi)], a precise
-definition of "information" is a a relatively recent development:
+definition of "information" is a relatively recent development:
 
 > Nevertheless, it is traditionally agreed that the seminal work
 for the mathematical view of information is the paper where
