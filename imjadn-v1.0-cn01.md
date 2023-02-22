@@ -720,15 +720,28 @@ option name, type, shorthand character, and description:
 Detailed explanations of each type option can be found in
 Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
 
-The `minv` and `maxv` type options are distinctive in that they can apply to both primitive and compound types, with a different meaning in these two applications:
+The `minv` and `maxv` type options are distinctive in that they
+can apply to both primitive and compound types, with a different
+meaning in these two applications:
 
- - When applied to a primitive type (Binary, Integer or String), the `minv` and `maxv` type options constrain the *values* an instance of that type may hold. For example, the following specifies an Integer type that can be assigned values between `1` and `1000`:
+ - When applied to a primitive type (Binary, Integer or String),
+   the `minv` and `maxv` type options constrain the *values* an
+   instance of that type may hold. For example, the following
+   specifies an Integer type that can be assigned values between
+   `1` and `1000`:
 
 ```
 ["count","integer",["{1", "}1000"], "count of objects",[]]
 ```
 
- - When applied to a compound type (Array, ArrayOf, Map, MapOf, Record), the `minv` and `maxv` type options constrain the *number of elements* an instance of that type may have. For example, the following specifies a Record type that must have at least two fields populated, even though only one field is required (fields `_2` and `_3` are indicated as optional by the `["[0"]` type option):
+ - When applied to a compound type (Array, ArrayOf, Map, MapOf,
+   Record), the `minv` and `maxv` type options constrain the
+   *number of elements* an instance of that type may have. For
+   example, the following specifies a Record type that must have
+   at least two fields populated, even though only one field is
+   required (fields `_2` and `_3` are indicated as optional by
+   the `["[0"]` field option [see [Section
+   3.1.4](#314-field-options)]):
 
 ```
   ["RecordType", "Record", ["{2"], "", [
