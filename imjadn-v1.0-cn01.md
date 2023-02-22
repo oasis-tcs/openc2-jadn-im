@@ -765,8 +765,9 @@ notation (see [section
    *number of elements* an instance of that type may have. For
    example, the following specifies a Record type that must have
    at least two fields populated, even though only one field is
-   required (fields `_2` and `_3` are indicated as optional by
-   the `["[0"]` *field* option [see [Section 3.1.4](#314-field-options)]):
+   required (fields `field_2` and `field_3` are indicated as
+   optional by the `["[0"]` *field* option 
+   [see [Section 3.1.4](#314-field-options)]):
 
 ```
 ["RecordType", "Record", ["{2"], "requires field_1 and either or both field_2 and field_3", [
