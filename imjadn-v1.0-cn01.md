@@ -841,14 +841,14 @@ the ID characters are used in standard JADN representation
 ([section 3.1.5.1](#3151-native-json-representation)) when
 specifying field options.
 
-| **Option** |  **Type**  |  **ID**  | **Description**                                               | **JADN Specification Section** |
-|:----------:|:----------:|:--------:|:--------------------------------------------------------------|:------------------------------:|
-|    minc    |  Integer   |   `[`    | Minimum cardinality, default = 1, 0 = optional                |            3.2.2.1             |
-|    maxc    |  Integer   |   `]`    | Maximum cardinality, default = 1, 0 = default max, >1 = array |            3.2.2.1             |
-|   tagid    | Enumerated |   `&`    | Field containing an explicit tag for this Choice type         |            3.2.2.2             |
-|    dir     |  Boolean   |   `<`    | Pointer enumeration treats field as a group of items          |             3.3.5              |
-|    key     |  Boolean   |   `K`    | Field is a primary key for this type                          |             3.3.6              |
-|    link    |  Boolean   |   `L`    | Field is a foreign key reference to a type instance           |             3.3.6              |
+| **Option** |  **Type**  |  **ID**  | **Description**                                               | **JADN Spec Section** |
+|:----------:|:----------:|:--------:|:--------------------------------------------------------------|:---------------------:|
+|    minc    |  Integer   |   `[`    | Minimum cardinality, default = 1, 0 = optional                |        3.2.2.1        |
+|    maxc    |  Integer   |   `]`    | Maximum cardinality, default = 1, 0 = default max, >1 = array |        3.2.2.1        |
+|   tagid    | Enumerated |   `&`    | Field containing an explicit tag for this Choice type         |        3.2.2.2        |
+|    dir     |  Boolean   |   `<`    | Pointer enumeration treats field as a group of items          |         3.3.5         |
+|    key     |  Boolean   |   `K`    | Field is a primary key for this type                          |         3.3.6         |
+|    link    |  Boolean   |   `L`    | Field is a foreign key reference to a type instance           |         3.3.6         |
 
 The type options described in [Section 3.1.3](#312-typeoptions)
 can also apply to fields, with the constraint that the type
