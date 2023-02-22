@@ -700,7 +700,7 @@ option name, type, shorthand character, and description:
 
 | **Option** | **Type** | **Shorthand** | **Description**                                                   |
 |:----------:|:--------:|:-------------:|:------------------------------------------------------------------|
-|     id     | Boolean  |      `=`       | Items and Fields are denoted by FieldID rather than FieldName     |
+|     id     | Boolean  |     `=`       | Items and Fields are denoted by FieldID rather than FieldName     |
 |   vtype    |  String  |     `*`       | Value type for ArrayOf and MapOf                                  |
 |   ktype    |  String  |     `+`       | Key type for MapOf                                                |
 |    enum    |  String  |     `#`       | Extension: Enumerated type derived from a specified type          |
@@ -737,8 +737,6 @@ The `minv` and `maxv` type options are distinctive in that they can apply to bot
     [3, "field_3", "String", ["[0"], ""],
     ]]
 ```
-
-
 
 
 The following table summarizes the applicability of type options
