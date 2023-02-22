@@ -325,7 +325,7 @@ additional terms are defined for this document:
 # 2 Information Modeling Overview
 
 This section discusses the nature and benefits of IMs, types of
-available modeling languages, and the tools that can be used in
+available modeling languages, and tools that can be used in
 information modeling.
 
 ## 2.1 Defining "Information"
