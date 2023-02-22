@@ -693,11 +693,10 @@ _types_ (discussed in this section) and _fields_ (discussed in
 [section 3.1.4](#314-field-options)). As explained in the JADN
 Specification:
 
-Each option is a text string that may be included in TypeOptions
-or FieldOptions, encoded as follows:
-
- - The first character is the option ID.
- - The remaining characters are the option value.
+> Each option is a text string that may be included in
+> TypeOptions or FieldOptions, encoded as follows:
+> - The first character is the option ID.
+> - The remaining characters are the option value.
 
 TypeOptions are classifiers that, along with the base type,
 determine whether data values are instances of the defined type.
