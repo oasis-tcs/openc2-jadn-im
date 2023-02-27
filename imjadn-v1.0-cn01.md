@@ -551,13 +551,12 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 The [[JADN Specification](#jadn-v10)] defines twelve base types:
 
 | **Primitive** | **Compound** | **Selection /<br> Union** |
-|:---:|:---:|:---:|
-| Binary | Array | Enumerated |
-| Boolean | ArrayOf | Choice |
-| Integer | Map |  |
-| Number | MapOf |  |
-| String | Record |  |
-
+|:-------------:|:------------:|:-------------------------:|
+|     Binary    |     Array    |         Enumerated        |
+|    Boolean    |    ArrayOf   |           Choice          |
+|    Integer    |      Map     |                           |
+|     Number    |     MapOf    |                           |
+|     String    |    Record    |                           |
 
 Each of the compound types is a *container*, a named group of related items
 such as the latitude and longitude of a geographic coordinate, or the set of
