@@ -510,12 +510,12 @@ use of JADN in information modeling.
 Figure 3-1 provides a high-level view of the JADN concepts that
 will be described in this section. JADN provides simple and
 compound data types that can be refined using type and field
-options (field options only apply to compound types). JADN can
-also be represented in multiple formats, both textual and
-graphical, and a JADN model can be transformed between the
-different representations without loss of information. The Native
-JADN representation as JSON data is authoritative, but each
-representation has advantages.
+options (field options only apply within compound types). JADN
+can also be represented in multiple formats, both textual and
+graphical, and automated tooling can transform a JADN model
+between the different representations without loss of
+information. The Native JADN representation as JSON data is
+authoritative, but each representation has advantages.
 
 ###### Figure 3-1 -- JADN Concepts
 ![Figure 3-1 -- JADN Concepts](images/JADN-Concepts.drawio.png)
@@ -529,14 +529,14 @@ The JADN information modeling language was developed against specific objectives
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
 
-As described in the JADN specification introduction:
+As described in the [JADN Specification](#jadn-v10) introduction:
 
 > JADN is a formal description technique that combines type
 > constraints from the Unified Modeling Language (UML) with data
 > abstraction based on information theory and structural
 > organization using results from graph theory.
 
-> EDITOR'S NOTE: consider whether the following adds clarity or
+> **EDITOR'S NOTE:** consider whether the following adds clarity or
 > confusion; it might need to be re-written to guide the reader
 > through the concepts a bit more.
 
@@ -550,23 +550,14 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 The [[JADN Specification](#jadn-v10)] defines twelve base types:
 
-**Primitive:**
- - Binary
- - Boolean
- - Integer
- - Number
- - String
+| **Primitive** | **Compound** | **Selection /<br> Union** |
+|:---:|:---:|:---:|
+| Binary | Array | Enumerated |
+| Boolean | ArrayOf | Choice |
+| Integer | Map |  |
+| Number | MapOf |  |
+| String | Record |  |
 
-**Compound:**
- - Array
- - ArrayOf
- - Map
- - MapOf
- - Record
-
-**Selection / Union:**
- - Enumerated
- - Choice
 
 Each of the compound types is a *container*, a named group of related items
 such as the latitude and longitude of a geographic coordinate, or the set of
