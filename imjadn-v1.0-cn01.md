@@ -507,6 +507,20 @@ use of JADN in information modeling.
 
 ## 3.1 JADN Overview
 
+Figure 3-1 provides a high-level view of the JADN concepts that
+will be described in this section. JADN provides simple and
+compound data types that can be refined using type and field
+options (field options only apply to compound types). JADN can
+also be represented in multiple formats, both textual and
+graphical, and a JADN model can be transformed between the
+different representations without loss of information. The Native
+JADN representation as JSON data is authoritative, but each
+representation has advantages.
+
+###### Figure 3-1 -- JADN Concepts
+![Figure 3-1 -- JADN Concepts](images/JADN-Concepts.drawio.png)
+
+
 The JADN information modeling language was developed against specific objectives:
 
  1) Core types represent application-relevant "information", not "data"
@@ -655,7 +669,7 @@ the seven "Compound" types, as shown in Figure 3-1.
     options that define the items that comprise the compound
     type.
 
-###### Figure 3-1 -- JADN Type Definition Structure
+###### Figure 3-2 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
 
 A firm requirement of JADN is that a TypeName must not be a JADN
@@ -884,7 +898,7 @@ Figure 3-2 illustrates the structure of JADN for defining any
 Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
-###### Figure 3-2 -- JADN for Primitive, ArrayOf, MapOf Types
+###### Figure 3-3 -- JADN for Primitive, ArrayOf, MapOf Types
 ![JADN for Primitive, ArrayOf, MapOf
 Types](images/JADN-primitive-json.drawio.png)
 
@@ -893,7 +907,7 @@ Figure 3-3 illustrates the structure of JADN for defining an
 Enumerated **BaseType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
-###### Figure 3-3 -- JADN for Enumerated Types
+###### Figure 3-4 -- JADN for Enumerated Types
 ![JADN for Enumerated
 Types](images/JADN-with-items-json.drawio.png)
 
@@ -902,7 +916,7 @@ Figure 3-4 illustrates the structure of JADN for defining a
 **BaseType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
-###### Figure 3-4 -- JADN for Types with Fields
+###### Figure 3-5 -- JADN for Types with Fields
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
@@ -960,7 +974,7 @@ Specification to illustrate the representations described in
 [Section 3.1.5.2](#3152-alternative-jadn-representations). The
 example begins with the ERD for the model:
 
-###### Figure 3-5 -- Simple University Example ERD
+###### Figure 3-6 -- Simple University Example ERD
 
 > NOTE:  Placeholder ERD for modified "University" example.
 > To be replaced with version without description fields.
@@ -972,7 +986,7 @@ The package (see [Section
 4.1](#41-namespaces-packages-and-referencing)) containing the
 JADN corresponding to the above ERD is shown here:
 
-###### Figure 3-6 -- Simple University Example JADN (JSON format)
+###### Figure 3-7 -- Simple University Example JADN (JSON format)
 ```json
 {
  "info": {
@@ -1005,7 +1019,7 @@ JADN corresponding to the above ERD is shown here:
 Converting the JSON to JIDL yields a representation that is both
 more readable and easier to edit:
 
-###### Figure 3-7 -- Simple University Example JADN (JIDL format)
+###### Figure 3-8 -- Simple University Example JADN (JIDL format)
 
 ```
  package:  "http://example.com/uni"
@@ -1038,7 +1052,7 @@ which are quite readable but somewhat more challenging to edit
 than JIDL (the package information has been omitted from the set
 of property tables).
 
-###### Figure 3-8 -- Simple University Example JADN (table format)
+###### Figure 3-9 -- Simple University Example JADN (table format)
 
 **_Type: University (Record)_**
 
@@ -1077,7 +1091,7 @@ specific example code for the widely-used GraphViz tool is
 provided, however the HTML to generate the label tables for the
 three nodes has been excerpted for readability.
 
-###### Figure 3-9 -- Simple University Example ERD Source Code (GraphViz)
+###### Figure 3-10 -- Simple University Example ERD Source Code (GraphViz)
 ```
 # package: http://example.com/uni
 # exports: ["University"]
@@ -1676,7 +1690,7 @@ Audio-Format = Enumerated extend	// can only be one, but can extend list
 The entity relationship diagram in Figure 3-10 illustrates how
 the model components connect.
 
-###### Figure 3-10 -- Music Library Example ERD
+###### Figure 3-11 -- Music Library Example ERD
 
 ![Music Library Example ERD](images/music-database.jadn.puml.png)
 
