@@ -249,6 +249,11 @@ being:
       Logical models are defined using languages such as the
       W3C Web Ontology Language ([OWL](https://www.w3.org/OWL/)).
 
+The layering of these models is illustrated in Figure 1-1.
+
+###### Figure 1-1 -- Range of Model Types
+![Figure 1-1 -- Range of Model Types](images/model-types.drawio.png)
+
 JADN is based on [Information
 Theory](https://en.wikipedia.org/wiki/Entropy_(information_theory)),
 which provides a concrete way of quantifying information that is
