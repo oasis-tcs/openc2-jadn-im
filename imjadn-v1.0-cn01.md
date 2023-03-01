@@ -663,6 +663,20 @@ use of JADN in information modeling.
 
 ## 3.1 JADN Overview
 
+Figure 3-1 provides a high-level view of the JADN concepts that
+will be described in this section. JADN provides simple and
+compound data types that can be refined using type and field
+options (field options only apply within compound types). JADN
+can also be represented in multiple formats, both textual and
+graphical, and automated tooling can transform a JADN model
+between the different representations without loss of
+information. The Native JADN representation as JSON data is
+authoritative, but each representation has advantages.
+
+###### Figure 3-1 -- JADN Concepts
+![Figure 3-1 -- JADN Concepts](images/JADN-Concepts.drawio.png)
+
+
 The JADN information modeling language was developed against specific objectives:
 
  1) Core types represent application-relevant "information", not "data"
@@ -671,14 +685,14 @@ The JADN information modeling language was developed against specific objectives
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
 
-As described in the JADN specification introduction:
+As described in the [JADN Specification](#jadn-v10) introduction:
 
 > JADN is a formal description technique that combines type
 > constraints from the Unified Modeling Language (UML) with data
 > abstraction based on information theory and structural
 > organization using results from graph theory.
 
-> EDITOR'S NOTE: consider whether the following adds clarity or
+> **EDITOR'S NOTE:** consider whether the following adds clarity or
 > confusion; it might need to be re-written to guide the reader
 > through the concepts a bit more.
 
@@ -692,23 +706,13 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 The [[JADN Specification](#jadn-v10)] defines twelve base types:
 
-**Primitive:**
- - Binary
- - Boolean
- - Integer
- - Number
- - String
-
-**Compound:**
- - Array
- - ArrayOf
- - Map
- - MapOf
- - Record
-
-**Selection / Union:**
- - Enumerated
- - Choice
+| **Primitive** | **Compound** | **Selection /<br> Union** |
+|:-------------:|:------------:|:-------------------------:|
+|     Binary    |     Array    |         Enumerated        |
+|    Boolean    |    ArrayOf   |           Choice          |
+|    Integer    |      Map     |                           |
+|     Number    |     MapOf    |                           |
+|     String    |    Record    |                           |
 
 Each of the compound types is a *container*, a named group of related items
 such as the latitude and longitude of a geographic coordinate, or the set of
@@ -811,7 +815,7 @@ the seven "Compound" types, as shown in Figure 3-1.
     options that define the items that comprise the compound
     type.
 
-###### Figure 3-1 -- JADN Type Definition Structure
+###### Figure 3-2 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
 
 A firm requirement of JADN is that a TypeName must not be a JADN
@@ -842,38 +846,103 @@ JADN schema if desired (see section 3.1.2 of the
 
 ### 3.1.2 TypeOptions
 
-The third element of a JADN type definition is zero or more of
-the TypeOptions defined in section 3.2.1 of the [[JADN](#jadn-v10)
-Specification]. TypeOptions are classifiers that, along with the
-base type, determine whether data values are instances of the
-defined type. For example, the *pattern* TypeOption is used with
-the String BaseType to define valid instances of that string type
-using a regular expression conforming to
-[[ECMAScript](#ecmascript)] grammar.
+The third element of a JADN type definition is an array of zero
+or more of the TypeOptions defined in section 3.2.1 of the
+[[JADN](#jadn-v10) Specification]. JADN includes options for both
+_types_ (discussed in this section) and _fields_ (discussed in
+[section 3.1.4](#314-field-options)). As explained in the JADN
+Specification:
 
-The following is the complete set of type options:
+> Each option is a text string that may be included in
+> TypeOptions or FieldOptions, encoded as follows:
+> - The first character is the option ID.
+> - The remaining characters are the option value.
 
-| **Option** | **Type** | **Description**                                                   |
-|:----------:|:--------:|:------------------------------------------------------------------|
-|     id     | Boolean  | Items and Fields are denoted by FieldID rather than FieldName     |
-|   vtype    |  String  | Value type for ArrayOf and MapOf                                  |
-|   ktype    |  String  | Key type for MapOf                                                |
-|    enum    |  String  | Extension: Enumerated type derived from a specified type          |
-|  pointer   |  String  | Extension: Enumerated type pointers derived from a specified type |
-|   format   |  String  | Semantic validation keyword                                       |
-|  pattern   |  String  | Regular expression used to validate a String type                 |
-|    minf    |  Number  | Minimum real number value                                         |
-|    maxf    |  Number  | Maximum real number value                                         |
-|    minv    | Integer  | Minimum integer value, octet or character count, or element count |
-|    maxv    | Integer  | Maximum integer value, octet or character count, or element count |
-|   unique   | Boolean  | ArrayOf instance must not contain duplicate values                |
-|    set     | Boolean  | ArrayOf instance is unordered and unique                          |
-| unordered  | Boolean  | ArrayOf instance is unordered                                     |
-|   extend   | Boolean  | Type is extensible; new Items or Fields may be appended           |
-|  default   |  String  | Default value                                                     |
+TypeOptions are classifiers that, along with the base type,
+determine whether data values are instances of the defined type.
+For example, the *pattern* TypeOption is used with the String
+BaseType to define valid instances of that string type using a
+regular expression conforming to [[ECMAScript](#ecmascript)]
+grammar.
+
+The following is the complete set of type options, including the
+option name, type, ID character, and description; the ID
+characters are used in standard JADN representation 
+([section 3.1.5.1](#3151-native-json-representation)) when specifying type
+options:
+
+| **Option** | **Type** | **ID** | **Description**                                                   |
+|:----------:|:--------:|:------:|:------------------------------------------------------------------|
+|     id     | Boolean  |   `=`  | Items and Fields are denoted by FieldID rather than FieldName     |
+|   vtype    |  String  |   `*`  | Value type for ArrayOf and MapOf                                  |
+|   ktype    |  String  |   `+`  | Key type for MapOf                                                |
+|    enum    |  String  |   `#`  | Extension: Enumerated type derived from a specified type          |
+|  pointer   |  String  |   `>`  | Extension: Enumerated type pointers derived from a specified type |
+|   format   |  String  |   `/`  | Semantic validation keyword                                       |
+|  pattern   |  String  |   `%`  | Regular expression used to validate a String type                 |
+|    minf    |  Number  |   `y`  | Minimum real number value                                         |
+|    maxf    |  Number  |   `z`  | Maximum real number value                                         |
+|    minv    | Integer  |   `{`  | Minimum integer value, octet or character count, or element count |
+|    maxv    | Integer  |   `}`  | Maximum integer value, octet or character count, or element count |
+|   unique   | Boolean  |   `q`  | ArrayOf instance must not contain duplicate values                |
+|    set     | Boolean  |   `s`  | ArrayOf instance is unordered and unique                          |
+| unordered  | Boolean  |   `b`  | ArrayOf instance is unordered                                     |
+|   extend   | Boolean  |   `X`  | Type is extensible; new Items or Fields may be appended           |
+|  default   |  String  |   `!`  | Default value                                                     |
 
 Detailed explanations of each type option can be found in
 Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
+
+The `minv` and `maxv` type options are distinctive in that they
+can apply to both primitive and compound types, with a different
+meaning in these two applications:
+
+ - When applied to a primitive type (Binary, Integer or String),
+   the `minv` and `maxv` type options constrain the *values* an
+   instance of that type may hold. Specifically, when applied to:
+   - An Integer type, the `minv` and `maxv` type options constrain
+     the numeric values an instance of that type may hold.
+   - A String type, the `minv` and `maxv` type options constrain the
+     number of characters in the string.
+   - A Binary type, the `minv` and `maxv` type options constrain the
+     number of octets (bytes) in the binary value.
+   
+For example, the following specifies an Integer type that can be
+assigned values between `1` and `1000`, using both JADN (see
+[section 3.5.1.1](#3151-native-json-representation)) and JIDL
+notation (see [section
+3.5.1.2](#3152-alternative-jadn-representations)):
+
+```
+["count","integer",["{1", "}1000"], "count of objects",[]]
+
+// define a restricted count value
+  count = integer {1..1000}  // count of objects
+```
+
+ - When applied to a compound type (Array, ArrayOf, Map, MapOf,
+   Record), the `minv` and `maxv` type options constrain the
+   *number of elements* an instance of that type may have. For
+   example, the following specifies a Record type that must have
+   at least two fields populated, even though only one field is
+   required (fields `field_2` and `field_3` are indicated as
+   optional by the `["[0"]` *field* option 
+   [see [Section 3.1.4](#314-field-options)]):
+
+```
+["RecordType", "Record", ["{2"], "requires field_1 and either or both field_2 and field_3", [
+  [1, "field_1", "String", [], ""],
+  [2, "field_2", "String", ["[0"], ""],
+  [3, "field_3", "String", ["[0"], ""],
+]]
+
+
+RecordType = Record {2..*} // requires field_1 and either or both field_2 and field_3
+  1 field_1   String
+  2 field_2   String optional
+  3 field_3   String optional  
+```
+
 
 The following table summarizes the applicability of type options
 to JADN base types.
@@ -905,21 +974,21 @@ illustrated in [Figure
 3-1](#figure-3-1----jadn-type-definition-structure). The rules
 pertaining to the **Fields** array are as follows:
 
-* If the **BaseType** is a Primitive type, ArrayOf, or MapOf, the
-  **Fields** array MUST be empty:
+* If the **BaseType** is a Primitive type, ArrayOf, or MapOf, no
+  fields are permitted (i.e., the **Fields** array must be empty).
 
 
-* If the **BaseType** is Enumerated, each item definition in the
-  **Fields** array MUST have three elements:
+* If the **BaseType** is Enumerated, the fields for each item
+  definition in the **Fields** array are described with three
+  elements:
 
     1. **ItemID:** the integer identifier of the item
     2. **ItemValue:** the string value of the item
     3. **ItemDescription:** a non-normative comment
 
-
-* If the **BaseType** is Array, Choice, Map, or Record, each
-  field definition in the **Fields** array MUST have five
-  elements:
+* If the **BaseType** is Array, Choice, Map, or Record, the
+  fields for each item definition in the **Fields** array are
+  described with five elements:
     1. **FieldID:** the integer identifier of the field
     2. **FieldName:** the name or label of the field
     3. **FieldType:** the type of the field, a predefined type or
@@ -935,20 +1004,25 @@ pertaining to the **Fields** array are as follows:
 
 Compound types containing Items or Fields support field options
 in addition to the type options describe in [Section
-3.1.2](#312-typeoptions). JADN defines six field options.
+3.1.2](#312-typeoptions). JADN defines six field options. As with
+the type options described in [section 3.1.2](#312-typeoptions);
+the ID characters are used in standard JADN representation
+([section 3.1.5.1](#3151-native-json-representation)) when
+specifying field options.
 
-| **Option** |  **Type**  | **Description**                                               | **JADN Specification Section** |
-|:----------:|:----------:|:--------------------------------------------------------------|:------------------------------:|
-|    minc    |  Integer   | Minimum cardinality, default = 1, 0 = optional                |            3.2.2.1             |
-|    maxc    |  Integer   | Maximum cardinality, default = 1, 0 = default max, >1 = array |            3.2.2.1             |
-|   tagid    | Enumerated | Field containing an explicit tag for this Choice type         |            3.2.2.2             |
-|    dir     |  Boolean   | Pointer enumeration treats field as a group of items          |             3.3.5              |
-|    key     |  Boolean   | Field is a primary key for this type                          |             3.3.6              |
-|    link    |  Boolean   | Field is a foreign key reference to a type instance           |             3.3.6              |
+| **Option** |  **Type**  |  **ID**  | **Description**                                               | **JADN Spec Section** |
+|:----------:|:----------:|:--------:|:--------------------------------------------------------------|:---------------------:|
+|    minc    |  Integer   |   `[`    | Minimum cardinality, default = 1, 0 = optional                |        3.2.2.1        |
+|    maxc    |  Integer   |   `]`    | Maximum cardinality, default = 1, 0 = default max, >1 = array |        3.2.2.1        |
+|   tagid    | Enumerated |   `&`    | Field containing an explicit tag for this Choice type         |        3.2.2.2        |
+|    dir     |  Boolean   |   `<`    | Pointer enumeration treats field as a group of items          |         3.3.5         |
+|    key     |  Boolean   |   `K`    | Field is a primary key for this type                          |         3.3.6         |
+|    link    |  Boolean   |   `L`    | Field is a foreign key reference to a type instance           |         3.3.6         |
 
-Type options can also apply to fields, with the constraint that the
-type option must be applicable to the field's type, as described
-in the base type examples in [Section 3.1.6](#316-base-type-examples).
+The type options described in [Section 3.1.3](#312-typeoptions)
+can also apply to fields, with the constraint that the type
+option must be applicable to the field's type, as described in
+the base type examples in [Section 3.1.6](#316-base-type-examples).
 
 ### 3.1.5 JADN Representations
 
@@ -961,7 +1035,7 @@ representations using a simple example.
 #### 3.1.5.1 Native JSON Representation
 
 This section illustrates the JSON representations of the Base
-Type described in [Section 3.1](#31-jadn-overview). Depictions
+Types described in [Section 3.1](#31-jadn-overview). Depictions
 are provided for each of three ways that the **Fields** array is
 used, depending on the base type used in a particular type
 definition.
@@ -970,7 +1044,7 @@ Figure 3-2 illustrates the structure of JADN for defining any
 Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
-###### Figure 3-2 -- JADN for Primitive, ArrayOf, MapOf Types
+###### Figure 3-3 -- JADN for Primitive, ArrayOf, MapOf Types
 ![JADN for Primitive, ArrayOf, MapOf
 Types](images/JADN-primitive-json.drawio.png)
 
@@ -979,7 +1053,7 @@ Figure 3-3 illustrates the structure of JADN for defining an
 Enumerated **BaseType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
-###### Figure 3-3 -- JADN for Enumerated Types
+###### Figure 3-4 -- JADN for Enumerated Types
 ![JADN for Enumerated
 Types](images/JADN-with-items-json.drawio.png)
 
@@ -988,7 +1062,7 @@ Figure 3-4 illustrates the structure of JADN for defining a
 **BaseType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
-###### Figure 3-4 -- JADN for Types with Fields
+###### Figure 3-5 -- JADN for Types with Fields
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
@@ -1046,7 +1120,7 @@ Specification to illustrate the representations described in
 [Section 3.1.5.2](#3152-alternative-jadn-representations). The
 example begins with the ERD for the model:
 
-###### Figure 3-5 -- Simple University Example ERD
+###### Figure 3-6 -- Simple University Example ERD
 
 > NOTE:  Placeholder ERD for modified "University" example.
 > To be replaced with version without description fields.
@@ -1058,7 +1132,7 @@ The package (see [Section
 4.1](#41-namespaces-packages-and-referencing)) containing the
 JADN corresponding to the above ERD is shown here:
 
-###### Figure 3-6 -- Simple University Example JADN (JSON format)
+###### Figure 3-7 -- Simple University Example JADN (JSON format)
 ```json
 {
  "info": {
@@ -1091,7 +1165,7 @@ JADN corresponding to the above ERD is shown here:
 Converting the JSON to JIDL yields a representation that is both
 more readable and easier to edit:
 
-###### Figure 3-7 -- Simple University Example JADN (JIDL format)
+###### Figure 3-8 -- Simple University Example JADN (JIDL format)
 
 ```
  package:  "http://example.com/uni"
@@ -1124,7 +1198,7 @@ which are quite readable but somewhat more challenging to edit
 than JIDL (the package information has been omitted from the set
 of property tables).
 
-###### Figure 3-8 -- Simple University Example JADN (table format)
+###### Figure 3-9 -- Simple University Example JADN (table format)
 
 **_Type: University (Record)_**
 
@@ -1163,7 +1237,7 @@ specific example code for the widely-used GraphViz tool is
 provided, however the HTML to generate the label tables for the
 three nodes has been excerpted for readability.
 
-###### Figure 3-9 -- Simple University Example ERD Source Code (GraphViz)
+###### Figure 3-10 -- Simple University Example ERD Source Code (GraphViz)
 ```
 # package: http://example.com/uni
 # exports: ["University"]
@@ -1762,7 +1836,7 @@ Audio-Format = Enumerated extend	// can only be one, but can extend list
 The entity relationship diagram in Figure 3-10 illustrates how
 the model components connect.
 
-###### Figure 3-10 -- Music Library Example ERD
+###### Figure 3-11 -- Music Library Example ERD
 
 ![Music Library Example ERD](images/music-database.jadn.puml.png)
 
