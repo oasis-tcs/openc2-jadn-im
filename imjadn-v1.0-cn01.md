@@ -522,7 +522,7 @@ exchange information in order to make it available to users.
 
 Serialization and deserialization are intimately connected to the
 chosen format: the same data can be serialized in JSON, CBOR, and
-XML, and while the serialized data will be look very different,
+XML, and while the serialized data will look very different,
 the received information that is recovered by deserialization
 should match the transmitted information. The [[JADN Specification](#jadn-v10)] 
 include serialization rules for four different formats:
@@ -532,11 +532,12 @@ include serialization rules for four different formats:
  - Concise JSON
  - CBOR
 
-The specification also describes what is needed to connect JADN IMs to other serialization formats:
+The specification also describes what is needed to connect JADN
+and IMs defined in JADN to other serialization formats:
 
  - Specify an unambiguous serialized representation for each JADN type
  - Specify how each option applicable to a type affects serialized values
- - Specify any validation requirements defined for that format
+ - Specify any validation requirements defined for that format.
 
 Regardless of format serialization should be:
 1) **lossless**, so that information is not modified in transit
