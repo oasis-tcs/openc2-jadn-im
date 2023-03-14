@@ -524,7 +524,8 @@ Serialization and deserialization are intimately connected to the
 chosen format: the same data can be serialized in JSON, CBOR, and
 XML, and while the serialized data will be look very different,
 the received information that is recovered by deserialization
-should match the transmitted information. The [[JADN Specification](#jadn-v10)] include serialization rules for four different formats:
+should match the transmitted information. The [[JADN Specification](#jadn-v10)] 
+include serialization rules for four different formats:
 
  - Verbose JSON
  - Compact JSON
