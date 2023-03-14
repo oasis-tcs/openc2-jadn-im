@@ -486,10 +486,11 @@ and describes a "quality" IM as being:
  - precise, and
  - unambiguous.
 
-In [DThaler's](#dthaler) paper on _IoT Bridge Taxonomy_, which
-addresses the challenges created when "many organizations develop
-and implement different schemas for the same kind of things", the
-concluding Recommendations section includes the following:
+To sum up, in [DThaler's](#dthaler) paper on _IoT Bridge
+Taxonomy_, which addresses the challenges created when "many
+organizations develop and implement different schemas for the
+same kind of things", the concluding Recommendations section
+includes the following:
 
 > To ... increase semantic interoperability, it is desirable that
 > different data models for the same type of thing (e.g., light
