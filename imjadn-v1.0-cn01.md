@@ -150,11 +150,11 @@ For complete copyright information please see the full Notices section in an App
 
 An Information Model (IM) defines the essential content of
 entities used in computing, independently of how those entities
-are represented (i.e., serialized) for communication or storage.
-This Committee Note (CN) describes the nature of an IM, and the
-application of the [JSON Abstract Data Notation
-(JADN)](#jadn-v10) information modeling language in the creation
-and use of IMs.
+are represented (i.e., [serialized](#24-serialization)) for
+communication or storage. This Committee Note (CN) describes the
+nature of an IM, and the application of the [JSON Abstract Data
+Notation (JADN)](#jadn-v10) information modeling language in the
+creation and use of IMs.
 
 ## 1.1 Background: Motivation for JADN
 
