@@ -186,13 +186,8 @@ that manner.
 
 It is important to recognize that while JADN was created to
 facilitate the development of OpenC2, it is an independent
-specification. JADN can be used for any information modeling
-application. Examples of where JADN-based information modeling
-can be useful include:
-
- - Software Bill of Materials formats
- - Database definition
- - Information exchange specification
+specification, and can be used for any information modeling
+application. 
 
 ## 1.1.2 The Information Modeling Gap
 
