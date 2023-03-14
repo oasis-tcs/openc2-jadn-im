@@ -613,8 +613,6 @@ Encoding Rules (BER) and similar, which are closely associated
 with ASN.1, as well as less closely tied standards such as XML
 and JSON.
 
-> What languages aren't really IM languages
-
 Other languages have been used for information modeling, although
 that is not their primary purposes.  Some examples are
 
