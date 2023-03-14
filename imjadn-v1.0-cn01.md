@@ -160,10 +160,6 @@ creation and use of IMs.
 
 ## 1.1.1 OpenC2 and JADN
 
-> NOTE: copying and adapting content from OpenC2 TC Operations
-> repo introduction to JADN; can clean up later for format,
-> proper references, etc.
-
 The [OpenC2 Architecture
 Specification](https://docs.oasis-open.org/openc2/oc2arch/v1.0/cs01/oc2arch-v1.0-cs01.html)
 abstract defines the objective of OpenC2:
@@ -175,18 +171,28 @@ abstract defines the objective of OpenC2:
 > underlying products, technologies, transport mechanisms or
 > other aspects of the implementation._
 
-The [OpenC2 Technical Committee
+The OASIS [OpenC2 Technical Committee
 (TC)](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2)
 recognized the need to define the [OpenC2
 language](https://docs.oasis-open.org/openc2/oc2ls/v1.0/oc2ls-v1.0.html)
 in an implementation-independent manner in order to achieve the
 project's goals to be "agnostic of the underlying products,
 technologies, transport mechanisms or other aspects of the
-implementation", and created an information modeling language,
+implementation". In response, the TC created an information modeling language,
 [JSON Abstract Data Notation
 (JADN)](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html),
 to support the information modeling needed to define OpenC2 in
-that manner.
+that manner. 
+
+It is important to recognize that while JADN was created to
+facilitate the development of OpenC2, it is an independent
+specification. JADN can be used for any information modeling
+application. Examples of where JADN-based information modeling
+can be useful include:
+
+ - Software Bill of Materials formats
+ - Database definition
+ - Information exchange specification
 
 ## 1.1.2 The Information Modeling Gap
 
