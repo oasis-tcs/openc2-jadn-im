@@ -1303,8 +1303,6 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
-
 The following *format* options are applicable to the Binary type:
 
 | Keyword      | Type   | Requirement |
@@ -1330,7 +1328,6 @@ item fitting a Boolean type would be defined as follows:
 ```json
 ["AccessGranted", "Boolean", [], "Result of access control decision", []]
 ```
-
 
 The corresponding JIDL representation would be:
 
@@ -1364,7 +1361,6 @@ The corresponding JIDL representation would be:
   TrackNumber = Integer   // Track number for current song
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 The following `/format` options are applicable to the Integer type:
 
