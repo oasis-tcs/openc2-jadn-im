@@ -1305,7 +1305,7 @@ The corresponding JIDL representation would be:
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-The following `/format` options are applicable to the Binary type:
+The following *format* options are applicable to the Binary type:
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
@@ -1426,7 +1426,9 @@ The corresponding JIDL representation would be:
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-All semantic validation keywords defined in Section 7.3 of [JSON Schema](#jsonschema) are valid `/format` options for the String type.
+All semantic validation keywords defined in Section 7.3 of 
+[JSON Schema](#jsonschema) are valid *format* options for the String
+type.
 
 When applying the *pattern* option in JIDL, it should be directly
 connected to the String TypeName. The entire pattern
@@ -1550,7 +1552,7 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-The following `/format` options are applicable to the Array type:
+The following *format* options are applicable to the Array type:
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
