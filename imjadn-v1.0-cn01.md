@@ -78,13 +78,20 @@ For complete copyright information please see the full Notices section in an App
 # Table of Contents
 
 - [1 Introduction](#1-introduction)
-  - [1.1 Terminology](#11-terminology)
+  - [1.1 Background: Motivation for JADN](#11-background-motivation-for-jadn)
+  - [1.1.1 OpenC2 and JADN](#111-openc2-and-jadn)
+  - [1.1.2 The Information Modeling Gap](#112-the-information-modeling-gap)
+          - [Figure 1-1 -- Range of Model Types](#figure-1-1----range-of-model-types)
+  - [1.2 Purpose](#12-purpose)
+  - [1.3 Terminology](#13-terminology)
 - [2 Information Modeling Overview](#2-information-modeling-overview)
-  - [2.1 Information Models And Data Models](#21-information-models-and-data-models)
-  - [2.2 Benefits of Information Models](#22-benefits-of-information-models)
-  - [2.3 Information Modeling Languages](#23-information-modeling-languages)
-  - [2.4 Information Modeling Tools](#24-information-modeling-tools)
-  - [2.5 Applying an Information Model](#25-applying-an-information-model)
+  - [2.1 Defining "Information"](#21-defining-information)
+  - [2.2 Information Models And Data Models](#22-information-models-and-data-models)
+  - [2.3 Benefits of Information Models](#23-benefits-of-information-models)
+  - [2.4 Serialization](#24-serialization)
+  - [2.5 Information Modeling Languages](#25-information-modeling-languages)
+  - [2.6 Information Modeling Tools](#26-information-modeling-tools)
+  - [2.7 Applying an Information Model](#27-applying-an-information-model)
 - [3 Creating Information Models with JADN](#3-creating-information-models-with-jadn)
   - [3.1 JADN Overview](#31-jadn-overview)
     - [3.1.1 Type Definitions](#311-type-definitions)
@@ -110,7 +117,6 @@ For complete copyright information please see the full Notices section in an App
       - [3.1.6.12 Record](#31612-record)
   - [3.2 Information Modeling Process](#32-information-modeling-process)
   - [3.3 Information Modeling Example](#33-information-modeling-example)
-    - [3.3.1 Example 1: A Digital Music Library](#331-example-1-a-digital-music-library)
 - [4 Advanced Techniques](#4-advanced-techniques)
   - [4.1 Namespaces, Packages, and Referencing](#41-namespaces-packages-and-referencing)
     - [4.1.1 Packages](#411-packages)
@@ -130,7 +136,8 @@ For complete copyright information please see the full Notices section in an App
 - [Appendix F. Notices](#appendix-f-notices)
 
 **List of Figures**
-- [Figure 2-1 -- Parsing and Serializing With An IM](#figure-2-1----parsing-and-serializing-with-an-im)
+- [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
+- [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
 - [Figure 3-1 -- JADN Type Definition Structure](#figure-3-1----jadn-type-definition-structure)
 - [Figure 3-2 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-2----jadn-for-primitive-arrayof-mapof-types)
 - [Figure 3-3 -- JADN for Enumerated Types](#figure-3-3----jadn-for-enumerated-types)
@@ -520,6 +527,9 @@ payloads back into application state. Serialization is not a goal
 in and of itself, it is the mechanism by which applications
 exchange information in order to make it available to users.
 
+###### **Figure 2-1 -- Serialization / Deserialization**
+![**Figure 2-1 -- Serialization / Deserialization**](images/model-and-serialization.png)
+
 Serialization and deserialization are intimately connected to the
 chosen format: the same data can be serialized in JSON, CBOR, and
 XML, and while the serialized data will look very different,
@@ -544,6 +554,15 @@ Regardless of format serialization should be:
    and all applications have the identical information
 2) **transparent**, so that information is unaffected by whether
 or how it has been serialized; users should not know or care.
+
+As noted above, serialization is an important aspect of
+implementation, but it is a means to an end. The user cares about
+the information the serialized data represents, not the format by
+which it is moved from system to system. An Automated Teller
+Machine customer cares about their bank balance, and an airline
+customer cares that their tickets are for the proper flights. How
+the information system handles to bits to make that happen is of
+no concern to the customer. 
 
 Shannon's information theory defines the relationship between
 information and serialization (coding). Mathematicians
@@ -652,7 +671,7 @@ from the IM ensures consistency as the data is manipulated.
 Figure 2-1 illustrates the concept of applying an IM to manage
 the associated data.
 
-###### Figure 2-1 -- Parsing and Serializing With An IM
+###### Figure 2-2 -- Parsing and Serializing With An IM
 
 ![Parsing and Serializing With An IM](images/parse-serialize.drawio.png)
 
