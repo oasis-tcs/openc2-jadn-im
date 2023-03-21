@@ -1395,7 +1395,16 @@ The corresponding JIDL representation would be:
   Temperature = Number   // Current temperature observation in degrees C
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
+The following *format* options are applicable to the Number type,
+and are only relevant when serializing using CBOR; see the [JADN
+Specification], Section 4.4:
+
+| Keyword | Type | Requrirement |
+| :--- | :--- | :--- |
+| **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25). |
+| **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26). |
+
+
 
 #### 3.1.6.5 String
 
