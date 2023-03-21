@@ -1555,8 +1555,6 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
-
 The following *format* options are applicable to the Array type:
 
 | Keyword      | Type   | Requirement |
@@ -1585,9 +1583,9 @@ fitting the ArrayOf base type would be defined as follows:
 
 
 
-
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
->
+
+
 #### 3.1.6.10 Map
 
 **Definition:**  An unordered map from a set of specified keys to
