@@ -156,7 +156,7 @@ For complete copyright information please see the full Notices section in an App
 # 1 Introduction
 
 An Information Model (IM) defines the essential content of
-entities used in computing, independently of how those entities
+messages used in computing, independently of how those messages
 are represented (i.e., [serialized](#24-serialization)) for
 communication or storage. This Committee Note (CN) describes the
 nature of an IM, and the application of the [JSON Abstract Data
