@@ -1361,7 +1361,15 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
+The following *format* options are applicable to the Binary type:
+
+| Keyword      | Type   | Requirement |
+| ------------ | ------ | ------------|
+| eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [EUI](#eui) |
+| ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc791) Section 3.1 |
+| ipv6-addr    | Binary | IPv6 address as specified in [RFC 8200](#rfc8200)  Section 3 |
+
+
 
 #### 3.1.6.2 Boolean
 
@@ -1378,7 +1386,6 @@ item fitting a Boolean type would be defined as follows:
 ```json
 ["AccessGranted", "Boolean", [], "Result of access control decision", []]
 ```
-
 
 The corresponding JIDL representation would be:
 
@@ -1412,9 +1419,15 @@ The corresponding JIDL representation would be:
   TrackNumber = Integer   // Track number for current song
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
 
+The following `/format` options are applicable to the Integer type:
 
+| Keyword      | Type   | Requirement |
+| ------------ | ------ | ------------|
+| i8           | Integer | Signed 8 bit integer, value must be between -128 and 127.
+| i16          | Integer | Signed 16 bit integer, value must be between -32768 and 32767.
+| i32          | Integer | Signed 32 bit integer, value must be between -2147483648 and 2147483647.
+| u\<*n*\>     | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1.
 
 #### 3.1.6.4 Number
 
@@ -1440,7 +1453,16 @@ The corresponding JIDL representation would be:
   Temperature = Number   // Current temperature observation in degrees C
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
+The following *format* options are applicable to the Number type,
+and are only relevant when serializing using CBOR; see the [JADN
+Specification], Section 4.4:
+
+| Keyword | Type | Requrirement |
+| :--- | :--- | :--- |
+| **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25). |
+| **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26). |
+
+
 
 #### 3.1.6.5 String
 
@@ -1466,6 +1488,10 @@ The corresponding JIDL representation would be:
 ```
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
+
+All semantic validation keywords defined in Section 7.3 of 
+[JSON Schema](#jsonschema) are valid *format* options for the String
+type.
 
 When applying the *pattern* option in JIDL, it should be directly
 connected to the String TypeName. The entire pattern
@@ -1587,7 +1613,15 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
+The following *format* options are applicable to the Array type:
+
+| Keyword      | Type   | Requirement |
+| ------------ | ------ | ------------|
+| ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [RFC 4632](#rfc4632) Section 3.1 |
+| ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [RFC 4291](#rfc4291) Section 2.3 |
+
+
+
 
 #### 3.1.6.9 ArrayOf(_vtype_)
 
@@ -1607,9 +1641,9 @@ fitting the ArrayOf base type would be defined as follows:
 
 
 
-
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
->
+
+
 #### 3.1.6.10 Map
 
 **Definition:**  An unordered map from a set of specified keys to
@@ -1974,10 +2008,11 @@ https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html.
 Latest stage:
 https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 
-###### [JSON-Schema]
-"JSON Schema, a vocabulary that allows you to annotate and
-validate JSON documents.", retrieved 9/26/2022,
-https://json-schema.org/
+###### [JSONSCHEMA]
+Wright, A., Andrews, H., Hutton, B., *"JSON Schema Validation"*,
+Internet-Draft, 16 September 2019,
+https://tools.ietf.org/html/draft-handrews-json-schema-validation-02,
+or for latest drafts: https://json-schema.org/work-in-progress.
 
 ###### [Lombardi]
 Lombardi, Olimpia ; Holik, Federico & Vanni, Leonardo (2016).
