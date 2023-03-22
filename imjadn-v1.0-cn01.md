@@ -78,13 +78,20 @@ For complete copyright information please see the full Notices section in an App
 # Table of Contents
 
 - [1 Introduction](#1-introduction)
-  - [1.1 Terminology](#11-terminology)
+  - [1.1 Background: Motivation for JADN](#11-background-motivation-for-jadn)
+  - [1.1.1 OpenC2 and JADN](#111-openc2-and-jadn)
+  - [1.1.2 The Information Modeling Gap](#112-the-information-modeling-gap)
+          - [Figure 1-1 -- Range of Model Types](#figure-1-1----range-of-model-types)
+  - [1.2 Purpose](#12-purpose)
+  - [1.3 Terminology](#13-terminology)
 - [2 Information Modeling Overview](#2-information-modeling-overview)
-  - [2.1 Information Models And Data Models](#21-information-models-and-data-models)
-  - [2.2 Benefits of Information Models](#22-benefits-of-information-models)
-  - [2.3 Information Modeling Languages](#23-information-modeling-languages)
-  - [2.4 Information Modeling Tools](#24-information-modeling-tools)
-  - [2.5 Applying an Information Model](#25-applying-an-information-model)
+  - [2.1 Defining "Information"](#21-defining-information)
+  - [2.2 Information Models And Data Models](#22-information-models-and-data-models)
+  - [2.3 Benefits of Information Models](#23-benefits-of-information-models)
+  - [2.4 Serialization](#24-serialization)
+  - [2.5 Information Modeling Languages](#25-information-modeling-languages)
+  - [2.6 Information Modeling Tools](#26-information-modeling-tools)
+  - [2.7 Applying an Information Model](#27-applying-an-information-model)
 - [3 Creating Information Models with JADN](#3-creating-information-models-with-jadn)
   - [3.1 JADN Overview](#31-jadn-overview)
     - [3.1.1 Type Definitions](#311-type-definitions)
@@ -110,7 +117,6 @@ For complete copyright information please see the full Notices section in an App
       - [3.1.6.12 Record](#31612-record)
   - [3.2 Information Modeling Process](#32-information-modeling-process)
   - [3.3 Information Modeling Example](#33-information-modeling-example)
-    - [3.3.1 Example 1: A Digital Music Library](#331-example-1-a-digital-music-library)
 - [4 Advanced Techniques](#4-advanced-techniques)
   - [4.1 Namespaces, Packages, and Referencing](#41-namespaces-packages-and-referencing)
     - [4.1.1 Packages](#411-packages)
@@ -130,7 +136,8 @@ For complete copyright information please see the full Notices section in an App
 - [Appendix F. Notices](#appendix-f-notices)
 
 **List of Figures**
-- [Figure 2-1 -- Parsing and Serializing With An IM](#figure-2-1----parsing-and-serializing-with-an-im)
+- [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
+- [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
 - [Figure 3-1 -- JADN Type Definition Structure](#figure-3-1----jadn-type-definition-structure)
 - [Figure 3-2 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-2----jadn-for-primitive-arrayof-mapof-types)
 - [Figure 3-3 -- JADN for Enumerated Types](#figure-3-3----jadn-for-enumerated-types)
@@ -150,19 +157,15 @@ For complete copyright information please see the full Notices section in an App
 
 An Information Model (IM) defines the essential content of
 entities used in computing, independently of how those entities
-are represented (i.e., serialized) for communication or storage.
-This Committee Note (CN) describes the nature of an IM, and the
-application of the [JSON Abstract Data Notation
-(JADN)](#jadn-v10) information modeling language in the creation
-and use of IMs.
+are represented (i.e., [serialized](#24-serialization)) for
+communication or storage. This Committee Note (CN) describes the
+nature of an IM, and the application of the [JSON Abstract Data
+Notation (JADN)](#jadn-v10) information modeling language in the
+creation and use of IMs.
 
 ## 1.1 Background: Motivation for JADN
 
 ## 1.1.1 OpenC2 and JADN
-
-> NOTE: copying and adapting content from OpenC2 TC Operations
-> repo introduction to JADN; can clean up later for format,
-> proper references, etc.
 
 The [OpenC2 Architecture
 Specification](https://docs.oasis-open.org/openc2/oc2arch/v1.0/cs01/oc2arch-v1.0-cs01.html)
@@ -175,18 +178,23 @@ abstract defines the objective of OpenC2:
 > underlying products, technologies, transport mechanisms or
 > other aspects of the implementation._
 
-The [OpenC2 Technical Committee
+The OASIS [OpenC2 Technical Committee
 (TC)](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2)
 recognized the need to define the [OpenC2
 language](https://docs.oasis-open.org/openc2/oc2ls/v1.0/oc2ls-v1.0.html)
 in an implementation-independent manner in order to achieve the
 project's goals to be "agnostic of the underlying products,
 technologies, transport mechanisms or other aspects of the
-implementation", and created an information modeling language,
+implementation". In response, the TC created an information modeling language,
 [JSON Abstract Data Notation
 (JADN)](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html),
 to support the information modeling needed to define OpenC2 in
-that manner.
+that manner. 
+
+It is important to recognize that while JADN was created to
+facilitate the development of OpenC2, it is an independent
+specification, and can be used for any information modeling
+application. 
 
 ## 1.1.2 The Information Modeling Gap
 
@@ -281,10 +289,11 @@ content between data in different formats.
 
 This CN discusses:
 
-1) What is information modeling?
-2) The value of an information model.
-3) The distinction between an IM and other modeling approaches.
-4) The creation and use of an IM using JADN and associated
+1) Key concepts: information, data, serialization.
+2) What is information modeling?
+3) The value of an information model.
+4) The distinction between an IM and other modeling approaches.
+5) The creation and use of an IM using JADN and associated
     automated tools.
 
 ## 1.3 Terminology
@@ -329,9 +338,9 @@ additional terms are defined for this document:
 
 # 2 Information Modeling Overview
 
-This section discusses the nature and benefits of IMs, types of
-available modeling languages, and tools that can be used in
-information modeling.
+This section discusses the nature and benefits of IMs, the role
+of serialization, types of available modeling languages, and
+tools that can be used in information modeling.
 
 ## 2.1 Defining "Information"
 
@@ -350,7 +359,17 @@ engineering. ... Nowadays, Shannon’s theory is a basic ingredient
 of the communication engineers training. 
 
 Shannon's original article was later published as a book and gave
-rise to the field of Information Theory [[Shannnon](#shannon)].
+rise to the field of Information Theory [[Shannon](#shannon)].
+
+A small example may help clarify the concept of information. The
+information content of an instance can be no greater than the
+smallest data instance for which lossless round-trip conversion
+is possible. For example, an IPv4 address presented in dotted
+quad format is 17 bytes of JSON string data ("192.168.101.213"),
+but can be converted to 4 byte RFC 791 format and back without
+loss. The information content of an IPv4 address can therefore be
+no greater than 4 bytes (32 bits), and an information model would
+define the IPv4 address type as a byte sequence of length 4.
 
 For the purpose of understanding information modeling, it is
 helpful to think in terms of different levels of representation:
@@ -396,8 +415,6 @@ environments.
 
 ## 2.2 Information Models And Data Models
 
- > discussion based on RFC 3444
-
 As described in the introduction, IMs are a means to understand
 and document the essential information content relevant to a
 system, application, or protocol exchange without regard to how
@@ -406,16 +423,6 @@ Having a clear view of the information required provides clarity
 regarding the goals that the eventual implementation must
 satisfy.
 
-A small example may help clarify the concept of information. The
-information content of an instance can be no greater than the
-smallest data instance for which lossless round-trip conversion
-is possible. For example, an IPv4 address presented in dotted
-quad format is 17 bytes of JSON string data ("192.168.101.213"),
-but can be converted to 4 byte RFC 791 format and back without
-loss. The information content of an IPv4 address can therefore be
-no greater than 4 bytes (32 bits), and an information model would
-define the IPv4 address type as a byte sequence of length 4.
-
  [[RFC 3444](#rfc3444)] describes the purpose of an IM as:
 
  > "to model managed objects at a conceptual level, independent
@@ -423,15 +430,7 @@ define the IPv4 address type as a byte sequence of length 4.
  > the data. ... Another important characteristic of an IM is
  > that it defines relationships between managed objects."
 
-[[YTLee](#ytlee)] describes the concept of a "conceptual schema",
-a "logically neutral" view of the information in a system:
-
-> "The conceptual view is a single, integrated definition of the
-> data within an enterprise that is unbiased toward any single
-> application of data and independent of how the data is
-> physically stored or accessed."
-
-and an IM:
+[[YTLee](#ytlee)] describes an IM as follows:
 
 > "An information model is a representation of concepts,
 > relationships, constraints, rules, and operations to specify
@@ -441,7 +440,7 @@ and an IM:
 
 > "Compared to IMs, DMs define managed objects at a lower level
 > of abstraction.  They include implementation- and
-> protocol-specific details, e.g. rules that explain how to map
+> protocol-specific details, e.g., rules that explain how to map
 > managed objects onto lower-level protocol constructs."
 
 and states DMs are "intended for implementors and include
@@ -451,7 +450,7 @@ The following key principles apply to IMs:
 
  - An information model classifies the validity of serialized
    data with zero false positives and zero false negatives. That
-   is, an information model is the authoritative definition of
+   is, an information model is the *authoritative definition* of
    essential content, and any serialized data is unambiguously
    one of: a) consistent with, b) inconsistent with, or c)
    insignificant with respect to, the model.
@@ -495,10 +494,11 @@ and describes a "quality" IM as being:
  - precise, and
  - unambiguous.
 
-In [DThaler's](#dthaler) paper on _IoT Bridge Taxonomy_, which
-addresses the challenges created when "many organizations develop
-and implement different schemas for the same kind of things", the
-concluding Recommendations section includes the following:
+To sum up, in [DThaler's](#dthaler) paper on _IoT Bridge
+Taxonomy_, which addresses the challenges created when "many
+organizations develop and implement different schemas for the
+same kind of things", the concluding Recommendations section
+includes the following:
 
 > To ... increase semantic interoperability, it is desirable that
 > different data models for the same type of thing (e.g., light
@@ -515,7 +515,67 @@ The notion of "express[ing] exactly the same information in ways
 that are algorithmically translatable" is a fundamental purpose
 of information modeling, and aligns with the JADN concept of _information equivalence_.
 
-## 2.4 Information Modeling Languages
+## 2.4 Serialization
+
+Information exists in the minds of users (producers and
+consumers), in the state of applications running on systems, and
+in the data exchanged among applications. Serialization converts
+application information into byte sequences (a.k.a. protocol data
+units, messages, payloads, information exchange packages) that can
+be validated, communicated and stored. De-serialization parses
+payloads back into application state. Serialization is not a goal
+in and of itself, it is the mechanism by which applications
+exchange information in order to make it available to users.
+
+###### **Figure 2-1 -- Serialization / Deserialization**
+![**Figure 2-1 -- Serialization / Deserialization**](images/model-and-serialization.png)
+
+Serialization and deserialization are intimately connected to the
+chosen format: the same data can be serialized in JSON, CBOR, and
+XML, and while the serialized data will look very different,
+the received information that is recovered by deserialization
+should match the transmitted information. The [[JADN Specification](#jadn-v10)] 
+include serialization rules for four different formats:
+
+ - Verbose JSON
+ - Compact JSON
+ - Concise JSON
+ - CBOR
+
+The specification also describes what is needed to connect JADN
+and IMs defined in JADN to other serialization formats:
+
+ - Specify an unambiguous serialized representation for each JADN type
+ - Specify how each option applicable to a type affects serialized values
+ - Specify any validation requirements defined for that format.
+
+Regardless of format serialization should be:
+1) **lossless**, so that information is not modified in transit
+   and all applications have the identical information
+2) **transparent**, so that information is unaffected by whether
+or how it has been serialized; users should not know or care.
+
+As noted above, serialization is an important aspect of
+implementation, but it is a means to an end. The user cares about
+the information the serialized data represents, not the format by
+which it is moved from system to system. An Automated Teller
+Machine customer cares about their bank balance, and an airline
+customer cares that their tickets are for the proper flights. How
+the information system handles to bits to make that happen is of
+no concern to the customer. 
+
+Shannon's information theory defines the relationship between
+information and serialization (coding). Mathematicians
+characterize conditions applied to a mechanism as *necessary*
+and/or *sufficient*: a serialization that omits necessary data
+loses information, one that uses more data than sufficient
+conveys no extra information, and potentially wastes storage or
+communications bandwidth. However, particular requirements (e.g.,
+human readability) may indicate that a serialization that uses
+more data than sufficient is appropriate for particular
+situations.
+
+## 2.5 Information Modeling Languages
 
 [[YTLee](#ytlee)] describes an IM language as follows:
 
@@ -572,15 +632,13 @@ Encoding Rules (BER) and similar, which are closely associated
 with ASN.1, as well as less closely tied standards such as XML
 and JSON.
 
-> What languages aren't really IM languages
-
 Other languages have been used for information modeling, although
 that is not their primary purposes.  Some examples are
 
  - UML
  - IDEF1X
 
-## 2.5 Information Modeling Tools
+## 2.6 Information Modeling Tools
 
 The value of an IM language multiplies when automated tooling is
 available to support creation, maintenance, and use of models
@@ -597,7 +655,7 @@ language should provide
  - Model translation to language- or protocol-specific
    serialization / deserialization capabilities
 
-## 2.6 Applying an Information Model
+## 2.7 Applying an Information Model
 
 A primary application of an IM is in the translation of data into
 and out of in-memory representation and serialized formats for
@@ -613,7 +671,7 @@ from the IM ensures consistency as the data is manipulated.
 Figure 2-1 illustrates the concept of applying an IM to manage
 the associated data.
 
-###### Figure 2-1 -- Parsing and Serializing With An IM
+###### Figure 2-2 -- Parsing and Serializing With An IM
 
 ![Parsing and Serializing With An IM](images/parse-serialize.drawio.png)
 
