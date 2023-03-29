@@ -825,8 +825,9 @@ are 1: name, 2: state, 3: latitude, 4: longitude) as:
   ["Seattle", "Washington", "47.60621", "-122.33207"]
 ]
 ```
-If Location is a Map type, its instances are always serialized as key:value pairs
-regardless of data format.
+If Location is a Map type, its instances are always serialized as
+key:value pairs regardless of data format, the same as a Record
+in verbose JSON.
 
 **
 
