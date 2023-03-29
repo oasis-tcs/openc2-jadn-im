@@ -835,8 +835,7 @@ in verbose JSON.
 
 Another significant UML concept is that JADN distinguishes among
 all four multiplicity types ([UML](#uml), Table 7.1), while
-logical models typically support only sets.  JADN's
-interpretation of this is summarized in the Table 3-2 replicates
+logical models typically support only sets. Table 3-2 replicates
 the information from UML Table 7.1 and adds the equivalent JADN
 types. Note that the UML Specification cites the "traditional
 names" in its "Collection Type" column.
