@@ -2143,6 +2143,8 @@ the "unlimited" value (*) of UnlimitedNatural.
 
 Table D-1 maps basic data types between UML and JADN.
 
+###### Table D-1 -- UML and JADN Basic Type Equivalence
+
 |       UML        |      JADN      |
 |:----------------:|:--------------:|
 |     Integer      |    Integer     |
