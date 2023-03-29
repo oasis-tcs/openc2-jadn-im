@@ -784,10 +784,12 @@ information characteristics to be modeled:
 * All items in ArrayOf and MapOf groups have the same value (and key) type
 * Each item in Array, Map, and Record groups has an individual value (and key) type
 
-and the decision tree for which compound type to use is:
+and the decision tree for which compound type to use is shown in Table 3-1:
+
+###### Table 3-1 -- Compound Type Decision Tree
 
 | Value / Mapping | Same / Individual | JADN Type                |
-|:---------------:|:-----------------:|--------------------------|
+|:---------------:|:-----------------:|:------------------------:|
 |      Value      |       Same        | ArrayOf(ValueType)       |
 |      Value      |    Individual     | Array                    |
 |    Key:Value    |       Same        | MapOf(KeyType, ValueType)|
@@ -834,12 +836,12 @@ in verbose JSON.
 Another significant UML concept is that JADN distinguishes among
 all four multiplicity types ([UML](#uml), Table 7.1), while
 logical models typically support only sets.  JADN's
-interpretation of this is summarized in the Table 3-1 replicates
+interpretation of this is summarized in the Table 3-2 replicates
 the information from UML Table 7.1 and adds the equivalent JADN
 types. Note that the UML Specification cites the "traditional
 names" in its "Collection Type" column.
 
-###### Table 3-1 -- Multiplicity Types
+###### Table 3-2 -- Multiplicity Types
 
 | **isOrdered** | **isUnique** | **Collection<br>Type** |    **JADN Type**   |
 |:-------------:|:------------:|:----------------------:|:------------------:|
@@ -928,11 +930,13 @@ BaseType to define valid instances of that string type using a
 regular expression conforming to [[ECMAScript](#ecmascript)]
 grammar.
 
-The following is the complete set of type options, including the
+Table 3-3 lists the complete set of type options, including the
 option name, type, ID character, and description; the ID
 characters are used in standard JADN representation 
 ([section 3.1.5.1](#3151-native-json-representation)) when specifying type
-options:
+options.
+
+###### Table 3-3 -- JADN Type Options
 
 | **Option** | **Type** | **ID** | **Description**                                                   |
 |:----------:|:--------:|:------:|:------------------------------------------------------------------|
@@ -1007,8 +1011,10 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
 ```
 
 
-The following table summarizes the applicability of type options
-to JADN base types.
+Table 3-4 summarizes the applicability of type options to JADN
+base types.
+
+###### Table 3-4 -- Type Option Applicability
 
 |           | Binary | Boolean | Integer | Number | String | Array | ArrayOf | Map | MapOf | Record | Choice | Enumerated |
 |----------:|:------:|:-------:|:-------:|:------:|:------:|:-----:|:-------:|:---:|:-----:|:------:|:------:|:----------:|
@@ -1071,7 +1077,9 @@ in addition to the type options describe in [Section
 the type options described in [section 3.1.2](#312-typeoptions);
 the ID characters are used in standard JADN representation
 ([section 3.1.5.1](#3151-native-json-representation)) when
-specifying field options.
+specifying field options. Table 3-5 lists the JADN field options.
+
+###### Table 3-5 -- JADN Field Options
 
 | **Option** |  **Type**  |  **ID**  | **Description**                                               | **JADN Spec Section** |
 |:----------:|:----------:|:--------:|:--------------------------------------------------------------|:---------------------:|
@@ -1366,7 +1374,9 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
-The following *format* options are applicable to the Binary type:
+Table 3-6 lists the *format* options applicable to the Binary type:
+
+###### Table 3-6 -- Binary Type Format Options
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
@@ -1425,7 +1435,10 @@ The corresponding JIDL representation would be:
 ```
 
 
-The following `/format` options are applicable to the Integer type:
+Table 3-7 lists the *format* options applicable to the Integer type:
+
+###### Table 3-7 -- Integer Type Format Options
+
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
@@ -1458,9 +1471,12 @@ The corresponding JIDL representation would be:
   Temperature = Number   // Current temperature observation in degrees C
 ```
 
-The following *format* options are applicable to the Number type,
-and are only relevant when serializing using CBOR; see the [[JADN
-Specification](#jadn-v10)], Section 4.4:
+Table 3-8 lists the *format* options applicable to the Number
+type. These *format* options are only relevant when serializing
+using CBOR; see the [[JADN Specification](#jadn-v10)], Section
+4.4:
+
+###### Table 3-8 -- Number Type Format Options
 
 | Keyword | Type | Requirement |
 | :--- | :--- | :--- |
@@ -1618,7 +1634,9 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
 
-The following *format* options are applicable to the Array type:
+Table 3-9 lists the *format* options applicable to the Array type:
+
+###### Table 3-9 -- Array Type Format Options
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
