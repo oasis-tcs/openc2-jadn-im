@@ -1742,7 +1742,7 @@ defined as follows:
 
 ```json
 [
-  ["Employees","MapOf", ["EID","Employee"], "Maps employee identifier numbers to employee information", []],
+  ["Employees","MapOf", ["+EID","*Employee"], "Maps employee identifier numbers to employee information", []],
 
   ["EID", "Integer", ["{0","}1000"], "will need new system when exceed 1,000 employees", []],
 
