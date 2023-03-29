@@ -220,7 +220,7 @@ purpose in its design and can be used to create IMs for nearly
 any purpose. Examples of other possible JADN applications include
 defining:
 
- - Complex information structures structures, such as [Software
+ - Complex information structures, such as [Software
    Bills of Materials
    (SBOMs)](https://www.ntia.doc.gov/report/2021/minimum-elements-software-bill-materials-sbom);
    examples would be the SPDX and CycloneDX SBOM formats
@@ -302,10 +302,7 @@ This CN uses the definitions contained in the [[JADN
 Specification](#jadn-v10)], section 1.2.1. The following
 additional terms are defined for this document:
 
-> TBD; this is a preliminary list; eliminate any terms not needed
-> as document matures.
-
- - **Directed Acyclic Graph:** a directed acyclic graph (DAG) is
+ - **Directed Acyclic Graph:** A directed acyclic graph (DAG) is
    a directed graph with no directed cycles. That is, it consists
    of vertices and edges (also called arcs), with each edge
    directed from one vertex to another, such that following those
@@ -364,7 +361,7 @@ rise to the field of Information Theory [[Shannon](#shannon)].
 A small example may help clarify the concept of information. The
 information content of an instance can be no greater than the
 smallest data instance for which lossless round-trip conversion
-is possible. For example, an IPv4 address presented in dotted
+is possible. For example, an IPv4 address represented in dotted
 quad format is 17 bytes of JSON string data ("192.168.101.213"),
 but can be converted to 4 byte RFC 791 format and back without
 loss. The information content of an IPv4 address can therefore be
@@ -378,7 +375,7 @@ helpful to think in terms of different levels of representation:
  - Internal
  - Conceptual
 
-The external representation requires a data model to describes
+The external representation requires a data model to describe
 how information is transmitted or stored; such a data model
 provides specific formats and syntax (e.g., defining
 serialization rules) that permit moving the data out of the
@@ -561,7 +558,7 @@ the information the serialized data represents, not the format by
 which it is moved from system to system. An Automated Teller
 Machine customer cares about their bank balance, and an airline
 customer cares that their tickets are for the proper flights. How
-the information system handles to bits to make that happen is of
+the information system handles the bits to make that happen is of
 no concern to the customer. 
 
 Shannon's information theory defines the relationship between
@@ -668,7 +665,7 @@ of routines to parse and validate data being input from storage
 or through communications, and to serialize data being output to
 storage or transmission. Deriving the processing capabilities
 from the IM ensures consistency as the data is manipulated.
-Figure 2-1 illustrates the concept of applying an IM to manage
+Figure 2-2 illustrates the concept of applying an IM to manage
 the associated data.
 
 ###### Figure 2-2 -- Parsing and Serializing With An IM
@@ -757,7 +754,7 @@ As described in the [JADN Specification](#jadn-v10) introduction:
 From UML JADN takes the concept of modeling information/data
 using Simple Classifiers (see [UML](#uml), 10.2 Datatypes) as
 opposed to the common practice of using Structured Classifiers
-([UML](#uml), 11.4 Classes) which do not define data in a unique
+([UML](#uml), 11.4 Classes), which do not define data in a unique
 way that can be validated and signed.  The JADN use of the UML
 primitive types defined in [UML](#uml), Table 21.1, can be found
 in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
@@ -793,7 +790,7 @@ and the decision tree for which compound type to use is:
 |:---------------:|:-----------------:|--------------------------|
 |      Value      |       Same        | ArrayOf(ValueType)       |
 |      Value      |    Individual     | Array                    |
-|    Key:Value    |       Same        | MapOf(KeyType, ValueType |
+|    Key:Value    |       Same        | MapOf(KeyType, ValueType)|
 |    Key:Value    |    Individual     | Map or Record            |
 
 For the last information type - containers of individually-defined key:value pairs -
@@ -833,16 +830,23 @@ regardless of data format.
 
 **
 
-Another significant UML concept is that JADN distinguishes
-among all four multiplicity types ([UML](#uml), Table 7.1), while
+Another significant UML concept is that JADN distinguishes among
+all four multiplicity types ([UML](#uml), Table 7.1), while
 logical models typically support only sets.  JADN's
-interpretation of this is summarized in the Table 3-1.
+interpretation of this is summarized in the Table 3-1 replicates
+the information from UML Table 7.1 and adds the equivalent JADN
+types. Note that the UML Specification cites the "traditional
+names" in its "Collection Type" column.
 
 ###### Table 3-1 -- Multiplicity Types
-|                |                  **Ordered**                  |             **Unordered**              |
-|:--------------:|:---------------------------------------------:|:--------------------------------------:|
-|   **Unique**   | Ordered Set, Record<br>JADN: ArrayOf+_unique_ | Set, Map<br>JADN: ArrayOf+_set_, MapOf |
-| **Non-Unique** |        Sequence, List<br>JADN: ArrayOf        |    Bag<br>JADN: ArrayOf+*unordered*    |
+
+| **isOrdered** | **isUnique** | **Collection<br>Type** |    **JADN Type**   |
+|:-------------:|:------------:|:----------------------:|:------------------:|
+|    _false_    |    _true_    |           Set          | ArrayOf+set, MapOf |
+|     _true_    |    _true_    |       OrderedSet       |   ArrayOf+unique   |
+|    _false_    |    _false_   |           Bag          |  ArrayOf+unordered |
+|     _true_    |    _false_   |        Sequence        |       ArrayOf      |
+
 
 JADN accepts the UML philosophy that schemas are classifiers that
 take a unit of data and determine whether it is an instance of a
@@ -856,7 +860,7 @@ datatypes and only two kinds of relationship: "contain" and
 
 ### 3.1.1 Type Definitions
 
-Figure 3-1 summarizes the structure of a JADN Type Definition,
+Figure 3-2 summarizes the structure of a JADN Type Definition,
 and identifies values for each of the five elements in the
 definition. The five elements are:
 
@@ -1085,10 +1089,10 @@ the base type examples in [Section 3.1.6](#316-base-type-examples).
 ### 3.1.5 JADN Representations
 
 The native format of JADN is JSON, but JADN content can be
-represented in others ways that are often more useful for
-documentation. This section describes the JSON content used for
-each of the JADN basic types, and then illustrates the other
-representations using a simple example.
+represented in other ways that are often easier to edit or more
+useful for documentation. This section describes the JSON content
+used for each of the JADN basic types, and then illustrates the
+other representations using a simple example.
 
 #### 3.1.5.1 Native JSON Representation
 
@@ -1098,7 +1102,7 @@ are provided for each of three ways that the **Fields** array is
 used, depending on the base type used in a particular type
 definition.
 
-Figure 3-2 illustrates the structure of JADN for defining any
+Figure 3-3 illustrates the structure of JADN for defining any
 Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
@@ -1107,7 +1111,7 @@ the **Fields** array is empty:
 Types](images/JADN-primitive-json.drawio.png)
 
 
-Figure 3-3 illustrates the structure of JADN for defining an
+Figure 3-4 illustrates the structure of JADN for defining an
 Enumerated **BaseType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
@@ -1116,7 +1120,7 @@ Enumerated **BaseType**; for enumerations each item definition in the
 Types](images/JADN-with-items-json.drawio.png)
 
 
-Figure 3-4 illustrates the structure of JADN for defining a
+Figure 3-5 illustrates the structure of JADN for defining a
 **BaseType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
@@ -1454,10 +1458,10 @@ The corresponding JIDL representation would be:
 ```
 
 The following *format* options are applicable to the Number type,
-and are only relevant when serializing using CBOR; see the [JADN
-Specification], Section 4.4:
+and are only relevant when serializing using CBOR; see the [[JADN
+Specification](#jadn-v10)], Section 4.4:
 
-| Keyword | Type | Requrirement |
+| Keyword | Type | Requirement |
 | :--- | :--- | :--- |
 | **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25). |
 | **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26). |
@@ -1635,7 +1639,7 @@ type.
 
 **Example:**  The ArrayOf type is used to represent information
 where it is appropriate to group a set of uniform  information
-elements together. The fields if the array are defined by the
+elements together. The fields of the array are defined by the
 *vtype*, which can be primitive or compound. An information item
 fitting the ArrayOf base type would be defined as follows:
 
@@ -1650,7 +1654,7 @@ fitting the ArrayOf base type would be defined as follows:
 values with semantics bound to each key. Each key has an id and
 name or label, and is mapped to a value type.
 
-**TypeOptions:** The *id*, *extend* *minv*, and *maxv*
+**TypeOptions:** The *id*, *extend*, *minv*, and *maxv*
 TypeOptions are applicable to the Map data type.
 
 **Example:**  The Map type is used to represent information that
@@ -1830,7 +1834,7 @@ Possible example subjects:
 This example shows a simple IM for a digital music library. The
 components of the library are described here along with the
 associated JIDL. The ERD for the library appears at the end of
-this section. The complete, consolidate JADN, JIDL, and property
+this section. The complete, consolidated JADN, JIDL, and property
 tables can be found in [Appendix E.1](#e1-music-library).
 
 The model assumes that each track is stored as a file with its
@@ -2405,7 +2409,7 @@ association types: contain and reference.
 As an example, if a City datatype with name, elevation, and
 location properties contains a Coordinate datatype with latitude
 and longitude properties, one could say that Coordinate is
-contained_by City without changing the  model. The association
+"contained by" City without changing the  model. The association
 direction is always container to contained, or referencing to
 referenced. A City instance with this graph direction is
 serialized as:
@@ -2434,19 +2438,19 @@ which OWL says:
 
  - By default, all associations are sets; that is, the objects in
    them are unordered and repetitions are disallowed.
- - The {ordered, nonunique} attribute is placed next to the
+ - The {ordered, non-unique} attribute is placed next to the
    association ends that are ordered and in which repetitions are
    allowed. Such associations have the semantics of lists.
 
 In an information model, collection attributes are intrinsic to
 the datatype itself and don't depend on associations with other
 datatypes.  Just as a string type always has a string value, a
-list type always is an ordered, nonunique collection of values.
+list type always is an ordered, non-unique collection of values.
 In an information model both "object properties'' and "data
 properties" are datatypes, and a collection datatype has fixed
 collection attributes regardless of where it is used.
 
-For whatever reason, {ordered, nonunique} almost never appears in
+For whatever reason, {ordered, non-unique} almost never appears in
 ontologies.  In contrast, lists are a fundamental variable type
 in computing and a fundamental data type in data interchange.
 List elements have an ordinal position and can be referenced by
