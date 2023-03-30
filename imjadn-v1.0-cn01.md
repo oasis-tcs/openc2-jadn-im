@@ -229,8 +229,8 @@ modeling:
 > formats and the underlying communication architecture_
 
 A key term in the above is "encoding-independent".  An IM defines
-the essential content of entities used in computing,
-independently of how those entities are represented (i.e.,
+the essential content of messages used in computing,
+independently of how those messages are represented (i.e.,
 serialized) for communication or storage. IMs are used to define
 and generate physical data models, validate information
 instances, and enable lossless translation across data formats.
