@@ -1538,8 +1538,11 @@ All semantic validation keywords defined in Section 7.3 of
 [[JSON Schema](#jsonschema)] are valid *format* options for the String
 type.
 
-When applying the *pattern* option in JIDL, it should be directly
-connected to the String TypeName. The entire pattern
+The *pattern* option in JADN is identified by the `%` type option
+character followed immediately by the regular expression to be
+applied, with the entire option contained in double-quotes. When
+applying the *pattern* option in JIDL, it should be directly
+connected to the `String` type name. The JIDL pattern
 specification is surrounded with braces "{ }", containing
 `pattern="REGEX"` where `REGEX` is the regular expression that
 governs the format of the string. Here are the JADN and JIDL
