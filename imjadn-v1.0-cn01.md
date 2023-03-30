@@ -653,7 +653,9 @@ with ASN.1, as well as less closely tied standards such as XML
 and JSON.
 
 Other languages have been used for information modeling, although
-that is not their primary purposes.  Some examples are Unified Modeling Language [[UML](#uml)], and Integration DEFinition for information modeling [IDEF1X].
+that is not their primary purposes.  Some examples are 
+Unified Modeling Language [[UML](#uml)], and 
+Integration DEFinition for information modeling [[IDEF1X](#idef1x)].
 
 ## 2.6 Information Modeling Tools
 
