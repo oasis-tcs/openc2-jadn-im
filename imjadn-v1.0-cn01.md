@@ -1182,6 +1182,12 @@ making it a good format for both the initial creation and the
 documentation of a JADN model. JIDL is also more compact than
 table style presentation.
 
+The table style and ERD representations can be readily generated
+in an automated manner by translating the JADN schema to source
+code for rendering in various formats. For example, tables can be
+created using Markdown or HTML code, and ERDs can be created from
+code for rendering engines such as [[Graphviz](#graphviz)] or
+[[PlantUML](#plantuml)].
 
 When defining elements of type Array or Enum.ID in JIDL, no field
 names are used. These types are defined using a field ID and a
@@ -2053,6 +2059,9 @@ CMA International, "ECMAScript 2022 Language Specification",
 ECMA-262 15th Edition, June 2022,
 https://www.ecma-international.org/ecma-262.
 
+###### [Graphviz]
+https://graphviz.org/
+
 ###### [JADN-v1.0]
 JSON Abstract Data Notation Version 1.0. Edited by David Kemp. 17
 August 2021. OASIS Committee Specification 01.
@@ -2075,9 +2084,8 @@ https://www.researchgate.net/publication/279780496_What_is_Shannon_information
 "OWL 2 Web Ontology Language Primer (Second Edition)", retrieved
 10/25/2022, https://www.w3.org/TR/owl-primer/
 
-###### [Shannon]
-"A Mathematical Theory of Communication", 
-https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication
+###### [PlantUML]
+https://plantuml.com/
 
 ###### [RFC3444]
 Pras, A., Schoenwaelder, J., "On the Difference between
@@ -2101,6 +2109,10 @@ Definition Language (CDDL): A Notational Convention to Express
 Concise Binary Object Representation (CBOR) and JSON Data
 Structures", RFC 8610, DOI 10.17487/RFC8610, June 2019,
 https://www.rfc-editor.org/info/rfc8610
+
+###### [Shannon]
+"A Mathematical Theory of Communication", 
+https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication
 
 ###### [UML]
 "Unified Modeling Language", Version 2.5.1, December 2017,
