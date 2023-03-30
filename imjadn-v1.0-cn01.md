@@ -1699,8 +1699,39 @@ type.
 where it is appropriate to group a set of uniform  information
 elements together. The fields of the array are defined by the
 *vtype*, which can be primitive or compound. An information item
-fitting the ArrayOf base type would be defined as follows:
+fitting the ArrayOf base type would be defined as follows (field 4 of `Album`):
 
+
+```json
+ ["Album", "Record", [], "model for the album", [
+    [1, "artist", "Artist", [], "artist associated with this album"],
+    [2, "title", "String", [], "commonly known title for this album"],
+    [3, "pub_data", "Publication-Data", [], "metadata about album publication"],
+    [4, "tracks", "ArrayOf", ["*Track", "]0"], "individual track descriptions"],
+    [5, "cover_art", "Image", ["[0"], "cover art image for this album"]
+  ]],
+
+  ["Track", "Record", [], "for each track there's a file with the audio and a metadata record", [
+    [1, "location", "String", [], "path to the file audio location in local storage"],
+    [2, "metadata", "TrackInfo", [], "description of the track"]
+  ]],
+```
+
+And the corresponding JIDL would be:
+
+```
+Album = Record                                  // model for the album
+   1 artist           Artist                    // artist associated with this album
+   2 title            String                    // commonly known title for this album
+   3 pub_data         Publication-Data          // metadata about album publication
+   4 tracks           ArrayOf(Track) [1..*]     // individual track descriptions
+   5 cover_art        Image optional            // cover art image for this album
+
+Track = Record		// for each track there's a file with the audio and a metadata record
+   1 location         String			// path to the file audio location in local storage
+   2 metadata         TrackInfo   // description of the track
+
+```
 
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
