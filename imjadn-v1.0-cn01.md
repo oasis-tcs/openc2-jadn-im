@@ -2012,7 +2012,12 @@ JADN schema tools to detect discrepancies.
 
 ### 4.1.2 Namespaces
 
-Namespaces identified in the package metadata are the mechanism for enabling references to types defined in other packages. The `namespaces` field contains an array associating locally meaningful Namespace Identifiers (`NSID`) with the `namespace` other packages declare for themselves, as shown in this excerpt from the JIDL description of the `Information` header:
+Namespaces identified in the package metadata are the mechanism
+for enabling references to types defined in other packages. The
+`namespaces` field contains an array associating locally
+meaningful Namespace Identifiers (`NSID`) with the `namespace`
+other packages declare for themselves, as shown in this excerpt
+from the JIDL description of the `Information` header:
 
 ```
 Information = Map                            // Information about this package
