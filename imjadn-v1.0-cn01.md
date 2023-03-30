@@ -2012,17 +2012,32 @@ JADN schema tools to detect discrepancies.
 
 ### 4.1.2 Namespaces
 
-> Namespace Identifier (NSID) by default is a 1-8 character
-> string beginning with a letter and containing only letters and
-> numbers. Default formatting can be overridden by inserting an
-> alternative definition into a JADN schema
+Namespaces identified in the package metadata are the mechanism for enabling references to types defined in other packages. The `namespaces` field contains an array associating locally meaningful Namespace Identifiers (`NSID`) with the `namespace` other packages declare for themselves, as shown in this excerpt from the JIDL description of the `Information` header:
 
-> A namespace is associated with a package, and used in other
-> packages to refer to types defined in that package
+```
+Information = Map                            // Information about this package
+     ...
+   8 namespaces   Namespaces optional        // Referenced packages
+     ...
 
-> JADN uses the common convention of using the NSID followed by a
-> colon to link an item to the namespace where it is defined
-> (e.g., NSID:TypeName)
+Namespaces = MapOf(NSID, Namespace){1..*}    // Packages with referenced type defs
+
+NSID = String{pattern="$NSID"}               // Default = ^[A-Za-z][A-Za-z0-9]{0,7}$
+
+Namespace = String /uri                      // Unique name of a package
+```
+
+A Namespace Identifier (NSID) is, by default, a 1-8 character string
+beginning with a letter and containing only letters and numbers.
+Default formatting can be overridden by inserting an alternative
+definition into a JADN schema. 
+
+JADN uses the common convention of using the NSID followed by a
+colon to link an item to the namespace where it is defined (e.g.,
+NSID:TypeName).  So assuming the existence of `Package A`, and
+`Package B`, where `Package B` imports `Package A` with the NSID
+`PACKA`, then types defined in `Package A` can be used within
+`Package B` by identifying them as `PACKA:Some-Package-A-Type`.
 
 ### 4.1.3 Referencing
 
