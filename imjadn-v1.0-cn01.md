@@ -1976,22 +1976,39 @@ the model components connect.
 
 ## 4.1 Namespaces, Packages, and Referencing
 
-> discuss how JADN IMs may be broken into components (packages)
-> and connections made between components (namespaces &
-> referencing)
+Section 6 of the [[JADN](#jadn-v10)] specification introduces the
+use of packages to aid in organizing JADN schemas. This section
+provides additional information on the use of packages, along
+with associated concepts such as namespaces and referencing.
 
 ### 4.1.1 Packages
 
-> complex models are divided into packages
+At the simplest level, a package is a file containing a JADN
+schema in the form of JSON data, as described in [Section
+3.1.5.1](#3151-native-json-representation). The file has two
+top-level components: 
 
-> package header defined in JADN spec section 6
+ - metadata about the file, labeled as "information", and 
+ - the schema content itself, labeled as "types".
 
-> essential information element of package header is namespace
+Definitions of all of the `Information` fields are provided in
+the JADN specification. 
 
-> packages can explicitly export types defined within; this isn't
-> a rigorous public / private type distinction, but provides a
-> means for schema authors to indicate the intended public types,
-> and allows JADN schema tools to detect discrepancies
+The metadata portion is entirely optional, but if present must
+include the `package` field providing a URI for the package to
+enable the package to be referenced from other packages. A single
+schema may be divided into multiple packages (e.g., common types
+that are used extensively in a model might be collected into a
+library package), and a schema might also import one or more
+packages from a different schema (e.g., to use information
+objects defined in the official schema for a standard).
+
+The `exports` portion of the package information is
+informational; JADN packages aren't intended to enforce a
+rigorous distinction between public and private types
+distinction. The `exports` list provides a means for schema
+authors to indicate the intended public types, and a basis for
+JADN schema tools to detect discrepancies.
 
 ### 4.1.2 Namespaces
 
@@ -2011,7 +2028,6 @@ the model components connect.
 
 ### 4.1.4 Linking Between Projects
 
-## 4.2 From Logical Models to IMs
 
 -------
 
