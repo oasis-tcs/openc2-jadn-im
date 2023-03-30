@@ -1820,36 +1820,62 @@ IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tc
 
 ## 3.2 Information Modeling Process
 
-> rough outline, starting from YTLee paper \
-> https://www.nist.gov/publications/information-modeling-design-implementation
+The JADN language is generally applicable to information
+modeling, and independent of the process used for developing a
+model. Future versions of this Committee Note will provide
+process notes based on experience developing and documenting
+information models using JADN. Brief summations are provided here
+of the approaches described in available literature; the reader
+is encouraged to reviewed the referenced papers for a more
+thorough discussion of each process described.
 
- 1) Define the scope of the model, identifying the domain of discourse and the processes to be supported by the IM.
- 2) Conduct a requirements analysis to define information requirements.
- 3) Develop the model, transforming information requirements into a conceptual model. This may employ a top-down, bottom-up, or mixed / inside-out approach.
+
+### 3.2.1 Y. Tina Lee Modeling Process
+
+In her paper *Information Modeling: From Design to
+Implementation* [[YTLee](#ytlee)], the author discusses the
+importance of information models and describes a process. While
+the paper focuses on information modeling for manufacturing, the
+process described is generally applicable. The process described
+in this paper has the following steps:
+
+ 1) Define the scope of the model, identifying the domain of
+    discourse and the processes to be supported by the IM.
+
+ 2) Conduct a requirements analysis to define information
+    requirements.
+ 3) Develop the model, transforming information requirements into
+    a conceptual model. This may employ a top-down, bottom-up, or
+    mixed / inside-out approach.
  4) Group concepts to identify units of functionality
- 5) Structure information requirements into entities, objects, or classes
+ 5) Structure information requirements into entities, objects, or
+    classes
  6) Capture the model in the chosen modeling language
 
+### 3.2.1 Frederiks / van der Weide Modeling Process
 
-> Alternate approach, from Frederiks / van der Weide \
-> https://www.sciencedirect.com/science/article/abs/pii/S0169023X05000753
+In their paper *Information modeling: The process and the
+required competencies of its participants*
+[[Frederiks](#fredericks)], the authors discuss the process of
+information modeling, its quality and the required competencies
+of its participants. 
 
-Process has two roles (which may be filled by groups):
+In the Frederiks approach, the process has two roles (which may
+be filled by groups):
  - A **Domain Expert**: someone with superior detailed knowledge
 of the Universe of Discourse (UoD) but often minor powers of
 abstraction from that same UoD
  - A **System Analyst**: someone with superior powers of
    abstraction, but limited knowledge of the UoD.
 
-Process has four phases:
+and the process has four phases:
  1. *Elicitation*: used to drive creation of a requirements document, an informal specification in natural language.
+
  2. *Modeling*: the creation of a conceptual model based on the requirements document.
  3. *Verification*: confirmation that the formal specification correctly applies the formal syntax rules of the chosen modeling technique.
  4. *Validation*: confirmation with the domain expert that the formal model properly represents the requirements document.
 
-
 The process is executed in an iterative sequence of modeling, verification and validation. At least one iteration of the modeling loop is required.
-
 
 
 ## 3.3 Information Modeling Example
@@ -2035,6 +2061,11 @@ Remove this note before submitting for publication.)
 Things (IoT) Semantic Interoperability (IOTSI) Workshop 2016,
 https://www.iab.org/wp-content/IAB-uploads/2016/03/DThaler-IOTSI.pdf
 
+###### [Fredericks]
+P.J.M. Frederiks, Th.P. van der Weide, *Information modeling: The process and the required competencies of its participants*, Data & Knowledge Engineering,
+Volume 58, Issue 1, 2006,
+https://www.sciencedirect.com/science/article/pii/S0169023X05000753
+
 ###### [ECMAScript]
 CMA International, "ECMAScript 2018 Language Specification",
 ECMA-262 9th Edition, June 2018,
@@ -2094,8 +2125,8 @@ https://www.rfc-editor.org/info/rfc8610
 https://www.omg.org/spec/UML/2.5.1/About-UML/
 
 ###### [YTLee]
-Lee, Y. (1999), Information Modeling: From Design to
-Implementation, IEEE Transactions on Robotics and Automation,
+Lee, Y. (1999), *Information Modeling: From Design to
+Implementation*, IEEE Transactions on Robotics and Automation,
 [online],
 https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=821265
 (Accessed October 5, 2022)
