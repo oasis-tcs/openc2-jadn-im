@@ -328,18 +328,18 @@ additional terms are defined for this document:
    directions will never form a closed loop. A directed graph is
    a DAG if and only if it can be topologically ordered, by
    arranging the vertices as a linear ordering that is consistent
-   with all edge directions (Wikipedia)
+   with all edge directions<br>(Wikipedia, https://en.wikipedia.org/wiki/Directed_acyclic_graph)
 
  - **Entity Relationship Model:** An entity–relationship model
    (or ER model) describes interrelated things of interest in a
    specific domain of knowledge. A basic ER model is composed of
    entity types (which classify the things of interest) and
    specifies relationships that can exist between entities
-   (instances of those entity types). (Wikipedia)
+   (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
 
  - **Schema:**  *(markup languages)* A formal description of
    data, data types, and data file structures, such as XML
-   schemas for XML files. (Wiktionary)
+   schemas for XML files.<br>(Wiktionary, https://en.wiktionary.org/wiki/schema#Noun, definition #3)
 
  - **Ontology:** (information science) A representation, formal
    naming, and definition of the categories, properties, and
@@ -347,8 +347,8 @@ additional terms are defined for this document:
    substantiate one, many, or all domains of discourse. More
    simply, an ontology is a way of showing the properties of a
    subject area and how they are related, by defining a set of
-   concepts and categories that represent the subject.
-   (Wikipedia)
+   concepts and categories that represent the subject.<br>
+   (Wikipedia, https://en.wikipedia.org/wiki/Ontology_(computer_science))
 
 -------
 
