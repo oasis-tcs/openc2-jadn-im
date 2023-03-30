@@ -1189,12 +1189,14 @@ created using Markdown or HTML code, and ERDs can be created from
 code for rendering engines such as [[Graphviz](#graphviz)] or
 [[PlantUML](#plantuml)].
 
+##### 3.1.5.2.1  Array "Field Names" in JIDL
+
 When defining elements of type Array or Enum.ID in JIDL, no field
 names are used. These types are defined using a field ID and a
 TypeName. For documentation and debugging purposes a FieldName
 can be included in the JIDL comment field, immediately following
 the `//` and followed by a double colon delimiter (i.e., `::`).
-For more information see the [[JADN](#jadn-v10) Specification]
+For more information see the [[JADN](#jadn-v10)] Specification
 descriptions of Field Identifiers (section 3.2.1.1) and JADN-IDL
 format (section 5.1). Here is a brief JIDL example of this format:
 
