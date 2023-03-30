@@ -1534,9 +1534,11 @@ When applying the *pattern* option in JIDL, it should be directly
 connected to the String TypeName. The entire pattern
 specification is surrounded with braces "{ }", containing
 `pattern="REGEX"` where `REGEX` is the regular expression that
-governs the format of the string.
+governs the format of the string. Here are the JADN and JIDL presentations of a String with an associated pattern:
 
 ```
+["Barcode", "String", ["%^\d{12}$"], "A UPC-A barcode is 12 digits", []]
+
 Barcode = String{pattern="^\d{12}$"}    // A UPC-A barcode is 12 digits
 ```
 
