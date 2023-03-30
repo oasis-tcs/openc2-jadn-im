@@ -1527,7 +1527,7 @@ The corresponding JIDL representation would be:
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 All semantic validation keywords defined in Section 7.3 of 
-[JSON Schema](#jsonschema) are valid *format* options for the String
+[[JSON Schema](#jsonschema)] are valid *format* options for the String
 type.
 
 When applying the *pattern* option in JIDL, it should be directly
@@ -1542,6 +1542,16 @@ presentations of a String with an associated pattern:
 
 Barcode = String{pattern="^\d{12}$"}    // A UPC-A barcode is 12 digits
 ```
+
+The JADN Specification states (section 3.2.1.6):
+
+> The *pattern* value SHOULD conform to the Pattern grammar of
+> ECMAScript Section 21.2.
+
+and references the 9th edition (published in 2018) of the
+[[ECMAScript](#ecmascript)] specification.  The pattern grammar
+in the current 15th edition (published in 2022) of the
+specification is in Section 22.2.
 
 
 #### 3.1.6.6 Enumerated
@@ -2039,8 +2049,8 @@ Things (IoT) Semantic Interoperability (IOTSI) Workshop 2016,
 https://www.iab.org/wp-content/IAB-uploads/2016/03/DThaler-IOTSI.pdf
 
 ###### [ECMAScript]
-CMA International, "ECMAScript 2018 Language Specification",
-ECMA-262 9th Edition, June 2018,
+CMA International, "ECMAScript 2022 Language Specification",
+ECMA-262 15th Edition, June 2022,
 https://www.ecma-international.org/ecma-262.
 
 ###### [JADN-v1.0]
