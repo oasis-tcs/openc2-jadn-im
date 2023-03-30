@@ -1748,11 +1748,18 @@ TypeOptions are applicable to the Map data type.
 
 **Example:**  The Map type is used to represent information that
 can be represented as (key, value) pairs. Another term for this
-type of information structure is an "associative array". The Map
-base type always uses an integer identifier as the key, with each
-integer associated with a specific value. An information item
-fitting the Map type would be defined as follows:
+type of information structure is an "associative array". 
 
+> Per Wikipedia, an *Associative Array* is "an abstract data type
+> that stores a collection of (key, value) pairs, such that each
+> possible key appears at most once in the collection."
+> Alternative names include "map", "symbol table", and
+> "dictionary". (https://en.wikipedia.org/wiki/Associative_array)
+
+The Map base type always uses an integer identifier as the key,
+with each integer associated with a specific value. An
+information item fitting the Map type would be defined as
+follows:
 
 ```json
   ["Hashes", "Map", ["{1"], "Cryptographic hash values", [
