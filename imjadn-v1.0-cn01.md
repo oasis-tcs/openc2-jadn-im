@@ -13,17 +13,17 @@
 <!-- URI list start (commented out except during publication by OASIS TC Admin)
 
 #### This stage:
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-cn01.md (Authoritative) \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-cn01.html \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-cn01.pdf
+https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
+https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.html \
+https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.pdf
 
 #### Previous stage of Version 1.0:
 N/A
 
 #### Latest stage of Version 1.0:
-https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn.md (Authoritative) \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn.html \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn.pdf
+https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.md (Authoritative) \
+https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html \
+https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.pdf
 
 URI list end (commented out except during publication by OASIS TC Admin) -->
 
@@ -45,7 +45,7 @@ This prose document is one component of a Work Product that also includes:
 #### Related work:
 This document is related to:
 * _JSON Abstract Data Notation Version 1.0_. Edited by David Kemp.
-Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn.html.
+Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 
 #### Abstract:
 Information models (IMs) are used to define and generate physical data models, validate information instances, and enable lossless translation across data formats. JSON Abstract Data Notation (JADN) is a UML-based information modeling language that defines data structure independently of data format. This Committee Note describes the use of IMs, explains how to construct IMs using JADN, and contrasts IMs with other modeling approaches, such as Entity-Relationship models for databases, and knowledge models / ontologies.
@@ -60,9 +60,9 @@ TC members should send comments on this document to the TC's email list. Others 
 #### Citation format:
 When referencing this document the following citation format should be used:
 
-**[IM-JADN]**
+**[IM-JADN-v1.0]**
 
-_Information Modeling with JADN Version 1.0_. Edited by David Kemp. 13 October 2021. OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-cn01.html. Latest stage: https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn.html.
+_Information Modeling with JADN Version 1.0_. Edited by David Kemp. 13 October 2021. OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.html. Latest stage: https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html.
 
 #### Notices
 Copyright &copy; OASIS Open 2021. All Rights Reserved.
@@ -1858,7 +1858,7 @@ The process is executed in an iterative sequence of modeling, verification and v
 ## 3.3 Information Modeling Example
 
 Possible example subjects:
- - University (people, departments, classes, buildings, rooms, schedules) -- extension from [diagram in JADN Spec](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-cs01.html#53-entity-relationship-diagrams)
+ - University (people, departments, classes, buildings, rooms, schedules) -- extension from [diagram in JADN Spec](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html#53-entity-relationship-diagrams)
  - Shopping Website (customers, accounts, catalogs, carts, payment processing, shipping)
  - Vehicle Rental Management (customers, accounts, vehicles, rentals, check-out, check-in, billing)
  - Boutique Manufacturer (catalog, customization options, supply chain, orders, builds, shipping)
@@ -2049,9 +2049,9 @@ ISO/IEC/IEEE 31320-2:2012 _Information technology — Modeling Languages — Par
 ###### [JADN]
 JSON Abstract Data Notation Version 1.0. Edited by David Kemp. 17
 August 2021. OASIS Committee Specification 01.
-https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-cs01.html.
+https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html.
 Latest stage:
-https://docs.oasis-open.org/openc2/jadn/v1.0/jadn.html.
+https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 
 ###### [JSONSCHEMA]
 Wright, A., Andrews, H., Hutton, B., *"JSON Schema Validation"*,
@@ -2199,7 +2199,7 @@ review](https://lists.oasis-open.org/archives/openc2/202106/msg00019.html):
 ### Response
 The short answer (RDF models *knowledge* while JADN models
 *information*) is provided in the JADN
-[introduction](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-cs01.html#1-introduction):
+[introduction](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html#1-introduction):
 
 > *UML class models and diagrams are commonly referred to as
 > "Data Models", but they model knowledge of real-world entities
@@ -2389,7 +2389,7 @@ needed to satisfy queries. Although this Person example does not
 include Bob's friends or interests, relationships can be defined
 within the information model or specified independently with RDF.
 [JADN section
-5.3](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-cs01.html#53-entity-relationship-diagrams)
+5.3](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html#53-entity-relationship-diagrams)
 includes a slightly larger information model example with three
 types and four container and reference relationships among them.
 
