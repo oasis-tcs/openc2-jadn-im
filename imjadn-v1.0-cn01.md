@@ -1974,12 +1974,12 @@ the model components connect.
 -------
 # 4 Advanced Techniques
 
-## 4.1 Namespaces, Packages, and Referencing
+## 4.1 Packages and Namespaces
 
 Section 6 of the [[JADN](#jadn-v10)] specification introduces the
-use of packages to aid in organizing JADN schemas. This section
-provides additional information on the use of packages, along
-with associated concepts such as namespaces and referencing.
+use of packages as the mechanism for organizing JADN schemas.
+This section provides additional information on the use of
+packages, along with the associated concept of namespaces.
 
 ### 4.1.1 Packages
 
@@ -2044,9 +2044,6 @@ NSID:TypeName).  So assuming the existence of `Package A`, and
 `PACKA`, then types defined in `Package A` can be used within
 `Package B` by identifying them as `PACKA:Some-Package-A-Type`.
 
-### 4.1.3 Referencing
-
-### 4.1.4 Linking Between Projects
 
 
 -------
