@@ -1671,6 +1671,8 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
 
+The example above illustrates the positioning of Array "field names" within the JIDL comments, as described in [Section 3.1.5.2.1](#31521-array-field-names-in-jidl).
+
 Table 3-9 lists the *format* options applicable to the Array type:
 
 ###### Table 3-9 -- Array Type Format Options
