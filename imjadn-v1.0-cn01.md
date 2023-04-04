@@ -1996,7 +1996,7 @@ the model components connect.
 
 ###### Figure 3-11 -- Music Library Example ERD
 
-![Music Library Example ERD](images/music-database.jadn.puml.png)
+![Music Library Example ERD](images/music_database_jadn_gv.png)
 
 -------
 # 4 Advanced Techniques
