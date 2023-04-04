@@ -1854,15 +1854,17 @@ The process is executed in an iterative sequence of modeling, verification and v
 
 ## 3.3 Information Modeling Example
 
-Possible example subjects:
- - University (people, departments, classes, buildings, rooms, schedules) -- extension from [diagram in JADN Spec](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html#53-entity-relationship-diagrams)
+As discussed in [Section 1.1.1](#111-openc2-and-jadn), JADN is a general purpose tool for information modeling, and can be applied to a broad range of IM needs.  Some possible subjects for IMs are:
+ - Complex organizations, such as a business (people, departments, roles, locations, organizational structure) or university (people, departments, classes, buildings, rooms, schedules)
  - Shopping Website (customers, accounts, catalogs, carts, payment processing, shipping)
  - Vehicle Rental Management (customers, accounts, vehicles, rentals, check-out, check-in, billing)
  - Boutique Manufacturer (catalog, customization options, supply chain, orders, builds, shipping)
  - Website Message Board (users, accounts, forums, threads, messages)
- - Simplified SBOM (start from SPDX3 model and limit to high-level aspects)
- - SDO management system (similar to OASIS Kavi)
+ - Information structures such as a software bill of materials (SBOM)
+ - Standard Development Organization (SDO) management system (similar to OASIS Kavi)
  - Music Database (artists, albums, songs, tracks, metadata, guest artists)
+
+This CN provides an example of an IM for a digital music library. Additional examples may be added in future versions of the CN.
 
 ### 3.3.1 Example 1: A Digital Music Library
 
