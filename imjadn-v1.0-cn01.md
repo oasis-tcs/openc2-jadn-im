@@ -901,9 +901,9 @@ the seven "Compound" types, as shown in Figure 3-1.
     refine the base types to fit particular needs.
  4. An optional **TypeDescription** string that provides
     additional information about the type.
- 5. For any of the Compound types, a set of **Item** or **Field**
-    options that define the items that comprise the compound
-    type.
+ 5. For any of the Compound types, Enumerated, or Choice, a set
+    of **Item** or **Field** options that define the items that
+    comprise the compound type.
 
 ###### Figure 3-2 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
