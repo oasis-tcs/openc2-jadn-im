@@ -1217,10 +1217,7 @@ example begins with the ERD for the model:
 
 ###### Figure 3-6 -- Simple University Example ERD
 
-> NOTE:  Placeholder ERD for modified "University" example.
-> To be replaced with version without description fields.
-
-![Simple University Example ERD](images/spec_test-extended.jadn.png)
+![Simple University Example ERD](images/university-extended_no-comments.png)
 
 
 The package (see [Section
