@@ -1220,9 +1220,8 @@ example begins with the ERD for the model:
 ![Simple University Example ERD](images/university-extended_no-comments.png)
 
 
-The package (see [Section
-4.1](#41-namespaces-packages-and-referencing)) containing the
-JADN corresponding to the above ERD is shown here:
+The package (see [Section 4.1](#41-namespaces-packages-and-referencing)) 
+containing the JADN corresponding to the above ERD is shown here:
 
 ###### Figure 3-7 -- Simple University Example JADN (JSON format)
 ```json
