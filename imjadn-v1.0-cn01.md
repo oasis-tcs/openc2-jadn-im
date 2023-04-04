@@ -1207,7 +1207,7 @@ Publication-Data = Array         // who and when of publication
 ```
 
 
-#### 3.1.5.3 Multiple Representation Example
+#### 3.1.5.3 Multiple Representations Example
 
 This section uses a slightly extended version of an example IM
 based on the University ERD shown in Section 5.3 of the JADN
