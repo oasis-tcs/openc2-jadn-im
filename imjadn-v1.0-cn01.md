@@ -2086,9 +2086,6 @@ in `Record G` when referring to such objects.
 
 ![Contains and References Relationships](images/contains-references.drawio.png)
 
-## 4.3 Tool-Generated Types
-
-
 
 -------
 
