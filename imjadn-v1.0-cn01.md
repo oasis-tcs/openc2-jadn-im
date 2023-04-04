@@ -786,6 +786,15 @@ The [[JADN Specification](#jadn-v10)] defines twelve base types:
 |     Number    |     MapOf    |                           |
 |     String    |    Record    |                           |
 
+> **NOTE:** The JADN v1.0 Committee Specification
+> [[JADN](#jadn-v10)] uses the term "structured" rather than
+> "compound" when referring to Array, ArrayOf, Map, MapOf, and
+> Record types. An update is planned to change the specification
+> to use "compound" in order to avoid any potential confusion
+> with UML's use of "structured".
+
+
+
 Each of the compound types is a *container*, a named group of related items
 such as the latitude and longitude of a geographic coordinate, or the set of
 properties of an object. In addition to its individual items, every container
