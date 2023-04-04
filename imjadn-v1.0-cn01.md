@@ -2044,7 +2044,7 @@ NSID:TypeName).  So assuming the existence of `Package A`, and
 `PACKA`, then types defined in `Package A` can be used within
 `Package B` by identifying them as `PACKA:Some-Package-A-Type`.
 
-## 4.2 Using References: Keys and Links
+## 4.2 Reference Relationships: Keys and Links
 
 As noted at the end of Section 3.1 of this CN, JADN recognizes
 only two kinds of relationship: "contain" and "reference". The
