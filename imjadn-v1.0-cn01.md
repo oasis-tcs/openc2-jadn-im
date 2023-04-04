@@ -894,9 +894,9 @@ definition. The five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
 that type.
- 2. The **BaseType** of the type, which is one of either the
-five "Primitive" (or, alternatively, "scalar") types or
-the seven "Compound" types, as shown in Figure 3-1.
+ 2. The **BaseType** of the type, which is one of either the five
+"Primitive" (or, alternatively, "scalar") types, the five
+"Compound" types, Enumerated, or Choice, as shown in Figure 3-1.
  3. Zero or more of the available JADN **TypeOptions** that
     refine the base types to fit particular needs.
  4. An optional **TypeDescription** string that provides
