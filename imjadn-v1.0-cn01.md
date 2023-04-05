@@ -2173,44 +2173,118 @@ the model components connect.
 -------
 # 4 Advanced Techniques
 
-## 4.1 Namespaces, Packages, and Referencing
+## 4.1 Packages and Namespaces
 
-> discuss how JADN IMs may be broken into components (packages)
-> and connections made between components (namespaces &
-> referencing)
+Section 6 of the [[JADN](#jadn-v10)] specification introduces the
+use of packages as the mechanism for organizing JADN schemas.
+This section provides additional information on the use of
+packages, along with the associated concept of namespaces.
 
 ### 4.1.1 Packages
 
-> complex models are divided into packages
+At the simplest level, a package is a file containing a JADN
+schema in the form of JSON data, as described in [Section
+3.1.5.1](#3151-native-json-representation). The file has two
+top-level components: 
 
-> package header defined in JADN spec section 6
+ - metadata about the file, labeled as "information", and 
+ - the schema content itself, labeled as "types".
 
-> essential information element of package header is namespace
+Definitions of all of the `Information` fields are provided in
+the JADN specification. 
 
-> packages can explicitly export types defined within; this isn't
-> a rigorous public / private type distinction, but provides a
-> means for schema authors to indicate the intended public types,
-> and allows JADN schema tools to detect discrepancies
+The metadata portion is entirely optional, but if present must
+include the `package` field providing a URI for the package to
+enable the package to be referenced from other packages. A single
+schema may be divided into multiple packages (e.g., common types
+that are used extensively in a model might be collected into a
+library package), and a schema might also import one or more
+packages from a different schema (e.g., to use information
+objects defined in the official schema for a standard).
+
+The `exports` portion of the package information is
+informational; JADN packages aren't intended to enforce a
+rigorous distinction between public and private types
+distinction. The `exports` list provides a means for schema
+authors to indicate the intended public types, and a basis for
+JADN schema tools to detect discrepancies.
 
 ### 4.1.2 Namespaces
 
-> Namespace Identifier (NSID) by default is a 1-8 character
-> string beginning with a letter and containing only letters and
-> numbers. Default formatting can be overridden by inserting an
-> alternative definition into a JADN schema
+Namespaces identified in the package metadata are the mechanism
+for enabling references to types defined in other packages. The
+`namespaces` field contains an array associating locally
+meaningful Namespace Identifiers (`NSID`) with the `namespace`
+other packages declare for themselves, as shown in this excerpt
+from the JIDL description of the `Information` header:
 
-> A namespace is associated with a package, and used in other
-> packages to refer to types defined in that package
+```
+Information = Map                            // Information about this package
+     ...
+   8 namespaces   Namespaces optional        // Referenced packages
+     ...
 
-> JADN uses the common convention of using the NSID followed by a
-> colon to link an item to the namespace where it is defined
-> (e.g., NSID:TypeName)
+Namespaces = MapOf(NSID, Namespace){1..*}    // Packages with referenced type defs
 
-### 4.1.3 Referencing
+NSID = String{pattern="$NSID"}               // Default = ^[A-Za-z][A-Za-z0-9]{0,7}$
 
-### 4.1.4 Linking Between Projects
+Namespace = String /uri                      // Unique name of a package
+```
 
-## 4.2 From Logical Models to IMs
+A Namespace Identifier (NSID) is, by default, a 1-8 character string
+beginning with a letter and containing only letters and numbers.
+Default formatting can be overridden by inserting an alternative
+definition into a JADN schema. 
+
+JADN uses the common convention of using the NSID followed by a
+colon to link an item to the namespace where it is defined (e.g.,
+NSID:TypeName).  So assuming the existence of `Package A`, and
+`Package B`, where `Package B` imports `Package A` with the NSID
+`PACKA`, then types defined in `Package A` can be used within
+`Package B` by identifying them as `PACKA:Some-Package-A-Type`.
+
+## 4.2 Reference Relationships: Keys and Links
+
+As noted at the end of Section 3.1 of this CN, JADN recognizes
+only two kinds of relationship: "contain" and "reference". The
+relationships shown in previous examples are all of the "contain"
+variety. The "reference" relationship type applies when using the
+"contain" relationship would create a cycle or loop in the graph
+of the information model.  An example of this might occur, for
+example, in an IM for an SBOM format: as software components
+often incorporate other components a recursive situation arises
+when referring to the incorporated components:
+
+```
+Component - Record
+  ...
+  8  Components  ArrayOf(Component) {0..*}
+  ...
+```
+
+When recursion is used in programming it is terminated by a base
+condition, but an IM has no corresponding concept to terminate
+recursion. JADN uses "reference" relationships in situations
+where cycles occur in order to address this need. The method to
+define reference relationships is explained in Section 3.3.6,
+*Links*, of the [[JADN Specification](#jadn-v10)]. 
+
+Figure 4-1 illustrates permissible and impermissible "contains"
+relationships, and the use of the `key` and `link` keywords
+combined with an identifier field to establish permissible
+"reference" relationships. The green lines show permissible
+relationships, the red lines impermissible ones that create
+cycles in the graph. The dotted green line in the lower portion
+is a "reference" relationship enabled by the inclusion of a
+unique identifier in `Record H`, created by the use of the `key`
+field option to designate a primary key for objects described by
+`Record H`, and the corresponding use of the `link` field option
+in `Record G` when referring to such objects.
+
+###### Figure 4-1 -- Contains and References Relationships
+
+![Contains and References Relationships](images/contains-references.drawio.png)
+
 
 -------
 
