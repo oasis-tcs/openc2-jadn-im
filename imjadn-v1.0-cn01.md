@@ -4,9 +4,9 @@
 
 # Information Modeling with JADN Version 1.0
 
-## Committee Note Draft [WD02]
+## Committee Note [WD02]
 
-## xx February 2023
+## 19 April 2023
 
 &nbsp;
 
@@ -100,34 +100,34 @@ For complete copyright information please see the full Notices section in an App
     - [3.1.5 JADN Representations](#315-jadn-representations)
       - [3.1.5.1 Native JSON Representation](#3151-native-json-representation)
       - [3.1.5.2 Alternative JADN Representations](#3152-alternative-jadn-representations)
-      - [3.1.5.3 Multiple Representation Example](#3153-multiple-representation-example)
-    - [3.1.6 Base Type Examples](#316-base-type-examples)
-      - [3.1.7.1.Binary](#3161-binary)
-      - [3.1.6.2 Boolean](#3162-boolean)
-      - [3.1.6.3 Integer](#3163-integer)
-      - [3.1.6.4 Number](#3164-number)
-      - [3.1.6.5 String](#3165-string)
-      - [3.1.6.6 Enumerated](#3166-enumerated)
-      - [3.1.6.7 Choice](#3167-choice)
-      - [3.1.6.8 Array](#3168-array)
-      - [3.1.6.9 ArrayOf(_vtype_)](#3169-arrayofvtype)
-      - [3.1.7.1. Map](#31610-map)
-      - [3.1.7.1. MapOf(_ktype_,_vtype_)](#31611-mapofktypevtype)
-      - [3.1.7.1. Record](#31612-record)
+        - [3.1.5.2.1  Array "Field Names" in JIDL](#31521--array-field-names-in-jidl)
+      - [3.1.5.3 Multiple Representations Example](#3153-multiple-representations-example)
+    - [3.1.6 "Anonymous" Type Definitions](#316-anonymous-type-definitions)
+    - [3.1.7 Base Type Examples](#317-base-type-examples)
+      - [3.1.7.1 Binary](#3171-binary)
+      - [3.1.7.2 Boolean](#3172-boolean)
+      - [3.1.7.3 Integer](#3173-integer)
+      - [3.1.7.4 Number](#3174-number)
+      - [3.1.7.5 String](#3175-string)
+      - [3.1.7.6 Enumerated](#3176-enumerated)
+      - [3.1.7.7 Choice](#3177-choice)
+      - [3.1.7.8 Array](#3178-array)
+      - [3.1.7.9 ArrayOf(_vtype_)](#3179-arrayofvtype)
+      - [3.1.7.10 Map](#31710-map)
+      - [3.1.7.11 MapOf(_ktype_,_vtype_)](#31711-mapofktypevtype)
+      - [3.1.7.12 Record](#31712-record)
   - [3.2 Information Modeling Process](#32-information-modeling-process)
+    - [3.2.1 Y. Tina Lee Modeling Process](#321-y-tina-lee-modeling-process)
+    - [3.2.2 Frederiks / van der Weide Modeling Process](#322-frederiks--van-der-weide-modeling-process)
   - [3.3 Information Modeling Example](#33-information-modeling-example)
     - [3.3.1 Example 1: A Digital Music Library](#331-example-1-a-digital-music-library)
 - [4 Advanced Techniques](#4-advanced-techniques)
-  - [4.1 Namespaces, Packages, and Referencing](#41-namespaces-packages-and-referencing)
+  - [4.1 Packages and Namespaces](#41-packages-and-namespaces)
     - [4.1.1 Packages](#411-packages)
     - [4.1.2 Namespaces](#412-namespaces)
-    - [4.1.3 Referencing](#413-referencing)
-    - [4.1.4 Linking Between Projects](#414-linking-between-projects)
-  - [4.2 From Logical Models to IMs](#42-from-logical-models-to-ims)
+  - [4.2 Reference Relationships: Keys and Links](#42-reference-relationships-keys-and-links)
 - [Appendix A. Informative References](#appendix-a-informative-references)
 - [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
-  - [B.1 Special Thanks](#b1-special-thanks)
-  - [B.2 Participants](#b2-participants)
 - [Appendix C. Revision History](#appendix-c-revision-history)
 - [Appendix D. Frequently Asked Questions (FAQ)](#appendix-d-frequently-asked-questions-faq)
   - [D.1 JADN vs. UML Primitive Data Types](#d1-jadn-vs-uml-primitive-data-types)
@@ -152,6 +152,7 @@ For complete copyright information please see the full Notices section in an App
  - [Figure 3-9 -- Simple University Example JADN (table format)](#figure-3-9----simple-university-example-jadn-table-format)
  - [Figure 3-10 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-10----simple-university-example-erd-source-code-graphviz)
  - [Figure 3-11 -- Music Library Example ERD](#figure-3-11----music-library-example-erd)
+ - [Figure 4-1 -- Contains and References Relationships](#figure-4-1----contains-and-references-relationships)
 
 
 **List of Tables**
@@ -547,7 +548,7 @@ payloads back into application state. Serialization is not a goal
 in and of itself, it is the mechanism by which applications
 exchange information in order to make it available to users.
 
-###### **Figure 2-1 -- Serialization / Deserialization**
+###### Figure 2-1 -- Serialization / Deserialization
 ![**Figure 2-1 -- Serialization / Deserialization**](images/model-and-serialization.png)
 
 Serialization and deserialization are intimately connected to the
@@ -704,7 +705,7 @@ is guided by rules associated with applying the IM:
    external representation format
 
 The [JADN Specification](#jadn) defines 12 core types, which
-are described in [Section 3.1.6](#316-base-type-examples) of this
+are described in [Section 3.1.6](#317-base-type-examples) of this
 CN. The JADN Specification also defines serialization rules for
 JSON (with three levels of verbosity) and CBOR
 [[RFC7409](#rfc7049)]. Supporting a new data format ("external
@@ -792,7 +793,7 @@ The [[JADN Specification](#jadn)] defines twelve base types:
 |     String    |    Record    |                           |
 
 > **NOTE:** The JADN v1.0 Committee Specification
-> [[JADN](#jadn-v10)] uses the term "structured" rather than
+> [[JADN](#jadn)] uses the term "structured" rather than
 > "compound" when referring to Array, ArrayOf, Map, MapOf, and
 > Record types. An update is planned to change the specification
 > to use "compound" in order to avoid any potential confusion
@@ -1070,7 +1071,7 @@ base types.
 The use of the **Fields** element to convey Item or Field
 Definitions is dependent on the **BaseType** selected, as
 illustrated in [Figure
-3-1](#figure-3-1----jadn-type-definition-structure). The rules
+3-2](#figure-3-2----jadn-type-definition-structure). The rules
 pertaining to the **Fields** array are as follows:
 
 * If the **BaseType** is a Primitive type, ArrayOf, or MapOf, no
@@ -1120,10 +1121,10 @@ specifying field options. Table 3-5 lists the JADN field options.
 |    key     |  Boolean   |   `K`    | Field is a primary key for this type                          |         3.3.6         |
 |    link    |  Boolean   |   `L`    | Field is a foreign key reference to a type instance           |         3.3.6         |
 
-The type options described in [Section 3.1.3](#312-typeoptions)
+The type options described in [Section 3.1.2](#312-typeoptions)
 can also apply to fields, with the constraint that the type
 option must be applicable to the field's type, as described in
-the base type examples in [Section 3.1.6](#316-base-type-examples).
+the base type examples in [Section 3.1.7](#317-base-type-examples).
 
 ### 3.1.5 JADN Representations
 
@@ -1210,7 +1211,7 @@ names are used. These types are defined using a field ID and a
 TypeName. For documentation and debugging purposes a FieldName
 can be included in the JIDL comment field, immediately following
 the `//` and followed by a double colon delimiter (i.e., `::`).
-For more information see the [[JADN](#jadn-v10)] Specification
+For more information see the [[JADN](#jadn)] Specification
 descriptions of Field Identifiers (section 3.2.1.1) and JADN-IDL
 format (section 5.1). Here is a brief JIDL example of this format:
 
@@ -1234,7 +1235,7 @@ example begins with the ERD for the model:
 ![Simple University Example ERD](images/university-extended_no-comments.png)
 
 
-The package (see [Section 4.1](#41-namespaces-packages-and-referencing)) 
+The package (see [Section 4.1](#41-packages-and-namespaces)) 
 containing the JADN corresponding to the above ERD is shown here:
 
 ###### Figure 3-7 -- Simple University Example JADN (JSON format)
@@ -1377,7 +1378,7 @@ digraph G {
 
 ### 3.1.6 "Anonymous" Type Definitions
 
-The [[JADN Specification](#jadn-v10)] conformance statement
+The [[JADN Specification](#jadn)] conformance statement
 (section 7) separates the definition of JADN into "Core JADN"
 (sections 3.1, 3.2, 4, and 6) and "JADN Extensions" (section
 3.3). Section 3.3 explains that extensions "make type definitions
@@ -1442,7 +1443,7 @@ Specification](#jadn)] is quoted, the relevant type options
 are listed, and an example is provided using the JADN and JIDL
 formats.
 
-#### 3.1.7.1.Binary
+#### 3.1.7.1 Binary
 
 **Definition:** A sequence of octets. Length is the number of
 octets.
@@ -1477,7 +1478,7 @@ Table 3-6 lists the *format* options applicable to the Binary type:
 
 
 
-#### 3.1.6.2 Boolean
+#### 3.1.7.2 Boolean
 
 **Definition:**  An element with one of two values: true or
 false.
@@ -1501,7 +1502,7 @@ The corresponding JIDL representation would be:
 ```
 
 
-#### 3.1.6.3 Integer
+#### 3.1.7.3 Integer
 
 **Definition:**  A positive or negative whole number.
 
@@ -1538,7 +1539,7 @@ Table 3-7 lists the *format* options applicable to the Integer type:
 | i32          | Integer | Signed 32 bit integer, value must be between -2147483648 and 2147483647.
 | u\<*n*\>     | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1.
 
-#### 3.1.6.4 Number
+#### 3.1.7.4 Number
 
 **Definition:**  A real number.
 
@@ -1576,7 +1577,7 @@ using CBOR; see the [[JADN Specification](#jadn)], Section
 
 
 
-#### 3.1.6.5 String
+#### 3.1.7.5 String
 
 **Definition:**  A sequence of characters, each of which has a
 Unicode codepoint. Length is the number of characters.
@@ -1632,7 +1633,7 @@ in the current 15th edition (published in 2022) of the
 specification is in Section 22.2.
 
 
-#### 3.1.6.6 Enumerated
+#### 3.1.7.6 Enumerated
 
 **Definition:**  A vocabulary of items where each item has an id
 and a string value.
@@ -1668,7 +1669,7 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.6.7 Choice
+#### 3.1.7.7 Choice
 
 **Definition:**  A discriminated union: one type selected from a
 set of named or labeled types.
@@ -1702,7 +1703,7 @@ IdentityType = Choice                // Nature of the referenced identity
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 
-#### 3.1.6.8 Array
+#### 3.1.7.8 Array
 
 **Definition:**  An ordered list of labeled fields with
 positionally-defined semantics. Each field has a position, label,
@@ -1755,7 +1756,7 @@ Table 3-9 lists the *format* options applicable to the Array type:
 
 
 
-#### 3.1.6.9 ArrayOf(_vtype_)
+#### 3.1.7.9 ArrayOf(_vtype_)
 
 **Definition:**  A collection of fields with the same semantics.
 Each field has type *vtype*. Ordering and uniqueness are
@@ -1807,7 +1808,7 @@ Track = Record		// for each track there's a file with the audio and a metadata r
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 
-#### 3.1.7.1. Map
+#### 3.1.7.10 Map
 
 **Definition:**  An unordered map from a set of specified keys to
 values with semantics bound to each key. Each key has an id and
@@ -1852,7 +1853,7 @@ Hashes = Map{1..*}    // Cryptographic hash values
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 
-#### 3.1.7.1. MapOf(_ktype_,_vtype_)
+#### 3.1.7.11 MapOf(_ktype_,_vtype_)
 
 **Definition:**  An unordered map from a set of keys of the same
 type to values with the same semantics. Each key has key type
@@ -1908,7 +1909,7 @@ Date = String /date
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.7.1. Record
+#### 3.1.7.12 Record
 
 **Definition:**  An ordered map from a list of keys with
 positions to values with positionally-defined semantics. Each key
@@ -1995,7 +1996,7 @@ in this paper has the following steps:
     classes
  6) Capture the model in the chosen modeling language
 
-### 3.2.1 Frederiks / van der Weide Modeling Process
+### 3.2.2 Frederiks / van der Weide Modeling Process
 
 In their paper *Information modeling: The process and the
 required competencies of its participants*
@@ -2175,7 +2176,7 @@ the model components connect.
 
 ## 4.1 Packages and Namespaces
 
-Section 6 of the [[JADN](#jadn-v10)] specification introduces the
+Section 6 of the [[JADN](#jadn)] specification introduces the
 use of packages as the mechanism for organizing JADN schemas.
 This section provides additional information on the use of
 packages, along with the associated concept of namespaces.
@@ -2267,7 +2268,7 @@ condition, but an IM has no corresponding concept to terminate
 recursion. JADN uses "reference" relationships in situations
 where cycles occur in order to address this need. The method to
 define reference relationships is explained in Section 3.3.6,
-*Links*, of the [[JADN Specification](#jadn-v10)]. 
+*Links*, of the [[JADN Specification](#jadn)]. 
 
 Figure 4-1 illustrates permissible and impermissible "contains"
 relationships, and the use of the `key` and `link` keywords
@@ -2959,75 +2960,87 @@ constructing an information graph from an ontology graph:
 ### E.1.2 Music Library JIDL
 
 ```
-       title: "Music Library"
-     package: "http://fake-audio.org/music-lib"
-     version: "1.0"
- description: "This information model defines a library of audio tracks, organized by album"
-     license: "CC0-1.0"
-     exports: ["Library", "Album", "Track"]
+     package:  "http://fake-audio.org/music-lib"
+     version:  "1.0"
+       title:  "Music Library"
+ description:  "This information model defines a library of audio tracks, organized by album"
+     license:  "CC0-1.0"
+     exports:  ["Library", "Album", "Track"]
 
 Library = MapOf(Barcode, Album){1..*}
 
-Barcode = String{pattern="\d{12}"}              // A UPC-A barcode is 12 digits
+Barcode = String (%\d{12}%)  // A UPC-A barcode is 12 digits
 
-Album = Record                                  // model for the album
-   1 artist           Artist                    // artist associated with this album
-   2 title            String                    // commonly known title for this album
-   3 pub_data         Publication-Data          // metadata about album publication
-   4 tracks           ArrayOf(Track) [1..*]     // individual track descriptions
-   5 cover_art        Cover-Art                 // cover art image for this album
+Album = Record                      // model for the album
+    1  artist     Artist            // artist associated with this album
+    2  title      String            // commonly known title for this album
+    3  pub_data   Publication-Data  // metadata about album publication
+    4  tracks     Album$Tracks      // individual track descriptions
+    5  cover_art  Image optional    // cover art image for this album
 
-Artist = Record                                 // interesting information about the performers
-   1 artist_name      String                    // who is this person
-   2 instruments      ArrayOf(Instrument) [1..*]// and what do they play
+Artist = Record                         // interesting information about the performers
+    1  artist_name  String              // who is this person
+    2  instruments  Artist$Instruments  // and what do they play
 
-Instrument = Enumerated                         // collection of instruments (non-exhaustive)
-   1 vocals
-   2 guitar
-   3 bass
-   4 drums
-   5 keyboards
-   6 percussion
-   7 brass
-   8 woodwinds
-   9 harmonica
+Instrument = Enumerated  // collection of instruments (non-exhaustive)
+    1  vocals      //
+    2  guitar      //
+    3  bass        //
+    4  drums       //
+    5  keyboards   //
+    6  percussion  //
+    7  brass       //
+    8  woodwinds   //
+    9  harmonica   //
 
-Publication-Data = Record                       // who and when of publication
-   1 label            String                    // name of record label
-   2 rel_date         String /date              // and when did they let this drop
+Publication-Data = Record                   // who and when of publication
+    1  label     String                     // name of record label
+    2  rel_date  Publication-data$Rel-date  // and when did they let this drop
 
-Track = Record                                  // information about the individual audio tracks
-   1 t_number         Number                    // track sequence number
-   2 title            String                    // track title
-   3 length           String /time              // length of track
-   4 featured         ArrayOf(Artist)           // important guest performers
-   5 audio            Audio                     // the all important content
+Track = Record              // for each track there's a file with the audio and a metadata record
+    1  location  String     // path to the file audio location in local storage
+    2  metadata  TrackInfo  // description of the track
 
-Audio = Record                                  // information about what gets played
-   1 a_format         Audio-Format              // what type of audio file?
-   2 a_content        Binary                    // the audio data in the identified format
+TrackInfo = Record                                // information about the individual audio tracks
+    1  t_number      Number                       // track sequence number
+    2  title         String                       // track title
+    3  length        Trackinfo$Length             // length of track
+    4  audio_format  Audio-Format                 // the all important content
+    5  featured      Trackinfo$Featured optional  // important guest performers
+    6  track_art     Image optional               // track can have individual artwork
 
-Audio-Format = Enumerated                       // can only be one, but can extend list
-   1 MP3
-   2 OGG
-   3 FLAC
+Audio-Format = Enumerated  // can only be one, but can extend list
+    1  MP3   //
+    2  OGG   //
+    3  FLAC  //
 
-Cover-Art = Record                              // pretty picture for the album
-   1 i_format         Image-Format              // what type of image file?
-   2 i_content        Binary                    // the image data in the identified format
+Image = Record                      // pretty picture for the album or track
+    1  image_format   Image-Format  // what type of image file?
+    2  image_content  Binary        // the image data in the identified format
 
-Image-Format = Enumerated                       // can only be one, but can extend list
-   1 PNG
-   2 JPG
+Image-Format = Enumerated  // can only be one, but can extend list
+    1  PNG  //
+    2  JPG  //
+
+Album$Tracks = ArrayOf(Track){1..*}  // individual track descriptions
+
+Artist$Instruments = ArrayOf(Instrument){1..*}  // and what do they play
+
+Trackinfo$Featured = ArrayOf(Artist){1..*}  // important guest performers
+
+Publication-data$Rel-date = String /date  // and when did they let this drop
+
+Trackinfo$Length = String /time  // length of track
 ```
 
 ### E.1.3 Music Library Tables
 
+## Schema
 |                . | .                                                                            |
 |-----------------:|:-----------------------------------------------------------------------------|
-|       **title:** | Music Library                                                                |
 |     **package:** | http://fake-audio.org/music-lib                                              |
 |     **version:** | 1.0                                                                          |
+|       **title:** | Music Library                                                                |
 | **description:** | This information model defines a library of audio tracks, organized by album |
 |     **license:** | CC0-1.0                                                                      |
 |     **exports:** | Library, Album, Track                                                        |
@@ -3038,86 +3051,112 @@ Image-Format = Enumerated                       // can only be one, but can exte
 | **Library** | MapOf(Barcode, Album){1..*} |             |
 
 
-| Type Name   | Type Definition          | Description                  |
-|:------------|:-------------------------|:-----------------------------|
-| **Barcode** | String{pattern="\d{12}"} | A UPC-A barcode is 12 digits |
+| Type Name   | Type Definition   | Description                  |
+|:------------|:------------------|:-----------------------------|
+| **Barcode** | String (%\d{12}%) | A UPC-A barcode is 12 digits |
 
 **_Type: Album (Record)_**
 
-|  ID | Name          | Type             |    # | Description                         |
-|----:|:--------------|:-----------------|-----:|:------------------------------------|
-|   1 | **artist**    | Artist           |    1 | artist associated with this album   |
-|   2 | **title**     | String           |    1 | commonly known title for this album |
-|   3 | **pub_data**  | Publication-Data |    1 | metadata about album publication    |
-|   4 | **tracks**    | ArrayOf(Track)   | 1..* | individual track descriptions       |
-|   5 | **cover_art** | Cover-Art        |    1 | cover art image for this album      |
+| ID | Name          | Type             | # | Description                         |
+|---:|:--------------|:-----------------|--:|:------------------------------------|
+|  1 | **artist**    | Artist           | 1 | artist associated with this album   |
+|  2 | **title**     | String           | 1 | commonly known title for this album |
+|  3 | **pub_data**  | Publication-Data | 1 | metadata about album publication    |
+|  4 | **tracks**    | Album$Tracks     | 1 | individual track descriptions       |
+|  5 | **cover_art** | Image            | 1 | cover art image for this album      |
 
 **_Type: Artist (Record)_**
 
-|  ID | Name            | Type                |    # | Description           |
-|----:|:----------------|:--------------------|-----:|:----------------------|
-|   1 | **artist_name** | String              |    1 | who is this person    |
-|   2 | **instruments** | ArrayOf(Instrument) | 1..* | and what do they play |
+| ID | Name            | Type               | # | Description           |
+|---:|:----------------|:-------------------|--:|:----------------------|
+|  1 | **artist_name** | String             | 1 | who is this person    |
+|  2 | **instruments** | Artist$Instruments | 1 | and what do they play |
 
 **_Type: Instrument (Enumerated)_**
 
-|  ID | Name           | Description |
-|----:|:---------------|:------------|
-|   1 | **vocals**     |             |
-|   2 | **guitar**     |             |
-|   3 | **bass**       |             |
-|   4 | **drums**      |             |
-|   5 | **keyboards**  |             |
-|   6 | **percussion** |             |
-|   7 | **brass**      |             |
-|   8 | **woodwinds**  |             |
-|   9 | **harmonica**  |             |
+| ID | Name           | Description |
+|---:|:---------------|:------------|
+|  1 | **vocals**     |             |
+|  2 | **guitar**     |             |
+|  3 | **bass**       |             |
+|  4 | **drums**      |             |
+|  5 | **keyboards**  |             |
+|  6 | **percussion** |             |
+|  7 | **brass**      |             |
+|  8 | **woodwinds**  |             |
+|  9 | **harmonica**  |             |
 
 **_Type: Publication-Data (Record)_**
 
-|  ID | Name         | Type         |   # | Description                     |
-|----:|:-------------|:-------------|----:|:--------------------------------|
-|   1 | **label**    | String       |   1 | name of record label            |
-|   2 | **rel_date** | String /date |   1 | and when did they let this drop |
+| ID | Name         | Type                      | # | Description                     |
+|---:|:-------------|:--------------------------|--:|:--------------------------------|
+|  1 | **label**    | String                    | 1 | name of record label            |
+|  2 | **rel_date** | Publication-data$Rel-date | 1 | and when did they let this drop |
 
 **_Type: Track (Record)_**
 
-|  ID | Name         | Type            |   # | Description                |
-|----:|:-------------|:----------------|----:|:---------------------------|
-|   1 | **t_number** | Number          |   1 | track sequence number      |
-|   2 | **title**    | String          |   1 | track title                |
-|   3 | **length**   | String /time    |   1 | length of track            |
-|   4 | **featured** | ArrayOf(Artist) |   1 | important guest performers |
-|   5 | **audio**    | Audio           |   1 | the all important content  |
+| ID | Name         | Type      | # | Description                                      |
+|---:|:-------------|:----------|--:|:-------------------------------------------------|
+|  1 | **location** | String    | 1 | path to the file audio location in local storage |
+|  2 | **metadata** | TrackInfo | 1 | description of the track                         |
 
-**_Type: Audio (Record)_**
+**_Type: TrackInfo (Record)_**
 
-|  ID | Name          | Type         |   # | Description                             |
-|----:|:--------------|:-------------|----:|:----------------------------------------|
-|   1 | **a_format**  | Audio-Format |   1 | what type of audio file?                |
-|   2 | **a_content** | Binary       |   1 | the audio data in the identified format |
+| ID | Name             | Type               | # | Description                       |
+|---:|:-----------------|:-------------------|--:|:----------------------------------|
+|  1 | **t_number**     | Number{0..*}       | 1 | track sequence number             |
+|  2 | **title**        | String             | 1 | track title                       |
+|  3 | **length**       | Trackinfo$Length   | 1 | length of track                   |
+|  4 | **audio_format** | Audio-Format       | 1 | the all important content         |
+|  5 | **featured**     | Trackinfo$Featured | 1 | important guest performers        |
+|  6 | **track_art**    | Image              | 1 | track can have individual artwork |
 
 **_Type: Audio-Format (Enumerated)_**
 
-|  ID | Name     | Description |
-|----:|:---------|:------------|
-|   1 | **MP3**  |             |
-|   2 | **OGG**  |             |
-|   3 | **FLAC** |             |
+| ID | Name     | Description |
+|---:|:---------|:------------|
+|  1 | **MP3**  |             |
+|  2 | **OGG**  |             |
+|  3 | **FLAC** |             |
 
-**_Type: Cover-Art (Record)_**
+**_Type: Image (Record)_**
 
-|  ID | Name          | Type         |   # | Description                             |
-|----:|:--------------|:-------------|----:|:----------------------------------------|
-|   1 | **i_format**  | Image-Format |   1 | what type of image file?                |
-|   2 | **i_content** | Binary       |   1 | the image data in the identified format |
+| ID | Name              | Type         | # | Description                             |
+|---:|:------------------|:-------------|--:|:----------------------------------------|
+|  1 | **image_format**  | Image-Format | 1 | what type of image file?                |
+|  2 | **image_content** | Binary       | 1 | the image data in the identified format |
 
 **_Type: Image-Format (Enumerated)_**
 
-|  ID | Name    | Description |
-|----:|:--------|:------------|
-|   1 | **PNG** |             |
-|   2 | **JPG** |             |
+| ID | Name    | Description |
+|---:|:--------|:------------|
+|  1 | **PNG** |             |
+|  2 | **JPG** |             |
+
+
+| Type Name        | Type Definition      | Description                   |
+|:-----------------|:---------------------|:------------------------------|
+| **Album$Tracks** | ArrayOf(Track){1..*} | individual track descriptions |
+
+
+| Type Name              | Type Definition           | Description           |
+|:-----------------------|:--------------------------|:----------------------|
+| **Artist$Instruments** | ArrayOf(Instrument){1..*} | and what do they play |
+
+
+| Type Name              | Type Definition       | Description                |
+|:-----------------------|:----------------------|:---------------------------|
+| **Trackinfo$Featured** | ArrayOf(Artist){1..*} | important guest performers |
+
+
+| Type Name                     | Type Definition | Description                     |
+|:------------------------------|:----------------|:--------------------------------|
+| **Publication-data$Rel-date** | String /date    | and when did they let this drop |
+
+
+| Type Name            | Type Definition | Description     |
+|:---------------------|:----------------|:----------------|
+| **Trackinfo$Length** | String /time    | length of track |
 
 
 
