@@ -705,7 +705,7 @@ is guided by rules associated with applying the IM:
    external representation format
 
 The [JADN Specification](#jadn) defines 12 core types, which
-are described in [Section 3.1.6](#316-base-type-examples) of this
+are described in [Section 3.1.6](#317-base-type-examples) of this
 CN. The JADN Specification also defines serialization rules for
 JSON (with three levels of verbosity) and CBOR
 [[RFC7409](#rfc7049)]. Supporting a new data format ("external
@@ -793,7 +793,7 @@ The [[JADN Specification](#jadn)] defines twelve base types:
 |     String    |    Record    |                           |
 
 > **NOTE:** The JADN v1.0 Committee Specification
-> [[JADN](#jadn-v10)] uses the term "structured" rather than
+> [[JADN](#jadn)] uses the term "structured" rather than
 > "compound" when referring to Array, ArrayOf, Map, MapOf, and
 > Record types. An update is planned to change the specification
 > to use "compound" in order to avoid any potential confusion
@@ -1071,7 +1071,7 @@ base types.
 The use of the **Fields** element to convey Item or Field
 Definitions is dependent on the **BaseType** selected, as
 illustrated in [Figure
-3-1](#figure-3-1----jadn-type-definition-structure). The rules
+3-2](#figure-3-2----jadn-type-definition-structure). The rules
 pertaining to the **Fields** array are as follows:
 
 * If the **BaseType** is a Primitive type, ArrayOf, or MapOf, no
@@ -1121,10 +1121,10 @@ specifying field options. Table 3-5 lists the JADN field options.
 |    key     |  Boolean   |   `K`    | Field is a primary key for this type                          |         3.3.6         |
 |    link    |  Boolean   |   `L`    | Field is a foreign key reference to a type instance           |         3.3.6         |
 
-The type options described in [Section 3.1.3](#312-typeoptions)
+The type options described in [Section 3.1.2](#312-typeoptions)
 can also apply to fields, with the constraint that the type
 option must be applicable to the field's type, as described in
-the base type examples in [Section 3.1.6](#316-base-type-examples).
+the base type examples in [Section 3.1.7](#317-base-type-examples).
 
 ### 3.1.5 JADN Representations
 
@@ -1211,7 +1211,7 @@ names are used. These types are defined using a field ID and a
 TypeName. For documentation and debugging purposes a FieldName
 can be included in the JIDL comment field, immediately following
 the `//` and followed by a double colon delimiter (i.e., `::`).
-For more information see the [[JADN](#jadn-v10)] Specification
+For more information see the [[JADN](#jadn)] Specification
 descriptions of Field Identifiers (section 3.2.1.1) and JADN-IDL
 format (section 5.1). Here is a brief JIDL example of this format:
 
@@ -1235,7 +1235,7 @@ example begins with the ERD for the model:
 ![Simple University Example ERD](images/university-extended_no-comments.png)
 
 
-The package (see [Section 4.1](#41-namespaces-packages-and-referencing)) 
+The package (see [Section 4.1](#41-packages-and-namespaces)) 
 containing the JADN corresponding to the above ERD is shown here:
 
 ###### Figure 3-7 -- Simple University Example JADN (JSON format)
@@ -1378,7 +1378,7 @@ digraph G {
 
 ### 3.1.6 "Anonymous" Type Definitions
 
-The [[JADN Specification](#jadn-v10)] conformance statement
+The [[JADN Specification](#jadn)] conformance statement
 (section 7) separates the definition of JADN into "Core JADN"
 (sections 3.1, 3.2, 4, and 6) and "JADN Extensions" (section
 3.3). Section 3.3 explains that extensions "make type definitions
@@ -2176,7 +2176,7 @@ the model components connect.
 
 ## 4.1 Packages and Namespaces
 
-Section 6 of the [[JADN](#jadn-v10)] specification introduces the
+Section 6 of the [[JADN](#jadn)] specification introduces the
 use of packages as the mechanism for organizing JADN schemas.
 This section provides additional information on the use of
 packages, along with the associated concept of namespaces.
@@ -2268,7 +2268,7 @@ condition, but an IM has no corresponding concept to terminate
 recursion. JADN uses "reference" relationships in situations
 where cycles occur in order to address this need. The method to
 define reference relationships is explained in Section 3.3.6,
-*Links*, of the [[JADN Specification](#jadn-v10)]. 
+*Links*, of the [[JADN Specification](#jadn)]. 
 
 Figure 4-1 illustrates permissible and impermissible "contains"
 relationships, and the use of the `key` and `link` keywords
