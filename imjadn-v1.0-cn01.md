@@ -154,7 +154,7 @@ For complete copyright information please see the full Notices section in an App
       - [3.1.7.12 Record](#31712-record)
   - [3.2 Information Modeling Process](#32-information-modeling-process)
     - [3.2.1 Y. Tina Lee Modeling Process](#321-y-tina-lee-modeling-process)
-    - [3.2.1 Frederiks / van der Weide Modeling Process](#321-frederiks--van-der-weide-modeling-process)
+    - [3.2.1 Frederiks / van der Weide Modeling Process](#322-frederiks--van-der-weide-modeling-process)
   - [3.3 Information Modeling Example](#33-information-modeling-example)
     - [3.3.1 Example 1: A Digital Music Library](#331-example-1-a-digital-music-library)
           - [Figure 3-11 -- Music Library Example ERD](#figure-3-11----music-library-example-erd)
@@ -2065,7 +2065,7 @@ in this paper has the following steps:
     classes
  6) Capture the model in the chosen modeling language
 
-### 3.2.1 Frederiks / van der Weide Modeling Process
+### 3.2.2 Frederiks / van der Weide Modeling Process
 
 In their paper *Information modeling: The process and the
 required competencies of its participants*
