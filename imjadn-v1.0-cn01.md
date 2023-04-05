@@ -141,17 +141,17 @@ For complete copyright information please see the full Notices section in an App
       - [3.1.6.2 Boolean](#3162-boolean)
       - [3.1.6.3 Integer](#3163-integer)
           - [Table 3-7 -- Integer Type Format Options](#table-3-7----integer-type-format-options)
-      - [3.1.6.4 Number](#3164-number)
+      - [3.1.6.4 Number](#3174-number)
           - [Table 3-8 -- Number Type Format Options](#table-3-8----number-type-format-options)
-      - [3.1.6.5 String](#3165-string)
-      - [3.1.6.6 Enumerated](#3166-enumerated)
-      - [3.1.6.7 Choice](#3167-choice)
-      - [3.1.6.8 Array](#3168-array)
+      - [3.1.6.5 String](#3175-string)
+      - [3.1.6.6 Enumerated](#3176-enumerated)
+      - [3.1.6.7 Choice](#3177-choice)
+      - [3.1.6.8 Array](#3178-array)
           - [Table 3-9 -- Array Type Format Options](#table-3-9----array-type-format-options)
-      - [3.1.6.9 ArrayOf(_vtype_)](#3169-arrayofvtype)
+      - [3.1.6.9 ArrayOf(_vtype_)](#3179-arrayof_vtype_)
       - [3.1.7.1. Map](#3171-map)
       - [3.1.7.1. MapOf(_ktype_,_vtype_)](#3171-mapofktypevtype)
-      - [3.1.7.1. Record](#3171-record)
+      - [3.1.7.1. Record](#31712-record)
   - [3.2 Information Modeling Process](#32-information-modeling-process)
     - [3.2.1 Y. Tina Lee Modeling Process](#321-y-tina-lee-modeling-process)
     - [3.2.1 Frederiks / van der Weide Modeling Process](#321-frederiks--van-der-weide-modeling-process)
@@ -1547,7 +1547,7 @@ Table 3-6 lists the *format* options applicable to the Binary type:
 
 
 
-#### 3.1.6.2 Boolean
+#### 3.1.7.2 Boolean
 
 **Definition:**  An element with one of two values: true or
 false.
@@ -1571,7 +1571,7 @@ The corresponding JIDL representation would be:
 ```
 
 
-#### 3.1.6.3 Integer
+#### 3.1.7.3 Integer
 
 **Definition:**  A positive or negative whole number.
 
@@ -1608,7 +1608,7 @@ Table 3-7 lists the *format* options applicable to the Integer type:
 | i32          | Integer | Signed 32 bit integer, value must be between -2147483648 and 2147483647.
 | u\<*n*\>     | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1.
 
-#### 3.1.6.4 Number
+#### 3.1.7.4 Number
 
 **Definition:**  A real number.
 
@@ -1646,7 +1646,7 @@ using CBOR; see the [[JADN Specification](#jadn)], Section
 
 
 
-#### 3.1.6.5 String
+#### 3.1.7.5 String
 
 **Definition:**  A sequence of characters, each of which has a
 Unicode codepoint. Length is the number of characters.
@@ -1702,7 +1702,7 @@ in the current 15th edition (published in 2022) of the
 specification is in Section 22.2.
 
 
-#### 3.1.6.6 Enumerated
+#### 3.1.7.6 Enumerated
 
 **Definition:**  A vocabulary of items where each item has an id
 and a string value.
@@ -1738,7 +1738,7 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.6.7 Choice
+#### 3.1.7.7 Choice
 
 **Definition:**  A discriminated union: one type selected from a
 set of named or labeled types.
@@ -1772,7 +1772,7 @@ IdentityType = Choice                // Nature of the referenced identity
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 
-#### 3.1.6.8 Array
+#### 3.1.7.8 Array
 
 **Definition:**  An ordered list of labeled fields with
 positionally-defined semantics. Each field has a position, label,
@@ -1825,7 +1825,7 @@ Table 3-9 lists the *format* options applicable to the Array type:
 
 
 
-#### 3.1.6.9 ArrayOf(_vtype_)
+#### 3.1.7.9 ArrayOf(_vtype_)
 
 **Definition:**  A collection of fields with the same semantics.
 Each field has type *vtype*. Ordering and uniqueness are
@@ -1877,7 +1877,7 @@ Track = Record		// for each track there's a file with the audio and a metadata r
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 
-#### 3.1.7.1. Map
+#### 3.1.7.10 Map
 
 **Definition:**  An unordered map from a set of specified keys to
 values with semantics bound to each key. Each key has an id and
@@ -1922,7 +1922,7 @@ Hashes = Map{1..*}    // Cryptographic hash values
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 
-#### 3.1.7.1. MapOf(_ktype_,_vtype_)
+#### 3.1.7.11 MapOf(_ktype_,_vtype_)
 
 **Definition:**  An unordered map from a set of keys of the same
 type to values with the same semantics. Each key has key type
@@ -1978,7 +1978,7 @@ Date = String /date
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.7.1. Record
+#### 3.1.7.12 Record
 
 **Definition:**  An ordered map from a list of keys with
 positions to values with positionally-defined semantics. Each key
