@@ -102,7 +102,7 @@ For complete copyright information please see the full Notices section in an App
       - [3.1.5.2 Alternative JADN Representations](#3152-alternative-jadn-representations)
       - [3.1.5.3 Multiple Representation Example](#3153-multiple-representation-example)
     - [3.1.6 Base Type Examples](#316-base-type-examples)
-      - [3.1.6.1 Binary](#3161-binary)
+      - [3.1.7.1.Binary](#3161-binary)
       - [3.1.6.2 Boolean](#3162-boolean)
       - [3.1.6.3 Integer](#3163-integer)
       - [3.1.6.4 Number](#3164-number)
@@ -111,9 +111,9 @@ For complete copyright information please see the full Notices section in an App
       - [3.1.6.7 Choice](#3167-choice)
       - [3.1.6.8 Array](#3168-array)
       - [3.1.6.9 ArrayOf(_vtype_)](#3169-arrayofvtype)
-      - [3.1.6.10 Map](#31610-map)
-      - [3.1.6.11 MapOf(_ktype_,_vtype_)](#31611-mapofktypevtype)
-      - [3.1.6.12 Record](#31612-record)
+      - [3.1.7.1. Map](#31610-map)
+      - [3.1.7.1. MapOf(_ktype_,_vtype_)](#31611-mapofktypevtype)
+      - [3.1.7.1. Record](#31612-record)
   - [3.2 Information Modeling Process](#32-information-modeling-process)
   - [3.3 Information Modeling Example](#33-information-modeling-example)
     - [3.3.1 Example 1: A Digital Music Library](#331-example-1-a-digital-music-library)
@@ -791,6 +791,15 @@ The [[JADN Specification](#jadn)] defines twelve base types:
 |     Number    |     MapOf    |                           |
 |     String    |    Record    |                           |
 
+> **NOTE:** The JADN v1.0 Committee Specification
+> [[JADN](#jadn-v10)] uses the term "structured" rather than
+> "compound" when referring to Array, ArrayOf, Map, MapOf, and
+> Record types. An update is planned to change the specification
+> to use "compound" in order to avoid any potential confusion
+> with UML's use of "structured".
+
+
+
 Each of the compound types is a *container*, a named group of related items
 such as the latitude and longitude of a geographic coordinate, or the set of
 properties of an object. In addition to its individual items, every container
@@ -890,16 +899,16 @@ definition. The five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
 that type.
- 2. The **BaseType** of the type, which is one of either the
-five "Primitive" (or, alternatively, "scalar") types or
-the seven "Compound" types, as shown in Figure 3-1.
+ 2. The **BaseType** of the type, which is one of either the five
+"Primitive" (or, alternatively, "scalar") types, the five
+"Compound" types, Enumerated, or Choice, as shown in Figure 3-1.
  3. Zero or more of the available JADN **TypeOptions** that
     refine the base types to fit particular needs.
  4. An optional **TypeDescription** string that provides
     additional information about the type.
- 5. For any of the Compound types, a set of **Item** or **Field**
-    options that define the items that comprise the compound
-    type.
+ 5. For any of the Compound types, Enumerated, or Choice, a set
+    of **Item** or **Field** options that define the items that
+    comprise the compound type.
 
 ###### Figure 3-2 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
@@ -1187,13 +1196,21 @@ making it a good format for both the initial creation and the
 documentation of a JADN model. JIDL is also more compact than
 table style presentation.
 
+The table style and ERD representations can be readily generated
+in an automated manner by translating the JADN schema to source
+code for rendering in various formats. For example, tables can be
+created using Markdown or HTML code, and ERDs can be created from
+code for rendering engines such as [[Graphviz](#graphviz)] or
+[[PlantUML](#plantuml)].
+
+##### 3.1.5.2.1  Array "Field Names" in JIDL
 
 When defining elements of type Array or Enum.ID in JIDL, no field
 names are used. These types are defined using a field ID and a
 TypeName. For documentation and debugging purposes a FieldName
 can be included in the JIDL comment field, immediately following
 the `//` and followed by a double colon delimiter (i.e., `::`).
-For more information see the [[JADN](#jadn) Specification]
+For more information see the [[JADN](#jadn-v10)] Specification
 descriptions of Field Identifiers (section 3.2.1.1) and JADN-IDL
 format (section 5.1). Here is a brief JIDL example of this format:
 
@@ -1204,7 +1221,7 @@ Publication-Data = Array         // who and when of publication
 ```
 
 
-#### 3.1.5.3 Multiple Representation Example
+#### 3.1.5.3 Multiple Representations Example
 
 This section uses a slightly extended version of an example IM
 based on the University ERD shown in Section 5.3 of the JADN
@@ -1214,15 +1231,11 @@ example begins with the ERD for the model:
 
 ###### Figure 3-6 -- Simple University Example ERD
 
-> NOTE:  Placeholder ERD for modified "University" example.
-> To be replaced with version without description fields.
-
-![Simple University Example ERD](images/spec_test-extended.jadn.png)
+![Simple University Example ERD](images/university-extended_no-comments.png)
 
 
-The package (see [Section
-4.1](#41-namespaces-packages-and-referencing)) containing the
-JADN corresponding to the above ERD is shown here:
+The package (see [Section 4.1](#41-namespaces-packages-and-referencing)) 
+containing the JADN corresponding to the above ERD is shown here:
 
 ###### Figure 3-7 -- Simple University Example JADN (JSON format)
 ```json
@@ -1362,9 +1375,66 @@ digraph G {
 
 ```
 
+### 3.1.6 "Anonymous" Type Definitions
+
+The [[JADN Specification](#jadn-v10)] conformance statement
+(section 7) separates the definition of JADN into "Core JADN"
+(sections 3.1, 3.2, 4, and 6) and "JADN Extensions" (section
+3.3). Section 3.3 explains that extensions "make type definitions
+more compact or support the DRY software design principle.
+Extensions are syntactic sugar that can be replaced by core
+definitions without changing their meaning." While the
+implementation of extensions by JADN tools is optional, in a
+conformance sense, the availability of extensions reduces the
+level of effort required by a JADN schema author and can make a
+schema more compact and understandable.
+
+The JADN Specification also defines a "system character" (by
+default the dollar sign, `$`) and in the Name Formats (section
+3.1.2) reserves the use of that character to automated tooling,
+saying "Schema authors should not create TypeNames containing the
+System character, but schema processing tools may do so".
+
+Examples of the use of extensions and the role of the system
+character are provided in sections 3.3.1, 3.3.2, and 3.3.2 of the
+JADN Specification. As noted in [Section
+3.1.4](#314-field-options), JADN Type Options can be applied to
+fields in compound types, but as explained in section 3.3.1 of
+the JADN Specification, this is an extension that leads to the
+anonymous definition of a new type when processed by automated
+tooling. The example provided there is:
+
+```
+Member = Record
+  1 name         String
+  2 email        String /email
+```
+Unfolding replaces this with:
+```
+Member = Record
+  1 name         String
+  2 email        Member$email
+    
+    Member$email = String /email    // Tool-generated type definition.
+
+```
+The type definition for `Member$email` was generated by the
+tooling, as both noted in the comment and indicated by the
+presence of the `$` character in the type name. The same result
+could be achieved in Core JADN by defining a separated `Email`
+type:
+
+```
+Member = Record
+  1 name         String
+  2 email        Email
+    
+Email = String /email
+```
 
 
-### 3.1.6 Base Type Examples
+
+### 3.1.7 Base Type Examples
 
 This section provides illustrative examples of the JADN base
 types. For each type, the definition from the [[JADN
@@ -1372,7 +1442,7 @@ Specification](#jadn)] is quoted, the relevant type options
 are listed, and an example is provided using the JADN and JIDL
 formats.
 
-#### 3.1.6.1 Binary
+#### 3.1.7.1.Binary
 
 **Definition:** A sequence of octets. Length is the number of
 octets.
@@ -1532,18 +1602,34 @@ The corresponding JIDL representation would be:
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 All semantic validation keywords defined in Section 7.3 of 
-[JSON Schema](#jsonschema) are valid *format* options for the String
+[[JSON Schema](#jsonschema)] are valid *format* options for the String
 type.
 
-When applying the *pattern* option in JIDL, it should be directly
-connected to the String TypeName. The entire pattern
+The *pattern* option in JADN is identified by the `%` type option
+character followed immediately by the regular expression to be
+applied, with the entire option contained in double-quotes. When
+applying the *pattern* option in JIDL, it should be directly
+connected to the `String` type name. The JIDL pattern
 specification is surrounded with braces "{ }", containing
 `pattern="REGEX"` where `REGEX` is the regular expression that
-governs the format of the string.
+governs the format of the string. Here are the JADN and JIDL
+presentations of a String with an associated pattern:
 
 ```
+["Barcode", "String", ["%^\d{12}$"], "A UPC-A barcode is 12 digits", []]
+
 Barcode = String{pattern="^\d{12}$"}    // A UPC-A barcode is 12 digits
 ```
+
+The JADN Specification states (section 3.2.1.6):
+
+> The *pattern* value SHOULD conform to the Pattern grammar of
+> ECMAScript Section 21.2.
+
+and references the 9th edition (published in 2018) of the
+[[ECMAScript](#ecmascript)] specification.  The pattern grammar
+in the current 15th edition (published in 2022) of the
+specification is in Section 22.2.
 
 
 #### 3.1.6.6 Enumerated
@@ -1655,6 +1741,8 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
 
+The example above illustrates the positioning of Array "field names" within the JIDL comments, as described in [Section 3.1.5.2.1](#31521-array-field-names-in-jidl).
+
 Table 3-9 lists the *format* options applicable to the Array type:
 
 ###### Table 3-9 -- Array Type Format Options
@@ -1681,14 +1769,45 @@ type.
 where it is appropriate to group a set of uniform  information
 elements together. The fields of the array are defined by the
 *vtype*, which can be primitive or compound. An information item
-fitting the ArrayOf base type would be defined as follows:
+fitting the ArrayOf base type would be defined as follows (field 4 of `Album`):
 
+
+```json
+ ["Album", "Record", [], "model for the album", [
+    [1, "artist", "Artist", [], "artist associated with this album"],
+    [2, "title", "String", [], "commonly known title for this album"],
+    [3, "pub_data", "Publication-Data", [], "metadata about album publication"],
+    [4, "tracks", "ArrayOf", ["*Track", "]0"], "individual track descriptions"],
+    [5, "cover_art", "Image", ["[0"], "cover art image for this album"]
+  ]],
+
+  ["Track", "Record", [], "for each track there's a file with the audio and a metadata record", [
+    [1, "location", "String", [], "path to the file audio location in local storage"],
+    [2, "metadata", "TrackInfo", [], "description of the track"]
+  ]],
+```
+
+And the corresponding JIDL would be:
+
+```
+Album = Record                                  // model for the album
+   1 artist           Artist                    // artist associated with this album
+   2 title            String                    // commonly known title for this album
+   3 pub_data         Publication-Data          // metadata about album publication
+   4 tracks           ArrayOf(Track) [1..*]     // individual track descriptions
+   5 cover_art        Image optional            // cover art image for this album
+
+Track = Record		// for each track there's a file with the audio and a metadata record
+   1 location         String			// path to the file audio location in local storage
+   2 metadata         TrackInfo   // description of the track
+
+```
 
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 
-#### 3.1.6.10 Map
+#### 3.1.7.1. Map
 
 **Definition:**  An unordered map from a set of specified keys to
 values with semantics bound to each key. Each key has an id and
@@ -1699,11 +1818,18 @@ TypeOptions are applicable to the Map data type.
 
 **Example:**  The Map type is used to represent information that
 can be represented as (key, value) pairs. Another term for this
-type of information structure is an "associative array". The Map
-base type always uses an integer identifier as the key, with each
-integer associated with a specific value. An information item
-fitting the Map type would be defined as follows:
+type of information structure is an "associative array". 
 
+> Per Wikipedia, an *Associative Array* is "an abstract data type
+> that stores a collection of (key, value) pairs, such that each
+> possible key appears at most once in the collection."
+> Alternative names include "map", "symbol table", and
+> "dictionary". (https://en.wikipedia.org/wiki/Associative_array)
+
+The Map base type always uses an integer identifier as the key,
+with each integer associated with a specific value. An
+information item fitting the Map type would be defined as
+follows:
 
 ```json
   ["Hashes", "Map", ["{1"], "Cryptographic hash values", [
@@ -1726,7 +1852,7 @@ Hashes = Map{1..*}    // Cryptographic hash values
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 
-#### 3.1.6.11 MapOf(_ktype_,_vtype_)
+#### 3.1.7.1. MapOf(_ktype_,_vtype_)
 
 **Definition:**  An unordered map from a set of keys of the same
 type to values with the same semantics. Each key has key type
@@ -1782,7 +1908,7 @@ Date = String /date
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.6.12 Record
+#### 3.1.7.1. Record
 
 **Definition:**  An ordered map from a list of keys with
 positions to values with positionally-defined semantics. Each key
@@ -1820,6 +1946,18 @@ IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tc
    4 dst_port         Port optional               // Destination service per RFC6335
    5 protocol         L4-Protocol optional        // Layer 4 protocol (e.g., TCP)
 ```
+
+In the example above, note the combination of the `{minv..maxv}`
+type options in the record's definition and the presence of the
+`optional` keyword on all fields of the record. This reflects a
+design pattern: the compound type's cardinality of `{1..*}`
+defines that there is a minimum number of required fields even
+though every individual field is optional. An empty
+IPv4-Connection record is invalid, but an IPv4-Connection record
+where any one or more of the five fields exists is valid. This is
+an example of one application of _minv_, _maxv_, as described
+above in [Section 3.1.2](#312-typeoptions).
+
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
@@ -2041,9 +2179,12 @@ Things (IoT) Semantic Interoperability (IOTSI) Workshop 2016,
 https://www.iab.org/wp-content/IAB-uploads/2016/03/DThaler-IOTSI.pdf
 
 ###### [ECMAScript]
-CMA International, "ECMAScript 2018 Language Specification",
-ECMA-262 9th Edition, June 2018,
+CMA International, "ECMAScript 2022 Language Specification",
+ECMA-262 15th Edition, June 2022,
 https://www.ecma-international.org/ecma-262.
+
+###### [Graphviz]
+https://graphviz.org/
 
 ###### [IDEF1X]
 ISO/IEC/IEEE 31320-2:2012 _Information technology — Modeling Languages — Part 2: Syntax and Semantics for IDEF1X97 (IDEFobject)_, International Organization for Standardization and International Electrotechnical Commission, 2012.  https://www.iso.org/standard/60614.html 
@@ -2070,9 +2211,8 @@ https://www.researchgate.net/publication/279780496_What_is_Shannon_information
 "OWL 2 Web Ontology Language Primer (Second Edition)", retrieved
 10/25/2022, https://www.w3.org/TR/owl-primer/
 
-###### [Shannon]
-"A Mathematical Theory of Communication", 
-https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication
+###### [PlantUML]
+https://plantuml.com/
 
 ###### [RFC3444]
 Pras, A., Schoenwaelder, J., "On the Difference between
@@ -2096,6 +2236,10 @@ Definition Language (CDDL): A Notational Convention to Express
 Concise Binary Object Representation (CBOR) and JSON Data
 Structures", RFC 8610, DOI 10.17487/RFC8610, June 2019,
 https://www.rfc-editor.org/info/rfc8610
+
+###### [Shannon]
+"A Mathematical Theory of Communication", 
+https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication
 
 ###### [UML]
 "Unified Modeling Language", Version 2.5.1, December 2017,
