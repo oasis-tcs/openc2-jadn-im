@@ -2023,15 +2023,31 @@ The process is executed in an iterative sequence of modeling, verification and v
 
 ## 3.3 Information Modeling Example
 
-Possible example subjects:
- - University (people, departments, classes, buildings, rooms, schedules) -- extension from [diagram in JADN Spec](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html#53-entity-relationship-diagrams)
- - Shopping Website (customers, accounts, catalogs, carts, payment processing, shipping)
- - Vehicle Rental Management (customers, accounts, vehicles, rentals, check-out, check-in, billing)
- - Boutique Manufacturer (catalog, customization options, supply chain, orders, builds, shipping)
- - Website Message Board (users, accounts, forums, threads, messages)
- - Simplified SBOM (start from SPDX3 model and limit to high-level aspects)
- - SDO management system (similar to OASIS Kavi)
- - Music Database (artists, albums, songs, tracks, metadata, guest artists)
+As discussed in [Section 1.1.1](#111-openc2-and-jadn), JADN is a
+general purpose tool for information modeling, and can be applied
+to a broad range of IM needs.  Some possible subjects for IMs
+are:
+ - Complex organizations, such as a business (people,
+   departments, roles, locations, organizational structure) or
+   university (people, departments, classes, buildings, rooms,
+   schedules)
+ - Shopping Website (customers, accounts, catalogs, carts,
+   payment processing, shipping)
+ - Vehicle Rental Management (customers, accounts, vehicles,
+   rentals, check-out, check-in, billing)
+ - Boutique Manufacturer (catalog, customization options, supply
+   chain, orders, builds, shipping)
+ - Website Message Board (users, accounts, forums, threads,
+   messages)
+ - Information structures such as a software bill of materials
+   (SBOM)
+ - Standard Development Organization (SDO) management system
+   (similar to OASIS Kavi)
+ - Music Database (artists, albums, songs, tracks, metadata,
+   guest artists)
+
+This CN provides an example of an IM for a digital music library.
+Additional examples may be added in future versions of the CN.
 
 ### 3.3.1 Example 1: A Digital Music Library
 
@@ -2050,41 +2066,47 @@ used with MP3 audio files.
 At the top level, the library is map of barcodes to albums. 
 
 ```
-       title: "Music Library"
-     package: "http://fake-audio.org/music-lib"
-     version: "1.0"
- description: "This information model defines a library of audio tracks, organized by album"
-     license: "CC0-1.0"
-     exports: ["Library"]
-
+     package:  "http://fake-audio.org/music-lib"
+     version:  "1.0"
+       title:  "Music Library"
+ description:  "This information model defines a library of audio tracks, organized by album"
+     license:  "CC0-1.0"
+     exports:  ["Library", "Album", "Track"]
 
 // Top level of the library is a map of CDs by barcode
-Library = MapOf(barcode, Album){1..*}
+Library = MapOf(Barcode, Album){1..*}
 
-Barcode = String{pattern="^\d{12}$"}    // A UPC-A barcode is 12 digits
+Barcode = String (%\d{12}%)  // A UPC-A barcode is 12 digits
 ```
 
 Each album is then represented by a record of artist, title,
 publication data, cover art and an array of individual audio
 tracks. Multiple digital image formats are supported for the
-cover art.
+cover art. Note that this example also contains multiple examples
+of anonymous type definitions as explained in Section 3.1.6.
+
+> *NOTE: add link to new section 3.l.6 after PRs are merged.*
 
 ```
-Album = Record                          // model for the album
-    1 artist    Artist                  // artist associated with this album
-    2 title     String                  // commonly known title for this album
-    3 pub_data  Publication-Data        // metadata about album publication
-    4 tracks    ArrayOf(Track)[1..*]    // individual track descriptions
-    5 cover_art Cover-Art               // cover art image for this album
+Album = Record                      // model for the album
+    1  artist     Artist            // artist associated with this album
+    2  title      String            // commonly known title for this album
+    3  pub_data   Publication-Data  // metadata about album publication
+    4  tracks     Album$Tracks      // individual track descriptions
+    5  cover_art  Image optional    // cover art image for this album
 
-Publication-Data = Record       // who and when of publication
-    1 label     String          // name of record label 
-    2 rel_date  String /date    // and when did they let this drop
+Publication-Data = Record                   // who and when of publication
+    1  label     String                     // name of record label
+    2  rel_date  Publication-data$Rel-date  // and when did they let this drop
 
-Cover-Art = Record              // pretty picture for the album
-    1 i_format  Image-Format    // what type of image file?
-    2 i_content Binary          // the image data in the identified format
+Publication-data$Rel-date = String /date  // and when did they let this drop
 
+Album$Tracks = ArrayOf(Track){1..*}  // individual track descriptions
+
+Image = Record                      // pretty picture for the album or track
+    1  image_format   Image-Format  // what type of image file?
+    2  image_content  Binary        // the image data in the identified format
+  
 Image-Format = Enumerated extend    	// can only be one, but can extend list
     1 PNG
     2 JPG
@@ -2094,20 +2116,23 @@ Artists have a name and one or more associated instruments that
 they perform on.
 
 ```
-Artist = Record                                 // interesting information about the performers
-    1 artist_name   String                      // who is this person
-    2 instruments   ArrayOf(Instrument)[1..*]   // and what do they play
+Artist = Record                         // interesting information about the performers
+    1  artist_name  String              // who is this person
+    2  instruments  Artist$Instruments  // and what do they play
 
-Instrument = Enumerated extend   // collection of instruments (non-exhaustive)
-    1 vocals
-    2 guitar
-    3 bass
-    4 drums
-    5 keyboards
-    6 percussion
-    7 brass
-    8 woodwinds
-    9 harmonica
+Artist$Instruments = ArrayOf(Instrument){1..*}  // and what do they play
+
+Instrument = Enumerated  // collection of instruments (non-exhaustive)
+    1  vocals      //
+    2  guitar      //
+    3  bass        //
+    4  drums       //
+    5  keyboards   //
+    6  percussion  //
+    7  brass       //
+    8  woodwinds   //
+    9  harmonica   //
+
 ```
 
 Each track is stored in a file, and has a track number within the
@@ -2116,21 +2141,26 @@ audio data.  Multiple digital audio  formats are supported for
 the audio content.
 
 ```
-Track = Record                  // information about the individual audio tracks
-    1 t_number  Integer{0..*}   // track sequence number
-    2 title     String          // track title
-    3 length    String /time    // length of track
-    4 featured  ArrayOf(Artist) // important guest performers
-    5 audio     Audio           // the all important content
+Track = Record              // for each track there's a file with the audio and a metadata record
+    1  location  String     // path to the file audio location in local storage
+    2  metadata  TrackInfo  // description of the track
 
-Audio = Record			// information about what gets played
-    1 a_format  Audio-Format    // what type of audio file?
-    2 a_content Binary          // the audio data in the identified format
+TrackInfo = Record                                // information about the individual audio tracks
+    1  t_number      Number                       // track sequence number
+    2  title         String                       // track title
+    3  length        Trackinfo$Length             // length of track
+    4  audio_format  Audio-Format                 // the all important content
+    5  featured      Trackinfo$Featured optional  // important guest performers
+    6  track_art     Image optional               // track can have individual artwork
 
-Audio-Format = Enumerated extend	// can only be one, but can extend list
-    1 MP3
-    2 OGG
-    3 FLAC
+Trackinfo$Length = String /time  // length of track
+
+Trackinfo$Featured = ArrayOf(Artist){1..*}  // important guest performers
+
+Audio-Format = Enumerated  // can only be one, but can extend list
+    1  MP3   //
+    2  OGG   //
+    3  FLAC  //
 ```
 
 The entity relationship diagram in Figure 3-10 illustrates how
@@ -2138,7 +2168,7 @@ the model components connect.
 
 ###### Figure 3-11 -- Music Library Example ERD
 
-![Music Library Example ERD](images/music-database.jadn.puml.png)
+![Music Library Example ERD](images/music_database_jadn_gv.png)
 
 -------
 # 4 Advanced Techniques
