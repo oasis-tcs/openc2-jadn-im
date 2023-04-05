@@ -136,7 +136,7 @@ For complete copyright information please see the full Notices section in an App
           - [Figure 3-10 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-10----simple-university-example-erd-source-code-graphviz)
     - [3.1.6 "Anonymous" Type Definitions](#316-anonymous-type-definitions)
     - [3.1.7 Base Type Examples](#317-base-type-examples)
-      - [3.1.7.1.Binary](#3171binary)
+      - [3.1.7.1.Binary](#3171-binary)
           - [Table 3-6 -- Binary Type Format Options](#table-3-6----binary-type-format-options)
       - [3.1.7.2 Boolean](#3172-boolean)
       - [3.1.7.3 Integer](#3173-integer)
@@ -154,7 +154,7 @@ For complete copyright information please see the full Notices section in an App
       - [3.1.7.12 Record](#31712-record)
   - [3.2 Information Modeling Process](#32-information-modeling-process)
     - [3.2.1 Y. Tina Lee Modeling Process](#321-y-tina-lee-modeling-process)
-    - [3.2.1 Frederiks / van der Weide Modeling Process](#322-frederiks--van-der-weide-modeling-process)
+    - [3.2.2 Frederiks / van der Weide Modeling Process](#322-frederiks--van-der-weide-modeling-process)
   - [3.3 Information Modeling Example](#33-information-modeling-example)
     - [3.3.1 Example 1: A Digital Music Library](#331-example-1-a-digital-music-library)
           - [Figure 3-11 -- Music Library Example ERD](#figure-3-11----music-library-example-erd)
@@ -1512,7 +1512,7 @@ Specification](#jadn)] is quoted, the relevant type options
 are listed, and an example is provided using the JADN and JIDL
 formats.
 
-#### 3.1.7.1.Binary
+#### 3.1.7.1 Binary
 
 **Definition:** A sequence of octets. Length is the number of
 octets.
