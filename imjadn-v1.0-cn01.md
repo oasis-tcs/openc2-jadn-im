@@ -2960,75 +2960,87 @@ constructing an information graph from an ontology graph:
 ### E.1.2 Music Library JIDL
 
 ```
-       title: "Music Library"
-     package: "http://fake-audio.org/music-lib"
-     version: "1.0"
- description: "This information model defines a library of audio tracks, organized by album"
-     license: "CC0-1.0"
-     exports: ["Library", "Album", "Track"]
+     package:  "http://fake-audio.org/music-lib"
+     version:  "1.0"
+       title:  "Music Library"
+ description:  "This information model defines a library of audio tracks, organized by album"
+     license:  "CC0-1.0"
+     exports:  ["Library", "Album", "Track"]
 
 Library = MapOf(Barcode, Album){1..*}
 
-Barcode = String{pattern="\d{12}"}              // A UPC-A barcode is 12 digits
+Barcode = String (%\d{12}%)  // A UPC-A barcode is 12 digits
 
-Album = Record                                  // model for the album
-   1 artist           Artist                    // artist associated with this album
-   2 title            String                    // commonly known title for this album
-   3 pub_data         Publication-Data          // metadata about album publication
-   4 tracks           ArrayOf(Track) [1..*]     // individual track descriptions
-   5 cover_art        Cover-Art                 // cover art image for this album
+Album = Record                      // model for the album
+    1  artist     Artist            // artist associated with this album
+    2  title      String            // commonly known title for this album
+    3  pub_data   Publication-Data  // metadata about album publication
+    4  tracks     Album$Tracks      // individual track descriptions
+    5  cover_art  Image optional    // cover art image for this album
 
-Artist = Record                                 // interesting information about the performers
-   1 artist_name      String                    // who is this person
-   2 instruments      ArrayOf(Instrument) [1..*]// and what do they play
+Artist = Record                         // interesting information about the performers
+    1  artist_name  String              // who is this person
+    2  instruments  Artist$Instruments  // and what do they play
 
-Instrument = Enumerated                         // collection of instruments (non-exhaustive)
-   1 vocals
-   2 guitar
-   3 bass
-   4 drums
-   5 keyboards
-   6 percussion
-   7 brass
-   8 woodwinds
-   9 harmonica
+Instrument = Enumerated  // collection of instruments (non-exhaustive)
+    1  vocals      //
+    2  guitar      //
+    3  bass        //
+    4  drums       //
+    5  keyboards   //
+    6  percussion  //
+    7  brass       //
+    8  woodwinds   //
+    9  harmonica   //
 
-Publication-Data = Record                       // who and when of publication
-   1 label            String                    // name of record label
-   2 rel_date         String /date              // and when did they let this drop
+Publication-Data = Record                   // who and when of publication
+    1  label     String                     // name of record label
+    2  rel_date  Publication-data$Rel-date  // and when did they let this drop
 
-Track = Record                                  // information about the individual audio tracks
-   1 t_number         Number                    // track sequence number
-   2 title            String                    // track title
-   3 length           String /time              // length of track
-   4 featured         ArrayOf(Artist)           // important guest performers
-   5 audio            Audio                     // the all important content
+Track = Record              // for each track there's a file with the audio and a metadata record
+    1  location  String     // path to the file audio location in local storage
+    2  metadata  TrackInfo  // description of the track
 
-Audio = Record                                  // information about what gets played
-   1 a_format         Audio-Format              // what type of audio file?
-   2 a_content        Binary                    // the audio data in the identified format
+TrackInfo = Record                                // information about the individual audio tracks
+    1  t_number      Number                       // track sequence number
+    2  title         String                       // track title
+    3  length        Trackinfo$Length             // length of track
+    4  audio_format  Audio-Format                 // the all important content
+    5  featured      Trackinfo$Featured optional  // important guest performers
+    6  track_art     Image optional               // track can have individual artwork
 
-Audio-Format = Enumerated                       // can only be one, but can extend list
-   1 MP3
-   2 OGG
-   3 FLAC
+Audio-Format = Enumerated  // can only be one, but can extend list
+    1  MP3   //
+    2  OGG   //
+    3  FLAC  //
 
-Cover-Art = Record                              // pretty picture for the album
-   1 i_format         Image-Format              // what type of image file?
-   2 i_content        Binary                    // the image data in the identified format
+Image = Record                      // pretty picture for the album or track
+    1  image_format   Image-Format  // what type of image file?
+    2  image_content  Binary        // the image data in the identified format
 
-Image-Format = Enumerated                       // can only be one, but can extend list
-   1 PNG
-   2 JPG
+Image-Format = Enumerated  // can only be one, but can extend list
+    1  PNG  //
+    2  JPG  //
+
+Album$Tracks = ArrayOf(Track){1..*}  // individual track descriptions
+
+Artist$Instruments = ArrayOf(Instrument){1..*}  // and what do they play
+
+Trackinfo$Featured = ArrayOf(Artist){1..*}  // important guest performers
+
+Publication-data$Rel-date = String /date  // and when did they let this drop
+
+Trackinfo$Length = String /time  // length of track
 ```
 
 ### E.1.3 Music Library Tables
 
+## Schema
 |                . | .                                                                            |
 |-----------------:|:-----------------------------------------------------------------------------|
-|       **title:** | Music Library                                                                |
 |     **package:** | http://fake-audio.org/music-lib                                              |
 |     **version:** | 1.0                                                                          |
+|       **title:** | Music Library                                                                |
 | **description:** | This information model defines a library of audio tracks, organized by album |
 |     **license:** | CC0-1.0                                                                      |
 |     **exports:** | Library, Album, Track                                                        |
@@ -3039,86 +3051,112 @@ Image-Format = Enumerated                       // can only be one, but can exte
 | **Library** | MapOf(Barcode, Album){1..*} |             |
 
 
-| Type Name   | Type Definition          | Description                  |
-|:------------|:-------------------------|:-----------------------------|
-| **Barcode** | String{pattern="\d{12}"} | A UPC-A barcode is 12 digits |
+| Type Name   | Type Definition   | Description                  |
+|:------------|:------------------|:-----------------------------|
+| **Barcode** | String (%\d{12}%) | A UPC-A barcode is 12 digits |
 
 **_Type: Album (Record)_**
 
-|  ID | Name          | Type             |    # | Description                         |
-|----:|:--------------|:-----------------|-----:|:------------------------------------|
-|   1 | **artist**    | Artist           |    1 | artist associated with this album   |
-|   2 | **title**     | String           |    1 | commonly known title for this album |
-|   3 | **pub_data**  | Publication-Data |    1 | metadata about album publication    |
-|   4 | **tracks**    | ArrayOf(Track)   | 1..* | individual track descriptions       |
-|   5 | **cover_art** | Cover-Art        |    1 | cover art image for this album      |
+| ID | Name          | Type             | # | Description                         |
+|---:|:--------------|:-----------------|--:|:------------------------------------|
+|  1 | **artist**    | Artist           | 1 | artist associated with this album   |
+|  2 | **title**     | String           | 1 | commonly known title for this album |
+|  3 | **pub_data**  | Publication-Data | 1 | metadata about album publication    |
+|  4 | **tracks**    | Album$Tracks     | 1 | individual track descriptions       |
+|  5 | **cover_art** | Image            | 1 | cover art image for this album      |
 
 **_Type: Artist (Record)_**
 
-|  ID | Name            | Type                |    # | Description           |
-|----:|:----------------|:--------------------|-----:|:----------------------|
-|   1 | **artist_name** | String              |    1 | who is this person    |
-|   2 | **instruments** | ArrayOf(Instrument) | 1..* | and what do they play |
+| ID | Name            | Type               | # | Description           |
+|---:|:----------------|:-------------------|--:|:----------------------|
+|  1 | **artist_name** | String             | 1 | who is this person    |
+|  2 | **instruments** | Artist$Instruments | 1 | and what do they play |
 
 **_Type: Instrument (Enumerated)_**
 
-|  ID | Name           | Description |
-|----:|:---------------|:------------|
-|   1 | **vocals**     |             |
-|   2 | **guitar**     |             |
-|   3 | **bass**       |             |
-|   4 | **drums**      |             |
-|   5 | **keyboards**  |             |
-|   6 | **percussion** |             |
-|   7 | **brass**      |             |
-|   8 | **woodwinds**  |             |
-|   9 | **harmonica**  |             |
+| ID | Name           | Description |
+|---:|:---------------|:------------|
+|  1 | **vocals**     |             |
+|  2 | **guitar**     |             |
+|  3 | **bass**       |             |
+|  4 | **drums**      |             |
+|  5 | **keyboards**  |             |
+|  6 | **percussion** |             |
+|  7 | **brass**      |             |
+|  8 | **woodwinds**  |             |
+|  9 | **harmonica**  |             |
 
 **_Type: Publication-Data (Record)_**
 
-|  ID | Name         | Type         |   # | Description                     |
-|----:|:-------------|:-------------|----:|:--------------------------------|
-|   1 | **label**    | String       |   1 | name of record label            |
-|   2 | **rel_date** | String /date |   1 | and when did they let this drop |
+| ID | Name         | Type                      | # | Description                     |
+|---:|:-------------|:--------------------------|--:|:--------------------------------|
+|  1 | **label**    | String                    | 1 | name of record label            |
+|  2 | **rel_date** | Publication-data$Rel-date | 1 | and when did they let this drop |
 
 **_Type: Track (Record)_**
 
-|  ID | Name         | Type            |   # | Description                |
-|----:|:-------------|:----------------|----:|:---------------------------|
-|   1 | **t_number** | Number          |   1 | track sequence number      |
-|   2 | **title**    | String          |   1 | track title                |
-|   3 | **length**   | String /time    |   1 | length of track            |
-|   4 | **featured** | ArrayOf(Artist) |   1 | important guest performers |
-|   5 | **audio**    | Audio           |   1 | the all important content  |
+| ID | Name         | Type      | # | Description                                      |
+|---:|:-------------|:----------|--:|:-------------------------------------------------|
+|  1 | **location** | String    | 1 | path to the file audio location in local storage |
+|  2 | **metadata** | TrackInfo | 1 | description of the track                         |
 
-**_Type: Audio (Record)_**
+**_Type: TrackInfo (Record)_**
 
-|  ID | Name          | Type         |   # | Description                             |
-|----:|:--------------|:-------------|----:|:----------------------------------------|
-|   1 | **a_format**  | Audio-Format |   1 | what type of audio file?                |
-|   2 | **a_content** | Binary       |   1 | the audio data in the identified format |
+| ID | Name             | Type               | # | Description                       |
+|---:|:-----------------|:-------------------|--:|:----------------------------------|
+|  1 | **t_number**     | Number{0..*}       | 1 | track sequence number             |
+|  2 | **title**        | String             | 1 | track title                       |
+|  3 | **length**       | Trackinfo$Length   | 1 | length of track                   |
+|  4 | **audio_format** | Audio-Format       | 1 | the all important content         |
+|  5 | **featured**     | Trackinfo$Featured | 1 | important guest performers        |
+|  6 | **track_art**    | Image              | 1 | track can have individual artwork |
 
 **_Type: Audio-Format (Enumerated)_**
 
-|  ID | Name     | Description |
-|----:|:---------|:------------|
-|   1 | **MP3**  |             |
-|   2 | **OGG**  |             |
-|   3 | **FLAC** |             |
+| ID | Name     | Description |
+|---:|:---------|:------------|
+|  1 | **MP3**  |             |
+|  2 | **OGG**  |             |
+|  3 | **FLAC** |             |
 
-**_Type: Cover-Art (Record)_**
+**_Type: Image (Record)_**
 
-|  ID | Name          | Type         |   # | Description                             |
-|----:|:--------------|:-------------|----:|:----------------------------------------|
-|   1 | **i_format**  | Image-Format |   1 | what type of image file?                |
-|   2 | **i_content** | Binary       |   1 | the image data in the identified format |
+| ID | Name              | Type         | # | Description                             |
+|---:|:------------------|:-------------|--:|:----------------------------------------|
+|  1 | **image_format**  | Image-Format | 1 | what type of image file?                |
+|  2 | **image_content** | Binary       | 1 | the image data in the identified format |
 
 **_Type: Image-Format (Enumerated)_**
 
-|  ID | Name    | Description |
-|----:|:--------|:------------|
-|   1 | **PNG** |             |
-|   2 | **JPG** |             |
+| ID | Name    | Description |
+|---:|:--------|:------------|
+|  1 | **PNG** |             |
+|  2 | **JPG** |             |
+
+
+| Type Name        | Type Definition      | Description                   |
+|:-----------------|:---------------------|:------------------------------|
+| **Album$Tracks** | ArrayOf(Track){1..*} | individual track descriptions |
+
+
+| Type Name              | Type Definition           | Description           |
+|:-----------------------|:--------------------------|:----------------------|
+| **Artist$Instruments** | ArrayOf(Instrument){1..*} | and what do they play |
+
+
+| Type Name              | Type Definition       | Description                |
+|:-----------------------|:----------------------|:---------------------------|
+| **Trackinfo$Featured** | ArrayOf(Artist){1..*} | important guest performers |
+
+
+| Type Name                     | Type Definition | Description                     |
+|:------------------------------|:----------------|:--------------------------------|
+| **Publication-data$Rel-date** | String /date    | and when did they let this drop |
+
+
+| Type Name            | Type Definition | Description     |
+|:---------------------|:----------------|:----------------|
+| **Trackinfo$Length** | String /time    | length of track |
 
 
 
