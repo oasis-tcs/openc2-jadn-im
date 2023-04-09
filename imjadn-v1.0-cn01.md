@@ -1606,8 +1606,6 @@ The corresponding JIDL representation would be:
   TrackTitle = String   // Title of the song in the selected track
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
-
 All semantic validation keywords defined in Section 7.3 of 
 [[JSON Schema](#jsonschema)] are valid *format* options for the String
 type.
@@ -1913,8 +1911,6 @@ Employee = Record
 Date = String /date
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
-
 #### 3.1.7.12 Record
 
 **Definition:**  An ordered map from a list of keys with
@@ -1965,8 +1961,6 @@ where any one or more of the five fields exists is valid. This is
 an example of one application of _minv_, _maxv_, as described
 above in [Section 3.1.2](#312-typeoptions).
 
-
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 ## 3.2 Information Modeling Process
 
