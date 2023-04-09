@@ -274,7 +274,7 @@ being:
  - **Logical Model** -- A logical model defines the semantics
       (knowledge/meaning) assigned to things being modeled.
       Logical models are defined using languages such as the
-      W3C Web Ontology Language ([OWL](https://www.w3.org/OWL/)).
+      W3C Web Ontology Language [[OWL](#owl-primer)].
 
 The layering of these models is illustrated in Figure 1-1.
 
