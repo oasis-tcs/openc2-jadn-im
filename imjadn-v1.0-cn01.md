@@ -201,8 +201,7 @@ abstract defines the objective of OpenC2:
 
 The OASIS [OpenC2 Technical Committee
 (TC)](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2)
-recognized the need to define the [OpenC2
-language](https://docs.oasis-open.org/openc2/oc2ls/v1.0/oc2ls-v1.0.html)
+recognized the need to define the OpenC2 Language [[OpenC2-Lang-v1.0](#openc2-lang-v10)]
 in an implementation-independent manner in order to achieve the
 project's goals to be "agnostic of the underlying products,
 technologies, transport mechanisms or other aspects of the
@@ -2325,7 +2324,7 @@ https://graphviz.org/
 ###### [IDEF1X]
 ISO/IEC/IEEE 31320-2:2012 _Information technology — Modeling Languages — Part 2: Syntax and Semantics for IDEF1X97 (IDEFobject)_, International Organization for Standardization and International Electrotechnical Commission, 2012.  https://www.iso.org/standard/60614.html 
 
-###### [JADN]
+###### [JADN-v1.0]
 JSON Abstract Data Notation Version 1.0. Edited by David Kemp. 17
 August 2021. OASIS Committee Specification 01.
 https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html.
