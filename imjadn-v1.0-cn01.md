@@ -1221,11 +1221,12 @@ Publication-Data = Array         // who and when of publication
 
 #### 3.1.5.3 Multiple Representations Example
 
-This section uses a slightly extended version of an example IM
-based on the University ERD shown in Section 5.3 of the JADN
-Specification to illustrate the representations described in
-[Section 3.1.5.2](#3152-alternative-jadn-representations). The
-example begins with the ERD for the model:
+The JADN Specification [[JADN-v1.0](#jadn-v10)], section 5.3,
+uses a simple example of an IM for a university to illustrate the
+use of ERDs for IMs. This section uses that ERD as a starting
+point for an example to illustrate the various JADN
+representations described in [Section 3.1.5.2](#3152-alternative-jadn-representations). The example
+begins with the ERD for the model:
 
 ###### Figure 3-6 -- Simple University Example ERD
 
