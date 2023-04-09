@@ -188,8 +188,8 @@ an information modeling language for a spectrum of applications.
 
 ## 1.1.1 OpenC2 and JADN
 
-The [OpenC2 Architecture
-Specification](https://docs.oasis-open.org/openc2/oc2arch/v1.0/cs01/oc2arch-v1.0-cs01.html)
+The *OpenC2 Architecture
+Specification* [[OpenC2-Arch-v1.0](#openc2-arch-v10)]
 abstract defines the objective of OpenC2:
 
 > _Open Command and Control (OpenC2) is a concise and extensible
