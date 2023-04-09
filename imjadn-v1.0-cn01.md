@@ -253,7 +253,7 @@ information models and data models to clarify the differences (emphasis added):
  - **Information Model** -- An information model defines an
       environment *at the highest level of abstraction and
       expresses the desired functionality*. Information models can
-      be defined informally (e.g., in prose) or more formally
+      be defined informally (e.g., in prose) or more formally 
       (e.g., Unified Modeling Language (UML), Entity-
       Relationship Diagrams, etc.).  Implementation details are
       hidden.
@@ -281,15 +281,14 @@ The layering of these models is illustrated in Figure 1-1.
 ###### Figure 1-1 -- Range of Model Types
 ![Figure 1-1 -- Range of Model Types](images/model-types.drawio.png)
 
-JADN is based on [Information
-Theory](https://en.wikipedia.org/wiki/Entropy_(information_theory)),
-which provides a concrete way of quantifying information that is
-explicitly independent of both semantic meaning and data
-representation. A JADN IM links model-defined semantic types with
-JADN-defined core information types, providing an unambiguous
-bridge between semantics and data. This supports implementation
-flexibility while maintaining interoperable information exchange
-across implementations.
+JADN is based on Information Theory
+[[Info-Theory](#info-theory)], which provides a concrete way of
+quantifying information that is explicitly independent of both
+semantic meaning and data representation. A JADN IM links
+model-defined semantic types with JADN-defined core information
+types, providing an unambiguous bridge between semantics and
+data. This supports implementation flexibility while maintaining
+interoperable information exchange across implementations.
 
 ## 1.2 Purpose
 
@@ -2323,6 +2322,9 @@ https://graphviz.org/
 
 ###### [IDEF1X]
 ISO/IEC/IEEE 31320-2:2012 _Information technology — Modeling Languages — Part 2: Syntax and Semantics for IDEF1X97 (IDEFobject)_, International Organization for Standardization and International Electrotechnical Commission, 2012.  https://www.iso.org/standard/60614.html 
+
+###### [Info-Theory]
+"Entropy (information theory)", https://en.wikipedia.org/wiki/Entropy_(information_theory)
 
 ###### [JADN-v1.0]
 JSON Abstract Data Notation Version 1.0. Edited by David Kemp. 17
