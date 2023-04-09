@@ -758,7 +758,8 @@ The JADN information modeling language was developed against specific objectives
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
 
-As described in the [JADN Specification](#jadn-v10) introduction:
+As described in the JADN Specification 
+[[JADN-v1.0](#jadn-v10)] introduction:
 
 > JADN is a formal description technique that combines type
 > constraints from the Unified Modeling Language (UML) with data
