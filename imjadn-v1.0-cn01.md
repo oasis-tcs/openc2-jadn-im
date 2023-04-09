@@ -96,7 +96,7 @@ For complete copyright information please see the full Notices section in an App
     - [3.1.1 Type Definitions](#311-type-definitions)
     - [3.1.2 TypeOptions](#312-typeoptions)
     - [3.1.3 Item Or Field Definitions](#313-item-or-field-definitions)
-    - [3.1.4  Field Options](#314--field-options)
+    - [3.1.4  Field Options](#314-field-options)
     - [3.1.5 JADN Representations](#315-jadn-representations)
       - [3.1.5.1 Native JSON Representation](#3151-native-json-representation)
       - [3.1.5.2 Alternative JADN Representations](#3152-alternative-jadn-representations)
@@ -1722,7 +1722,7 @@ together, even if the elements of the array are heterogeneous.
 Each element in the array is defined as a field, using the field
 definitions described in [Section
 3.1.3](#313-item-or-field-definitions) and refined using the
-field options described in [Section 3.1.4](#314--field-options).
+field options described in [Section 3.1.4](#314-field-options).
 An information item fitting the Array base type would be defined
 as follows:
 
@@ -2288,7 +2288,9 @@ is a "reference" relationship enabled by the inclusion of a
 unique identifier in `Record H`, created by the use of the `key`
 field option to designate a primary key for objects described by
 `Record H`, and the corresponding use of the `link` field option
-in `Record G` when referring to such objects.
+in `Record G` when referring to such objects; the `link` field
+option both designates the field as a reference and generates the
+correct key type when extensions are removed by JADN tooling.
 
 ###### Figure 4-1 -- Contains and References Relationships
 
