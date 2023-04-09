@@ -1396,8 +1396,8 @@ System character, but schema processing tools may do so".
 
 Examples of the use of extensions and the role of the system
 character are provided in sections 3.3.1, 3.3.2, and 3.3.2 of the
-JADN Specification. As noted in [Section
-3.1.4](#314-field-options), JADN Type Options can be applied to
+JADN Specification. As noted in [Section 3.1.4](#314-field-options), 
+JADN Type Options can be applied to
 fields in compound types, but as explained in section 3.3.1 of
 the JADN Specification, this is an extension that leads to the
 anonymous definition of a new type when processed by automated
