@@ -2342,6 +2342,10 @@ Lombardi, Olimpia ; Holik, Federico & Vanni, Leonardo (2016).
 What is Shannon information? _Synthese_ 193 (7):1983-2012,
 https://www.researchgate.net/publication/279780496_What_is_Shannon_information
 
+
+###### [NTIA-SBOM]
+NTIA Multistakeholder Process on Software Component Transparency, "SBOM At A Glance", April 2021,   https://ntia.gov/sites/default/files/publications/sbom_at_a_glance_apr2021_0.pdf
+
 ###### [OpenC2-Arch-v1.0]
 
 Open Command and Control (OpenC2) Architecture Specification Version 1.0. Edited by Duncan Sparrell. 30 September 2022. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/oc2arch/v1.0/cs01/oc2arch-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/oc2arch/v1.0/oc2arch-v1.0.html
