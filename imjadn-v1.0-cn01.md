@@ -239,9 +239,9 @@ purpose in its design and can be used to create IMs for nearly
 any purpose. Examples of other possible JADN applications include
 defining:
 
- - Complex information structures, such as [Software
+ - Complex information structures, such as Software
    Bills of Materials
-   (SBOMs)](https://www.ntia.doc.gov/report/2021/minimum-elements-software-bill-materials-sbom);
+   (SBOMs) [[NTIA-SBOM](#ntia-sbom)];
    examples would be the SPDX and CycloneDX SBOM formats
  - Formal definition of structured information exchanges, such as
    are described by
