@@ -615,8 +615,8 @@ Developing Organizations (SDOs) in defining application layer
 data, attributing it to the lack of an encoding-independent
 standardization of the information represented by that data. The
 JADN information modeling language is intended to address that
-gap. Abstract Syntax Notation One (ASN.1) is another example of
-an abstract schema language.
+gap. Abstract Syntax Notation One [[ASN.1](#asn1)] is another
+example of an abstract schema language.
 
 JADN is a syntax-independent schema language, based on Unified
 Modeling Language (UML) datatypes. JADN is designed to work with
@@ -633,9 +633,6 @@ format.
    transformed programmatically
  - JADN schemas employ a simple, regular structure (every type
    definition has the same five fields)
-
-> ASN.1 description from ITU-T Introduction, excerpted from
-> https://www.itu.int/en/ITU-T/asn1/Pages/introduction.aspx
 
 ​ASN.1 is a formal notation used for describing data transmitted
 by telecommunications protocols, regardless of language
