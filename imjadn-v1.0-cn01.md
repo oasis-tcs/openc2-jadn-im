@@ -568,7 +568,7 @@ and IMs defined in JADN to other serialization formats:
  - Specify how each option applicable to a type affects serialized values
  - Specify any validation requirements defined for that format.
 
-Regardless of format serialization should be:
+Regardless of format, serialization should be:
 1) **lossless**, so that information is not modified in transit
    and all applications have the identical information
 2) **transparent**, so that information is unaffected by whether
