@@ -771,11 +771,11 @@ As described in the JADN Specification
 > through the concepts a bit more.
 
 From UML JADN takes the concept of modeling information/data
-using Simple Classifiers (see [UML](#uml), 10.2 Datatypes) as
+using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
 opposed to the common practice of using Structured Classifiers
-([UML](#uml), 11.4 Classes), which do not define data in a unique
+([[UML](#uml)], 11.4 Classes), which do not define data in a unique
 way that can be validated and signed.  The JADN use of the UML
-primitive types defined in [UML](#uml), Table 21.1, can be found
+primitive types defined in [[UML](#uml)], Table 21.1, can be found
 in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 The [[JADN Specification](#jadn-v10)] defines twelve base types:
