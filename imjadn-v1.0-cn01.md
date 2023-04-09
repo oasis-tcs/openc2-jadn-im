@@ -1380,13 +1380,13 @@ The [[JADN Specification](#jadn-v10)] conformance statement
 (section 7) separates the definition of JADN into "Core JADN"
 (sections 3.1, 3.2, 4, and 6) and "JADN Extensions" (section
 3.3). Section 3.3 explains that extensions "make type definitions
-more compact or support the DRY software design principle.
-Extensions are syntactic sugar that can be replaced by core
-definitions without changing their meaning." While the
-implementation of extensions by JADN tools is optional, in a
-conformance sense, the availability of extensions reduces the
-level of effort required by a JADN schema author and can make a
-schema more compact and understandable.
+more compact or support the Don't Repeat Yourself (DRY) software
+design principle. Extensions are syntactic sugar that can be
+replaced by core definitions without changing their meaning."
+While the implementation of extensions by JADN tools is optional,
+in a conformance sense, the availability of extensions reduces
+the level of effort required by a JADN schema author and can make
+a schema more compact and understandable.
 
 The JADN Specification also defines a "system character" (by
 default the dollar sign, `$`) and in the Name Formats (section
