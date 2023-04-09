@@ -609,10 +609,10 @@ and defines their importance:
 > networked, computer environment that behaves consistently and
 > correctly."
 
-[RFC 8477](#rfc8477), _Report from IoT Semantic Interoperability Workshop
-2016_, describes a lack of consistency across Standards
-Developing Organizations (SDOs) in defining application layer data,
-attributing it to the lack of an encoding-independent
+ _Report from IoT Semantic Interoperability Workshop 2016_ [[RFC
+8477](#rfc8477)] describes a lack of consistency across Standards
+Developing Organizations (SDOs) in defining application layer
+data, attributing it to the lack of an encoding-independent
 standardization of the information represented by that data. The
 JADN information modeling language is intended to address that
 gap. Abstract Syntax Notation One (ASN.1) is another example of
@@ -621,9 +621,9 @@ an abstract schema language.
 JADN is a syntax-independent schema language, based on Unified
 Modeling Language (UML) datatypes. JADN is designed to work with
 common Internet data formats (JSON, XML, CBOR), providing a
-schema to support them. JADN is also graph oriented to align with
-the web and database design practices - the concept of primary
-and foreign keys (URLs) is fundamental.
+schema to support them. JADN is also graph-oriented to align with
+the web and database design practices, with options to identify
+primary and foreign keys, including web URLs..
 
 JADN's native format is structured JSON, and a broad variety of
 tools exist for creating and manipulating information in JSON
