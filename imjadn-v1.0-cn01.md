@@ -178,7 +178,7 @@ messages used in computing, independently of how those messages
 are represented (i.e., [serialized](#24-serialization)) for
 communication or storage. This Committee Note (CN) describes the
 nature of an IM, and the application of the *JSON Abstract Data
-Notation* [[JADN](#jadn)] information modeling language in the
+Notation* [[JADN](#jadn-v10)] information modeling language in the
 creation and use of IMs.
 
 ## 1.1 Background: Motivation for JADN
@@ -206,7 +206,7 @@ in an implementation-independent manner in order to achieve the
 project's goals to be "agnostic of the underlying products,
 technologies, transport mechanisms or other aspects of the
 implementation". In response, the TC created an information
-modeling language, _JSON Abstract Data Notation_ [[JADN](#jadn)],
+modeling language, _JSON Abstract Data Notation_ [[JADN](#jadn-v10)],
 to support the information modeling needed to define OpenC2 in
 that manner. 
 
@@ -318,7 +318,7 @@ This CN discusses:
 ## 1.3 Terminology
 
 This CN uses the definitions contained in the [[JADN
-Specification](#jadn)], section 1.2.1. The following
+Specification](#jadn-v10)], section 1.2.1. The following
 additional terms are defined for this document:
 
  - **Directed Acyclic Graph:** A directed acyclic graph (DAG) is
@@ -554,7 +554,7 @@ Serialization and deserialization are intimately connected to the
 chosen format: the same data can be serialized in JSON, CBOR, and
 XML, and while the serialized data will look very different,
 the received information that is recovered by deserialization
-should match the transmitted information. The [[JADN Specification](#jadn)] 
+should match the transmitted information. The [[JADN Specification](#jadn-v10)] 
 include serialization rules for four different formats:
 
  - Verbose JSON
@@ -703,7 +703,7 @@ is guided by rules associated with applying the IM:
  - each core type has associated serialization rules for each
    external representation format
 
-The [JADN Specification](#jadn) defines 12 core types, which
+The [JADN Specification](#jadn-v10) defines 12 core types, which
 are described in [Section 3.1.6](#317-base-type-examples) of this
 CN. The JADN Specification also defines serialization rules for
 JSON (with three levels of verbosity) and CBOR
@@ -762,7 +762,7 @@ The JADN information modeling language was developed against specific objectives
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
 
-As described in the [JADN Specification](#jadn) introduction:
+As described in the [JADN Specification](#jadn-v10) introduction:
 
 > JADN is a formal description technique that combines type
 > constraints from the Unified Modeling Language (UML) with data
@@ -781,7 +781,7 @@ way that can be validated and signed.  The JADN use of the UML
 primitive types defined in [UML](#uml), Table 21.1, can be found
 in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
-The [[JADN Specification](#jadn)] defines twelve base types:
+The [[JADN Specification](#jadn-v10)] defines twelve base types:
 
 | **Primitive** | **Compound** | **Selection /<br> Union** |
 |:-------------:|:------------:|:-------------------------:|
@@ -792,7 +792,7 @@ The [[JADN Specification](#jadn)] defines twelve base types:
 |     String    |    Record    |                           |
 
 > **NOTE:** The JADN v1.0 Committee Specification
-> [[JADN](#jadn)] uses the term "structured" rather than
+> [[JADN](#jadn-v10)] uses the term "structured" rather than
 > "compound" when referring to Array, ArrayOf, Map, MapOf, and
 > Record types. An update is planned to change the specification
 > to use "compound" in order to avoid any potential confusion
@@ -918,7 +918,7 @@ predefined type. There are also conventions intended to improve
 the consistency and readability of JADN specifications. These
 conventions are defined in JADN but can be overridden within a
 JADN schema if desired (see section 3.1.2 of the
-[[JADN](#jadn) Specification]):
+[[JADN](#jadn-v10) Specification]):
 
  - **TypeNames** are written in PascalCase or Train-Case (using
    hyphens) with an initial upper case letter, and are limited to
@@ -943,7 +943,7 @@ JADN schema if desired (see section 3.1.2 of the
 
 The third element of a JADN type definition is an array of zero
 or more of the TypeOptions defined in section 3.2.1 of the
-[[JADN](#jadn) Specification]. JADN includes options for both
+[[JADN](#jadn-v10) Specification]. JADN includes options for both
 _types_ (discussed in this section) and _fields_ (discussed in
 [section 3.1.4](#314-field-options)). As explained in the JADN
 Specification:
@@ -988,7 +988,7 @@ options.
 |  default   |  String  |   `!`  | Default value                                                     |
 
 Detailed explanations of each type option can be found in
-Sections 3.2.1.1-12 of the [[JADN Specification](#jadn)].
+Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
 
 The `minv` and `maxv` type options are distinctive in that they
 can apply to both primitive and compound types, with a different
@@ -1094,7 +1094,7 @@ pertaining to the **Fields** array are as follows:
        a TypeName with optional Namespace ID prefix
        **NSID:TypeName**
     4. **FieldOptions:** an array of zero or more **FieldOption**
-       or **TypeOption** ([[JADN Specification](#jadn)]
+       or **TypeOption** ([[JADN Specification](#jadn-v10)]
        sections 3.2.2, or 3.2.1, respectively) applicable to the
        field
     5. **FieldDescription:** a non-normative comment
@@ -1169,7 +1169,7 @@ field definition in the **Fields** array has five elements:
 
 #### 3.1.5.2 Alternative JADN Representations
 
-The [[JADN Specification](#jadn)] identifies three formats
+The [[JADN Specification](#jadn-v10)] identifies three formats
 (Section 5) in addition to the native format:
 
  - JADN Interface Definition Language (JIDL)
@@ -1178,7 +1178,7 @@ The [[JADN Specification](#jadn)] identifies three formats
 
 The formal definitions of each of these types are found in
 sections 5.1, 5.2, and 5.3, respectively, of the [[JADN
-Specification](#jadn)].
+Specification](#jadn-v10)].
 
 Automated tooling makes it straightforward to translate among all
 four of these formats in a lossless manner, and each format has
@@ -1210,7 +1210,7 @@ names are used. These types are defined using a field ID and a
 TypeName. For documentation and debugging purposes a FieldName
 can be included in the JIDL comment field, immediately following
 the `//` and followed by a double colon delimiter (i.e., `::`).
-For more information see the [[JADN](#jadn)] Specification
+For more information see the [[JADN](#jadn-v10)] Specification
 descriptions of Field Identifiers (section 3.2.1.1) and JADN-IDL
 format (section 5.1). Here is a brief JIDL example of this format:
 
@@ -1377,7 +1377,7 @@ digraph G {
 
 ### 3.1.6 "Anonymous" Type Definitions
 
-The [[JADN Specification](#jadn)] conformance statement
+The [[JADN Specification](#jadn-v10)] conformance statement
 (section 7) separates the definition of JADN into "Core JADN"
 (sections 3.1, 3.2, 4, and 6) and "JADN Extensions" (section
 3.3). Section 3.3 explains that extensions "make type definitions
@@ -1438,7 +1438,7 @@ Email = String /email
 
 This section provides illustrative examples of the JADN base
 types. For each type, the definition from the [[JADN
-Specification](#jadn)] is quoted, the relevant type options
+Specification](#jadn-v10)] is quoted, the relevant type options
 are listed, and an example is provided using the JADN and JIDL
 formats.
 
@@ -1564,7 +1564,7 @@ The corresponding JIDL representation would be:
 
 Table 3-8 lists the *format* options applicable to the Number
 type. These *format* options are only relevant when serializing
-using CBOR; see the [[JADN Specification](#jadn)], Section
+using CBOR; see the [[JADN Specification](#jadn-v10)], Section
 4.4:
 
 ###### Table 3-8 -- Number Type Format Options
@@ -2175,7 +2175,7 @@ the model components connect.
 
 ## 4.1 Packages and Namespaces
 
-Section 6 of the [[JADN](#jadn)] specification introduces the
+Section 6 of the [[JADN](#jadn-v10)] specification introduces the
 use of packages as the mechanism for organizing JADN schemas.
 This section provides additional information on the use of
 packages, along with the associated concept of namespaces.
@@ -2267,7 +2267,7 @@ condition, but an IM has no corresponding concept to terminate
 recursion. JADN uses "reference" relationships in situations
 where cycles occur in order to address this need. The method to
 define reference relationships is explained in Section 3.3.6,
-*Links*, of the [[JADN Specification](#jadn)]. 
+*Links*, of the [[JADN Specification](#jadn-v10)]. 
 
 Figure 4-1 illustrates permissible and impermissible "contains"
 relationships, and the use of the `key` and `link` keywords
