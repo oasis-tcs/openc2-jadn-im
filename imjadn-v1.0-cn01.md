@@ -699,8 +699,8 @@ is guided by rules associated with applying the IM:
  - each core type has associated serialization rules for each
    external representation format
 
-The [JADN Specification](#jadn-v10) defines 12 core types, which
-are described in [Section 3.1.6](#317-base-type-examples) of this
+The JADN Specification [[JADN-v1.0](#jadn-v10)] defines 12 core types, which
+are described in [Section 3.1.7](#317-base-type-examples) of this
 CN. The JADN Specification also defines serialization rules for
 JSON (with three levels of verbosity) and CBOR
 [[RFC7409](#rfc7049)]. Supporting a new data format ("external
