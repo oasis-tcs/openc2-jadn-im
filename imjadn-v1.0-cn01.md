@@ -2343,6 +2343,10 @@ Lombardi, Olimpia ; Holik, Federico & Vanni, Leonardo (2016).
 What is Shannon information? _Synthese_ 193 (7):1983-2012,
 https://www.researchgate.net/publication/279780496_What_is_Shannon_information
 
+###### [OpenC2-Arch-v1.0]
+
+Open Command and Control (OpenC2) Architecture Specification Version 1.0. Edited by Duncan Sparrell. 30 September 2022. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/oc2arch/v1.0/cs01/oc2arch-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/oc2arch/v1.0/oc2arch-v1.0.html
+
 ###### [OWL-Primer]
 "OWL 2 Web Ontology Language Primer (Second Edition)", retrieved
 10/25/2022, https://www.w3.org/TR/owl-primer/
