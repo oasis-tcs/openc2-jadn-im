@@ -1854,7 +1854,16 @@ Hashes = Map{1..*}    // Cryptographic hash values
    3 sha256     Binary{32..32} /x optional   // SHAs26 hash as defined in RFC6234
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
+In the example above, note the combination of the `{minv..maxv}`
+type options in the record's definition and the presence of the
+`optional` keyword on all fields of the record. This reflects a
+design pattern: the compound type's cardinality of `{1..*}`
+defines that there is a minimum number of required fields even
+though every individual field is optional. An empty `Hashes` map
+invalid, but a map where any one or more of the three hash types
+exists is valid. This is an example of one application of _minv_,
+_maxv_, as described above in [Section 3.1.2](#312-typeoptions).
+
 
 
 #### 3.1.7.11 MapOf(_ktype_,_vtype_)
@@ -1950,16 +1959,12 @@ IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tc
    5 protocol         L4-Protocol optional        // Layer 4 protocol (e.g., TCP)
 ```
 
-In the example above, note the combination of the `{minv..maxv}`
-type options in the record's definition and the presence of the
-`optional` keyword on all fields of the record. This reflects a
-design pattern: the compound type's cardinality of `{1..*}`
-defines that there is a minimum number of required fields even
-though every individual field is optional. An empty
-IPv4-Connection record is invalid, but an IPv4-Connection record
-where any one or more of the five fields exists is valid. This is
-an example of one application of _minv_, _maxv_, as described
-above in [Section 3.1.2](#312-typeoptions).
+As with the `Map` example in [Section 3.1.7.10](#31710-map), the
+cardinality of `{1..*}` for the `Record` defines that there is a
+minimum number of required fields even though every individual
+field is optional. An empty IPv4-Connection record is invalid,
+but an IPv4-Connection record where any one or more of the five
+fields exists is valid.
 
 
 ## 3.2 Information Modeling Process
