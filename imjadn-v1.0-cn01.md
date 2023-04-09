@@ -2295,13 +2295,6 @@ This appendix contains the informative references that are used in this document
 
 While any hyperlinks included in this appendix were valid at the time of publication, OASIS cannot guarantee their long-term validity.
 
-(Reference sources:
-For references to IETF RFCs, use the approved citation formats at:
-http://docs.oasis-open.org/templates/ietf-rfc-list/ietf-rfc-list.html.
-For references to W3C Recommendations, use the approved citation formats at:
-http://docs.oasis-open.org/templates/w3c-recommendations-list/w3c-recommendations-list.html.
-Remove this note before submitting for publication.)
-
 ###### [ASN.1]
 Recommendation ITU-T X.680 (2021) *Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation* 
 
