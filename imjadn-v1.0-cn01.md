@@ -1880,9 +1880,10 @@ that can be represented as (key, value) pairs, where the types
 for the keys and the values in the MapOf are of specific types
 and are defined using type options. MapOf is suitable when the
 collection of items can't be represented as an enumeration, such
-as the connection of employee identification numbers to
-employees.  An information item fitting the MapOf type would be
-defined as follows:
+as the association of employee identification numbers, which have
+an arbitrary and non-contiguous distribution, to employees.  An
+information item fitting the MapOf type would be defined as
+follows:
 
 
 ```json
