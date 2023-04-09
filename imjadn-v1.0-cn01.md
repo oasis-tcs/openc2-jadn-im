@@ -2058,11 +2058,13 @@ Additional examples may be added in future versions of the CN.
 
 ### 3.3.1 Example 1: A Digital Music Library
 
-This example shows a simple IM for a digital music library. The
-components of the library are described here along with the
-associated JIDL. The ERD for the library appears at the end of
-this section. The complete, consolidated JADN, JIDL, and property
-tables can be found in [Appendix E.1](#e1-music-library).
+This example shows a simple IM for a digital music library, and
+can be considered a "Hello World" example of applying the
+concepts described above. The components of the library are
+described here along with the associated JIDL. The ERD for the
+library appears at the end of this section. The complete,
+consolidated JADN, JIDL, and property tables can be found in
+[Appendix E.1](#e1-music-library).
 
 The model assumes that each track is stored as a file with its
 audio in one of several formats. The library organizes tracks
