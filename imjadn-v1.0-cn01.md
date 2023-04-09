@@ -892,7 +892,8 @@ datatypes and only two kinds of relationship: "contain" and
 
 Figure 3-2 summarizes the structure of a JADN Type Definition,
 and identifies values for each of the five elements in the
-definition. The five elements are:
+definition; the elements must appear in the order listed here.
+The five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
 that type.
