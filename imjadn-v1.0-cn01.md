@@ -1099,9 +1099,9 @@ pertaining to the **Fields** array are as follows:
 ### 3.1.4  Field Options
 
 Compound types containing Items or Fields support field options
-in addition to the type options describe in [Section
+in addition to the type options described in [Section
 3.1.2](#312-typeoptions). JADN defines six field options. As with
-the type options described in [section 3.1.2](#312-typeoptions);
+the type options described in [section 3.1.2](#312-typeoptions),
 the ID characters are used in standard JADN representation
 ([section 3.1.5.1](#3151-native-json-representation)) when
 specifying field options. Table 3-5 lists the JADN field options.
@@ -1120,7 +1120,8 @@ specifying field options. Table 3-5 lists the JADN field options.
 The type options described in [Section 3.1.2](#312-typeoptions)
 can also apply to fields, with the constraint that the type
 option must be applicable to the field's type, as described in
-the base type examples in [Section 3.1.7](#317-base-type-examples).
+the base type examples in [Section 3.1.7](#317-base-type-examples). The application of a type option to a field triggers an "anonymous" type definition when the JADN model is processed, as described in 
+[Section 3.1.6](#316-anonymous-type-definitions).
 
 ### 3.1.5 JADN Representations
 
