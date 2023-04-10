@@ -2486,9 +2486,8 @@ type for UnlimitedNatural because the Integer type can be given
 upper and lower bounds, and natural numbers are the set of
 non-negative integers.  The equivalent in JADN uses
 Integer{0..\*} for natural numbers, and the Integer value -1 for
-the "unlimited" value (*) of UnlimitedNatural.
-
-Table D-1 maps basic data types between UML and JADN.
+the "unlimited" value (*) of UnlimitedNatural. Table D-1 maps
+basic data types between UML and JADN.
 
 ###### Table D-1 -- UML and JADN Basic Type Equivalence
 
