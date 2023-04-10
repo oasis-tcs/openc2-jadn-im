@@ -2521,8 +2521,8 @@ review](https://lists.oasis-open.org/archives/openc2/202106/msg00019.html):
 
 ### Response
 The short answer (RDF models *knowledge* while JADN models
-*information*) is provided in the JADN
-[introduction](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html#1-introduction):
+*information*) is provided in the JADN Specification
+[[JADN-v1.0](#jadn-v10)] introduction:
 
 > *UML class models and diagrams are commonly referred to as
 > "Data Models", but they model knowledge of real-world entities
