@@ -2465,7 +2465,8 @@ The following individuals have participated in the creation of this document and
 # Appendix C. Revision History
 | Revision           | Date       | Editor      | Changes Made          |
 |:-------------------|:-----------|:------------|:----------------------|
-| filename-v1.0-wd01 | yyyy-mm-dd | Editor Name | Initial working draft |
+| imjadn-v1.0-cn01-wd01.md | 2023-01-18 | David Keemp | Initial working draft / CND01 |
+| imjadn-v1.0-cn01-wd02.md | 2023-04-19 | David Keemp | Second WD / CN01 candidate |
 
 -------
 
