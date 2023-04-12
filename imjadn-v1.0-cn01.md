@@ -122,7 +122,7 @@ For complete copyright information please see the full Notices section in an App
   - [3.3 Information Modeling Example](#33-information-modeling-example)
     - [3.3.1 Example 1: A Digital Music Library](#331-example-1-a-digital-music-library)
 - [4 Advanced Techniques](#4-advanced-techniques)
-  - [4.1 Packages and Namespaces](#41-packages-and-namespaces)
+  - [4.1 Packages and Namespaces](#41-packages-and-namespaces) 
     - [4.1.1 Packages](#411-packages)
     - [4.1.2 Namespaces](#412-namespaces)
   - [4.2 Reference Relationships: Keys and Links](#42-reference-relationships-keys-and-links)
@@ -2456,8 +2456,6 @@ assistance in the development of this Committee Note:
  - Kaitlyn Hsu, Bestgate Engineering
  - Kouloum Abidji, HII Mission Technologies
  - Jerome Czachor, HII Mission Technologies
-
-Participant Name, Affiliation or "Individual Member"
 
 ## B.2 Participants
 
