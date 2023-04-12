@@ -1096,7 +1096,7 @@ pertaining to the **Fields** array are as follows:
        field
     5. **FieldDescription:** a non-normative comment
 
-### 3.1.4  Field Options
+### 3.1.4 Field Options
 
 Compound types containing Items or Fields support field options
 in addition to the type options described in [Section
