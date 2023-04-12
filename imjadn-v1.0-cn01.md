@@ -186,7 +186,7 @@ creation and use of IMs.
 This section provides the background for the creation of JADN as
 an information modeling language for a spectrum of applications.
 
-## 1.1.1 OpenC2 and JADN
+### 1.1.1 OpenC2 and JADN
 
 The *OpenC2 Architecture
 Specification* [[OpenC2-Arch-v1.0](#openc2-arch-v10)]
@@ -215,7 +215,7 @@ facilitate the development of OpenC2, it is an independent
 specification, and can be used for any information modeling
 application. 
 
-## 1.1.2 The Information Modeling Gap
+### 1.1.2 The Information Modeling Gap
 
 The IETF, in the _Report from the Internet of Things (IoT)
 Semantic Interoperability (IOTSI) Workshop 2016_ [[RFC
