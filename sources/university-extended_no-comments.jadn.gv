@@ -14,5 +14,5 @@ digraph G {
     n1 -> n2 [label="vtype: students"]
     n2 [label=<<table border='0' cellborder='0' cellspacing='0' cellpadding='2'><tr><td colspan='3'><b>Person = Record</b></td></tr><tr><td>1</td><td>name</td><td>String</td></tr><tr><td>2</td><td>univ_id</td><td>UnivId</td></tr><tr><td>3</td><td>email</td><td>String /email</td></tr></table>> shape=rectangle]
     n2 -> n3 [label=univ_id]
-    n3 [label="UnivId = String(%^U-\d{6}$%)" fillcolor=palegreen shape=ellipse]
+    n3 [label="UnivId = String{pattern='^U-\d{6}$'}" fillcolor=palegreen shape=ellipse]
 }
