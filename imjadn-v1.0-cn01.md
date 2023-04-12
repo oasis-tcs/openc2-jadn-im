@@ -122,7 +122,7 @@ For complete copyright information please see the full Notices section in an App
   - [3.3 Information Modeling Example](#33-information-modeling-example)
     - [3.3.1 Example 1: A Digital Music Library](#331-example-1-a-digital-music-library)
 - [4 Advanced Techniques](#4-advanced-techniques)
-  - [4.1 Packages and Namespaces](#41-packages-and-namespaces)
+  - [4.1 Packages and Namespaces](#41-packages-and-namespaces) 
     - [4.1.1 Packages](#411-packages)
     - [4.1.2 Namespaces](#412-namespaces)
   - [4.2 Reference Relationships: Keys and Links](#42-reference-relationships-keys-and-links)
@@ -186,7 +186,7 @@ creation and use of IMs.
 This section provides the background for the creation of JADN as
 an information modeling language for a spectrum of applications.
 
-## 1.1.1 OpenC2 and JADN
+### 1.1.1 OpenC2 and JADN
 
 The *OpenC2 Architecture
 Specification* [[OpenC2-Arch-v1.0](#openc2-arch-v10)]
@@ -215,7 +215,7 @@ facilitate the development of OpenC2, it is an independent
 specification, and can be used for any information modeling
 application. 
 
-## 1.1.2 The Information Modeling Gap
+### 1.1.2 The Information Modeling Gap
 
 The IETF, in the _Report from the Internet of Things (IoT)
 Semantic Interoperability (IOTSI) Workshop 2016_ [[RFC
@@ -1096,7 +1096,7 @@ pertaining to the **Fields** array are as follows:
        field
     5. **FieldDescription:** a non-normative comment
 
-### 3.1.4  Field Options
+### 3.1.4 Field Options
 
 Compound types containing Items or Fields support field options
 in addition to the type options described in [Section
@@ -2456,8 +2456,6 @@ assistance in the development of this Committee Note:
  - Kaitlyn Hsu, Bestgate Engineering
  - Kouloum Abidji, HII Mission Technologies
  - Jerome Czachor, HII Mission Technologies
-
-Participant Name, Affiliation or "Individual Member"
 
 ## B.2 Participants
 
