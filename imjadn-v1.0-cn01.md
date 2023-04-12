@@ -2252,6 +2252,26 @@ NSID:TypeName).  So assuming the existence of `Package A`, and
 `PACKA`, then types defined in `Package A` can be used within
 `Package B` by identifying them as `PACKA:Some-Package-A-Type`.
 
+As a concrete example, here is the `info` portion of a JADN
+Schema for an OpenC2 consumer that implements two actuator
+profiles: stateless packet filtering (SLPF) and posture attribute
+collection, along with the OpenC2 Language Specification:
+
+```
+"info": {
+	  "package": "http://acme.com/schemas/device-base/pacf/v3",
+	  "title": "OpenC2 base device schema for the PACE collection service and packet filter",
+	  "exports": ["OpenC2-Command", "OpenC2-Response"],
+	  "namespaces": {
+	   "ls": "http://docs.oasis-open.org/openc2/ns/types/v2.0",
+	   "slpf": "http://docs.oasis-open.org/openc2/ns/ap-slpf/v2.0",
+	   "pac": "http://docs.oasis-open.org/openc2/ns/ap-pac/v2.0"
+	  }
+```
+Within this schema `ls:`, `slpf:`, and `pac:` will be used when
+referencing types from the three external schemas .
+
+
 ## 4.2 Reference Relationships: Keys and Links
 
 As noted at the end of Section 3.1 of this CN, JADN recognizes
