@@ -847,8 +847,8 @@ keys, its instances are serialized using *verbose* JSON data format as:
   }
 ]
 ```
-The same Record values are serialized using *compact* JSON data format (where the columns
-are 1: name, 2: state, 3: latitude, 4: longitude) as:
+The same Record values are serialized using *compact* JSON data format (where the column
+positions are 1: name, 2: state, 3: latitude, 4: longitude) as:
 ```json
 [
   ["St. Louis", "Missouri", "38.627003", "-90.199402"],
@@ -1538,12 +1538,12 @@ Table 3-7 lists the *format* options applicable to the Integer type:
 ###### Table 3-7 -- Integer Type Format Options
 
 
-| Keyword      | Type   | Requirement |
-| ------------ | ------ | ------------|
-| i8           | Integer | Signed 8 bit integer, value must be between -128 and 127.
-| i16          | Integer | Signed 16 bit integer, value must be between -32768 and 32767.
-| i32          | Integer | Signed 32 bit integer, value must be between -2147483648 and 2147483647.
-| u\<*n*\>     | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1.
+| Keyword  | Type    | Requirement                                                                               |
+|----------|---------|-------------------------------------------------------------------------------------------|
+| i8       | Integer | Signed 8 bit integer, value must be between -128 and 127.                                 |
+| i16      | Integer | Signed 16 bit integer, value must be between -32768 and 32767.                            |
+| i32      | Integer | Signed 32 bit integer, value must be between -2147483648 and 2147483647.                  |
+| u\<*n*\> | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1. |
 
 #### 3.1.7.4 Number
 
@@ -1778,6 +1778,7 @@ fitting the ArrayOf base type would be defined as follows (field 4 of `Album`):
 
 
 ```json
+[
  ["Album", "Record", [], "model for the album", [
     [1, "artist", "Artist", [], "artist associated with this album"],
     [2, "title", "String", [], "commonly known title for this album"],
@@ -1789,7 +1790,8 @@ fitting the ArrayOf base type would be defined as follows (field 4 of `Album`):
   ["Track", "Record", [], "for each track there's a file with the audio and a metadata record", [
     [1, "location", "String", [], "path to the file audio location in local storage"],
     [2, "metadata", "TrackInfo", [], "description of the track"]
-  ]],
+  ]]
+]
 ```
 
 And the corresponding JIDL would be:
@@ -2075,17 +2077,16 @@ used with MP3 audio files.
 At the top level, the library is map of barcodes to albums. 
 
 ```
-     package:  "http://fake-audio.org/music-lib"
-     version:  "1.0"
-       title:  "Music Library"
- description:  "This information model defines a library of audio tracks, organized by album"
-     license:  "CC0-1.0"
-     exports:  ["Library", "Album", "Track"]
+       title: "Music Library"
+     package: "http://fake-audio.org/music-lib"
+     version: "1.0"
+ description: "This information model defines a library of audio tracks, organized by album"
+     license: "CC0-1.0"
+     exports: ["Library"]
 
-// Top level of the library is a map of CDs by barcode
-Library = MapOf(Barcode, Album){1..*}
+Library = MapOf(Barcode, Album){1..*}             // Top level of the library is a map of CDs by barcode
 
-Barcode = String (%\d{12}%)  // A UPC-A barcode is 12 digits
+Barcode = String{pattern="^\d{12}$"}              // A UPC-A barcode is 12 digits
 ```
 
 Each album is then represented by a record of artist, title,
@@ -2097,51 +2098,44 @@ of anonymous type definitions as explained in [Section 3.1.6](#316-anonymous-typ
 > *NOTE: add link to new section 3.l.6 after PRs are merged.*
 
 ```
-Album = Record                      // model for the album
-    1  artist     Artist            // artist associated with this album
-    2  title      String            // commonly known title for this album
-    3  pub_data   Publication-Data  // metadata about album publication
-    4  tracks     Album$Tracks      // individual track descriptions
-    5  cover_art  Image optional    // cover art image for this album
+Album = Record                                    // model for the album
+   1 artist           Artist                      // artist associated with this album
+   2 title            String                      // commonly known title for this album
+   3 pub_data         Publication-Data            // metadata about album publication
+   4 tracks           ArrayOf(Track) [1..*]       // individual track descriptions
+   5 cover_art        Image optional              // cover art image for this album
 
-Publication-Data = Record                   // who and when of publication
-    1  label     String                     // name of record label
-    2  rel_date  Publication-data$Rel-date  // and when did they let this drop
+Publication-Data = Record                         // who and when of publication
+   1 label            String                      // name of record label
+   2 rel_date         String /date                // and when did they let this drop
 
-Publication-data$Rel-date = String /date  // and when did they let this drop
+Image = Record                                    // pretty picture for the album or track
+   1 image_format     Image-Format                // what type of image file?
+   2 image_content    Binary                      // the image data in the identified format
 
-Album$Tracks = ArrayOf(Track){1..*}  // individual track descriptions
-
-Image = Record                      // pretty picture for the album or track
-    1  image_format   Image-Format  // what type of image file?
-    2  image_content  Binary        // the image data in the identified format
-  
-Image-Format = Enumerated extend    	// can only be one, but can extend list
-    1 PNG
-    2 JPG
+Image-Format = Enumerated                         // can only be one, but can extend list
+   1 PNG
+   2 JPG
 ```
 
 Artists have a name and one or more associated instruments that
 they perform on.
 
 ```
-Artist = Record                         // interesting information about the performers
-    1  artist_name  String              // who is this person
-    2  instruments  Artist$Instruments  // and what do they play
+Artist = Record                                   // interesting information about the performers
+   1 artist_name      String                      // who is this person
+   2 instruments      Instrument unique [1..*]    // and what do they play
 
-Artist$Instruments = ArrayOf(Instrument){1..*}  // and what do they play
-
-Instrument = Enumerated  // collection of instruments (non-exhaustive)
-    1  vocals      //
-    2  guitar      //
-    3  bass        //
-    4  drums       //
-    5  keyboards   //
-    6  percussion  //
-    7  brass       //
-    8  woodwinds   //
-    9  harmonica   //
-
+Instrument = Enumerated                           // collection of instruments (non-exhaustive)
+   1 vocals
+   2 guitar
+   3 bass
+   4 drums
+   5 keyboards
+   6 percussion
+   7 brass
+   8 woodwinds
+   9 harmonica
 ```
 
 Each track is stored in a file, and has a track number within the
@@ -2150,26 +2144,22 @@ audio data.  Multiple digital audio  formats are supported for
 the audio content.
 
 ```
-Track = Record              // for each track there's a file with the audio and a metadata record
-    1  location  String     // path to the file audio location in local storage
-    2  metadata  TrackInfo  // description of the track
+Track = Record                                    // for each track there's a file with the audio and a metadata record
+   1 location         String                      // path to the file audio location in local storage
+   2 metadata         TrackInfo                   // description of the track
 
 TrackInfo = Record                                // information about the individual audio tracks
-    1  t_number      Number                       // track sequence number
-    2  title         String                       // track title
-    3  length        Trackinfo$Length             // length of track
-    4  audio_format  Audio-Format                 // the all important content
-    5  featured      Trackinfo$Featured optional  // important guest performers
-    6  track_art     Image optional               // track can have individual artwork
+   1 t_number         Number                      // track sequence number
+   2 title            String                      // track title
+   3 length           String /time                // length of track
+   4 audio_format     Audio-Format                // the all important content
+   5 featured         Artist unique [0..*]        // important guest performers
+   6 track_art        Image optional              // track can have individual artwork
 
-Trackinfo$Length = String /time  // length of track
-
-Trackinfo$Featured = ArrayOf(Artist){1..*}  // important guest performers
-
-Audio-Format = Enumerated  // can only be one, but can extend list
-    1  MP3   //
-    2  OGG   //
-    3  FLAC  //
+Audio-Format = Enumerated                         // can only be one, but can extend list
+   1 MP3
+   2 OGG
+   3 FLAC
 ```
 
 The entity relationship diagram in Figure 3-10 illustrates how
