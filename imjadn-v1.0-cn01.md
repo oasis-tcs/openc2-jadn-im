@@ -1306,7 +1306,7 @@ of property tables).
 
 ###### Figure 3-9 -- Simple University Example JADN (table format)
 
-**_Type: University (Record)_**
+A place of learning
 
 **Type: University (Record)**
 
@@ -1786,8 +1786,9 @@ type.
 where it is appropriate to group a set of uniform  information
 elements together. The fields of the array are defined by the
 *vtype*, which can be primitive or compound. An information item
-fitting the ArrayOf base type would be defined as follows (derived
-using the multiplicity extension in Album field 4 in
+fitting the ArrayOf base type would be defined as follows. This
+example uses an explicit ArrayOf type derived using the 
+multiplicity extension on the "tracks" field of Album, as shown in
 [Section 3.3.1](#331-example-1-a-digital-music-library)):
 
 ```json
@@ -2167,7 +2168,7 @@ the model components connect.
 
 ###### Figure 3-11 -- Music Library Example ERD
 
-<img src="images/music-database-gv.png" height="640px">
+<img src="images/music-database-gv.png" height="720px">
 
 -------
 # 4 Advanced Techniques
