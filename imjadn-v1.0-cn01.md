@@ -1230,8 +1230,7 @@ begins with the ERD for the model:
 
 ###### Figure 3-6 -- Simple University Example ERD
 
-![Simple University Example ERD](images/university-extended_no-comments.png)
-
+<img src="images/university-erd.png" height="600px">
 
 The package (see [Section 4.1](#41-packages-and-namespaces)) 
 containing the JADN corresponding to the above ERD is shown here:
@@ -1243,24 +1242,28 @@ containing the JADN corresponding to the above ERD is shown here:
   "package": "http://example.com/uni",
   "exports": ["University"]
  },
+
  "types": [
   ["University", "Record", [], "A place of learning", [
     [1, "name", "String", [], "University Name"],
     [2, "classes", "ArrayOf", ["*Class"], "Available classes"],
     [3, "people", "ArrayOf", ["*Person"], "Students and faculty"]
   ]],
+
   ["Class", "Record", [], "Pertinent info about classes", [
     [1, "name", "String", [], "Name of class"],
     [2, "room", "String", [], "Where it happens"],
-    [3, "teachers", "ArrayOf", ["*Person", "L"], "Teacher(s) for this class"],
-    [4, "students", "ArrayOf", ["*Person", "L", "q"], "Students attending this class"],
-    [5, "syllabus", "String", ["/uri "], "Link to class syllabus on the web"]
+    [3, "teachers", "Person", ["L", "]0", "q"], "Teacher(s) for this class"],
+    [4, "students", "Person", ["L", "]0", "q"], "Students attending this class"],
+    [5, "syllabus", "String", ["/uri"], "Link to class syllabus on the web"]
   ]],
+
   ["Person", "Record", [], "", [
     [1, "name", "String", [], "Student / faculty member name"],
     [2, "univ_id", "UnivId", ["K"], "Unique ID for student / faculty member"],
     [3, "email", "String", ["/email"], "Student / faculty member email"]
   ]],
+
   ["UnivId", "String", ["%^U-\\d{6}$"], "University ID (U-nnnnnn)", []]
  ]
 }
@@ -1272,28 +1275,27 @@ more readable and easier to edit:
 ###### Figure 3-8 -- Simple University Example JADN (JIDL format)
 
 ```
- package:  "http://example.com/uni"
- exports:  ["University"]
+     package: "http://example.com/uni"
+     exports: ["University"]
 
-University = Record                    // A place of learning
-    1  name     String                 // University Name
-    2  classes  ArrayOf(Class){0..*}   // Available classes
-    3  people   ArrayOf(Person){0..*}  // Students and faculty
+University = Record                               // A place of learning
+   1 name             String                      // University Name
+   2 classes          ArrayOf(Class)              // Available classes
+   3 people           ArrayOf(Person)             // Students and faculty
 
-Class = Record                                 // Pertinent info about classes
-    1  name      String                        // Name of class
-    2  room      String                        // Where it happens
-    3  teachers  ArrayOf(Person){0..*}         // Teacher(s) for this class
-    4  students  ArrayOf(Person){0..*} unique  // Students attending this class
-    5  syllabus  String /uri                   // Link to class syllabus on the web
+Class = Record                                    // Pertinent info about classes
+   1 name             String                      // Name of class
+   2 room             String                      // Where it happens
+   3 teachers         Link(Person unique) [1..*]  // Teacher(s) for this class
+   4 students         Link(Person unique) [1..*]  // Students attending this class
+   5 syllabus         String /uri                 // Link to class syllabus on the web
 
 Person = Record
-    1  name     String         // Student / faculty member name
-    2  univ_id  UnivId         // Unique ID for student / faculty member
-    3  email    String /email  // Student / faculty member email
+   1 name             String                      // Student / faculty member name
+   2 univ_id          Key(UnivId)                 // Unique ID for student / faculty member
+   3 email            String /email               // Student / faculty member email
 
-UnivId = String (%^U-\d{6}$%)  // University ID (U-nnnnnn)
-
+UnivId = String{pattern="^U-\d{6}$"}              // University ID (U-nnnnnn)
 ```
 
 Property tables are a common representation of data structures in
@@ -1306,72 +1308,83 @@ of property tables).
 
 **_Type: University (Record)_**
 
-| ID | Name        | Type            | # | Description          |
-|---:|:------------|:----------------|--:|:---------------------|
-|  1 | **name**    | String          | 1 | University Name      |
-|  2 | **classes** | ArrayOf(Class)  | 1 | Available classes    |
-|  3 | **people**  | ArrayOf(Person) | 1 | Students and faculty |
+**Type: University (Record)**
 
-**_Type: Class (Record)_**
+| ID | Name        | Type            | \# | Description          |
+|----|-------------|-----------------|----|----------------------|
+| 1  | **name**    | String          | 1  | University Name      |
+| 2  | **classes** | ArrayOf(Class)  | 1  | Available classes    |
+| 3  | **people**  | ArrayOf(Person) | 1  | Students and faculty |
 
-| ID | Name         | Type                   | # | Description                       |
-|---:|:-------------|:-----------------------|--:|:----------------------------------|
-|  1 | **name**     | String                 | 1 | Name of class                     |
-|  2 | **room**     | String                 | 1 | Where it happens                  |
-|  3 | **teachers** | ArrayOf(Person)        | 1 | Teacher(s) for this class         |
-|  4 | **students** | ArrayOf(Person) unique | 1 | Students attending this class     |
-|  5 | **syllabus** | String /uri            | 1 | Link to class syllabus on the web |
+Pertinent info about classes
 
-**_Type: Person (Record)_**
+**Type: Class (Record)**
 
-| ID | Name        | Type          | # | Description                            |
-|---:|:------------|:--------------|--:|:---------------------------------------|
-|  1 | **name**    | String        | 1 | Student / faculty member name          |
-|  2 | **univ_id** | UnivId        | 1 | Unique ID for student / faculty member |
-|  3 | **email**   | String /email | 1 | Student / faculty member email         |
+| ID | Name         | Type                | \#    | Description                       |
+|----|--------------|---------------------|-------|-----------------------------------|
+| 1  | **name**     | String              | 1     | Name of class                     |
+| 2  | **room**     | String              | 1     | Where it happens                  |
+| 3  | **teachers** | Link(Person unique) | 1..\* | Teacher(s) for this class         |
+| 4  | **students** | Link(Person unique) | 1..\* | Students attending this class     |
+| 5  | **syllabus** | String /uri         | 1     | Link to class syllabus on the web |
 
+**Type: Person (Record)**
 
-| Type Name  | Type Definition      | Description              |
-|:-----------|:---------------------|:-------------------------|
-| **UnivId** | String (%^U-\d{6}$%) | University ID (U-nnnnnn) |
+| ID | Name        | Type          | \# | Description                            |
+|----|-------------|---------------|----|----------------------------------------|
+| 1  | **name**    | String        | 1  | Student / faculty member name          |
+| 2  | **univ_id** | Key(UnivId)   | 1  | Unique ID for student / faculty member |
+| 3  | **email**   | String /email | 1  | Student / faculty member email         |
+
+| Type Name  | Type Definition             | Description              |
+|------------|-----------------------------|--------------------------|
+| **UnivId** | String{pattern="^U-\d{6}$"} | University ID (U-nnnnnn) |
+
 
 Finally, the code to generate the ERD presented at the beginning
 of the example is easily generated from the JADN model.  In this
 specific example code for the widely-used GraphViz tool is
-provided, however the HTML to generate the label tables for the
-three nodes has been excerpted for readability.
+provided.
 
 ###### Figure 3-10 -- Simple University Example ERD Source Code (GraphViz)
 ```
 # package: http://example.com/uni
-# exports: ["University"]
+# exports: ['University']
 
 digraph G {
-    graph [fontname=Times fontsize=12]
-    node [fillcolor=lightskyblue1 fontname=Arial fontsize=8 shape=box style=filled]
-    edge [arrowsize=0.5 fontname=Arial fontsize=7 labelangle=45.0 labeldistance=0.9]
-    bgcolor=white
+  graph [fontname=Arial, fontsize=12];
+  node [fontname=Arial, fontsize=8, shape=record, style=filled, fillcolor=lightskyblue1];
+  edge [fontname=Arial, fontsize=7, arrowsize=0.5, labelangle=45.0, labeldistance=0.9];
+  bgcolor="transparent";
 
-    n0 [label=<
-        <table ...>
-      > shape=rectangle]
-      n0 -> n1 [label="vtype: classes"]
-      n0 -> n2 [label="vtype: people"]
+n0 [label=<{<b>University : Record</b>|
+  1 name : String<br align="left"/>
+  2 classes : ArrayOf(Class)<br align="left"/>
+  3 people : ArrayOf(Person)<br align="left"/>
+}>]
 
-    n1 [label=<
-        <table ...>
-      > shape=rectangle]
-      n1 -> n2 [label="vtype: teachers"]
-      n1 -> n2 [label="vtype: students"]
+n1 [label=<{<b>Class : Record</b>|
+  1 name : String<br align="left"/>
+  2 room : String<br align="left"/>
+  3 teachers : Link(Person unique) [1..*]<br align="left"/>
+  4 students : Link(Person unique) [1..*]<br align="left"/>
+  5 syllabus : String /uri<br align="left"/>
+}>]
 
-    n2 [label=<
-        <table ...>
-      > shape=rectangle]
-      n2 -> n3 [label=univ_id]
+n2 [label=<{<b>Person : Record</b>|
+  1 name : String<br align="left"/>
+  2 univ_id : Key(UnivId)<br align="left"/>
+  3 email : String /email<br align="left"/>
+}>]
 
-    n3 [label="UnivId = String(%^U-\d{6}$%)" fillcolor=palegreen shape=ellipse]
+n3 [label=<<b>UnivId : String{pattern="^U-\d{6}$"}</b>>, shape=ellipse, style=filled, fillcolor=palegreen]
+
+  n0 -> n1 [label=classes]
+  n0 -> n2 [label=people]
+  n1 -> n2 [label=teachers, style="dashed"]
+  n1 -> n2 [label=students, style="dashed"]
+  n2 -> n3 [label=univ_id]
 }
-
 ```
 
 ### 3.1.6 "Anonymous" Type Definitions
@@ -1414,8 +1427,7 @@ Member = Record
   1 name         String
   2 email        Member$email
     
-    Member$email = String /email    // Tool-generated type definition.
-
+Member$email = String /email    // Tool-generated type definition.
 ```
 The type definition for `Member$email` was generated by the
 tooling, as both noted in the comment and indicated by the
@@ -1774,8 +1786,9 @@ type.
 where it is appropriate to group a set of uniform  information
 elements together. The fields of the array are defined by the
 *vtype*, which can be primitive or compound. An information item
-fitting the ArrayOf base type would be defined as follows (derived from
-field 4 of `Album` in [Section 3.3.1](#331-example-1--a-digital-music-library)):
+fitting the ArrayOf base type would be defined as follows (derived
+using the multiplicity extension in Album field 4 in
+[Section 3.3.1](#331-example-1-a-digital-music-library)):
 
 ```json
 [
@@ -2154,7 +2167,7 @@ the model components connect.
 
 ###### Figure 3-11 -- Music Library Example ERD
 
-![Music Library Example ERD](images/music_database_jadn_gv.png)
+<img src="images/music-database-gv.png" height="640px">
 
 -------
 # 4 Advanced Techniques
