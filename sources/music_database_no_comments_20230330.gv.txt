@@ -1,0 +1,46 @@
+# package: http://fake-audio.org/music-lib
+# version: 1.0
+# title: Music Library
+# description: This information model defines a library of audio tracks, organized by album
+# license: CC0-1.0
+# exports: ["Library", "Album", "Track"]
+
+digraph G {
+    graph [fontname=Times fontsize=12]
+    node [fillcolor=lightskyblue1 fontname=Arial fontsize=8 shape=box style=filled]
+    edge [arrowsize=0.5 fontname=Arial fontsize=7 labelangle=45.0 labeldistance=0.9]
+    bgcolor=white
+    n0 [label="Library = MapOf" shape=rectangle]
+    n0 -> n1 [label=ktype]
+    n0 -> n2 [label=vtype]
+    n1 [label="Barcode = String{pattern='\d{12}%'}" fillcolor=palegreen shape=ellipse]
+    n2 [label=<<table border='0' cellborder='0' cellspacing='0' cellpadding='2'><tr><td colspan='3'><b>Album = Record</b></td></tr><tr><td>1</td><td>artist</td><td>Artist</td></tr><tr><td>2</td><td>title</td><td>String</td></tr><tr><td>3</td><td>pub_data</td><td>Publication-Data</td></tr><tr><td>4</td><td>tracks</td><td>Album$Tracks</td></tr><tr><td>5</td><td>cover_art</td><td>Image optional</td></tr></table>> shape=rectangle]
+    n2 -> n3 [label=artist]
+    n2 -> n5 [label=pub_data]
+    n2 -> n11 [label=tracks]
+    n2 -> n9 [label=cover_art style=dashed]
+    n3 [label=<<table border='0' cellborder='0' cellspacing='0' cellpadding='2'><tr><td colspan='3'><b>Artist = Record</b></td></tr><tr><td>1</td><td>artist_name</td><td>String</td></tr><tr><td>2</td><td>instruments</td><td>Artist$Instruments</td></tr></table>> shape=rectangle]
+    n3 -> n12 [label=instruments]
+    n4 [label=<<table border='0' cellborder='0' cellspacing='0' cellpadding='2'><tr><td colspan='3'><b>Instrument = Enumerated</b></td></tr><tr><td>1</td><td>vocals</td><td></td></tr><tr><td>2</td><td>guitar</td><td></td></tr><tr><td>3</td><td>bass</td><td></td></tr><tr><td>4</td><td>drums</td><td></td></tr><tr><td>5</td><td>keyboards</td><td></td></tr><tr><td>6</td><td>percussion</td><td></td></tr><tr><td>7</td><td>brass</td><td></td></tr><tr><td>8</td><td>woodwinds</td><td></td></tr><tr><td>9</td><td>harmonica</td><td></td></tr></table>> shape=rectangle]
+    n5 [label=<<table border='0' cellborder='0' cellspacing='0' cellpadding='2'><tr><td colspan='3'><b>Publication-Data = Record</b></td></tr><tr><td>1</td><td>label</td><td>String</td></tr><tr><td>2</td><td>rel_date</td><td>Publication-data$Rel-date</td></tr></table>> shape=rectangle]
+    n5 -> n14 [label=rel_date]
+    n6 [label=<<table border='0' cellborder='0' cellspacing='0' cellpadding='2'><tr><td colspan='3'><b>Track = Record</b></td></tr><tr><td>1</td><td>location</td><td>String</td></tr><tr><td>2</td><td>metadata</td><td>TrackInfo</td></tr></table>> shape=rectangle]
+    n6 -> n7 [label=metadata]
+    n7 [label=<<table border='0' cellborder='0' cellspacing='0' cellpadding='2'><tr><td colspan='3'><b>TrackInfo = Record</b></td></tr><tr><td>1</td><td>t_number</td><td>Number</td></tr><tr><td>2</td><td>title</td><td>String</td></tr><tr><td>3</td><td>length</td><td>Trackinfo$Length</td></tr><tr><td>4</td><td>audio_format</td><td>Audio-Format</td></tr><tr><td>5</td><td>featured</td><td>Trackinfo$Featured optional</td></tr><tr><td>6</td><td>track_art</td><td>Image optional</td></tr></table>> shape=rectangle]
+    n7 -> n15 [label=length]	 
+    n7 -> n8 [label=audio_format]
+    n7 -> n13 [label=featured style=dashed]
+    n7 -> n9 [label=track_art style=dashed]
+    n8 [label=<<table border='0' cellborder='0' cellspacing='0' cellpadding='2'><tr><td colspan='3'><b>Audio-Format = Enumerated</b></td></tr><tr><td>1</td><td>MP3</td><td></td></tr><tr><td>2</td><td>OGG</td><td></td></tr><tr><td>3</td><td>FLAC</td><td></td></tr></table>> shape=rectangle]
+    n9 [label=<<table border='0' cellborder='0' cellspacing='0' cellpadding='2'><tr><td colspan='3'><b>Image = Record</b></td></tr><tr><td>1</td><td>image_format</td><td>Image-Format</td></tr><tr><td>2</td><td>image_content</td><td>Binary</td></tr></table>> shape=rectangle]
+    n9 -> n10 [label=image_format]
+    n10 [label=<<table border='0' cellborder='0' cellspacing='0' cellpadding='2'><tr><td colspan='3'><b>Image-Format = Enumerated</b></td></tr><tr><td>1</td><td>PNG</td><td></td></tr><tr><td>2</td><td>JPG</td><td></td></tr></table>> shape=rectangle]
+    n11 [label="Album$Tracks = ArrayOf" shape=rectangle]
+    n11 -> n6 [label=vtype]
+    n12 [label="Artist$Instruments = ArrayOf" shape=rectangle]
+    n12 -> n4 [label=vtype]
+    n13 [label="Trackinfo$Featured = ArrayOf" shape=rectangle]
+    n13 -> n3 [label=vtype]
+    n14 [label="Publication-data$Rel-date = String /date" fillcolor=palegreen shape=ellipse]
+    n15 [label="Trackinfo$Length = String /time" fillcolor=palegreen shape=ellipse]
+}

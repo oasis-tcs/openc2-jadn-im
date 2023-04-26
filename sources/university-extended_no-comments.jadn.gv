@@ -1,0 +1,18 @@
+# package: http://example.com/uni
+# exports: ["University"]
+
+digraph G {
+    graph [fontname=Times fontsize=12]
+    node [fillcolor=lightskyblue1 fontname=Arial fontsize=8 shape=box style=filled]
+    edge [arrowsize=0.5 fontname=Arial fontsize=7 labelangle=45.0 labeldistance=0.9]
+    bgcolor=white
+    n0 [label=<<table border='0' cellborder='0' cellspacing='0' cellpadding='2'><tr><td colspan='3'><b>University = Record</b></td></tr><tr><td>1</td><td>name</td><td>String</td></tr><tr><td>2</td><td>classes</td><td>ArrayOf(Class)</td></tr><tr><td>3</td><td>people</td><td>ArrayOf(Person)</td></tr></table>> shape=rectangle]
+    n0 -> n1 [label="vtype: classes"]
+    n0 -> n2 [label="vtype: people"]
+    n1 [label=<<table border='0' cellborder='0' cellspacing='0' cellpadding='2'><tr><td colspan='3'><b>Class = Record</b></td></tr><tr><td>1</td><td>name</td><td>String</td></tr><tr><td>2</td><td>room</td><td>String</td></tr><tr><td>3</td><td>teachers</td><td>ArrayOf(Person)</td></tr><tr><td>4</td><td>students</td><td>ArrayOf(Person) unique</td></tr><tr><td>5</td><td>syllabus</td><td>String /uri </td></tr></table>> shape=rectangle]
+    n1 -> n2 [label="vtype: teachers"]
+    n1 -> n2 [label="vtype: students"]
+    n2 [label=<<table border='0' cellborder='0' cellspacing='0' cellpadding='2'><tr><td colspan='3'><b>Person = Record</b></td></tr><tr><td>1</td><td>name</td><td>String</td></tr><tr><td>2</td><td>univ_id</td><td>UnivId</td></tr><tr><td>3</td><td>email</td><td>String /email</td></tr></table>> shape=rectangle]
+    n2 -> n3 [label=univ_id]
+    n3 [label="UnivId = String{pattern='^U-\d{6}$'}" fillcolor=palegreen shape=ellipse]
+}
