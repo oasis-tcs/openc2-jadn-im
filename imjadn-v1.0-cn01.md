@@ -1,16 +1,15 @@
 ![OASIS Logo](https://docs.oasis-open.org/templates/OASISLogo-v3.0.png)
+
 # OASIS Committee Note
 -------
 
 # Information Modeling with JADN Version 1.0
 
-## Committee Note [WD02]
+## Committee Note 01
 
 ## 19 April 2023
 
 &nbsp;
-
-<!-- URI list start (commented out except during publication by OASIS TC Admin)
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
@@ -18,29 +17,24 @@ https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.html \
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.pdf
 
 #### Previous stage of Version 1.0:
-N/A
+https://docs.oasis-open.org/openc2/imjadn/v1.0/cnd01/imjadn-v1.0-cnd01.md (Authoritative) \
+https://docs.oasis-open.org/openc2/imjadn/v1.0/cnd01/imjadn-v1.0-cnd01.html \
+https://docs.oasis-open.org/openc2/imjadn/v1.0/cnd01/imjadn-v1.0-cnd01.pdf
 
 #### Latest stage of Version 1.0:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.md (Authoritative) \
 https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html \
 https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.pdf
 
-URI list end (commented out except during publication by OASIS TC Admin) -->
-
 #### Technical Committee:
 [OASIS Open Command and Control (OpenC2) TC](https://www.oasis-open.org/committees/openc2/)
 
-#### Chair:
+#### Chairs:
 Duncan Sparrell (duncan@sfractal.com), [sFractal Consulting LLC](http://www.sfractal.com/) \
 Michael Rosa (mjrosa@nsa.gov), [National Security Agency](https://www.nsa.gov)
 
-#### Editors:
+#### Editor:
 David Kemp (d.kemp@cyber.nsa.gov), [National Security Agency](https://www.nsa.gov/)
-
-#### Additional artifacts:
-This prose document is one component of a Work Product that also includes:
-* XML schemas: (list file names or directory name)
-* Other items (list titles and/or file names)
 
 #### Related work:
 This document is related to:
@@ -65,13 +59,13 @@ When referencing this document the following citation format should be used:
 _Information Modeling with JADN Version 1.0_. Edited by David Kemp. 19 April 2023. OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.html. Latest stage: https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html.
 
 #### Notices
-Copyright &copy; OASIS Open 2021. All Rights Reserved.
+Copyright &copy; OASIS Open 2023. All Rights Reserved.
 
-Distributed under the terms of the OASIS [IPR Policy](https://www.oasis-open.org/policies-guidelines/ipr).
+Distributed under the terms of the OASIS [IPR Policy](https://www.oasis-open.org/policies-guidelines/ipr/).
 
 The name "OASIS" is a trademark of [OASIS](https://www.oasis-open.org/), the owner and developer of this specification, and should be used only to refer to the organization and its official outputs.
 
-For complete copyright information please see the full Notices section in an Appendix below.
+For complete copyright information please see the full Notices section in [Appendix F](#appendix-f-notices).
 
 -------
 
@@ -847,8 +841,8 @@ keys, its instances are serialized using *verbose* JSON data format as:
   }
 ]
 ```
-The same Record values are serialized using *compact* JSON data format (where the columns
-are 1: name, 2: state, 3: latitude, 4: longitude) as:
+The same Record values are serialized using *compact* JSON data format (where the column
+positions are 1: name, 2: state, 3: latitude, 4: longitude) as:
 ```json
 [
   ["St. Louis", "Missouri", "38.627003", "-90.199402"],
@@ -1230,8 +1224,7 @@ begins with the ERD for the model:
 
 ###### Figure 3-6 -- Simple University Example ERD
 
-![Simple University Example ERD](images/university-extended_no-comments.png)
-
+<img src="images/university-erd.png" height="600px">
 
 The package (see [Section 4.1](#41-packages-and-namespaces)) 
 containing the JADN corresponding to the above ERD is shown here:
@@ -1243,24 +1236,28 @@ containing the JADN corresponding to the above ERD is shown here:
   "package": "http://example.com/uni",
   "exports": ["University"]
  },
+
  "types": [
   ["University", "Record", [], "A place of learning", [
     [1, "name", "String", [], "University Name"],
     [2, "classes", "ArrayOf", ["*Class"], "Available classes"],
     [3, "people", "ArrayOf", ["*Person"], "Students and faculty"]
   ]],
+
   ["Class", "Record", [], "Pertinent info about classes", [
     [1, "name", "String", [], "Name of class"],
     [2, "room", "String", [], "Where it happens"],
-    [3, "teachers", "ArrayOf", ["*Person", "L"], "Teacher(s) for this class"],
-    [4, "students", "ArrayOf", ["*Person", "L", "q"], "Students attending this class"],
-    [5, "syllabus", "String", ["/uri "], "Link to class syllabus on the web"]
+    [3, "teachers", "Person", ["L", "]0", "q"], "Teacher(s) for this class"],
+    [4, "students", "Person", ["L", "]0", "q"], "Students attending this class"],
+    [5, "syllabus", "String", ["/uri"], "Link to class syllabus on the web"]
   ]],
+
   ["Person", "Record", [], "", [
     [1, "name", "String", [], "Student / faculty member name"],
     [2, "univ_id", "UnivId", ["K"], "Unique ID for student / faculty member"],
     [3, "email", "String", ["/email"], "Student / faculty member email"]
   ]],
+
   ["UnivId", "String", ["%^U-\\d{6}$"], "University ID (U-nnnnnn)", []]
  ]
 }
@@ -1272,28 +1269,27 @@ more readable and easier to edit:
 ###### Figure 3-8 -- Simple University Example JADN (JIDL format)
 
 ```
- package:  "http://example.com/uni"
- exports:  ["University"]
+     package: "http://example.com/uni"
+     exports: ["University"]
 
-University = Record                    // A place of learning
-    1  name     String                 // University Name
-    2  classes  ArrayOf(Class){0..*}   // Available classes
-    3  people   ArrayOf(Person){0..*}  // Students and faculty
+University = Record                               // A place of learning
+   1 name             String                      // University Name
+   2 classes          ArrayOf(Class)              // Available classes
+   3 people           ArrayOf(Person)             // Students and faculty
 
-Class = Record                                 // Pertinent info about classes
-    1  name      String                        // Name of class
-    2  room      String                        // Where it happens
-    3  teachers  ArrayOf(Person){0..*}         // Teacher(s) for this class
-    4  students  ArrayOf(Person){0..*} unique  // Students attending this class
-    5  syllabus  String /uri                   // Link to class syllabus on the web
+Class = Record                                    // Pertinent info about classes
+   1 name             String                      // Name of class
+   2 room             String                      // Where it happens
+   3 teachers         Link(Person unique) [1..*]  // Teacher(s) for this class
+   4 students         Link(Person unique) [1..*]  // Students attending this class
+   5 syllabus         String /uri                 // Link to class syllabus on the web
 
 Person = Record
-    1  name     String         // Student / faculty member name
-    2  univ_id  UnivId         // Unique ID for student / faculty member
-    3  email    String /email  // Student / faculty member email
+   1 name             String                      // Student / faculty member name
+   2 univ_id          Key(UnivId)                 // Unique ID for student / faculty member
+   3 email            String /email               // Student / faculty member email
 
-UnivId = String (%^U-\d{6}$%)  // University ID (U-nnnnnn)
-
+UnivId = String{pattern="^U-\d{6}$"}              // University ID (U-nnnnnn)
 ```
 
 Property tables are a common representation of data structures in
@@ -1304,74 +1300,85 @@ of property tables).
 
 ###### Figure 3-9 -- Simple University Example JADN (table format)
 
-**_Type: University (Record)_**
+A place of learning
 
-| ID | Name        | Type            | # | Description          |
-|---:|:------------|:----------------|--:|:---------------------|
-|  1 | **name**    | String          | 1 | University Name      |
-|  2 | **classes** | ArrayOf(Class)  | 1 | Available classes    |
-|  3 | **people**  | ArrayOf(Person) | 1 | Students and faculty |
+**Type: University (Record)**
 
-**_Type: Class (Record)_**
+| ID | Name        | Type            | \# | Description          |
+|----|-------------|-----------------|----|----------------------|
+| 1  | **name**    | String          | 1  | University Name      |
+| 2  | **classes** | ArrayOf(Class)  | 1  | Available classes    |
+| 3  | **people**  | ArrayOf(Person) | 1  | Students and faculty |
 
-| ID | Name         | Type                   | # | Description                       |
-|---:|:-------------|:-----------------------|--:|:----------------------------------|
-|  1 | **name**     | String                 | 1 | Name of class                     |
-|  2 | **room**     | String                 | 1 | Where it happens                  |
-|  3 | **teachers** | ArrayOf(Person)        | 1 | Teacher(s) for this class         |
-|  4 | **students** | ArrayOf(Person) unique | 1 | Students attending this class     |
-|  5 | **syllabus** | String /uri            | 1 | Link to class syllabus on the web |
+Pertinent info about classes
 
-**_Type: Person (Record)_**
+**Type: Class (Record)**
 
-| ID | Name        | Type          | # | Description                            |
-|---:|:------------|:--------------|--:|:---------------------------------------|
-|  1 | **name**    | String        | 1 | Student / faculty member name          |
-|  2 | **univ_id** | UnivId        | 1 | Unique ID for student / faculty member |
-|  3 | **email**   | String /email | 1 | Student / faculty member email         |
+| ID | Name         | Type                | \#    | Description                       |
+|----|--------------|---------------------|-------|-----------------------------------|
+| 1  | **name**     | String              | 1     | Name of class                     |
+| 2  | **room**     | String              | 1     | Where it happens                  |
+| 3  | **teachers** | Link(Person unique) | 1..\* | Teacher(s) for this class         |
+| 4  | **students** | Link(Person unique) | 1..\* | Students attending this class     |
+| 5  | **syllabus** | String /uri         | 1     | Link to class syllabus on the web |
 
+**Type: Person (Record)**
 
-| Type Name  | Type Definition      | Description              |
-|:-----------|:---------------------|:-------------------------|
-| **UnivId** | String (%^U-\d{6}$%) | University ID (U-nnnnnn) |
+| ID | Name        | Type          | \# | Description                            |
+|----|-------------|---------------|----|----------------------------------------|
+| 1  | **name**    | String        | 1  | Student / faculty member name          |
+| 2  | **univ_id** | Key(UnivId)   | 1  | Unique ID for student / faculty member |
+| 3  | **email**   | String /email | 1  | Student / faculty member email         |
+
+| Type Name  | Type Definition             | Description              |
+|------------|-----------------------------|--------------------------|
+| **UnivId** | String{pattern="^U-\d{6}$"} | University ID (U-nnnnnn) |
+
 
 Finally, the code to generate the ERD presented at the beginning
 of the example is easily generated from the JADN model.  In this
 specific example code for the widely-used GraphViz tool is
-provided, however the HTML to generate the label tables for the
-three nodes has been excerpted for readability.
+provided.
 
 ###### Figure 3-10 -- Simple University Example ERD Source Code (GraphViz)
 ```
 # package: http://example.com/uni
-# exports: ["University"]
+# exports: ['University']
 
 digraph G {
-    graph [fontname=Times fontsize=12]
-    node [fillcolor=lightskyblue1 fontname=Arial fontsize=8 shape=box style=filled]
-    edge [arrowsize=0.5 fontname=Arial fontsize=7 labelangle=45.0 labeldistance=0.9]
-    bgcolor=white
+  graph [fontname=Arial, fontsize=12];
+  node [fontname=Arial, fontsize=8, shape=record, style=filled, fillcolor=lightskyblue1];
+  edge [fontname=Arial, fontsize=7, arrowsize=0.5, labelangle=45.0, labeldistance=0.9];
+  bgcolor="transparent";
 
-    n0 [label=<
-        <table ...>
-      > shape=rectangle]
-      n0 -> n1 [label="vtype: classes"]
-      n0 -> n2 [label="vtype: people"]
+n0 [label=<{<b>University : Record</b>|
+  1 name : String<br align="left"/>
+  2 classes : ArrayOf(Class)<br align="left"/>
+  3 people : ArrayOf(Person)<br align="left"/>
+}>]
 
-    n1 [label=<
-        <table ...>
-      > shape=rectangle]
-      n1 -> n2 [label="vtype: teachers"]
-      n1 -> n2 [label="vtype: students"]
+n1 [label=<{<b>Class : Record</b>|
+  1 name : String<br align="left"/>
+  2 room : String<br align="left"/>
+  3 teachers : Link(Person unique) [1..*]<br align="left"/>
+  4 students : Link(Person unique) [1..*]<br align="left"/>
+  5 syllabus : String /uri<br align="left"/>
+}>]
 
-    n2 [label=<
-        <table ...>
-      > shape=rectangle]
-      n2 -> n3 [label=univ_id]
+n2 [label=<{<b>Person : Record</b>|
+  1 name : String<br align="left"/>
+  2 univ_id : Key(UnivId)<br align="left"/>
+  3 email : String /email<br align="left"/>
+}>]
 
-    n3 [label="UnivId = String(%^U-\d{6}$%)" fillcolor=palegreen shape=ellipse]
+n3 [label=<<b>UnivId : String{pattern="^U-\d{6}$"}</b>>, shape=ellipse, style=filled, fillcolor=palegreen]
+
+  n0 -> n1 [label=classes]
+  n0 -> n2 [label=people]
+  n1 -> n2 [label=teachers, style="dashed"]
+  n1 -> n2 [label=students, style="dashed"]
+  n2 -> n3 [label=univ_id]
 }
-
 ```
 
 ### 3.1.6 "Anonymous" Type Definitions
@@ -1414,8 +1421,7 @@ Member = Record
   1 name         String
   2 email        Member$email
     
-    Member$email = String /email    // Tool-generated type definition.
-
+Member$email = String /email    // Tool-generated type definition.
 ```
 The type definition for `Member$email` was generated by the
 tooling, as both noted in the comment and indicated by the
@@ -1538,12 +1544,12 @@ Table 3-7 lists the *format* options applicable to the Integer type:
 ###### Table 3-7 -- Integer Type Format Options
 
 
-| Keyword      | Type   | Requirement |
-| ------------ | ------ | ------------|
-| i8           | Integer | Signed 8 bit integer, value must be between -128 and 127.
-| i16          | Integer | Signed 16 bit integer, value must be between -32768 and 32767.
-| i32          | Integer | Signed 32 bit integer, value must be between -2147483648 and 2147483647.
-| u\<*n*\>     | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1.
+| Keyword  | Type    | Requirement                                                                               |
+|----------|---------|-------------------------------------------------------------------------------------------|
+| i8       | Integer | Signed 8 bit integer, value must be between -128 and 127.                                 |
+| i16      | Integer | Signed 16 bit integer, value must be between -32768 and 32767.                            |
+| i32      | Integer | Signed 32 bit integer, value must be between -2147483648 and 2147483647.                  |
+| u\<*n*\> | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1. |
 
 #### 3.1.7.4 Number
 
@@ -1774,40 +1780,31 @@ type.
 where it is appropriate to group a set of uniform  information
 elements together. The fields of the array are defined by the
 *vtype*, which can be primitive or compound. An information item
-fitting the ArrayOf base type would be defined as follows (field 4 of `Album`):
-
+fitting the ArrayOf base type would be defined as follows. This
+example uses an explicit ArrayOf type derived using the 
+multiplicity extension on the "tracks" field of Album, as shown in
+[Section 3.3.1](#331-example-1-a-digital-music-library)):
 
 ```json
- ["Album", "Record", [], "model for the album", [
-    [1, "artist", "Artist", [], "artist associated with this album"],
-    [2, "title", "String", [], "commonly known title for this album"],
-    [3, "pub_data", "Publication-Data", [], "metadata about album publication"],
-    [4, "tracks", "ArrayOf", ["*Track", "]0"], "individual track descriptions"],
-    [5, "cover_art", "Image", ["[0"], "cover art image for this album"]
-  ]],
-
+[
+  ["Tracks", "ArrayOf", ["*Track", "{1"], "Tracks is an array of one or more Track values", []],
+  
   ["Track", "Record", [], "for each track there's a file with the audio and a metadata record", [
     [1, "location", "String", [], "path to the file audio location in local storage"],
     [2, "metadata", "TrackInfo", [], "description of the track"]
-  ]],
+  ]]
+]
 ```
 
 And the corresponding JIDL would be:
 
 ```
-Album = Record                                  // model for the album
-   1 artist           Artist                    // artist associated with this album
-   2 title            String                    // commonly known title for this album
-   3 pub_data         Publication-Data          // metadata about album publication
-   4 tracks           ArrayOf(Track) [1..*]     // individual track descriptions
-   5 cover_art        Image optional            // cover art image for this album
+Tracks = ArrayOf(Track){1..*}                     // Tracks is an array of one or more Track values
 
-Track = Record		// for each track there's a file with the audio and a metadata record
-   1 location         String			// path to the file audio location in local storage
-   2 metadata         TrackInfo   // description of the track
-
+Track = Record                                    // for each track there's a file with the audio and a metadata record
+   1 location         String                      // path to the file audio location in local storage
+   2 metadata         TrackInfo                   // description of the track
 ```
-
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
@@ -2075,17 +2072,16 @@ used with MP3 audio files.
 At the top level, the library is map of barcodes to albums. 
 
 ```
-     package:  "http://fake-audio.org/music-lib"
-     version:  "1.0"
-       title:  "Music Library"
- description:  "This information model defines a library of audio tracks, organized by album"
-     license:  "CC0-1.0"
-     exports:  ["Library", "Album", "Track"]
+       title: "Music Library"
+     package: "http://fake-audio.org/music-lib"
+     version: "1.0"
+ description: "This information model defines a library of audio tracks, organized by album"
+     license: "CC0-1.0"
+     exports: ["Library"]
 
-// Top level of the library is a map of CDs by barcode
-Library = MapOf(Barcode, Album){1..*}
+Library = MapOf(Barcode, Album){1..*}             // Top level of the library is a map of CDs by barcode
 
-Barcode = String (%\d{12}%)  // A UPC-A barcode is 12 digits
+Barcode = String{pattern="^\d{12}$"}              // A UPC-A barcode is 12 digits
 ```
 
 Each album is then represented by a record of artist, title,
@@ -2097,51 +2093,44 @@ of anonymous type definitions as explained in [Section 3.1.6](#316-anonymous-typ
 > *NOTE: add link to new section 3.l.6 after PRs are merged.*
 
 ```
-Album = Record                      // model for the album
-    1  artist     Artist            // artist associated with this album
-    2  title      String            // commonly known title for this album
-    3  pub_data   Publication-Data  // metadata about album publication
-    4  tracks     Album$Tracks      // individual track descriptions
-    5  cover_art  Image optional    // cover art image for this album
+Album = Record                                    // model for the album
+   1 artist           Artist                      // artist associated with this album
+   2 title            String                      // commonly known title for this album
+   3 pub_data         Publication-Data            // metadata about album publication
+   4 tracks           Track [1..*]                // individual track descriptions
+   5 cover_art        Image optional              // cover art image for this album
 
-Publication-Data = Record                   // who and when of publication
-    1  label     String                     // name of record label
-    2  rel_date  Publication-data$Rel-date  // and when did they let this drop
+Publication-Data = Record                         // who and when of publication
+   1 label            String                      // name of record label
+   2 rel_date         String /date                // and when did they let this drop
 
-Publication-data$Rel-date = String /date  // and when did they let this drop
+Image = Record                                    // pretty picture for the album or track
+   1 image_format     Image-Format                // what type of image file?
+   2 image_content    Binary                      // the image data in the identified format
 
-Album$Tracks = ArrayOf(Track){1..*}  // individual track descriptions
-
-Image = Record                      // pretty picture for the album or track
-    1  image_format   Image-Format  // what type of image file?
-    2  image_content  Binary        // the image data in the identified format
-  
-Image-Format = Enumerated extend    	// can only be one, but can extend list
-    1 PNG
-    2 JPG
+Image-Format = Enumerated                         // can only be one, but can extend list
+   1 PNG
+   2 JPG
 ```
 
 Artists have a name and one or more associated instruments that
 they perform on.
 
 ```
-Artist = Record                         // interesting information about the performers
-    1  artist_name  String              // who is this person
-    2  instruments  Artist$Instruments  // and what do they play
+Artist = Record                                   // interesting information about the performers
+   1 artist_name      String                      // who is this person
+   2 instruments      Instrument unique [1..*]    // and what do they play
 
-Artist$Instruments = ArrayOf(Instrument){1..*}  // and what do they play
-
-Instrument = Enumerated  // collection of instruments (non-exhaustive)
-    1  vocals      //
-    2  guitar      //
-    3  bass        //
-    4  drums       //
-    5  keyboards   //
-    6  percussion  //
-    7  brass       //
-    8  woodwinds   //
-    9  harmonica   //
-
+Instrument = Enumerated                           // collection of instruments (non-exhaustive)
+   1 vocals
+   2 guitar
+   3 bass
+   4 drums
+   5 keyboards
+   6 percussion
+   7 brass
+   8 woodwinds
+   9 harmonica
 ```
 
 Each track is stored in a file, and has a track number within the
@@ -2150,26 +2139,22 @@ audio data.  Multiple digital audio  formats are supported for
 the audio content.
 
 ```
-Track = Record              // for each track there's a file with the audio and a metadata record
-    1  location  String     // path to the file audio location in local storage
-    2  metadata  TrackInfo  // description of the track
+Track = Record                                    // for each track there's a file with the audio and a metadata record
+   1 location         String                      // path to the file audio location in local storage
+   2 metadata         TrackInfo                   // description of the track
 
 TrackInfo = Record                                // information about the individual audio tracks
-    1  t_number      Number                       // track sequence number
-    2  title         String                       // track title
-    3  length        Trackinfo$Length             // length of track
-    4  audio_format  Audio-Format                 // the all important content
-    5  featured      Trackinfo$Featured optional  // important guest performers
-    6  track_art     Image optional               // track can have individual artwork
+   1 t_number         Number                      // track sequence number
+   2 title            String                      // track title
+   3 length           String /time                // length of track
+   4 audio_format     Audio-Format                // the all important content
+   5 featured         Artist unique [0..*]        // important guest performers
+   6 track_art        Image optional              // track can have individual artwork
 
-Trackinfo$Length = String /time  // length of track
-
-Trackinfo$Featured = ArrayOf(Artist){1..*}  // important guest performers
-
-Audio-Format = Enumerated  // can only be one, but can extend list
-    1  MP3   //
-    2  OGG   //
-    3  FLAC  //
+Audio-Format = Enumerated                         // can only be one, but can extend list
+   1 MP3
+   2 OGG
+   3 FLAC
 ```
 
 The entity relationship diagram in Figure 3-10 illustrates how
@@ -2177,7 +2162,7 @@ the model components connect.
 
 ###### Figure 3-11 -- Music Library Example ERD
 
-![Music Library Example ERD](images/music_database_jadn_gv.png)
+<img src="images/music-database-gv.png" height="720px">
 
 -------
 # 4 Advanced Techniques
@@ -2483,8 +2468,8 @@ The following individuals have participated in the creation of this document and
 # Appendix C. Revision History
 | Revision           | Date       | Editor      | Changes Made          |
 |:-------------------|:-----------|:------------|:----------------------|
-| imjadn-v1.0-cn01-wd01.md | 2023-01-18 | David Keemp | Initial working draft / CND01 |
-| imjadn-v1.0-cn01-wd02.md | 2023-04-19 | David Keemp | Second WD / CN01 candidate |
+| imjadn-v1.0-cn01-wd01.md | 2023-01-18 | David Kemp | Initial working draft / CND01 |
+| imjadn-v1.0-cn01-wd02.md | 2023-04-19 | David Kemp | Second WD / CN01 candidate |
 
 -------
 
@@ -2937,25 +2922,40 @@ constructing an information graph from an ontology graph:
   "version": "1.0",
   "description": "This information model defines a library of audio tracks, organized by album",
   "license": "CC0-1.0",
-  "exports": ["Library", "Album", "Track"]
+  "exports": ["Library"]
  },
 
  "types": [
-  ["Library", "MapOf", ["+Barcode", "*Album", "{1"], "", []],
+  ["Library", "MapOf", ["+Barcode", "*Album", "{1"], "Top level of the library is a map of CDs by barcode", []],
 
-  ["Barcode", "String", ["%\\d{12}"], "A UPC-A barcode is 12 digits", []],
+  ["Barcode", "String", ["%^\\d{12}$"], "A UPC-A barcode is 12 digits", []],
 
   ["Album", "Record", [], "model for the album", [
     [1, "artist", "Artist", [], "artist associated with this album"],
     [2, "title", "String", [], "commonly known title for this album"],
     [3, "pub_data", "Publication-Data", [], "metadata about album publication"],
-    [4, "tracks", "ArrayOf", ["*Track", "]0"], "individual track descriptions"],
-    [5, "cover_art", "Cover-Art", [], "cover art image for this album"]
+    [4, "tracks", "Track", ["]0"], "individual track descriptions"],
+    [5, "cover_art", "Image", ["[0"], "cover art image for this album"]
+  ]],
+
+  ["Publication-Data", "Record", [], "who and when of publication", [
+    [1, "label", "String", [], "name of record label"],
+    [2, "rel_date", "String", ["/date"], "and when did they let this drop"]
+  ]],
+
+  ["Image", "Record", [], "pretty picture for the album or track", [
+    [1, "image_format", "Image-Format", [], "what type of image file?"],
+    [2, "image_content", "Binary", [], "the image data in the identified format"]
+  ]],
+
+  ["Image-Format", "Enumerated", [], "can only be one, but can extend list", [
+    [1, "PNG", ""],
+    [2, "JPG", ""]
   ]],
 
   ["Artist", "Record", [], "interesting information about the performers", [
     [1, "artist_name", "String", [], "who is this person"],
-    [2, "instruments", "ArrayOf", ["*Instrument", "]0"], "and what do they play"]
+    [2, "instruments", "Instrument", ["q", "]0"], "and what do they play"]
   ]],
 
   ["Instrument", "Enumerated", [], "collection of instruments (non-exhaustive)", [
@@ -2970,38 +2970,24 @@ constructing an information graph from an ontology graph:
     [9, "harmonica", ""]
   ]],
 
-  ["Publication-Data", "Record", [], "who and when of publication", [
-    [1, "label", "String", [], "name of record label"],
-    [2, "rel_date", "String", ["/date"], "and when did they let this drop"]
+  ["Track", "Record", [], "for each track there's a file with the audio and a metadata record", [
+    [1, "location", "String", [], "path to the file audio location in local storage"],
+    [2, "metadata", "TrackInfo", [], "description of the track"]
   ]],
 
-  ["Track", "Record", [], "information about the individual audio tracks", [
+  ["TrackInfo", "Record", [], "information about the individual audio tracks", [
     [1, "t_number", "Number", [], "track sequence number"],
     [2, "title", "String", [], "track title"],
     [3, "length", "String", ["/time"], "length of track"],
-    [4, "featured", "ArrayOf", ["*Artist"], "important guest performers"],
-    [5, "audio", "Audio", [], "the all important content"]
-  ]],
-
-  ["Audio", "Record", [], "information about what gets played", [
-    [1, "a_format", "Audio-Format", [], "what type of audio file?"],
-    [2, "a_content", "Binary", [], "the audio data in the identified format"]
+    [4, "audio_format", "Audio-Format", [], "the all important content"],
+    [5, "featured", "Artist", ["q", "[0", "]0"], "important guest performers"],
+    [6, "track_art", "Image", ["[0"], "track can have individual artwork"]
   ]],
 
   ["Audio-Format", "Enumerated", [], "can only be one, but can extend list", [
     [1, "MP3", ""],
     [2, "OGG", ""],
     [3, "FLAC", ""]
-  ]],
-
-  ["Cover-Art", "Record", [], "pretty picture for the album", [
-    [1, "i_format", "Image-Format", [], "what type of image file?"],
-    [2, "i_content", "Binary", [], "the image data in the identified format"]
-  ]],
-
-  ["Image-Format", "Enumerated", [], "can only be one, but can extend list", [
-    [1, "PNG", ""],
-    [2, "JPG", ""]
   ]]
  ]
 }
@@ -3010,213 +2996,213 @@ constructing an information graph from an ontology graph:
 ### E.1.2 Music Library JIDL
 
 ```
-     package:  "http://fake-audio.org/music-lib"
-     version:  "1.0"
-       title:  "Music Library"
- description:  "This information model defines a library of audio tracks, organized by album"
-     license:  "CC0-1.0"
-     exports:  ["Library", "Album", "Track"]
+       title: "Music Library"
+     package: "http://fake-audio.org/music-lib"
+     version: "1.0"
+ description: "This information model defines a library of audio tracks, organized by album"
+     license: "CC0-1.0"
+     exports: ["Library"]
 
-Library = MapOf(Barcode, Album){1..*}
+Library = MapOf(Barcode, Album){1..*}             // Top level of the library is a map of CDs by barcode
 
-Barcode = String (%\d{12}%)  // A UPC-A barcode is 12 digits
+Barcode = String{pattern="^\d{12}$"}              // A UPC-A barcode is 12 digits
 
-Album = Record                      // model for the album
-    1  artist     Artist            // artist associated with this album
-    2  title      String            // commonly known title for this album
-    3  pub_data   Publication-Data  // metadata about album publication
-    4  tracks     Album$Tracks      // individual track descriptions
-    5  cover_art  Image optional    // cover art image for this album
+Album = Record                                    // model for the album
+   1 artist           Artist                      // artist associated with this album
+   2 title            String                      // commonly known title for this album
+   3 pub_data         Publication-Data            // metadata about album publication
+   4 tracks           Track [1..*]                // individual track descriptions
+   5 cover_art        Image optional              // cover art image for this album
 
-Artist = Record                         // interesting information about the performers
-    1  artist_name  String              // who is this person
-    2  instruments  Artist$Instruments  // and what do they play
+Publication-Data = Record                         // who and when of publication
+   1 label            String                      // name of record label
+   2 rel_date         String /date                // and when did they let this drop
 
-Instrument = Enumerated  // collection of instruments (non-exhaustive)
-    1  vocals      //
-    2  guitar      //
-    3  bass        //
-    4  drums       //
-    5  keyboards   //
-    6  percussion  //
-    7  brass       //
-    8  woodwinds   //
-    9  harmonica   //
+Image = Record                                    // pretty picture for the album or track
+   1 image_format     Image-Format                // what type of image file?
+   2 image_content    Binary                      // the image data in the identified format
 
-Publication-Data = Record                   // who and when of publication
-    1  label     String                     // name of record label
-    2  rel_date  Publication-data$Rel-date  // and when did they let this drop
+Image-Format = Enumerated                         // can only be one, but can extend list
+   1 PNG
+   2 JPG
 
-Track = Record              // for each track there's a file with the audio and a metadata record
-    1  location  String     // path to the file audio location in local storage
-    2  metadata  TrackInfo  // description of the track
+Artist = Record                                   // interesting information about the performers
+   1 artist_name      String                      // who is this person
+   2 instruments      Instrument unique [1..*]    // and what do they play
+
+Instrument = Enumerated                           // collection of instruments (non-exhaustive)
+   1 vocals
+   2 guitar
+   3 bass
+   4 drums
+   5 keyboards
+   6 percussion
+   7 brass
+   8 woodwinds
+   9 harmonica
+
+Track = Record                                    // for each track there's a file with the audio and a metadata record
+   1 location         String                      // path to the file audio location in local storage
+   2 metadata         TrackInfo                   // description of the track
 
 TrackInfo = Record                                // information about the individual audio tracks
-    1  t_number      Number                       // track sequence number
-    2  title         String                       // track title
-    3  length        Trackinfo$Length             // length of track
-    4  audio_format  Audio-Format                 // the all important content
-    5  featured      Trackinfo$Featured optional  // important guest performers
-    6  track_art     Image optional               // track can have individual artwork
+   1 t_number         Number                      // track sequence number
+   2 title            String                      // track title
+   3 length           String /time                // length of track
+   4 audio_format     Audio-Format                // the all important content
+   5 featured         Artist unique [0..*]        // important guest performers
+   6 track_art        Image optional              // track can have individual artwork
 
-Audio-Format = Enumerated  // can only be one, but can extend list
-    1  MP3   //
-    2  OGG   //
-    3  FLAC  //
-
-Image = Record                      // pretty picture for the album or track
-    1  image_format   Image-Format  // what type of image file?
-    2  image_content  Binary        // the image data in the identified format
-
-Image-Format = Enumerated  // can only be one, but can extend list
-    1  PNG  //
-    2  JPG  //
-
-Album$Tracks = ArrayOf(Track){1..*}  // individual track descriptions
-
-Artist$Instruments = ArrayOf(Instrument){1..*}  // and what do they play
-
-Trackinfo$Featured = ArrayOf(Artist){1..*}  // important guest performers
-
-Publication-data$Rel-date = String /date  // and when did they let this drop
-
-Trackinfo$Length = String /time  // length of track
+Audio-Format = Enumerated                         // can only be one, but can extend list
+   1 MP3
+   2 OGG
+   3 FLAC
 ```
 
 ### E.1.3 Music Library Tables
 
 ## Schema
-|                . | .                                                                            |
-|-----------------:|:-----------------------------------------------------------------------------|
-|     **package:** | http://fake-audio.org/music-lib                                              |
-|     **version:** | 1.0                                                                          |
-|       **title:** | Music Library                                                                |
-| **description:** | This information model defines a library of audio tracks, organized by album |
-|     **license:** | CC0-1.0                                                                      |
-|     **exports:** | Library, Album, Track                                                        |
+```
+         title: "Music Library"
+       package: "http://fake-audio.org/music-lib"
+       version: "1.0"
+   description: "This information model defines a library of audio tracks, organized by album"
+       license: "CC0-1.0"
+       exports: ["Library"]
+```
 
+| Type Name   | Type Definition             | Description                                         |
+|-------------|-----------------------------|-----------------------------------------------------|
+| **Library** | MapOf(Barcode, Album){1..*} | Top level of the library is a map of CDs by barcode |
 
-| Type Name   | Type Definition             | Description |
-|:------------|:----------------------------|:------------|
-| **Library** | MapOf(Barcode, Album){1..*} |             |
+**********
 
+| Type Name   | Type Definition            | Description                  |
+|-------------|----------------------------|------------------------------|
+| **Barcode** | String{pattern="^\d{12}$"} | A UPC-A barcode is 12 digits |
 
-| Type Name   | Type Definition   | Description                  |
-|:------------|:------------------|:-----------------------------|
-| **Barcode** | String (%\d{12}%) | A UPC-A barcode is 12 digits |
+**********
 
-**_Type: Album (Record)_**
+model for the album
 
-| ID | Name          | Type             | # | Description                         |
-|---:|:--------------|:-----------------|--:|:------------------------------------|
-|  1 | **artist**    | Artist           | 1 | artist associated with this album   |
-|  2 | **title**     | String           | 1 | commonly known title for this album |
-|  3 | **pub_data**  | Publication-Data | 1 | metadata about album publication    |
-|  4 | **tracks**    | Album$Tracks     | 1 | individual track descriptions       |
-|  5 | **cover_art** | Image            | 1 | cover art image for this album      |
+**Type: Album (Record)**
 
-**_Type: Artist (Record)_**
+| ID | Name          | Type             | \#    | Description                         |
+|----|---------------|------------------|-------|-------------------------------------|
+| 1  | **artist**    | Artist           | 1     | artist associated with this album   |
+| 2  | **title**     | String           | 1     | commonly known title for this album |
+| 3  | **pub_data**  | Publication-Data | 1     | metadata about album publication    |
+| 4  | **tracks**    | Track            | 1..\* | individual track descriptions       |
+| 5  | **cover_art** | Image            | 0..1  | cover art image for this album      |
 
-| ID | Name            | Type               | # | Description           |
-|---:|:----------------|:-------------------|--:|:----------------------|
-|  1 | **artist_name** | String             | 1 | who is this person    |
-|  2 | **instruments** | Artist$Instruments | 1 | and what do they play |
+**********
 
-**_Type: Instrument (Enumerated)_**
+who and when of publication
 
-| ID | Name           | Description |
-|---:|:---------------|:------------|
-|  1 | **vocals**     |             |
-|  2 | **guitar**     |             |
-|  3 | **bass**       |             |
-|  4 | **drums**      |             |
-|  5 | **keyboards**  |             |
-|  6 | **percussion** |             |
-|  7 | **brass**      |             |
-|  8 | **woodwinds**  |             |
-|  9 | **harmonica**  |             |
+**Type: Publication-Data (Record)**
 
-**_Type: Publication-Data (Record)_**
+| ID | Name         | Type         | \# | Description                     |
+|----|--------------|--------------|----|---------------------------------|
+| 1  | **label**    | String       | 1  | name of record label            |
+| 2  | **rel_date** | String /date | 1  | and when did they let this drop |
 
-| ID | Name         | Type                      | # | Description                     |
-|---:|:-------------|:--------------------------|--:|:--------------------------------|
-|  1 | **label**    | String                    | 1 | name of record label            |
-|  2 | **rel_date** | Publication-data$Rel-date | 1 | and when did they let this drop |
+**********
 
-**_Type: Track (Record)_**
+pretty picture for the album or track
 
-| ID | Name         | Type      | # | Description                                      |
-|---:|:-------------|:----------|--:|:-------------------------------------------------|
-|  1 | **location** | String    | 1 | path to the file audio location in local storage |
-|  2 | **metadata** | TrackInfo | 1 | description of the track                         |
+**Type: Image (Record)**
 
-**_Type: TrackInfo (Record)_**
+| ID | Name              | Type         | \# | Description                             |
+|----|-------------------|--------------|----|-----------------------------------------|
+| 1  | **image_format**  | Image-Format | 1  | what type of image file?                |
+| 2  | **image_content** | Binary       | 1  | the image data in the identified format |
 
-| ID | Name             | Type               | # | Description                       |
-|---:|:-----------------|:-------------------|--:|:----------------------------------|
-|  1 | **t_number**     | Number{0..*}       | 1 | track sequence number             |
-|  2 | **title**        | String             | 1 | track title                       |
-|  3 | **length**       | Trackinfo$Length   | 1 | length of track                   |
-|  4 | **audio_format** | Audio-Format       | 1 | the all important content         |
-|  5 | **featured**     | Trackinfo$Featured | 1 | important guest performers        |
-|  6 | **track_art**    | Image              | 1 | track can have individual artwork |
+**********
 
-**_Type: Audio-Format (Enumerated)_**
+can only be one, but can extend list
 
-| ID | Name     | Description |
-|---:|:---------|:------------|
-|  1 | **MP3**  |             |
-|  2 | **OGG**  |             |
-|  3 | **FLAC** |             |
+**Type: Image-Format (Enumerated)**
 
-**_Type: Image (Record)_**
+| ID | Item    | Description |
+|----|---------|-------------|
+| 1  | **PNG** |             |
+| 2  | **JPG** |             |
 
-| ID | Name              | Type         | # | Description                             |
-|---:|:------------------|:-------------|--:|:----------------------------------------|
-|  1 | **image_format**  | Image-Format | 1 | what type of image file?                |
-|  2 | **image_content** | Binary       | 1 | the image data in the identified format |
+**********
 
-**_Type: Image-Format (Enumerated)_**
+interesting information about the performers
 
-| ID | Name    | Description |
-|---:|:--------|:------------|
-|  1 | **PNG** |             |
-|  2 | **JPG** |             |
+**Type: Artist (Record)**
 
+| ID | Name            | Type              | \#    | Description           |
+|----|-----------------|-------------------|-------|-----------------------|
+| 1  | **artist_name** | String            | 1     | who is this person    |
+| 2  | **instruments** | Instrument unique | 1..\* | and what do they play |
 
-| Type Name        | Type Definition      | Description                   |
-|:-----------------|:---------------------|:------------------------------|
-| **Album$Tracks** | ArrayOf(Track){1..*} | individual track descriptions |
+**********
 
+collection of instruments (non-exhaustive)
 
-| Type Name              | Type Definition           | Description           |
-|:-----------------------|:--------------------------|:----------------------|
-| **Artist$Instruments** | ArrayOf(Instrument){1..*} | and what do they play |
+**Type: Instrument (Enumerated)**
 
+| ID | Item           | Description |
+|----|----------------|-------------|
+| 1  | **vocals**     |             |
+| 2  | **guitar**     |             |
+| 3  | **bass**       |             |
+| 4  | **drums**      |             |
+| 5  | **keyboards**  |             |
+| 6  | **percussion** |             |
+| 7  | **brass**      |             |
+| 8  | **woodwinds**  |             |
+| 9  | **harmonica**  |             |
 
-| Type Name              | Type Definition       | Description                |
-|:-----------------------|:----------------------|:---------------------------|
-| **Trackinfo$Featured** | ArrayOf(Artist){1..*} | important guest performers |
+**********
 
+for each track there's a file with the audio and a metadata record
 
-| Type Name                     | Type Definition | Description                     |
-|:------------------------------|:----------------|:--------------------------------|
-| **Publication-data$Rel-date** | String /date    | and when did they let this drop |
+**Type: Track (Record)**
 
+| ID | Name         | Type      | \# | Description                                      |
+|----|--------------|-----------|----|--------------------------------------------------|
+| 1  | **location** | String    | 1  | path to the file audio location in local storage |
+| 2  | **metadata** | TrackInfo | 1  | description of the track                         |
 
-| Type Name            | Type Definition | Description     |
-|:---------------------|:----------------|:----------------|
-| **Trackinfo$Length** | String /time    | length of track |
+**********
 
+information about the individual audio tracks
+
+**Type: TrackInfo (Record)**
+
+| ID | Name             | Type          | \#    | Description                       |
+|----|------------------|---------------|-------|-----------------------------------|
+| 1  | **t_number**     | Number        | 1     | track sequence number             |
+| 2  | **title**        | String        | 1     | track title                       |
+| 3  | **length**       | String /time  | 1     | length of track                   |
+| 4  | **audio_format** | Audio-Format  | 1     | the all important content         |
+| 5  | **featured**     | Artist unique | 0..\* | important guest performers        |
+| 6  | **track_art**    | Image         | 0..1  | track can have individual artwork |
+
+**********
+
+can only be one, but can extend list
+
+**Type: Audio-Format (Enumerated)**
+
+| ID | Item     | Description |
+|----|----------|-------------|
+| 1  | **MP3**  |             |
+| 2  | **OGG**  |             |
+| 3  | **FLAC** |             |
 
 
 ------
 
 # Appendix F. Notices
 
-Copyright &copy; OASIS Open 2021. All Rights Reserved.
+Copyright &copy; OASIS Open 2023. All Rights Reserved.
 
-All capitalized terms in the following text have the meanings assigned to them in the OASIS Intellectual Property Rights Policy (the "OASIS IPR Policy"). The full [Policy](https://www.oasis-open.org/policies-guidelines/ipr) may be found at the OASIS website.
+All capitalized terms in the following text have the meanings assigned to them in the OASIS Intellectual Property Rights Policy (the "OASIS IPR Policy"). The full [Policy](https://www.oasis-open.org/policies-guidelines/ipr/) may be found at the OASIS website.
 
 This document and translations of it may be copied and furnished to others, and derivative works that comment on or otherwise explain it or assist in its implementation may be prepared, copied, published, and distributed, in whole or in part, without restriction of any kind, provided that the above copyright notice and this section are included on all such copies and derivative works. However, this document itself may not be modified in any way, including by removing the copyright notice or references to OASIS, except as needed for the purpose of developing any document or deliverable produced by an OASIS Technical Committee (in which case the rules applicable to copyrights, as set forth in the OASIS IPR Policy, must be followed) or as required to translate it into languages other than English.
 
@@ -3224,5 +3210,5 @@ The limited permissions granted above are perpetual and will not be revoked by O
 
 This document and the information contained herein is provided on an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
 
-The name "OASIS" is a trademark of [OASIS](https://www.oasis-open.org/), the owner and developer of this specification, and should be used only to refer to the organization and its official outputs. OASIS welcomes reference to, and implementation and use of, specifications, while reserving the right to enforce its marks against misleading uses. Please see https://www.oasis-open.org/policies-guidelines/trademark for above guidance.
+The name "OASIS" is a trademark of [OASIS](https://www.oasis-open.org/), the owner and developer of this specification, and should be used only to refer to the organization and its official outputs. OASIS welcomes reference to, and implementation and use of, specifications, while reserving the right to enforce its marks against misleading uses. Please see https://www.oasis-open.org/policies-guidelines/trademark/ for above guidance.
 
