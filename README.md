@@ -28,7 +28,7 @@ that provides context and explanatory material to assist with
 applying JADN in practice.
 
 The Published branch of this repository contains the
-OASIS-published CN01 version of this document and associates
+OASIS-published CN01 version of this document and associated
 files. Markdown, HTML, and PDF versions are provided and are
 identical to the versions available from OASIS.
 
