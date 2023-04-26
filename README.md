@@ -27,6 +27,11 @@ Note](https://www.oasis-open.org/policies-guidelines/oasis-defined-terms-2018-05
 that provides context and explanatory material to assist with
 applying JADN in practice.
 
+The Published branch of this repository contains the
+OASIS-published CN01 version of this document and associates
+files. Markdown, HTML, and PDF versions are provided and are
+identical to the versions available from OASIS.
+
 ### :twisted_rightwards_arrows: Repository Organization :twisted_rightwards_arrows:
 
 ![branches](images/repo-branches.png)
