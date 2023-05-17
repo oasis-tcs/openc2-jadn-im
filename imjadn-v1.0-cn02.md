@@ -5,9 +5,9 @@
 
 # Information Modeling with JADN Version 1.0
 
-## Committee Note 01
+## Committee Note 02 - Working Draft 01
 
-## 19 April 2023
+## DD MMM YYYY
 
 &nbsp;
 
