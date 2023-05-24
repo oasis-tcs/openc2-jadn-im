@@ -824,8 +824,15 @@ sequential ordering while Map keys do not. Map instances are always serialized a
 key:value pairs, while Record instances may be serialized as either key:value pairs
 or table rows with values in column position, depending on data format.
 
-For example if Location is a Record type with name, state, latitude and longitude
-keys, its instances are serialized using *verbose* JSON data format as:
+For example if Location is a Record type:
+```
+Location = Record
+  1 name       String
+  2 state      String
+  3 latitude   Number
+  4 longitude  Number
+```
+its instances are serialized using *verbose* JSON data format as:
 ```json
 [
   {
