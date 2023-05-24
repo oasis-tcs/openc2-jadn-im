@@ -33,7 +33,8 @@ https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.pdf
 Duncan Sparrell (duncan@sfractal.com), [sFractal Consulting LLC](http://www.sfractal.com/) \
 Michael Rosa (mjrosa@nsa.gov), [National Security Agency](https://www.nsa.gov)
 
-#### Editor:
+#### Editors:
+David Lemire (david.lemire@hii-tsd.com), [HII](https://hii.com/) \
 David Kemp (d.kemp@cyber.nsa.gov), [National Security Agency](https://www.nsa.gov/)
 
 #### Related work:
@@ -682,9 +683,9 @@ the associated data.
 
 ###### Figure 2-2 -- Parsing and Serializing With An IM
 
-![Parsing and Serializing With An IM](images/parse-serialize.drawio.png)
+![Parsing and Serializing With An IM](images/parse-serialize.png)
 
-The internal representation, illustrated in Figure 2-1 as a tree,
+The internal representation, illustrated in Figure 2-1 as a graph,
 is guided by rules associated with applying the IM:
 
  - the internal representation conforms to the IM
@@ -823,8 +824,15 @@ sequential ordering while Map keys do not. Map instances are always serialized a
 key:value pairs, while Record instances may be serialized as either key:value pairs
 or table rows with values in column position, depending on data format.
 
-For example if Location is a Record type with name, state, latitude and longitude
-keys, its instances are serialized using *verbose* JSON data format as:
+For example if Location is a Record type:
+```
+Location = Record
+  1 name       String
+  2 state      String
+  3 latitude   Number
+  4 longitude  Number
+```
+its instances are serialized using *verbose* JSON data format as:
 ```json
 [
   {
