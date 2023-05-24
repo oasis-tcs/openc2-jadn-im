@@ -33,7 +33,8 @@ https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.pdf
 Duncan Sparrell (duncan@sfractal.com), [sFractal Consulting LLC](http://www.sfractal.com/) \
 Michael Rosa (mjrosa@nsa.gov), [National Security Agency](https://www.nsa.gov)
 
-#### Editor:
+#### Editors:
+David Lemire (david.lemire@hii-tsd.com), [HII](https://hii.com/) \
 David Kemp (d.kemp@cyber.nsa.gov), [National Security Agency](https://www.nsa.gov/)
 
 #### Related work:
@@ -682,9 +683,9 @@ the associated data.
 
 ###### Figure 2-2 -- Parsing and Serializing With An IM
 
-![Parsing and Serializing With An IM](images/parse-serialize.drawio.png)
+![Parsing and Serializing With An IM](images/parse-serialize.png)
 
-The internal representation, illustrated in Figure 2-1 as a tree,
+The internal representation, illustrated in Figure 2-1 as a graph,
 is guided by rules associated with applying the IM:
 
  - the internal representation conforms to the IM
