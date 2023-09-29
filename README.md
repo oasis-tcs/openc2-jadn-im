@@ -67,7 +67,7 @@ ontologies.
 
 ### :writing_hand: Contributions :writing_hand:
 <div>
-<p>As stated in this repository's <a href="https://github.com/oasis-tcs/openc2-jand-im/blob/master/CONTRIBUTING.md">CONTRIBUTING file</a>, contributors to this repository are expected to be Members of the OASIS OpenC2 TC, for any substantive change requests.  Anyone wishing to contribute to this GitHub project and <a href="https://www.oasis-open.org/join/participation-instructions">participate</a> in the TC's technical activity is invited to join as an OASIS TC Member.  Public feedback is also accepted, subject to the terms of the <a href="https://www.oasis-open.org/policies-guidelines/ipr#appendixa">OASIS Feedback License</a>.</p>
+<p>As stated in this repository's <a href="CONTRIBUTING.md">CONTRIBUTING file</a>, contributors to this repository are expected to be Members of the OASIS OpenC2 TC, for any substantive change requests.  Anyone wishing to contribute to this GitHub project and <a href="https://www.oasis-open.org/join/participation-instructions">participate</a> in the TC's technical activity is invited to join as an OASIS TC Member.  Public feedback is also accepted, subject to the terms of the <a href="https://www.oasis-open.org/policies-guidelines/ipr#appendixa">OASIS Feedback License</a>.</p>
 </div>
 
 
@@ -75,14 +75,14 @@ ontologies.
 
 
 Please see the <a
-href="https://github.com/oasis-tcs/openc2-jand-im/blob/master/LICENSE.md">LICENSE</a>
+href="LICENSE.md">LICENSE</a>
 file for description of the license terms and OASIS policies
 applicable to the TC's work in this GitHub project. Content in
 this repository is intended to be part of the OpenC2 TC's
 permanent record of activity, visible and freely available for
 all to use, subject to applicable OASIS policies, as presented in
 the repository <a
-href="https://github.com/oasis-tcs/openc2-jand-im/blob/master/LICENSE.md">LICENSE</a>
+href="LICENSE.md">LICENSE</a>
 file.
 
 ### :left_speech_bubble:   Further Description of this Repository :left_speech_bubble: 
