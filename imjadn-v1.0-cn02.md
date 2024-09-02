@@ -168,13 +168,44 @@ For complete copyright information please see the full Notices section in [Appen
 
 # 1 Introduction
 
-An Information Model (IM) defines the essential content of
-messages used in computing, independently of how those messages
-are represented (i.e., [serialized](#24-serialization)) for
-communication or storage. This Committee Note (CN) describes the
-nature of an IM, and the application of the *JSON Abstract Data
-Notation* [[JADN](#jadn-v10)] information modeling language in the
-creation and use of IMs.
+This Committee Note (CN) describes the nature of information models and the application
+of the *JSON Abstract Data Notation* [[JADN](#jadn-v10)] information modeling language
+in the creation and use of IMs.
+
+[RFC 3444](#rfc3444) discusses the difference between information models and data models:
+
+> * The main purpose of an IM is to model managed objects at a conceptual
+level, independent of any specific implementations or protocols used
+to transport the data.  The degree of specificity (or detail) of the
+abstractions defined in the IM depends on the modeling needs of its
+designers.
+> * The terms "conceptual models" and "abstract models", which are often
+used in the literature, relate to IMs.  IMs can be implemented in different
+ways and mapped on different protocols.
+> * IMs can be defined in an informal way, using natural languages such
+as English. Alternatively, IMs can be defined using a formal language
+or a semi-formal structured language.  One of the possibilities to formally
+specify IMs is to use class diagrams of the Unified Modeling Language (UML).
+> * In general, it seems advisable to use object-oriented techniques to
+describe an IM.  In particular, the notions of abstraction and
+encapsulation, as well as the possibility that object definitions
+include methods, are considered to be important.
+
+Although RFC 3444 references protocols and object methods,
+[UML](https://www.omg.org/spec/UML/2.5.1/PDF) places data models
+and object-oriented programming models in separate categories:
+* Simple Classifiers (Section 10), including DataTypes (10.2), and
+* Structured Classifiers (Section 11) of many kinds, including Classes
+(10.4)
+
+JADN aligns with UML's layered separation of concerns: the main purpose
+of an IM is to model *data*, not managed objects, at a conceptual level.
+This allows IMs to model any kind of data, from simple structures such as
+value ranges or coordinates, to protocol messages, to complete documents,
+independently of programming technique.
+An IM is a declarative specification that defines desired results without
+describing control flow. Within a protocol model messages exchanged over
+the wire can be defined and validated using an IM.
 
 ## 1.1 Background: Motivation for JADN
 
