@@ -160,7 +160,7 @@ For complete copyright information please see the full Notices section in [Appen
  - [Table 3-7 -- Integer Type Format Options](#table-3-7----integer-type-format-options)
  - [Table 3-8 -- Number Type Format Options](#table-3-8----number-type-format-options)
  - [Table 3-9 -- Array Type Format Options](#table-3-9----array-type-format-options)
- - [Table D-1 -- UML and JADN Basic Type Equivalence](#table-d-1----uml-and-jadn-basic-type-equivalence)
+ - [Table D-1 -- UML and JADN Basic Type Equivalence](#table-d-1----uml-and-jadn-primitive-type-equivalence)
 
 -------
 
