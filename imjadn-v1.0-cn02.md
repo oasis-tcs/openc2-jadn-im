@@ -203,8 +203,8 @@ IM is to model *data*, not managed objects, at both conceptual and formal levels
 This allows IMs to model any kind of data, from simple structures such as
 value ranges or coordinates, to protocol messages, to complete documents,
 without needing to address programming languages and techniques.
-An IM is a declarative specification that defines desired results (data item
-validity) without describing control flow. Within a protocol model messages
+An IM is a [declarative](#declarative) specification that defines desired results
+(data item validity) without describing control flow. Within a protocol model messages
 exchanged over the wire can be defined and validated using an IM.
 
 ## 1.1 Background: Motivation for JADN
@@ -2364,6 +2364,10 @@ While any hyperlinks included in this appendix were valid at the time of publica
 
 ###### [ASN.1]
 Recommendation ITU-T X.680 (2021) *Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation* 
+
+###### [Declarative]
+"Declarative vs. imperative programming", Educative blog, Daniel Chang, May 29 2024,
+https://www.educative.io/blog/declarative-vs-imperative-programming
 
 ###### [DThaler]
 "IoT Bridge Taxonomy", D. Thaler, submission to Internet of
