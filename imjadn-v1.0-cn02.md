@@ -195,17 +195,16 @@ Although RFC 3444 references protocols and object methods,
 [UML](https://www.omg.org/spec/UML/2.5.1/PDF) places data models
 and object-oriented programming models in separate categories:
 * Simple Classifiers (Section 10), including DataTypes (10.2), and
-* Structured Classifiers (Section 11) of many kinds, including Classes
-(10.4)
+* Structured Classifiers (Section 11), including Classes (11.4)
 
-JADN aligns with UML's layered separation of concerns: the main purpose
-of an IM is to model *data*, not managed objects, at a conceptual level.
+JADN aligns with UML's layered separation of concerns: the main purpose of an
+IM is to model *data*, not managed objects, at both conceptual and formal levels.
 This allows IMs to model any kind of data, from simple structures such as
 value ranges or coordinates, to protocol messages, to complete documents,
-independently of programming technique.
-An IM is a declarative specification that defines desired results without
-describing control flow. Within a protocol model messages exchanged over
-the wire can be defined and validated using an IM.
+without needing to address programming languages and techniques.
+An IM is a declarative specification that defines desired results (data item
+validity) without describing control flow. Within a protocol model messages
+exchanged over the wire can be defined and validated using an IM.
 
 ## 1.1 Background: Motivation for JADN
 
