@@ -2488,28 +2488,50 @@ regarding JADN.
 
 ## D.1 JADN vs. UML Primitive Data Types
 
-[[UML](#uml)] section 21 says "The PrimitiveTypes package is an
-independent package that defines a set of reusable PrimitiveTypes
-that are commonly used in the definition of metamodels."  JADN
-defines an additional Binary type (a sequence of octets/bytes)
-because it is needed. Unlike UML, JADN does not define a separate
-type for UnlimitedNatural because the Integer type can be given
-upper and lower bounds, and natural numbers are the set of
-non-negative integers.  The equivalent in JADN uses
-Integer{0..\*} for natural numbers, and the Integer value -1 for
-the "unlimited" value (*) of UnlimitedNatural. Table D-1 maps
-basic data types between UML and JADN.
+JADN has the same primitive data types as UML with two exceptions:
+* UML defines an UnlimitedNatural primitive type, JADN does not.
+* JADN defines a Binary (byte sequence) primitive type, UML does not.
 
-###### Table D-1 -- UML and JADN Basic Type Equivalence
+[[UML](#uml)] section 21 says "*The PrimitiveTypes package is an
+independent package that defines a set of reusable PrimitiveTypes
+that are commonly used in the definition of metamodels.*"
+
+UML section 7.5.3.2 says "*The lower and upper bounds for the multiplicity of a
+MultiplicityElement are specified by ValueSpecifications, which must evaluate
+to an Integer value for the lowerBound and an UnlimitedNatural value for the
+upperBound. A MultiplicityElement is unlimited if its upperBound has the
+UnlimitedNatural value of unlimited (“\*”). A MultiplicityElement is multivalued
+if it has an upperBound greater than 1 (including unbounded). A MultiplicityElement
+that is not multivalued can represent at most a single value.*"
+
+* **Natural numbers** or counting numbers are all positive integers starting at one.
+* **Whole numbers** include zero and all positive integers.
+* **Integers** include zero and positive and negative whole numbers.
+
+In JADN a multivalued element is unlimited if its type definition does not have
+an upper bound. A ValueSpecification evaluates to an Integer value for both
+lowerBound and upperBound, so a separate UnlimitedNatural primitive type is not needed.
+UpperBound is the Integer *sentinel value* zero, which is distinguishable from all
+valid natural numbers. The text representation of a ValueSpecification uses the
+string "*" for an absent upperBound.
+
+* A **sentinel value** is a predefined data value used in computer programming
+to indicate the end of a sequence or the absence of valid data.
+Care must be taken to ensure the value chosen is distinguishable from
+legitimate values to avoid conflicts within the dataset.
+
+Table D-1 lists the UML and JADN Primitive types.
+
+###### Table D-1 -- UML and JADN Primitive Type Equivalence
 
 |       UML        |      JADN      |
 |:----------------:|:--------------:|
-|     Integer      |    Integer     |
+|       ---        |     Binary     |
 |     Boolean      |    Boolean     |
-|      String      |     String     |
-| UnlimitedNatural | Integer {0..*} |
+|     Integer      |    Integer     |
 |       Real       |     Number     |
-|      _xxx_       |     Binary     |
+|      String      |     String     |
+| UnlimitedNatural | Integer {1..*} |
 
 ## D.2 Why JADN and not RDF?
 
