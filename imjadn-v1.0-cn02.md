@@ -172,7 +172,8 @@ This Committee Note (CN) describes the nature of information models and the appl
 of the *JSON Abstract Data Notation* [[JADN](#jadn-v10)] information modeling language
 in the creation and use of IMs.
 
-[RFC 3444](#rfc3444) discusses the difference between information models and data models:
+The Internet Engineering Task Force (IETF) recognized the importance of information
+models, as distinguished from data models, in [RFC 3444](#rfc3444):
 
 > * The main purpose of an IM is to model managed objects at a conceptual
 level, independent of any specific implementations or protocols used
@@ -192,8 +193,8 @@ encapsulation, as well as the possibility that object definitions
 include methods, are considered to be important.
 
 Although RFC 3444 references protocols and object methods,
-[UML](https://www.omg.org/spec/UML/2.5.1/PDF) places data models
-and object-oriented programming models in separate categories:
+[UML](#uml) places data models and object-oriented programming models
+in separate categories:
 * Simple Classifiers (Section 10), including DataTypes (10.2), and
 * Structured Classifiers (Section 11), including Classes (11.4)
 
