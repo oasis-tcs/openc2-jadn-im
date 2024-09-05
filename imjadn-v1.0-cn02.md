@@ -2492,17 +2492,18 @@ The Universal Modeling Language [UML](#uml) says in section 21:
 "*The PrimitiveTypes package is an independent package that defines a set of
 reusable PrimitiveTypes that are commonly used in the definition of metamodels.*"
 
-JADN has the same primitive data types as UML with two exceptions:
+JADN uses the same UML primitive types with two exceptions:
 * JADN defines a Binary (byte sequence) primitive type, UML does not.
 * UML defines an UnlimitedNatural primitive type, JADN does not.
 
-Natural numbers (integers greater than zero) are a subset of the Integer primitive
-type, so there is no need for a separate UnlimitedNatural primitive.
+Natural numbers (integers greater than zero) are a subset of integers,
+so there is no need for a separate UnlimitedNatural primitive type.
 A JADN multivalued element may have an unlimited number of values if its type
-definition does not have an upper bound. JADN uses the Integer *sentinel value*
-zero, which is distinguishable from all valid natural numbers, to indicate
-an unspecified upper bound. Text representations of an unspecified upper
-bound typically use the string "*".
+definition does not have a multiplicity upper bound. JADN defines the Integer
+*sentinel value* zero, which is distinguishable from all valid natural numbers,
+to indicates an unspecified upper bound in a multiplicity range.
+By convention text representations of a multiplicity range without an
+upper bound use the string "*".
 
 * A **sentinel value** is a predefined data value used to indicate the end
 of a sequence or the absence of valid data.
