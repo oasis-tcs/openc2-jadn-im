@@ -2491,19 +2491,20 @@ regarding JADN.
 The Universal Modeling Language [UML](#uml) says in section 21:
 "*The PrimitiveTypes package is an independent package that defines a set of
 reusable PrimitiveTypes that are commonly used in the definition of metamodels.*"
+and takes the position that the set of natural numbers includes the value zero.
 
 JADN uses the same UML primitive types with two exceptions:
 * JADN defines a Binary (byte sequence) primitive type, UML does not.
 * UML defines an UnlimitedNatural primitive type, JADN does not.
 
-Natural numbers (integers greater than zero) are a subset of integers,
-so there is no need for a separate UnlimitedNatural primitive type.
+UML natural numbers (integers greater than or equal to zero) are a subset of
+integers, so there is no need for a separate UnlimitedNatural primitive type.
 A JADN multivalued element may have an unlimited number of values if its type
-definition does not have a multiplicity upper bound. JADN defines the Integer
-*sentinel value* zero, which is distinguishable from all valid natural numbers,
-to indicates an unspecified upper bound in a multiplicity range.
-By convention text representations of a multiplicity range without an
-upper bound use the string "*".
+definition does not have a multiplicity upper bound. JADN assigns the Integer
+*sentinel value* -1, which is distinguished from all UML natural numbers,
+to indicate an unspecified upper bound in a multiplicity range.
+By convention text representations of a multiplicity range use the character "*"
+to indicate an unspecified upper bound.
 
 * A **sentinel value** is a predefined data value used to indicate the end
 of a sequence or the absence of valid data.
@@ -2519,7 +2520,7 @@ Table D-1 lists the UML and JADN Primitive types.
 |     Integer      |    Integer     |
 |       Real       |     Number     |
 |      String      |     String     |
-| UnlimitedNatural | Integer {1..*} |
+| UnlimitedNatural | Integer {0..*} |
 
 ## D.2 Why JADN and not RDF?
 
