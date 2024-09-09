@@ -2208,11 +2208,11 @@ Artists have a name and one or more associated instruments that
 they perform on.
 
 ```
-Artist = Record                                   // interesting information about the performers
-   1 artist_name      String                      // who is this person
-   2 instruments      Instrument unique [1..*]    // and what do they play
+Artist = Record                                 // interesting information about the performers
+   1 artist_name      String                    // who is this person
+   2 instruments      Instrument unique [1..*]  // and what do they play
 
-Instrument = Enumerated                           // collection of instruments (non-exhaustive)
+Instrument = Enumerated                         // collection of instruments (non-exhaustive)
    1 vocals
    2 guitar
    3 bass
