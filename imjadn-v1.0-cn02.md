@@ -207,11 +207,15 @@ An IM is a [declarative](#declarative) specification that defines desired result
 (data item validity) without describing control flow. Protocol models can use
 IMs to define and validate messages exchanged over the wire.
 
-Abstraction means equivalence; the following statements are equivalent:
+Because abstraction establishes a correspondence between logical values and
+concrete representations, information modeling can be described as a process of
+synthesis starting with conceptual/logical design leaving details for later,
+or analysis starting with existing data to find patterns and meanings:
 * An IM defines the essential content of data artifacts used in computing
 independently of how they are represented for processing, communication, or storage.
-* The main purpose of an IM is to define logical equivalence of data artifacts;
-all representations of the same abstract value are equivalent.
+* An IM defines logical equivalence of data artifacts such that all representations
+of the same logical value are equivalent and data can be converted from any
+representation to any other without loss of information.
 
 ## 1.1 Background: Motivation for JADN
 
