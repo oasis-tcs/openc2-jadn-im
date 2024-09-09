@@ -2230,20 +2230,20 @@ audio data.  Multiple digital audio  formats are supported for
 the audio content.
 
 ```
-Track = Record                                          // for each track there's a file with the audio and a metadata record
-   1 location         File-Path                         // path to the audio file location in local storage
-   2 metadata         TrackInfo                         // description of the track
+Track = Record                              // for each track there's a file with the audio and a metadata record
+   1 location         File-Path             // path to the audio file location in local storage
+   2 metadata         TrackInfo             // description of the track
 
-TrackInfo = Record                                      // information about the individual audio tracks
-   1 t_number         Number                            // track sequence number
-   2 title            String                            // track title
-   3 length           Integer{1..*}                     // length of track in seconds; anticipated user display is mm:ss
-   4 audio_format     Audio-Format                      // the all important content
-   5 featured         Artist unique [0..*]              // important guest performers
-   6 track_art        Image optional                    // track can have individual artwork
+TrackInfo = Record                          // information about the individual audio tracks
+   1 t_number         Number                // track sequence number
+   2 title            String                // track title
+   3 length           Integer{1..*}         // length of track in seconds; anticipated user display is mm:ss
+   4 audio_format     Audio-Format          // the all important content
+   5 featured         Artist unique [0..*]  // important guest performers
+   6 track_art        Image optional        // track can have individual artwork
    7 genre            Genre
 
-Audio-Format = Enumerated                               // can only be one, but can extend list
+Audio-Format = Enumerated                   // can only be one, but can extend list
    1 MP3
    2 OGG
    3 FLAC
@@ -2252,7 +2252,7 @@ Audio-Format = Enumerated                               // can only be one, but 
    6 WMA
    7 WAV
 
-Genre = Enumerated                                      // Enumeration of common genres
+Genre = Enumerated                          // Enumeration of common genres
    1 rock
    2 jazz
    3 hip_hop
@@ -2260,7 +2260,8 @@ Genre = Enumerated                                      // Enumeration of common
    5 folk_country_world
    6 classical
 
-File-Path = String                                      // local storage location of file with directory path from root, filename, and extension
+File-Path = String                          // local storage location of file with directory path
+                                            // from root, filename, and extension
 ```
 
 The entity relationship diagram in Figure 3-10 illustrates how
