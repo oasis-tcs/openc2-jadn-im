@@ -2174,12 +2174,10 @@ Barcode = String{pattern="^\d{12}$"}   // A UPC-A barcode is 12 digits
 ```
 
 Each album is then represented by a record of artist, title,
-publication data, cover art and an array of individual audio
-tracks. Multiple digital image formats are supported for the
+publication data, cover art, an array of individual audio
+tracks, and a count of the number of tracks. Multiple digital image formats are supported for the
 cover art. Note that this example also contains multiple examples
 of anonymous type definitions as explained in [Section 3.1.6](#316-anonymous-type-definitions).
-
-> *NOTE: add link to new section 3.l.6 after PRs are merged.*
 
 ```
 Album = Record                          // model for the album
