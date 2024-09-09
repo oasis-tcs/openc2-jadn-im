@@ -172,8 +172,8 @@ This Committee Note (CN) describes the nature of information models and the appl
 of the *JSON Abstract Data Notation* [[JADN](#jadn-v10)] information modeling language
 in the creation and use of IMs.
 
-The Internet Engineering Task Force (IETF) recognized the importance of information
-models, as distinguished from data models, in [RFC 3444](#rfc3444):
+Internet Engineering Task Force (IETF) [RFC 3444](#rfc3444),
+"On the Difference between Information Models and Data Models", says:
 
 > * The main purpose of an IM is to model managed objects at a conceptual
 level, independent of any specific implementations or protocols used
@@ -198,14 +198,20 @@ in separate categories:
 * Simple Classifiers (Section 10), including DataTypes (10.2), and
 * Structured Classifiers (Section 11), including Classes (11.4)
 
-JADN aligns with UML's layered separation of concerns: the main purpose of an
+JADN is aligned with UML's layered separation of concerns: the main purpose of an
 IM is to model *data*, not managed objects, at both conceptual and formal levels.
 This allows IMs to model any kind of data, from simple structures such as
 value ranges or coordinates, to protocol messages, to complete documents,
 without needing to address programming languages and techniques.
 An IM is a [declarative](#declarative) specification that defines desired results
-(data item validity) without describing control flow. Within a protocol model messages
-exchanged over the wire can be defined and validated using an IM.
+(data item validity) without describing control flow. Protocol models can use
+IMs to define and validate messages exchanged over the wire.
+
+Abstraction means equivalence; the following statements are equivalent:
+* An IM defines the essential content of data artifacts used in computing
+independently of how they are represented for processing, communication, or storage.
+* The main purpose of an IM is to define logical equivalence of data artifacts;
+all representations of the same abstract value are equivalent.
 
 ## 1.1 Background: Motivation for JADN
 
