@@ -2143,14 +2143,14 @@ Additional examples may be added in future versions of the CN.
 
 This example shows a simple IM for a digital music library, and
 can be considered a "Hello World" example of applying the
-concepts described above. The components of the library are
-described here along with the associated JIDL. The ERD for the
+concepts described above. The components of the library are presented
+here in JIDL form along with brief descriptions. The ERD for the
 library appears at the end of this section. The complete,
 consolidated JADN, JIDL, and property tables can be found in
-[Appendix E.1](#e1-music-library).
+[Appendix&nbsp;E.1](#e1-music-library).
 
 The model assumes that each track is stored as a file with its
-audio in one of several formats. The library organizes tracks
+audio in one of several recognized formats. The library organizes tracks
 into albums, which are associated with a UPC-A barcode (a
 12-digit number). The model is loosely based on the ID3 metadata
 used with MP3 audio files. 
@@ -2173,11 +2173,14 @@ Library = MapOf(Barcode, Album){1..*}  // Top level of the library is a map of C
 Barcode = String{pattern="^\d{12}$"}   // A UPC-A barcode is 12 digits
 ```
 
-Each album is then represented by a record of artist, title,
-publication data, cover art, an array of individual audio
-tracks, and a count of the number of tracks. Multiple digital image formats are supported for the
+Each album is then represented by a record containing the album's artist, title,
+publication data, cover art, total track count and an array of individual audio
+tracks. Multiple digital image formats are supported for the
 cover art. Note that this example also contains multiple examples
-of anonymous type definitions as explained in [Section 3.1.6](#316-anonymous-type-definitions).
+of anonymous type definitions as explained in [Section&nbsp;3.1.6](#316-anonymous-type-definitions).
+
+> NOTE: should expand with one or two examples of anonymous definitions and how
+> they'll be handled by the JADN tooling.
 
 ```
 Album = Record                          // model for the album
@@ -2223,8 +2226,8 @@ Instrument = Enumerated                         // collection of instruments (no
 ```
 
 Each track is stored in a file, and has a track number within the
-album, title, length, potentially "featured" artists, and the
-audio data.  Multiple digital audio  formats are supported for
+album, title, length, genre, potentially "featured" artists, the
+audio data, and optional individual track art.  Multiple digital audio formats are supported for
 the audio content.
 
 ```
@@ -2267,7 +2270,7 @@ the model components connect.
 
 ###### Figure 3-11 -- Music Library Example ERD
 
-<img src="images/music-database-gv.png" height="720px">
+<img src="images/music-library-v1_1_gvz.png" height="720px">
 
 -------
 # 4 Advanced Techniques
