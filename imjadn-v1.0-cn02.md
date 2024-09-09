@@ -2185,7 +2185,7 @@ Album = Record                          // model for the album
    2 title            String            // commonly known title for this album
    3 pub_data         Publication-Data  // metadata about album publication
    4 tracks           Track [1..*]      // individual track descriptions
-   5 total_tracks     Integer{1..*}
+   5 total_tracks     Integer{1..*}     // total number of tracks on this album
    6 cover_art        Image optional    // cover art image for this album
 
 Publication-Data = Record               // who and when of publication
