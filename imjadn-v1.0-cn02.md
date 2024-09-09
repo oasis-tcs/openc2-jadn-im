@@ -2182,24 +2182,26 @@ of anonymous type definitions as explained in [Section 3.1.6](#316-anonymous-typ
 > *NOTE: add link to new section 3.l.6 after PRs are merged.*
 
 ```
-Album = Record                                    // model for the album
-   1 artist           Artist                      // artist associated with this album
-   2 title            String                      // commonly known title for this album
-   3 pub_data         Publication-Data            // metadata about album publication
-   4 tracks           Track [1..*]                // individual track descriptions
-   5 cover_art        Image optional              // cover art image for this album
+Album = Record                          // model for the album
+   1 artist           Artist            // artist associated with this album
+   2 title            String            // commonly known title for this album
+   3 pub_data         Publication-Data  // metadata about album publication
+   4 tracks           Track [1..*]      // individual track descriptions
+   5 total_tracks     Integer{1..*}
+   6 cover_art        Image optional    // cover art image for this album
 
-Publication-Data = Record                         // who and when of publication
-   1 label            String                      // name of record label
-   2 rel_date         String /date                // and when did they let this drop
+Publication-Data = Record               // who and when of publication
+   1 publisher        String            // record label that released this album
+   2 release_date     String /date      // and when did they let this drop
 
-Image = Record                                    // pretty picture for the album or track
-   1 image_format     Image-Format                // what type of image file?
-   2 image_content    Binary                      // the image data in the identified format
+Image = Record                          // pretty picture for the album or track
+   1 image_format     Image-Format      // what type of image file?
+   2 image_content    Binary            // the image data in the identified format
 
-Image-Format = Enumerated                         // can only be one, but can extend list
+Image-Format = Enumerated               // can only be one, but can extend list
    1 PNG
    2 JPG
+   3 GIF
 ```
 
 Artists have a name and one or more associated instruments that
