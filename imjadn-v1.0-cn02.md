@@ -203,7 +203,7 @@ IM is to model *data*, not managed objects, at both conceptual and formal levels
 This allows IMs to model any kind of data, from simple structures such as
 value ranges or coordinates, to protocol messages, to complete documents,
 without needing to address programming languages and techniques. An IM is a
-[declarative](#d2-declarative-specifications-and-domain-specific-languages)
+[declarative](#d1-declarative-specifications)
 specification that defines desired outcomes (data item validity and equivalence)
 without describing control flow.
 Protocol models can use IMs to define and validate messages exchanged over the wire.
