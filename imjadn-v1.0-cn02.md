@@ -202,10 +202,11 @@ JADN is aligned with UML's layered separation of concerns: the main purpose of a
 IM is to model *data*, not managed objects, at both conceptual and formal levels.
 This allows IMs to model any kind of data, from simple structures such as
 value ranges or coordinates, to protocol messages, to complete documents,
-without needing to address programming languages and techniques.
-An IM is a [declarative](#declarative) specification that defines desired results
-(data item validity) without describing control flow. Protocol models can use
-IMs to define and validate messages exchanged over the wire.
+without needing to address programming languages and techniques. An IM is a
+[declarative](#d2-declarative-specifications-and-domain-specific-languages)
+specification that defines desired outcomes (data item validity and equivalence)
+without describing control flow.
+Protocol models can use IMs to define and validate messages exchanged over the wire.
 
 Because abstraction establishes a correspondence between logical values and
 concrete representations, information modeling can be described as a process of
@@ -2376,8 +2377,8 @@ While any hyperlinks included in this appendix were valid at the time of publica
 Recommendation ITU-T X.680 (2021) *Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation* 
 
 ###### [Declarative]
-"Declarative vs. imperative programming", Educative blog, Daniel Chang, May 29 2024,
-https://www.educative.io/blog/declarative-vs-imperative-programming
+"The Data Engineer's Guide to Declarative vs Imperative for Data",
+https://www.dataops.live/the-data-engineers-guide-to-declarative-vs-imperative-for-data
 
 ###### [DThaler]
 "IoT Bridge Taxonomy", D. Thaler, submission to Internet of
@@ -2556,10 +2557,41 @@ basic data types between UML and JADN.
 |       Real       |     Number     |
 |      _xxx_       |     Binary     |
 
+## D.1 Declarative Specifications
+
+*Editor's Note: Ignore numbering; Primitives will be moved into document body. Declarative
+may as well, or FAQ appendix may be renamed to something like "Notes"*
+
+The introduction states: "An IM is a declarative specification that defines desired outcomes
+(data item validity and equivalence) without describing control flow."
+But what does "declarative" mean in practice?
+
+The [DataOps Guide](#declarative) is a tutorial on the difference between declarative
+and imperative approaches, as well as the difference between those approaches when applied
+to software programming vs. database management. It uses simple relational database
+tables for illustration, but declarative schemas are also used with more
+flexible NoSQL databases such as Elasticsearch and MongoDB, graph databases including
+Neo4j, and non-database artifacts such as protocol messages and documents.
+
+The *Guide* points out that:
+> A declarative approach is an abstraction based on our interaction with the system.
+> When you look under the hood, all systems depend on a set of [imperative] instructions.
+> Instead of the system depending on you to supply those instructions, they are predefined. 
+
+An information model combines the abstraction of declarative specifications with
+the abstraction of separating logical datatypes from concrete representations.
+Its desired outcomes are:
+* a classification decision: given a data value, is it an instance of an abstract datatype?
+* an equality comparison decision: given two instances of the same datatype,
+do they have the same logical value?
+
+Its predefined instructions implement the behavior of its built-in datatypes,
+which can be extended with application-specific imperative validation
+and translation functions.
+
 ## D.2 Why JADN and not RDF?
 
 This section discusses the relationship between JADN and RDF, and why RDF does not serve the purpose of an Information Model
-
 
 ### Comment
 The following
