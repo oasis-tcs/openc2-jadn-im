@@ -189,13 +189,55 @@ For complete copyright information please see the full Notices section in [Appen
 
 # 1 Introduction
 
-An Information Model (IM) defines the essential content of
-messages used in computing, independently of how those messages
-are represented (i.e., [serialized](#24-serialization)) for
-communication or storage. This Committee Note (CN) describes the
-nature of an IM, and the application of the *JSON Abstract Data
-Notation* [[JADN](#jadn-v10)] information modeling language in the
-creation and use of IMs.
+This Committee Note (CN) describes the nature of information models and the application
+of the *JSON Abstract Data Notation* [[JADN](#jadn-v10)] information modeling language
+in the creation and use of IMs.
+
+Internet Engineering Task Force (IETF) [RFC 3444](#rfc3444),
+"On the Difference between Information Models and Data Models", says:
+
+> * The main purpose of an IM is to model managed objects at a conceptual
+level, independent of any specific implementations or protocols used
+to transport the data.  The degree of specificity (or detail) of the
+abstractions defined in the IM depends on the modeling needs of its
+designers.
+> * The terms "conceptual models" and "abstract models", which are often
+used in the literature, relate to IMs.  IMs can be implemented in different
+ways and mapped on different protocols.
+> * IMs can be defined in an informal way, using natural languages such
+as English. Alternatively, IMs can be defined using a formal language
+or a semi-formal structured language.  One of the possibilities to formally
+specify IMs is to use class diagrams of the Unified Modeling Language (UML).
+> * In general, it seems advisable to use object-oriented techniques to
+describe an IM.  In particular, the notions of abstraction and
+encapsulation, as well as the possibility that object definitions
+include methods, are considered to be important.
+
+Although RFC 3444 references protocols and object methods,
+[UML](#uml) places data models and object-oriented programming models
+in separate categories:
+* Simple Classifiers (Section 10), including DataTypes (10.2), and
+* Structured Classifiers (Section 11), including Classes (11.4)
+
+JADN is aligned with UML's layered separation of concerns: the main purpose of an
+IM is to model *data*, not managed objects, at both conceptual and formal levels.
+This allows IMs to model any kind of data, from simple structures such as
+value ranges or coordinates, to protocol messages, to complete documents,
+without needing to address programming languages and techniques. An IM is a
+[declarative](#d1-declarative-specifications)
+specification that defines desired outcomes (data item validity and equivalence)
+without describing control flow.
+Protocol models can use IMs to define and validate messages exchanged over the wire.
+
+Because abstraction establishes a correspondence between logical values and
+concrete representations, information modeling can be described as a process of
+synthesis starting with conceptual/logical design leaving details for later,
+or analysis starting with existing data to find patterns and meanings:
+* An IM defines the essential content of data artifacts used in computing
+independently of how they are represented for processing, communication, or storage.
+* An IM defines logical equivalence of data artifacts such that all representations
+of the same logical value are equivalent and data can be converted from any
+representation to any other without loss of information.
 
 ## 1.1 Background: Motivation for JADN
 
@@ -2355,6 +2397,10 @@ While any hyperlinks included in this appendix were valid at the time of publica
 ###### [ASN.1]
 Recommendation ITU-T X.680 (2021) *Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation* 
 
+###### [Declarative]
+"The Data Engineer's Guide to Declarative vs Imperative for Data",
+https://www.dataops.live/the-data-engineers-guide-to-declarative-vs-imperative-for-data
+
 ###### [DThaler]
 "IoT Bridge Taxonomy", D. Thaler, submission to Internet of
 Things (IoT) Semantic Interoperability (IOTSI) Workshop 2016,
@@ -2532,10 +2578,41 @@ basic data types between UML and JADN.
 |       Real       |     Number     |
 |      _xxx_       |     Binary     |
 
+## D.1 Declarative Specifications
+
+*Editor's Note: Ignore numbering; Primitives will be moved into document body. Declarative
+may as well, or FAQ appendix may be renamed to something like "Notes"*
+
+The introduction states: "An IM is a declarative specification that defines desired outcomes
+(data item validity and equivalence) without describing control flow."
+But what does "declarative" mean in practice?
+
+The [DataOps Guide](#declarative) is a tutorial on the difference between declarative
+and imperative approaches, as well as the difference between those approaches when applied
+to software programming vs. database management. It uses simple relational database
+tables for illustration, but declarative schemas are also used with more
+flexible NoSQL databases such as Elasticsearch and MongoDB, graph databases including
+Neo4j, and non-database artifacts such as protocol messages and documents.
+
+The *Guide* points out that:
+> A declarative approach is an abstraction based on our interaction with the system.
+> When you look under the hood, all systems depend on a set of [imperative] instructions.
+> Instead of the system depending on you to supply those instructions, they are predefined. 
+
+An information model combines the abstraction of declarative specifications with
+the abstraction of separating logical datatypes from concrete representations.
+Its desired outcomes are:
+* a classification decision: given a data value, is it an instance of an abstract datatype?
+* an equality comparison decision: given two instances of the same datatype,
+do they have the same logical value?
+
+Its predefined instructions implement the behavior of its built-in datatypes,
+which can be extended with application-specific imperative validation
+and translation functions.
+
 ## D.2 Why JADN and not RDF?
 
 This section discusses the relationship between JADN and RDF, and why RDF does not serve the purpose of an Information Model
-
 
 ### Comment
 The following
