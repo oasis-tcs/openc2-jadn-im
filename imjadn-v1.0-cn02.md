@@ -181,7 +181,7 @@ For complete copyright information please see the full Notices section in [Appen
  - [Table 3-7 -- Integer Type Format Options](#table-3-7----integer-type-format-options)
  - [Table 3-8 -- Number Type Format Options](#table-3-8----number-type-format-options)
  - [Table 3-9 -- Array Type Format Options](#table-3-9----array-type-format-options)
- - [Table D-1 -- UML and JADN Basic Type Equivalence](#table-d-1----uml-and-jadn-basic-type-equivalence)
+ - [Table D-1 -- UML and JADN Basic Type Equivalence](#table-d-1----uml-and-jadn-primitive-type-equivalence)
 
 -------
 
@@ -2555,28 +2555,39 @@ regarding JADN.
 
 ## D.1 JADN vs. UML Primitive Data Types
 
-[[UML](#uml)] section 21 says "The PrimitiveTypes package is an
-independent package that defines a set of reusable PrimitiveTypes
-that are commonly used in the definition of metamodels."  JADN
-defines an additional Binary type (a sequence of octets/bytes)
-because it is needed. Unlike UML, JADN does not define a separate
-type for UnlimitedNatural because the Integer type can be given
-upper and lower bounds, and natural numbers are the set of
-non-negative integers.  The equivalent in JADN uses
-Integer{0..\*} for natural numbers, and the Integer value -1 for
-the "unlimited" value (*) of UnlimitedNatural. Table D-1 maps
-basic data types between UML and JADN.
+The Universal Modeling Language [UML](#uml) says in section 21:
+"*The PrimitiveTypes package is an independent package that defines a set of
+reusable PrimitiveTypes that are commonly used in the definition of metamodels.*"
+and takes the position that the set of natural numbers includes the value zero.
 
-###### Table D-1 -- UML and JADN Basic Type Equivalence
+JADN uses the same UML primitive types with two exceptions:
+* JADN defines a Binary (byte sequence) primitive type, UML does not.
+* UML defines an UnlimitedNatural primitive type, JADN does not.
+
+UML natural numbers (integers greater than or equal to zero) are a subset of
+integers, so there is no need for a separate UnlimitedNatural primitive type.
+A JADN multivalued element may have an unlimited number of values if its type
+definition does not have a multiplicity upper bound. JADN assigns the Integer
+*sentinel value* -1, which is distinguished from all UML natural numbers,
+to indicate an unspecified upper bound in a multiplicity range.
+By convention text representations of a multiplicity range use the character "*"
+to indicate an unspecified upper bound.
+
+* A **sentinel value** is a predefined data value used to indicate the end
+of a sequence or the absence of valid data.
+
+Table D-1 lists the UML and JADN Primitive types.
+
+###### Table D-1 -- UML and JADN Primitive Type Equivalence
 
 |       UML        |      JADN      |
 |:----------------:|:--------------:|
-|     Integer      |    Integer     |
+|       ---        |     Binary     |
 |     Boolean      |    Boolean     |
+|     Integer      |    Integer     |
+|       Real       |     Number     |
 |      String      |     String     |
 | UnlimitedNatural | Integer {0..*} |
-|       Real       |     Number     |
-|      _xxx_       |     Binary     |
 
 ## D.1 Declarative Specifications
 
