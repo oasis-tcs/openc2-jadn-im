@@ -43,28 +43,49 @@ This document is related to:
 Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 
 #### Abstract:
-Information models (IMs) are used to define and generate physical data models, validate information instances, and enable lossless translation across data formats. JSON Abstract Data Notation (JADN) is a UML-based information modeling language that defines data structure independently of data format. This Committee Note describes the use of IMs, explains how to construct IMs using JADN, and contrasts IMs with other modeling approaches, such as Entity-Relationship models for databases, and knowledge models / ontologies.
+
+An Information Model (IM) defines the essential content of data used in computing,
+independently of how it is represented for processing, communication or storage.
+Information modeling is an abstraction process, constructing abstract data types to
+define and validate essential content and translate it across representations without loss.
+JSON Abstract Data Notation (JADN) is an information modeling language based
+on information theory principles and UML data types.
+This Committee Note explains how to construct IMs using JADN, represent them
+in various formats such as formal languages and entity-relationship diagrams,
+contrast them with other IM languages such as ASN.1,
+and integrate them with knowledge graphs and concrete data models.
 
 #### Status:
 This is a Non-Standards Track Work Product. The patent provisions of the OASIS IPR Policy do not apply.
 
-This document was last revised or approved by the OASIS Open Command and Control (OpenC2) TC on the above date. The level of approval is also listed above. Check the "Latest stage" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2#technical.
+This document was last revised or approved by the OASIS Open Command and Control
+(OpenC2) TC on the above date.
+The level of approval is also listed above. Check the "Latest stage" location
+noted above for possible later revisions of this document.
+Any other numbered Versions and other technical work produced by the Technical
+Committee (TC) are listed at https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2#technical.
 
-TC members should send comments on this document to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/openc2/.
+TC members should send comments on this document to the TC's email list.
+Others should send comments to the TC's public comment list, after
+subscribing to it by following the instructions at the "Send A Comment"
+button on the TC's web page at https://www.oasis-open.org/committees/openc2/.
 
 #### Citation format:
 When referencing this document the following citation format should be used:
 
 **[IM-JADN-v1.0]**
 
-_Information Modeling with JADN Version 1.0_. Edited by David Kemp. 19 April 2023. OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.html. Latest stage: https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html.
+_Information Modeling with JADN Version 1.0_. Edited by David Kemp. 19 April 2023.
+OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.html.
+Latest stage: https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html.
 
 #### Notices
 Copyright &copy; OASIS Open 2023. All Rights Reserved.
 
 Distributed under the terms of the OASIS [IPR Policy](https://www.oasis-open.org/policies-guidelines/ipr/).
 
-The name "OASIS" is a trademark of [OASIS](https://www.oasis-open.org/), the owner and developer of this specification, and should be used only to refer to the organization and its official outputs.
+The name "OASIS" is a trademark of [OASIS](https://www.oasis-open.org/), the owner and developer of this specification,
+and should be used only to refer to the organization and its official outputs.
 
 For complete copyright information please see the full Notices section in [Appendix F](#appendix-f-notices).
 
