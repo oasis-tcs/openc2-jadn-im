@@ -384,7 +384,8 @@ kinds of simple and structured classifiers, but the only kind used
 by JADN is the simple Datatype. Given a data value, a datatype
 classifier determines whether the value is an instance of a type,
 indicating both whether the data is valid, and if so, its logical
-type(s).
+type(s). Two data values are equivalent if they are instances of
+the same datatype and their logical values are equal.
 
  - **Directed Acyclic Graph:** A directed acyclic graph (DAG) is
    a directed graph with no directed cycles. That is, it consists
