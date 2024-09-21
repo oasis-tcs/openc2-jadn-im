@@ -46,10 +46,11 @@ Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 
 An Information Model (IM) defines the essential content of data used in computing,
 independently of how it is represented for processing, communication or storage.
-Information modeling is an abstraction process, constructing abstract data types to
-define and validate essential content and translate it across representations without loss.
-JSON Abstract Data Notation (JADN) is an information modeling language based
-on information theory principles and UML data types.
+JSON Abstract Data Notation (JADN) uses Unified Modeling Language (UML) datatypes
+to both express the meaning of data items at a conceptual level and formally
+classify data values as instances of logical types to validate their essential content.
+It uses information theory to define logical equivalence, allowing translation
+of essential content across representations without loss.
 This Committee Note explains how to construct IMs using JADN, represent them
 in various formats such as formal languages and entity-relationship diagrams,
 contrast them with other IM languages such as ASN.1,
@@ -185,8 +186,6 @@ For complete copyright information please see the full Notices section in [Appen
 
 -------
 
-<!-- Insert a "line rule" (three or more hyphens alone on a new line, following a blank line) before each major section. This is used to generate a page break in the PDF format. -->
-
 # 1 Introduction
 
 This Committee Note (CN) describes the nature of information models and the application
@@ -230,13 +229,13 @@ without describing control flow.
 Protocol models can use IMs to define and validate messages exchanged over the wire.
 
 Because abstraction establishes a correspondence between logical values and
-concrete representations, information modeling can be described as a process of
-synthesis starting with conceptual/logical design leaving details for later,
-or analysis starting with existing data to find patterns and meanings:
+concrete representations, information modeling can be used for **synthesis**
+starting with conceptual and logical design while leaving representation details
+for later, or for **analysis** starting with existing data to find patterns and meaning:
 * An IM defines the essential content of data artifacts used in computing
 independently of how they are represented for processing, communication, or storage.
 * An IM defines logical equivalence of data artifacts such that all representations
-of the same logical value are equivalent and data can be converted from any
+of a logical value are equivalent and data can be converted from any
 representation to any other without loss of information.
 
 ## 1.1 Background: Motivation for JADN
@@ -378,6 +377,15 @@ This CN uses the definitions contained in the [[JADN
 Specification](#jadn-v10)], section 1.2.1. The following
 additional terms are defined for this document:
 
+ - **Classifier:** The core organizational concept of UML is the
+classifier, used to classify different kinds of values according
+to their features. UML is a complex specification defining many
+kinds of simple and structured classifiers, but the only kind used
+by JADN is the simple Datatype. Given a data value, a datatype
+classifier determines whether the value is an instance of a type,
+indicating both whether the data is valid, and if so, its logical
+type(s).
+
  - **Directed Acyclic Graph:** A directed acyclic graph (DAG) is
    a directed graph with no directed cycles. That is, it consists
    of vertices and edges (also called arcs), with each edge
@@ -394,10 +402,6 @@ additional terms are defined for this document:
    specifies relationships that can exist between entities
    (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
 
- - **Schema:**  *(markup languages)* A formal description of
-   data, data types, and data file structures, such as XML
-   schemas for XML files.<br>(Wiktionary, https://en.wiktionary.org/wiki/schema#Noun, definition #3)
-
  - **Ontology:** (information science) A representation, formal
    naming, and definition of the categories, properties, and
    relations between the concepts, data, and entities that
@@ -406,6 +410,10 @@ additional terms are defined for this document:
    subject area and how they are related, by defining a set of
    concepts and categories that represent the subject.<br>
    (Wikipedia, https://en.wikipedia.org/wiki/Ontology_(computer_science))
+
+- **Schema:**  *(markup languages)* A formal description of
+   data, data types, and data file structures, such as XML
+   schemas for XML files.<br>(Wiktionary, https://en.wiktionary.org/wiki/schema#Noun, definition #3)
 
 -------
 
