@@ -260,7 +260,7 @@ to a lack of information modeling:
 
 [[RFC 8477](https://www.rfc-editor.org/info/rfc8477)] recapitulates RFC 3444 terminology:
 
-- **Information Model** -- An information model defines an
+> - **Information Model** -- An information model defines an
      environment at the highest level of abstraction and
      expresses the desired functionality. Information models can
      be defined informally (e.g., in prose) or more formally 
@@ -268,7 +268,7 @@ to a lack of information modeling:
      Relationship Diagrams, etc.).  Implementation details are
      hidden.
 
-- **Data Model** -- A data model defines concrete data
+> - **Data Model** -- A data model defines concrete data
      representations *at a lower level of abstraction, including
      implementation- and protocol-specific details*.  Some
      examples are SNMP Management Information Base (MIB)
