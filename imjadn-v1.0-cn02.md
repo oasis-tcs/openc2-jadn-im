@@ -46,11 +46,11 @@ Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 
 An Information Model (IM) defines the essential content of data used in computing,
 independently of how it is represented for processing, communication or storage.
-JSON Abstract Data Notation (JADN) uses Unified Modeling Language (UML) datatypes
-to both express the meaning of data items at a conceptual level and formally
-classify data values as instances of logical types to validate their essential content.
+JSON Abstract Data Notation (JADN) is an information modeling language based on
+Unified Modeling Language (UML) datatypes designed to to both express the meaning
+of data items at a conceptual level and formally type and validate their essential content.
 It uses information theory to define logical equivalence, allowing translation
-of essential content across representations without loss.
+of essential content across a wide range of representations without loss.
 This Committee Note explains how to construct IMs using JADN, represent them
 in various formats such as formal languages and entity-relationship diagrams,
 contrast them with other IM languages such as ASN.1,
@@ -192,6 +192,13 @@ This Committee Note (CN) describes the nature of information models and the appl
 of the *JSON Abstract Data Notation* [[JADN](#jadn-v10)] information modeling language
 in the creation and use of IMs.
 
+## 1.1 Background: Motivation for JADN
+
+This section provides the background for the creation of JADN as
+an information modeling language for a spectrum of applications.
+
+### 1.1.1 Information Models and Data Models
+
 Internet Engineering Task Force (IETF) [RFC 3444](#rfc3444),
 "On the Difference between Information Models and Data Models", says:
 
@@ -208,11 +215,11 @@ as English. Alternatively, IMs can be defined using a formal language
 or a semi-formal structured language.  One of the possibilities to formally
 specify IMs is to use class diagrams of the Unified Modeling Language (UML).
 > * In general, it seems advisable to use object-oriented techniques to
-describe an IM.  In particular, the notions of abstraction and
+describe an IM. In particular, the notions of abstraction and
 encapsulation, as well as the possibility that object definitions
 include methods, are considered to be important.
 
-Although RFC 3444 references protocols and object methods,
+Although RFC 3444 references protocols and object methods, the Unified Modeling Language
 [UML](#uml) places data models and object-oriented programming models
 in separate categories:
 * Simple Classifiers (Section 10), including DataTypes (10.2), and
@@ -220,10 +227,10 @@ in separate categories:
 
 JADN is aligned with UML's layered separation of concerns: the main purpose of an
 IM is to model *data*, not managed objects, at both conceptual and formal levels.
-This allows IMs to model any kind of data, from simple structures such as
-value ranges or coordinates, to protocol messages, to complete documents,
-without needing to address programming languages and techniques. An IM is a
-[declarative](#d1-declarative-specifications)
+This allows IMs to model any kind of data, from simple structures such as value ranges
+or coordinates, to protocol messages, APIs, and method signatures, to complete documents,
+without the complexity of modeling programming languages and techniques.
+An IM is a [declarative](#d1-declarative-specifications)
 specification that defines desired outcomes (data item validity and equivalence)
 without describing control flow.
 Protocol models can use IMs to define and validate messages exchanged over the wire.
@@ -238,116 +245,59 @@ independently of how they are represented for processing, communication, or stor
 of a logical value are equivalent and data can be converted from any
 representation to any other without loss of information.
 
-## 1.1 Background: Motivation for JADN
-
-This section provides the background for the creation of JADN as
-an information modeling language for a spectrum of applications.
-
-### 1.1.1 OpenC2 and JADN
-
-The *OpenC2 Architecture
-Specification* [[OpenC2-Arch-v1.0](#openc2-arch-v10)]
-abstract defines the objective of OpenC2:
-
-> _Open Command and Control (OpenC2) is a concise and extensible
-> language to enable machine-to-machine communications for
-> purposes of command and control of cyber defense components,
-> subsystems and/or systems in a manner that is agnostic of the
-> underlying products, technologies, transport mechanisms or
-> other aspects of the implementation._
-
-The OASIS [OpenC2 Technical Committee
-(TC)](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2)
-recognized the need to define the OpenC2 Language [[OpenC2-Lang-v1.0](#openc2-lang-v10)]
-in an implementation-independent manner in order to achieve the
-project's goals to be "agnostic of the underlying products,
-technologies, transport mechanisms or other aspects of the
-implementation". In response, the TC created an information
-modeling language, _JSON Abstract Data Notation_ [[JADN](#jadn-v10)],
-to support the information modeling needed to define OpenC2 in
-that manner. 
-
-It is important to recognize that while JADN was created to
-facilitate the development of OpenC2, it is an independent
-specification, and can be used for any information modeling
-application. 
-
 ### 1.1.2 The Information Modeling Gap
 
 The IETF, in the _Report from the Internet of Things (IoT)
-Semantic Interoperability (IOTSI) Workshop 2016_ [[RFC
-8477](https://www.rfc-editor.org/info/rfc8477)], attributed
-challenges in achieving interoperability to a lack of information
-modeling:
+Semantic Interoperability (IOTSI) Workshop 2016_
+[[RFC 8477](https://www.rfc-editor.org/info/rfc8477)],
+attributed challenges in achieving interoperability
+to a lack of information modeling:
 
 > _One common problem is the lack of an encoding-independent
 > standardization of the information, the so-called information
 > model. Another problem is the strong relationship between data
 > formats and the underlying communication architecture_
 
-A key term in the above is "encoding-independent".  An IM defines
-the essential content of messages used in computing,
-independently of how those messages are represented (i.e.,
-serialized) for communication or storage. IMs are used to define
-and generate physical data models, validate information
-instances, and enable lossless translation across data formats.
-While JADN was created by the OpenC2 TC, it is entirely general
-purpose in its design and can be used to create IMs for nearly
-any purpose. Examples of other possible JADN applications include
-defining:
+[[RFC 8477](https://www.rfc-editor.org/info/rfc8477)] recapitulates RFC 3444 terminology:
 
- - Complex information structures, such as Software
-   Bills of Materials
-   (SBOMs) [[NTIA-SBOM](#ntia-sbom)];
-   examples would be the SPDX and CycloneDX SBOM formats
- - Formal definition of structured information exchanges, such as
-   are described by
-   [NIEM](https://github.com/niemopen/oasis-open-project#readme)
+- **Information Model** -- An information model defines an
+     environment at the highest level of abstraction and
+     expresses the desired functionality. Information models can
+     be defined informally (e.g., in prose) or more formally 
+     (e.g., Unified Modeling Language (UML), Entity-
+     Relationship Diagrams, etc.).  Implementation details are
+     hidden.
 
-[[RFC 8477](https://www.rfc-editor.org/info/rfc8477)] defines 
-information models and data models to clarify the differences (emphasis added):
+- **Data Model** -- A data model defines concrete data
+     representations *at a lower level of abstraction, including
+     implementation- and protocol-specific details*.  Some
+     examples are SNMP Management Information Base (MIB)
+     modules, World Wide Web Consortium (W3C) Thing Description
+     (TD) Things, YANG modules, Lightweight Machine-to-Machine
+     (LwM2M) Schemas, Open Connectivity Foundation (OCF)
+     Schemas, and so on.
 
- - **Information Model** -- An information model defines an
-      environment *at the highest level of abstraction and
-      expresses the desired functionality*. Information models can
-      be defined informally (e.g., in prose) or more formally 
-      (e.g., Unified Modeling Language (UML), Entity-
-      Relationship Diagrams, etc.).  Implementation details are
-      hidden.
-
- - **Data Model** -- A data model defines concrete data
-      representations *at a lower level of abstraction, including
-      implementation- and protocol-specific details*.  Some
-      examples are SNMP Management Information Base (MIB)
-      modules, World Wide Web Consortium (W3C) Thing Description
-      (TD) Things, YANG modules, Lightweight Machine-to-Machine
-      (LwM2M) Schemas, Open Connectivity Foundation (OCF)
-      Schemas, and so on.
-
-Expanding somewhat on the RFC 8477 hierarchy, a JADN information
-model is positioned within _three_ abstraction levels, the highest
-being:
-
- - **Logical Model** -- A logical model defines the semantics
-      (knowledge/meaning) assigned to things being modeled.
-      Logical models are defined using languages such as the
-      W3C Web Ontology Language [[OWL](#owl-primer)].
-
-The layering of these models is illustrated in Figure 1-1.
-
-###### Figure 1-1 -- Range of Model Types
-![Figure 1-1 -- Range of Model Types](images/model-types.drawio.png)
+A JADN IM uses UML datatypes to define *data*, not *an environment*
+and expresses *desired effects* (meaning of datatype instances), not
+*desired functionality* (temporal behavior of methods and protocols).
+Datatypes can define object state, function signatures, and protocol
+messages, but method behavior is out of scope.
 
 JADN is based on Information Theory
 [[Info-Theory](#info-theory)], which provides a concrete way of
 quantifying information that is explicitly independent of both
-semantic meaning and data representation. A JADN IM links
+semantic meaning and data representation. This may sound paradoxical,
+but information modeling is based on the ability to separate
+application-specific abstract schemas from application-independent
+encoding rules. A JADN IM links
 model-defined semantic types with JADN-defined core information
 types, providing an unambiguous bridge between semantics and
 data. This supports implementation flexibility while maintaining
 interoperable information exchange across implementations.
 
 ## 1.2 Purpose
+
+*Note: revise.*
 
 As an IM language, JADN is a syntax-independent, or abstract,
 schema language. Abstract schema languages separate structure
@@ -377,7 +327,7 @@ This CN uses the definitions contained in the [[JADN
 Specification](#jadn-v10)], section 1.2.1. The following
 additional terms are defined for this document:
 
- - **Classifier:** The core organizational concept of UML is the
+- **Classifier:** The core organizational concept of UML is the
 classifier, used to classify different kinds of values according
 to their features. UML is a complex specification defining many
 kinds of simple and structured classifiers, but the only kind used
@@ -387,30 +337,30 @@ indicating both whether the data is valid, and if so, its logical
 type(s). Two data values are equivalent if they are instances of
 the same datatype and their logical values are equal.
 
- - **Directed Acyclic Graph:** A directed acyclic graph (DAG) is
-   a directed graph with no directed cycles. That is, it consists
-   of vertices and edges (also called arcs), with each edge
-   directed from one vertex to another, such that following those
-   directions will never form a closed loop. A directed graph is
-   a DAG if and only if it can be topologically ordered, by
-   arranging the vertices as a linear ordering that is consistent
-   with all edge directions<br>(Wikipedia, https://en.wikipedia.org/wiki/Directed_acyclic_graph)
+- **Directed Acyclic Graph:** A directed acyclic graph (DAG) is
+  a directed graph with no directed cycles. That is, it consists
+  of vertices and edges (also called arcs), with each edge
+  directed from one vertex to another, such that following those
+  directions will never form a closed loop. A directed graph is
+  a DAG if and only if it can be topologically ordered, by
+  arranging the vertices as a linear ordering that is consistent
+  with all edge directions<br>(Wikipedia, https://en.wikipedia.org/wiki/Directed_acyclic_graph)
 
- - **Entity Relationship Model:** An entity–relationship model
-   (or ER model) describes interrelated things of interest in a
-   specific domain of knowledge. A basic ER model is composed of
-   entity types (which classify the things of interest) and
-   specifies relationships that can exist between entities
-   (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
+- **Entity Relationship Model:** An entity–relationship model
+  (or ER model) describes interrelated things of interest in a
+  specific domain of knowledge. A basic ER model is composed of
+  entity types (which classify the things of interest) and
+  specifies relationships that can exist between entities
+  (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
 
- - **Ontology:** (information science) A representation, formal
-   naming, and definition of the categories, properties, and
-   relations between the concepts, data, and entities that
-   substantiate one, many, or all domains of discourse. More
-   simply, an ontology is a way of showing the properties of a
-   subject area and how they are related, by defining a set of
-   concepts and categories that represent the subject.<br>
-   (Wikipedia, https://en.wikipedia.org/wiki/Ontology_(computer_science))
+- **Ontology:** (information science) A representation, formal
+  naming, and definition of the categories, properties, and
+  relations between the concepts, data, and entities that
+  substantiate one, many, or all domains of discourse. More
+  simply, an ontology is a way of showing the properties of a
+  subject area and how they are related, by defining a set of
+  concepts and categories that represent the subject.<br>
+  (Wikipedia, https://en.wikipedia.org/wiki/Ontology_(computer_science))
 
 - **Schema:**  *(markup languages)* A formal description of
    data, data types, and data file structures, such as XML
@@ -2629,6 +2579,19 @@ do they have the same logical value?
 Its predefined instructions implement the behavior of its built-in datatypes,
 which can be extended with application-specific imperative validation
 and translation functions.
+
+## D.2 Applications
+
+Examples of other possible JADN applications include
+defining:
+
+ - Complex information structures, such as Software
+   Bills of Materials
+   (SBOMs) [[NTIA-SBOM](#ntia-sbom)];
+   examples would be the SPDX and CycloneDX SBOM formats
+ - Formal definition of structured information exchanges, such as
+   are described by
+   [NIEM](https://github.com/niemopen/oasis-open-project#readme)
 
 ## D.2 Why JADN and not RDF?
 
