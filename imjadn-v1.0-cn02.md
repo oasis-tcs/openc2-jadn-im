@@ -281,18 +281,18 @@ A JADN IM uses UML datatypes to define *data*, not *an environment*
 and expresses *desired effects* (meaning of datatype instances), not
 *desired functionality* (temporal behavior of methods and protocols).
 Datatypes can define object state, function signatures, and protocol
-messages, but method behavior is out of scope.
+messages, but imperative specification of methods and protocols is
+out of scope.
 
 JADN is based on Information Theory
 [[Info-Theory](#info-theory)], which provides a concrete way of
 quantifying information that is explicitly independent of both
 semantic meaning and data representation. This may sound paradoxical,
-but information modeling is based on the ability to separate
+but information modeling is based on separating
 application-specific abstract schemas from application-independent
-encoding rules. A JADN IM links
-model-defined semantic types with JADN-defined core information
-types, providing an unambiguous bridge between semantics and
-data. This supports implementation flexibility while maintaining
+encoding rules. A data format specifies encoding rules used for each
+core information type, providing an unambiguous bridge between semantics
+and data. This supports implementation flexibility while maintaining
 interoperable information exchange across implementations.
 
 ## 1.2 Purpose
