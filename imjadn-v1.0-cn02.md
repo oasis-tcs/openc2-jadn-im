@@ -2278,7 +2278,7 @@ File-Path = String                         // local storage location of file wit
                                            // from root, filename, and extension
 ```
 
-The entity relationship diagram in Figure 3-10 illustrates how
+The entity relationship diagram in Figure 3-11 illustrates how
 the model components connect.
 
 ###### Figure 3-11 -- Music Library Example ERD
