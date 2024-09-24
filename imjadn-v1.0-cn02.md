@@ -2160,7 +2160,8 @@ conceptual overview of the music library's structure.
 
 <img src="images/music-library-v1_1_gvz.png" height="720px">
 
-At the top level, the library is map of barcodes to albums. 
+The JADN package for the music library IM provides basic metadata:
+
 
 ```
        title: "Music Library"
@@ -2172,20 +2173,23 @@ At the top level, the library is map of barcodes to albums.
               maintained by common websites and music file tag editors."
      license: "CC0-1.0"
      exports: ["Library"]
+```
 
+At the top level, the library is map of barcodes to albums. The barcode serves
+as a convenient unique identifier for each album.
+
+```
 Library = MapOf(Barcode, Album){1..*}  // Top level of the library is a map of CDs by barcode
 
 Barcode = String{pattern="^\d{12}$"}   // A UPC-A barcode is 12 digits
 ```
 
-Each album is then represented by a record containing the album's artist, title,
-publication data, cover art, total track count and an array of individual audio
-tracks. Multiple digital image formats are supported for the
-cover art. Note that this example also contains multiple examples
-of anonymous type definitions as explained in [Section&nbsp;3.1.6](#316-anonymous-type-definitions).
-
-> NOTE: should expand with one or two examples of anonymous definitions and how
-> they'll be handled by the JADN tooling.
+Each album is represented by a record containing the album's artist, title,
+publication data, cover art, total track count, and an array of individual audio
+tracks. Multiple digital image formats are supported for the cover art. Note
+that this example also contains an example of an anonymous type definition
+(i.e., the `release_date` field in the `Publication-Data` record) described 
+in [Section&nbsp;3.1.6](#316-anonymous-type-definitions).
 
 ```
 Album = Record                          // model for the album
