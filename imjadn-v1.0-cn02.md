@@ -2158,7 +2158,7 @@ conceptual overview of the music library's structure.
 
 ###### Figure 3-Concept -- Music Library Conceptual Overview
 
-<img src="images/music-library-v1_1_gvz.png" height="720px">
+<img src="images/music_lib_v1_1_puml_conceptual.png" height="500px">
 
 The JADN package for the music library IM provides basic metadata:
 
