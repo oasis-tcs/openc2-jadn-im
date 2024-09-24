@@ -2285,7 +2285,7 @@ the model components connect.
 
 ###### Figure 3-11 -- Music Library Example ERD
 
-<img src="images/music-library-v1_1_gvz.png" height="720px">
+<img src="images/music-library-v1_1-detailed-ERD-GV.png" height="720px">
 
 -------
 # 4 Advanced Techniques
