@@ -154,6 +154,7 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.2.2 Frederiks / van der Weide Modeling Process](#322-frederiks--van-der-weide-modeling-process)
   - [3.3 Information Modeling Example](#33-information-modeling-example)
     - [3.3.1 Example 1: A Digital Music Library](#331-example-1-a-digital-music-library)
+          - [Figure 3-Concept -- Music Library Conceptual Overview](#figure-3-concept----music-library-conceptual-overview)
           - [Figure 3-11 -- Music Library Example ERD](#figure-3-11----music-library-example-erd)
 - [4 Advanced Techniques](#4-advanced-techniques)
   - [4.1 Packages and Namespaces](#41-packages-and-namespaces)
@@ -2144,16 +2145,20 @@ Additional examples may be added in future versions of the CN.
 This example shows a simple IM for a digital music library, and
 can be considered a "Hello World" example of applying the
 concepts described above. The components of the library are presented
-here in JIDL form along with brief descriptions. The ERD for the
+here in JIDL form along with brief descriptions. The final ERD for the
 library appears at the end of this section. The complete,
 consolidated JADN, JIDL, and property tables can be found in
 [Appendix&nbsp;E.1](#e1-music-library).
 
-The model assumes that each track is stored as a file with its
-audio in one of several recognized formats. The library organizes tracks
-into albums, which are associated with a UPC-A barcode (a
-12-digit number). The model is loosely based on the ID3 metadata
-used with MP3 audio files. 
+The model assumes that each track is stored as a file with its audio in one of
+several recognized formats. The library organizes tracks into albums, which are
+associated with a UPC-A barcode (a 12-digit number). The model is loosely based
+on the ID3 metadata used with MP3 audio files. Figure 3-Concept provides a
+conceptual overview of the music library's structure.
+
+###### Figure 3-Concept -- Music Library Conceptual Overview
+
+<img src="images/music-library-v1_1_gvz.png" height="720px">
 
 At the top level, the library is map of barcodes to albums. 
 
