@@ -3051,10 +3051,10 @@ constructing an information graph from an ontology graph:
     ["Library", "MapOf", ["+Barcode", "*Album", "{1"], "Top level of the library is a map of CDs by barcode", []],
     ["Barcode", "String", ["%^\\d{12}$"], "A UPC-A barcode is 12 digits", []],
     ["Album", "Record", [], "model for the album", [
-        [1, "artist", "Artist", [], "artist associated with this album"],
-        [2, "title", "String", [], "commonly known title for this album"],
-        [3, "pub_data", "Publication-Data", [], "metadata about album publication"],
-        [4, "tracks", "Track", ["]0"], "individual track descriptions"],
+        [1, "album_artist", "Artist", [], "primary artist associated with this album"],
+        [2, "album_title", "String", [], "publisher's title for this album"],
+        [3, "pub_data", "Publication-Data", [], "metadata about the album's publication"],
+        [4, "tracks", "Track", ["]0"], "individual track descriptions and content"],
         [5, "total_tracks", "Integer", ["{1"], "total track count"],
         [6, "cover_art", "Image", ["[0"], "cover art image for this album"]
       ]],
@@ -3071,7 +3071,7 @@ constructing an information graph from an ontology graph:
         [2, "JPG", ""],
         [3, "GIF", ""]
       ]],
-    ["Artist", "Record", [], "interesting information about the performers", [
+    ["Artist", "Record", [], "interesting information about a performer", [
         [1, "artist_name", "String", [], "who is this person"],
         [2, "instruments", "Instrument", ["q", "]0"], "and what do they play"]
       ]],
@@ -3088,15 +3088,15 @@ constructing an information graph from an ontology graph:
       ]],
     ["Track", "Record", [], "for each track there's a file with the audio and a metadata record", [
         [1, "location", "File-Path", [], "path to the audio file location in local storage"],
-        [2, "metadata", "TrackInfo", [], "description of the track"]
+        [2, "metadata", "Track-Info", [], "description of the track"]
       ]],
-    ["TrackInfo", "Record", [], "information about the individual audio tracks", [
-        [1, "t_number", "Number", [], "track sequence number"],
+    ["Track-Info", "Record", [], "information about the individual audio tracks", [
+        [1, "track_number", "Integer", ["[1"], "track sequence number"],
         [2, "title", "String", [], "track title"],
-        [3, "length", "Integer", ["{1"], "length of track in seconds; anticipated user display is mm:ss"],
-        [4, "audio_format", "Audio-Format", [], "the all important content"],
-        [5, "featured_artist", "Artist", ["q", "[0", "]0"], "important guest performers"],
-        [6, "track_art", "Image", ["[0"], "track can have individual artwork"],
+        [3, "length", "Integer", ["{1"], "length of track in seconds; anticipated user display is mm:ss; minimum length is 1 second"],
+        [4, "audio_format", "Audio-Format", [], "format of the digital audio"],
+        [5, "featured_artist", "Artist", ["q", "[0", "]0"], "notable guest performers"],
+        [6, "track_art", "Image", ["[0"], "each track can have optionally have individual artwork"],
         [7, "genre", "Genre", [], ""]
       ]],
     ["Audio-Format", "Enumerated", [], "can only be one, but can extend list", [
@@ -3114,7 +3114,8 @@ constructing an information graph from an ontology graph:
         [3, "hip_hop", ""],
         [4, "electronic", ""],
         [5, "folk_country_world", ""],
-        [6, "classical", ""]
+        [6, "classical", ""],
+        [7, "spoken_word", ""]
       ]],
     ["File-Path", "String", [], "local storage location of file with directory path from root, filename, and extension"]
   ]
