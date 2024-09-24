@@ -2142,7 +2142,7 @@ Additional examples may be added in future versions of the CN.
 
 ### 3.3.1 Example 1: A Digital Music Library
 
-This example shows a simple IM for a digital music library, and
+This example shows a simple IM for a digital music library and
 can be considered a "Hello World" example of applying the
 concepts described above. The components of the library are presented
 here in JIDL form along with brief descriptions. The final ERD for the
@@ -2152,7 +2152,7 @@ consolidated JADN, JIDL, and property tables can be found in
 
 The model assumes that each track is stored as a file with its audio in one of
 several recognized formats. The library organizes tracks into albums, which are
-associated with a UPC-A barcode (a 12-digit number). The model is loosely based
+associated with a barcode identifier. The model is loosely based
 on the ID3 metadata used with MP3 audio files. Figure 3-Concept provides a
 conceptual overview of the music library's structure.
 
@@ -2176,7 +2176,9 @@ The JADN package for the music library IM provides basic metadata:
 ```
 
 At the top level, the library is map of barcodes to albums. The barcode serves
-as a convenient unique identifier for each album.
+as a convenient unique identifier for each album. A UPC-A barcode is a 12-digit
+number, and a `pattern` Type Option is used to constrain the `String` type that
+models it accordingly.
 
 ```
 Library = MapOf(Barcode, Album){1..*} // Top level of the library is a map of CDs by barcode
