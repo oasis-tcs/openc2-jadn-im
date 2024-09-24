@@ -208,7 +208,6 @@ For complete copyright information please see the full Notices section in [Appen
     - [E.1.1 Music Library JADN](#e11-music-library-jadn)
     - [E.1.2 Music Library JIDL](#e12-music-library-jidl)
     - [E.1.3 Music Library Tables](#e13-music-library-tables)
-  - [Schema](#schema)
 - [Appendix F. Notices](#appendix-f-notices)
 
 **List of Figures**
@@ -3128,7 +3127,9 @@ constructing an information graph from an ontology graph:
        title: "Music Library"
      package: "http://fake-audio.org/music-lib"
      version: "1.1"
- description: "This information model defines a library of audio tracks, organized by album, with associated metadata regarding each track. It is modeled on the types of library data maintained by common websites and music file tag editors."
+ description: "This information model defines a library of audio tracks, organized by album, 
+               with associated metadata regarding each track. It is modeled on the types of 
+               library data maintained by common websites and music file tag editors."
      license: "CC0-1.0"
      exports: ["Library"]
 
@@ -3179,7 +3180,8 @@ Track = Record                             // for each track there's a file with
 Track-Info = Record                        // information about the individual audio tracks
    1 track_number     Integer              // track sequence number
    2 title            String               // track title
-   3 length           Integer{1..*}        // length of track in seconds; anticipated user display is mm:ss; minimum length is 1 second
+   3 length           Integer{1..*}        // length of track in seconds; anticipated user display is mm:ss; 
+                                           // minimum length is 1 second
    4 audio_format     Audio-Format         // format of the digital audio
    5 featured_artist  Artist unique [0..*] // notable guest performers
    6 track_art        Image optional       // each track can have optionally have individual artwork
@@ -3208,12 +3210,16 @@ File-Path = String     // local storage location of file with directory path fro
 
 ### E.1.3 Music Library Tables
 
-## Schema
+Information Header
+
 ```
          title: "Music Library"
        package: "http://fake-audio.org/music-lib"
-       version: "1.0"
-   description: "This information model defines a library of audio tracks, organized by album"
+       version: "1.1"
+   description: "This information model defines a library of audio tracks, 
+                 organized by album, with associated metadata regarding each 
+                 track. It is modeled on the types of library data maintained 
+                 by common websites and music file tag editors."
        license: "CC0-1.0"
        exports: ["Library"]
 ```
@@ -3234,13 +3240,14 @@ model for the album
 
 **Type: Album (Record)**
 
-| ID | Name          | Type             | \#    | Description                         |
-|----|---------------|------------------|-------|-------------------------------------|
-| 1  | **artist**    | Artist           | 1     | artist associated with this album   |
-| 2  | **title**     | String           | 1     | commonly known title for this album |
-| 3  | **pub_data**  | Publication-Data | 1     | metadata about album publication    |
-| 4  | **tracks**    | Track            | 1..\* | individual track descriptions       |
-| 5  | **cover_art** | Image            | 0..1  | cover art image for this album      |
+| ID | Name             | Type             | \#    | Description                               |
+|----|------------------|------------------|-------|-------------------------------------------|
+| 1  | **album_artist** | Artist           | 1     | primary artist associated with this album |
+| 2  | **album_title**  | String           | 1     | publisher's title for this album          |
+| 3  | **pub_data**     | Publication-Data | 1     | metadata about the album's publication    |
+| 4  | **tracks**       | Track            | 1..\* | individual track descriptions and content |
+| 5  | **total_tracks** | Integer{1..\*}   | 1     | total track count                         |
+| 6  | **cover_art**    | Image            | 0..1  | cover art image for this album            |
 
 **********
 
@@ -3248,10 +3255,10 @@ who and when of publication
 
 **Type: Publication-Data (Record)**
 
-| ID | Name         | Type         | \# | Description                     |
-|----|--------------|--------------|----|---------------------------------|
-| 1  | **label**    | String       | 1  | name of record label            |
-| 2  | **rel_date** | String /date | 1  | and when did they let this drop |
+| ID | Name             | Type         | \# | Description                           |
+|----|------------------|--------------|----|---------------------------------------|
+| 1  | **publisher**    | String       | 1  | record label that released this album |
+| 2  | **release_date** | String /date | 1  | and when did they let this drop       |
 
 **********
 
@@ -3274,10 +3281,11 @@ can only be one, but can extend list
 |----|---------|-------------|
 | 1  | **PNG** |             |
 | 2  | **JPG** |             |
+| 3  | **GIF** |             |
 
 **********
 
-interesting information about the performers
+interesting information about a performer
 
 **Type: Artist (Record)**
 
@@ -3310,25 +3318,32 @@ for each track there's a file with the audio and a metadata record
 
 **Type: Track (Record)**
 
-| ID | Name         | Type      | \# | Description                                      |
-|----|--------------|-----------|----|--------------------------------------------------|
-| 1  | **location** | String    | 1  | path to the file audio location in local storage |
-| 2  | **metadata** | TrackInfo | 1  | description of the track                         |
+| ID | Name         | Type       | \# | Description                                      |
+|----|--------------|------------|----|--------------------------------------------------|
+| 1  | **location** | File-Path  | 1  | path to the audio file location in local storage |
+| 2  | **metadata** | Track-Info | 1  | description of the track                         |
 
 **********
 
 information about the individual audio tracks
 
-**Type: TrackInfo (Record)**
+**Type: Track-Info (Record)**
 
-| ID | Name             | Type          | \#    | Description                       |
-|----|------------------|---------------|-------|-----------------------------------|
-| 1  | **t_number**     | Number        | 1     | track sequence number             |
-| 2  | **title**        | String        | 1     | track title                       |
-| 3  | **length**       | String /time  | 1     | length of track                   |
-| 4  | **audio_format** | Audio-Format  | 1     | the all important content         |
-| 5  | **featured**     | Artist unique | 0..\* | important guest performers        |
-| 6  | **track_art**    | Image         | 0..1  | track can have individual artwork |
+| ID | Name                | Type           | \#    | Description                                                                               |
+|----|---------------------|----------------|-------|-------------------------------------------------------------------------------------------|
+| 1  | **track_number**    | Integer        | 1     | track sequence number                                                                     |
+| 2  | **title**           | String         | 1     | track title                                                                               |
+| 3  | **length**          | Integer{1..\*} | 1     | length of track in seconds; anticipated user display is mm:ss; minimum length is 1 second |
+| 4  | **audio_format**    | Audio-Format   | 1     | format of the digital audio                                                               |
+| 5  | **featured_artist** | Artist unique  | 0..\* | notable guest performers                                                                  |
+| 6  | **track_art**       | Image          | 0..1  | each track can have optionally have individual artwork                                    |
+| 7  | **genre**           | Genre          | 1     |                                                                                           |
+
+**********
+
+| Type Name     | Type Definition | Description                                                                           |
+|---------------|-----------------|---------------------------------------------------------------------------------------|
+| **File-Path** | String          | local storage location of file with directory path from root, filename, and extension |
 
 **********
 
@@ -3341,6 +3356,27 @@ can only be one, but can extend list
 | 1  | **MP3**  |             |
 | 2  | **OGG**  |             |
 | 3  | **FLAC** |             |
+| 4  | **MP4**  |             |
+| 5  | **AAC**  |             |
+| 6  | **WMA**  |             |
+| 7  | **WAV**  |             |
+
+**********
+
+Enumeration of common genres
+
+**Type: Genre (Enumerated)**
+
+| ID | Item                   | Description |
+|----|------------------------|-------------|
+| 1  | **rock**               |             |
+| 2  | **jazz**               |             |
+| 3  | **hip_hop**            |             |
+| 4  | **electronic**         |             |
+| 5  | **folk_country_world** |             |
+| 6  | **classical**          |             |
+| 7  | **spoken_word**        |             |
+
 
 
 ------
