@@ -2188,7 +2188,7 @@ Each album is represented by a record containing the album's artist, title,
 publication data, cover art, total track count, and an array of individual audio
 tracks. Multiple digital image formats are supported for the cover art. Note
 that this example also contains an example of an anonymous type definition
-(i.e., the `release_date` field in the `Publication-Data` record) described 
+(i.e., the `release_date` field in the `Publication-Data` record) as described 
 in [Section&nbsp;3.1.6](#316-anonymous-type-definitions).
 
 ```
@@ -2214,8 +2214,10 @@ Image-Format = Enumerated              // can only be one, but can extend list
    3 GIF
 ```
 
-Artists have a name and one or more associated instruments that
-they perform on.
+Artists have a name and one or more associated instruments that they perform on.
+The same information applies whether the artist is the primary performer (i.e.,
+`album_artist` in the `Album` record) or a guest performer (i.e.,
+`featured_artist` in a `Track-Info` record)
 
 ```
 Artist = Record                                // interesting information about a performer
