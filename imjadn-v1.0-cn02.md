@@ -2236,10 +2236,10 @@ Instrument = Enumerated                        // collection of instruments (non
    9 harmonica
 ```
 
-Each track is stored in a file, and has a track number within the
-album, title, length, genre, potentially "featured" artists, the
-audio data, and optional individual track art.  Multiple digital audio formats are supported for
-the audio content.
+Each track is stored in a file, and has a track number within the album along
+with a title, length, genre, potentially "featured" artists, the audio data, and
+optionally individual track art.  Multiple digital audio formats are supported
+for the audio content.
 
 ```
 Track = Record                             // for each track there's a file with the audio and a metadata record
