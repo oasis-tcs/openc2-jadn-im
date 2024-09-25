@@ -267,7 +267,7 @@ For complete copyright information please see the full Notices section in [Appen
 # 1 Introduction
 
 This Committee Note (CN) describes the nature of information models and the application
-of the *JSON Abstract Data Notation* [[JADN](#jadn-v10)] information modeling language
+of the *JSON Abstract Data Notation* [[JADN Specification](#jadn-v10)] information modeling language
 in the creation and use of IMs.
 
 ## 1.1 Background: Motivation for JADN
@@ -794,7 +794,7 @@ is guided by rules associated with applying the IM:
  - each core type has associated serialization rules for each
    external representation format
 
-The JADN Specification [[JADN-v1.0](#jadn-v10)] defines 12 core types, which
+The [[JADN Specification](#jadn-v10)] defines 12 core types, which
 are described in [Section 3.1.7](#317-base-type-examples) of this
 CN. The JADN Specification also defines serialization rules for
 JSON (with three levels of verbosity) and CBOR
@@ -853,8 +853,7 @@ The JADN information modeling language was developed against specific objectives
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
 
-As described in the JADN Specification 
-[[JADN-v1.0](#jadn-v10)] introduction:
+As described in the [[JADN Specification](#jadn-v10)] introduction:
 
 > JADN is a formal description technique that combines type
 > constraints from the Unified Modeling Language (UML) with data
@@ -1017,7 +1016,7 @@ predefined type. There are also conventions intended to improve
 the consistency and readability of JADN specifications. These
 conventions are defined in JADN but can be overridden within a
 JADN schema if desired (see section 3.1.2 of the
-[[JADN](#jadn-v10) Specification]):
+[[JADN Specification](#jadn-v10)]):
 
  - **TypeNames** are written in PascalCase or Train-Case (using
    hyphens) with an initial upper case letter, and are limited to
@@ -1042,7 +1041,7 @@ JADN schema if desired (see section 3.1.2 of the
 
 The third element of a JADN type definition is an array of zero
 or more of the TypeOptions defined in section 3.2.1 of the
-[[JADN](#jadn-v10) Specification]. JADN includes options for both
+[[JADN Specification](#jadn-v10)]. JADN includes options for both
 _types_ (discussed in this section) and _fields_ (discussed in
 [section 3.1.4](#314-field-options)). As explained in the JADN
 Specification:
@@ -1310,7 +1309,7 @@ names are used. These types are defined using a field ID and a
 TypeName. For documentation and debugging purposes a FieldName
 can be included in the JIDL comment field, immediately following
 the `//` and followed by a double colon delimiter (i.e., `::`).
-For more information see the [[JADN](#jadn-v10)] Specification
+For more information see the [[JADN Specification](#jadn-v10)]
 descriptions of Field Identifiers (section 3.2.1.1) and JADN-IDL
 format (section 5.1). Here is a brief JIDL example of this format:
 
@@ -1323,7 +1322,7 @@ Publication-Data = Array         // who and when of publication
 
 #### 3.1.5.3 Multiple Representations Example
 
-The JADN Specification [[JADN-v1.0](#jadn-v10)], section 5.3,
+The [[JADN Specification](#jadn-v10)], section 5.3,
 uses a simple example of an IM for a university to illustrate the
 use of ERDs for IMs. This section uses that ERD as a starting
 point for an example to illustrate the various JADN
@@ -2313,7 +2312,7 @@ the model components connect.
 
 ## 4.1 Packages and Namespaces
 
-Section 6 of the [[JADN](#jadn-v10)] specification introduces the
+Section 6 of the [[JADN Specification](#jadn-v10)] introduces the
 use of packages as the mechanism for organizing JADN schemas.
 This section provides additional information on the use of
 packages, along with the associated concept of namespaces.
@@ -2727,8 +2726,7 @@ review](https://lists.oasis-open.org/archives/openc2/202106/msg00019.html):
 
 ### Response
 The short answer (RDF models *knowledge* while JADN models
-*information*) is provided in the JADN Specification
-[[JADN-v1.0](#jadn-v10)] introduction:
+*information*) is provided in the [[JADN Specification](#jadn-v10)] introduction:
 
 > *UML class models and diagrams are commonly referred to as
 > "Data Models", but they model knowledge of real-world entities
