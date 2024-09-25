@@ -373,6 +373,68 @@ core information type, providing an unambiguous bridge between semantics
 and data. This supports implementation flexibility while maintaining
 interoperable information exchange across implementations.
 
+### 1.1.3 Defining Information
+
+A basic problem with discussing information models is that the
+terms "information" and "data" are used widely but defined
+imprecisely. The use of these terms across technical literature
+has considerable variation and overlap. As described in _What is
+Shannon information?_ [[Lombardi](#lombardi)], a precise
+definition of "information" is a relatively recent development:
+
+> Nevertheless, it is traditionally agreed that the seminal work
+for the mathematical view of information is the paper where
+Claude Shannon (1948) introduces a precise formalism designed to
+solve certain specific technological problems in communication
+engineering. ... Nowadays, Shannon’s theory is a basic ingredient
+of the communication engineers training. 
+
+Shannon's original article was later published as a book and gave
+rise to the field of Information Theory [[Shannon](#shannon)].
+
+A small example may help clarify the concept of information. The
+information content of an instance can be no greater than the
+smallest data instance for which lossless round-trip conversion
+is possible. For example, an IPv4 address represented in dotted
+quad format is 17 bytes of JSON string data ("192.168.101.213"),
+but can be converted to 4 byte RFC 791 format and back without
+loss. The information content of an IPv4 address can therefore be
+no greater than 4 bytes (32 bits), and an information model would
+define the IPv4 address type as a byte sequence of length 4.
+
+For the purpose of understanding information modeling, it is
+helpful to think in terms of different levels of representation:
+
+ - External
+ - Internal
+ - Conceptual
+
+These levels correspond, respectively, to the Data, Information,
+and Logical models illustrated above in 
+[Figure 1-1](#figure-1-1----range-of-model-types). 
+
+The external representation requires a data model to describe
+how information is transmitted or stored; such a data model
+provides specific formats and syntax (e.g., defining
+serialization rules) that permit moving the data out of the
+system where it is being processed. The internal representation
+depends on an information model, which uses abstract terminology
+to focus on what the information represents (e.g., a name, an
+address). As described in [[YTLee](#ytlee)]'s 2008 paper on
+information modeling: 
+
+> The conceptual view is a single, integrated definition of the
+data within an enterprise that is unbiased toward any single
+application of data and independent of how the data is physically
+stored or accessed. It provides a consistent definition of the
+meanings and interrelationship of the data in order to share,
+integrate, and manage the data.
+
+Note that while this description uses the term "data", the more
+important terms are "unbiased", "independent", "consistent", and
+"meanings and interrelationship". 
+
+
 ## 1.2 Purpose
 
 *Note: revise.*
@@ -454,64 +516,6 @@ tools that can be used in information modeling.
 
 ## 2.1 Defining "Information"
 
-A basic problem with discussing information models is that the
-terms "information" and "data" are used widely but defined
-imprecisely. The use of these terms across technical literature
-has considerable variation and overlap. As described in _What is
-Shannon information?_ [[Lombardi](#lombardi)], a precise
-definition of "information" is a relatively recent development:
-
-> Nevertheless, it is traditionally agreed that the seminal work
-for the mathematical view of information is the paper where
-Claude Shannon (1948) introduces a precise formalism designed to
-solve certain specific technological problems in communication
-engineering. ... Nowadays, Shannon’s theory is a basic ingredient
-of the communication engineers training. 
-
-Shannon's original article was later published as a book and gave
-rise to the field of Information Theory [[Shannon](#shannon)].
-
-A small example may help clarify the concept of information. The
-information content of an instance can be no greater than the
-smallest data instance for which lossless round-trip conversion
-is possible. For example, an IPv4 address represented in dotted
-quad format is 17 bytes of JSON string data ("192.168.101.213"),
-but can be converted to 4 byte RFC 791 format and back without
-loss. The information content of an IPv4 address can therefore be
-no greater than 4 bytes (32 bits), and an information model would
-define the IPv4 address type as a byte sequence of length 4.
-
-For the purpose of understanding information modeling, it is
-helpful to think in terms of different levels of representation:
-
- - External
- - Internal
- - Conceptual
-
-These levels correspond, respectively, to the Data, Information,
-and Logical models illustrated above in 
-[Figure 1-1](#figure-1-1----range-of-model-types). 
-
-The external representation requires a data model to describe
-how information is transmitted or stored; such a data model
-provides specific formats and syntax (e.g., defining
-serialization rules) that permit moving the data out of the
-system where it is being processed. The internal representation
-depends on an information model, which uses abstract terminology
-to focus on what the information represents (e.g., a name, an
-address). As described in [[YTLee](#ytlee)]'s 2008 paper on
-information modeling: 
-
-> The conceptual view is a single, integrated definition of the
-data within an enterprise that is unbiased toward any single
-application of data and independent of how the data is physically
-stored or accessed. It provides a consistent definition of the
-meanings and interrelationship of the data in order to share,
-integrate, and manage the data.
-
-Note that while this description uses the term "data", the more
-important terms are "unbiased", "independent", "consistent", and
-"meanings and interrelationship". 
 
 A common language for defining conceptual models is OWL (Web
 Ontology Language, see [OWL-Primer](#owl-primer)).  An abstract
