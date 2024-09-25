@@ -46,10 +46,11 @@ Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 
 An Information Model (IM) defines the essential content of data used in computing,
 independently of how it is represented for processing, communication or storage.
-Information modeling is an abstraction process, constructing abstract data types to
-define and validate essential content and translate it across representations without loss.
-JSON Abstract Data Notation (JADN) is an information modeling language based
-on information theory principles and UML data types.
+JSON Abstract Data Notation (JADN) is an information modeling language based on
+Unified Modeling Language (UML) datatypes designed to to both express the meaning
+of data items at a conceptual level and formally type and validate their essential content.
+It uses information theory to define logical equivalence, allowing translation
+of essential content across a wide range of representations without loss.
 This Committee Note explains how to construct IMs using JADN, represent them
 in various formats such as formal languages and entity-relationship diagrams,
 contrast them with other IM languages such as ASN.1,
@@ -93,10 +94,27 @@ For complete copyright information please see the full Notices section in [Appen
 
 # Table of Contents
 
+- [OASIS Committee Note](#oasis-committee-note)
+- [Information Modeling with JADN Version 1.0](#information-modeling-with-jadn-version-10)
+  - [Committee Note 02 - Working Draft 01](#committee-note-02---working-draft-01)
+  - [DD MMM YYYY](#dd-mmm-yyyy)
+      - [This stage:](#this-stage)
+      - [Previous stage of Version 1.0:](#previous-stage-of-version-10)
+      - [Latest stage of Version 1.0:](#latest-stage-of-version-10)
+      - [Technical Committee:](#technical-committee)
+      - [Chairs:](#chairs)
+      - [Editors:](#editors)
+      - [Related work:](#related-work)
+      - [Abstract:](#abstract)
+      - [Status:](#status)
+      - [Citation format:](#citation-format)
+      - [Notices](#notices)
+- [Table of Contents](#table-of-contents)
 - [1 Introduction](#1-introduction)
   - [1.1 Background: Motivation for JADN](#11-background-motivation-for-jadn)
-  - [1.1.1 OpenC2 and JADN](#111-openc2-and-jadn)
-  - [1.1.2 The Information Modeling Gap](#112-the-information-modeling-gap)
+    - [1.1.1 OpenC2 and JADN](#111-openc2-and-jadn)
+    - [1.1.2 The Information Modeling Gap](#112-the-information-modeling-gap)
+          - [Figure 1-1 -- Range of Model Types](#figure-1-1----range-of-model-types)
   - [1.2 Purpose](#12-purpose)
   - [1.3 Terminology](#13-terminology)
 - [2 Information Modeling Overview](#2-information-modeling-overview)
@@ -104,30 +122,51 @@ For complete copyright information please see the full Notices section in [Appen
   - [2.2 Information Models And Data Models](#22-information-models-and-data-models)
   - [2.3 Benefits of Information Models](#23-benefits-of-information-models)
   - [2.4 Serialization](#24-serialization)
+          - [Figure 2-1 -- Serialization / Deserialization](#figure-2-1----serialization--deserialization)
   - [2.5 Information Modeling Languages](#25-information-modeling-languages)
   - [2.6 Information Modeling Tools](#26-information-modeling-tools)
   - [2.7 Applying an Information Model](#27-applying-an-information-model)
+          - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
 - [3 Creating Information Models with JADN](#3-creating-information-models-with-jadn)
   - [3.1 JADN Overview](#31-jadn-overview)
+          - [Figure 3-1 -- JADN Concepts](#figure-3-1----jadn-concepts)
+          - [Table 3-1 -- Compound Type Decision Tree](#table-3-1----compound-type-decision-tree)
+          - [Table 3-2 -- Multiplicity Types](#table-3-2----multiplicity-types)
     - [3.1.1 Type Definitions](#311-type-definitions)
+          - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-type-definition-structure)
     - [3.1.2 TypeOptions](#312-typeoptions)
+          - [Table 3-3 -- JADN Type Options](#table-3-3----jadn-type-options)
+          - [Table 3-4 -- Type Option Applicability](#table-3-4----type-option-applicability)
     - [3.1.3 Item Or Field Definitions](#313-item-or-field-definitions)
-    - [3.1.4  Field Options](#314-field-options)
+    - [3.1.4 Field Options](#314-field-options)
+          - [Table 3-5 -- JADN Field Options](#table-3-5----jadn-field-options)
     - [3.1.5 JADN Representations](#315-jadn-representations)
       - [3.1.5.1 Native JSON Representation](#3151-native-json-representation)
+          - [Figure 3-3 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-3----jadn-for-primitive-arrayof-mapof-types)
+          - [Figure 3-4 -- JADN for Enumerated Types](#figure-3-4----jadn-for-enumerated-types)
+          - [Figure 3-5 -- JADN for Types with Fields](#figure-3-5----jadn-for-types-with-fields)
       - [3.1.5.2 Alternative JADN Representations](#3152-alternative-jadn-representations)
         - [3.1.5.2.1  Array "Field Names" in JIDL](#31521--array-field-names-in-jidl)
       - [3.1.5.3 Multiple Representations Example](#3153-multiple-representations-example)
+          - [Figure 3-6 -- Simple University Example ERD](#figure-3-6----simple-university-example-erd)
+          - [Figure 3-7 -- Simple University Example JADN (JSON format)](#figure-3-7----simple-university-example-jadn-json-format)
+          - [Figure 3-8 -- Simple University Example JADN (JIDL format)](#figure-3-8----simple-university-example-jadn-jidl-format)
+          - [Figure 3-9 -- Simple University Example JADN (table format)](#figure-3-9----simple-university-example-jadn-table-format)
+          - [Figure 3-10 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-10----simple-university-example-erd-source-code-graphviz)
     - [3.1.6 "Anonymous" Type Definitions](#316-anonymous-type-definitions)
     - [3.1.7 Base Type Examples](#317-base-type-examples)
       - [3.1.7.1 Binary](#3171-binary)
+          - [Table 3-6 -- Binary Type Format Options](#table-3-6----binary-type-format-options)
       - [3.1.7.2 Boolean](#3172-boolean)
       - [3.1.7.3 Integer](#3173-integer)
+          - [Table 3-7 -- Integer Type Format Options](#table-3-7----integer-type-format-options)
       - [3.1.7.4 Number](#3174-number)
+          - [Table 3-8 -- Number Type Format Options](#table-3-8----number-type-format-options)
       - [3.1.7.5 String](#3175-string)
       - [3.1.7.6 Enumerated](#3176-enumerated)
       - [3.1.7.7 Choice](#3177-choice)
       - [3.1.7.8 Array](#3178-array)
+          - [Table 3-9 -- Array Type Format Options](#table-3-9----array-type-format-options)
       - [3.1.7.9 ArrayOf(_vtype_)](#3179-arrayofvtype)
       - [3.1.7.10 Map](#31710-map)
       - [3.1.7.11 MapOf(_ktype_,_vtype_)](#31711-mapofktypevtype)
@@ -137,20 +176,60 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.2.2 Frederiks / van der Weide Modeling Process](#322-frederiks--van-der-weide-modeling-process)
   - [3.3 Information Modeling Example](#33-information-modeling-example)
     - [3.3.1 Example 1: A Digital Music Library](#331-example-1-a-digital-music-library)
+          - [Figure 3-Concept -- Music Library Conceptual Overview](#figure-3-concept----music-library-conceptual-overview)
+          - [Figure 3-11 -- Music Library Example ERD](#figure-3-11----music-library-example-erd)
 - [4 Advanced Techniques](#4-advanced-techniques)
-  - [4.1 Packages and Namespaces](#41-packages-and-namespaces) 
+  - [4.1 Packages and Namespaces](#41-packages-and-namespaces)
     - [4.1.1 Packages](#411-packages)
     - [4.1.2 Namespaces](#412-namespaces)
   - [4.2 Reference Relationships: Keys and Links](#42-reference-relationships-keys-and-links)
+          - [Figure 4-1 -- Contains and References Relationships](#figure-4-1----contains-and-references-relationships)
 - [Appendix A. Informative References](#appendix-a-informative-references)
+          - [\[ASN.1\]](#asn1)
+          - [\[DThaler\]](#dthaler)
+          - [\[Fredericks\]](#fredericks)
+          - [\[ECMAScript\]](#ecmascript)
+          - [\[Graphviz\]](#graphviz)
+          - [\[IDEF1X\]](#idef1x)
+          - [\[Info-Theory\]](#info-theory)
+          - [\[JADN-v1.0\]](#jadn-v10)
+          - [\[JSONSCHEMA\]](#jsonschema)
+          - [\[Lombardi\]](#lombardi)
+          - [\[NTIA-SBOM\]](#ntia-sbom)
+          - [\[OpenC2-Arch-v1.0\]](#openc2-arch-v10)
+          - [\[OpenC2-Lang-v1.0\]](#openc2-lang-v10)
+          - [\[OWL-Primer\]](#owl-primer)
+          - [\[PlantUML\]](#plantuml)
+          - [\[RFC3444\]](#rfc3444)
+          - [\[RFC7049\]](#rfc7049)
+          - [\[RFC8477\]](#rfc8477)
+          - [\[RFC8610\]](#rfc8610)
+          - [\[Shannon\]](#shannon)
+          - [\[UML\]](#uml)
+          - [\[YTLee\]](#ytlee)
 - [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
+  - [B.1 Special Thanks](#b1-special-thanks)
+  - [B.2 Participants](#b2-participants)
 - [Appendix C. Revision History](#appendix-c-revision-history)
 - [Appendix D. Frequently Asked Questions (FAQ)](#appendix-d-frequently-asked-questions-faq)
   - [D.1 JADN vs. UML Primitive Data Types](#d1-jadn-vs-uml-primitive-data-types)
+          - [Table D-1 -- UML and JADN Basic Type Equivalence](#table-d-1----uml-and-jadn-basic-type-equivalence)
   - [D.2 Why JADN and not RDF?](#d2-why-jadn-and-not-rdf)
+    - [Comment](#comment)
+    - [Response](#response)
+    - [Extreme Example](#extreme-example)
+    - [Practical Example](#practical-example)
+    - [Measuring Information](#measuring-information)
   - [D.3 Why JADN and not OWL?](#d3-why-jadn-and-not-owl)
+    - [Directionality:](#directionality)
+    - [Multiplicity:](#multiplicity)
+    - [Referenceability:](#referenceability)
+    - [Individuality:](#individuality)
 - [Appendix E. Example Information Model Source](#appendix-e-example-information-model-source)
   - [E.1 Music Library](#e1-music-library)
+    - [E.1.1 Music Library JADN](#e11-music-library-jadn)
+    - [E.1.2 Music Library JIDL](#e12-music-library-jidl)
+    - [E.1.3 Music Library Tables](#e13-music-library-tables)
 - [Appendix F. Notices](#appendix-f-notices)
 
 **List of Figures**
@@ -185,13 +264,18 @@ For complete copyright information please see the full Notices section in [Appen
 
 -------
 
-<!-- Insert a "line rule" (three or more hyphens alone on a new line, following a blank line) before each major section. This is used to generate a page break in the PDF format. -->
-
 # 1 Introduction
 
 This Committee Note (CN) describes the nature of information models and the application
 of the *JSON Abstract Data Notation* [[JADN Specification](#jadn-v10)] information modeling language
 in the creation and use of IMs.
+
+## 1.1 Background: Motivation for JADN
+
+This section provides the background for the creation of JADN as
+an information modeling language for a spectrum of applications.
+
+### 1.1.1 Information Models and Data Models
 
 Internet Engineering Task Force (IETF) [RFC 3444](#rfc3444),
 "On the Difference between Information Models and Data Models", says:
@@ -209,11 +293,11 @@ as English. Alternatively, IMs can be defined using a formal language
 or a semi-formal structured language.  One of the possibilities to formally
 specify IMs is to use class diagrams of the Unified Modeling Language (UML).
 > * In general, it seems advisable to use object-oriented techniques to
-describe an IM.  In particular, the notions of abstraction and
+describe an IM. In particular, the notions of abstraction and
 encapsulation, as well as the possibility that object definitions
 include methods, are considered to be important.
 
-Although RFC 3444 references protocols and object methods,
+Although RFC 3444 references protocols and object methods, the Unified Modeling Language
 [UML](#uml) places data models and object-oriented programming models
 in separate categories:
 * Simple Classifiers (Section 10), including DataTypes (10.2), and
@@ -221,134 +305,77 @@ in separate categories:
 
 JADN is aligned with UML's layered separation of concerns: the main purpose of an
 IM is to model *data*, not managed objects, at both conceptual and formal levels.
-This allows IMs to model any kind of data, from simple structures such as
-value ranges or coordinates, to protocol messages, to complete documents,
-without needing to address programming languages and techniques. An IM is a
-[declarative](#d1-declarative-specifications)
+This allows IMs to model any kind of data, from simple structures such as value ranges
+or coordinates, to protocol messages, APIs, and method signatures, to complete documents,
+without the complexity of modeling programming languages and techniques.
+An IM is a [declarative](#d1-declarative-specifications)
 specification that defines desired outcomes (data item validity and equivalence)
 without describing control flow.
 Protocol models can use IMs to define and validate messages exchanged over the wire.
 
 Because abstraction establishes a correspondence between logical values and
-concrete representations, information modeling can be described as a process of
-synthesis starting with conceptual/logical design leaving details for later,
-or analysis starting with existing data to find patterns and meanings:
+concrete representations, information modeling can be used for **synthesis**
+starting with conceptual and logical design while leaving representation details
+for later, or for **analysis** starting with existing data to find patterns and meaning:
 * An IM defines the essential content of data artifacts used in computing
 independently of how they are represented for processing, communication, or storage.
 * An IM defines logical equivalence of data artifacts such that all representations
-of the same logical value are equivalent and data can be converted from any
+of a logical value are equivalent and data can be converted from any
 representation to any other without loss of information.
-
-## 1.1 Background: Motivation for JADN
-
-This section provides the background for the creation of JADN as
-an information modeling language for a spectrum of applications.
-
-### 1.1.1 OpenC2 and JADN
-
-The *OpenC2 Architecture
-Specification* [[OpenC2-Arch-v1.0](#openc2-arch-v10)]
-abstract defines the objective of OpenC2:
-
-> _Open Command and Control (OpenC2) is a concise and extensible
-> language to enable machine-to-machine communications for
-> purposes of command and control of cyber defense components,
-> subsystems and/or systems in a manner that is agnostic of the
-> underlying products, technologies, transport mechanisms or
-> other aspects of the implementation._
-
-The OASIS [OpenC2 Technical Committee
-(TC)](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2)
-recognized the need to define the OpenC2 Language [[OpenC2-Lang-v1.0](#openc2-lang-v10)]
-in an implementation-independent manner in order to achieve the
-project's goals to be "agnostic of the underlying products,
-technologies, transport mechanisms or other aspects of the
-implementation". In response, the TC created an information
-modeling language, _JSON Abstract Data Notation_ [[JADN Specification](#jadn-v10)],
-to support the information modeling needed to define OpenC2 in
-that manner. 
-
-It is important to recognize that while JADN was created to
-facilitate the development of OpenC2, it is an independent
-specification, and can be used for any information modeling
-application. 
 
 ### 1.1.2 The Information Modeling Gap
 
 The IETF, in the _Report from the Internet of Things (IoT)
-Semantic Interoperability (IOTSI) Workshop 2016_ [[RFC
-8477](https://www.rfc-editor.org/info/rfc8477)], attributed
-challenges in achieving interoperability to a lack of information
-modeling:
+Semantic Interoperability (IOTSI) Workshop 2016_
+[[RFC 8477](https://www.rfc-editor.org/info/rfc8477)],
+attributed challenges in achieving interoperability
+to a lack of information modeling:
 
 > _One common problem is the lack of an encoding-independent
 > standardization of the information, the so-called information
 > model. Another problem is the strong relationship between data
 > formats and the underlying communication architecture_
 
-A key term in the above is "encoding-independent".  An IM defines
-the essential content of messages used in computing,
-independently of how those messages are represented (i.e.,
-serialized) for communication or storage. IMs are used to define
-and generate physical data models, validate information
-instances, and enable lossless translation across data formats.
-While JADN was created by the OpenC2 TC, it is entirely general
-purpose in its design and can be used to create IMs for nearly
-any purpose. Examples of other possible JADN applications include
-defining:
+[[RFC 8477](https://www.rfc-editor.org/info/rfc8477)] recapitulates RFC 3444 terminology:
 
- - Complex information structures, such as Software
-   Bills of Materials
-   (SBOMs) [[NTIA-SBOM](#ntia-sbom)];
-   examples would be the SPDX and CycloneDX SBOM formats
- - Formal definition of structured information exchanges, such as
-   are described by
-   [NIEM](https://github.com/niemopen/oasis-open-project#readme)
+> - **Information Model** -- An information model defines an
+     environment at the highest level of abstraction and
+     expresses the desired functionality. Information models can
+     be defined informally (e.g., in prose) or more formally 
+     (e.g., Unified Modeling Language (UML), Entity-
+     Relationship Diagrams, etc.).  Implementation details are
+     hidden.
 
-[[RFC 8477](https://www.rfc-editor.org/info/rfc8477)] defines 
-information models and data models to clarify the differences (emphasis added):
+> - **Data Model** -- A data model defines concrete data
+     representations *at a lower level of abstraction, including
+     implementation- and protocol-specific details*.  Some
+     examples are SNMP Management Information Base (MIB)
+     modules, World Wide Web Consortium (W3C) Thing Description
+     (TD) Things, YANG modules, Lightweight Machine-to-Machine
+     (LwM2M) Schemas, Open Connectivity Foundation (OCF)
+     Schemas, and so on.
 
- - **Information Model** -- An information model defines an
-      environment *at the highest level of abstraction and
-      expresses the desired functionality*. Information models can
-      be defined informally (e.g., in prose) or more formally 
-      (e.g., Unified Modeling Language (UML), Entity-
-      Relationship Diagrams, etc.).  Implementation details are
-      hidden.
-
- - **Data Model** -- A data model defines concrete data
-      representations *at a lower level of abstraction, including
-      implementation- and protocol-specific details*.  Some
-      examples are SNMP Management Information Base (MIB)
-      modules, World Wide Web Consortium (W3C) Thing Description
-      (TD) Things, YANG modules, Lightweight Machine-to-Machine
-      (LwM2M) Schemas, Open Connectivity Foundation (OCF)
-      Schemas, and so on.
-
-Expanding somewhat on the RFC 8477 hierarchy, a JADN information
-model is positioned within _three_ abstraction levels, the highest
-being:
-
- - **Logical Model** -- A logical model defines the semantics
-      (knowledge/meaning) assigned to things being modeled.
-      Logical models are defined using languages such as the
-      W3C Web Ontology Language [[OWL](#owl-primer)].
-
-The layering of these models is illustrated in Figure 1-1.
-
-###### Figure 1-1 -- Range of Model Types
-![Figure 1-1 -- Range of Model Types](images/model-types.drawio.png)
+A JADN IM uses UML datatypes to define *data*, not *an environment*
+and expresses *desired effects* (meaning of datatype instances), not
+*desired functionality* (temporal behavior of methods and protocols).
+Datatypes can define object state, function signatures, and protocol
+messages, but imperative specification of methods and protocols is
+out of scope.
 
 JADN is based on Information Theory
 [[Info-Theory](#info-theory)], which provides a concrete way of
 quantifying information that is explicitly independent of both
-semantic meaning and data representation. A JADN IM links
-model-defined semantic types with JADN-defined core information
-types, providing an unambiguous bridge between semantics and
-data. This supports implementation flexibility while maintaining
+semantic meaning and data representation. This may sound paradoxical,
+but information modeling is based on separating
+application-specific abstract schemas from application-independent
+encoding rules. A data format specifies encoding rules used for each
+core information type, providing an unambiguous bridge between semantics
+and data. This supports implementation flexibility while maintaining
 interoperable information exchange across implementations.
 
 ## 1.2 Purpose
+
+*Note: revise.*
 
 As an IM language, JADN is a syntax-independent, or abstract,
 schema language. Abstract schema languages separate structure
@@ -378,34 +405,44 @@ This CN uses the definitions contained in the [[JADN
 Specification](#jadn-v10)], section 1.2.1. The following
 additional terms are defined for this document:
 
- - **Directed Acyclic Graph:** A directed acyclic graph (DAG) is
-   a directed graph with no directed cycles. That is, it consists
-   of vertices and edges (also called arcs), with each edge
-   directed from one vertex to another, such that following those
-   directions will never form a closed loop. A directed graph is
-   a DAG if and only if it can be topologically ordered, by
-   arranging the vertices as a linear ordering that is consistent
-   with all edge directions<br>(Wikipedia, https://en.wikipedia.org/wiki/Directed_acyclic_graph)
+- **Classifier:** The core organizational concept of UML is the
+classifier, used to classify different kinds of values according
+to their features. UML is a complex specification defining many
+kinds of simple and structured classifiers, but the only kind used
+by JADN is the simple Datatype. Given a data value, a datatype
+classifier determines whether the value is an instance of a type,
+indicating both whether the data is valid, and if so, its logical
+type(s). Two data values are equivalent if they are instances of
+the same datatype and their logical values are equal.
 
- - **Entity Relationship Model:** An entity–relationship model
-   (or ER model) describes interrelated things of interest in a
-   specific domain of knowledge. A basic ER model is composed of
-   entity types (which classify the things of interest) and
-   specifies relationships that can exist between entities
-   (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
+- **Directed Acyclic Graph:** A directed acyclic graph (DAG) is
+  a directed graph with no directed cycles. That is, it consists
+  of vertices and edges (also called arcs), with each edge
+  directed from one vertex to another, such that following those
+  directions will never form a closed loop. A directed graph is
+  a DAG if and only if it can be topologically ordered, by
+  arranging the vertices as a linear ordering that is consistent
+  with all edge directions<br>(Wikipedia, https://en.wikipedia.org/wiki/Directed_acyclic_graph)
 
- - **Schema:**  *(markup languages)* A formal description of
+- **Entity Relationship Model:** An entity–relationship model
+  (or ER model) describes interrelated things of interest in a
+  specific domain of knowledge. A basic ER model is composed of
+  entity types (which classify the things of interest) and
+  specifies relationships that can exist between entities
+  (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
+
+- **Ontology:** (information science) A representation, formal
+  naming, and definition of the categories, properties, and
+  relations between the concepts, data, and entities that
+  substantiate one, many, or all domains of discourse. More
+  simply, an ontology is a way of showing the properties of a
+  subject area and how they are related, by defining a set of
+  concepts and categories that represent the subject.<br>
+  (Wikipedia, https://en.wikipedia.org/wiki/Ontology_(computer_science))
+
+- **Schema:**  *(markup languages)* A formal description of
    data, data types, and data file structures, such as XML
    schemas for XML files.<br>(Wiktionary, https://en.wiktionary.org/wiki/schema#Noun, definition #3)
-
- - **Ontology:** (information science) A representation, formal
-   naming, and definition of the categories, properties, and
-   relations between the concepts, data, and entities that
-   substantiate one, many, or all domains of discourse. More
-   simply, an ontology is a way of showing the properties of a
-   subject area and how they are related, by defining a set of
-   concepts and categories that represent the subject.<br>
-   (Wikipedia, https://en.wikipedia.org/wiki/Ontology_(computer_science))
 
 -------
 
@@ -2125,73 +2162,91 @@ Additional examples may be added in future versions of the CN.
 
 ### 3.3.1 Example 1: A Digital Music Library
 
-This example shows a simple IM for a digital music library, and
+This example shows a simple IM for a digital music library and
 can be considered a "Hello World" example of applying the
-concepts described above. The components of the library are
-described here along with the associated JIDL. The ERD for the
+concepts described above. The components of the library are presented
+here in JIDL form along with brief descriptions. The final ERD for the
 library appears at the end of this section. The complete,
 consolidated JADN, JIDL, and property tables can be found in
-[Appendix E.1](#e1-music-library).
+[Appendix&nbsp;E.1](#e1-music-library).
 
-The model assumes that each track is stored as a file with its
-audio in one of several formats. The library organizes tracks
-into albums, which are associated with a UPC-A barcode (a
-12-digit number). The model is loosely based on the ID3 metadata
-used with MP3 audio files. 
+The model assumes that each track is stored as a file with its audio in one of
+several recognized formats. The library organizes tracks into albums, which are
+associated with a barcode identifier. The model is loosely based
+on the ID3 metadata used with MP3 audio files. Figure 3-Concept provides a
+conceptual overview of the music library's structure.
 
-At the top level, the library is map of barcodes to albums. 
+###### Figure 3-Concept -- Music Library Conceptual Overview
+
+<img src="images/music_lib_v1_1_puml_conceptual.png" height="500px">
+
+The JADN package for the music library IM provides basic metadata:
+
 
 ```
        title: "Music Library"
      package: "http://fake-audio.org/music-lib"
-     version: "1.0"
- description: "This information model defines a library of audio tracks, organized by album"
+     version: "1.1"
+ description: "This information model defines a library of audio tracks, 
+              organized by album, with associated metadata regarding 
+              each track. It is modeled on the types of library data 
+              maintained by common websites and music file tag editors."
      license: "CC0-1.0"
      exports: ["Library"]
-
-Library = MapOf(Barcode, Album){1..*}             // Top level of the library is a map of CDs by barcode
-
-Barcode = String{pattern="^\d{12}$"}              // A UPC-A barcode is 12 digits
 ```
 
-Each album is then represented by a record of artist, title,
-publication data, cover art and an array of individual audio
-tracks. Multiple digital image formats are supported for the
-cover art. Note that this example also contains multiple examples
-of anonymous type definitions as explained in [Section 3.1.6](#316-anonymous-type-definitions).
-
-> *NOTE: add link to new section 3.l.6 after PRs are merged.*
+At the top level, the library is map of barcodes to albums. The barcode serves
+as a convenient unique identifier for each album. A UPC-A barcode is a 12-digit
+number, and a `pattern` Type Option is used to constrain the `String` type that
+models it accordingly.
 
 ```
-Album = Record                                    // model for the album
-   1 artist           Artist                      // artist associated with this album
-   2 title            String                      // commonly known title for this album
-   3 pub_data         Publication-Data            // metadata about album publication
-   4 tracks           Track [1..*]                // individual track descriptions
-   5 cover_art        Image optional              // cover art image for this album
+Library = MapOf(Barcode, Album){1..*} // Top level of the library is a map of CDs by barcode
 
-Publication-Data = Record                         // who and when of publication
-   1 label            String                      // name of record label
-   2 rel_date         String /date                // and when did they let this drop
+Barcode = String{pattern="^\d{12}$"}  // A UPC-A barcode is 12 digits
+```
 
-Image = Record                                    // pretty picture for the album or track
-   1 image_format     Image-Format                // what type of image file?
-   2 image_content    Binary                      // the image data in the identified format
+Each album is represented by a record containing the album's artist, title,
+publication data, cover art, total track count, and an array of individual audio
+tracks. Multiple digital image formats are supported for the cover art. Note
+that this example also contains an example of an anonymous type definition
+(i.e., the `release_date` field in the `Publication-Data` record) as described 
+in [Section&nbsp;3.1.6](#316-anonymous-type-definitions).
 
-Image-Format = Enumerated                         // can only be one, but can extend list
+```
+Album = Record                         // model for the album
+   1 album_artist     Artist           // primary artist associated with this album
+   2 album_title      String           // publisher's title for this album
+   3 pub_data         Publication-Data // metadata about the album's publication
+   4 tracks           Track [1..*]     // individual track descriptions and content
+   5 total_tracks     Integer{1..*}    // total track count
+   6 cover_art        Image optional   // cover art image for this album
+
+Publication-Data = Record              // who and when of publication
+   1 publisher        String           // record label that released this album
+   2 release_date     String /date     // and when did they let this drop
+
+Image = Record                         // pretty picture for the album or track
+   1 image_format     Image-Format     // what type of image file?
+   2 image_content    Binary           // the image data in the identified format
+
+Image-Format = Enumerated              // can only be one, but can extend list
    1 PNG
    2 JPG
+   3 GIF
 ```
 
-Artists have a name and one or more associated instruments that
-they perform on.
+Artists have a name and one or more associated instruments that they perform on.
+The same information applies whether the artist is the primary performer (i.e.,
+`album_artist` in the `Album` record) or a guest performer (i.e.,
+`featured_artist` in a `Track-Info` record)
 
 ```
-Artist = Record                                   // interesting information about the performers
-   1 artist_name      String                      // who is this person
-   2 instruments      Instrument unique [1..*]    // and what do they play
+Artist = Record                                // interesting information about a performer
+   1 artist_name      String                   // who is this person
+   2 instruments      Instrument unique [1..*] // and what do they play
 
-Instrument = Enumerated                           // collection of instruments (non-exhaustive)
+Instrument = Enumerated                        // collection of instruments (non-exhaustive)
    1 vocals
    2 guitar
    3 bass
@@ -2203,36 +2258,54 @@ Instrument = Enumerated                           // collection of instruments (
    9 harmonica
 ```
 
-Each track is stored in a file, and has a track number within the
-album, title, length, potentially "featured" artists, and the
-audio data.  Multiple digital audio  formats are supported for
-the audio content.
+Each track is stored in a file, and has a track number within the album along
+with a title, length, genre, potentially "featured" artists, the audio data, and
+optionally individual track art.  Multiple digital audio formats are supported
+for the audio content.
 
 ```
-Track = Record                                    // for each track there's a file with the audio and a metadata record
-   1 location         String                      // path to the file audio location in local storage
-   2 metadata         TrackInfo                   // description of the track
+Track = Record                             // for each track there's a file with the audio and a metadata record
+   1 location         File-Path            // path to the audio file location in local storage
+   2 metadata         Track-Info           // description of the track
 
-TrackInfo = Record                                // information about the individual audio tracks
-   1 t_number         Number                      // track sequence number
-   2 title            String                      // track title
-   3 length           String /time                // length of track
-   4 audio_format     Audio-Format                // the all important content
-   5 featured         Artist unique [0..*]        // important guest performers
-   6 track_art        Image optional              // track can have individual artwork
+Track-Info = Record                        // information about the individual audio tracks
+   1 track_number     Integer              // track sequence number
+   2 title            String               // track title
+   3 length           Integer{1..*}        // length of track in seconds; anticipated user display is mm:ss; 
+                                           // minimum length is 1 second
+   4 audio_format     Audio-Format         // format of the digital audio
+   5 featured_artist  Artist unique [0..*] // notable guest performers
+   6 track_art        Image optional       // each track can have optionally have individual artwork
+   7 genre            Genre
 
-Audio-Format = Enumerated                         // can only be one, but can extend list
+Audio-Format = Enumerated                  // can only be one, but can extend list
    1 MP3
    2 OGG
    3 FLAC
+   4 MP4
+   5 AAC
+   6 WMA
+   7 WAV
+
+Genre = Enumerated                         // Enumeration of common genres
+   1 rock
+   2 jazz
+   3 hip_hop
+   4 electronic
+   5 folk_country_world
+   6 classical
+   7 spoken_word
+
+File-Path = String                         // local storage location of file with directory path 
+                                           // from root, filename, and extension
 ```
 
-The entity relationship diagram in Figure 3-10 illustrates how
+The entity relationship diagram in Figure 3-11 illustrates how
 the model components connect.
 
 ###### Figure 3-11 -- Music Library Example ERD
 
-<img src="images/music-database-gv.png" height="720px">
+<img src="images/music-library-v1_1-detailed-ERD-GV.png" height="720px">
 
 -------
 # 4 Advanced Techniques
@@ -2619,6 +2692,19 @@ do they have the same logical value?
 Its predefined instructions implement the behavior of its built-in datatypes,
 which can be extended with application-specific imperative validation
 and translation functions.
+
+## D.2 Applications
+
+Examples of other possible JADN applications include
+defining:
+
+ - Complex information structures, such as Software
+   Bills of Materials
+   (SBOMs) [[NTIA-SBOM](#ntia-sbom)];
+   examples would be the SPDX and CycloneDX SBOM formats
+ - Formal definition of structured information exchanges, such as
+   are described by
+   [NIEM](https://github.com/niemopen/oasis-open-project#readme)
 
 ## D.2 Why JADN and not RDF?
 
@@ -3031,80 +3117,86 @@ constructing an information graph from an ontology graph:
 
 ```
 {
- "info": {
-  "title": "Music Library",
-  "package": "http://fake-audio.org/music-lib",
-  "version": "1.0",
-  "description": "This information model defines a library of audio tracks, organized by album",
-  "license": "CC0-1.0",
-  "exports": ["Library"]
- },
-
- "types": [
-  ["Library", "MapOf", ["+Barcode", "*Album", "{1"], "Top level of the library is a map of CDs by barcode", []],
-
-  ["Barcode", "String", ["%^\\d{12}$"], "A UPC-A barcode is 12 digits", []],
-
-  ["Album", "Record", [], "model for the album", [
-    [1, "artist", "Artist", [], "artist associated with this album"],
-    [2, "title", "String", [], "commonly known title for this album"],
-    [3, "pub_data", "Publication-Data", [], "metadata about album publication"],
-    [4, "tracks", "Track", ["]0"], "individual track descriptions"],
-    [5, "cover_art", "Image", ["[0"], "cover art image for this album"]
-  ]],
-
-  ["Publication-Data", "Record", [], "who and when of publication", [
-    [1, "label", "String", [], "name of record label"],
-    [2, "rel_date", "String", ["/date"], "and when did they let this drop"]
-  ]],
-
-  ["Image", "Record", [], "pretty picture for the album or track", [
-    [1, "image_format", "Image-Format", [], "what type of image file?"],
-    [2, "image_content", "Binary", [], "the image data in the identified format"]
-  ]],
-
-  ["Image-Format", "Enumerated", [], "can only be one, but can extend list", [
-    [1, "PNG", ""],
-    [2, "JPG", ""]
-  ]],
-
-  ["Artist", "Record", [], "interesting information about the performers", [
-    [1, "artist_name", "String", [], "who is this person"],
-    [2, "instruments", "Instrument", ["q", "]0"], "and what do they play"]
-  ]],
-
-  ["Instrument", "Enumerated", [], "collection of instruments (non-exhaustive)", [
-    [1, "vocals", ""],
-    [2, "guitar", ""],
-    [3, "bass", ""],
-    [4, "drums", ""],
-    [5, "keyboards", ""],
-    [6, "percussion", ""],
-    [7, "brass", ""],
-    [8, "woodwinds", ""],
-    [9, "harmonica", ""]
-  ]],
-
-  ["Track", "Record", [], "for each track there's a file with the audio and a metadata record", [
-    [1, "location", "String", [], "path to the file audio location in local storage"],
-    [2, "metadata", "TrackInfo", [], "description of the track"]
-  ]],
-
-  ["TrackInfo", "Record", [], "information about the individual audio tracks", [
-    [1, "t_number", "Number", [], "track sequence number"],
-    [2, "title", "String", [], "track title"],
-    [3, "length", "String", ["/time"], "length of track"],
-    [4, "audio_format", "Audio-Format", [], "the all important content"],
-    [5, "featured", "Artist", ["q", "[0", "]0"], "important guest performers"],
-    [6, "track_art", "Image", ["[0"], "track can have individual artwork"]
-  ]],
-
-  ["Audio-Format", "Enumerated", [], "can only be one, but can extend list", [
-    [1, "MP3", ""],
-    [2, "OGG", ""],
-    [3, "FLAC", ""]
-  ]]
- ]
+  "info": {
+    "title": "Music Library",
+    "package": "http://fake-audio.org/music-lib",
+    "version": "1.1",
+    "description": "This information model defines a library of audio tracks, organized by album, with associated metadata regarding each track. It is modeled on the types of library data maintained by common websites and music file tag editors.",
+    "license": "CC0-1.0",
+    "exports": ["Library"]
+  },
+  "types": [
+    ["Library", "MapOf", ["+Barcode", "*Album", "{1"], "Top level of the library is a map of CDs by barcode", []],
+    ["Barcode", "String", ["%^\\d{12}$"], "A UPC-A barcode is 12 digits", []],
+    ["Album", "Record", [], "model for the album", [
+        [1, "album_artist", "Artist", [], "primary artist associated with this album"],
+        [2, "album_title", "String", [], "publisher's title for this album"],
+        [3, "pub_data", "Publication-Data", [], "metadata about the album's publication"],
+        [4, "tracks", "Track", ["]0"], "individual track descriptions and content"],
+        [5, "total_tracks", "Integer", ["{1"], "total track count"],
+        [6, "cover_art", "Image", ["[0"], "cover art image for this album"]
+      ]],
+    ["Publication-Data", "Record", [], "who and when of publication", [
+        [1, "publisher", "String", [], "record label that released this album"],
+        [2, "release_date", "String", ["/date"], "and when did they let this drop"]
+      ]],
+    ["Image", "Record", [], "pretty picture for the album or track", [
+        [1, "image_format", "Image-Format", [], "what type of image file?"],
+        [2, "image_content", "Binary", [], "the image data in the identified format"]
+      ]],
+    ["Image-Format", "Enumerated", [], "can only be one, but can extend list", [
+        [1, "PNG", ""],
+        [2, "JPG", ""],
+        [3, "GIF", ""]
+      ]],
+    ["Artist", "Record", [], "interesting information about a performer", [
+        [1, "artist_name", "String", [], "who is this person"],
+        [2, "instruments", "Instrument", ["q", "]0"], "and what do they play"]
+      ]],
+    ["Instrument", "Enumerated", [], "collection of instruments (non-exhaustive)", [
+        [1, "vocals", ""],
+        [2, "guitar", ""],
+        [3, "bass", ""],
+        [4, "drums", ""],
+        [5, "keyboards", ""],
+        [6, "percussion", ""],
+        [7, "brass", ""],
+        [8, "woodwinds", ""],
+        [9, "harmonica", ""]
+      ]],
+    ["Track", "Record", [], "for each track there's a file with the audio and a metadata record", [
+        [1, "location", "File-Path", [], "path to the audio file location in local storage"],
+        [2, "metadata", "Track-Info", [], "description of the track"]
+      ]],
+    ["Track-Info", "Record", [], "information about the individual audio tracks", [
+        [1, "track_number", "Integer", ["[1"], "track sequence number"],
+        [2, "title", "String", [], "track title"],
+        [3, "length", "Integer", ["{1"], "length of track in seconds; anticipated user display is mm:ss; minimum length is 1 second"],
+        [4, "audio_format", "Audio-Format", [], "format of the digital audio"],
+        [5, "featured_artist", "Artist", ["q", "[0", "]0"], "notable guest performers"],
+        [6, "track_art", "Image", ["[0"], "each track can have optionally have individual artwork"],
+        [7, "genre", "Genre", [], ""]
+      ]],
+    ["Audio-Format", "Enumerated", [], "can only be one, but can extend list", [
+        [1, "MP3", ""],
+        [2, "OGG", ""],
+        [3, "FLAC", ""],
+        [4, "MP4", ""],
+        [5, "AAC", ""],
+        [6, "WMA", ""],
+        [7, "WAV", ""]
+      ]],
+    ["Genre", "Enumerated", [], "Enumeration of common genres", [
+        [1, "rock", ""],
+        [2, "jazz", ""],
+        [3, "hip_hop", ""],
+        [4, "electronic", ""],
+        [5, "folk_country_world", ""],
+        [6, "classical", ""],
+        [7, "spoken_word", ""]
+      ]],
+    ["File-Path", "String", [], "local storage location of file with directory path from root, filename, and extension"]
+  ]
 }
 ```
 
@@ -3113,39 +3205,43 @@ constructing an information graph from an ontology graph:
 ```
        title: "Music Library"
      package: "http://fake-audio.org/music-lib"
-     version: "1.0"
- description: "This information model defines a library of audio tracks, organized by album"
+     version: "1.1"
+ description: "This information model defines a library of audio tracks, organized by album, 
+               with associated metadata regarding each track. It is modeled on the types of 
+               library data maintained by common websites and music file tag editors."
      license: "CC0-1.0"
      exports: ["Library"]
 
-Library = MapOf(Barcode, Album){1..*}             // Top level of the library is a map of CDs by barcode
+Library = MapOf(Barcode, Album){1..*}  // Top level of the library is a map of CDs by barcode
 
-Barcode = String{pattern="^\d{12}$"}              // A UPC-A barcode is 12 digits
+Barcode = String{pattern="^\d{12}$"}   // A UPC-A barcode is 12 digits
 
-Album = Record                                    // model for the album
-   1 artist           Artist                      // artist associated with this album
-   2 title            String                      // commonly known title for this album
-   3 pub_data         Publication-Data            // metadata about album publication
-   4 tracks           Track [1..*]                // individual track descriptions
-   5 cover_art        Image optional              // cover art image for this album
+Album = Record                         // model for the album
+   1 album_artist     Artist           // primary artist associated with this album
+   2 album_title      String           // publisher's title for this album
+   3 pub_data         Publication-Data // metadata about the album's publication
+   4 tracks           Track [1..*]     // individual track descriptions and content
+   5 total_tracks     Integer{1..*}    // total track count
+   6 cover_art        Image optional   // cover art image for this album
 
-Publication-Data = Record                         // who and when of publication
-   1 label            String                      // name of record label
-   2 rel_date         String /date                // and when did they let this drop
+Publication-Data = Record              // who and when of publication
+   1 publisher        String           // record label that released this album
+   2 release_date     String /date     // and when did they let this drop
 
-Image = Record                                    // pretty picture for the album or track
-   1 image_format     Image-Format                // what type of image file?
-   2 image_content    Binary                      // the image data in the identified format
+Image = Record                         // pretty picture for the album or track
+   1 image_format     Image-Format     // what type of image file?
+   2 image_content    Binary           // the image data in the identified format
 
-Image-Format = Enumerated                         // can only be one, but can extend list
+Image-Format = Enumerated              // can only be one, but can extend list
    1 PNG
    2 JPG
+   3 GIF
 
-Artist = Record                                   // interesting information about the performers
-   1 artist_name      String                      // who is this person
-   2 instruments      Instrument unique [1..*]    // and what do they play
+Artist = Record                        // interesting information about a performer
+   1 artist_name      String           // who is this person
+   2 instruments      Instrument unique [1..*]  // and what do they play
 
-Instrument = Enumerated                           // collection of instruments (non-exhaustive)
+Instrument = Enumerated                // collection of instruments (non-exhaustive)
    1 vocals
    2 guitar
    3 bass
@@ -3156,32 +3252,53 @@ Instrument = Enumerated                           // collection of instruments (
    8 woodwinds
    9 harmonica
 
-Track = Record                                    // for each track there's a file with the audio and a metadata record
-   1 location         String                      // path to the file audio location in local storage
-   2 metadata         TrackInfo                   // description of the track
+Track = Record                             // for each track there's a file with the audio and a metadata record
+   1 location         File-Path            // path to the audio file location in local storage
+   2 metadata         Track-Info           // description of the track
 
-TrackInfo = Record                                // information about the individual audio tracks
-   1 t_number         Number                      // track sequence number
-   2 title            String                      // track title
-   3 length           String /time                // length of track
-   4 audio_format     Audio-Format                // the all important content
-   5 featured         Artist unique [0..*]        // important guest performers
-   6 track_art        Image optional              // track can have individual artwork
+Track-Info = Record                        // information about the individual audio tracks
+   1 track_number     Integer              // track sequence number
+   2 title            String               // track title
+   3 length           Integer{1..*}        // length of track in seconds; anticipated user display is mm:ss; 
+                                           // minimum length is 1 second
+   4 audio_format     Audio-Format         // format of the digital audio
+   5 featured_artist  Artist unique [0..*] // notable guest performers
+   6 track_art        Image optional       // each track can have optionally have individual artwork
+   7 genre            Genre
 
-Audio-Format = Enumerated                         // can only be one, but can extend list
+Audio-Format = Enumerated                  // can only be one, but can extend list
    1 MP3
    2 OGG
    3 FLAC
+   4 MP4
+   5 AAC
+   6 WMA
+   7 WAV
+
+Genre = Enumerated                         // Enumeration of common genres
+   1 rock
+   2 jazz
+   3 hip_hop
+   4 electronic
+   5 folk_country_world
+   6 classical
+   7 spoken_word
+
+File-Path = String     // local storage location of file with directory path from root, filename, and extension
 ```
 
 ### E.1.3 Music Library Tables
 
-## Schema
+Information Header
+
 ```
          title: "Music Library"
        package: "http://fake-audio.org/music-lib"
-       version: "1.0"
-   description: "This information model defines a library of audio tracks, organized by album"
+       version: "1.1"
+   description: "This information model defines a library of audio tracks, 
+                 organized by album, with associated metadata regarding each 
+                 track. It is modeled on the types of library data maintained 
+                 by common websites and music file tag editors."
        license: "CC0-1.0"
        exports: ["Library"]
 ```
@@ -3202,13 +3319,14 @@ model for the album
 
 **Type: Album (Record)**
 
-| ID | Name          | Type             | \#    | Description                         |
-|----|---------------|------------------|-------|-------------------------------------|
-| 1  | **artist**    | Artist           | 1     | artist associated with this album   |
-| 2  | **title**     | String           | 1     | commonly known title for this album |
-| 3  | **pub_data**  | Publication-Data | 1     | metadata about album publication    |
-| 4  | **tracks**    | Track            | 1..\* | individual track descriptions       |
-| 5  | **cover_art** | Image            | 0..1  | cover art image for this album      |
+| ID | Name             | Type             | \#    | Description                               |
+|----|------------------|------------------|-------|-------------------------------------------|
+| 1  | **album_artist** | Artist           | 1     | primary artist associated with this album |
+| 2  | **album_title**  | String           | 1     | publisher's title for this album          |
+| 3  | **pub_data**     | Publication-Data | 1     | metadata about the album's publication    |
+| 4  | **tracks**       | Track            | 1..\* | individual track descriptions and content |
+| 5  | **total_tracks** | Integer{1..\*}   | 1     | total track count                         |
+| 6  | **cover_art**    | Image            | 0..1  | cover art image for this album            |
 
 **********
 
@@ -3216,10 +3334,10 @@ who and when of publication
 
 **Type: Publication-Data (Record)**
 
-| ID | Name         | Type         | \# | Description                     |
-|----|--------------|--------------|----|---------------------------------|
-| 1  | **label**    | String       | 1  | name of record label            |
-| 2  | **rel_date** | String /date | 1  | and when did they let this drop |
+| ID | Name             | Type         | \# | Description                           |
+|----|------------------|--------------|----|---------------------------------------|
+| 1  | **publisher**    | String       | 1  | record label that released this album |
+| 2  | **release_date** | String /date | 1  | and when did they let this drop       |
 
 **********
 
@@ -3242,10 +3360,11 @@ can only be one, but can extend list
 |----|---------|-------------|
 | 1  | **PNG** |             |
 | 2  | **JPG** |             |
+| 3  | **GIF** |             |
 
 **********
 
-interesting information about the performers
+interesting information about a performer
 
 **Type: Artist (Record)**
 
@@ -3278,25 +3397,32 @@ for each track there's a file with the audio and a metadata record
 
 **Type: Track (Record)**
 
-| ID | Name         | Type      | \# | Description                                      |
-|----|--------------|-----------|----|--------------------------------------------------|
-| 1  | **location** | String    | 1  | path to the file audio location in local storage |
-| 2  | **metadata** | TrackInfo | 1  | description of the track                         |
+| ID | Name         | Type       | \# | Description                                      |
+|----|--------------|------------|----|--------------------------------------------------|
+| 1  | **location** | File-Path  | 1  | path to the audio file location in local storage |
+| 2  | **metadata** | Track-Info | 1  | description of the track                         |
 
 **********
 
 information about the individual audio tracks
 
-**Type: TrackInfo (Record)**
+**Type: Track-Info (Record)**
 
-| ID | Name             | Type          | \#    | Description                       |
-|----|------------------|---------------|-------|-----------------------------------|
-| 1  | **t_number**     | Number        | 1     | track sequence number             |
-| 2  | **title**        | String        | 1     | track title                       |
-| 3  | **length**       | String /time  | 1     | length of track                   |
-| 4  | **audio_format** | Audio-Format  | 1     | the all important content         |
-| 5  | **featured**     | Artist unique | 0..\* | important guest performers        |
-| 6  | **track_art**    | Image         | 0..1  | track can have individual artwork |
+| ID | Name                | Type           | \#    | Description                                                                               |
+|----|---------------------|----------------|-------|-------------------------------------------------------------------------------------------|
+| 1  | **track_number**    | Integer        | 1     | track sequence number                                                                     |
+| 2  | **title**           | String         | 1     | track title                                                                               |
+| 3  | **length**          | Integer{1..\*} | 1     | length of track in seconds; anticipated user display is mm:ss; minimum length is 1 second |
+| 4  | **audio_format**    | Audio-Format   | 1     | format of the digital audio                                                               |
+| 5  | **featured_artist** | Artist unique  | 0..\* | notable guest performers                                                                  |
+| 6  | **track_art**       | Image          | 0..1  | each track can have optionally have individual artwork                                    |
+| 7  | **genre**           | Genre          | 1     |                                                                                           |
+
+**********
+
+| Type Name     | Type Definition | Description                                                                           |
+|---------------|-----------------|---------------------------------------------------------------------------------------|
+| **File-Path** | String          | local storage location of file with directory path from root, filename, and extension |
 
 **********
 
@@ -3309,6 +3435,27 @@ can only be one, but can extend list
 | 1  | **MP3**  |             |
 | 2  | **OGG**  |             |
 | 3  | **FLAC** |             |
+| 4  | **MP4**  |             |
+| 5  | **AAC**  |             |
+| 6  | **WMA**  |             |
+| 7  | **WAV**  |             |
+
+**********
+
+Enumeration of common genres
+
+**Type: Genre (Enumerated)**
+
+| ID | Item                   | Description |
+|----|------------------------|-------------|
+| 1  | **rock**               |             |
+| 2  | **jazz**               |             |
+| 3  | **hip_hop**            |             |
+| 4  | **electronic**         |             |
+| 5  | **folk_country_world** |             |
+| 6  | **classical**          |             |
+| 7  | **spoken_word**        |             |
+
 
 
 ------
