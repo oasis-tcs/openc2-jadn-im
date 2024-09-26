@@ -392,8 +392,8 @@ of the communication engineers training.
 Shannon's original article was later published as a book and gave
 rise to the field of Information Theory [[Shannon](#shannon)].
 
-The [Resource Description Framework (RDF)](#rdf), though severely
-limited in capability, provides a precise vocabulary for describing the
+The [[Resource Description Framework (RDF)](#rdf)], though severely
+limited in capability **, provides a precise vocabulary for describing the
 relationship between "data" and information:
 
 > * A **datatype** consists of a **lexical space**, a **value space**, and
@@ -403,12 +403,20 @@ relationship between "data" and information:
 > whose first element belongs to the lexical space and the second element
 > belongs to the value space of the datatype.
 
+** *Note: the current version of RDF, being based on XML, has two major
+limitations: its lexical space is limited to "a set of strings" and
+cannot support binary variables or data formats, and its datatypes
+are limited to primitive "values such as strings, numbers and dates".
+A future version of RDF could in principle be extended to support
+full information modeling datatypes, but there is no roadmap indicating
+plans to do so.*
+
 A small example may help clarify the concept of information. The
 information content of an instance can be no greater than the
 smallest data instance for which lossless round-trip conversion
 is possible. For example, an IPv4 address represented in dotted
 quad format is 17 bytes of JSON string data ("192.168.101.213"),
-but can be converted to 4 byte [RFC 791](#rfc791) format and back without
+but can be converted to 4 byte [[RFC 791](#rfc791)] format and back without
 loss. The information content of an IPv4 address can therefore be
 no greater than 4 bytes (32 bits), and an information model would
 define the IPv4 address type as a byte sequence of length 4. Expanding
@@ -416,22 +424,22 @@ the example to include a full RFC 791 IP header:
 
 * An Information Model datatype defines the essential information content
 of an IP Header
-* An IP packet being processed within a device or application is:
+* An IP packet being processed within a device or application is modeled as:
   * Information theory: information content
   * IM: logical value (instance of the IP Header abstract datatype, internal representation)
   * DM: an internal representation specific to a concrete data format
-  * RDF: a (logical) value in the value space
+  * RDF: a (logical) value in a value space
 * An IP packet transmitted over the wire or stored in a packet capture
 file is:
-  * Information theory: a sequence of channel symbols
-  * IM: physical value (instance of IP Header abstract datatype, external representation)
+  * Information theory: a sequence of channel symbols (bytes or characters)
+  * IM: physical value (instance of the IP Header abstract datatype, external representation)
   * DM: physical value (instance of an IP Header concrete datatype)
-  * RDF: a lexical value in the lexical space
+  * RDF: a lexical value in a lexical space (data format)
 
 The fact that one external representation of an RFC 791 IP header is 24 bytes
 demonstrates that its information content can be no greater than 24 bytes
 regardless of what other data formats may be used. Lexical data values are
-concrete, visualizable representations of information, but information itself
+concrete visualizable representations of information, but information itself
 is an abstract concept that focuses on meaning. As described in [[YTLee](#ytlee)]'s 2008 paper on
 information modeling: 
 
