@@ -272,6 +272,13 @@ in the creation and use of IMs.
 
 ## 1.1 Background: Motivation for JADN
 
+Information models are a means to understand
+and document the essential information content relevant to a
+system, application, or protocol exchange without regard to how
+that information is represented in actual implementations.
+Having a clear view of the information required provides clarity
+regarding the goals that the eventual implementation must
+satisfy.
 This section provides the background for the creation of JADN as
 an information modeling language for a spectrum of applications.
 
@@ -296,6 +303,11 @@ specify IMs is to use class diagrams of the Unified Modeling Language (UML).
 describe an IM. In particular, the notions of abstraction and
 encapsulation, as well as the possibility that object definitions
 include methods, are considered to be important.
+>
+> * "Compared to IMs, DMs define managed objects at a lower level
+of abstraction.  They include implementation- and
+protocol-specific details, e.g., rules that explain how to map
+managed objects onto lower-level protocol constructs."
 
 Although RFC 3444 references protocols and object methods, the Unified Modeling Language
 [UML](#uml) places data models and object-oriented programming models
@@ -304,7 +316,7 @@ in separate categories:
 * Structured Classifiers (Section 11), including Classes (11.4)
 
 JADN is aligned with UML's layered separation of concerns: the main purpose of an
-IM is to model *data*, not managed objects, at both conceptual and formal levels.
+IM is to model *data*, not managed objects, at both conceptually- and formally-defined levels.
 This allows IMs to model any kind of data, from simple structures such as value ranges
 or coordinates, to protocol messages, APIs, and method signatures, to complete documents,
 without the complexity of modeling programming languages and techniques.
@@ -323,6 +335,10 @@ independently of how they are represented for processing, communication, or stor
 representations of a logical value are equivalent and data values can be converted
 from any representation to any other without loss of information.
 
+Focusing on meaning encourages interoperability between applications by capturing
+agreement about what the information conveys and how it can be used, deferring decisions
+on storage and transmission details until a clear understanding of purpose has been reached.
+
 ### 1.1.2 The Information Modeling Gap
 
 The IETF, in the _Report from the Internet of Things (IoT)
@@ -338,7 +354,7 @@ to a lack of information modeling:
 
 [[RFC 8477](https://www.rfc-editor.org/info/rfc8477)] recapitulates RFC 3444 terminology:
 
-> - **Information Model (IM)** -- An information model defines an
+> - **Information Model** -- An information model defines an
      environment at the highest level of abstraction and
      expresses the desired functionality. Information models can
      be defined informally (e.g., in prose) or more formally 
@@ -346,7 +362,7 @@ to a lack of information modeling:
      Relationship Diagrams, etc.).  Implementation details are
      hidden.
 
-> - **Data Model (DM)** -- A data model defines concrete data
+> - **Data Model** -- A data model defines concrete data
      representations *at a lower level of abstraction, including
      implementation- and protocol-specific details*.  Some
      examples are SNMP Management Information Base (MIB)
@@ -362,6 +378,28 @@ Datatypes can define object state, function signatures, and protocol
 messages, but imperative specification of methods and protocols is
 out of scope.
 
+[DThaler's _IoT Bridge Taxonomy_](#dthaler) addresses the challenges
+created when "many organizations develop and implement different schemas
+for the same kind of things", and concludes:
+
+> To ... increase semantic interoperability, it is desirable that
+> different data models for the same type of thing (e.g., light
+> bulbs) are as similar as possible for basic functionality. In
+> an ideal world, data models used by different protocols and
+> organizations would express exactly the same information in
+> ways that are algorithmically translatable by a dynamic schema
+> bridge with no domain-specific knowledge. Sharing data models
+> more widely, and having agreements in principle of at least
+> using the same abstract information model, would be very
+> beneficial.
+
+The notion of "express[ing] exactly the same information in ways
+that are algorithmically translatable" is a fundamental purpose
+of information modeling, reflected in JADN's focus on
+_information equivalence_.
+
+### 1.1.3 Defining Information
+
 JADN is based on Information Theory
 [[Info-Theory](#info-theory)], which provides a concrete way of
 quantifying information that is explicitly independent of both
@@ -372,8 +410,6 @@ encoding rules. A data format specifies encoding rules used for each
 core information type, providing an unambiguous bridge between semantics
 and data. This supports implementation flexibility while maintaining
 interoperable information exchange across implementations.
-
-### 1.1.3 Defining Information
 
 A basic problem with discussing information models is that the
 terms "information" and "data" are used widely but defined
@@ -437,12 +473,11 @@ file is:
   * IM: physical value (instance of the IP Header abstract datatype, external representation)
   * DM: physical value (instance of an IP Header concrete datatype)
 
-The fact that one external representation of an IP header is 24 bytes
-demonstrates that a lexical value communicates no more than 24 bytes of information
-regardless of what data format is used. Lexical values are concrete
-visualizable representations of information, but information itself
-is an abstract concept that focuses on meaning. As described in [[YTLee](#ytlee)]'s
-2008 paper on information modeling: 
+### 1.1.4 Information Modeling Goals and Principles
+
+Lexical values are concrete visualizable representations of information,
+but information itself is an abstract concept that focuses on meaning.
+As described in [[YTLee](#ytlee)]'s 2008 paper on information modeling: 
 
 > The conceptual view is a single, integrated definition of the
 data within an enterprise that is unbiased toward any single
@@ -453,7 +488,45 @@ integrate, and manage the data.
 
 Note that while this description uses the term "data", the more
 important terms are "unbiased", "independent", "consistent", and
-"meanings and interrelationship". 
+"meanings and interrelationship".
+
+The paper identifies the key benefit of an IM:
+
+> "The advantage of using an information model is that it can
+> provide sharable, stable, and organized structure of
+> information requirements for the domain context."
+
+and describes a "quality" IM as being:
+
+ - complete,
+ - sharable,
+ - stable,
+ - extensible,
+ - well-structured,
+ - precise, and
+ - unambiguous.
+
+JADN's approach to information modeling precision is summarized
+in a few key principles:
+
+ - An information model classifies the validity of serialized
+data with zero false positives and zero false negatives. That is,
+an information model is the *authoritative definition* of essential
+content, and any serialized data is unambiguously one of:
+a) consistent with, b) inconsistent with, or c) insignificant with
+respect to, the model.
+
+ - An application compares logical values in accordance
+with the UML properties defined by their abstract datatype.
+
+ - Lexical values are equivalent if they are instances of the same
+abstract datatype and have the same logical value.
+If a logical value can be losslessly converted among multiple
+lexical values, then its information content is no greater than the
+smallest of those values.
+
+Other quality metrics (completeness, sharability, structure, extensibility,
+etc.) are discussed in the sections describing JADN content.
 
 ## 1.2 Purpose
 
@@ -520,108 +593,6 @@ the same datatype and their logical values are equal.
 This section discusses the nature and benefits of IMs, the role
 of serialization, types of available modeling languages, and
 tools that can be used in information modeling.
-
-## 2.2 Information Models And Data Models
-
-As described in the introduction, IMs are a means to understand
-and document the essential information content relevant to a
-system, application, or protocol exchange without regard to how
-that information is represented in actual implementations.
-Having a clear view of the information required provides clarity
-regarding the goals that the eventual implementation must
-satisfy.
-
- [[RFC 3444](#rfc3444)] describes the purpose of an IM as:
-
- > "to model managed objects at a conceptual level, independent
- > of any specific implementations or protocols used to transport
- > the data. ... Another important characteristic of an IM is
- > that it defines relationships between managed objects."
-
-[[YTLee](#ytlee)] describes an IM as follows:
-
-> "An information model is a representation of concepts,
-> relationships, constraints, rules, and operations to specify
-> data semantics for a chosen domain of discourse."
-
-[[RFC3444](#rfc3444)] contrasts IMs with data models (DMs):
-
-> "Compared to IMs, DMs define managed objects at a lower level
-> of abstraction.  They include implementation- and
-> protocol-specific details, e.g., rules that explain how to map
-> managed objects onto lower-level protocol constructs."
-
-and states DMs are "intended for implementors and include
-protocol-specific constructs".
-
-The following key principles apply to IMs:
-
- - An information model classifies the validity of serialized
-   data with zero false positives and zero false negatives. That
-   is, an information model is the *authoritative definition* of
-   essential content, and any serialized data is unambiguously
-   one of: a) consistent with, b) inconsistent with, or c)
-   insignificant with respect to, the model.
-
- - Information instances are values that can be compared for
-   equality. An application compares instances in accordance with
-   the UML properties defined by their datatype. Two instances
-   are equal if they have the same datatype and the same value.
-
- - If an instance can be losslessly converted among multiple
-   serializations, then its information content is no greater
-   than the smallest of those serializations.
-
-## 2.3 Benefits of Information Models
-
-A key point in all the IM definitions and descriptions in the
-previous section is the ability for the model to represent
-information with a focus on its _meaning_, and without concern
-for how that information will be represented. Focusing on meaning
-encourages interoperability between applications by capturing
-agreement about what the information conveys and how it can be
-used, deferring decisions on storage and transmission matters
-until a clear understanding of purpose has been reached.
-Referring back to the example of the IPv4 address, regardless of
-representation the address identifies the label applied to a
-network interface within an available address space of 2^32.
-
-[[YTLee](#ytlee)] identifies the key benefit of an IM:
-
-> "The advantage of using an information model is that it can
-> provide sharable, stable, and organized structure of
-> information requirements for the domain context."
-
-and describes a "quality" IM as being:
-
- - complete,
- - sharable,
- - stable,
- - extensible,
- - well-structured,
- - precise, and
- - unambiguous.
-
-To sum up, in [DThaler's](#dthaler) paper on _IoT Bridge
-Taxonomy_, which addresses the challenges created when "many
-organizations develop and implement different schemas for the
-same kind of things", the concluding Recommendations section
-includes the following:
-
-> To ... increase semantic interoperability, it is desirable that
-> different data models for the same type of thing (e.g., light
-> bulbs) are as similar as possible for basic functionality. In
-> an ideal world, data models used by different protocols and
-> organizations would express exactly the same information in
-> ways that are algorithmically translatable by a dynamic schema
-> bridge with no domain-specific knowledge. Sharing data models
-> more widely, and having agreements in principle of at least
-> using the same abstract information model, would be very
-> beneficial.
-
-The notion of "express[ing] exactly the same information in ways
-that are algorithmically translatable" is a fundamental purpose
-of information modeling, and aligns with the JADN concept of _information equivalence_.
 
 ## 2.4 Serialization
 
