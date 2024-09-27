@@ -338,7 +338,7 @@ to a lack of information modeling:
 
 [[RFC 8477](https://www.rfc-editor.org/info/rfc8477)] recapitulates RFC 3444 terminology:
 
-> - **Information Model** -- An information model defines an
+> - **Information Model (IM)** -- An information model defines an
      environment at the highest level of abstraction and
      expresses the desired functionality. Information models can
      be defined informally (e.g., in prose) or more formally 
@@ -346,7 +346,7 @@ to a lack of information modeling:
      Relationship Diagrams, etc.).  Implementation details are
      hidden.
 
-> - **Data Model** -- A data model defines concrete data
+> - **Data Model (DM)** -- A data model defines concrete data
      representations *at a lower level of abstraction, including
      implementation- and protocol-specific details*.  Some
      examples are SNMP Management Information Base (MIB)
@@ -420,28 +420,29 @@ but can be converted to 4 byte [[RFC 791](#rfc791)] format and back without
 loss. The information content of an IPv4 address can therefore be
 no greater than 4 bytes (32 bits), and an information model would
 define the IPv4 address type as a byte sequence of length 4. Expanding
-the example to include a full RFC 791 IP header:
+the example to include a full RFC 791 IP header illustrates some of the
+equivalent terms used to describe logical and lexical values:
 
-* An Information Model datatype defines the essential information content
+* An Information Model abstract datatype defines the "essential content"
 of an IP Header
-* An IP packet being processed within a device or application is modeled as:
-  * Information theory: information content
+* An IP packet being processed within a device or application is:
+  * Information theory: information, entropy, or essential content
+  * RDF: logical value in a value space
   * IM: logical value (instance of the IP Header abstract datatype, internal representation)
   * DM: an internal representation specific to a concrete data format
-  * RDF: a (logical) value in a value space
 * An IP packet transmitted over the wire or stored in a packet capture
 file is:
   * Information theory: a sequence of channel symbols (bytes or characters)
+  * RDF: lexical value in the lexical space defined by a data format
   * IM: physical value (instance of the IP Header abstract datatype, external representation)
   * DM: physical value (instance of an IP Header concrete datatype)
-  * RDF: a lexical value in a lexical space (data format)
 
-The fact that one external representation of an RFC 791 IP header is 24 bytes
-demonstrates that its information content can be no greater than 24 bytes
-regardless of what other data formats may be used. Lexical data values are
-concrete visualizable representations of information, but information itself
-is an abstract concept that focuses on meaning. As described in [[YTLee](#ytlee)]'s 2008 paper on
-information modeling: 
+The fact that one external representation of an IP header is 24 bytes
+demonstrates that a lexical value communicates no more than 24 bytes of information
+regardless of what data format is used. Lexical values are concrete
+visualizable representations of information, but information itself
+is an abstract concept that focuses on meaning. As described in [[YTLee](#ytlee)]'s
+2008 paper on information modeling: 
 
 > The conceptual view is a single, integrated definition of the
 data within an enterprise that is unbiased toward any single
