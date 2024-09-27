@@ -319,9 +319,9 @@ starting with conceptual and logical design while leaving representation details
 for later, or for **analysis** starting with existing data to find patterns and meaning:
 * An IM defines the essential content of data artifacts used in computing
 independently of how they are represented for processing, communication, or storage.
-* An IM defines logical equivalence of data artifacts such that all representations
-of a logical value are equivalent and data can be converted from any
-representation to any other without loss of information.
+* An IM defines "information equivalence" of data artifacts, meaning that all
+representations of a logical value are equivalent and data values can be converted
+from any representation to any other without loss of information.
 
 ### 1.1.2 The Information Modeling Gap
 
@@ -392,7 +392,7 @@ of the communication engineers training.
 Shannon's original article was later published as a book and gave
 rise to the field of Information Theory [[Shannon](#shannon)].
 
-The [[Resource Description Framework (RDF)](#rdf)], though severely
+The [[Resource Description Framework (RDF)](#rdf)], though
 limited in capability **, provides a precise vocabulary for describing the
 relationship between "data" and information:
 
@@ -458,19 +458,6 @@ important terms are "unbiased", "independent", "consistent", and
 
 *Note: revise.*
 
-As an IM language, JADN is a syntax-independent, or abstract,
-schema language. Abstract schema languages separate structure
-definitions from encoding rules. JADN is oriented to work well
-with common Internet data formats, such as
-
- - JSON (Javascript Object Notation)
- - XML (eXtensible Markup Language)
- - CBOR (Concise Binary Object Representation)
-
-JADN is based rigorously on information theory, and an IM
-composed in JADN formally defines equivalence of information
-content between data in different formats.
-
 This CN discusses:
 
 1) Key concepts: information, data, serialization.
@@ -532,23 +519,6 @@ the same datatype and their logical values are equal.
 This section discusses the nature and benefits of IMs, the role
 of serialization, types of available modeling languages, and
 tools that can be used in information modeling.
-
-## 2.1 Defining "Information"
-
-
-A common language for defining conceptual models is OWL (Web
-Ontology Language, see [OWL-Primer](#owl-primer)).  An abstract
-information model, such as can be created with JADN, bridges
-between the conceptual model (described using OWL or similar
-languages), and and the external (or concrete) representation in
-a selected data format.  JADN directly models the Shannon
-information for creating serialized data in one or more desired
-formats. By creating the information model to bridge concept to
-representation, the concept of **"information equivalence"** is
-applied:  the same information model can be used to generate both
-self-describing (verbose) data and concise data for production
-environments.
-
 
 ## 2.2 Information Models And Data Models
 
