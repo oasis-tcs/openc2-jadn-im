@@ -506,12 +506,11 @@ and describes a "quality" IM as being:
  - precise, and
  - unambiguous.
 
-JADN's approach to information modeling precision is summarized
-in a few key principles:
+JADN's approach to precision and ambiguity is summarized in these key principles:
 
- - An information model classifies the validity of serialized
+ - An information model classifies serialized
 data with zero false positives and zero false negatives. That is,
-an information model is the *authoritative definition* of essential
+an information model is the authoritative definition of essential
 content, and any serialized data is unambiguously one of:
 a) consistent with, b) inconsistent with, or c) insignificant with
 respect to, the model.
@@ -526,22 +525,9 @@ lexical values, then its information content is no greater than the
 smallest of those values.
 
 Other quality metrics (completeness, sharability, structure, extensibility,
-etc.) are discussed in the sections describing JADN content.
+etc.) are discussed in later sections.
 
-## 1.2 Purpose
-
-*Note: revise.*
-
-This CN discusses:
-
-1) Key concepts: information, data, serialization.
-2) What is information modeling?
-3) The value of an information model.
-4) The distinction between an IM and other modeling approaches.
-5) The creation and use of an IM using JADN and associated
-    automated tools.
-
-## 1.3 Terminology
+## 1.2 Terminology
 
 This CN uses the definitions contained in the [[JADN
 Specification](#jadn-v10)], section 1.2.1. The following
