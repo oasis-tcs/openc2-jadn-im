@@ -440,7 +440,6 @@ relationship between "data" and information:
 > belongs to the value space of the datatype.
 
 ** *Note: the current version of RDF has two major limitations:
-
 its lexical space is limited to "a set of strings" and
 cannot support binary variables or data formats, and its datatypes
 are limited to primitive "values such as strings, numbers and dates".
@@ -449,14 +448,14 @@ full information modeling datatypes, but there is no roadmap indicating
 plans to do so.*
 
 A small example may help clarify the concept of information. The
-information content of an instance can be no greater than the
-smallest data instance for which lossless round-trip conversion
+information content of a logical value can be no greater than the
+smallest lexical value for which lossless round-trip conversion
 is possible. For example, an IPv4 address represented in dotted
 quad format is 17 bytes of JSON string data ("192.168.101.213"),
 but can be converted to 4 byte [[RFC 791](#rfc791)] format and back without
 loss. The information content of an IPv4 address can therefore be
 no greater than 4 bytes (32 bits), and an information model would
-define the IPv4 address type as a byte sequence of length 4. Expanding
+define the IPv4 address datatype as a byte sequence of length 4. Expanding
 the example to include a full RFC 791 IP header illustrates some of the
 equivalent terms used to describe logical and lexical values:
 
@@ -471,7 +470,7 @@ of an IPv4 Header
 file is:
   * Information theory: a sequence of channel symbols (bytes or characters)
   * RDF: lexical value in the lexical space defined by a data format
-  * IM: physical value (instance of the IP Header abstract datatype, external representation)
+  * IM: lexical value (instance of the IP Header abstract datatype, external representation)
   * DM: physical value (instance of an IP Header concrete datatype)
 
 As with individual IP addresses, the information in an IPv4 header is
@@ -490,18 +489,15 @@ stored or accessed. It provides a consistent definition of the
 meanings and interrelationship of the data in order to share,
 integrate, and manage the data.
 
+> The advantage of using an information model is that it can
+provide sharable, stable, and organized structure of
+information requirements for the domain context.
+
 Note that while this description uses the term "data", the more
 important terms are "unbiased", "independent", "consistent", and
 "meanings and interrelationship".
 
-The paper identifies the key benefit of an IM:
-
-> "The advantage of using an information model is that it can
-> provide sharable, stable, and organized structure of
-> information requirements for the domain context."
-
-and describes a "quality" IM as being:
-
+Lee describes a "quality" IM as being:
  - complete,
  - sharable,
  - stable,
@@ -528,8 +524,8 @@ If a logical value can be losslessly converted among multiple
 lexical values, then its information content is no greater than the
 smallest of those values.
 
-Other quality metrics (completeness, sharability, structure, extensibility,
-etc.) are discussed in later sections.
+Additional quality metrics (completeness, sharability, structure, extensibility,
+etc.) are discussed in [Section 3](#3-creating-information-models-with-jadn).
 
 ## 1.2 Terminology
 
