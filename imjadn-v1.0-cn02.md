@@ -439,8 +439,9 @@ relationship between "data" and information:
 > whose first element belongs to the lexical space and the second element
 > belongs to the value space of the datatype.
 
-** *Note: the current version of RDF, being based on XML, has two major
-limitations: its lexical space is limited to "a set of strings" and
+** *Note: the current version of RDF has two major limitations:
+
+its lexical space is limited to "a set of strings" and
 cannot support binary variables or data formats, and its datatypes
 are limited to primitive "values such as strings, numbers and dates".
 A future version of RDF could in principle be extended to support
@@ -460,7 +461,7 @@ the example to include a full RFC 791 IP header illustrates some of the
 equivalent terms used to describe logical and lexical values:
 
 * An Information Model abstract datatype defines the "essential content"
-of an IP Header
+of an IPv4 Header
 * An IP packet being processed within a device or application is:
   * Information theory: information, entropy, or essential content
   * RDF: logical value in a value space
@@ -472,6 +473,9 @@ file is:
   * RDF: lexical value in the lexical space defined by a data format
   * IM: physical value (instance of the IP Header abstract datatype, external representation)
   * DM: physical value (instance of an IP Header concrete datatype)
+
+As with individual IP addresses, the information in an IPv4 header is
+no greater than the 24 byte RFC 791 lexical value regardless of data format.
 
 ### 1.1.4 Information Modeling Goals and Principles
 
@@ -575,6 +579,8 @@ the same datatype and their logical values are equal.
 -------
 
 # 2 Information Modeling Overview
+
+*Note: to be deleted after merging any non-redundant content into section 1.*
 
 This section discusses the nature and benefits of IMs, the role
 of serialization, types of available modeling languages, and
@@ -717,6 +723,8 @@ language should provide
    serialization / deserialization capabilities
 
 ## 2.7 Applying an Information Model
+
+*Note: this becomes the heart of section 2, after rewriting.*
 
 A primary application of an IM is in the translation of data into
 and out of in-memory representation and serialized formats for
