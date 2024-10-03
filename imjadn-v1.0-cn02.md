@@ -919,7 +919,7 @@ has *multiplicity* attributes, including limits on the number of items,
 whether the items have a sequential ordering, and whether duplicate items
 are allowed.
 
-The JADN compound type and its options are chosen for an IM based on the
+The JADN compound types and their options are chosen for an IM based on the
 information characteristics to be modeled:
 
 * Array and ArrayOf contain a group of values.
