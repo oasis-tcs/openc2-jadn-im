@@ -844,7 +844,26 @@ authoritative, but each representation has advantages.
 ###### Figure 3-1 -- JADN Concepts
 ![Figure 3-1 -- JADN Concepts](images/JADN-Concepts.drawio.png)
 
+A JADN schema in its native form is a JSON document containing an object labeled
+"info" and an array labeled "types". 
 
+* The "info" object contains metadata about
+the schema contained in the document, including the types exported from this
+schema and namespace information to connect it with other JADN schema documents.
+
+* The "types" section of the schema document is an array of arrays, with each of
+the inner arrays defining one type in the schema. Each type in the schema
+document will use one of JADN's core types and may be either simple or compound.
+Each type array has five fields, two of which are themselves arrays: one for
+type options and one for the fields or elements that make up a compound type.
+
+* The fields / elements array is always empty in the definition of a primitive type.
+For compound types, each field or element within the fields / elements array is
+also an array, with three items in an element array and five items in a field
+array. 
+
+These structures are illustrated and explained in more detail 
+in [Section&nbsp;3.1.5.1, Native JSON Representation](#3151-native-json-representation).
 
 The JADN information modeling language was developed against specific objectives:
 
