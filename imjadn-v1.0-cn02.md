@@ -1724,7 +1724,9 @@ using CBOR; see the [[JADN Specification](#jadn-v10)], Section
 | :--- | :--- | :--- |
 | **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25). |
 | **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26). |
+| **f64** | Number | **float64**: Serialize as IEEE 754 Single-Precision Float (#7.27). |
 
+> **To-Do:** clarify what the "(#7.xx)" references in the above table point to.
 
 
 #### 3.1.7.5 String
@@ -1994,7 +1996,7 @@ type options in the record's definition and the presence of the
 `optional` keyword on all fields of the record. This reflects a
 design pattern: the compound type's cardinality of `{1..*}`
 defines that there is a minimum number of required fields even
-though every individual field is optional. An empty `Hashes` map
+though every individual field is optional. An empty `Hashes` map is
 invalid, but a map where any one or more of the three hash types
 exists is valid. This is an example of one application of _minv_,
 _maxv_, as described above in [Section 3.1.2](#312-typeoptions).
