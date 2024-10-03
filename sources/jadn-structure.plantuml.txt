@@ -1,26 +1,27 @@
 ' ************  JADN Structure figure for JADN-IM CN *************************
 '  Source code for the WBS portion of the JADN-Structure-Overlay.png diagram
 '  Use with the PlantUML online server to generate PNG
-'  Overlay (Primtive / Compound) was added using PowerPoint
+'  PUML diagram narrowed by vertical slicing and shifting
+'  Overlay (Primitive / Compound) was added using PowerPoint
 ' ****************************************************************************
 
 @startwbs
 *[#yellow] <size:15>**JADN Type Definition Structure**</size>
-**[#lightgreen] **TypeName**\n{string}
-**[#indianred] <color:white>**BaseType**</color>\n<color:white>{choice}</color>
+**[#lightgreen] **TypeName**\n<i>String</i>
+**[#indianred] <color:white>**BaseType**</color>\n<color:white><i>Choice</i></color>
 ***_ Binary
 ***_ Boolean
 ***_ Integer
 ***_ Number
 ***_ String
-***_ Array
 ***_ ArrayOf(//vtype//)
-***_ Map
 ***_ MapOf(//ktype//, //vtype//)
+***_ Array
+***_ Map
 ***_ Record
 ***_ Choice
 ***_ Enumerated
-**[#violet] **TypeOptions**\nArray {0..n}
+**[#violet] **TypeOptions**\n<i>Array {0..n}</i>
 ***_ id (61)
 ***_ vtype (42)
 ***_ ktype (43)
@@ -37,8 +38,8 @@
 ***_ unordered (98)
 ***_ extend (88)
 ***_ default (33)
-**[#lightgreen] **TypeDescription**\n{string}
-**[#cyan] **Fields**\nArray {0..n}
+**[#lightgreen] **TypeDescription**\n<i>String</i>
+**[#cyan] **Fields**\n<i>Array {0..n}</i>
 ***[#lightcyan] **For Any Of:**\n{Array, Choice,\nMap, or Record}
 ****[#PaleTurquoise]< FieldID\n{integer}
 ****[#PaleTurquoise]< FieldName\n{string}
@@ -51,7 +52,7 @@
 *****_ key (75)
 *****_ link (76)
 ****[#PaleTurquoise]< FieldDescription\n{string}
-***[#lightcyan]< **Unused for:**\n{Binary, Boolean,\nInteger, Number,\nString, Array,\nArrayOf, MapOf}
+***[#lightcyan]< **Unused for:**\n{Binary, Boolean,\nInteger, Number,\nString, ArrayOf, \nMapOf}
 ***[#Aquamarine]< **For**\n{Enumerated}
 ****[#Aquamarine]< ItemID\n{integer}
 ****[#Aquamarine]< ItemValue\n{string}
