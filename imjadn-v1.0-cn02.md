@@ -1072,7 +1072,7 @@ Specification:
 > - The first character is the option ID.
 > - The remaining characters are the option value.
 
-TypeOptions are classifiers that, along with the base type,
+TypeOptions are classifiers that, along with the BaseType,
 determine whether data values are instances of the defined type.
 For example, the *pattern* TypeOption is used with the String
 BaseType to define valid instances of that string type using a
@@ -1080,7 +1080,7 @@ regular expression conforming to [[ECMAScript](#ecmascript)]
 grammar.
 
 Table 3-3 lists the complete set of type options, including the
-option name, type, ID character, and description; the ID
+option name, type, ID character, and description. The ID
 characters are used in standard JADN representation 
 ([section 3.1.5.1](#3151-native-json-representation)) when specifying type
 options.
@@ -1107,7 +1107,7 @@ options.
 |  default   |  String  |   `!`  | Default value                                                     |
 
 Detailed explanations of each type option can be found in
-Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
+Sections 3.2.1.1 through 3.2.1.12 of the [[JADN Specification](#jadn-v10)].
 
 The `minv` and `maxv` type options are distinctive in that they
 can apply to both primitive and compound types, with a different
@@ -1257,9 +1257,16 @@ other representations using a simple example.
 
 This section illustrates the JSON representations of the Base
 Types described in [Section 3.1](#31-jadn-overview). Depictions
-are provided for each of three ways that the **Fields** array is
+are provided for overall structure of a JADN schema and for 
+each of three ways that the **Fields** array is
 used, depending on the base type used in a particular type
 definition.
+
+Figure 3-3 illustrates the top-level structure of a native JADN schema document,
+as described in [Section 3.1](#31-jadn-overview).
+
+###### Figure 3-3 -- JADN Schema Top-Level Structure
+![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
 
 Figure 3-3 illustrates the structure of JADN for defining any
 Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
