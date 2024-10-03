@@ -880,9 +880,8 @@ As stated in the [[JADN Specification](#jadn-v10)] introduction:
 > abstraction based on information theory and structural
 > organization using results from graph theory.
 
-> **EDITOR'S NOTE:** consider whether the following adds clarity or
-> confusion; it might need to be re-written to guide the reader
-> through the concepts a bit more.
+> **EDITOR'S NOTE:** adjust and/or remove the following discussion to mesh with
+> the updated introduction.
 
 From UML JADN takes the concept of modeling information/data
 using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
@@ -892,7 +891,7 @@ way that can be validated and signed.  The JADN use of the UML
 primitive types defined in [[UML](#uml)], Table 21.1, can be found
 in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
-The [[JADN Specification](#jadn-v10)] defines twelve base types:
+The [[JADN Specification](#jadn-v10)] defines twelve core types:
 
 | **Primitive** | **Compound** | **Selection /<br> Union** |
 |:-------------:|:------------:|:-------------------------:|
