@@ -1673,6 +1673,9 @@ The corresponding JIDL representation would be:
   TrackNumber = Integer   // Track number for current song
 ```
 
+The JADN Integer primitive type encompasses the UML UnlimitedNatural primitive
+type through the use the `minv` Type Option: an Integer with a `minv` of `0` has
+the same range of values as an UnlimitedNatural.
 
 Table 3-7 lists the *format* options applicable to the Integer type:
 
