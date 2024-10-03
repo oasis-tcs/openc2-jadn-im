@@ -1268,29 +1268,29 @@ as described in [Section 3.1](#31-jadn-overview).
 ###### Figure 3-3 -- JADN Schema Top-Level Structure
 ![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
 
-Figure 3-3 illustrates the structure of JADN for defining any
+Figure 3-4 illustrates the structure of JADN for defining any
 Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
-###### Figure 3-3 -- JADN for Primitive, ArrayOf, MapOf Types
+###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
 ![JADN for Primitive, ArrayOf, MapOf
 Types](images/JADN-primitive-json.drawio.png)
 
 
-Figure 3-4 illustrates the structure of JADN for defining an
+Figure 3-5 illustrates the structure of JADN for defining an
 Enumerated **BaseType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
-###### Figure 3-4 -- JADN for Enumerated Types
+###### Figure 3-5 -- JADN for Enumerated Types
 ![JADN for Enumerated
 Types](images/JADN-with-items-json.drawio.png)
 
 
-Figure 3-5 illustrates the structure of JADN for defining a
+Figure 3-6 illustrates the structure of JADN for defining a
 **BaseType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
-###### Figure 3-5 -- JADN for Types with Fields
+###### Figure 3-6 -- JADN for Types with Fields
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
@@ -1357,14 +1357,14 @@ point for an example to illustrate the various JADN
 representations described in [Section 3.1.5.2](#3152-alternative-jadn-representations). The example
 begins with the ERD for the model:
 
-###### Figure 3-6 -- Simple University Example ERD
+###### Figure 3-7 -- Simple University Example ERD
 
 <img src="images/university-erd.png" height="600px">
 
 The package (see [Section 4.1](#41-packages-and-namespaces)) 
 containing the JADN corresponding to the above ERD is shown here:
 
-###### Figure 3-7 -- Simple University Example JADN (JSON format)
+###### Figure 3-8 -- Simple University Example JADN (JSON format)
 ```json
 {
  "info": {
@@ -1401,7 +1401,7 @@ containing the JADN corresponding to the above ERD is shown here:
 Converting the JSON to JIDL yields a representation that is both
 more readable and easier to edit:
 
-###### Figure 3-8 -- Simple University Example JADN (JIDL format)
+###### Figure 3-9 -- Simple University Example JADN (JIDL format)
 
 ```
      package: "http://example.com/uni"
@@ -1433,7 +1433,7 @@ which are quite readable but somewhat more challenging to edit
 than JIDL (the package information has been omitted from the set
 of property tables).
 
-###### Figure 3-9 -- Simple University Example JADN (table format)
+###### Figure 3-10 -- Simple University Example JADN (table format)
 
 A place of learning
 
@@ -1475,7 +1475,7 @@ of the example is easily generated from the JADN model.  In this
 specific example code for the widely-used GraphViz tool is
 provided.
 
-###### Figure 3-10 -- Simple University Example ERD Source Code (GraphViz)
+###### Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)
 ```
 # package: http://example.com/uni
 # exports: ['University']
