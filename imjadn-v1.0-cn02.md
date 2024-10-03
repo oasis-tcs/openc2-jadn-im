@@ -832,7 +832,7 @@ use of JADN in information modeling.
 ## 3.1 JADN Overview
 
 Figure 3-1 provides a high-level view of the JADN concepts that
-will be described in this section. JADN provides simple and
+will be described in this section. JADN provides primitive and
 compound data types that can be refined using type and field
 options (field options only apply within compound types). JADN
 can also be represented in multiple formats, both textual and
@@ -845,6 +845,7 @@ authoritative, but each representation has advantages.
 ![Figure 3-1 -- JADN Concepts](images/JADN-Concepts.drawio.png)
 
 
+
 The JADN information modeling language was developed against specific objectives:
 
  1) Core types represent application-relevant "information", not "data"
@@ -853,7 +854,7 @@ The JADN information modeling language was developed against specific objectives
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
 
-As described in the [[JADN Specification](#jadn-v10)] introduction:
+As stated in the [[JADN Specification](#jadn-v10)] introduction:
 
 > JADN is a formal description technique that combines type
 > constraints from the Unified Modeling Language (UML) with data
