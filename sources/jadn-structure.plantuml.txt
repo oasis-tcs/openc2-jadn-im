@@ -1,7 +1,7 @@
 ' ************  JADN Structure figure for JADN-IM CN *************************
 '  Source code for the WBS portion of the JADN-Structure-Overlay.png diagram
 '  Use with the PlantUML online server to generate PNG
-'  Overlay was added using PowerPoint
+'  Overlay (Primtive / Compound) was added using PowerPoint
 ' ****************************************************************************
 
 @startwbs
