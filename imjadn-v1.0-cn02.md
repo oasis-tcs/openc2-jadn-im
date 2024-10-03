@@ -1019,10 +1019,10 @@ The five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
 that type.
- 2. The **BaseType** of the type, which is one the twelve base
+ 2. The **BaseType** of the type, which is one the twelve core
     types shown in Figure 3-2.
  3. Zero or more of the available JADN **TypeOptions** that
-    refine the base types to fit particular needs.
+    refine the core types to fit particular needs.
  4. An optional **TypeDescription** string that provides
     additional information about the type.
  5. For any of the Compound types, Enumerated, or Choice, a set
@@ -1032,7 +1032,7 @@ that type.
 ###### Figure 3-2 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
 
-A firm requirement of JADN is that a TypeName must not be a JADN
+A firm requirement of JADN is that a TypeName in a schema must not be a JADN
 predefined type. There are also conventions intended to improve
 the consistency and readability of JADN specifications. These
 conventions are defined in JADN but can be overridden within a
