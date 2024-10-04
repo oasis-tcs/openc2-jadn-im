@@ -272,6 +272,13 @@ in the creation and use of IMs.
 
 ## 1.1 Background: Motivation for JADN
 
+Information models are a means to understand
+and document the essential information content relevant to a
+system, application, or protocol exchange without regard to how
+that information is represented in actual implementations.
+Having a clear view of the information required provides clarity
+regarding the goals that the eventual implementation must
+satisfy.
 This section provides the background for the creation of JADN as
 an information modeling language for a spectrum of applications.
 
@@ -296,6 +303,11 @@ specify IMs is to use class diagrams of the Unified Modeling Language (UML).
 describe an IM. In particular, the notions of abstraction and
 encapsulation, as well as the possibility that object definitions
 include methods, are considered to be important.
+>
+> * "Compared to IMs, DMs define managed objects at a lower level
+of abstraction.  They include implementation- and
+protocol-specific details, e.g., rules that explain how to map
+managed objects onto lower-level protocol constructs."
 
 Although RFC 3444 references protocols and object methods, the Unified Modeling Language
 [UML](#uml) places data models and object-oriented programming models
@@ -304,7 +316,7 @@ in separate categories:
 * Structured Classifiers (Section 11), including Classes (11.4)
 
 JADN is aligned with UML's layered separation of concerns: the main purpose of an
-IM is to model *data*, not managed objects, at both conceptual and formal levels.
+IM is to model *data*, not managed objects, at both conceptually- and formally-defined levels.
 This allows IMs to model any kind of data, from simple structures such as value ranges
 or coordinates, to protocol messages, APIs, and method signatures, to complete documents,
 without the complexity of modeling programming languages and techniques.
@@ -319,9 +331,13 @@ starting with conceptual and logical design while leaving representation details
 for later, or for **analysis** starting with existing data to find patterns and meaning:
 * An IM defines the essential content of data artifacts used in computing
 independently of how they are represented for processing, communication, or storage.
-* An IM defines logical equivalence of data artifacts such that all representations
-of a logical value are equivalent and data can be converted from any
-representation to any other without loss of information.
+* An IM defines "information equivalence" of data artifacts, meaning that all
+representations of a logical value are equivalent and data values can be converted
+from any representation to any other without loss of information.
+
+Focusing on meaning encourages interoperability between applications by capturing
+agreement about what the information conveys and how it can be used, deferring decisions
+on storage and transmission details until a clear understanding of purpose has been reached.
 
 ### 1.1.2 The Information Modeling Gap
 
@@ -362,6 +378,28 @@ Datatypes can define object state, function signatures, and protocol
 messages, but imperative specification of methods and protocols is
 out of scope.
 
+[DThaler's _IoT Bridge Taxonomy_](#dthaler) addresses the challenges
+created when "many organizations develop and implement different schemas
+for the same kind of things", and concludes:
+
+> To ... increase semantic interoperability, it is desirable that
+> different data models for the same type of thing (e.g., light
+> bulbs) are as similar as possible for basic functionality. In
+> an ideal world, data models used by different protocols and
+> organizations would express exactly the same information in
+> ways that are algorithmically translatable by a dynamic schema
+> bridge with no domain-specific knowledge. Sharing data models
+> more widely, and having agreements in principle of at least
+> using the same abstract information model, would be very
+> beneficial.
+
+The notion of "express[ing] exactly the same information in ways
+that are algorithmically translatable" is a fundamental purpose
+of information modeling, reflected in JADN's focus on
+_information equivalence_.
+
+### 1.1.3 Defining Information
+
 JADN is based on Information Theory
 [[Info-Theory](#info-theory)], which provides a concrete way of
 quantifying information that is explicitly independent of both
@@ -373,33 +411,123 @@ core information type, providing an unambiguous bridge between semantics
 and data. This supports implementation flexibility while maintaining
 interoperable information exchange across implementations.
 
-## 1.2 Purpose
+A basic problem with discussing information models is that the
+terms "information" and "data" are used widely but defined
+imprecisely. The use of these terms across technical literature
+has considerable variation and overlap. As described in _What is
+Shannon information?_ [[Lombardi](#lombardi)], a precise
+definition of "information" is a relatively recent development:
 
-*Note: revise.*
+> Nevertheless, it is traditionally agreed that the seminal work
+for the mathematical view of information is the paper where
+Claude Shannon (1948) introduces a precise formalism designed to
+solve certain specific technological problems in communication
+engineering. ... Nowadays, Shannon’s theory is a basic ingredient
+of the communication engineers training. 
 
-As an IM language, JADN is a syntax-independent, or abstract,
-schema language. Abstract schema languages separate structure
-definitions from encoding rules. JADN is oriented to work well
-with common Internet data formats, such as
+Shannon's original article was later published as a book and gave
+rise to the field of Information Theory [[Shannon](#shannon)].
 
- - JSON (Javascript Object Notation)
- - XML (eXtensible Markup Language)
- - CBOR (Concise Binary Object Representation)
+The [[Resource Description Framework (RDF)](#rdf)], though
+limited in capability **, provides a precise vocabulary for describing the
+relationship between "data" and information:
 
-JADN is based rigorously on information theory, and an IM
-composed in JADN formally defines equivalence of information
-content between data in different formats.
+> * A **datatype** consists of a **lexical space**, a **value space**, and
+> a **lexical-to-value mapping**.
+> 
+> * The lexical-to-value mapping of a datatype is a set of pairs
+> whose first element belongs to the lexical space and the second element
+> belongs to the value space of the datatype.
 
-This CN discusses:
+** *Note: the current version of RDF has two major limitations:
+its lexical space is limited to "a set of strings" and
+cannot support binary variables or data formats, and its datatypes
+are limited to primitive "values such as strings, numbers and dates".
+A future version of RDF could in principle be extended to support
+full information modeling datatypes, but there is no roadmap indicating
+plans to do so.*
 
-1) Key concepts: information, data, serialization.
-2) What is information modeling?
-3) The value of an information model.
-4) The distinction between an IM and other modeling approaches.
-5) The creation and use of an IM using JADN and associated
-    automated tools.
+A small example may help clarify the concept of information. The
+information content of a logical value can be no greater than the
+smallest lexical value for which lossless round-trip conversion
+is possible. For example, an IPv4 address represented in dotted
+quad format is 17 bytes of JSON string data ("192.168.101.213"),
+but can be converted to 4 byte [[RFC 791](#rfc791)] format and back without
+loss. The information content of an IPv4 address can therefore be
+no greater than 4 bytes (32 bits), and an information model would
+define the IPv4 address datatype as a byte sequence of length 4. Expanding
+the example to include a full RFC 791 IP header illustrates some of the
+equivalent terms used to describe logical and lexical values:
 
-## 1.3 Terminology
+* An Information Model abstract datatype defines the "essential content"
+of an IPv4 Header
+* An IP packet being processed within a device or application is:
+  * Information theory: information, entropy, or essential content
+  * RDF: logical value in a value space
+  * IM: logical value (instance of the IP Header abstract datatype, internal representation)
+  * DM: an internal representation specific to a concrete data format
+* An IP packet transmitted over the wire or stored in a packet capture
+file is:
+  * Information theory: a sequence of channel symbols (bytes or characters)
+  * RDF: lexical value in the lexical space defined by a data format
+  * IM: lexical value (instance of the IP Header abstract datatype, external representation)
+  * DM: physical value (instance of an IP Header concrete datatype)
+
+As with individual IP addresses, the information in an IPv4 header is
+no greater than the 24 byte RFC 791 lexical value regardless of data format.
+
+### 1.1.4 Information Modeling Goals and Principles
+
+Lexical values are concrete visualizable representations of information,
+but information itself is an abstract concept that focuses on meaning.
+As described in [[YTLee](#ytlee)]'s 2008 paper on information modeling: 
+
+> The conceptual view is a single, integrated definition of the
+data within an enterprise that is unbiased toward any single
+application of data and independent of how the data is physically
+stored or accessed. It provides a consistent definition of the
+meanings and interrelationship of the data in order to share,
+integrate, and manage the data.
+
+> The advantage of using an information model is that it can
+provide sharable, stable, and organized structure of
+information requirements for the domain context.
+
+Note that while this description uses the term "data", the more
+important terms are "unbiased", "independent", "consistent", and
+"meanings and interrelationship".
+
+Lee describes a "quality" IM as being:
+ - complete,
+ - sharable,
+ - stable,
+ - extensible,
+ - well-structured,
+ - precise, and
+ - unambiguous.
+
+JADN's approach to precision and ambiguity is summarized in these key principles:
+
+ - An information model classifies serialized
+data with zero false positives and zero false negatives. That is,
+an information model is the authoritative definition of essential
+content, and any serialized data is unambiguously one of:
+a) consistent with, b) inconsistent with, or c) insignificant with
+respect to, the model.
+
+ - An application compares logical values in accordance
+with the UML properties defined by their abstract datatype.
+
+ - Lexical values are equivalent if they are instances of the same
+abstract datatype and have the same logical value.
+If a logical value can be losslessly converted among multiple
+lexical values, then its information content is no greater than the
+smallest of those values.
+
+Additional quality metrics (completeness, sharability, structure, extensibility,
+etc.) are discussed in [Section 3](#3-creating-information-models-with-jadn).
+
+## 1.2 Terminology
 
 This CN uses the definitions contained in the [[JADN
 Specification](#jadn-v10)], section 1.2.1. The following
@@ -448,186 +576,11 @@ the same datatype and their logical values are equal.
 
 # 2 Information Modeling Overview
 
+*Note: to be deleted after merging any non-redundant content into section 1.*
+
 This section discusses the nature and benefits of IMs, the role
 of serialization, types of available modeling languages, and
 tools that can be used in information modeling.
-
-## 2.1 Defining "Information"
-
-A basic problem with discussing information models is that the
-terms "information" and "data" are used widely but defined
-imprecisely. The use of these terms across technical literature
-has considerable variation and overlap. As described in _What is
-Shannon information?_ [[Lombardi](#lombardi)], a precise
-definition of "information" is a relatively recent development:
-
-> Nevertheless, it is traditionally agreed that the seminal work
-for the mathematical view of information is the paper where
-Claude Shannon (1948) introduces a precise formalism designed to
-solve certain specific technological problems in communication
-engineering. ... Nowadays, Shannon’s theory is a basic ingredient
-of the communication engineers training. 
-
-Shannon's original article was later published as a book and gave
-rise to the field of Information Theory [[Shannon](#shannon)].
-
-A small example may help clarify the concept of information. The
-information content of an instance can be no greater than the
-smallest data instance for which lossless round-trip conversion
-is possible. For example, an IPv4 address represented in dotted
-quad format is 17 bytes of JSON string data ("192.168.101.213"),
-but can be converted to 4 byte RFC 791 format and back without
-loss. The information content of an IPv4 address can therefore be
-no greater than 4 bytes (32 bits), and an information model would
-define the IPv4 address type as a byte sequence of length 4.
-
-For the purpose of understanding information modeling, it is
-helpful to think in terms of different levels of representation:
-
- - External
- - Internal
- - Conceptual
-
-These levels correspond, respectively, to the Data, Information,
-and Logical models illustrated above in 
-[Figure 1-1](#figure-1-1----range-of-model-types). 
-
-The external representation requires a data model to describe
-how information is transmitted or stored; such a data model
-provides specific formats and syntax (e.g., defining
-serialization rules) that permit moving the data out of the
-system where it is being processed. The internal representation
-depends on an information model, which uses abstract terminology
-to focus on what the information represents (e.g., a name, an
-address). As described in [[YTLee](#ytlee)]'s 2008 paper on
-information modeling: 
-
-> The conceptual view is a single, integrated definition of the
-data within an enterprise that is unbiased toward any single
-application of data and independent of how the data is physically
-stored or accessed. It provides a consistent definition of the
-meanings and interrelationship of the data in order to share,
-integrate, and manage the data.
-
-Note that while this description uses the term "data", the more
-important terms are "unbiased", "independent", "consistent", and
-"meanings and interrelationship". 
-
-A common language for defining conceptual models is OWL (Web
-Ontology Language, see [OWL-Primer](#owl-primer)).  An abstract
-information model, such as can be created with JADN, bridges
-between the conceptual model (described using OWL or similar
-languages), and and the external (or concrete) representation in
-a selected data format.  JADN directly models the Shannon
-information for creating serialized data in one or more desired
-formats. By creating the information model to bridge concept to
-representation, the concept of **"information equivalence"** is
-applied:  the same information model can be used to generate both
-self-describing (verbose) data and concise data for production
-environments.
-
-
-## 2.2 Information Models And Data Models
-
-As described in the introduction, IMs are a means to understand
-and document the essential information content relevant to a
-system, application, or protocol exchange without regard to how
-that information is represented in actual implementations.
-Having a clear view of the information required provides clarity
-regarding the goals that the eventual implementation must
-satisfy.
-
- [[RFC 3444](#rfc3444)] describes the purpose of an IM as:
-
- > "to model managed objects at a conceptual level, independent
- > of any specific implementations or protocols used to transport
- > the data. ... Another important characteristic of an IM is
- > that it defines relationships between managed objects."
-
-[[YTLee](#ytlee)] describes an IM as follows:
-
-> "An information model is a representation of concepts,
-> relationships, constraints, rules, and operations to specify
-> data semantics for a chosen domain of discourse."
-
-[[RFC3444](#rfc3444)] contrasts IMs with data models (DMs):
-
-> "Compared to IMs, DMs define managed objects at a lower level
-> of abstraction.  They include implementation- and
-> protocol-specific details, e.g., rules that explain how to map
-> managed objects onto lower-level protocol constructs."
-
-and states DMs are "intended for implementors and include
-protocol-specific constructs".
-
-The following key principles apply to IMs:
-
- - An information model classifies the validity of serialized
-   data with zero false positives and zero false negatives. That
-   is, an information model is the *authoritative definition* of
-   essential content, and any serialized data is unambiguously
-   one of: a) consistent with, b) inconsistent with, or c)
-   insignificant with respect to, the model.
-
- - Information instances are values that can be compared for
-   equality. An application compares instances in accordance with
-   the UML properties defined by their datatype. Two instances
-   are equal if they have the same datatype and the same value.
-
- - If an instance can be losslessly converted among multiple
-   serializations, then its information content is no greater
-   than the smallest of those serializations.
-
-## 2.3 Benefits of Information Models
-
-A key point in all the IM definitions and descriptions in the
-previous section is the ability for the model to represent
-information with a focus on its _meaning_, and without concern
-for how that information will be represented. Focusing on meaning
-encourages interoperability between applications by capturing
-agreement about what the information conveys and how it can be
-used, deferring decisions on storage and transmission matters
-until a clear understanding of purpose has been reached.
-Referring back to the example of the IPv4 address, regardless of
-representation the address identifies the label applied to a
-network interface within an available address space of 2^32.
-
-[[YTLee](#ytlee)] identifies the key benefit of an IM:
-
-> "The advantage of using an information model is that it can
-> provide sharable, stable, and organized structure of
-> information requirements for the domain context."
-
-and describes a "quality" IM as being:
-
- - complete,
- - sharable,
- - stable,
- - extensible,
- - well-structured,
- - precise, and
- - unambiguous.
-
-To sum up, in [DThaler's](#dthaler) paper on _IoT Bridge
-Taxonomy_, which addresses the challenges created when "many
-organizations develop and implement different schemas for the
-same kind of things", the concluding Recommendations section
-includes the following:
-
-> To ... increase semantic interoperability, it is desirable that
-> different data models for the same type of thing (e.g., light
-> bulbs) are as similar as possible for basic functionality. In
-> an ideal world, data models used by different protocols and
-> organizations would express exactly the same information in
-> ways that are algorithmically translatable by a dynamic schema
-> bridge with no domain-specific knowledge. Sharing data models
-> more widely, and having agreements in principle of at least
-> using the same abstract information model, would be very
-> beneficial.
-
-The notion of "express[ing] exactly the same information in ways
-that are algorithmically translatable" is a fundamental purpose
-of information modeling, and aligns with the JADN concept of _information equivalence_.
 
 ## 2.4 Serialization
 
@@ -766,6 +719,8 @@ language should provide
    serialization / deserialization capabilities
 
 ## 2.7 Applying an Information Model
+
+*Note: this becomes the heart of section 2, after rewriting.*
 
 A primary application of an IM is in the translation of data into
 and out of in-memory representation and serialized formats for
@@ -2533,6 +2488,14 @@ Open Command and Control (OpenC2) Language Specification Version 1.0. Edited by 
 
 ###### [PlantUML]
 https://plantuml.com/
+
+###### [RDF]
+"Resource Description Framework (RDF) 1.2 Concepts and Abstract Syntax", W3C Working Draft, 22 August 2024,
+https://www.w3.org/TR/rdf12-concepts/#section-Datatypes
+
+###### [RFC791]
+"Internet Protocol - DARPA Internet Program Protocol Specification", RFC 791, September 1981,
+https://datatracker.ietf.org/doc/html/rfc791#section-3.1
 
 ###### [RFC3444]
 Pras, A., Schoenwaelder, J., "On the Difference between
