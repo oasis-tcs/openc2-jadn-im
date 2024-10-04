@@ -7,7 +7,7 @@
 
 ## Committee Note 02 - Working Draft 01
 
-## DD MMM YYYY
+## 04 Oct 2024
 
 &nbsp;
 
@@ -291,7 +291,9 @@ Internet Engineering Task Force (IETF) [RFC 3444](#rfc3444),
 level, independent of any specific implementations or protocols used
 to transport the data.  The degree of specificity (or detail) of the
 abstractions defined in the IM depends on the modeling needs of its
-designers.
+designers. (Section 2)
+> 
+> 
 > * The terms "conceptual models" and "abstract models", which are often
 used in the literature, relate to IMs.  IMs can be implemented in different
 ways and mapped on different protocols.
@@ -302,12 +304,13 @@ specify IMs is to use class diagrams of the Unified Modeling Language (UML).
 > * In general, it seems advisable to use object-oriented techniques to
 describe an IM. In particular, the notions of abstraction and
 encapsulation, as well as the possibility that object definitions
-include methods, are considered to be important.
+include methods, are considered to be important. (Section 3)
 >
-> * "Compared to IMs, DMs define managed objects at a lower level
+> 
+> * Compared to IMs, DMs define managed objects at a lower level
 of abstraction.  They include implementation- and
 protocol-specific details, e.g., rules that explain how to map
-managed objects onto lower-level protocol constructs."
+managed objects onto lower-level protocol constructs. (Section 4)
 
 Although RFC 3444 references protocols and object methods, the Unified Modeling Language
 [UML](#uml) places data models and object-oriented programming models
@@ -319,7 +322,7 @@ JADN is aligned with UML's layered separation of concerns: the main purpose of a
 IM is to model *data*, not managed objects, at both conceptually- and formally-defined levels.
 This allows IMs to model any kind of data, from simple structures such as value ranges
 or coordinates, to protocol messages, APIs, and method signatures, to complete documents,
-without the complexity of modeling programming languages and techniques.
+without the complexity of also modeling programming languages and techniques.
 An IM is a [declarative](#d1-declarative-specifications)
 specification that defines desired outcomes (data item validity and equivalence)
 without describing control flow.
@@ -347,12 +350,12 @@ Semantic Interoperability (IOTSI) Workshop 2016_
 attributed challenges in achieving interoperability
 to a lack of information modeling:
 
-> _One common problem is the lack of an encoding-independent
+> One common problem is the lack of an encoding-independent
 > standardization of the information, the so-called information
 > model. Another problem is the strong relationship between data
-> formats and the underlying communication architecture_
+> formats and the underlying communication architecture. (Section 1)
 
-[[RFC 8477](https://www.rfc-editor.org/info/rfc8477)] recapitulates RFC 3444 terminology:
+[[RFC 8477](https://www.rfc-editor.org/info/rfc8477)] recapitulates RFC 3444 terminology (Section 2):
 
 > - **Information Model** -- An information model defines an
      environment at the highest level of abstraction and
@@ -371,7 +374,7 @@ to a lack of information modeling:
      (LwM2M) Schemas, Open Connectivity Foundation (OCF)
      Schemas, and so on.
 
-A JADN IM uses UML datatypes to define *data*, not *an environment*
+A JADN IM uses UML datatypes to define *data*, not *an environment*,
 and expresses *desired effects* (meaning of datatype instances), not
 *desired functionality* (temporal behavior of methods and protocols).
 Datatypes can define object state, function signatures, and protocol
@@ -428,9 +431,10 @@ of the communication engineers training.
 Shannon's original article was later published as a book and gave
 rise to the field of Information Theory [[Shannon](#shannon)].
 
-The [[Resource Description Framework (RDF)](#rdf)], though
-limited in capability **, provides a precise vocabulary for describing the
-relationship between "data" and information:
+The [[Resource Description Framework (RDF)](#rdf)], though limited
+in capability **, defines the concept of lexical-to-value mapping, which
+provides a precise vocabulary for describing the relationship between
+"data" and information:
 
 > * A **datatype** consists of a **lexical space**, a **value space**, and
 > a **lexical-to-value mapping**.
@@ -511,9 +515,8 @@ JADN's approach to precision and ambiguity is summarized in these key principles
  - An information model classifies serialized
 data with zero false positives and zero false negatives. That is,
 an information model is the authoritative definition of essential
-content, and any serialized data is unambiguously one of:
-a) consistent with, b) inconsistent with, or c) insignificant with
-respect to, the model.
+content, and all serialized data is unambiguously one of:
+a) consistent with the model, b) inconsistent with the model, or c) insignificant.
 
  - An application compares logical values in accordance
 with the UML properties defined by their abstract datatype.
@@ -521,7 +524,7 @@ with the UML properties defined by their abstract datatype.
  - Lexical values are equivalent if they are instances of the same
 abstract datatype and have the same logical value.
 If a logical value can be losslessly converted among multiple
-lexical values, then its information content is no greater than the
+lexical values then its information content is no greater than the
 smallest of those values.
 
 Additional quality metrics (completeness, sharability, structure, extensibility,
