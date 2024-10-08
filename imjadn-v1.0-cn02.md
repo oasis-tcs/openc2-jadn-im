@@ -2110,8 +2110,10 @@ are:
    messages)
  - Information structures such as a software bill of materials
    (SBOM)
- - Standard Development Organization (SDO) management system
-   (similar to OASIS Kavi)
+ - Standard Development Organization (SDO) management system (member
+   organizations, member persons, voting rights, topic-focused groups and
+   rosters, discussion forums and messages, calendars, meeting attendance, draft
+   and approved documents, ballots)
  - Music Database (artists, albums, songs, tracks, metadata,
    guest artists)
 
