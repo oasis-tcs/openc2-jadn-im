@@ -1705,11 +1705,9 @@ are applicable to the Number data type.
 information with continuous values.  An information item fitting
 a Number type would be defined as follows:
 
-
 ```json
 ["Temperature", "Number", [], "Current temperature observation in degrees C", []]
 ```
-
 
 The corresponding JIDL representation would be:
 
@@ -1718,10 +1716,10 @@ The corresponding JIDL representation would be:
   Temperature = Number   // Current temperature observation in degrees C
 ```
 
-Table 3-8 lists the *format* options applicable to the Number
-type. These *format* options are only relevant when serializing
-using CBOR; see the [[JADN Specification](#jadn-v10)], Section
-4.4:
+The *minf* and *maxf* TypeOptions are used to specify a minimum and/or maximum
+value that may be assigned to a Number type. Table 3-8 lists the *format*
+options applicable to the Number type. These *format* options are only relevant
+when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&nbsp;4.4:
 
 ###### Table 3-8 -- Number Type Format Options
 
