@@ -1613,7 +1613,10 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
-Table 3-6 lists the *format* options applicable to the Binary type:
+The *minv* and *maxv* TypeOptions are used to specify a minimum and/or maximum
+number of octets for a binary type. If *minv* equals *maxv* the size of the
+binary type is fixed. Table 3-6 lists the *format* options applicable to the
+Binary type:
 
 ###### Table 3-6 -- Binary Type Format Options
 
