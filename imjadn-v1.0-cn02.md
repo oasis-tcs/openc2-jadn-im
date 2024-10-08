@@ -47,7 +47,7 @@ Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 An Information Model (IM) defines the essential content of data used in computing,
 independently of how it is represented for processing, communication or storage.
 JSON Abstract Data Notation (JADN) is an information modeling language based on
-Unified Modeling Language (UML) datatypes designed to to both express the meaning
+Unified Modeling Language (UML) datatypes designed to both express the meaning
 of data items at a conceptual level and formally type and validate their essential content.
 It uses information theory to define logical equivalence, allowing translation
 of essential content across a wide range of representations without loss.
