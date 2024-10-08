@@ -1911,7 +1911,11 @@ Table 3-9 lists the *format* options applicable to the Array type:
 | ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [RFC 4632](#rfc4632) Section 3.1 |
 | ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [RFC 4291](#rfc4291) Section 2.3 |
 
+The `ipv4-net` and `ipv6-net` format options impose several constraints when applied to an Array type:
 
+* Specifies that the Binary element of the Array to be 32 or 128 bits, respectively
+* Constrains the Integer prefix value to a range of 0..32 or 0..128, respectively
+* Specifies that text representations of the type will use CIDR notation
 
 
 #### 3.1.7.9 ArrayOf(_vtype_)
