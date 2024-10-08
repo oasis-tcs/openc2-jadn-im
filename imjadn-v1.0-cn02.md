@@ -1720,13 +1720,16 @@ using CBOR; see the [[JADN Specification](#jadn-v10)], Section
 
 ###### Table 3-8 -- Number Type Format Options
 
-| Keyword | Type | Requirement |
-| :--- | :--- | :--- |
-| **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25). |
-| **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26). |
-| **f64** | Number | **float64**: Serialize as IEEE 754 Single-Precision Float (#7.27). |
+| Keyword |  Type  | Requirement                                                       |
+|:-------:|:------:|-------------------------------------------------------------------|
+| **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25)   |
+| **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26) |
+| **f64** | Number | **float64**: Serialize as IEEE 754 Single-Precision Float (#7.27) |
 
-> **To-Do:** clarify what the "(#7.xx)" references in the above table point to.
+The parenthetical (#7.2x) references in the above table identify the CBOR major
+type (7) and associated additional information (25/26/27) as defined in the
+Concise Data Definition Language (CDDL) Standard Prelude specified in Apppendix&nbsp;D 
+of [[RFC8610](#rfc8610)].
 
 
 #### 3.1.7.5 String
