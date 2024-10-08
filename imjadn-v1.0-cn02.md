@@ -1758,9 +1758,11 @@ The corresponding JIDL representation would be:
   TrackTitle = String   // Title of the song in the selected track
 ```
 
-All semantic validation keywords defined in Section 7.3 of 
-[[JSON Schema](#jsonschema)] are valid *format* options for the String
-type.
+All semantic validation keywords defined in Section 7.3 of [[JSON
+Schema](#jsonschema)] are valid *format* options for the String type. The *minv*
+and *maxv* TypeOptions are used to specify a minimum and/or maximum number of
+characters that may be assigned to a String type (i.e., the acceptable range of
+string lengths). 
 
 The *pattern* option in JADN is identified by the `%` type option
 character followed immediately by the regular expression to be
