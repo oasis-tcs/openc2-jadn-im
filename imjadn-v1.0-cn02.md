@@ -2306,12 +2306,41 @@ JADN schema tools to detect discrepancies.
 
 ### 4.1.2 Namespaces
 
-Namespaces identified in the package metadata are the mechanism
-for enabling references to types defined in other packages. The
-`namespaces` field contains an array associating locally
-meaningful Namespace Identifiers (`NSID`) with the `namespace`
-other packages declare for themselves, as shown in this excerpt
-from the JIDL description of the `Information` header:
+> NOTE: this discussion of namespace management includes features to be added in
+> JADN v1.1. The implementation of these features is backward-compatible with
+> the handling of namespaces in JADN v1.0.
+
+Namespaces identified in the package metadata are the mechanism for enabling
+references to types defined in other packages. JADN namespace management
+provides for:
+
+* Breaking a schema into multiple packages that can be combined without defining
+  a namespace
+
+* Including types defined in other schema packages under a namespace, including
+  importing multiple packages under a single namespace
+
+The JIDL representation of JADN namespace definition is:
+
+```
+Namespaces = Choice(anyOf)            // anyOf v1.1 or v1.0, in priority order
+   1  NsArr                           // ns_arr:: [prefix, namespace] syntax - v1.1
+   2  NsObj                           // ns_obj:: {prefix: namespace} syntax - v1.0
+
+NsArr = ArrayOf(PrefixNs){1..*}       // Type references to other packages - v1.1
+
+PrefixNs = Array                      // Prefix corresponding to a namespace IRI
+   1  NSID                            // prefix::
+   2  Namespace                       // namespace::
+
+NsObj = MapOf(NSID, Namespace){1..*}  // Type references to other packages - v1.0
+```
+
+
+The `namespaces` field contains an array associating locally meaningful
+Namespace Identifiers (`NSID`) with the `namespace` other packages declare for
+themselves, as shown in this excerpt from the JIDL description of the
+`Information` header:
 
 ```
 Information = Map                            // Information about this package
