@@ -7,7 +7,7 @@
 
 ## Committee Note 02 - Working Draft 01
 
-## DD MMM YYYY
+## 09 October 2024
 
 &nbsp;
 
