@@ -7,7 +7,7 @@
 
 ## Committee Note 02 - Working Draft 01
 
-## 04 Oct 2024
+## 09 Oct 2024
 
 &nbsp;
 
@@ -2585,6 +2585,7 @@ The following individuals have participated in the creation of this document and
 |:-------------------|:-----------|:------------|:----------------------|
 | imjadn-v1.0-cn01-wd01.md | 2023-01-18 | David Kemp | Initial working draft / CND01 |
 | imjadn-v1.0-cn01-wd02.md | 2023-04-19 | David Kemp | Second WD / CN01 candidate |
+| imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Generalize description of SDO management system IM (PR #60) |
 
 -------
 
