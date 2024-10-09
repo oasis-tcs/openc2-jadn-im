@@ -2153,8 +2153,10 @@ are:
    messages)
  - Information structures such as a software bill of materials
    (SBOM)
- - Standard Development Organization (SDO) management system
-   (similar to OASIS Kavi)
+ - Standard Development Organization (SDO) management system (member
+   organizations, member persons, voting rights, topic-focused groups and
+   rosters, discussion forums and messages, calendars, meeting attendance, draft
+   and approved documents, ballots)
  - Music Database (artists, albums, songs, tracks, metadata,
    guest artists)
 
@@ -2631,6 +2633,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-09-25 | David Lemire | Normalize JADN Spec reference style (PR #56) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-04 | David Kemp | Move information definition to introduction (PR #57) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Overall updates to types descriptions in 3.1.x (PR #58) |
+| imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Generalize description of SDO management system IM (PR #60) |
 -------
 
 # Appendix D. Frequently Asked Questions (FAQ)
