@@ -7,9 +7,7 @@
 
 ## Committee Note 02 - Working Draft 01
 
-## 04 Oct 2024
-
-&nbsp;
+## 09 October 2024
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
@@ -790,7 +788,7 @@ use of JADN in information modeling.
 ## 3.1 JADN Overview
 
 Figure 3-1 provides a high-level view of the JADN concepts that
-will be described in this section. JADN provides simple and
+will be described in this section. JADN provides primitive and
 compound data types that can be refined using type and field
 options (field options only apply within compound types). JADN
 can also be represented in multiple formats, both textual and
@@ -802,6 +800,26 @@ authoritative, but each representation has advantages.
 ###### Figure 3-1 -- JADN Concepts
 ![Figure 3-1 -- JADN Concepts](images/JADN-Concepts.drawio.png)
 
+A JADN schema in its native form is a JSON document containing an object labeled
+"info" and an array labeled "types". 
+
+* The "info" object contains metadata about
+the schema contained in the document, including the types exported from this
+schema and namespace information to connect it with other JADN schema documents.
+
+* The "types" section of the schema document is an array of arrays, with each of
+the inner arrays defining one type in the schema. Each type in the schema
+document will use one of JADN's core types and may be either simple or compound.
+Each type array has five fields, two of which are themselves arrays: one for
+type options and one for the fields or elements that make up a compound type.
+
+* The fields / elements array is always empty in the definition of a primitive type.
+For compound types, each field or element within the fields / elements array is
+also an array, with three items in an element array and five items in a field
+array. 
+
+These structures are illustrated and explained in more detail 
+in [Section&nbsp;3.1.5.1, Native JSON Representation](#3151-native-json-representation).
 
 The JADN information modeling language was developed against specific objectives:
 
@@ -811,16 +829,15 @@ The JADN information modeling language was developed against specific objectives
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
 
-As described in the [[JADN Specification](#jadn-v10)] introduction:
+As stated in the [[JADN Specification](#jadn-v10)] introduction:
 
 > JADN is a formal description technique that combines type
 > constraints from the Unified Modeling Language (UML) with data
 > abstraction based on information theory and structural
 > organization using results from graph theory.
 
-> **EDITOR'S NOTE:** consider whether the following adds clarity or
-> confusion; it might need to be re-written to guide the reader
-> through the concepts a bit more.
+> **EDITOR'S NOTE:** adjust and/or remove the following discussion to mesh with
+> the updated introduction.
 
 From UML JADN takes the concept of modeling information/data
 using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
@@ -830,7 +847,7 @@ way that can be validated and signed.  The JADN use of the UML
 primitive types defined in [[UML](#uml)], Table 21.1, can be found
 in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
-The [[JADN Specification](#jadn-v10)] defines twelve base types:
+The [[JADN Specification](#jadn-v10)] defines twelve core types:
 
 | **Primitive** | **Compound** | **Selection /<br> Union** |
 |:-------------:|:------------:|:-------------------------:|
@@ -847,6 +864,8 @@ The [[JADN Specification](#jadn-v10)] defines twelve base types:
 > to use "compound" in order to avoid any potential confusion
 > with UML's use of "structured".
 
+> **To-Do:** The revised figure 3-2 groups Enumerated and Choice under Compound
+> types; need to reconcile the table above and that figure.
 
 
 Each of the compound types is a *container*, a named group of related items
@@ -856,7 +875,7 @@ has *multiplicity* attributes, including limits on the number of items,
 whether the items have a sequential ordering, and whether duplicate items
 are allowed.
 
-The JADN compound type and its options are chosen for an IM based on the
+The JADN compound types and their options are chosen for an IM based on the
 information characteristics to be modeled:
 
 * Array and ArrayOf contain a group of values.
@@ -956,10 +975,10 @@ The five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
 that type.
- 2. The **BaseType** of the type, which is one the twelve base
+ 2. The **BaseType** of the type, which is one the twelve core
     types shown in Figure 3-2.
  3. Zero or more of the available JADN **TypeOptions** that
-    refine the base types to fit particular needs.
+    refine the core types to fit particular needs.
  4. An optional **TypeDescription** string that provides
     additional information about the type.
  5. For any of the Compound types, Enumerated, or Choice, a set
@@ -969,7 +988,7 @@ that type.
 ###### Figure 3-2 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
 
-A firm requirement of JADN is that a TypeName must not be a JADN
+A firm requirement of JADN is that a TypeName in a schema must not be a JADN
 predefined type. There are also conventions intended to improve
 the consistency and readability of JADN specifications. These
 conventions are defined in JADN but can be overridden within a
@@ -1009,7 +1028,7 @@ Specification:
 > - The first character is the option ID.
 > - The remaining characters are the option value.
 
-TypeOptions are classifiers that, along with the base type,
+TypeOptions are classifiers that, along with the BaseType,
 determine whether data values are instances of the defined type.
 For example, the *pattern* TypeOption is used with the String
 BaseType to define valid instances of that string type using a
@@ -1017,7 +1036,7 @@ regular expression conforming to [[ECMAScript](#ecmascript)]
 grammar.
 
 Table 3-3 lists the complete set of type options, including the
-option name, type, ID character, and description; the ID
+option name, type, ID character, and description. The ID
 characters are used in standard JADN representation 
 ([section 3.1.5.1](#3151-native-json-representation)) when specifying type
 options.
@@ -1044,7 +1063,7 @@ options.
 |  default   |  String  |   `!`  | Default value                                                     |
 
 Detailed explanations of each type option can be found in
-Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
+Sections 3.2.1.1 through 3.2.1.12 of the [[JADN Specification](#jadn-v10)].
 
 The `minv` and `maxv` type options are distinctive in that they
 can apply to both primitive and compound types, with a different
@@ -1194,33 +1213,40 @@ other representations using a simple example.
 
 This section illustrates the JSON representations of the Base
 Types described in [Section 3.1](#31-jadn-overview). Depictions
-are provided for each of three ways that the **Fields** array is
+are provided for overall structure of a JADN schema and for 
+each of three ways that the **Fields** array is
 used, depending on the base type used in a particular type
 definition.
 
-Figure 3-3 illustrates the structure of JADN for defining any
+Figure 3-3 illustrates the top-level structure of a native JADN schema document,
+as described in [Section 3.1](#31-jadn-overview).
+
+###### Figure 3-3 -- JADN Schema Top-Level Structure
+![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
+
+Figure 3-4 illustrates the structure of JADN for defining any
 Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
-###### Figure 3-3 -- JADN for Primitive, ArrayOf, MapOf Types
+###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
 ![JADN for Primitive, ArrayOf, MapOf
 Types](images/JADN-primitive-json.drawio.png)
 
 
-Figure 3-4 illustrates the structure of JADN for defining an
+Figure 3-5 illustrates the structure of JADN for defining an
 Enumerated **BaseType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
-###### Figure 3-4 -- JADN for Enumerated Types
+###### Figure 3-5 -- JADN for Enumerated Types
 ![JADN for Enumerated
 Types](images/JADN-with-items-json.drawio.png)
 
 
-Figure 3-5 illustrates the structure of JADN for defining a
+Figure 3-6 illustrates the structure of JADN for defining a
 **BaseType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
-###### Figure 3-5 -- JADN for Types with Fields
+###### Figure 3-6 -- JADN for Types with Fields
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
@@ -1287,14 +1313,14 @@ point for an example to illustrate the various JADN
 representations described in [Section 3.1.5.2](#3152-alternative-jadn-representations). The example
 begins with the ERD for the model:
 
-###### Figure 3-6 -- Simple University Example ERD
+###### Figure 3-7 -- Simple University Example ERD
 
 <img src="images/university-erd.png" height="600px">
 
 The package (see [Section 4.1](#41-packages-and-namespaces)) 
 containing the JADN corresponding to the above ERD is shown here:
 
-###### Figure 3-7 -- Simple University Example JADN (JSON format)
+###### Figure 3-8 -- Simple University Example JADN (JSON format)
 ```json
 {
  "info": {
@@ -1331,7 +1357,7 @@ containing the JADN corresponding to the above ERD is shown here:
 Converting the JSON to JIDL yields a representation that is both
 more readable and easier to edit:
 
-###### Figure 3-8 -- Simple University Example JADN (JIDL format)
+###### Figure 3-9 -- Simple University Example JADN (JIDL format)
 
 ```
      package: "http://example.com/uni"
@@ -1363,7 +1389,7 @@ which are quite readable but somewhat more challenging to edit
 than JIDL (the package information has been omitted from the set
 of property tables).
 
-###### Figure 3-9 -- Simple University Example JADN (table format)
+###### Figure 3-10 -- Simple University Example JADN (table format)
 
 A place of learning
 
@@ -1405,7 +1431,7 @@ of the example is easily generated from the JADN model.  In this
 specific example code for the widely-used GraphViz tool is
 provided.
 
-###### Figure 3-10 -- Simple University Example ERD Source Code (GraphViz)
+###### Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)
 ```
 # package: http://example.com/uni
 # exports: ['University']
@@ -1543,7 +1569,10 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
-Table 3-6 lists the *format* options applicable to the Binary type:
+The *minv* and *maxv* TypeOptions are used to specify a minimum and/or maximum
+number of octets for a binary type. If *minv* equals *maxv* the size of the
+binary type is fixed. Table 3-6 lists the *format* options applicable to the
+Binary type:
 
 ###### Table 3-6 -- Binary Type Format Options
 
@@ -1603,6 +1632,11 @@ The corresponding JIDL representation would be:
   TrackNumber = Integer   // Track number for current song
 ```
 
+The *minv* and *maxv* TypeOptions are used to specify a minimum and/or maximum
+value that may be assigned to an Integer type. The JADN Integer primitive type
+encompasses the UML UnlimitedNatural primitive type through the use the *minv*
+Type Option: an Integer with a *minv* of `0` has the same range of values as an
+UnlimitedNatural.
 
 Table 3-7 lists the *format* options applicable to the Integer type:
 
@@ -1627,11 +1661,9 @@ are applicable to the Number data type.
 information with continuous values.  An information item fitting
 a Number type would be defined as follows:
 
-
 ```json
 ["Temperature", "Number", [], "Current temperature observation in degrees C", []]
 ```
-
 
 The corresponding JIDL representation would be:
 
@@ -1640,18 +1672,23 @@ The corresponding JIDL representation would be:
   Temperature = Number   // Current temperature observation in degrees C
 ```
 
-Table 3-8 lists the *format* options applicable to the Number
-type. These *format* options are only relevant when serializing
-using CBOR; see the [[JADN Specification](#jadn-v10)], Section
-4.4:
+The *minf* and *maxf* TypeOptions are used to specify a minimum and/or maximum
+value that may be assigned to a Number type. Table 3-8 lists the *format*
+options applicable to the Number type. These *format* options are only relevant
+when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&nbsp;4.4:
 
 ###### Table 3-8 -- Number Type Format Options
 
-| Keyword | Type | Requirement |
-| :--- | :--- | :--- |
-| **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25). |
-| **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26). |
+| Keyword |  Type  | Requirement                                                       |
+|:-------:|:------:|-------------------------------------------------------------------|
+| **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25)   |
+| **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26) |
+| **f64** | Number | **float64**: Serialize as IEEE 754 Single-Precision Float (#7.27) |
 
+The parenthetical (#7.2x) references in the above table identify the CBOR major
+type (7) and associated additional information (25/26/27) as defined in the
+Concise Data Definition Language (CDDL) Standard Prelude specified in Apppendix&nbsp;D 
+of [[RFC8610](#rfc8610)].
 
 
 #### 3.1.7.5 String
@@ -1677,9 +1714,11 @@ The corresponding JIDL representation would be:
   TrackTitle = String   // Title of the song in the selected track
 ```
 
-All semantic validation keywords defined in Section 7.3 of 
-[[JSON Schema](#jsonschema)] are valid *format* options for the String
-type.
+All semantic validation keywords defined in Section 7.3 of [[JSON
+Schema](#jsonschema)] are valid *format* options for the String type. The *minv*
+and *maxv* TypeOptions are used to specify a minimum and/or maximum number of
+characters that may be assigned to a String type (i.e., the acceptable range of
+string lengths). 
 
 The *pattern* option in JADN is identified by the `%` type option
 character followed immediately by the regular expression to be
@@ -1828,7 +1867,11 @@ Table 3-9 lists the *format* options applicable to the Array type:
 | ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [RFC 4632](#rfc4632) Section 3.1 |
 | ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [RFC 4291](#rfc4291) Section 2.3 |
 
+The `ipv4-net` and `ipv6-net` format options impose several constraints when applied to an Array type:
 
+* Specifies that the Binary element of the Array to be 32 or 128 bits, respectively
+* Constrains the Integer prefix value to a range of 0..32 or 0..128, respectively
+* Specifies that text representations of the type will use CIDR notation
 
 
 #### 3.1.7.9 ArrayOf(_vtype_)
@@ -1921,7 +1964,7 @@ type options in the record's definition and the presence of the
 `optional` keyword on all fields of the record. This reflects a
 design pattern: the compound type's cardinality of `{1..*}`
 defines that there is a minimum number of required fields even
-though every individual field is optional. An empty `Hashes` map
+though every individual field is optional. An empty `Hashes` map is
 invalid, but a map where any one or more of the three hash types
 exists is valid. This is an example of one application of _minv_,
 _maxv_, as described above in [Section 3.1.2](#312-typeoptions).
@@ -2110,8 +2153,10 @@ are:
    messages)
  - Information structures such as a software bill of materials
    (SBOM)
- - Standard Development Organization (SDO) management system
-   (similar to OASIS Kavi)
+ - Standard Development Organization (SDO) management system (member
+   organizations, member persons, voting rights, topic-focused groups and
+   rosters, discussion forums and messages, calendars, meeting attendance, draft
+   and approved documents, ballots)
  - Music Database (artists, albums, songs, tracks, metadata,
    guest artists)
 
@@ -2638,10 +2683,9 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-09-25 | David Kemp | Reorganize introduction (PR #55) |
 | imjadn-v1.0-cn01-wd02.md | 2023-09-25 | David Lemire | Normalize JADN Spec reference style (PR #56) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-04 | David Kemp | Move information definition to introduction (PR #57) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Overall updates to types descriptions in 3.1.x (PR #58) |
+| imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Overall updates to types descriptions in 3.1.x (PR #58) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Generalize description of SDO management system IM (PR #60) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Update namespaces discussion (4.1.2) with JADN v1.1 capabilities (PR #61) |
-
 -------
 
 # Appendix D. Frequently Asked Questions (FAQ)
