@@ -2631,6 +2631,7 @@ The following individuals have participated in the creation of this document and
 |:-------------------|:-----------|:------------|:----------------------|
 | imjadn-v1.0-cn01-wd01.md | 2023-01-18 | David Kemp | Initial working draft / CND01 |
 | imjadn-v1.0-cn01-wd02.md | 2023-04-19 | David Kemp | Second WD / CN01 candidate |
+| imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Update namespaces discussion (4.1.2) with JADN v1.1 capabilities (PR #61) |
 
 -------
 
