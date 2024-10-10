@@ -2389,29 +2389,29 @@ Namespace = String /uri               // Unique name of a package
 ```
 
 The `Namespaces = Choice(AnyOf)` type allows the flexible association of
-Namespace Identifiers (`NSID`) with the `namespace` other packages declare for
+Namespace Identifiers (`NSID`) with the `Namespace` other packages declare for
 themselves. A Namespace Identifier (NSID) is, by default, a 1-8 character string
 beginning with a letter and containing only letters and numbers (the default
 formatting can be overridden by inserting an alternative definition into a JADN
 schema). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
-packages to be mapped to one namespace to group all of the types defined in that
+packages to be mapped to one NSID to group all of the types defined in that
 collection of packages into a single namespace. For any array element where the
 `NSID` field is blank, the types in the referenced package are made available in
-the current package without use of any NSID.
+the current package without need for any NSID.
 
 Within the schema package's Types definitions
 JADN uses the common convention of using the NSID followed by a
 colon to link an item to the namespace where it is defined (e.g.,
 NSID:TypeName).  So assuming the existence of `Package A`, and
 `Package B`, where `Package B` imports `Package A` with the NSID
-`PACKA`, then types defined in `Package A` can be used within
-`Package B` by identifying them as `PACKA:Some-Package-A-Type`.
+`packa`, then types defined in `Package A` can be used within
+`Package B` by identifying them as `packa:Some-Package-A-Type`.
 
 An example of grouping multiple packages into the namespace of the importing
 package can be drawn from an IM of the NIST Open Security Controls Assessment
-Language [[OSCAL](#oscal)], where the packages for the common `metadata` and `backmatter`
-structures, along with the various OSCAL document types, are imported to create
-a single schema.
+Language [[OSCAL](#oscal)], where the packages for the common `metadata` and
+`backmatter` structures, along with the various OSCAL document types, are
+imported without any NSID to create a single schema.
 
 ```
  namespaces: [["", "https://example.gov/ns/oscal/0.0.1/metadata/"],
