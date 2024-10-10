@@ -2364,7 +2364,7 @@ NSID:TypeName).  So assuming the existence of `Package A`, and
 
 An example of grouping multiple packages into the namespace of the importing
 package can be drawn from an IM of the NIST Open Security Controls Assessment
-Language (OSCAL), where the packages for the common `metadata` and `backmatter`
+Language [[OSCAL](#oscal)], where the packages for the common `metadata` and `backmatter`
 structures, along with the various OSCAL document types, are imported to create
 a single schema.
 
@@ -2524,6 +2524,9 @@ https://www.researchgate.net/publication/279780496_What_is_Shannon_information
 
 ###### [NTIA-SBOM]
 NTIA Multistakeholder Process on Software Component Transparency, "SBOM At A Glance", April 2021,   https://ntia.gov/sites/default/files/publications/sbom_at_a_glance_apr2021_0.pdf
+
+###### [OSCAL]
+OSCAL: the Open Security Controls Assessment Language, https://pages.nist.gov/OSCAL/
 
 ###### [OpenC2-Arch-v1.0]
 
