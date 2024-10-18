@@ -1256,12 +1256,13 @@ The [[JADN Specification](#jadn-v10)] identifies three formats
 (Section 5) in addition to the native format:
 
  - JADN Interface Definition Language (JIDL)
- - Table Style
+ - Property Tables
  - Entity Relationship Diagrams (ERDs)
 
-Figure 3-6a identifies the various representations. The formal definitions of each of these types are found in
-sections 5.1, 5.2, and 5.3, respectively, of the [[JADN
-Specification](#jadn-v10)].
+Figure 3-6a identifies the various representations. 
+The formal definitions of each of these types are found in
+sections 5.1, 5.2, and 5.3, respectively, of the 
+[[JADN Specification](#jadn-v10)].
 
 ###### Figure 3-6a -- JADN Representations
 ![JADN Representations](images/JADN-Representations.drawio.png)
