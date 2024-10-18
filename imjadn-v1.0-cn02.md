@@ -782,10 +782,9 @@ use the JSON number type with values 0 and 1.
 
 # 3 Creating Information Models with JADN
 
-This section provides a brief overview of JADN, and describes the
-use of JADN in information modeling.
-
-The JADN information modeling language was developed against specific objectives:
+This section provides a brief overview of JADN, and describes the use of JADN in
+information modeling. The JADN information modeling language was developed
+against specific objectives:
 
  1) Core types represent application-relevant "information", not "data"
  2) Single specification unambiguously defines multiple data formats
@@ -801,7 +800,7 @@ As stated in the [[JADN Specification](#jadn-v10)] introduction:
 > organization using results from graph theory.
 
 > **EDITOR'S NOTE:** adjust and/or remove the following discussion to mesh with
-> the updated introduction.
+> updates to Section 1 of this CN.
 
 From UML JADN takes the concept of modeling information/data
 using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
