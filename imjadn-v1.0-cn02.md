@@ -1548,13 +1548,28 @@ formats.
 
 #### 3.1.7.1 Binary
 
-**Definition:** A sequence of octets. Length is the number of
-octets.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A sequence of octets. Length is the number of octets.
+      </td>
+      <td class="td">
+        <i>
+          <center>minv, maxv, format</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *minv*, *maxv*, and *format* TypeOptions
-are applicable to the Binary data type.
-
-**Example:**  The Binary type is used for representing
+The **Binary** core type is used for representing
 arbitrary binary data.  An information item fitting a Binary type
 would be defined as follows:
 
@@ -1581,8 +1596,6 @@ Binary type:
 | eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [EUI](#eui) |
 | ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc791) Section 3.1 |
 | ipv6-addr    | Binary | IPv6 address as specified in [RFC 8200](#rfc8200)  Section 3 |
-
-
 
 #### 3.1.7.2 Boolean
 
