@@ -1948,7 +1948,7 @@ Track = Record                                    // for each track there's a fi
       </td>
       <td class="td">
         <i>
-          <center>id,<br>extend,<br>minv,<br>maxv</center>
+          <center>id, extend, minv, maxv</center>
         </i>
       </td>
     </tr>
@@ -2017,7 +2017,7 @@ _maxv_, as described above in [Section 3.1.2](#312-typeoptions).
       </td>
       <td class="td">
         <i>
-          <center>ktype,<br>vtype,<br>minv,<br>maxv</center>
+          <center>ktype, vtype, minv, maxv</center>
         </i>
       </td>
     </tr>
@@ -2088,7 +2088,7 @@ Date = String /date
       </td>
       <td class="td">
         <i>
-          <center>extend,<br>minv,<br>maxv</center>
+          <center>extend, minv, maxv</center>
         </i>
       </td>
     </tr>
