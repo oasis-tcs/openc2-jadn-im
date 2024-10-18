@@ -1819,21 +1819,35 @@ IdentityType = Choice                // Nature of the referenced identity
 
 #### 3.1.7.8 Array
 
-**Definition:**  An ordered list of labeled fields with
-positionally-defined semantics. Each field has a position, label,
-and type.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">An ordered list of labeled fields with
+        positionally-defined semantics. Each field has a position, label,
+        and type.
+      </td>
+      <td class="td">
+        <i>
+          <center>extend, minv, maxv, format</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *extend*, *minv*, *maxv*, and *format*
-TypeOptions are applicable to the Array data type.
-
-**Example:**  The Array type is used to represent information
+The **Array** type is used to represent information
 where it is appropriate to group related information elements
 together, even if the elements of the array are heterogeneous.
 Each element in the array is defined as a field, using the field
-definitions described in [Section
-3.1.3](#313-item-or-field-definitions) and refined using the
+definitions described in [Section 3.1.3](#313-item-or-field-definitions) and refined using the
 field options described in [Section 3.1.4](#314-field-options).
-An information item fitting the Array base type would be defined
+An information item fitting the Array core type would be defined
 as follows:
 
 ```json
@@ -1856,7 +1870,8 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
 
-The example above illustrates the positioning of Array "field names" within the JIDL comments, as described in [Section 3.1.5.2.1](#31521-array-field-names-in-jidl).
+The example above illustrates the positioning of Array "field names" within the
+JIDL comments, as described in [Section 3.1.5.2.1](#31521-array-field-names-in-jidl).
 
 Table 3-9 lists the *format* options applicable to the Array type:
 
