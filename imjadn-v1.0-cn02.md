@@ -1876,16 +1876,30 @@ The `ipv4-net` and `ipv6-net` format options impose several constraints when app
 
 #### 3.1.7.9 ArrayOf(_vtype_)
 
-**Definition:**  A collection of fields with the same semantics.
-Each field has type *vtype*. Ordering and uniqueness are
-specified by a collection option.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">A collection of fields with the same semantics.
+        Each field has type <i>vtype</i>. Ordering and uniqueness are
+        specified by a collection option.
+      </td>
+      <td class="td">
+        <i>
+          <center>vtype, minv, maxv, unique, set, unordered</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *vtype*, *minv*, *maxv*, *unique*, *set*,and
-*unordered* TypeOptions are applicable to the ArrayOf data
-type.
-
-**Example:**  The ArrayOf type is used to represent information
-where it is appropriate to group a set of uniform  information
+The **ArrayOf** type is used to represent information
+where it is appropriate to group a set of uniform information
 elements together. The fields of the array are defined by the
 *vtype*, which can be primitive or compound. An information item
 fitting the ArrayOf base type would be defined as follows. This
