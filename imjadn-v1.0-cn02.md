@@ -1586,13 +1586,26 @@ Binary type:
 
 #### 3.1.7.2 Boolean
 
-**Definition:**  An element with one of two values: true or
-false.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        An element with one of two values: true or false.
+      </td>
+      <td class="td">
+          <center>None</center>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** No TypeOptions are applicable to the Boolean
-data type.
-
-**Example:**  The Boolean type is used for representing bi-valued
+The **Boolean** core type is used for representing bi-valued
 (i.e., true/false, yes/no, on/off) information. An information
 item fitting a Boolean type would be defined as follows:
 
@@ -1606,7 +1619,6 @@ The corresponding JIDL representation would be:
 // Example JIDL definition of a boolean datatype
   AccessGranted = Boolean   // Result of access control decision
 ```
-
 
 #### 3.1.7.3 Integer
 
