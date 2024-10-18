@@ -1610,20 +1610,34 @@ The corresponding JIDL representation would be:
 
 #### 3.1.7.3 Integer
 
-**Definition:**  A positive or negative whole number.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A positive or negative whole number.
+      </td>
+      <td class="td">
+        <i>
+          <center>minv, maxv, format</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *minv*, *maxv*, and *format* TypeOptions
-are applicable to the Integer data type.
-
-**Example:**  The Integer type is used for representing numerical
+The **Integer** core type is used for representing numerical
 information with discrete integer values.  An information item
 fitting an Integer type would be defined as follows:
-
 
 ```json
 ["TrackNumber", "Integer", [], "Track number for current song", []]
 ```
-
 
 The corresponding JIDL representation would be:
 
