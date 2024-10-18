@@ -1115,8 +1115,7 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
 ```
 
 
-Table 3-4 summarizes the applicability of type options to JADN
-base types.
+Table 3-4 summarizes the applicability of type options to JADN core types.
 
 ###### Table 3-4 -- Type Option Applicability
 
@@ -1194,11 +1193,12 @@ specifying field options. Table 3-5 lists the JADN field options.
 |    key     |  Boolean   |   `K`    | Field is a primary key for this type                          |         3.3.6         |
 |    link    |  Boolean   |   `L`    | Field is a foreign key reference to a type instance           |         3.3.6         |
 
-The type options described in [Section 3.1.2](#312-typeoptions)
-can also apply to fields, with the constraint that the type
-option must be applicable to the field's type, as described in
-the base type examples in [Section 3.1.7](#317-base-type-examples). The application of a type option to a field triggers an "anonymous" type definition when the JADN model is processed, as described in 
-[Section 3.1.6](#316-anonymous-type-definitions).
+The type options described in [Section 3.1.2](#312-typeoptions) can also apply
+to fields, with the constraint that the type option must be applicable to the
+field's type, as described in the core type examples in [Section 3.1.7](#317-base-type-examples). 
+The application of a type option to a field
+triggers an "anonymous" type definition when the JADN model is processed, as
+described in [Section 3.1.6](#316-anonymous-type-definitions).
 
 ### 3.1.5 JADN Representations
 
@@ -1214,7 +1214,7 @@ This section illustrates the JSON representations of the Base
 Types described in [Section 3.1](#31-jadn-overview). Depictions
 are provided for overall structure of a JADN schema and for 
 each of three ways that the **Fields** array is
-used, depending on the base type used in a particular type
+used, depending on the core type used in a particular type
 definition.
 
 Figure 3-3 illustrates the top-level structure of a native JADN schema document,
@@ -1537,7 +1537,7 @@ JADN (or JIDL) that relies on the tooling to generate the
 necessary types.
 
 
-### 3.1.7 Base Type Examples
+### 3.1.7 Core Type Examples
 
 This section provides illustrative examples of the JADN base
 types. For each type, the definition from the [[JADN
@@ -2016,7 +2016,7 @@ The **ArrayOf** type is used to represent information
 where it is appropriate to group a set of uniform information
 elements together. The fields of the array are defined by the
 *vtype*, which can be primitive or compound. An information item
-fitting the ArrayOf base type would be defined as follows. This
+fitting the ArrayOf core type would be defined as follows. This
 example uses an explicit ArrayOf type derived using the 
 multiplicity extension on the "tracks" field of Album, as shown in
 [Section 3.3.1](#331-example-1-a-digital-music-library)):
