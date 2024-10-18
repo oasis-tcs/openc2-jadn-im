@@ -1693,13 +1693,28 @@ of [[RFC8610](#rfc8610)].
 
 #### 3.1.7.5 String
 
-**Definition:**  A sequence of characters, each of which has a
-Unicode codepoint. Length is the number of characters.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A sequence of characters, each of which has a Unicode codepoint. Length is the number of characters.
+      </td>
+      <td class="td">
+        <i>
+          <center>minv, maxv, format, pattern</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *minv*, *maxv*, *format*, and *pattern*
-TypeOptions are applicable to the String data type.
-
-**Example:**  The String type is used for representing
+The **String** core type is used for representing
 information best presented as text.  An information item fitting
 a String type would be defined as follows:
 
