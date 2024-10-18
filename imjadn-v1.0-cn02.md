@@ -1973,14 +1973,29 @@ _maxv_, as described above in [Section 3.1.2](#312-typeoptions).
 
 #### 3.1.7.11 MapOf(_ktype_,_vtype_)
 
-**Definition:**  An unordered map from a set of keys of the same
-type to values with the same semantics. Each key has key type
-*ktype*, and is mapped to value type *vtype*.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">An unordered map from a set of keys of the same
+        type to values with the same semantics. Each key has key type
+        *ktype*, and is mapped to value type *vtype*.
+      </td>
+      <td class="td">
+        <i>
+          <center>ktype,<br>vtype,<br>minv,<br>maxv</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *ktype*, *vtype*, *minv*, and *maxv*
-TypeOptions are applicable to the MapOf data type.
-
-**Example:**  The MapOf type is used to represent information
+The **MapOf** type is used to represent information
 that can be represented as (key, value) pairs, where the types
 for the keys and the values in the MapOf are of specific types
 and are defined using type options. MapOf is suitable when the
