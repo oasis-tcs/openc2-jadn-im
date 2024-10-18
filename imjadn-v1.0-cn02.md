@@ -2051,7 +2051,10 @@ Date = String /date
   </tbody>
 </table>
 
-The **Record** type is used to represent information that has a consistent repeated structure, such as a database record. Elements of a record can be accessed by either position or value.
+The **Record** type is used to represent information that has a consistent
+repeated structure, such as a database record. Elements of a record can be
+accessed by either position or value. The following example defines a JADN
+Record type for the common 5-tuple often used to describe a network connection.
 
 ```json
   ["IPv4-Connection", "Record", ["{1"], "5-tuple that specifies a tcp/ip connection", [
