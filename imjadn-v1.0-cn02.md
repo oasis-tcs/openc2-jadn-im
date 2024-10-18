@@ -1749,13 +1749,28 @@ specification is in Section 22.2.
 
 #### 3.1.7.6 Enumerated
 
-**Definition:**  A vocabulary of items where each item has an id
-and a string value.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A vocabulary of items where each item has an id and a string value.
+      </td>
+      <td class="td">
+        <i>
+          <center>id, enum, pointer, extend</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *id*, *enum*, *pointer*, and *extend*
-TypeOptions are applicable to the Enumerated data type.
-
-**Example:**  The Enumerated type is used to represent
+The Enumerated core type is used to represent
 information that has a finite set of applicable values. An
 information item fitting the Enumerated type would be defined as
 follows:
