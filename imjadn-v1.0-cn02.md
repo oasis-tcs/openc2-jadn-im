@@ -88,32 +88,6 @@ and should be used only to refer to the organization and its official outputs.
 
 For complete copyright information please see the full Notices section in [Appendix F](#appendix-f-notices).
 
-<style type="text/css">
-table {
-    border-collapse: collapse;
-}
-
-table {
-	border-collapse:collapse;
-	border-spacing:0;
-	width:100%;
-	display:table;
-	font-size:12pt;
-	margin-top: 6pt;
-	}
-
-table, th, td {
-	text-align:left;
-	vertical-align:top;
-}
-th {
-	color:#ffffff;
-  text-align: center;
-	background-color:#1a8cff;
-	}
-</style>
-
-
 -------
 
 # Table of Contents
