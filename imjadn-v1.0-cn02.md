@@ -1652,12 +1652,28 @@ Table 3-7 lists the *format* options applicable to the Integer type:
 
 #### 3.1.7.4 Number
 
-**Definition:**  A real number.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A real number.
+      </td>
+      <td class="td">
+        <i>
+          <center>minf, maxf, format, pattern</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *minf*, *maxf*, and *format* TypeOptions
-are applicable to the Number data type.
-
-**Example:**  The Number type is used for representing numerical
+The **Number** core type is used for representing numerical
 information with continuous values.  An information item fitting
 a Number type would be defined as follows:
 
