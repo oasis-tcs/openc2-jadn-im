@@ -1259,9 +1259,12 @@ The [[JADN Specification](#jadn-v10)] identifies three formats
  - Table Style
  - Entity Relationship Diagrams (ERDs)
 
-The formal definitions of each of these types are found in
+Figure 3-6a identifies the various representations. The formal definitions of each of these types are found in
 sections 5.1, 5.2, and 5.3, respectively, of the [[JADN
 Specification](#jadn-v10)].
+
+###### Figure 3-6a -- JADN Representations
+![JADN Representations](images/JADN-Representations.drawio.png)
 
 Automated tooling makes it straightforward to translate among all
 four of these formats in a lossless manner, and each format has
