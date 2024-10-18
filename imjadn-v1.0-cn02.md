@@ -815,12 +815,7 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 Figure 3-1 provides a high-level view of the the components of JADN type definitions that
 will be described in this section. JADN provides *primitive*, 
 *compound*, and *union* core data types that can be refined using type and field
-options (field options only apply to compound and union types). JADN
-can also be represented in multiple formats, both textual and
-graphical, and automated tooling can transform a JADN model
-between the different representations without loss of
-information. The Native JADN representation as JSON data is
-authoritative, but each representation has advantages.
+options (field options only apply to compound and union types).
 
 ###### Figure 3-1 -- JADN Type Definition Components
 ![Figure 3-1 -- JADN Concepts](images/JADN-Type-Definitions.drawio.png)
@@ -845,6 +840,12 @@ array.
 
 These structures are illustrated and explained in more detail 
 in [Section&nbsp;3.1.5.1, Native JSON Representation](#3151-native-json-representation).
+JADN can also be represented in multiple formats, both textual and
+graphical, and automated tooling can transform a JADN model
+between the different representations without loss of
+information. The Native JADN representation as JSON data is
+authoritative, but each representation has advantages. The other representations are described in 
+[Section&nbsp;3.1.5.2, Alternative JSON Representation](#3152-alternative-jadn-representations)
 
 The [[JADN Specification](#jadn-v10)] defines twelve core types:
 
