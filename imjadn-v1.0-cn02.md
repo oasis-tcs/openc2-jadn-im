@@ -88,6 +88,32 @@ and should be used only to refer to the organization and its official outputs.
 
 For complete copyright information please see the full Notices section in [Appendix F](#appendix-f-notices).
 
+<style type="text/css">
+table {
+    border-collapse: collapse;
+}
+
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+	width:100%;
+	display:table;
+	font-size:12pt;
+	margin-top: 6pt;
+	}
+
+table, th, td {
+	text-align:left;
+	vertical-align:top;
+}
+th {
+	color:#ffffff;
+  text-align: center;
+	background-color:#1a8cff;
+	}
+</style>
+
+
 -------
 
 # Table of Contents
@@ -2028,15 +2054,23 @@ Date = String /date
 
 #### 3.1.7.12 Record
 
-**Definition:**  An ordered map from a list of keys with
+<table class="table"><thead>
+  <tr>
+    <th class="th">Definition</th>
+    <th class="th">TypeOptions</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="td">An ordered map from a list of keys with
 positions to values with positionally-defined semantics. Each key
 has a position and name, and is mapped to a value type.
-Represents a row in a spreadsheet or database table.
+Represents a row in a spreadsheet or database table.</td>
+    <td class="td"><i>extend,<br>minv,<br>maxv</i></td>
+  </tr>
+</tbody>
+</table>
 
-**TypeOptions:** The *extend*, *minv*, and *maxv* TypeOptions
-are applicable to the Record data type.
-
-**Example:**  The Record type is used to represent information
+The Record type is used to represent information
 that has a consistent repeated structure, such as a database
 record. Elements of a record can be accessed by either position
 or value.
