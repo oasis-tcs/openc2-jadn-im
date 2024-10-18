@@ -812,18 +812,18 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 ## 3.1 JADN Overview
 
-Figure 3-1 provides a high-level view of the JADN concepts that
-will be described in this section. JADN provides primitive and
-compound data types that can be refined using type and field
-options (field options only apply within compound types). JADN
+Figure 3-1 provides a high-level view of the the components of JADN type definitions that
+will be described in this section. JADN provides *primitive*, 
+*compound*, and *union* core data types that can be refined using type and field
+options (field options only apply to compound and union types). JADN
 can also be represented in multiple formats, both textual and
 graphical, and automated tooling can transform a JADN model
 between the different representations without loss of
 information. The Native JADN representation as JSON data is
 authoritative, but each representation has advantages.
 
-###### Figure 3-1 -- JADN Concepts
-![Figure 3-1 -- JADN Concepts](images/JADN-Concepts.drawio.png)
+###### Figure 3-1 -- JADN Type Definition Components
+![Figure 3-1 -- JADN Concepts](images/JADN-Type-Definitions.drawio.png)
 
 A JADN schema in its native form is a JSON document containing an object labeled
 "info" and an array labeled "types". 
