@@ -1984,7 +1984,7 @@ _maxv_, as described above in [Section 3.1.2](#312-typeoptions).
     <tr>
       <td class="td">An unordered map from a set of keys of the same
         type to values with the same semantics. Each key has key type
-        *ktype*, and is mapped to value type *vtype*.
+        <i>ktype</i>, and is mapped to value type <i>vtype</i>.
       </td>
       <td class="td">
         <i>
