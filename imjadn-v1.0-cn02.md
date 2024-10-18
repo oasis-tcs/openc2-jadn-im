@@ -1785,13 +1785,28 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
 
 #### 3.1.7.7 Choice
 
-**Definition:**  A discriminated union: one type selected from a
-set of named or labeled types.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A discriminated union: one type selected from a set of named or labeled types.
+      </td>
+      <td class="td">
+        <i>
+          <center>id, extend</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *id*  and *extend* TypeOptions are
-applicable to the Choice data type.
-
-**Example:**  The Choice type is used to represent information
+The **Choice** core type is used to represent information
 limited to selecting one type from a defined set of named or
 labeled types. An information item fitting the Choice type would
 be defined as follows:
