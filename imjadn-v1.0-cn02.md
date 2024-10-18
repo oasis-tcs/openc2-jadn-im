@@ -785,6 +785,32 @@ use the JSON number type with values 0 and 1.
 This section provides a brief overview of JADN, and describes the
 use of JADN in information modeling.
 
+The JADN information modeling language was developed against specific objectives:
+
+ 1) Core types represent application-relevant "information", not "data"
+ 2) Single specification unambiguously defines multiple data formats
+ 3) Specification uses named type definitions equivalent to property tables
+ 4) Specification is data that can be serialized
+ 5) Specification has a fixed structure designed for extensibility
+
+As stated in the [[JADN Specification](#jadn-v10)] introduction:
+
+> JADN is a formal description technique that combines type
+> constraints from the Unified Modeling Language (UML) with data
+> abstraction based on information theory and structural
+> organization using results from graph theory.
+
+> **EDITOR'S NOTE:** adjust and/or remove the following discussion to mesh with
+> the updated introduction.
+
+From UML JADN takes the concept of modeling information/data
+using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
+opposed to the common practice of using Structured Classifiers
+([[UML](#uml)], 11.4 Classes), which do not define data in a unique
+way that can be validated and signed.  The JADN use of the UML
+primitive types defined in [[UML](#uml)], Table 21.1, can be found
+in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
+
 ## 3.1 JADN Overview
 
 Figure 3-1 provides a high-level view of the JADN concepts that
@@ -820,32 +846,6 @@ array.
 
 These structures are illustrated and explained in more detail 
 in [Section&nbsp;3.1.5.1, Native JSON Representation](#3151-native-json-representation).
-
-The JADN information modeling language was developed against specific objectives:
-
- 1) Core types represent application-relevant "information", not "data"
- 2) Single specification unambiguously defines multiple data formats
- 3) Specification uses named type definitions equivalent to property tables
- 4) Specification is data that can be serialized
- 5) Specification has a fixed structure designed for extensibility
-
-As stated in the [[JADN Specification](#jadn-v10)] introduction:
-
-> JADN is a formal description technique that combines type
-> constraints from the Unified Modeling Language (UML) with data
-> abstraction based on information theory and structural
-> organization using results from graph theory.
-
-> **EDITOR'S NOTE:** adjust and/or remove the following discussion to mesh with
-> the updated introduction.
-
-From UML JADN takes the concept of modeling information/data
-using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
-opposed to the common practice of using Structured Classifiers
-([[UML](#uml)], 11.4 Classes), which do not define data in a unique
-way that can be validated and signed.  The JADN use of the UML
-primitive types defined in [[UML](#uml)], Table 21.1, can be found
-in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 The [[JADN Specification](#jadn-v10)] defines twelve core types:
 
