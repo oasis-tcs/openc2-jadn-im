@@ -2065,15 +2065,12 @@ Date = String /date
 positions to values with positionally-defined semantics. Each key
 has a position and name, and is mapped to a value type.
 Represents a row in a spreadsheet or database table.</td>
-    <td class="td"><i>extend,<br>minv,<br>maxv</i></td>
+    <td class="td"><i><center>extend,<br>minv,<br>maxv</center></i></td>
   </tr>
 </tbody>
 </table>
 
-The Record type is used to represent information
-that has a consistent repeated structure, such as a database
-record. Elements of a record can be accessed by either position
-or value.
+The **Record** type is used to represent information that has a consistent repeated structure, such as a database record. Elements of a record can be accessed by either position or value.
 
 ```json
   ["IPv4-Connection", "Record", ["{1"], "5-tuple that specifies a tcp/ip connection", [
