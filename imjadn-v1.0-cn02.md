@@ -1919,24 +1919,39 @@ Track = Record                                    // for each track there's a fi
 
 #### 3.1.7.10 Map
 
-**Definition:**  An unordered map from a set of specified keys to
-values with semantics bound to each key. Each key has an id and
-name or label, and is mapped to a value type.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">An unordered map from a set of specified keys to
+        values with semantics bound to each key. Each key has an id and
+        name or label, and is mapped to a value type.
+      </td>
+      <td class="td">
+        <i>
+          <center>id,<br>extend,<br>minv,<br>maxv</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *id*, *extend*, *minv*, and *maxv*
-TypeOptions are applicable to the Map data type.
-
-**Example:**  The Map type is used to represent information that
+The **Map** type is used to represent information that
 can be represented as (key, value) pairs. Another term for this
-type of information structure is an "associative array". 
+type of information structure is an "associative array": 
 
-> Per Wikipedia, an *Associative Array* is "an abstract data type
+> An *Associative Array* is "an abstract data type
 > that stores a collection of (key, value) pairs, such that each
 > possible key appears at most once in the collection."
 > Alternative names include "map", "symbol table", and
 > "dictionary". (https://en.wikipedia.org/wiki/Associative_array)
 
-The Map base type always uses an integer identifier as the key,
+The Map core type always uses an integer identifier as the key,
 with each integer associated with a specific value. An
 information item fitting the Map type would be defined as
 follows:
