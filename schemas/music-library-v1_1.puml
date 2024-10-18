@@ -1,0 +1,98 @@
+' title: Music Library
+' package: http://fake-audio.org/music-lib
+' version: 1.1
+' description: This information model defines a library of audio tracks, organized by album, with associated metadata regarding each track. It is modeled on the types of library data maintained by common websites and music file tag editors.
+' license: CC0-1.0
+' exports: ['Library']
+
+@startuml
+  ' !theme spacelab
+  hide empty members
+  hide circle
+
+class "Library : MapOf(Barcode, Album){1..*}" as n0
+
+class "Barcode : String{pattern="^\d{12}$"}" as n1
+class "Album : Record" as n2
+  n2 : 1 album_artist : {field} Artist
+  n2 : 2 album_title : {field} String
+  n2 : 3 pub_data : {field} Publication-Data
+  n2 : 4 tracks : {field} Track [1..*]
+  n2 : 5 total_tracks : {field} Integer{1..*}
+  n2 : 6 cover_art : {field} Image [0..1]
+
+class "Publication-Data : Record" as n3
+  n3 : 1 publisher : {field} String
+  n3 : 2 release_date : {field} String /date
+
+class "Image : Record" as n4
+  n4 : 1 image_format : {field} Image-Format
+  n4 : 2 image_content : {field} Binary
+
+class "Image-Format : Enumerated" as n5
+  n5 : 1 PNG
+  n5 : 2 JPG
+  n5 : 3 GIF
+
+class "Artist : Record" as n6
+  n6 : 1 artist_name : {field} String
+  n6 : 2 instruments : {field} Instrument unique [1..*]
+
+class "Instrument : Enumerated" as n7
+  n7 : 1 vocals
+  n7 : 2 guitar
+  n7 : 3 bass
+  n7 : 4 drums
+  n7 : 5 keyboards
+  n7 : 6 percussion
+  n7 : 7 brass
+  n7 : 8 woodwinds
+  n7 : 9 harmonica
+
+class "Track : Record" as n8
+  n8 : 1 location : {field} File-Path
+  n8 : 2 metadata : {field} Track-Info
+
+class "Track-Info : Record" as n9
+  n9 : 1 track_number : {field} Integer
+  n9 : 2 title : {field} String
+  n9 : 3 length : {field} Integer{1..*}
+  n9 : 4 audio_format : {field} Audio-Format
+  n9 : 5 featured_artist : {field} Artist unique [0..*]
+  n9 : 6 track_art : {field} Image [0..1]
+  n9 : 7 genre : {field} Genre
+
+class "Audio-Format : Enumerated" as n10
+  n10 : 1 MP3
+  n10 : 2 OGG
+  n10 : 3 FLAC
+  n10 : 4 MP4
+  n10 : 5 AAC
+  n10 : 6 WMA
+  n10 : 7 WAV
+
+class "Genre : Enumerated" as n11
+  n11 : 1 rock
+  n11 : 2 jazz
+  n11 : 3 hip_hop
+  n11 : 4 electronic
+  n11 : 5 folk_country_world
+  n11 : 6 classical
+  n11 : 7 spoken_word
+
+class "File-Path : String" as n12
+  n0 "1" --> "1" n1 : key
+  n0 "1" --> "1" n2 : value
+  n2 "1" --> "1" n6 : album_artist
+  n2 "1" --> "1" n3 : pub_data
+  n2 "1" --> "1..*" n8 : tracks
+  n2 "1" --> "0..1" n4 : cover_art
+  n4 "1" --> "1" n5 : image_format
+  n6 "1" --> "1..*" n7 : instruments
+  n8 "1" --> "1" n12 : location
+  n8 "1" --> "1" n9 : metadata
+  n9 "1" --> "1" n10 : audio_format
+  n9 "1" --> "0..*" n6 : featured_artist
+  n9 "1" --> "0..1" n4 : track_art
+  n9 "1" --> "1" n11 : genre
+@enduml

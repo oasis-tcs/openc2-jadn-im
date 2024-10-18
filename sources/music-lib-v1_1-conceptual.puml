@@ -1,0 +1,37 @@
+@startuml
+  !theme toy
+  hide empty members
+  hide circle
+
+skinparam handwritten true
+
+class "Library" as n0
+class "Barcode" as n1
+class "Album" as n2
+class "Publication-Data" as n3
+class "Image" as n4
+class "Image-Format" as n5
+class "Artist" as n6
+class "Instrument" as n7
+class "Track" as n8
+class "Track-Info" as n9
+class "Audio-Format" as n10
+class "Genre" as n11
+class "File-Path" as n12
+
+  n0  -->  n1 
+  n0  -->  n2 
+  n2  -->  n6 
+  n2  -->  n3 
+  n2  -->  n8 
+  n2  -->  n4 
+  n4  -->  n5 
+  n6  -->  n7 
+  n8  -->  n12
+  n8  -->  n9 
+  n9  -->  n10
+  n9  -->  n6 
+  n9  -->  n4 
+  n9  -->  n11
+
+@enduml

@@ -5,11 +5,9 @@
 
 # Information Modeling with JADN Version 1.0
 
-## Committee Note 01
+## Committee Note 02 - Working Draft 01
 
-## 19 April 2023
-
-&nbsp;
+## 09 October 2024
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
@@ -33,7 +31,8 @@ https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.pdf
 Duncan Sparrell (duncan@sfractal.com), [sFractal Consulting LLC](http://www.sfractal.com/) \
 Michael Rosa (mjrosa@nsa.gov), [National Security Agency](https://www.nsa.gov)
 
-#### Editor:
+#### Editors:
+David Lemire (david.lemire@hii-tsd.com), [HII](https://hii.com/) \
 David Kemp (d.kemp@cyber.nsa.gov), [National Security Agency](https://www.nsa.gov/)
 
 #### Related work:
@@ -42,28 +41,50 @@ This document is related to:
 Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 
 #### Abstract:
-Information models (IMs) are used to define and generate physical data models, validate information instances, and enable lossless translation across data formats. JSON Abstract Data Notation (JADN) is a UML-based information modeling language that defines data structure independently of data format. This Committee Note describes the use of IMs, explains how to construct IMs using JADN, and contrasts IMs with other modeling approaches, such as Entity-Relationship models for databases, and knowledge models / ontologies.
+
+An Information Model (IM) defines the essential content of data used in computing,
+independently of how it is represented for processing, communication or storage.
+JSON Abstract Data Notation (JADN) is an information modeling language based on
+Unified Modeling Language (UML) datatypes designed to both express the meaning
+of data items at a conceptual level and formally type and validate their essential content.
+It uses information theory to define logical equivalence, allowing translation
+of essential content across a wide range of representations without loss.
+This Committee Note explains how to construct IMs using JADN, represent them
+in various formats such as formal languages and entity-relationship diagrams,
+contrast them with other IM languages such as ASN.1,
+and integrate them with knowledge graphs and concrete data models.
 
 #### Status:
 This is a Non-Standards Track Work Product. The patent provisions of the OASIS IPR Policy do not apply.
 
-This document was last revised or approved by the OASIS Open Command and Control (OpenC2) TC on the above date. The level of approval is also listed above. Check the "Latest stage" location noted above for possible later revisions of this document. Any other numbered Versions and other technical work produced by the Technical Committee (TC) are listed at https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2#technical.
+This document was last revised or approved by the OASIS Open Command and Control
+(OpenC2) TC on the above date.
+The level of approval is also listed above. Check the "Latest stage" location
+noted above for possible later revisions of this document.
+Any other numbered Versions and other technical work produced by the Technical
+Committee (TC) are listed at https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2#technical.
 
-TC members should send comments on this document to the TC's email list. Others should send comments to the TC's public comment list, after subscribing to it by following the instructions at the "Send A Comment" button on the TC's web page at https://www.oasis-open.org/committees/openc2/.
+TC members should send comments on this document to the TC's email list.
+Others should send comments to the TC's public comment list, after
+subscribing to it by following the instructions at the "Send A Comment"
+button on the TC's web page at https://www.oasis-open.org/committees/openc2/.
 
 #### Citation format:
 When referencing this document the following citation format should be used:
 
 **[IM-JADN-v1.0]**
 
-_Information Modeling with JADN Version 1.0_. Edited by David Kemp. 19 April 2023. OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.html. Latest stage: https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html.
+_Information Modeling with JADN Version 1.0_. Edited by David Kemp. 19 April 2023.
+OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.html.
+Latest stage: https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html.
 
 #### Notices
 Copyright &copy; OASIS Open 2023. All Rights Reserved.
 
 Distributed under the terms of the OASIS [IPR Policy](https://www.oasis-open.org/policies-guidelines/ipr/).
 
-The name "OASIS" is a trademark of [OASIS](https://www.oasis-open.org/), the owner and developer of this specification, and should be used only to refer to the organization and its official outputs.
+The name "OASIS" is a trademark of [OASIS](https://www.oasis-open.org/), the owner and developer of this specification,
+and should be used only to refer to the organization and its official outputs.
 
 For complete copyright information please see the full Notices section in [Appendix F](#appendix-f-notices).
 
@@ -71,10 +92,27 @@ For complete copyright information please see the full Notices section in [Appen
 
 # Table of Contents
 
+- [OASIS Committee Note](#oasis-committee-note)
+- [Information Modeling with JADN Version 1.0](#information-modeling-with-jadn-version-10)
+  - [Committee Note 02 - Working Draft 01](#committee-note-02---working-draft-01)
+  - [DD MMM YYYY](#dd-mmm-yyyy)
+      - [This stage:](#this-stage)
+      - [Previous stage of Version 1.0:](#previous-stage-of-version-10)
+      - [Latest stage of Version 1.0:](#latest-stage-of-version-10)
+      - [Technical Committee:](#technical-committee)
+      - [Chairs:](#chairs)
+      - [Editors:](#editors)
+      - [Related work:](#related-work)
+      - [Abstract:](#abstract)
+      - [Status:](#status)
+      - [Citation format:](#citation-format)
+      - [Notices](#notices)
+- [Table of Contents](#table-of-contents)
 - [1 Introduction](#1-introduction)
   - [1.1 Background: Motivation for JADN](#11-background-motivation-for-jadn)
-  - [1.1.1 OpenC2 and JADN](#111-openc2-and-jadn)
-  - [1.1.2 The Information Modeling Gap](#112-the-information-modeling-gap)
+    - [1.1.1 OpenC2 and JADN](#111-openc2-and-jadn)
+    - [1.1.2 The Information Modeling Gap](#112-the-information-modeling-gap)
+          - [Figure 1-1 -- Range of Model Types](#figure-1-1----range-of-model-types)
   - [1.2 Purpose](#12-purpose)
   - [1.3 Terminology](#13-terminology)
 - [2 Information Modeling Overview](#2-information-modeling-overview)
@@ -82,30 +120,51 @@ For complete copyright information please see the full Notices section in [Appen
   - [2.2 Information Models And Data Models](#22-information-models-and-data-models)
   - [2.3 Benefits of Information Models](#23-benefits-of-information-models)
   - [2.4 Serialization](#24-serialization)
+          - [Figure 2-1 -- Serialization / Deserialization](#figure-2-1----serialization--deserialization)
   - [2.5 Information Modeling Languages](#25-information-modeling-languages)
   - [2.6 Information Modeling Tools](#26-information-modeling-tools)
   - [2.7 Applying an Information Model](#27-applying-an-information-model)
+          - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
 - [3 Creating Information Models with JADN](#3-creating-information-models-with-jadn)
   - [3.1 JADN Overview](#31-jadn-overview)
+          - [Figure 3-1 -- JADN Concepts](#figure-3-1----jadn-concepts)
+          - [Table 3-1 -- Compound Type Decision Tree](#table-3-1----compound-type-decision-tree)
+          - [Table 3-2 -- Multiplicity Types](#table-3-2----multiplicity-types)
     - [3.1.1 Type Definitions](#311-type-definitions)
+          - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-type-definition-structure)
     - [3.1.2 TypeOptions](#312-typeoptions)
+          - [Table 3-3 -- JADN Type Options](#table-3-3----jadn-type-options)
+          - [Table 3-4 -- Type Option Applicability](#table-3-4----type-option-applicability)
     - [3.1.3 Item Or Field Definitions](#313-item-or-field-definitions)
-    - [3.1.4  Field Options](#314-field-options)
+    - [3.1.4 Field Options](#314-field-options)
+          - [Table 3-5 -- JADN Field Options](#table-3-5----jadn-field-options)
     - [3.1.5 JADN Representations](#315-jadn-representations)
       - [3.1.5.1 Native JSON Representation](#3151-native-json-representation)
+          - [Figure 3-3 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-3----jadn-for-primitive-arrayof-mapof-types)
+          - [Figure 3-4 -- JADN for Enumerated Types](#figure-3-4----jadn-for-enumerated-types)
+          - [Figure 3-5 -- JADN for Types with Fields](#figure-3-5----jadn-for-types-with-fields)
       - [3.1.5.2 Alternative JADN Representations](#3152-alternative-jadn-representations)
         - [3.1.5.2.1  Array "Field Names" in JIDL](#31521--array-field-names-in-jidl)
       - [3.1.5.3 Multiple Representations Example](#3153-multiple-representations-example)
+          - [Figure 3-6 -- Simple University Example ERD](#figure-3-6----simple-university-example-erd)
+          - [Figure 3-7 -- Simple University Example JADN (JSON format)](#figure-3-7----simple-university-example-jadn-json-format)
+          - [Figure 3-8 -- Simple University Example JADN (JIDL format)](#figure-3-8----simple-university-example-jadn-jidl-format)
+          - [Figure 3-9 -- Simple University Example JADN (table format)](#figure-3-9----simple-university-example-jadn-table-format)
+          - [Figure 3-10 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-10----simple-university-example-erd-source-code-graphviz)
     - [3.1.6 "Anonymous" Type Definitions](#316-anonymous-type-definitions)
     - [3.1.7 Base Type Examples](#317-base-type-examples)
       - [3.1.7.1 Binary](#3171-binary)
+          - [Table 3-6 -- Binary Type Format Options](#table-3-6----binary-type-format-options)
       - [3.1.7.2 Boolean](#3172-boolean)
       - [3.1.7.3 Integer](#3173-integer)
+          - [Table 3-7 -- Integer Type Format Options](#table-3-7----integer-type-format-options)
       - [3.1.7.4 Number](#3174-number)
+          - [Table 3-8 -- Number Type Format Options](#table-3-8----number-type-format-options)
       - [3.1.7.5 String](#3175-string)
       - [3.1.7.6 Enumerated](#3176-enumerated)
       - [3.1.7.7 Choice](#3177-choice)
       - [3.1.7.8 Array](#3178-array)
+          - [Table 3-9 -- Array Type Format Options](#table-3-9----array-type-format-options)
       - [3.1.7.9 ArrayOf(_vtype_)](#3179-arrayofvtype)
       - [3.1.7.10 Map](#31710-map)
       - [3.1.7.11 MapOf(_ktype_,_vtype_)](#31711-mapofktypevtype)
@@ -115,20 +174,60 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.2.2 Frederiks / van der Weide Modeling Process](#322-frederiks--van-der-weide-modeling-process)
   - [3.3 Information Modeling Example](#33-information-modeling-example)
     - [3.3.1 Example 1: A Digital Music Library](#331-example-1-a-digital-music-library)
+          - [Figure 3-Concept -- Music Library Conceptual Overview](#figure-3-concept----music-library-conceptual-overview)
+          - [Figure 3-11 -- Music Library Example ERD](#figure-3-11----music-library-example-erd)
 - [4 Advanced Techniques](#4-advanced-techniques)
-  - [4.1 Packages and Namespaces](#41-packages-and-namespaces) 
+  - [4.1 Packages and Namespaces](#41-packages-and-namespaces)
     - [4.1.1 Packages](#411-packages)
     - [4.1.2 Namespaces](#412-namespaces)
   - [4.2 Reference Relationships: Keys and Links](#42-reference-relationships-keys-and-links)
+          - [Figure 4-1 -- Contains and References Relationships](#figure-4-1----contains-and-references-relationships)
 - [Appendix A. Informative References](#appendix-a-informative-references)
+          - [\[ASN.1\]](#asn1)
+          - [\[DThaler\]](#dthaler)
+          - [\[Fredericks\]](#fredericks)
+          - [\[ECMAScript\]](#ecmascript)
+          - [\[Graphviz\]](#graphviz)
+          - [\[IDEF1X\]](#idef1x)
+          - [\[Info-Theory\]](#info-theory)
+          - [\[JADN-v1.0\]](#jadn-v10)
+          - [\[JSONSCHEMA\]](#jsonschema)
+          - [\[Lombardi\]](#lombardi)
+          - [\[NTIA-SBOM\]](#ntia-sbom)
+          - [\[OpenC2-Arch-v1.0\]](#openc2-arch-v10)
+          - [\[OpenC2-Lang-v1.0\]](#openc2-lang-v10)
+          - [\[OWL-Primer\]](#owl-primer)
+          - [\[PlantUML\]](#plantuml)
+          - [\[RFC3444\]](#rfc3444)
+          - [\[RFC7049\]](#rfc7049)
+          - [\[RFC8477\]](#rfc8477)
+          - [\[RFC8610\]](#rfc8610)
+          - [\[Shannon\]](#shannon)
+          - [\[UML\]](#uml)
+          - [\[YTLee\]](#ytlee)
 - [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
+  - [B.1 Special Thanks](#b1-special-thanks)
+  - [B.2 Participants](#b2-participants)
 - [Appendix C. Revision History](#appendix-c-revision-history)
 - [Appendix D. Frequently Asked Questions (FAQ)](#appendix-d-frequently-asked-questions-faq)
   - [D.1 JADN vs. UML Primitive Data Types](#d1-jadn-vs-uml-primitive-data-types)
+          - [Table D-1 -- UML and JADN Basic Type Equivalence](#table-d-1----uml-and-jadn-basic-type-equivalence)
   - [D.2 Why JADN and not RDF?](#d2-why-jadn-and-not-rdf)
+    - [Comment](#comment)
+    - [Response](#response)
+    - [Extreme Example](#extreme-example)
+    - [Practical Example](#practical-example)
+    - [Measuring Information](#measuring-information)
   - [D.3 Why JADN and not OWL?](#d3-why-jadn-and-not-owl)
+    - [Directionality:](#directionality)
+    - [Multiplicity:](#multiplicity)
+    - [Referenceability:](#referenceability)
+    - [Individuality:](#individuality)
 - [Appendix E. Example Information Model Source](#appendix-e-example-information-model-source)
   - [E.1 Music Library](#e1-music-library)
+    - [E.1.1 Music Library JADN](#e11-music-library-jadn)
+    - [E.1.2 Music Library JIDL](#e12-music-library-jidl)
+    - [E.1.3 Music Library Tables](#e13-music-library-tables)
 - [Appendix F. Notices](#appendix-f-notices)
 
 **List of Figures**
@@ -159,199 +258,159 @@ For complete copyright information please see the full Notices section in [Appen
  - [Table 3-7 -- Integer Type Format Options](#table-3-7----integer-type-format-options)
  - [Table 3-8 -- Number Type Format Options](#table-3-8----number-type-format-options)
  - [Table 3-9 -- Array Type Format Options](#table-3-9----array-type-format-options)
- - [Table D-1 -- UML and JADN Basic Type Equivalence](#table-d-1----uml-and-jadn-basic-type-equivalence)
+ - [Table D-1 -- UML and JADN Basic Type Equivalence](#table-d-1----uml-and-jadn-primitive-type-equivalence)
 
 -------
 
-<!-- Insert a "line rule" (three or more hyphens alone on a new line, following a blank line) before each major section. This is used to generate a page break in the PDF format. -->
-
 # 1 Introduction
 
-An Information Model (IM) defines the essential content of
-messages used in computing, independently of how those messages
-are represented (i.e., [serialized](#24-serialization)) for
-communication or storage. This Committee Note (CN) describes the
-nature of an IM, and the application of the *JSON Abstract Data
-Notation* [[JADN](#jadn-v10)] information modeling language in the
-creation and use of IMs.
+This Committee Note (CN) describes the nature of information models and the application
+of the *JSON Abstract Data Notation* [[JADN Specification](#jadn-v10)] information modeling language
+in the creation and use of IMs.
 
 ## 1.1 Background: Motivation for JADN
 
+Information models are a means to understand
+and document the essential information content relevant to a
+system, application, or protocol exchange without regard to how
+that information is represented in actual implementations.
+Having a clear view of the information required provides clarity
+regarding the goals that the eventual implementation must
+satisfy.
 This section provides the background for the creation of JADN as
 an information modeling language for a spectrum of applications.
 
-### 1.1.1 OpenC2 and JADN
+### 1.1.1 Information Models and Data Models
 
-The *OpenC2 Architecture
-Specification* [[OpenC2-Arch-v1.0](#openc2-arch-v10)]
-abstract defines the objective of OpenC2:
+Internet Engineering Task Force (IETF) [RFC 3444](#rfc3444),
+"On the Difference between Information Models and Data Models", says:
 
-> _Open Command and Control (OpenC2) is a concise and extensible
-> language to enable machine-to-machine communications for
-> purposes of command and control of cyber defense components,
-> subsystems and/or systems in a manner that is agnostic of the
-> underlying products, technologies, transport mechanisms or
-> other aspects of the implementation._
+> * The main purpose of an IM is to model managed objects at a conceptual
+level, independent of any specific implementations or protocols used
+to transport the data.  The degree of specificity (or detail) of the
+abstractions defined in the IM depends on the modeling needs of its
+designers. (Section 2)
+> 
+> 
+> * The terms "conceptual models" and "abstract models", which are often
+used in the literature, relate to IMs.  IMs can be implemented in different
+ways and mapped on different protocols.
+> * IMs can be defined in an informal way, using natural languages such
+as English. Alternatively, IMs can be defined using a formal language
+or a semi-formal structured language.  One of the possibilities to formally
+specify IMs is to use class diagrams of the Unified Modeling Language (UML).
+> * In general, it seems advisable to use object-oriented techniques to
+describe an IM. In particular, the notions of abstraction and
+encapsulation, as well as the possibility that object definitions
+include methods, are considered to be important. (Section 3)
+>
+> 
+> * Compared to IMs, DMs define managed objects at a lower level
+of abstraction.  They include implementation- and
+protocol-specific details, e.g., rules that explain how to map
+managed objects onto lower-level protocol constructs. (Section 4)
 
-The OASIS [OpenC2 Technical Committee
-(TC)](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2)
-recognized the need to define the OpenC2 Language [[OpenC2-Lang-v1.0](#openc2-lang-v10)]
-in an implementation-independent manner in order to achieve the
-project's goals to be "agnostic of the underlying products,
-technologies, transport mechanisms or other aspects of the
-implementation". In response, the TC created an information
-modeling language, _JSON Abstract Data Notation_ [[JADN](#jadn-v10)],
-to support the information modeling needed to define OpenC2 in
-that manner. 
+Although RFC 3444 references protocols and object methods, the Unified Modeling Language
+[UML](#uml) places data models and object-oriented programming models
+in separate categories:
+* Simple Classifiers (Section 10), including DataTypes (10.2), and
+* Structured Classifiers (Section 11), including Classes (11.4)
 
-It is important to recognize that while JADN was created to
-facilitate the development of OpenC2, it is an independent
-specification, and can be used for any information modeling
-application. 
+JADN is aligned with UML's layered separation of concerns: the main purpose of an
+IM is to model *data*, not managed objects, at both conceptually- and formally-defined levels.
+This allows IMs to model any kind of data, from simple structures such as value ranges
+or coordinates, to protocol messages, APIs, and method signatures, to complete documents,
+without the complexity of also modeling programming languages and techniques.
+An IM is a [declarative](#d1-declarative-specifications)
+specification that defines desired outcomes (data item validity and equivalence)
+without describing control flow.
+Protocol models can use IMs to define and validate messages exchanged over the wire.
+
+Because abstraction establishes a correspondence between logical values and
+concrete representations, information modeling can be used for **synthesis**
+starting with conceptual and logical design while leaving representation details
+for later, or for **analysis** starting with existing data to find patterns and meaning:
+* An IM defines the essential content of data artifacts used in computing
+independently of how they are represented for processing, communication, or storage.
+* An IM defines "information equivalence" of data artifacts, meaning that all
+representations of a logical value are equivalent and data values can be converted
+from any representation to any other without loss of information.
+
+Focusing on meaning encourages interoperability between applications by capturing
+agreement about what the information conveys and how it can be used, deferring decisions
+on storage and transmission details until a clear understanding of purpose has been reached.
 
 ### 1.1.2 The Information Modeling Gap
 
 The IETF, in the _Report from the Internet of Things (IoT)
-Semantic Interoperability (IOTSI) Workshop 2016_ [[RFC
-8477](https://www.rfc-editor.org/info/rfc8477)], attributed
-challenges in achieving interoperability to a lack of information
-modeling:
+Semantic Interoperability (IOTSI) Workshop 2016_
+[[RFC 8477](https://www.rfc-editor.org/info/rfc8477)],
+attributed challenges in achieving interoperability
+to a lack of information modeling:
 
-> _One common problem is the lack of an encoding-independent
+> One common problem is the lack of an encoding-independent
 > standardization of the information, the so-called information
 > model. Another problem is the strong relationship between data
-> formats and the underlying communication architecture_
+> formats and the underlying communication architecture. (Section 1)
 
-A key term in the above is "encoding-independent".  An IM defines
-the essential content of messages used in computing,
-independently of how those messages are represented (i.e.,
-serialized) for communication or storage. IMs are used to define
-and generate physical data models, validate information
-instances, and enable lossless translation across data formats.
-While JADN was created by the OpenC2 TC, it is entirely general
-purpose in its design and can be used to create IMs for nearly
-any purpose. Examples of other possible JADN applications include
-defining:
+[[RFC 8477](https://www.rfc-editor.org/info/rfc8477)] recapitulates RFC 3444 terminology (Section 2):
 
- - Complex information structures, such as Software
-   Bills of Materials
-   (SBOMs) [[NTIA-SBOM](#ntia-sbom)];
-   examples would be the SPDX and CycloneDX SBOM formats
- - Formal definition of structured information exchanges, such as
-   are described by
-   [NIEM](https://github.com/niemopen/oasis-open-project#readme)
+> - **Information Model** -- An information model defines an
+     environment at the highest level of abstraction and
+     expresses the desired functionality. Information models can
+     be defined informally (e.g., in prose) or more formally 
+     (e.g., Unified Modeling Language (UML), Entity-
+     Relationship Diagrams, etc.).  Implementation details are
+     hidden.
 
-[[RFC 8477](https://www.rfc-editor.org/info/rfc8477)] defines 
-information models and data models to clarify the differences (emphasis added):
+> - **Data Model** -- A data model defines concrete data
+     representations *at a lower level of abstraction, including
+     implementation- and protocol-specific details*.  Some
+     examples are SNMP Management Information Base (MIB)
+     modules, World Wide Web Consortium (W3C) Thing Description
+     (TD) Things, YANG modules, Lightweight Machine-to-Machine
+     (LwM2M) Schemas, Open Connectivity Foundation (OCF)
+     Schemas, and so on.
 
- - **Information Model** -- An information model defines an
-      environment *at the highest level of abstraction and
-      expresses the desired functionality*. Information models can
-      be defined informally (e.g., in prose) or more formally 
-      (e.g., Unified Modeling Language (UML), Entity-
-      Relationship Diagrams, etc.).  Implementation details are
-      hidden.
+A JADN IM uses UML datatypes to define *data*, not *an environment*,
+and expresses *desired effects* (meaning of datatype instances), not
+*desired functionality* (temporal behavior of methods and protocols).
+Datatypes can define object state, function signatures, and protocol
+messages, but imperative specification of methods and protocols is
+out of scope.
 
- - **Data Model** -- A data model defines concrete data
-      representations *at a lower level of abstraction, including
-      implementation- and protocol-specific details*.  Some
-      examples are SNMP Management Information Base (MIB)
-      modules, World Wide Web Consortium (W3C) Thing Description
-      (TD) Things, YANG modules, Lightweight Machine-to-Machine
-      (LwM2M) Schemas, Open Connectivity Foundation (OCF)
-      Schemas, and so on.
+[DThaler's _IoT Bridge Taxonomy_](#dthaler) addresses the challenges
+created when "many organizations develop and implement different schemas
+for the same kind of things", and concludes:
 
-Expanding somewhat on the RFC 8477 hierarchy, a JADN information
-model is positioned within _three_ abstraction levels, the highest
-being:
+> To ... increase semantic interoperability, it is desirable that
+> different data models for the same type of thing (e.g., light
+> bulbs) are as similar as possible for basic functionality. In
+> an ideal world, data models used by different protocols and
+> organizations would express exactly the same information in
+> ways that are algorithmically translatable by a dynamic schema
+> bridge with no domain-specific knowledge. Sharing data models
+> more widely, and having agreements in principle of at least
+> using the same abstract information model, would be very
+> beneficial.
 
- - **Logical Model** -- A logical model defines the semantics
-      (knowledge/meaning) assigned to things being modeled.
-      Logical models are defined using languages such as the
-      W3C Web Ontology Language [[OWL](#owl-primer)].
+The notion of "express[ing] exactly the same information in ways
+that are algorithmically translatable" is a fundamental purpose
+of information modeling, reflected in JADN's focus on
+_information equivalence_.
 
-The layering of these models is illustrated in Figure 1-1.
-
-###### Figure 1-1 -- Range of Model Types
-![Figure 1-1 -- Range of Model Types](images/model-types.drawio.png)
+### 1.1.3 Defining Information
 
 JADN is based on Information Theory
 [[Info-Theory](#info-theory)], which provides a concrete way of
 quantifying information that is explicitly independent of both
-semantic meaning and data representation. A JADN IM links
-model-defined semantic types with JADN-defined core information
-types, providing an unambiguous bridge between semantics and
-data. This supports implementation flexibility while maintaining
+semantic meaning and data representation. This may sound paradoxical,
+but information modeling is based on separating
+application-specific abstract schemas from application-independent
+encoding rules. A data format specifies encoding rules used for each
+core information type, providing an unambiguous bridge between semantics
+and data. This supports implementation flexibility while maintaining
 interoperable information exchange across implementations.
-
-## 1.2 Purpose
-
-As an IM language, JADN is a syntax-independent, or abstract,
-schema language. Abstract schema languages separate structure
-definitions from encoding rules. JADN is oriented to work well
-with common Internet data formats, such as
-
- - JSON (Javascript Object Notation)
- - XML (eXtensible Markup Language)
- - CBOR (Concise Binary Object Representation)
-
-JADN is based rigorously on information theory, and an IM
-composed in JADN formally defines equivalence of information
-content between data in different formats.
-
-This CN discusses:
-
-1) Key concepts: information, data, serialization.
-2) What is information modeling?
-3) The value of an information model.
-4) The distinction between an IM and other modeling approaches.
-5) The creation and use of an IM using JADN and associated
-    automated tools.
-
-## 1.3 Terminology
-
-This CN uses the definitions contained in the [[JADN
-Specification](#jadn-v10)], section 1.2.1. The following
-additional terms are defined for this document:
-
- - **Directed Acyclic Graph:** A directed acyclic graph (DAG) is
-   a directed graph with no directed cycles. That is, it consists
-   of vertices and edges (also called arcs), with each edge
-   directed from one vertex to another, such that following those
-   directions will never form a closed loop. A directed graph is
-   a DAG if and only if it can be topologically ordered, by
-   arranging the vertices as a linear ordering that is consistent
-   with all edge directions<br>(Wikipedia, https://en.wikipedia.org/wiki/Directed_acyclic_graph)
-
- - **Entity Relationship Model:** An entity–relationship model
-   (or ER model) describes interrelated things of interest in a
-   specific domain of knowledge. A basic ER model is composed of
-   entity types (which classify the things of interest) and
-   specifies relationships that can exist between entities
-   (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
-
- - **Schema:**  *(markup languages)* A formal description of
-   data, data types, and data file structures, such as XML
-   schemas for XML files.<br>(Wiktionary, https://en.wiktionary.org/wiki/schema#Noun, definition #3)
-
- - **Ontology:** (information science) A representation, formal
-   naming, and definition of the categories, properties, and
-   relations between the concepts, data, and entities that
-   substantiate one, many, or all domains of discourse. More
-   simply, an ontology is a way of showing the properties of a
-   subject area and how they are related, by defining a set of
-   concepts and categories that represent the subject.<br>
-   (Wikipedia, https://en.wikipedia.org/wiki/Ontology_(computer_science))
-
--------
-
-# 2 Information Modeling Overview
-
-This section discusses the nature and benefits of IMs, the role
-of serialization, types of available modeling languages, and
-tools that can be used in information modeling.
-
-## 2.1 Defining "Information"
 
 A basic problem with discussing information models is that the
 terms "information" and "data" are used widely but defined
@@ -370,36 +429,60 @@ of the communication engineers training.
 Shannon's original article was later published as a book and gave
 rise to the field of Information Theory [[Shannon](#shannon)].
 
+The [[Resource Description Framework (RDF)](#rdf)], though limited
+in capability **, defines the concept of lexical-to-value mapping, which
+provides a precise vocabulary for describing the relationship between
+"data" and information:
+
+> * A **datatype** consists of a **lexical space**, a **value space**, and
+> a **lexical-to-value mapping**.
+> 
+> * The lexical-to-value mapping of a datatype is a set of pairs
+> whose first element belongs to the lexical space and the second element
+> belongs to the value space of the datatype.
+
+** *Note: the current version of RDF has two major limitations:
+its lexical space is limited to "a set of strings" and
+cannot support binary variables or data formats, and its datatypes
+are limited to primitive "values such as strings, numbers and dates".
+A future version of RDF could in principle be extended to support
+full information modeling datatypes, but there is no roadmap indicating
+plans to do so.*
+
 A small example may help clarify the concept of information. The
-information content of an instance can be no greater than the
-smallest data instance for which lossless round-trip conversion
+information content of a logical value can be no greater than the
+smallest lexical value for which lossless round-trip conversion
 is possible. For example, an IPv4 address represented in dotted
 quad format is 17 bytes of JSON string data ("192.168.101.213"),
-but can be converted to 4 byte RFC 791 format and back without
+but can be converted to 4 byte [[RFC 791](#rfc791)] format and back without
 loss. The information content of an IPv4 address can therefore be
 no greater than 4 bytes (32 bits), and an information model would
-define the IPv4 address type as a byte sequence of length 4.
+define the IPv4 address datatype as a byte sequence of length 4. Expanding
+the example to include a full RFC 791 IP header illustrates some of the
+equivalent terms used to describe logical and lexical values:
 
-For the purpose of understanding information modeling, it is
-helpful to think in terms of different levels of representation:
+* An Information Model abstract datatype defines the "essential content"
+of an IPv4 Header
+* An IP packet being processed within a device or application is:
+  * Information theory: information, entropy, or essential content
+  * RDF: logical value in a value space
+  * IM: logical value (instance of the IP Header abstract datatype, internal representation)
+  * DM: an internal representation specific to a concrete data format
+* An IP packet transmitted over the wire or stored in a packet capture
+file is:
+  * Information theory: a sequence of channel symbols (bytes or characters)
+  * RDF: lexical value in the lexical space defined by a data format
+  * IM: lexical value (instance of the IP Header abstract datatype, external representation)
+  * DM: physical value (instance of an IP Header concrete datatype)
 
- - External
- - Internal
- - Conceptual
+As with individual IP addresses, the information in an IPv4 header is
+no greater than the 24 byte RFC 791 lexical value regardless of data format.
 
-These levels correspond, respectively, to the Data, Information,
-and Logical models illustrated above in 
-[Figure 1-1](#figure-1-1----range-of-model-types). 
+### 1.1.4 Information Modeling Goals and Principles
 
-The external representation requires a data model to describe
-how information is transmitted or stored; such a data model
-provides specific formats and syntax (e.g., defining
-serialization rules) that permit moving the data out of the
-system where it is being processed. The internal representation
-depends on an information model, which uses abstract terminology
-to focus on what the information represents (e.g., a name, an
-address). As described in [[YTLee](#ytlee)]'s 2008 paper on
-information modeling: 
+Lexical values are concrete visualizable representations of information,
+but information itself is an abstract concept that focuses on meaning.
+As described in [[YTLee](#ytlee)]'s 2008 paper on information modeling: 
 
 > The conceptual view is a single, integrated definition of the
 data within an enterprise that is unbiased toward any single
@@ -408,97 +491,15 @@ stored or accessed. It provides a consistent definition of the
 meanings and interrelationship of the data in order to share,
 integrate, and manage the data.
 
+> The advantage of using an information model is that it can
+provide sharable, stable, and organized structure of
+information requirements for the domain context.
+
 Note that while this description uses the term "data", the more
 important terms are "unbiased", "independent", "consistent", and
-"meanings and interrelationship". 
+"meanings and interrelationship".
 
-A common language for defining conceptual models is OWL (Web
-Ontology Language, see [OWL-Primer](#owl-primer)).  An abstract
-information model, such as can be created with JADN, bridges
-between the conceptual model (described using OWL or similar
-languages), and and the external (or concrete) representation in
-a selected data format.  JADN directly models the Shannon
-information for creating serialized data in one or more desired
-formats. By creating the information model to bridge concept to
-representation, the concept of **"information equivalence"** is
-applied:  the same information model can be used to generate both
-self-describing (verbose) data and concise data for production
-environments.
-
-
-## 2.2 Information Models And Data Models
-
-As described in the introduction, IMs are a means to understand
-and document the essential information content relevant to a
-system, application, or protocol exchange without regard to how
-that information is represented in actual implementations.
-Having a clear view of the information required provides clarity
-regarding the goals that the eventual implementation must
-satisfy.
-
- [[RFC 3444](#rfc3444)] describes the purpose of an IM as:
-
- > "to model managed objects at a conceptual level, independent
- > of any specific implementations or protocols used to transport
- > the data. ... Another important characteristic of an IM is
- > that it defines relationships between managed objects."
-
-[[YTLee](#ytlee)] describes an IM as follows:
-
-> "An information model is a representation of concepts,
-> relationships, constraints, rules, and operations to specify
-> data semantics for a chosen domain of discourse."
-
-[[RFC3444](#rfc3444)] contrasts IMs with data models (DMs):
-
-> "Compared to IMs, DMs define managed objects at a lower level
-> of abstraction.  They include implementation- and
-> protocol-specific details, e.g., rules that explain how to map
-> managed objects onto lower-level protocol constructs."
-
-and states DMs are "intended for implementors and include
-protocol-specific constructs".
-
-The following key principles apply to IMs:
-
- - An information model classifies the validity of serialized
-   data with zero false positives and zero false negatives. That
-   is, an information model is the *authoritative definition* of
-   essential content, and any serialized data is unambiguously
-   one of: a) consistent with, b) inconsistent with, or c)
-   insignificant with respect to, the model.
-
- - Information instances are values that can be compared for
-   equality. An application compares instances in accordance with
-   the UML properties defined by their datatype. Two instances
-   are equal if they have the same datatype and the same value.
-
- - If an instance can be losslessly converted among multiple
-   serializations, then its information content is no greater
-   than the smallest of those serializations.
-
-## 2.3 Benefits of Information Models
-
-A key point in all the IM definitions and descriptions in the
-previous section is the ability for the model to represent
-information with a focus on its _meaning_, and without concern
-for how that information will be represented. Focusing on meaning
-encourages interoperability between applications by capturing
-agreement about what the information conveys and how it can be
-used, deferring decisions on storage and transmission matters
-until a clear understanding of purpose has been reached.
-Referring back to the example of the IPv4 address, regardless of
-representation the address identifies the label applied to a
-network interface within an available address space of 2^32.
-
-[[YTLee](#ytlee)] identifies the key benefit of an IM:
-
-> "The advantage of using an information model is that it can
-> provide sharable, stable, and organized structure of
-> information requirements for the domain context."
-
-and describes a "quality" IM as being:
-
+Lee describes a "quality" IM as being:
  - complete,
  - sharable,
  - stable,
@@ -507,26 +508,80 @@ and describes a "quality" IM as being:
  - precise, and
  - unambiguous.
 
-To sum up, in [DThaler's](#dthaler) paper on _IoT Bridge
-Taxonomy_, which addresses the challenges created when "many
-organizations develop and implement different schemas for the
-same kind of things", the concluding Recommendations section
-includes the following:
+JADN's approach to precision and ambiguity is summarized in these key principles:
 
-> To ... increase semantic interoperability, it is desirable that
-> different data models for the same type of thing (e.g., light
-> bulbs) are as similar as possible for basic functionality. In
-> an ideal world, data models used by different protocols and
-> organizations would express exactly the same information in
-> ways that are algorithmically translatable by a dynamic schema
-> bridge with no domain-specific knowledge. Sharing data models
-> more widely, and having agreements in principle of at least
-> using the same abstract information model, would be very
-> beneficial.
+ - An information model classifies serialized
+data with zero false positives and zero false negatives. That is,
+an information model is the authoritative definition of essential
+content, and all serialized data is unambiguously one of:
+a) consistent with the model, b) inconsistent with the model, or c) insignificant.
 
-The notion of "express[ing] exactly the same information in ways
-that are algorithmically translatable" is a fundamental purpose
-of information modeling, and aligns with the JADN concept of _information equivalence_.
+ - An application compares logical values in accordance
+with the UML properties defined by their abstract datatype.
+
+ - Lexical values are equivalent if they are instances of the same
+abstract datatype and have the same logical value.
+If a logical value can be losslessly converted among multiple
+lexical values then its information content is no greater than the
+smallest of those values.
+
+Additional quality metrics (completeness, sharability, structure, extensibility,
+etc.) are discussed in [Section 3](#3-creating-information-models-with-jadn).
+
+## 1.2 Terminology
+
+This CN uses the definitions contained in the [[JADN
+Specification](#jadn-v10)], section 1.2.1. The following
+additional terms are defined for this document:
+
+- **Classifier:** The core organizational concept of UML is the
+classifier, used to classify different kinds of values according
+to their features. UML is a complex specification defining many
+kinds of simple and structured classifiers, but the only kind used
+by JADN is the simple Datatype. Given a data value, a datatype
+classifier determines whether the value is an instance of a type,
+indicating both whether the data is valid, and if so, its logical
+type(s). Two data values are equivalent if they are instances of
+the same datatype and their logical values are equal.
+
+- **Directed Acyclic Graph:** A directed acyclic graph (DAG) is
+  a directed graph with no directed cycles. That is, it consists
+  of vertices and edges (also called arcs), with each edge
+  directed from one vertex to another, such that following those
+  directions will never form a closed loop. A directed graph is
+  a DAG if and only if it can be topologically ordered, by
+  arranging the vertices as a linear ordering that is consistent
+  with all edge directions<br>(Wikipedia, https://en.wikipedia.org/wiki/Directed_acyclic_graph)
+
+- **Entity Relationship Model:** An entity–relationship model
+  (or ER model) describes interrelated things of interest in a
+  specific domain of knowledge. A basic ER model is composed of
+  entity types (which classify the things of interest) and
+  specifies relationships that can exist between entities
+  (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
+
+- **Ontology:** (information science) A representation, formal
+  naming, and definition of the categories, properties, and
+  relations between the concepts, data, and entities that
+  substantiate one, many, or all domains of discourse. More
+  simply, an ontology is a way of showing the properties of a
+  subject area and how they are related, by defining a set of
+  concepts and categories that represent the subject.<br>
+  (Wikipedia, https://en.wikipedia.org/wiki/Ontology_(computer_science))
+
+- **Schema:**  *(markup languages)* A formal description of
+   data, data types, and data file structures, such as XML
+   schemas for XML files.<br>(Wiktionary, https://en.wiktionary.org/wiki/schema#Noun, definition #3)
+
+-------
+
+# 2 Information Modeling Overview
+
+*Note: to be deleted after merging any non-redundant content into section 1.*
+
+This section discusses the nature and benefits of IMs, the role
+of serialization, types of available modeling languages, and
+tools that can be used in information modeling.
 
 ## 2.4 Serialization
 
@@ -666,6 +721,8 @@ language should provide
 
 ## 2.7 Applying an Information Model
 
+*Note: this becomes the heart of section 2, after rewriting.*
+
 A primary application of an IM is in the translation of data into
 and out of in-memory representation and serialized formats for
 storage and transmission. The IM defines the types, organization,
@@ -682,9 +739,9 @@ the associated data.
 
 ###### Figure 2-2 -- Parsing and Serializing With An IM
 
-![Parsing and Serializing With An IM](images/parse-serialize.drawio.png)
+![Parsing and Serializing With An IM](images/parse-serialize.png)
 
-The internal representation, illustrated in Figure 2-1 as a tree,
+The internal representation, illustrated in Figure 2-1 as a graph,
 is guided by rules associated with applying the IM:
 
  - the internal representation conforms to the IM
@@ -693,7 +750,7 @@ is guided by rules associated with applying the IM:
  - each core type has associated serialization rules for each
    external representation format
 
-The JADN Specification [[JADN-v1.0](#jadn-v10)] defines 12 core types, which
+The [[JADN Specification](#jadn-v10)] defines 12 core types, which
 are described in [Section 3.1.7](#317-base-type-examples) of this
 CN. The JADN Specification also defines serialization rules for
 JSON (with three levels of verbosity) and CBOR
@@ -725,13 +782,38 @@ use the JSON number type with values 0 and 1.
 
 # 3 Creating Information Models with JADN
 
-This section provides a brief overview of JADN, and describes the
-use of JADN in information modeling.
+This section provides a brief overview of JADN, and describes the use of JADN in
+information modeling. The JADN information modeling language was developed
+against specific objectives:
+
+ 1) Core types represent application-relevant "information", not "data"
+ 2) Single specification unambiguously defines multiple data formats
+ 3) Specification uses named type definitions equivalent to property tables
+ 4) Specification is data that can be serialized
+ 5) Specification has a fixed structure designed for extensibility
+
+As stated in the [[JADN Specification](#jadn-v10)] introduction:
+
+> JADN is a formal description technique that combines type
+> constraints from the Unified Modeling Language (UML) with data
+> abstraction based on information theory and structural
+> organization using results from graph theory.
+
+> **EDITOR'S NOTE:** adjust and/or remove the following discussion to mesh with
+> updates to Section 1 of this CN.
+
+From UML JADN takes the concept of modeling information/data
+using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
+opposed to the common practice of using Structured Classifiers
+([[UML](#uml)], 11.4 Classes), which do not define data in a unique
+way that can be validated and signed.  The JADN use of the UML
+primitive types defined in [[UML](#uml)], Table 21.1, can be found
+in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 ## 3.1 JADN Overview
 
 Figure 3-1 provides a high-level view of the JADN concepts that
-will be described in this section. JADN provides simple and
+will be described in this section. JADN provides primitive and
 compound data types that can be refined using type and field
 options (field options only apply within compound types). JADN
 can also be represented in multiple formats, both textual and
@@ -743,36 +825,28 @@ authoritative, but each representation has advantages.
 ###### Figure 3-1 -- JADN Concepts
 ![Figure 3-1 -- JADN Concepts](images/JADN-Concepts.drawio.png)
 
+A JADN schema in its native form is a JSON document containing an object labeled
+"info" and an array labeled "types". 
 
-The JADN information modeling language was developed against specific objectives:
+* The "info" object contains metadata about
+the schema contained in the document, including the types exported from this
+schema and namespace information to connect it with other JADN schema documents.
 
- 1) Core types represent application-relevant "information", not "data"
- 2) Single specification unambiguously defines multiple data formats
- 3) Specification uses named type definitions equivalent to property tables
- 4) Specification is data that can be serialized
- 5) Specification has a fixed structure designed for extensibility
+* The "types" section of the schema document is an array of arrays, with each of
+the inner arrays defining one type in the schema. Each type in the schema
+document will use one of JADN's core types and may be either simple or compound.
+Each type array has five fields, two of which are themselves arrays: one for
+type options and one for the fields or elements that make up a compound type.
 
-As described in the JADN Specification 
-[[JADN-v1.0](#jadn-v10)] introduction:
+* The fields / elements array is always empty in the definition of a primitive type.
+For compound types, each field or element within the fields / elements array is
+also an array, with three items in an element array and five items in a field
+array. 
 
-> JADN is a formal description technique that combines type
-> constraints from the Unified Modeling Language (UML) with data
-> abstraction based on information theory and structural
-> organization using results from graph theory.
+These structures are illustrated and explained in more detail 
+in [Section&nbsp;3.1.5.1, Native JSON Representation](#3151-native-json-representation).
 
-> **EDITOR'S NOTE:** consider whether the following adds clarity or
-> confusion; it might need to be re-written to guide the reader
-> through the concepts a bit more.
-
-From UML JADN takes the concept of modeling information/data
-using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
-opposed to the common practice of using Structured Classifiers
-([[UML](#uml)], 11.4 Classes), which do not define data in a unique
-way that can be validated and signed.  The JADN use of the UML
-primitive types defined in [[UML](#uml)], Table 21.1, can be found
-in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
-
-The [[JADN Specification](#jadn-v10)] defines twelve base types:
+The [[JADN Specification](#jadn-v10)] defines twelve core types:
 
 | **Primitive** | **Compound** | **Selection /<br> Union** |
 |:-------------:|:------------:|:-------------------------:|
@@ -789,6 +863,8 @@ The [[JADN Specification](#jadn-v10)] defines twelve base types:
 > to use "compound" in order to avoid any potential confusion
 > with UML's use of "structured".
 
+> **To-Do:** The revised figure 3-2 groups Enumerated and Choice under Compound
+> types; need to reconcile the table above and that figure.
 
 
 Each of the compound types is a *container*, a named group of related items
@@ -798,7 +874,7 @@ has *multiplicity* attributes, including limits on the number of items,
 whether the items have a sequential ordering, and whether duplicate items
 are allowed.
 
-The JADN compound type and its options are chosen for an IM based on the
+The JADN compound types and their options are chosen for an IM based on the
 information characteristics to be modeled:
 
 * Array and ArrayOf contain a group of values.
@@ -823,8 +899,15 @@ sequential ordering while Map keys do not. Map instances are always serialized a
 key:value pairs, while Record instances may be serialized as either key:value pairs
 or table rows with values in column position, depending on data format.
 
-For example if Location is a Record type with name, state, latitude and longitude
-keys, its instances are serialized using *verbose* JSON data format as:
+For example if Location is a Record type:
+```
+Location = Record
+  1 name       String
+  2 state      String
+  3 latitude   Number
+  4 longitude  Number
+```
+its instances are serialized using *verbose* JSON data format as:
 ```json
 [
   {
@@ -891,10 +974,10 @@ The five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
 that type.
- 2. The **BaseType** of the type, which is one the twelve base
+ 2. The **BaseType** of the type, which is one the twelve core
     types shown in Figure 3-2.
  3. Zero or more of the available JADN **TypeOptions** that
-    refine the base types to fit particular needs.
+    refine the core types to fit particular needs.
  4. An optional **TypeDescription** string that provides
     additional information about the type.
  5. For any of the Compound types, Enumerated, or Choice, a set
@@ -904,12 +987,12 @@ that type.
 ###### Figure 3-2 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
 
-A firm requirement of JADN is that a TypeName must not be a JADN
+A firm requirement of JADN is that a TypeName in a schema must not be a JADN
 predefined type. There are also conventions intended to improve
 the consistency and readability of JADN specifications. These
 conventions are defined in JADN but can be overridden within a
 JADN schema if desired (see section 3.1.2 of the
-[[JADN](#jadn-v10) Specification]):
+[[JADN Specification](#jadn-v10)]):
 
  - **TypeNames** are written in PascalCase or Train-Case (using
    hyphens) with an initial upper case letter, and are limited to
@@ -934,7 +1017,7 @@ JADN schema if desired (see section 3.1.2 of the
 
 The third element of a JADN type definition is an array of zero
 or more of the TypeOptions defined in section 3.2.1 of the
-[[JADN](#jadn-v10) Specification]. JADN includes options for both
+[[JADN Specification](#jadn-v10)]. JADN includes options for both
 _types_ (discussed in this section) and _fields_ (discussed in
 [section 3.1.4](#314-field-options)). As explained in the JADN
 Specification:
@@ -944,7 +1027,7 @@ Specification:
 > - The first character is the option ID.
 > - The remaining characters are the option value.
 
-TypeOptions are classifiers that, along with the base type,
+TypeOptions are classifiers that, along with the BaseType,
 determine whether data values are instances of the defined type.
 For example, the *pattern* TypeOption is used with the String
 BaseType to define valid instances of that string type using a
@@ -952,7 +1035,7 @@ regular expression conforming to [[ECMAScript](#ecmascript)]
 grammar.
 
 Table 3-3 lists the complete set of type options, including the
-option name, type, ID character, and description; the ID
+option name, type, ID character, and description. The ID
 characters are used in standard JADN representation 
 ([section 3.1.5.1](#3151-native-json-representation)) when specifying type
 options.
@@ -979,7 +1062,7 @@ options.
 |  default   |  String  |   `!`  | Default value                                                     |
 
 Detailed explanations of each type option can be found in
-Sections 3.2.1.1-12 of the [[JADN Specification](#jadn-v10)].
+Sections 3.2.1.1 through 3.2.1.12 of the [[JADN Specification](#jadn-v10)].
 
 The `minv` and `maxv` type options are distinctive in that they
 can apply to both primitive and compound types, with a different
@@ -1129,33 +1212,40 @@ other representations using a simple example.
 
 This section illustrates the JSON representations of the Base
 Types described in [Section 3.1](#31-jadn-overview). Depictions
-are provided for each of three ways that the **Fields** array is
+are provided for overall structure of a JADN schema and for 
+each of three ways that the **Fields** array is
 used, depending on the base type used in a particular type
 definition.
 
-Figure 3-3 illustrates the structure of JADN for defining any
+Figure 3-3 illustrates the top-level structure of a native JADN schema document,
+as described in [Section 3.1](#31-jadn-overview).
+
+###### Figure 3-3 -- JADN Schema Top-Level Structure
+![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
+
+Figure 3-4 illustrates the structure of JADN for defining any
 Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
-###### Figure 3-3 -- JADN for Primitive, ArrayOf, MapOf Types
+###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
 ![JADN for Primitive, ArrayOf, MapOf
 Types](images/JADN-primitive-json.drawio.png)
 
 
-Figure 3-4 illustrates the structure of JADN for defining an
+Figure 3-5 illustrates the structure of JADN for defining an
 Enumerated **BaseType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
-###### Figure 3-4 -- JADN for Enumerated Types
+###### Figure 3-5 -- JADN for Enumerated Types
 ![JADN for Enumerated
 Types](images/JADN-with-items-json.drawio.png)
 
 
-Figure 3-5 illustrates the structure of JADN for defining a
+Figure 3-6 illustrates the structure of JADN for defining a
 **BaseType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
-###### Figure 3-5 -- JADN for Types with Fields
+###### Figure 3-6 -- JADN for Types with Fields
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
@@ -1202,7 +1292,7 @@ names are used. These types are defined using a field ID and a
 TypeName. For documentation and debugging purposes a FieldName
 can be included in the JIDL comment field, immediately following
 the `//` and followed by a double colon delimiter (i.e., `::`).
-For more information see the [[JADN](#jadn-v10)] Specification
+For more information see the [[JADN Specification](#jadn-v10)]
 descriptions of Field Identifiers (section 3.2.1.1) and JADN-IDL
 format (section 5.1). Here is a brief JIDL example of this format:
 
@@ -1215,21 +1305,21 @@ Publication-Data = Array         // who and when of publication
 
 #### 3.1.5.3 Multiple Representations Example
 
-The JADN Specification [[JADN-v1.0](#jadn-v10)], section 5.3,
+The [[JADN Specification](#jadn-v10)], section 5.3,
 uses a simple example of an IM for a university to illustrate the
 use of ERDs for IMs. This section uses that ERD as a starting
 point for an example to illustrate the various JADN
 representations described in [Section 3.1.5.2](#3152-alternative-jadn-representations). The example
 begins with the ERD for the model:
 
-###### Figure 3-6 -- Simple University Example ERD
+###### Figure 3-7 -- Simple University Example ERD
 
 <img src="images/university-erd.png" height="600px">
 
 The package (see [Section 4.1](#41-packages-and-namespaces)) 
 containing the JADN corresponding to the above ERD is shown here:
 
-###### Figure 3-7 -- Simple University Example JADN (JSON format)
+###### Figure 3-8 -- Simple University Example JADN (JSON format)
 ```json
 {
  "info": {
@@ -1266,7 +1356,7 @@ containing the JADN corresponding to the above ERD is shown here:
 Converting the JSON to JIDL yields a representation that is both
 more readable and easier to edit:
 
-###### Figure 3-8 -- Simple University Example JADN (JIDL format)
+###### Figure 3-9 -- Simple University Example JADN (JIDL format)
 
 ```
      package: "http://example.com/uni"
@@ -1298,7 +1388,7 @@ which are quite readable but somewhat more challenging to edit
 than JIDL (the package information has been omitted from the set
 of property tables).
 
-###### Figure 3-9 -- Simple University Example JADN (table format)
+###### Figure 3-10 -- Simple University Example JADN (table format)
 
 A place of learning
 
@@ -1340,7 +1430,7 @@ of the example is easily generated from the JADN model.  In this
 specific example code for the widely-used GraphViz tool is
 provided.
 
-###### Figure 3-10 -- Simple University Example ERD Source Code (GraphViz)
+###### Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)
 ```
 # package: http://example.com/uni
 # exports: ['University']
@@ -1457,13 +1547,28 @@ formats.
 
 #### 3.1.7.1 Binary
 
-**Definition:** A sequence of octets. Length is the number of
-octets.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A sequence of octets. Length is the number of octets.
+      </td>
+      <td class="td">
+        <i>
+          <center>minv, maxv, format</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *minv*, *maxv*, and *format* TypeOptions
-are applicable to the Binary data type.
-
-**Example:**  The Binary type is used for representing
+The **Binary** core type is used for representing
 arbitrary binary data.  An information item fitting a Binary type
 would be defined as follows:
 
@@ -1478,7 +1583,10 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
-Table 3-6 lists the *format* options applicable to the Binary type:
+The *minv* and *maxv* TypeOptions are used to specify a minimum and/or maximum
+number of octets for a binary type. If *minv* equals *maxv* the size of the
+binary type is fixed. Table 3-6 lists the *format* options applicable to the
+Binary type:
 
 ###### Table 3-6 -- Binary Type Format Options
 
@@ -1488,17 +1596,28 @@ Table 3-6 lists the *format* options applicable to the Binary type:
 | ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc791) Section 3.1 |
 | ipv6-addr    | Binary | IPv6 address as specified in [RFC 8200](#rfc8200)  Section 3 |
 
-
-
 #### 3.1.7.2 Boolean
 
-**Definition:**  An element with one of two values: true or
-false.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        An element with one of two values: true or false.
+      </td>
+      <td class="td">
+          <center>None</center>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** No TypeOptions are applicable to the Boolean
-data type.
-
-**Example:**  The Boolean type is used for representing bi-valued
+The **Boolean** core type is used for representing bi-valued
 (i.e., true/false, yes/no, on/off) information. An information
 item fitting a Boolean type would be defined as follows:
 
@@ -1513,23 +1632,36 @@ The corresponding JIDL representation would be:
   AccessGranted = Boolean   // Result of access control decision
 ```
 
-
 #### 3.1.7.3 Integer
 
-**Definition:**  A positive or negative whole number.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A positive or negative whole number.
+      </td>
+      <td class="td">
+        <i>
+          <center>minv, maxv, format</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *minv*, *maxv*, and *format* TypeOptions
-are applicable to the Integer data type.
-
-**Example:**  The Integer type is used for representing numerical
+The **Integer** core type is used for representing numerical
 information with discrete integer values.  An information item
 fitting an Integer type would be defined as follows:
-
 
 ```json
 ["TrackNumber", "Integer", [], "Track number for current song", []]
 ```
-
 
 The corresponding JIDL representation would be:
 
@@ -1538,6 +1670,11 @@ The corresponding JIDL representation would be:
   TrackNumber = Integer   // Track number for current song
 ```
 
+The *minv* and *maxv* TypeOptions are used to specify a minimum and/or maximum
+value that may be assigned to an Integer type. The JADN Integer primitive type
+encompasses the UML UnlimitedNatural primitive type through the use the *minv*
+Type Option: an Integer with a *minv* of `0` has the same range of values as an
+UnlimitedNatural.
 
 Table 3-7 lists the *format* options applicable to the Integer type:
 
@@ -1553,20 +1690,34 @@ Table 3-7 lists the *format* options applicable to the Integer type:
 
 #### 3.1.7.4 Number
 
-**Definition:**  A real number.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A real number.
+      </td>
+      <td class="td">
+        <i>
+          <center>minf, maxf, format, pattern</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *minf*, *maxf*, and *format* TypeOptions
-are applicable to the Number data type.
-
-**Example:**  The Number type is used for representing numerical
+The **Number** core type is used for representing numerical
 information with continuous values.  An information item fitting
 a Number type would be defined as follows:
-
 
 ```json
 ["Temperature", "Number", [], "Current temperature observation in degrees C", []]
 ```
-
 
 The corresponding JIDL representation would be:
 
@@ -1575,29 +1726,49 @@ The corresponding JIDL representation would be:
   Temperature = Number   // Current temperature observation in degrees C
 ```
 
-Table 3-8 lists the *format* options applicable to the Number
-type. These *format* options are only relevant when serializing
-using CBOR; see the [[JADN Specification](#jadn-v10)], Section
-4.4:
+The *minf* and *maxf* TypeOptions are used to specify a minimum and/or maximum
+value that may be assigned to a Number type. Table 3-8 lists the *format*
+options applicable to the Number type. These *format* options are only relevant
+when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&nbsp;4.4:
 
 ###### Table 3-8 -- Number Type Format Options
 
-| Keyword | Type | Requirement |
-| :--- | :--- | :--- |
-| **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25). |
-| **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26). |
+| Keyword |  Type  | Requirement                                                       |
+|:-------:|:------:|-------------------------------------------------------------------|
+| **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25)   |
+| **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26) |
+| **f64** | Number | **float64**: Serialize as IEEE 754 Single-Precision Float (#7.27) |
 
+The parenthetical (#7.2x) references in the above table identify the CBOR major
+type (7) and associated additional information (25/26/27) as defined in the
+Concise Data Definition Language (CDDL) Standard Prelude specified in Apppendix&nbsp;D 
+of [[RFC8610](#rfc8610)].
 
 
 #### 3.1.7.5 String
 
-**Definition:**  A sequence of characters, each of which has a
-Unicode codepoint. Length is the number of characters.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A sequence of characters, each of which has a Unicode codepoint. Length is the number of characters.
+      </td>
+      <td class="td">
+        <i>
+          <center>minv, maxv, format, pattern</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *minv*, *maxv*, *format*, and *pattern*
-TypeOptions are applicable to the String data type.
-
-**Example:**  The String type is used for representing
+The **String** core type is used for representing
 information best presented as text.  An information item fitting
 a String type would be defined as follows:
 
@@ -1612,9 +1783,11 @@ The corresponding JIDL representation would be:
   TrackTitle = String   // Title of the song in the selected track
 ```
 
-All semantic validation keywords defined in Section 7.3 of 
-[[JSON Schema](#jsonschema)] are valid *format* options for the String
-type.
+All semantic validation keywords defined in Section 7.3 of [[JSON
+Schema](#jsonschema)] are valid *format* options for the String type. The *minv*
+and *maxv* TypeOptions are used to specify a minimum and/or maximum number of
+characters that may be assigned to a String type (i.e., the acceptable range of
+string lengths). 
 
 The *pattern* option in JADN is identified by the `%` type option
 character followed immediately by the regular expression to be
@@ -1645,13 +1818,28 @@ specification is in Section 22.2.
 
 #### 3.1.7.6 Enumerated
 
-**Definition:**  A vocabulary of items where each item has an id
-and a string value.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A vocabulary of items where each item has an id and a string value.
+      </td>
+      <td class="td">
+        <i>
+          <center>id, enum, pointer, extend</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *id*, *enum*, *pointer*, and *extend*
-TypeOptions are applicable to the Enumerated data type.
-
-**Example:**  The Enumerated type is used to represent
+The Enumerated core type is used to represent
 information that has a finite set of applicable values. An
 information item fitting the Enumerated type would be defined as
 follows:
@@ -1681,13 +1869,28 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
 
 #### 3.1.7.7 Choice
 
-**Definition:**  A discriminated union: one type selected from a
-set of named or labeled types.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A discriminated union: one type selected from a set of named or labeled types.
+      </td>
+      <td class="td">
+        <i>
+          <center>id, extend</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *id*  and *extend* TypeOptions are
-applicable to the Choice data type.
-
-**Example:**  The Choice type is used to represent information
+The **Choice** core type is used to represent information
 limited to selecting one type from a defined set of named or
 labeled types. An information item fitting the Choice type would
 be defined as follows:
@@ -1715,21 +1918,35 @@ IdentityType = Choice                // Nature of the referenced identity
 
 #### 3.1.7.8 Array
 
-**Definition:**  An ordered list of labeled fields with
-positionally-defined semantics. Each field has a position, label,
-and type.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">An ordered list of labeled fields with
+        positionally-defined semantics. Each field has a position, label,
+        and type.
+      </td>
+      <td class="td">
+        <i>
+          <center>extend, minv, maxv, format</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *extend*, *minv*, *maxv*, and *format*
-TypeOptions are applicable to the Array data type.
-
-**Example:**  The Array type is used to represent information
+The **Array** type is used to represent information
 where it is appropriate to group related information elements
 together, even if the elements of the array are heterogeneous.
 Each element in the array is defined as a field, using the field
-definitions described in [Section
-3.1.3](#313-item-or-field-definitions) and refined using the
+definitions described in [Section 3.1.3](#313-item-or-field-definitions) and refined using the
 field options described in [Section 3.1.4](#314-field-options).
-An information item fitting the Array base type would be defined
+An information item fitting the Array core type would be defined
 as follows:
 
 ```json
@@ -1752,7 +1969,8 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
 
-The example above illustrates the positioning of Array "field names" within the JIDL comments, as described in [Section 3.1.5.2.1](#31521-array-field-names-in-jidl).
+The example above illustrates the positioning of Array "field names" within the
+JIDL comments, as described in [Section 3.1.5.2.1](#31521-array-field-names-in-jidl).
 
 Table 3-9 lists the *format* options applicable to the Array type:
 
@@ -1763,21 +1981,39 @@ Table 3-9 lists the *format* options applicable to the Array type:
 | ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [RFC 4632](#rfc4632) Section 3.1 |
 | ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [RFC 4291](#rfc4291) Section 2.3 |
 
+The `ipv4-net` and `ipv6-net` format options impose several constraints when applied to an Array type:
 
+* Specifies that the Binary element of the Array to be 32 or 128 bits, respectively
+* Constrains the Integer prefix value to a range of 0..32 or 0..128, respectively
+* Specifies that text representations of the type will use CIDR notation
 
 
 #### 3.1.7.9 ArrayOf(_vtype_)
 
-**Definition:**  A collection of fields with the same semantics.
-Each field has type *vtype*. Ordering and uniqueness are
-specified by a collection option.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">A collection of fields with the same semantics.
+        Each field has type <i>vtype</i>. Ordering and uniqueness are
+        specified by a collection option.
+      </td>
+      <td class="td">
+        <i>
+          <center>vtype, minv, maxv, unique, set, unordered</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *vtype*, *minv*, *maxv*, *unique*, *set*,and
-*unordered* TypeOptions are applicable to the ArrayOf data
-type.
-
-**Example:**  The ArrayOf type is used to represent information
-where it is appropriate to group a set of uniform  information
+The **ArrayOf** type is used to represent information
+where it is appropriate to group a set of uniform information
 elements together. The fields of the array are defined by the
 *vtype*, which can be primitive or compound. An information item
 fitting the ArrayOf base type would be defined as follows. This
@@ -1811,24 +2047,39 @@ Track = Record                                    // for each track there's a fi
 
 #### 3.1.7.10 Map
 
-**Definition:**  An unordered map from a set of specified keys to
-values with semantics bound to each key. Each key has an id and
-name or label, and is mapped to a value type.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">An unordered map from a set of specified keys to
+        values with semantics bound to each key. Each key has an id and
+        name or label, and is mapped to a value type.
+      </td>
+      <td class="td">
+        <i>
+          <center>id, extend, minv, maxv</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *id*, *extend*, *minv*, and *maxv*
-TypeOptions are applicable to the Map data type.
-
-**Example:**  The Map type is used to represent information that
+The **Map** type is used to represent information that
 can be represented as (key, value) pairs. Another term for this
-type of information structure is an "associative array". 
+type of information structure is an "associative array": 
 
-> Per Wikipedia, an *Associative Array* is "an abstract data type
+> An *Associative Array* is "an abstract data type
 > that stores a collection of (key, value) pairs, such that each
 > possible key appears at most once in the collection."
 > Alternative names include "map", "symbol table", and
 > "dictionary". (https://en.wikipedia.org/wiki/Associative_array)
 
-The Map base type always uses an integer identifier as the key,
+The Map core type always uses an integer identifier as the key,
 with each integer associated with a specific value. An
 information item fitting the Map type would be defined as
 follows:
@@ -1856,7 +2107,7 @@ type options in the record's definition and the presence of the
 `optional` keyword on all fields of the record. This reflects a
 design pattern: the compound type's cardinality of `{1..*}`
 defines that there is a minimum number of required fields even
-though every individual field is optional. An empty `Hashes` map
+though every individual field is optional. An empty `Hashes` map is
 invalid, but a map where any one or more of the three hash types
 exists is valid. This is an example of one application of _minv_,
 _maxv_, as described above in [Section 3.1.2](#312-typeoptions).
@@ -1865,14 +2116,29 @@ _maxv_, as described above in [Section 3.1.2](#312-typeoptions).
 
 #### 3.1.7.11 MapOf(_ktype_,_vtype_)
 
-**Definition:**  An unordered map from a set of keys of the same
-type to values with the same semantics. Each key has key type
-*ktype*, and is mapped to value type *vtype*.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">An unordered map from a set of keys of the same
+        type to values with the same semantics. Each key has key type
+        <i>ktype</i>, and is mapped to value type <i>vtype</i>.
+      </td>
+      <td class="td">
+        <i>
+          <center>ktype, vtype, minv, maxv</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *ktype*, *vtype*, *minv*, and *maxv*
-TypeOptions are applicable to the MapOf data type.
-
-**Example:**  The MapOf type is used to represent information
+The **MapOf** type is used to represent information
 that can be represented as (key, value) pairs, where the types
 for the keys and the values in the MapOf are of specific types
 and are defined using type options. MapOf is suitable when the
@@ -1920,18 +2186,33 @@ Date = String /date
 
 #### 3.1.7.12 Record
 
-**Definition:**  An ordered map from a list of keys with
-positions to values with positionally-defined semantics. Each key
-has a position and name, and is mapped to a value type.
-Represents a row in a spreadsheet or database table.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">An ordered map from a list of keys with
+        positions to values with positionally-defined semantics. Each key
+        has a position and name, and is mapped to a value type.
+        Represents a row in a spreadsheet or database table.
+      </td>
+      <td class="td">
+        <i>
+          <center>extend, minv, maxv</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *extend*, *minv*, and *maxv* TypeOptions
-are applicable to the Record data type.
-
-**Example:**  The Record type is used to represent information
-that has a consistent repeated structure, such as a database
-record. Elements of a record can be accessed by either position
-or value.
+The **Record** type is used to represent information that has a consistent
+repeated structure, such as a database record. Elements of a record can be
+accessed by either position or value. The following example defines a JADN
+Record type for the common 5-tuple often used to describe a network connection.
 
 ```json
   ["IPv4-Connection", "Record", ["{1"], "5-tuple that specifies a tcp/ip connection", [
@@ -2045,8 +2326,10 @@ are:
    messages)
  - Information structures such as a software bill of materials
    (SBOM)
- - Standard Development Organization (SDO) management system
-   (similar to OASIS Kavi)
+ - Standard Development Organization (SDO) management system (member
+   organizations, member persons, voting rights, topic-focused groups and
+   rosters, discussion forums and messages, calendars, meeting attendance, draft
+   and approved documents, ballots)
  - Music Database (artists, albums, songs, tracks, metadata,
    guest artists)
 
@@ -2055,73 +2338,91 @@ Additional examples may be added in future versions of the CN.
 
 ### 3.3.1 Example 1: A Digital Music Library
 
-This example shows a simple IM for a digital music library, and
+This example shows a simple IM for a digital music library and
 can be considered a "Hello World" example of applying the
-concepts described above. The components of the library are
-described here along with the associated JIDL. The ERD for the
+concepts described above. The components of the library are presented
+here in JIDL form along with brief descriptions. The final ERD for the
 library appears at the end of this section. The complete,
 consolidated JADN, JIDL, and property tables can be found in
-[Appendix E.1](#e1-music-library).
+[Appendix&nbsp;E.1](#e1-music-library).
 
-The model assumes that each track is stored as a file with its
-audio in one of several formats. The library organizes tracks
-into albums, which are associated with a UPC-A barcode (a
-12-digit number). The model is loosely based on the ID3 metadata
-used with MP3 audio files. 
+The model assumes that each track is stored as a file with its audio in one of
+several recognized formats. The library organizes tracks into albums, which are
+associated with a barcode identifier. The model is loosely based
+on the ID3 metadata used with MP3 audio files. Figure 3-Concept provides a
+conceptual overview of the music library's structure.
 
-At the top level, the library is map of barcodes to albums. 
+###### Figure 3-Concept -- Music Library Conceptual Overview
+
+<img src="images/music_lib_v1_1_puml_conceptual.png" height="500px">
+
+The JADN package for the music library IM provides basic metadata:
+
 
 ```
        title: "Music Library"
      package: "http://fake-audio.org/music-lib"
-     version: "1.0"
- description: "This information model defines a library of audio tracks, organized by album"
+     version: "1.1"
+ description: "This information model defines a library of audio tracks, 
+              organized by album, with associated metadata regarding 
+              each track. It is modeled on the types of library data 
+              maintained by common websites and music file tag editors."
      license: "CC0-1.0"
      exports: ["Library"]
-
-Library = MapOf(Barcode, Album){1..*}             // Top level of the library is a map of CDs by barcode
-
-Barcode = String{pattern="^\d{12}$"}              // A UPC-A barcode is 12 digits
 ```
 
-Each album is then represented by a record of artist, title,
-publication data, cover art and an array of individual audio
-tracks. Multiple digital image formats are supported for the
-cover art. Note that this example also contains multiple examples
-of anonymous type definitions as explained in [Section 3.1.6](#316-anonymous-type-definitions).
-
-> *NOTE: add link to new section 3.l.6 after PRs are merged.*
+At the top level, the library is map of barcodes to albums. The barcode serves
+as a convenient unique identifier for each album. A UPC-A barcode is a 12-digit
+number, and a `pattern` Type Option is used to constrain the `String` type that
+models it accordingly.
 
 ```
-Album = Record                                    // model for the album
-   1 artist           Artist                      // artist associated with this album
-   2 title            String                      // commonly known title for this album
-   3 pub_data         Publication-Data            // metadata about album publication
-   4 tracks           Track [1..*]                // individual track descriptions
-   5 cover_art        Image optional              // cover art image for this album
+Library = MapOf(Barcode, Album){1..*} // Top level of the library is a map of CDs by barcode
 
-Publication-Data = Record                         // who and when of publication
-   1 label            String                      // name of record label
-   2 rel_date         String /date                // and when did they let this drop
+Barcode = String{pattern="^\d{12}$"}  // A UPC-A barcode is 12 digits
+```
 
-Image = Record                                    // pretty picture for the album or track
-   1 image_format     Image-Format                // what type of image file?
-   2 image_content    Binary                      // the image data in the identified format
+Each album is represented by a record containing the album's artist, title,
+publication data, cover art, total track count, and an array of individual audio
+tracks. Multiple digital image formats are supported for the cover art. Note
+that this example also contains an example of an anonymous type definition
+(i.e., the `release_date` field in the `Publication-Data` record) as described 
+in [Section&nbsp;3.1.6](#316-anonymous-type-definitions).
 
-Image-Format = Enumerated                         // can only be one, but can extend list
+```
+Album = Record                         // model for the album
+   1 album_artist     Artist           // primary artist associated with this album
+   2 album_title      String           // publisher's title for this album
+   3 pub_data         Publication-Data // metadata about the album's publication
+   4 tracks           Track [1..*]     // individual track descriptions and content
+   5 total_tracks     Integer{1..*}    // total track count
+   6 cover_art        Image optional   // cover art image for this album
+
+Publication-Data = Record              // who and when of publication
+   1 publisher        String           // record label that released this album
+   2 release_date     String /date     // and when did they let this drop
+
+Image = Record                         // pretty picture for the album or track
+   1 image_format     Image-Format     // what type of image file?
+   2 image_content    Binary           // the image data in the identified format
+
+Image-Format = Enumerated              // can only be one, but can extend list
    1 PNG
    2 JPG
+   3 GIF
 ```
 
-Artists have a name and one or more associated instruments that
-they perform on.
+Artists have a name and one or more associated instruments that they perform on.
+The same information applies whether the artist is the primary performer (i.e.,
+`album_artist` in the `Album` record) or a guest performer (i.e.,
+`featured_artist` in a `Track-Info` record)
 
 ```
-Artist = Record                                   // interesting information about the performers
-   1 artist_name      String                      // who is this person
-   2 instruments      Instrument unique [1..*]    // and what do they play
+Artist = Record                                // interesting information about a performer
+   1 artist_name      String                   // who is this person
+   2 instruments      Instrument unique [1..*] // and what do they play
 
-Instrument = Enumerated                           // collection of instruments (non-exhaustive)
+Instrument = Enumerated                        // collection of instruments (non-exhaustive)
    1 vocals
    2 guitar
    3 bass
@@ -2133,43 +2434,61 @@ Instrument = Enumerated                           // collection of instruments (
    9 harmonica
 ```
 
-Each track is stored in a file, and has a track number within the
-album, title, length, potentially "featured" artists, and the
-audio data.  Multiple digital audio  formats are supported for
-the audio content.
+Each track is stored in a file, and has a track number within the album along
+with a title, length, genre, potentially "featured" artists, the audio data, and
+optionally individual track art.  Multiple digital audio formats are supported
+for the audio content.
 
 ```
-Track = Record                                    // for each track there's a file with the audio and a metadata record
-   1 location         String                      // path to the file audio location in local storage
-   2 metadata         TrackInfo                   // description of the track
+Track = Record                             // for each track there's a file with the audio and a metadata record
+   1 location         File-Path            // path to the audio file location in local storage
+   2 metadata         Track-Info           // description of the track
 
-TrackInfo = Record                                // information about the individual audio tracks
-   1 t_number         Number                      // track sequence number
-   2 title            String                      // track title
-   3 length           String /time                // length of track
-   4 audio_format     Audio-Format                // the all important content
-   5 featured         Artist unique [0..*]        // important guest performers
-   6 track_art        Image optional              // track can have individual artwork
+Track-Info = Record                        // information about the individual audio tracks
+   1 track_number     Integer              // track sequence number
+   2 title            String               // track title
+   3 length           Integer{1..*}        // length of track in seconds; anticipated user display is mm:ss; 
+                                           // minimum length is 1 second
+   4 audio_format     Audio-Format         // format of the digital audio
+   5 featured_artist  Artist unique [0..*] // notable guest performers
+   6 track_art        Image optional       // each track can have optionally have individual artwork
+   7 genre            Genre
 
-Audio-Format = Enumerated                         // can only be one, but can extend list
+Audio-Format = Enumerated                  // can only be one, but can extend list
    1 MP3
    2 OGG
    3 FLAC
+   4 MP4
+   5 AAC
+   6 WMA
+   7 WAV
+
+Genre = Enumerated                         // Enumeration of common genres
+   1 rock
+   2 jazz
+   3 hip_hop
+   4 electronic
+   5 folk_country_world
+   6 classical
+   7 spoken_word
+
+File-Path = String                         // local storage location of file with directory path 
+                                           // from root, filename, and extension
 ```
 
-The entity relationship diagram in Figure 3-10 illustrates how
+The entity relationship diagram in Figure 3-11 illustrates how
 the model components connect.
 
 ###### Figure 3-11 -- Music Library Example ERD
 
-<img src="images/music-database-gv.png" height="720px">
+<img src="images/music-library-v1_1-detailed-ERD-GV.png" height="720px">
 
 -------
 # 4 Advanced Techniques
 
 ## 4.1 Packages and Namespaces
 
-Section 6 of the [[JADN](#jadn-v10)] specification introduces the
+Section 6 of the [[JADN Specification](#jadn-v10)] introduces the
 use of packages as the mechanism for organizing JADN schemas.
 This section provides additional information on the use of
 packages, along with the associated concept of namespaces.
@@ -2326,6 +2645,10 @@ While any hyperlinks included in this appendix were valid at the time of publica
 ###### [ASN.1]
 Recommendation ITU-T X.680 (2021) *Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation* 
 
+###### [Declarative]
+"The Data Engineer's Guide to Declarative vs Imperative for Data",
+https://www.dataops.live/the-data-engineers-guide-to-declarative-vs-imperative-for-data
+
 ###### [DThaler]
 "IoT Bridge Taxonomy", D. Thaler, submission to Internet of
 Things (IoT) Semantic Interoperability (IOTSI) Workshop 2016,
@@ -2386,6 +2709,14 @@ Open Command and Control (OpenC2) Language Specification Version 1.0. Edited by 
 
 ###### [PlantUML]
 https://plantuml.com/
+
+###### [RDF]
+"Resource Description Framework (RDF) 1.2 Concepts and Abstract Syntax", W3C Working Draft, 22 August 2024,
+https://www.w3.org/TR/rdf12-concepts/#section-Datatypes
+
+###### [RFC791]
+"Internet Protocol - DARPA Internet Program Protocol Specification", RFC 791, September 1981,
+https://datatracker.ietf.org/doc/html/rfc791#section-3.1
 
 ###### [RFC3444]
 Pras, A., Schoenwaelder, J., "On the Difference between
@@ -2470,7 +2801,12 @@ The following individuals have participated in the creation of this document and
 |:-------------------|:-----------|:------------|:----------------------|
 | imjadn-v1.0-cn01-wd01.md | 2023-01-18 | David Kemp | Initial working draft / CND01 |
 | imjadn-v1.0-cn01-wd02.md | 2023-04-19 | David Kemp | Second WD / CN01 candidate |
-
+| imjadn-v1.0-cn01-wd02.md | 2023-09-25 | David Lemire | Music librar example updates (PR #53) |
+| imjadn-v1.0-cn01-wd02.md | 2023-09-25 | David Kemp | Reorganize introduction (PR #55) |
+| imjadn-v1.0-cn01-wd02.md | 2023-09-25 | David Lemire | Normalize JADN Spec reference style (PR #56) |
+| imjadn-v1.0-cn01-wd02.md | 2023-10-04 | David Kemp | Move information definition to introduction (PR #57) |
+| imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Overall updates to types descriptions in 3.1.x (PR #58) |
+| imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Generalize description of SDO management system IM (PR #60) |
 -------
 
 # Appendix D. Frequently Asked Questions (FAQ)
@@ -2480,33 +2816,88 @@ regarding JADN.
 
 ## D.1 JADN vs. UML Primitive Data Types
 
-[[UML](#uml)] section 21 says "The PrimitiveTypes package is an
-independent package that defines a set of reusable PrimitiveTypes
-that are commonly used in the definition of metamodels."  JADN
-defines an additional Binary type (a sequence of octets/bytes)
-because it is needed. Unlike UML, JADN does not define a separate
-type for UnlimitedNatural because the Integer type can be given
-upper and lower bounds, and natural numbers are the set of
-non-negative integers.  The equivalent in JADN uses
-Integer{0..\*} for natural numbers, and the Integer value -1 for
-the "unlimited" value (*) of UnlimitedNatural. Table D-1 maps
-basic data types between UML and JADN.
+The Universal Modeling Language [UML](#uml) says in section 21:
+"*The PrimitiveTypes package is an independent package that defines a set of
+reusable PrimitiveTypes that are commonly used in the definition of metamodels.*"
+and takes the position that the set of natural numbers includes the value zero.
 
-###### Table D-1 -- UML and JADN Basic Type Equivalence
+JADN uses the same UML primitive types with two exceptions:
+* JADN defines a Binary (byte sequence) primitive type, UML does not.
+* UML defines an UnlimitedNatural primitive type, JADN does not.
+
+UML natural numbers (integers greater than or equal to zero) are a subset of
+integers, so there is no need for a separate UnlimitedNatural primitive type.
+A JADN multivalued element may have an unlimited number of values if its type
+definition does not have a multiplicity upper bound. JADN assigns the Integer
+*sentinel value* -1, which is distinguished from all UML natural numbers,
+to indicate an unspecified upper bound in a multiplicity range.
+By convention text representations of a multiplicity range use the character "*"
+to indicate an unspecified upper bound.
+
+* A **sentinel value** is a predefined data value used to indicate the end
+of a sequence or the absence of valid data.
+
+Table D-1 lists the UML and JADN Primitive types.
+
+###### Table D-1 -- UML and JADN Primitive Type Equivalence
 
 |       UML        |      JADN      |
 |:----------------:|:--------------:|
-|     Integer      |    Integer     |
+|       ---        |     Binary     |
 |     Boolean      |    Boolean     |
+|     Integer      |    Integer     |
+|       Real       |     Number     |
 |      String      |     String     |
 | UnlimitedNatural | Integer {0..*} |
-|       Real       |     Number     |
-|      _xxx_       |     Binary     |
+
+## D.1 Declarative Specifications
+
+*Editor's Note: Ignore numbering; Primitives will be moved into document body. Declarative
+may as well, or FAQ appendix may be renamed to something like "Notes"*
+
+The introduction states: "An IM is a declarative specification that defines desired outcomes
+(data item validity and equivalence) without describing control flow."
+But what does "declarative" mean in practice?
+
+The [DataOps Guide](#declarative) is a tutorial on the difference between declarative
+and imperative approaches, as well as the difference between those approaches when applied
+to software programming vs. database management. It uses simple relational database
+tables for illustration, but declarative schemas are also used with more
+flexible NoSQL databases such as Elasticsearch and MongoDB, graph databases including
+Neo4j, and non-database artifacts such as protocol messages and documents.
+
+The *Guide* points out that:
+> A declarative approach is an abstraction based on our interaction with the system.
+> When you look under the hood, all systems depend on a set of [imperative] instructions.
+> Instead of the system depending on you to supply those instructions, they are predefined. 
+
+An information model combines the abstraction of declarative specifications with
+the abstraction of separating logical datatypes from concrete representations.
+Its desired outcomes are:
+* a classification decision: given a data value, is it an instance of an abstract datatype?
+* an equality comparison decision: given two instances of the same datatype,
+do they have the same logical value?
+
+Its predefined instructions implement the behavior of its built-in datatypes,
+which can be extended with application-specific imperative validation
+and translation functions.
+
+## D.2 Applications
+
+Examples of other possible JADN applications include
+defining:
+
+ - Complex information structures, such as Software
+   Bills of Materials
+   (SBOMs) [[NTIA-SBOM](#ntia-sbom)];
+   examples would be the SPDX and CycloneDX SBOM formats
+ - Formal definition of structured information exchanges, such as
+   are described by
+   [NIEM](https://github.com/niemopen/oasis-open-project#readme)
 
 ## D.2 Why JADN and not RDF?
 
 This section discusses the relationship between JADN and RDF, and why RDF does not serve the purpose of an Information Model
-
 
 ### Comment
 The following
@@ -2524,8 +2915,7 @@ review](https://lists.oasis-open.org/archives/openc2/202106/msg00019.html):
 
 ### Response
 The short answer (RDF models *knowledge* while JADN models
-*information*) is provided in the JADN Specification
-[[JADN-v1.0](#jadn-v10)] introduction:
+*information*) is provided in the [[JADN Specification](#jadn-v10)] introduction:
 
 > *UML class models and diagrams are commonly referred to as
 > "Data Models", but they model knowledge of real-world entities
@@ -2916,80 +3306,86 @@ constructing an information graph from an ontology graph:
 
 ```
 {
- "info": {
-  "title": "Music Library",
-  "package": "http://fake-audio.org/music-lib",
-  "version": "1.0",
-  "description": "This information model defines a library of audio tracks, organized by album",
-  "license": "CC0-1.0",
-  "exports": ["Library"]
- },
-
- "types": [
-  ["Library", "MapOf", ["+Barcode", "*Album", "{1"], "Top level of the library is a map of CDs by barcode", []],
-
-  ["Barcode", "String", ["%^\\d{12}$"], "A UPC-A barcode is 12 digits", []],
-
-  ["Album", "Record", [], "model for the album", [
-    [1, "artist", "Artist", [], "artist associated with this album"],
-    [2, "title", "String", [], "commonly known title for this album"],
-    [3, "pub_data", "Publication-Data", [], "metadata about album publication"],
-    [4, "tracks", "Track", ["]0"], "individual track descriptions"],
-    [5, "cover_art", "Image", ["[0"], "cover art image for this album"]
-  ]],
-
-  ["Publication-Data", "Record", [], "who and when of publication", [
-    [1, "label", "String", [], "name of record label"],
-    [2, "rel_date", "String", ["/date"], "and when did they let this drop"]
-  ]],
-
-  ["Image", "Record", [], "pretty picture for the album or track", [
-    [1, "image_format", "Image-Format", [], "what type of image file?"],
-    [2, "image_content", "Binary", [], "the image data in the identified format"]
-  ]],
-
-  ["Image-Format", "Enumerated", [], "can only be one, but can extend list", [
-    [1, "PNG", ""],
-    [2, "JPG", ""]
-  ]],
-
-  ["Artist", "Record", [], "interesting information about the performers", [
-    [1, "artist_name", "String", [], "who is this person"],
-    [2, "instruments", "Instrument", ["q", "]0"], "and what do they play"]
-  ]],
-
-  ["Instrument", "Enumerated", [], "collection of instruments (non-exhaustive)", [
-    [1, "vocals", ""],
-    [2, "guitar", ""],
-    [3, "bass", ""],
-    [4, "drums", ""],
-    [5, "keyboards", ""],
-    [6, "percussion", ""],
-    [7, "brass", ""],
-    [8, "woodwinds", ""],
-    [9, "harmonica", ""]
-  ]],
-
-  ["Track", "Record", [], "for each track there's a file with the audio and a metadata record", [
-    [1, "location", "String", [], "path to the file audio location in local storage"],
-    [2, "metadata", "TrackInfo", [], "description of the track"]
-  ]],
-
-  ["TrackInfo", "Record", [], "information about the individual audio tracks", [
-    [1, "t_number", "Number", [], "track sequence number"],
-    [2, "title", "String", [], "track title"],
-    [3, "length", "String", ["/time"], "length of track"],
-    [4, "audio_format", "Audio-Format", [], "the all important content"],
-    [5, "featured", "Artist", ["q", "[0", "]0"], "important guest performers"],
-    [6, "track_art", "Image", ["[0"], "track can have individual artwork"]
-  ]],
-
-  ["Audio-Format", "Enumerated", [], "can only be one, but can extend list", [
-    [1, "MP3", ""],
-    [2, "OGG", ""],
-    [3, "FLAC", ""]
-  ]]
- ]
+  "info": {
+    "title": "Music Library",
+    "package": "http://fake-audio.org/music-lib",
+    "version": "1.1",
+    "description": "This information model defines a library of audio tracks, organized by album, with associated metadata regarding each track. It is modeled on the types of library data maintained by common websites and music file tag editors.",
+    "license": "CC0-1.0",
+    "exports": ["Library"]
+  },
+  "types": [
+    ["Library", "MapOf", ["+Barcode", "*Album", "{1"], "Top level of the library is a map of CDs by barcode", []],
+    ["Barcode", "String", ["%^\\d{12}$"], "A UPC-A barcode is 12 digits", []],
+    ["Album", "Record", [], "model for the album", [
+        [1, "album_artist", "Artist", [], "primary artist associated with this album"],
+        [2, "album_title", "String", [], "publisher's title for this album"],
+        [3, "pub_data", "Publication-Data", [], "metadata about the album's publication"],
+        [4, "tracks", "Track", ["]0"], "individual track descriptions and content"],
+        [5, "total_tracks", "Integer", ["{1"], "total track count"],
+        [6, "cover_art", "Image", ["[0"], "cover art image for this album"]
+      ]],
+    ["Publication-Data", "Record", [], "who and when of publication", [
+        [1, "publisher", "String", [], "record label that released this album"],
+        [2, "release_date", "String", ["/date"], "and when did they let this drop"]
+      ]],
+    ["Image", "Record", [], "pretty picture for the album or track", [
+        [1, "image_format", "Image-Format", [], "what type of image file?"],
+        [2, "image_content", "Binary", [], "the image data in the identified format"]
+      ]],
+    ["Image-Format", "Enumerated", [], "can only be one, but can extend list", [
+        [1, "PNG", ""],
+        [2, "JPG", ""],
+        [3, "GIF", ""]
+      ]],
+    ["Artist", "Record", [], "interesting information about a performer", [
+        [1, "artist_name", "String", [], "who is this person"],
+        [2, "instruments", "Instrument", ["q", "]0"], "and what do they play"]
+      ]],
+    ["Instrument", "Enumerated", [], "collection of instruments (non-exhaustive)", [
+        [1, "vocals", ""],
+        [2, "guitar", ""],
+        [3, "bass", ""],
+        [4, "drums", ""],
+        [5, "keyboards", ""],
+        [6, "percussion", ""],
+        [7, "brass", ""],
+        [8, "woodwinds", ""],
+        [9, "harmonica", ""]
+      ]],
+    ["Track", "Record", [], "for each track there's a file with the audio and a metadata record", [
+        [1, "location", "File-Path", [], "path to the audio file location in local storage"],
+        [2, "metadata", "Track-Info", [], "description of the track"]
+      ]],
+    ["Track-Info", "Record", [], "information about the individual audio tracks", [
+        [1, "track_number", "Integer", ["[1"], "track sequence number"],
+        [2, "title", "String", [], "track title"],
+        [3, "length", "Integer", ["{1"], "length of track in seconds; anticipated user display is mm:ss; minimum length is 1 second"],
+        [4, "audio_format", "Audio-Format", [], "format of the digital audio"],
+        [5, "featured_artist", "Artist", ["q", "[0", "]0"], "notable guest performers"],
+        [6, "track_art", "Image", ["[0"], "each track can have optionally have individual artwork"],
+        [7, "genre", "Genre", [], ""]
+      ]],
+    ["Audio-Format", "Enumerated", [], "can only be one, but can extend list", [
+        [1, "MP3", ""],
+        [2, "OGG", ""],
+        [3, "FLAC", ""],
+        [4, "MP4", ""],
+        [5, "AAC", ""],
+        [6, "WMA", ""],
+        [7, "WAV", ""]
+      ]],
+    ["Genre", "Enumerated", [], "Enumeration of common genres", [
+        [1, "rock", ""],
+        [2, "jazz", ""],
+        [3, "hip_hop", ""],
+        [4, "electronic", ""],
+        [5, "folk_country_world", ""],
+        [6, "classical", ""],
+        [7, "spoken_word", ""]
+      ]],
+    ["File-Path", "String", [], "local storage location of file with directory path from root, filename, and extension"]
+  ]
 }
 ```
 
@@ -2998,39 +3394,43 @@ constructing an information graph from an ontology graph:
 ```
        title: "Music Library"
      package: "http://fake-audio.org/music-lib"
-     version: "1.0"
- description: "This information model defines a library of audio tracks, organized by album"
+     version: "1.1"
+ description: "This information model defines a library of audio tracks, organized by album, 
+               with associated metadata regarding each track. It is modeled on the types of 
+               library data maintained by common websites and music file tag editors."
      license: "CC0-1.0"
      exports: ["Library"]
 
-Library = MapOf(Barcode, Album){1..*}             // Top level of the library is a map of CDs by barcode
+Library = MapOf(Barcode, Album){1..*}  // Top level of the library is a map of CDs by barcode
 
-Barcode = String{pattern="^\d{12}$"}              // A UPC-A barcode is 12 digits
+Barcode = String{pattern="^\d{12}$"}   // A UPC-A barcode is 12 digits
 
-Album = Record                                    // model for the album
-   1 artist           Artist                      // artist associated with this album
-   2 title            String                      // commonly known title for this album
-   3 pub_data         Publication-Data            // metadata about album publication
-   4 tracks           Track [1..*]                // individual track descriptions
-   5 cover_art        Image optional              // cover art image for this album
+Album = Record                         // model for the album
+   1 album_artist     Artist           // primary artist associated with this album
+   2 album_title      String           // publisher's title for this album
+   3 pub_data         Publication-Data // metadata about the album's publication
+   4 tracks           Track [1..*]     // individual track descriptions and content
+   5 total_tracks     Integer{1..*}    // total track count
+   6 cover_art        Image optional   // cover art image for this album
 
-Publication-Data = Record                         // who and when of publication
-   1 label            String                      // name of record label
-   2 rel_date         String /date                // and when did they let this drop
+Publication-Data = Record              // who and when of publication
+   1 publisher        String           // record label that released this album
+   2 release_date     String /date     // and when did they let this drop
 
-Image = Record                                    // pretty picture for the album or track
-   1 image_format     Image-Format                // what type of image file?
-   2 image_content    Binary                      // the image data in the identified format
+Image = Record                         // pretty picture for the album or track
+   1 image_format     Image-Format     // what type of image file?
+   2 image_content    Binary           // the image data in the identified format
 
-Image-Format = Enumerated                         // can only be one, but can extend list
+Image-Format = Enumerated              // can only be one, but can extend list
    1 PNG
    2 JPG
+   3 GIF
 
-Artist = Record                                   // interesting information about the performers
-   1 artist_name      String                      // who is this person
-   2 instruments      Instrument unique [1..*]    // and what do they play
+Artist = Record                        // interesting information about a performer
+   1 artist_name      String           // who is this person
+   2 instruments      Instrument unique [1..*]  // and what do they play
 
-Instrument = Enumerated                           // collection of instruments (non-exhaustive)
+Instrument = Enumerated                // collection of instruments (non-exhaustive)
    1 vocals
    2 guitar
    3 bass
@@ -3041,32 +3441,53 @@ Instrument = Enumerated                           // collection of instruments (
    8 woodwinds
    9 harmonica
 
-Track = Record                                    // for each track there's a file with the audio and a metadata record
-   1 location         String                      // path to the file audio location in local storage
-   2 metadata         TrackInfo                   // description of the track
+Track = Record                             // for each track there's a file with the audio and a metadata record
+   1 location         File-Path            // path to the audio file location in local storage
+   2 metadata         Track-Info           // description of the track
 
-TrackInfo = Record                                // information about the individual audio tracks
-   1 t_number         Number                      // track sequence number
-   2 title            String                      // track title
-   3 length           String /time                // length of track
-   4 audio_format     Audio-Format                // the all important content
-   5 featured         Artist unique [0..*]        // important guest performers
-   6 track_art        Image optional              // track can have individual artwork
+Track-Info = Record                        // information about the individual audio tracks
+   1 track_number     Integer              // track sequence number
+   2 title            String               // track title
+   3 length           Integer{1..*}        // length of track in seconds; anticipated user display is mm:ss; 
+                                           // minimum length is 1 second
+   4 audio_format     Audio-Format         // format of the digital audio
+   5 featured_artist  Artist unique [0..*] // notable guest performers
+   6 track_art        Image optional       // each track can have optionally have individual artwork
+   7 genre            Genre
 
-Audio-Format = Enumerated                         // can only be one, but can extend list
+Audio-Format = Enumerated                  // can only be one, but can extend list
    1 MP3
    2 OGG
    3 FLAC
+   4 MP4
+   5 AAC
+   6 WMA
+   7 WAV
+
+Genre = Enumerated                         // Enumeration of common genres
+   1 rock
+   2 jazz
+   3 hip_hop
+   4 electronic
+   5 folk_country_world
+   6 classical
+   7 spoken_word
+
+File-Path = String     // local storage location of file with directory path from root, filename, and extension
 ```
 
 ### E.1.3 Music Library Tables
 
-## Schema
+Information Header
+
 ```
          title: "Music Library"
        package: "http://fake-audio.org/music-lib"
-       version: "1.0"
-   description: "This information model defines a library of audio tracks, organized by album"
+       version: "1.1"
+   description: "This information model defines a library of audio tracks, 
+                 organized by album, with associated metadata regarding each 
+                 track. It is modeled on the types of library data maintained 
+                 by common websites and music file tag editors."
        license: "CC0-1.0"
        exports: ["Library"]
 ```
@@ -3087,13 +3508,14 @@ model for the album
 
 **Type: Album (Record)**
 
-| ID | Name          | Type             | \#    | Description                         |
-|----|---------------|------------------|-------|-------------------------------------|
-| 1  | **artist**    | Artist           | 1     | artist associated with this album   |
-| 2  | **title**     | String           | 1     | commonly known title for this album |
-| 3  | **pub_data**  | Publication-Data | 1     | metadata about album publication    |
-| 4  | **tracks**    | Track            | 1..\* | individual track descriptions       |
-| 5  | **cover_art** | Image            | 0..1  | cover art image for this album      |
+| ID | Name             | Type             | \#    | Description                               |
+|----|------------------|------------------|-------|-------------------------------------------|
+| 1  | **album_artist** | Artist           | 1     | primary artist associated with this album |
+| 2  | **album_title**  | String           | 1     | publisher's title for this album          |
+| 3  | **pub_data**     | Publication-Data | 1     | metadata about the album's publication    |
+| 4  | **tracks**       | Track            | 1..\* | individual track descriptions and content |
+| 5  | **total_tracks** | Integer{1..\*}   | 1     | total track count                         |
+| 6  | **cover_art**    | Image            | 0..1  | cover art image for this album            |
 
 **********
 
@@ -3101,10 +3523,10 @@ who and when of publication
 
 **Type: Publication-Data (Record)**
 
-| ID | Name         | Type         | \# | Description                     |
-|----|--------------|--------------|----|---------------------------------|
-| 1  | **label**    | String       | 1  | name of record label            |
-| 2  | **rel_date** | String /date | 1  | and when did they let this drop |
+| ID | Name             | Type         | \# | Description                           |
+|----|------------------|--------------|----|---------------------------------------|
+| 1  | **publisher**    | String       | 1  | record label that released this album |
+| 2  | **release_date** | String /date | 1  | and when did they let this drop       |
 
 **********
 
@@ -3127,10 +3549,11 @@ can only be one, but can extend list
 |----|---------|-------------|
 | 1  | **PNG** |             |
 | 2  | **JPG** |             |
+| 3  | **GIF** |             |
 
 **********
 
-interesting information about the performers
+interesting information about a performer
 
 **Type: Artist (Record)**
 
@@ -3163,25 +3586,32 @@ for each track there's a file with the audio and a metadata record
 
 **Type: Track (Record)**
 
-| ID | Name         | Type      | \# | Description                                      |
-|----|--------------|-----------|----|--------------------------------------------------|
-| 1  | **location** | String    | 1  | path to the file audio location in local storage |
-| 2  | **metadata** | TrackInfo | 1  | description of the track                         |
+| ID | Name         | Type       | \# | Description                                      |
+|----|--------------|------------|----|--------------------------------------------------|
+| 1  | **location** | File-Path  | 1  | path to the audio file location in local storage |
+| 2  | **metadata** | Track-Info | 1  | description of the track                         |
 
 **********
 
 information about the individual audio tracks
 
-**Type: TrackInfo (Record)**
+**Type: Track-Info (Record)**
 
-| ID | Name             | Type          | \#    | Description                       |
-|----|------------------|---------------|-------|-----------------------------------|
-| 1  | **t_number**     | Number        | 1     | track sequence number             |
-| 2  | **title**        | String        | 1     | track title                       |
-| 3  | **length**       | String /time  | 1     | length of track                   |
-| 4  | **audio_format** | Audio-Format  | 1     | the all important content         |
-| 5  | **featured**     | Artist unique | 0..\* | important guest performers        |
-| 6  | **track_art**    | Image         | 0..1  | track can have individual artwork |
+| ID | Name                | Type           | \#    | Description                                                                               |
+|----|---------------------|----------------|-------|-------------------------------------------------------------------------------------------|
+| 1  | **track_number**    | Integer        | 1     | track sequence number                                                                     |
+| 2  | **title**           | String         | 1     | track title                                                                               |
+| 3  | **length**          | Integer{1..\*} | 1     | length of track in seconds; anticipated user display is mm:ss; minimum length is 1 second |
+| 4  | **audio_format**    | Audio-Format   | 1     | format of the digital audio                                                               |
+| 5  | **featured_artist** | Artist unique  | 0..\* | notable guest performers                                                                  |
+| 6  | **track_art**       | Image          | 0..1  | each track can have optionally have individual artwork                                    |
+| 7  | **genre**           | Genre          | 1     |                                                                                           |
+
+**********
+
+| Type Name     | Type Definition | Description                                                                           |
+|---------------|-----------------|---------------------------------------------------------------------------------------|
+| **File-Path** | String          | local storage location of file with directory path from root, filename, and extension |
 
 **********
 
@@ -3194,6 +3624,27 @@ can only be one, but can extend list
 | 1  | **MP3**  |             |
 | 2  | **OGG**  |             |
 | 3  | **FLAC** |             |
+| 4  | **MP4**  |             |
+| 5  | **AAC**  |             |
+| 6  | **WMA**  |             |
+| 7  | **WAV**  |             |
+
+**********
+
+Enumeration of common genres
+
+**Type: Genre (Enumerated)**
+
+| ID | Item                   | Description |
+|----|------------------------|-------------|
+| 1  | **rock**               |             |
+| 2  | **jazz**               |             |
+| 3  | **hip_hop**            |             |
+| 4  | **electronic**         |             |
+| 5  | **folk_country_world** |             |
+| 6  | **classical**          |             |
+| 7  | **spoken_word**        |             |
+
 
 
 ------
