@@ -2406,11 +2406,11 @@ readable but somewhat more challenging to edit than JIDL (the package
 information has been omitted from the set of property tables illustrated here).
 Each property table is preceeded by the comment on the type definition that
 created that table (e.g., the University Record type has the comment "A place of
-learning")
+learning"). Those comments are set in italics in this example for clarity.
 
 ###### Figure 3-10 -- Simple University Example JADN (table format)
 
-A place of learning
+*A place of learning*
 
 **Type: University (Record)**
 
@@ -2420,7 +2420,7 @@ A place of learning
 | 2  | **classes** | ArrayOf(Class)  | 1  | Available classes    |
 | 3  | **people**  | ArrayOf(Person) | 1  | Students and faculty |
 
-Pertinent info about classes
+*Pertinent info about classes*
 
 **Type: Class (Record)**
 
@@ -2437,7 +2437,7 @@ Pertinent info about classes
 | ID | Name        | Type          | \# | Description                            |
 |----|-------------|---------------|----|----------------------------------------|
 | 1  | **name**    | String        | 1  | Student / faculty member name          |
-| 2  | **univ_id** | Key(UnivId)   | 1  | Unique ID for student / faculty member |
+| 2  | **univ_id** | Key(UnivI+d)   | 1  | Unique ID for student / faculty member |
 | 3  | **email**   | String /email | 1  | Student / faculty member email         |
 
 | Type Name  | Type Definition             | Description              |
