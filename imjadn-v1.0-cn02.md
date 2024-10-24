@@ -809,7 +809,7 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 ## 3.1 JADN Overview
 
-Figure 3-1 provides a high-level view of the the components of JADN type definitions that
+Figure 3-1 provides a high-level view of the components of JADN type definitions that
 will be described in this section. JADN provides *primitive*, 
 *compound*, and *union* core data types that can be refined using type and field
 options (field options only apply to compound and union types).
