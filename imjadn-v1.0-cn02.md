@@ -1430,7 +1430,7 @@ IdentityType = Choice                // Nature of the referenced identity
    3 tool             Tool           // Identity refers to an automated tool
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
+> EDITOR'S NOTE:  need examples of applying the TypeOptions include the v1.1 enhancements.
 
 
 #### 3.1.7.8 Array
