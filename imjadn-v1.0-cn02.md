@@ -985,7 +985,7 @@ that type.
 ![JADN Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
 
 A firm requirement of JADN is that a TypeName in a schema must not be a JADN
-predefined type. There are also conventions intended to improve
+predefined (i.e., core) type. There are also conventions intended to improve
 the consistency and readability of JADN specifications. These
 conventions are defined in JADN but can be overridden within a
 JADN schema if desired (see section 3.1.2 of the
@@ -1031,11 +1031,12 @@ BaseType to define valid instances of that string type using a
 regular expression conforming to [[ECMAScript](#ecmascript)]
 grammar.
 
-Table 3-3 lists the complete set of type options, including the
-option name, type, ID character, and description. The ID
-characters are used in standard JADN representation 
-([section 3.1.5.1](#3151-native-json-representation)) when specifying type
-options.
+Table 3-3 lists the complete set of type options, including the option name,
+type, ID character, and description. Note that the ID characters are the normative form and are used in
+standard JADN representation ([section 3.1.5.1](#3151-native-json-representation)) 
+when specifying type options. The text labels for the options (e.g., vtype,
+ktype, pattern) are non-normative and intended to be human friendly. Many of the
+Type and Field options labels have JSON Schema and XML Schema equivalents.
 
 ###### Table 3-3 -- JADN Type Options
 
