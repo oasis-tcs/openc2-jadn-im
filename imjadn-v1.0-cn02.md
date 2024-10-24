@@ -886,6 +886,8 @@ that type.
 ###### Figure 3-2 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
 
+#### 3.1.1.1 TypeNames and BaseTypes
+
 A firm requirement of JADN is that a TypeName in a schema must not be a JADN
 predefined (i.e., core) type. There are also name formatting conventions intended to improve
 the consistency and readability of JADN specifications. These
@@ -912,7 +914,7 @@ JADN schema if desired (see section 3.1.2 of the
    schema authors.
 
 
-### 3.1.2 TypeOptions
+#### 3.1.1.2 TypeOptions
 
 The third element of a JADN type definition is an array of zero
 or more of the TypeOptions defined in section 3.2.1 of the
@@ -986,7 +988,7 @@ Table 3-4 summarizes the applicability of type options to JADN core types.
 |    extend |        |         |         |        |        |   X   |         |  X  |       |   X    |   X    |     X      |
 |   default |        |         |         |        |        |       |         |     |       |        |        |            |
 
-### 3.1.3 Item Or Field Definitions
+#### 3.1.1.3 Item Or Field Definitions
 
 The use of the **Fields** element to convey Item or Field
 Definitions is dependent on the **BaseType** selected, as
@@ -1018,7 +1020,7 @@ pertaining to the **Fields** array are as follows:
        field
     5. **FieldDescription:** a non-normative comment
 
-### 3.1.4 Field Options
+#### 3.1.1.4 Field Options
 
 Compound types containing Items or Fields support field options
 in addition to the type options described in [Section
