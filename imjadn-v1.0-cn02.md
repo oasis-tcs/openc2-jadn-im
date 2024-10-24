@@ -864,74 +864,6 @@ The [[JADN Specification](#jadn-v10)] defines twelve core types:
 > to use "compound" in order to avoid any potential confusion
 > with UML's use of "structured".
 
-Each of the compound types is a *container*, a named group of related items
-such as the latitude and longitude of a geographic coordinate, or the set of
-properties of an object. In addition to its individual items, every container
-has *multiplicity* attributes, including limits on the number of items,
-whether the items have a sequential ordering, and whether duplicate items
-are allowed.
-
-The JADN compound types and their options are chosen for an IM based on the
-information characteristics to be modeled:
-
-* Array and ArrayOf contain a group of values.
-* Map, MapOf and Record contain a group of keys and corresponding values (a mapping)
-* All items in ArrayOf and MapOf groups have the same value (and key) type
-* Each item in Array, Map, and Record groups has an individual value (and key) type
-
-and the decision tree for which compound type to use is shown in Table 3-1:
-
-###### Table 3-1 -- Compound Type Decision Tree
-
-| Value / Mapping | Same / Individual | JADN Type                |
-|:---------------:|:-----------------:|:------------------------:|
-|      Value      |       Same        | ArrayOf(ValueType)       |
-|      Value      |    Individual     | Array                    |
-|    Key:Value    |       Same        | MapOf(KeyType, ValueType)|
-|    Key:Value    |    Individual     | Map or Record            |
-
-For the last information type - containers of individually-defined key:value pairs -
-JADN provides two types: Map and Record. The difference is that Record keys have a
-sequential ordering while Map keys do not. Map instances are always serialized as
-key:value pairs, while Record instances may be serialized as either key:value pairs
-or table rows with values in column position, depending on data format.
-
-For example if Location is a Record type:
-```
-Location = Record
-  1 name       String
-  2 state      String
-  3 latitude   Number
-  4 longitude  Number
-```
-its instances are serialized using *verbose* JSON data format as:
-```json
-[
-  {
-    "name": "St. Louis",
-    "state": "Missouri",
-    "latitude": "38.627003",
-    "longitude": "-90.199402"
-  },
-  {
-    "name": "Seattle",
-    "state": "Washington",
-    "latitude": "47.60621",
-    "longitude": "-122.33207"
-  }
-]
-```
-The same Record values are serialized using *compact* JSON data format (where the column
-positions are 1: name, 2: state, 3: latitude, 4: longitude) as:
-```json
-[
-  ["St. Louis", "Missouri", "38.627003", "-90.199402"],
-  ["Seattle", "Washington", "47.60621", "-122.33207"]
-]
-```
-If Location is a Map type, its instances are always serialized as
-key:value pairs regardless of data format, the same as a Record
-in verbose JSON.
 
 **
 
@@ -2180,7 +2112,14 @@ n3 [label=<<b>UnivId : String{pattern="^U-\d{6}$"}</b>>, shape=ellipse, style=fi
 }
 ```
 
-### 3.1.6 "Anonymous" Type Definitions
+### 3.1.X Type Definition Nuances
+
+> EDITOR'S NOTE: section heading subject to change
+
+This section describes JADN usage details that add flexibility or simplify the
+development of IMs.
+
+#### 3.1.X.1 "Anonymous" Type Definitions
 
 The [[JADN Specification](#jadn-v10)] conformance statement
 (section 7) separates the definition of JADN into "Core JADN"
@@ -2245,7 +2184,74 @@ the readability of the model can benefit from concisely written
 JADN (or JIDL) that relies on the tooling to generate the
 necessary types.
 
+#### 3.1.X.2 Selection and Use of JADN Compound Types
 
+Each of the compound types is a *container*, a named group of related items
+such as the latitude and longitude of a geographic coordinate, or the set of
+properties of an object. In addition to its individual items, every container
+has *multiplicity* attributes, including limits on the number of items,
+whether the items have a sequential ordering, and whether duplicate items
+are allowed.
+
+The JADN compound types and their options are chosen for an IM based on the
+information characteristics to be modeled:
+
+* Array and ArrayOf contain a group of values.
+* Map, MapOf and Record contain a group of keys and corresponding values (a mapping)
+* All items in ArrayOf and MapOf groups have the same value (and key) type
+* Each item in Array, Map, and Record groups has an individual value (and key) type
+
+and the decision tree for which compound type to use is shown in Table 3-1:
+
+###### Table 3-1 -- Compound Type Decision Tree
+
+|                     |      **Value**     |       **Key:Value**       |
+|:-------------------:|:------------------:|:-------------------------:|
+|    **Same Type**    | ArrayOf(ValueType) | MapOf(KeyType, ValueType) |
+| **Individual Type** |        Array       |       Map or Record       |
+
+For the last information type - containers of individually-defined key:value pairs -
+JADN provides two types: Map and Record. The difference is that Record keys have a
+sequential ordering while Map keys do not. Map instances are always serialized as
+key:value pairs, while Record instances may be serialized as either key:value pairs
+or table rows with values in column position, depending on data format.
+
+For example if Location is a Record type:
+```
+Location = Record
+  1 name       String
+  2 state      String
+  3 latitude   Number
+  4 longitude  Number
+```
+its instances are serialized using *verbose* JSON data format as:
+```json
+[
+  {
+    "name": "St. Louis",
+    "state": "Missouri",
+    "latitude": "38.627003",
+    "longitude": "-90.199402"
+  },
+  {
+    "name": "Seattle",
+    "state": "Washington",
+    "latitude": "47.60621",
+    "longitude": "-122.33207"
+  }
+]
+```
+The same Record values are serialized using *compact* JSON data format (where the column
+positions are 1: name, 2: state, 3: latitude, 4: longitude) as:
+```json
+[
+  ["St. Louis", "Missouri", "38.627003", "-90.199402"],
+  ["Seattle", "Washington", "47.60621", "-122.33207"]
+]
+```
+If Location is a Map type, its instances are always serialized as
+key:value pairs regardless of data format, the same as a Record
+in verbose JSON.
 
 
 ## 3.2 Information Modeling Process
