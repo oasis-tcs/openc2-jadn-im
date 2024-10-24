@@ -962,7 +962,7 @@ datatype, and recognizes the idea of generalization ([[UML](#uml)],
 9.9.7) through use of the Choice type.
 
 Beyond these UML concepts, JADN recognizes that information
-models are directed graphs with a small predefined set of base
+models are directed graphs with a small predefined set of core
 datatypes and only two kinds of relationship: "contain" and
 "reference".
 
@@ -1544,7 +1544,7 @@ necessary types.
 
 ### 3.1.7 Core Type Examples
 
-This section provides illustrative examples of the JADN base
+This section provides illustrative examples of the JADN core
 types. For each type, the definition from the [[JADN
 Specification](#jadn-v10)] is quoted, the relevant type options
 are listed, and an example is provided using the JADN and JIDL
