@@ -831,7 +831,7 @@ Each type array has five fields, two of which are themselves arrays: one for
 type options and one for the fields or elements that make up a compound type.
 
 * The fields / elements array is always empty in the definition of a primitive type.
-For compound types, each field or element within the fields / elements array is
+For union types and certain compound types, each field or element within the fields / elements array is
 also an array, with three items in an element array and five items in a field
 array. 
 
