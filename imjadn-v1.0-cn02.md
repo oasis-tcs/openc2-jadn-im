@@ -2529,39 +2529,86 @@ JADN schema tools to detect discrepancies.
 
 ### 4.1.2 Namespaces
 
-Namespaces identified in the package metadata are the mechanism
-for enabling references to types defined in other packages. The
-`namespaces` field contains an array associating locally
-meaningful Namespace Identifiers (`NSID`) with the `namespace`
-other packages declare for themselves, as shown in this excerpt
-from the JIDL description of the `Information` header:
+> NOTE: this discussion of namespace management includes features to be added in
+> JADN v1.1. The implementation of these features is backward-compatible with
+> the handling of namespaces in JADN v1.0.
+
+Namespaces identified in a schema package's metadata are the mechanism for managing the
+relationships among multiple schema packages. JADN namespace management provides
+for:
+
+* Breaking a schema into multiple packages that can be combined without defining
+  a namespace
+
+* Including types defined in other schema packages under a namespace, including
+  importing multiple packages under a single namespace
+
+The JIDL representation of JADN namespace definition is:
 
 ```
-Information = Map                            // Information about this package
+Information = Map                     // Information about this package
      ...
-   8 namespaces   Namespaces optional        // Referenced packages
+   8 namespaces   Namespaces optional // Referenced packages
      ...
 
-Namespaces = MapOf(NSID, Namespace){1..*}    // Packages with referenced type defs
+Namespaces = Choice(anyOf)            // anyOf v1.1 or v1.0, in priority order
+   1  NsArr                           // ns_arr:: [prefix, namespace] syntax - v1.1
+   2  NsObj                           // ns_obj:: {prefix: namespace} syntax - v1.0
 
-NSID = String{pattern="$NSID"}               // Default = ^[A-Za-z][A-Za-z0-9]{0,7}$
+NsArr = ArrayOf(PrefixNs){1..*}       // Type references to other packages - v1.1
 
-Namespace = String /uri                      // Unique name of a package
+PrefixNs = Array                      // Prefix corresponding to a namespace IRI
+   1  NSID                            // prefix::
+   2  Namespace                       // namespace::
+
+NsObj = MapOf(NSID, Namespace){1..*}  // Type references to other packages - v1.0
+
+Namespace = String /uri               // Unique name of a package
 ```
 
-A Namespace Identifier (NSID) is, by default, a 1-8 character string
-beginning with a letter and containing only letters and numbers.
-Default formatting can be overridden by inserting an alternative
-definition into a JADN schema. 
+The `Namespaces = Choice(AnyOf)` type allows the flexible association of
+Namespace Identifiers (`NSID`) with the `Namespace` other packages declare for
+themselves. A Namespace Identifier (NSID) is, by default, a 1-8 character string
+beginning with a letter and containing only letters and numbers (the default
+formatting can be overridden by inserting an alternative definition into a JADN
+schema). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
+packages to be mapped to one NSID to group all of the types defined in that
+collection of packages into a single namespace. For any array element where the
+`NSID` field is blank, the types in the referenced package are made available in
+the current package without need for any NSID.
 
+Within the schema package's Types definitions
 JADN uses the common convention of using the NSID followed by a
 colon to link an item to the namespace where it is defined (e.g.,
 NSID:TypeName).  So assuming the existence of `Package A`, and
 `Package B`, where `Package B` imports `Package A` with the NSID
-`PACKA`, then types defined in `Package A` can be used within
-`Package B` by identifying them as `PACKA:Some-Package-A-Type`.
+`packa`, then types defined in `Package A` can be used within
+`Package B` by identifying them as `packa:Some-Package-A-Type`.
 
-As a concrete example, here is the `info` portion of a JADN
+An example of grouping multiple packages into the namespace of the importing
+package can be drawn from an IM of the NIST Open Security Controls Assessment
+Language [[OSCAL](#oscal)], where the packages for the common `metadata` and
+`backmatter` structures, along with the various OSCAL document types, are
+imported without any NSID to create a single schema.
+
+```
+ namespaces: [["", "https://example.gov/ns/oscal/0.0.1/metadata/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/backmatter/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/catalog/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/profile/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/component/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/ssp/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/assessment_plan/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/assessment_results/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/component/poam/"]]
+```
+
+> EDITOR'S NOTE: is it worthwhile to present both the v1.0 and v1.1 approaches
+> to the following example?
+
+
+As a concrete example of applying distinct namespaces for multiple packages,
+here is the `info` portion of a JADN
 Schema for an OpenC2 consumer that implements two actuator
 profiles: stateless packet filtering (SLPF) and posture attribute
 collection, along with the OpenC2 Language Specification:
@@ -2576,6 +2623,7 @@ collection, along with the OpenC2 Language Specification:
 	   "slpf": "http://docs.oasis-open.org/openc2/ns/ap-slpf/v2.0",
 	   "pac": "http://docs.oasis-open.org/openc2/ns/ap-pac/v2.0"
 	  }
+}
 ```
 Within this schema `ls:`, `slpf:`, and `pac:` will be used when
 referencing types from the three external schemas .
@@ -2700,6 +2748,9 @@ https://www.researchgate.net/publication/279780496_What_is_Shannon_information
 ###### [NTIA-SBOM]
 NTIA Multistakeholder Process on Software Component Transparency, "SBOM At A Glance", April 2021,   https://ntia.gov/sites/default/files/publications/sbom_at_a_glance_apr2021_0.pdf
 
+###### [OSCAL]
+OSCAL: the Open Security Controls Assessment Language, https://pages.nist.gov/OSCAL/
+
 ###### [OpenC2-Arch-v1.0]
 
 Open Command and Control (OpenC2) Architecture Specification Version 1.0. Edited by Duncan Sparrell. 30 September 2022. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/oc2arch/v1.0/cs01/oc2arch-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/oc2arch/v1.0/oc2arch-v1.0.html
@@ -2812,6 +2863,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-10-04 | David Kemp | Move information definition to introduction (PR #57) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Overall updates to types descriptions in 3.1.x (PR #58) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Generalize description of SDO management system IM (PR #60) |
+| imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Update namespaces discussion (4.1.2) with JADN v1.1 capabilities (PR #61) |
 -------
 
 # Appendix D. Frequently Asked Questions (FAQ)
