@@ -1022,6 +1022,10 @@ pertaining to the **Fields** array are as follows:
        field
     5. **FieldDescription:** a non-normative comment
 
+The selection of Map or Record for a type definition carries 
+serialization implications, which are discussed in 
+[Section 3.1.X.2](#31x2-selection-and-use-of-jadn-compound-types).
+
 #### 3.1.1.4 Field Options
 
 Compound types containing Items or Fields support field options
