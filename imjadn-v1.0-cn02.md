@@ -864,36 +864,6 @@ The [[JADN Specification](#jadn-v10)] defines twelve core types:
 > to use "compound" in order to avoid any potential confusion
 > with UML's use of "structured".
 
-
-**
-
-Another significant UML concept is that JADN distinguishes among
-all four multiplicity types ([[UML](#uml)], Table 7.1), while
-logical models typically support only sets. Table 3-2 replicates
-the information from UML Table 7.1 and adds the equivalent JADN
-types. Note that the UML Specification cites the "traditional
-names" in its "Collection Type" column.
-
-###### Table 3-2 -- Multiplicity Types
-
-| **isOrdered** | **isUnique** | **Collection<br>Type** |    **JADN Type**   |
-|:-------------:|:------------:|:----------------------:|:------------------:|
-|    _false_    |    _true_    |           Set          | ArrayOf+set, MapOf |
-|     _true_    |    _true_    |       OrderedSet       |   ArrayOf+unique   |
-|    _false_    |    _false_   |           Bag          |  ArrayOf+unordered |
-|     _true_    |    _false_   |        Sequence        |       ArrayOf      |
-
-
-JADN accepts the UML philosophy that schemas are classifiers that
-take a unit of data and determine whether it is an instance of a
-datatype, and recognizes the idea of generalization ([[UML](#uml)],
-9.9.7) through use of the Choice type.
-
-Beyond these UML concepts, JADN recognizes that information
-models are directed graphs with a small predefined set of core
-datatypes and only two kinds of relationship: "contain" and
-"reference".
-
 ### 3.1.1 Type Definitions
 
 Figure 3-2 summarizes the structure of a JADN Type Definition,
@@ -993,58 +963,6 @@ Type and Field options labels have JSON Schema and XML Schema equivalents.
 
 Detailed explanations of each type option can be found in
 Sections 3.2.1.1 through 3.2.1.12 of the [[JADN Specification](#jadn-v10)].
-
-The `minv` and `maxv` type options are distinctive in that they
-can apply to both primitive and compound types, with a different
-meaning in these two applications:
-
- - When applied to a primitive type (Binary, Integer or String),
-   the `minv` and `maxv` type options constrain the *values* an
-   instance of that type may hold. Specifically, when applied to:
-   - An Integer type, the `minv` and `maxv` type options constrain
-     the numeric values an instance of that type may hold.
-   - A String type, the `minv` and `maxv` type options constrain the
-     number of characters in the string.
-   - A Binary type, the `minv` and `maxv` type options constrain the
-     number of octets (bytes) in the binary value.
-   
-For example, the following specifies an Integer type that can be
-assigned values between `1` and `1000`, using both JADN (see
-[section 3.5.1.1](#3151-native-json-representation)) and JIDL
-notation (see [section
-3.5.1.2](#3152-alternative-jadn-representations)):
-
-```
-["count","integer",["{1", "}1000"], "count of objects",[]]
-
-// define a restricted count value
-  count = integer {1..1000}  // count of objects
-```
-
- - When applied to a compound type (Array, ArrayOf, Map, MapOf,
-   Record), the `minv` and `maxv` type options constrain the
-   *number of elements* an instance of that type may have. For
-   example, the following specifies a Record type that must have
-   at least two fields populated, even though only one field is
-   required (fields `field_2` and `field_3` are indicated as
-   optional by the `["[0"]` *field* option 
-   [see [Section 3.1.4](#314-field-options)]):
-
-```
-["RecordType", "Record", ["{2"], "requires field_1 and either or both field_2 and field_3", [
-  [1, "field_1", "String", [], ""],
-  [2, "field_2", "String", ["[0"], ""],
-  [3, "field_3", "String", ["[0"], ""],
-]]
-
-
-RecordType = Record {2..*} // requires field_1 and either or both field_2 and field_3
-  1 field_1   String
-  2 field_2   String optional
-  3 field_3   String optional  
-```
-
-
 Table 3-4 summarizes the applicability of type options to JADN core types.
 
 ###### Table 3-4 -- Type Option Applicability
@@ -2253,6 +2171,86 @@ If Location is a Map type, its instances are always serialized as
 key:value pairs regardless of data format, the same as a Record
 in verbose JSON.
 
+#### 3.1.X.3  JADN Handling of UML Multiplicity Options
+
+Another significant UML concept is that JADN distinguishes among
+all four multiplicity types ([[UML](#uml)], Table 7.1), while
+logical models typically support only sets. Table 3-2 replicates
+the information from UML Table 7.1 and adds the equivalent JADN
+types. Note that the UML Specification cites the "traditional
+names" in its "Collection Type" column.
+
+###### Table 3-2 -- Multiplicity Types
+
+| **isOrdered** | **isUnique** | **Collection<br>Type** |    **JADN Type**   |
+|:-------------:|:------------:|:----------------------:|:------------------:|
+|    _false_    |    _true_    |           Set          | ArrayOf+set, MapOf |
+|     _true_    |    _true_    |       OrderedSet       |   ArrayOf+unique   |
+|    _false_    |    _false_   |           Bag          |  ArrayOf+unordered |
+|     _true_    |    _false_   |        Sequence        |       ArrayOf      |
+
+
+JADN accepts the UML philosophy that schemas are classifiers that
+take a unit of data and determine whether it is an instance of a
+datatype, and recognizes the idea of generalization ([[UML](#uml)],
+9.9.7) through use of the Choice type.
+
+Beyond these UML concepts, JADN recognizes that information
+models are directed graphs with a small predefined set of core
+datatypes and only two kinds of relationship: "contain" and
+"reference".
+
+#### 3.1.X.4 Application of `minv / maxv`
+
+The `minv` and `maxv` type options are distinctive in that they
+can apply to both primitive and compound types, with a different
+meaning in these two applications:
+
+ - When applied to a primitive type (Binary, Integer or String),
+   the `minv` and `maxv` type options constrain the *values* an
+   instance of that type may hold. Specifically, when applied to:
+   - An Integer type, the `minv` and `maxv` type options constrain
+     the numeric values an instance of that type may hold.
+   - A String type, the `minv` and `maxv` type options constrain the
+     number of characters in the string.
+   - A Binary type, the `minv` and `maxv` type options constrain the
+     number of octets (bytes) in the binary value.
+   
+For example, the following specifies an Integer type that can be
+assigned values between `1` and `1000`, using both JADN (see
+[section 3.5.1.1](#3151-native-json-representation)) and JIDL
+notation (see [section
+3.5.1.2](#3152-alternative-jadn-representations)):
+
+```
+["count","integer",["{1", "}1000"], "count of objects",[]]
+
+// define a restricted count value
+  count = integer {1..1000}  // count of objects
+```
+
+ - When applied to a compound type (Array, ArrayOf, Map, MapOf,
+   Record), the `minv` and `maxv` type options constrain the
+   *number of elements* an instance of that type may have. For
+   example, the following specifies a Record type that must have
+   at least two fields populated, even though only one field is
+   required (fields `field_2` and `field_3` are indicated as
+   optional by the `["[0"]` *field* option 
+   [see [Section 3.1.4](#314-field-options)]):
+
+```
+["RecordType", "Record", ["{2"], "requires field_1 and either or both field_2 and field_3", [
+  [1, "field_1", "String", [], ""],
+  [2, "field_2", "String", ["[0"], ""],
+  [3, "field_3", "String", ["[0"], ""],
+]]
+
+
+RecordType = Record {2..*} // requires field_1 and either or both field_2 and field_3
+  1 field_1   String
+  2 field_2   String optional
+  3 field_3   String optional  
+```
 
 ## 3.2 Information Modeling Process
 
