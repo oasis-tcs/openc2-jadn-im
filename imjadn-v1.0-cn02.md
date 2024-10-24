@@ -1203,11 +1203,12 @@ described in [Section 3.1.6](#316-anonymous-type-definitions).
 
 ### 3.1.5 JADN Representations
 
-The native format of JADN is JSON, but JADN content can be
-represented in other ways that are often easier to edit or more
-useful for documentation. This section describes the JSON content
-used for each of the JADN basic types, and then illustrates the
-other representations using a simple example.
+The native format of JADN is JSON, but JADN content can be represented in other
+ways that are often easier to edit or more useful for documentation. This
+section describes the JSON content used for each of the JADN basic types (in
+3.1.5.1) and the available alternative representations (in 3.1.5.2). An
+illustration of each of the representations for a simple model is presented in
+[Section&nbsp;3.3.2](#332-multiple-representations-example).
 
 #### 3.1.5.1 Native JSON Representation
 
