@@ -799,9 +799,6 @@ As stated in the [[JADN Specification](#jadn-v10)] introduction:
 > abstraction based on information theory and structural
 > organization using results from graph theory.
 
-> **EDITOR'S NOTE:** adjust and/or remove the following discussion to mesh with
-> updates to Section 1 of this CN.
-
 From UML JADN takes the concept of modeling information/data
 using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
 opposed to the common practice of using Structured Classifiers
