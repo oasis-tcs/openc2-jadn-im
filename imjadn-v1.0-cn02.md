@@ -1052,7 +1052,7 @@ to fields, with the constraint that the type option must be applicable to the
 field's type, as described in the core type examples in [Section 3.1.7](#317-base-type-examples). 
 The application of a type option to a field
 triggers an "anonymous" type definition when the JADN model is processed, as
-described in [Section 3.1.X.1](#31X1-anonymous-type-definitions).
+described in [Section 3.1.X.1](#31x1-anonymous-type-definitions).
 
 ### 3.1.7 Core Type Examples
 
