@@ -2448,10 +2448,10 @@ Pertinent info about classes
 Finally, the code to generate the ERD presented at the beginning of the example
 is easily generated from the JADN model.  In this specific example code for the
 widely-used GraphViz tool is provided. JADN tooling can created "diagram as
-text" code for GraphVIZ and PlantUML with varying levels of detail. For example, 
-contrast the simple conceptual view of the music libary in 
+text" code for GraphVIZ and PlantUML with varying levels of detail (i.e., Conceptual, Logical, Informational). 
+For example, contrast the simple conceptual view of the music libary in 
 [Figure 3-Concept](#figure-3-concept----music-library-conceptual-overview) with the
-detailed ERD at the start of this section 
+detailed informational ERD at the start of this section 
 ([Figure 3-7](#figure-3-7----simple-university-example-erd)).
 
 ###### Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)
