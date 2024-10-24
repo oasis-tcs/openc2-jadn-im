@@ -1627,7 +1627,7 @@ defines that there is a minimum number of required fields even
 though every individual field is optional. An empty `Hashes` map is
 invalid, but a map where any one or more of the three hash types
 exists is valid. This is an example of one application of _minv_,
-_maxv_, as described above in [Section 3.1.2](#3112-typeoptions).
+_maxv_, as described above in [Section 3.1.X.4](#31x4-application-of-minv--maxv).
 
 
 
