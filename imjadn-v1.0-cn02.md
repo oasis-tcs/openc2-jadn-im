@@ -982,7 +982,7 @@ that type.
     comprise the compound type.
 
 ###### Figure 3-2 -- JADN Type Definition Structure
-![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
+![JADN Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
 
 A firm requirement of JADN is that a TypeName in a schema must not be a JADN
 predefined type. There are also conventions intended to improve
