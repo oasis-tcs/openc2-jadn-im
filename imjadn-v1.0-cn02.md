@@ -842,7 +842,10 @@ graphical, and automated tooling can transform a JADN model
 between the different representations without loss of
 information. The Native JADN representation as JSON data is
 authoritative, but each representation has advantages. The other representations are described in 
-[Section&nbsp;3.1.5.2, Alternative JSON Representation](#3152-alternative-jadn-representations)
+[Section&nbsp;3.1.5.2, Alternative JSON Representation](#3152-alternative-jadn-representations). 
+The examples that follow in subsequent sections are typically illustrated using
+both normative JADN (i.e., JSON data) for precision and the JADN Interface
+Definition Language (JIDL) format for its easy readability.
 
 The [[JADN Specification](#jadn-v10)] defines twelve core types:
 
