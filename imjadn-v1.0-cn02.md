@@ -864,10 +864,6 @@ The [[JADN Specification](#jadn-v10)] defines twelve core types:
 > to use "compound" in order to avoid any potential confusion
 > with UML's use of "structured".
 
-> **To-Do:** The revised figure 3-2 groups Enumerated and Choice under Compound
-> types; need to reconcile the table above and that figure.
-
-
 Each of the compound types is a *container*, a named group of related items
 such as the latitude and longitude of a geographic coordinate, or the set of
 properties of an object. In addition to its individual items, every container
