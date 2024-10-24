@@ -888,6 +888,7 @@ that type.
 
 #### 3.1.1.1 TypeNames and BaseTypes
 
+The first two elements of a type definition are the **TypeName** and **BaseType**. 
 A firm requirement of JADN is that a TypeName in a schema must not be a JADN
 predefined (i.e., core) type. There are also name formatting conventions intended to improve
 the consistency and readability of JADN specifications. These
@@ -913,6 +914,7 @@ JADN schema if desired (see section 3.1.2 of the
    processing a JADN model; it is not normally used by JADN
    schema authors.
 
+The BaseType must be one of the twelve JADN core types previously identified.
 
 #### 3.1.1.2 TypeOptions
 
