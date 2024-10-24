@@ -866,10 +866,10 @@ The [[JADN Specification](#jadn-v10)] defines twelve core types:
 
 ### 3.1.1 Type Definitions
 
-Figure 3-2 summarizes the structure of a JADN Type Definition,
-and identifies values for each of the five elements in the
-definition; the elements must appear in the order listed here.
-The five elements are:
+Figure 3-2 summarizes the structure of a JADN Type Definition, and identifies
+values for each of the five elements in the definition. As noted above, a Type
+Definition is an array; the elements must appear in the order listed here. The
+five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
 that type.
