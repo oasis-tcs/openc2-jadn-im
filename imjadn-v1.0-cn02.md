@@ -922,7 +922,7 @@ The third element of a JADN type definition is an array of zero
 or more of the TypeOptions defined in section 3.2.1 of the
 [[JADN Specification](#jadn-v10)]. JADN includes options for both
 _types_ (discussed in this section) and _fields_ (discussed in
-[section 3.1.4](#3114-field-options)). As explained in the JADN
+[section 3.1.1.4](#3114-field-options)). As explained in the JADN
 Specification:
 
 > Each option is a text string that may be included in
