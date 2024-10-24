@@ -1140,13 +1140,11 @@ Table 3-4 summarizes the applicability of type options to JADN core types.
 
 The use of the **Fields** element to convey Item or Field
 Definitions is dependent on the **BaseType** selected, as
-illustrated in [Figure
-3-2](#figure-3-2----jadn-type-definition-structure). The rules
+illustrated in [Figure 3-2](#figure-3-2----jadn-type-definition-structure). The rules
 pertaining to the **Fields** array are as follows:
 
 * If the **BaseType** is a Primitive type, ArrayOf, or MapOf, no
   fields are permitted (i.e., the **Fields** array must be empty).
-
 
 * If the **BaseType** is Enumerated, the fields for each item
   definition in the **Fields** array are described with three
@@ -1176,7 +1174,7 @@ Compound types containing Items or Fields support field options
 in addition to the type options described in [Section
 3.1.2](#312-typeoptions). JADN defines six field options. As with
 the type options described in [section 3.1.2](#312-typeoptions),
-the ID characters are used in standard JADN representation
+the ID characters are normative and used in standard JADN representation
 ([section 3.1.5.1](#3151-native-json-representation)) when
 specifying field options. Table 3-5 lists the JADN field options.
 
