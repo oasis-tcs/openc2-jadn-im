@@ -873,13 +873,13 @@ five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
 that type.
- 2. The **BaseType** of the type, which is one the twelve core
+ 2. The **BaseType** for the definition, which must be one the twelve core
     types shown in Figure 3-2.
  3. Zero or more of the available JADN **TypeOptions** that
     refine the core types to fit particular needs.
  4. An optional **TypeDescription** string that provides
     additional information about the type.
- 5. For any of the Compound types, Enumerated, or Choice, a set
+ 5. For certain of the Compound types, Enumerated, or Choice, a set
     of **Item** or **Field** options that define the items that
     comprise the compound type.
 
@@ -887,7 +887,7 @@ that type.
 ![JADN Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
 
 A firm requirement of JADN is that a TypeName in a schema must not be a JADN
-predefined (i.e., core) type. There are also conventions intended to improve
+predefined (i.e., core) type. There are also name formatting conventions intended to improve
 the consistency and readability of JADN specifications. These
 conventions are defined in JADN but can be overridden within a
 JADN schema if desired (see section 3.1.2 of the
