@@ -782,23 +782,43 @@ use the JSON number type with values 0 and 1.
 
 # 3 Creating Information Models with JADN
 
-This section provides a brief overview of JADN, and describes the
-use of JADN in information modeling.
+This section provides a brief overview of JADN, and describes the use of JADN in
+information modeling. The JADN information modeling language was developed
+against specific objectives:
+
+ 1) Core types represent application-relevant "information", not "data"
+ 2) Single specification unambiguously defines multiple data formats
+ 3) Specification uses named type definitions equivalent to property tables
+ 4) Specification is data that can be serialized
+ 5) Specification has a fixed structure designed for extensibility
+
+As stated in the [[JADN Specification](#jadn-v10)] introduction:
+
+> JADN is a formal description technique that combines type
+> constraints from the Unified Modeling Language (UML) with data
+> abstraction based on information theory and structural
+> organization using results from graph theory.
+
+> **EDITOR'S NOTE:** adjust and/or remove the following discussion to mesh with
+> updates to Section 1 of this CN.
+
+From UML JADN takes the concept of modeling information/data
+using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
+opposed to the common practice of using Structured Classifiers
+([[UML](#uml)], 11.4 Classes), which do not define data in a unique
+way that can be validated and signed.  The JADN use of the UML
+primitive types defined in [[UML](#uml)], Table 21.1, can be found
+in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 ## 3.1 JADN Overview
 
-Figure 3-1 provides a high-level view of the JADN concepts that
-will be described in this section. JADN provides primitive and
-compound data types that can be refined using type and field
-options (field options only apply within compound types). JADN
-can also be represented in multiple formats, both textual and
-graphical, and automated tooling can transform a JADN model
-between the different representations without loss of
-information. The Native JADN representation as JSON data is
-authoritative, but each representation has advantages.
+Figure 3-1 provides a high-level view of the the components of JADN type definitions that
+will be described in this section. JADN provides *primitive*, 
+*compound*, and *union* core data types that can be refined using type and field
+options (field options only apply to compound and union types).
 
-###### Figure 3-1 -- JADN Concepts
-![Figure 3-1 -- JADN Concepts](images/JADN-Concepts.drawio.png)
+###### Figure 3-1 -- JADN Type Definition Components
+![Figure 3-1 -- JADN Concepts](images/JADN-Type-Definitions.drawio.png)
 
 A JADN schema in its native form is a JSON document containing an object labeled
 "info" and an array labeled "types". 
@@ -820,32 +840,12 @@ array.
 
 These structures are illustrated and explained in more detail 
 in [Section&nbsp;3.1.5.1, Native JSON Representation](#3151-native-json-representation).
-
-The JADN information modeling language was developed against specific objectives:
-
- 1) Core types represent application-relevant "information", not "data"
- 2) Single specification unambiguously defines multiple data formats
- 3) Specification uses named type definitions equivalent to property tables
- 4) Specification is data that can be serialized
- 5) Specification has a fixed structure designed for extensibility
-
-As stated in the [[JADN Specification](#jadn-v10)] introduction:
-
-> JADN is a formal description technique that combines type
-> constraints from the Unified Modeling Language (UML) with data
-> abstraction based on information theory and structural
-> organization using results from graph theory.
-
-> **EDITOR'S NOTE:** adjust and/or remove the following discussion to mesh with
-> the updated introduction.
-
-From UML JADN takes the concept of modeling information/data
-using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
-opposed to the common practice of using Structured Classifiers
-([[UML](#uml)], 11.4 Classes), which do not define data in a unique
-way that can be validated and signed.  The JADN use of the UML
-primitive types defined in [[UML](#uml)], Table 21.1, can be found
-in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
+JADN can also be represented in multiple formats, both textual and
+graphical, and automated tooling can transform a JADN model
+between the different representations without loss of
+information. The Native JADN representation as JSON data is
+authoritative, but each representation has advantages. The other representations are described in 
+[Section&nbsp;3.1.5.2, Alternative JSON Representation](#3152-alternative-jadn-representations)
 
 The [[JADN Specification](#jadn-v10)] defines twelve core types:
 
@@ -962,7 +962,7 @@ datatype, and recognizes the idea of generalization ([[UML](#uml)],
 9.9.7) through use of the Choice type.
 
 Beyond these UML concepts, JADN recognizes that information
-models are directed graphs with a small predefined set of base
+models are directed graphs with a small predefined set of core
 datatypes and only two kinds of relationship: "contain" and
 "reference".
 
@@ -1116,8 +1116,7 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
 ```
 
 
-Table 3-4 summarizes the applicability of type options to JADN
-base types.
+Table 3-4 summarizes the applicability of type options to JADN core types.
 
 ###### Table 3-4 -- Type Option Applicability
 
@@ -1195,11 +1194,12 @@ specifying field options. Table 3-5 lists the JADN field options.
 |    key     |  Boolean   |   `K`    | Field is a primary key for this type                          |         3.3.6         |
 |    link    |  Boolean   |   `L`    | Field is a foreign key reference to a type instance           |         3.3.6         |
 
-The type options described in [Section 3.1.2](#312-typeoptions)
-can also apply to fields, with the constraint that the type
-option must be applicable to the field's type, as described in
-the base type examples in [Section 3.1.7](#317-base-type-examples). The application of a type option to a field triggers an "anonymous" type definition when the JADN model is processed, as described in 
-[Section 3.1.6](#316-anonymous-type-definitions).
+The type options described in [Section 3.1.2](#312-typeoptions) can also apply
+to fields, with the constraint that the type option must be applicable to the
+field's type, as described in the core type examples in [Section 3.1.7](#317-base-type-examples). 
+The application of a type option to a field
+triggers an "anonymous" type definition when the JADN model is processed, as
+described in [Section 3.1.6](#316-anonymous-type-definitions).
 
 ### 3.1.5 JADN Representations
 
@@ -1215,7 +1215,7 @@ This section illustrates the JSON representations of the Base
 Types described in [Section 3.1](#31-jadn-overview). Depictions
 are provided for overall structure of a JADN schema and for 
 each of three ways that the **Fields** array is
-used, depending on the base type used in a particular type
+used, depending on the core type used in a particular type
 definition.
 
 Figure 3-3 illustrates the top-level structure of a native JADN schema document,
@@ -1256,12 +1256,16 @@ The [[JADN Specification](#jadn-v10)] identifies three formats
 (Section 5) in addition to the native format:
 
  - JADN Interface Definition Language (JIDL)
- - Table Style
+ - Property Tables
  - Entity Relationship Diagrams (ERDs)
 
+Figure 3-6a identifies the various representations. 
 The formal definitions of each of these types are found in
-sections 5.1, 5.2, and 5.3, respectively, of the [[JADN
-Specification](#jadn-v10)].
+sections 5.1, 5.2, and 5.3, respectively, of the 
+[[JADN Specification](#jadn-v10)].
+
+###### Figure 3-6a -- JADN Representations
+![JADN Representations](images/JADN-Representations.drawio.png)
 
 Automated tooling makes it straightforward to translate among all
 four of these formats in a lossless manner, and each format has
@@ -1538,9 +1542,9 @@ JADN (or JIDL) that relies on the tooling to generate the
 necessary types.
 
 
-### 3.1.7 Base Type Examples
+### 3.1.7 Core Type Examples
 
-This section provides illustrative examples of the JADN base
+This section provides illustrative examples of the JADN core
 types. For each type, the definition from the [[JADN
 Specification](#jadn-v10)] is quoted, the relevant type options
 are listed, and an example is provided using the JADN and JIDL
@@ -1548,13 +1552,28 @@ formats.
 
 #### 3.1.7.1 Binary
 
-**Definition:** A sequence of octets. Length is the number of
-octets.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A sequence of octets. Length is the number of octets.
+      </td>
+      <td class="td">
+        <i>
+          <center>minv, maxv, format</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *minv*, *maxv*, and *format* TypeOptions
-are applicable to the Binary data type.
-
-**Example:**  The Binary type is used for representing
+The **Binary** core type is used for representing
 arbitrary binary data.  An information item fitting a Binary type
 would be defined as follows:
 
@@ -1582,17 +1601,28 @@ Binary type:
 | ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc791) Section 3.1 |
 | ipv6-addr    | Binary | IPv6 address as specified in [RFC 8200](#rfc8200)  Section 3 |
 
-
-
 #### 3.1.7.2 Boolean
 
-**Definition:**  An element with one of two values: true or
-false.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        An element with one of two values: true or false.
+      </td>
+      <td class="td">
+          <center>None</center>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** No TypeOptions are applicable to the Boolean
-data type.
-
-**Example:**  The Boolean type is used for representing bi-valued
+The **Boolean** core type is used for representing bi-valued
 (i.e., true/false, yes/no, on/off) information. An information
 item fitting a Boolean type would be defined as follows:
 
@@ -1607,23 +1637,36 @@ The corresponding JIDL representation would be:
   AccessGranted = Boolean   // Result of access control decision
 ```
 
-
 #### 3.1.7.3 Integer
 
-**Definition:**  A positive or negative whole number.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A positive or negative whole number.
+      </td>
+      <td class="td">
+        <i>
+          <center>minv, maxv, format</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *minv*, *maxv*, and *format* TypeOptions
-are applicable to the Integer data type.
-
-**Example:**  The Integer type is used for representing numerical
+The **Integer** core type is used for representing numerical
 information with discrete integer values.  An information item
 fitting an Integer type would be defined as follows:
-
 
 ```json
 ["TrackNumber", "Integer", [], "Track number for current song", []]
 ```
-
 
 The corresponding JIDL representation would be:
 
@@ -1652,12 +1695,28 @@ Table 3-7 lists the *format* options applicable to the Integer type:
 
 #### 3.1.7.4 Number
 
-**Definition:**  A real number.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A real number.
+      </td>
+      <td class="td">
+        <i>
+          <center>minf, maxf, format, pattern</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *minf*, *maxf*, and *format* TypeOptions
-are applicable to the Number data type.
-
-**Example:**  The Number type is used for representing numerical
+The **Number** core type is used for representing numerical
 information with continuous values.  An information item fitting
 a Number type would be defined as follows:
 
@@ -1693,13 +1752,28 @@ of [[RFC8610](#rfc8610)].
 
 #### 3.1.7.5 String
 
-**Definition:**  A sequence of characters, each of which has a
-Unicode codepoint. Length is the number of characters.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A sequence of characters, each of which has a Unicode codepoint. Length is the number of characters.
+      </td>
+      <td class="td">
+        <i>
+          <center>minv, maxv, format, pattern</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *minv*, *maxv*, *format*, and *pattern*
-TypeOptions are applicable to the String data type.
-
-**Example:**  The String type is used for representing
+The **String** core type is used for representing
 information best presented as text.  An information item fitting
 a String type would be defined as follows:
 
@@ -1749,13 +1823,28 @@ specification is in Section 22.2.
 
 #### 3.1.7.6 Enumerated
 
-**Definition:**  A vocabulary of items where each item has an id
-and a string value.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A vocabulary of items where each item has an id and a string value.
+      </td>
+      <td class="td">
+        <i>
+          <center>id, enum, pointer, extend</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *id*, *enum*, *pointer*, and *extend*
-TypeOptions are applicable to the Enumerated data type.
-
-**Example:**  The Enumerated type is used to represent
+The Enumerated core type is used to represent
 information that has a finite set of applicable values. An
 information item fitting the Enumerated type would be defined as
 follows:
@@ -1785,13 +1874,28 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
 
 #### 3.1.7.7 Choice
 
-**Definition:**  A discriminated union: one type selected from a
-set of named or labeled types.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A discriminated union: one type selected from a set of named or labeled types.
+      </td>
+      <td class="td">
+        <i>
+          <center>id, extend</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *id*  and *extend* TypeOptions are
-applicable to the Choice data type.
-
-**Example:**  The Choice type is used to represent information
+The **Choice** core type is used to represent information
 limited to selecting one type from a defined set of named or
 labeled types. An information item fitting the Choice type would
 be defined as follows:
@@ -1819,21 +1923,35 @@ IdentityType = Choice                // Nature of the referenced identity
 
 #### 3.1.7.8 Array
 
-**Definition:**  An ordered list of labeled fields with
-positionally-defined semantics. Each field has a position, label,
-and type.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">An ordered list of labeled fields with
+        positionally-defined semantics. Each field has a position, label,
+        and type.
+      </td>
+      <td class="td">
+        <i>
+          <center>extend, minv, maxv, format</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *extend*, *minv*, *maxv*, and *format*
-TypeOptions are applicable to the Array data type.
-
-**Example:**  The Array type is used to represent information
+The **Array** type is used to represent information
 where it is appropriate to group related information elements
 together, even if the elements of the array are heterogeneous.
 Each element in the array is defined as a field, using the field
-definitions described in [Section
-3.1.3](#313-item-or-field-definitions) and refined using the
+definitions described in [Section 3.1.3](#313-item-or-field-definitions) and refined using the
 field options described in [Section 3.1.4](#314-field-options).
-An information item fitting the Array base type would be defined
+An information item fitting the Array core type would be defined
 as follows:
 
 ```json
@@ -1856,7 +1974,8 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
 
-The example above illustrates the positioning of Array "field names" within the JIDL comments, as described in [Section 3.1.5.2.1](#31521-array-field-names-in-jidl).
+The example above illustrates the positioning of Array "field names" within the
+JIDL comments, as described in [Section 3.1.5.2.1](#31521-array-field-names-in-jidl).
 
 Table 3-9 lists the *format* options applicable to the Array type:
 
@@ -1876,19 +1995,33 @@ The `ipv4-net` and `ipv6-net` format options impose several constraints when app
 
 #### 3.1.7.9 ArrayOf(_vtype_)
 
-**Definition:**  A collection of fields with the same semantics.
-Each field has type *vtype*. Ordering and uniqueness are
-specified by a collection option.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">A collection of fields with the same semantics.
+        Each field has type <i>vtype</i>. Ordering and uniqueness are
+        specified by a collection option.
+      </td>
+      <td class="td">
+        <i>
+          <center>vtype, minv, maxv, unique, set, unordered</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *vtype*, *minv*, *maxv*, *unique*, *set*,and
-*unordered* TypeOptions are applicable to the ArrayOf data
-type.
-
-**Example:**  The ArrayOf type is used to represent information
-where it is appropriate to group a set of uniform  information
+The **ArrayOf** type is used to represent information
+where it is appropriate to group a set of uniform information
 elements together. The fields of the array are defined by the
 *vtype*, which can be primitive or compound. An information item
-fitting the ArrayOf base type would be defined as follows. This
+fitting the ArrayOf core type would be defined as follows. This
 example uses an explicit ArrayOf type derived using the 
 multiplicity extension on the "tracks" field of Album, as shown in
 [Section 3.3.1](#331-example-1-a-digital-music-library)):
@@ -1919,24 +2052,39 @@ Track = Record                                    // for each track there's a fi
 
 #### 3.1.7.10 Map
 
-**Definition:**  An unordered map from a set of specified keys to
-values with semantics bound to each key. Each key has an id and
-name or label, and is mapped to a value type.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">An unordered map from a set of specified keys to
+        values with semantics bound to each key. Each key has an id and
+        name or label, and is mapped to a value type.
+      </td>
+      <td class="td">
+        <i>
+          <center>id, extend, minv, maxv</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *id*, *extend*, *minv*, and *maxv*
-TypeOptions are applicable to the Map data type.
-
-**Example:**  The Map type is used to represent information that
+The **Map** type is used to represent information that
 can be represented as (key, value) pairs. Another term for this
-type of information structure is an "associative array". 
+type of information structure is an "associative array": 
 
-> Per Wikipedia, an *Associative Array* is "an abstract data type
+> An *Associative Array* is "an abstract data type
 > that stores a collection of (key, value) pairs, such that each
 > possible key appears at most once in the collection."
 > Alternative names include "map", "symbol table", and
 > "dictionary". (https://en.wikipedia.org/wiki/Associative_array)
 
-The Map base type always uses an integer identifier as the key,
+The Map core type always uses an integer identifier as the key,
 with each integer associated with a specific value. An
 information item fitting the Map type would be defined as
 follows:
@@ -1973,14 +2121,29 @@ _maxv_, as described above in [Section 3.1.2](#312-typeoptions).
 
 #### 3.1.7.11 MapOf(_ktype_,_vtype_)
 
-**Definition:**  An unordered map from a set of keys of the same
-type to values with the same semantics. Each key has key type
-*ktype*, and is mapped to value type *vtype*.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">An unordered map from a set of keys of the same
+        type to values with the same semantics. Each key has key type
+        <i>ktype</i>, and is mapped to value type <i>vtype</i>.
+      </td>
+      <td class="td">
+        <i>
+          <center>ktype, vtype, minv, maxv</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *ktype*, *vtype*, *minv*, and *maxv*
-TypeOptions are applicable to the MapOf data type.
-
-**Example:**  The MapOf type is used to represent information
+The **MapOf** type is used to represent information
 that can be represented as (key, value) pairs, where the types
 for the keys and the values in the MapOf are of specific types
 and are defined using type options. MapOf is suitable when the
@@ -2028,18 +2191,33 @@ Date = String /date
 
 #### 3.1.7.12 Record
 
-**Definition:**  An ordered map from a list of keys with
-positions to values with positionally-defined semantics. Each key
-has a position and name, and is mapped to a value type.
-Represents a row in a spreadsheet or database table.
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">An ordered map from a list of keys with
+        positions to values with positionally-defined semantics. Each key
+        has a position and name, and is mapped to a value type.
+        Represents a row in a spreadsheet or database table.
+      </td>
+      <td class="td">
+        <i>
+          <center>extend, minv, maxv</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**TypeOptions:** The *extend*, *minv*, and *maxv* TypeOptions
-are applicable to the Record data type.
-
-**Example:**  The Record type is used to represent information
-that has a consistent repeated structure, such as a database
-record. Elements of a record can be accessed by either position
-or value.
+The **Record** type is used to represent information that has a consistent
+repeated structure, such as a database record. Elements of a record can be
+accessed by either position or value. The following example defines a JADN
+Record type for the common 5-tuple often used to describe a network connection.
 
 ```json
   ["IPv4-Connection", "Record", ["{1"], "5-tuple that specifies a tcp/ip connection", [
