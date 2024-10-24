@@ -1029,9 +1029,9 @@ serialization implications, which are discussed in
 #### 3.1.1.4 Field Options
 
 Compound types containing Items or Fields support field options
-in addition to the type options described in [Section3112-typeoptions
-3.1.2](#312-typeoptions). JADN defines six field options. As with
-the type options described in [section 3.1.1.2](#3112-typeoptions),
+in addition to the type options described in [Section 3.1.1.2](#3112-typeoptions). 
+JADN defines six field options. As with
+the type options described in Section 3.1.1.2,
 the ID characters are normative and used in standard JADN representation
 ([section 3.1.5.1](#3151-native-json-representation)) when
 specifying field options. Table 3-5 lists the JADN field options.
