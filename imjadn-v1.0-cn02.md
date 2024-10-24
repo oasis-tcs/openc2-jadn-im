@@ -302,7 +302,7 @@ specify IMs is to use class diagrams of the Unified Modeling Language (UML).
 > * In general, it seems advisable to use object-oriented techniques to
 describe an IM. In particular, the notions of abstraction and
 encapsulation, as well as the possibility that object definitions
-include methods, are considered to be important. (Section 3)
+include methods, are considered to be important. (Section&nbsp;3)
 >
 > 
 > * Compared to IMs, DMs define managed objects at a lower level
@@ -526,7 +526,7 @@ lexical values then its information content is no greater than the
 smallest of those values.
 
 Additional quality metrics (completeness, sharability, structure, extensibility,
-etc.) are discussed in [Section 3](#3-creating-information-models-with-jadn).
+etc.) are discussed in [Section&nbsp;3](#3-creating-information-models-with-jadn).
 
 ## 1.2 Terminology
 
@@ -751,7 +751,7 @@ is guided by rules associated with applying the IM:
    external representation format
 
 The [[JADN Specification](#jadn-v10)] defines 12 core types, which
-are described in [Section 3.1.7](#317-base-type-examples) of this
+are described in [Section&nbsp;3.1.7](#317-base-type-examples) of this
 CN. The JADN Specification also defines serialization rules for
 JSON (with three levels of verbosity) and CBOR
 [[RFC7409](#rfc7049)]. Supporting a new data format ("external
@@ -893,7 +893,7 @@ A firm requirement of JADN is that a TypeName in a schema must not be a JADN
 predefined (i.e., core) type. There are also name formatting conventions intended to improve
 the consistency and readability of JADN specifications. These
 conventions are defined in JADN but can be overridden within a
-JADN schema if desired (see section 3.1.2 of the
+JADN schema if desired (see Section&nbsp;3.1.2 of the
 [[JADN Specification](#jadn-v10)]):
 
  - **TypeNames** are written in PascalCase or Train-Case (using
@@ -919,10 +919,10 @@ The BaseType must be one of the twelve JADN core types previously identified.
 #### 3.1.1.2 TypeOptions
 
 The third element of a JADN type definition is an array of zero
-or more of the TypeOptions defined in section 3.2.1 of the
+or more of the TypeOptions defined in Section&nbsp;3.2.1 of the
 [[JADN Specification](#jadn-v10)]. JADN includes options for both
 _types_ (discussed in this section) and _fields_ (discussed in
-[section 3.1.1.4](#3114-field-options)). As explained in the JADN
+[Section&nbsp;3.1.1.4](#3114-field-options)). As explained in the JADN
 Specification:
 
 > Each option is a text string that may be included in
@@ -939,7 +939,7 @@ grammar.
 
 Table 3-3 lists the complete set of type options, including the option name,
 type, ID character, and description. Note that the ID characters are the normative form and are used in
-standard JADN representation ([section 3.1.5.1](#3151-native-json-representation)) 
+standard JADN representation ([Section&nbsp;3.1.5.1](#3151-native-json-representation)) 
 when specifying type options. The text labels for the options (e.g., vtype,
 ktype, pattern) are non-normative and intended to be human friendly. Many of the
 Type and Field options labels have JSON Schema and XML Schema equivalents.
@@ -1024,16 +1024,16 @@ pertaining to the **Fields** array are as follows:
 
 The selection of Map or Record for a type definition carries 
 serialization implications, which are discussed in 
-[Section 3.1.X.2](#31x2-selection-and-use-of-jadn-compound-types).
+[Section&nbsp;3.1.X.2](#31x2-selection-and-use-of-jadn-compound-types).
 
 #### 3.1.1.4 Field Options
 
 Compound types containing Items or Fields support field options
-in addition to the type options described in [Section 3.1.1.2](#3112-typeoptions). 
+in addition to the type options described in [Section&nbsp;3.1.1.2](#3112-typeoptions). 
 JADN defines six field options. As with
-the type options described in Section 3.1.1.2,
+the type options described in Section&nbsp;3.1.1.2,
 the ID characters are normative and used in standard JADN representation
-([section 3.1.5.1](#3151-native-json-representation)) when
+([Section&nbsp;3.1.5.1](#3151-native-json-representation)) when
 specifying field options. Table 3-5 lists the JADN field options.
 
 ###### Table 3-5 -- JADN Field Options
@@ -1047,12 +1047,12 @@ specifying field options. Table 3-5 lists the JADN field options.
 |    key     |  Boolean   |   `K`    | Field is a primary key for this type                          |         3.3.6         |
 |    link    |  Boolean   |   `L`    | Field is a foreign key reference to a type instance           |         3.3.6         |
 
-The type options described in [Section 3.1.1.2](#3112-typeoptions) can also apply
+The type options described in [Section&nbsp;3.1.1.2](#3112-typeoptions) can also apply
 to fields, with the constraint that the type option must be applicable to the
-field's type, as described in the core type examples in [Section 3.1.7](#317-base-type-examples). 
+field's type, as described in the core type examples in [Section&nbsp;3.1.7](#317-base-type-examples). 
 The application of a type option to a field
 triggers an "anonymous" type definition when the JADN model is processed, as
-described in [Section 3.1.X.1](#31x1-anonymous-type-definitions).
+described in [Section&nbsp;3.1.X.1](#31x1-anonymous-type-definitions).
 
 ### 3.1.7 Core Type Examples
 
@@ -1110,8 +1110,8 @@ Binary type:
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
 | eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [EUI](#eui) |
-| ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc791) Section 3.1 |
-| ipv6-addr    | Binary | IPv6 address as specified in [RFC 8200](#rfc8200)  Section 3 |
+| ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc791) Section&nbsp;3.1 |
+| ipv6-addr    | Binary | IPv6 address as specified in [RFC 8200](#rfc8200)  Section&nbsp;3 |
 
 #### 3.1.7.2 Boolean
 
@@ -1322,7 +1322,7 @@ presentations of a String with an associated pattern:
 Barcode = String{pattern="^\d{12}$"}    // A UPC-A barcode is 12 digits
 ```
 
-The JADN Specification states (section 3.2.1.6):
+The JADN Specification states (Section&nbsp;3.2.1.6):
 
 > The *pattern* value SHOULD conform to the Pattern grammar of
 > ECMAScript Section 21.2.
@@ -1461,8 +1461,8 @@ The **Array** type is used to represent information
 where it is appropriate to group related information elements
 together, even if the elements of the array are heterogeneous.
 Each element in the array is defined as a field, using the field
-definitions described in [Section 3.1.3](#3113-item-or-field-definitions) and refined using the
-field options described in [Section 3.1.4](#3114-field-options).
+definitions described in [Section&nbsp;3.1.3](#3113-item-or-field-definitions) and refined using the
+field options described in [Section&nbsp;3.1.4](#3114-field-options).
 An information item fitting the Array core type would be defined
 as follows:
 
@@ -1487,7 +1487,7 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
 ```
 
 The example above illustrates the positioning of Array "field names" within the
-JIDL comments, as described in [Section 3.1.5.2.1](#31521-array-field-names-in-jidl).
+JIDL comments, as described in [Section&nbsp;3.1.5.2.1](#31521-array-field-names-in-jidl).
 
 Table 3-9 lists the *format* options applicable to the Array type:
 
@@ -1495,7 +1495,7 @@ Table 3-9 lists the *format* options applicable to the Array type:
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
-| ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [RFC 4632](#rfc4632) Section 3.1 |
+| ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [RFC 4632](#rfc4632) Section&nbsp;3.1 |
 | ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [RFC 4291](#rfc4291) Section 2.3 |
 
 The `ipv4-net` and `ipv6-net` format options impose several constraints when applied to an Array type:
@@ -1536,7 +1536,7 @@ elements together. The fields of the array are defined by the
 fitting the ArrayOf core type would be defined as follows. This
 example uses an explicit ArrayOf type derived using the 
 multiplicity extension on the "tracks" field of Album, as shown in
-[Section 3.3.1](#331-example-1-a-digital-music-library)):
+[Section&nbsp;3.3.1](#331-example-1-a-digital-music-library)):
 
 ```json
 [
@@ -1627,7 +1627,7 @@ defines that there is a minimum number of required fields even
 though every individual field is optional. An empty `Hashes` map is
 invalid, but a map where any one or more of the three hash types
 exists is valid. This is an example of one application of _minv_,
-_maxv_, as described above in [Section 3.1.X.4](#31x4-application-of-minv--maxv).
+_maxv_, as described above in [Section&nbsp;3.1.X.4](#31x4-application-of-minv--maxv).
 
 
 
@@ -1755,7 +1755,7 @@ IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tc
    5 protocol         L4-Protocol optional        // Layer 4 protocol (e.g., TCP)
 ```
 
-As with the `Map` example in [Section 3.1.7.10](#31710-map), the
+As with the `Map` example in [Section&nbsp;3.1.7.10](#31710-map), the
 cardinality of `{1..*}` for the `Record` defines that there is a
 minimum number of required fields even though every individual
 field is optional. An empty IPv4-Connection record is invalid,
@@ -1774,14 +1774,14 @@ other representations using a simple example.
 #### 3.1.5.1 Native JSON Representation
 
 This section illustrates the JSON representations of the Base
-Types described in [Section 3.1](#31-jadn-overview). Depictions
+Types described in [Section&nbsp;3.1](#31-jadn-overview). Depictions
 are provided for overall structure of a JADN schema and for 
 each of three ways that the **Fields** array is
 used, depending on the core type used in a particular type
 definition.
 
 Figure 3-3 illustrates the top-level structure of a native JADN schema document,
-as described in [Section 3.1](#31-jadn-overview).
+as described in [Section&nbsp;3.1](#31-jadn-overview).
 
 ###### Figure 3-3 -- JADN Schema Top-Level Structure
 ![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
@@ -1860,7 +1860,7 @@ TypeName. For documentation and debugging purposes a FieldName
 can be included in the JIDL comment field, immediately following
 the `//` and followed by a double colon delimiter (i.e., `::`).
 For more information see the [[JADN Specification](#jadn-v10)]
-descriptions of Field Identifiers (section 3.2.1.1) and JADN-IDL
+descriptions of Field Identifiers (Section&nbsp;3.2.1.1) and JADN-IDL
 format (section 5.1). Here is a brief JIDL example of this format:
 
 ```
@@ -1876,7 +1876,7 @@ The [[JADN Specification](#jadn-v10)], section 5.3,
 uses a simple example of an IM for a university to illustrate the
 use of ERDs for IMs. This section uses that ERD as a starting
 point for an example to illustrate the various JADN
-representations described in [Section 3.1.5.2](#3152-alternative-jadn-representations). The example
+representations described in [Section&nbsp;3.1.5.2](#3152-alternative-jadn-representations). The example
 begins with the ERD for the model:
 
 ###### Figure 3-7 -- Simple University Example ERD
@@ -2050,7 +2050,7 @@ development of IMs.
 The [[JADN Specification](#jadn-v10)] conformance statement
 (section 7) separates the definition of JADN into "Core JADN"
 (sections 3.1, 3.2, 4, and 6) and "JADN Extensions" (section
-3.3). Section 3.3 explains that extensions "make type definitions
+3.3). Section&nbsp;3.3 explains that extensions "make type definitions
 more compact or support the Don't Repeat Yourself (DRY) software
 design principle. Extensions are syntactic sugar that can be
 replaced by core definitions without changing their meaning."
@@ -2067,9 +2067,9 @@ System character, but schema processing tools may do so".
 
 Examples of the use of extensions and the role of the system
 character are provided in sections 3.3.1, 3.3.2, and 3.3.2 of the
-JADN Specification. As noted in [Section 3.1.4](#3114-field-options), 
+JADN Specification. As noted in [Section&nbsp;3.1.4](#3114-field-options), 
 JADN Type Options can be applied to
-fields in compound types, but as explained in section 3.3.1 of
+fields in compound types, but as explained in Section&nbsp;3.3.1 of
 the JADN Specification, this is an extension that leads to the
 anonymous definition of a new type when processed by automated
 tooling. The example provided there is:
@@ -2226,7 +2226,7 @@ meaning in these two applications:
    
 For example, the following specifies an Integer type that can be
 assigned values between `1` and `1000`, using both JADN (see
-[section 3.5.1.1](#3151-native-json-representation)) and JIDL
+[Section&nbsp;3.5.1.1](#3151-native-json-representation)) and JIDL
 notation (see [section
 3.5.1.2](#3152-alternative-jadn-representations)):
 
@@ -2244,7 +2244,7 @@ notation (see [section
    at least two fields populated, even though only one field is
    required (fields `field_2` and `field_3` are indicated as
    optional by the `["[0"]` *field* option 
-   [see [Section 3.1.4](#3114-field-options)]):
+   [see [Section&nbsp;3.1.4](#3114-field-options)]):
 
 ```
 ["RecordType", "Record", ["{2"], "requires field_1 and either or both field_2 and field_3", [
@@ -2640,7 +2640,7 @@ referencing types from the three external schemas .
 
 ## 4.2 Reference Relationships: Keys and Links
 
-As noted at the end of Section 3.1 of this CN, JADN recognizes
+As noted at the end of Section&nbsp;3.1 of this CN, JADN recognizes
 only two kinds of relationship: "contain" and "reference". The
 relationships shown in previous examples are all of the "contain"
 variety. The "reference" relationship type applies when using the
@@ -2661,7 +2661,7 @@ When recursion is used in programming it is terminated by a base
 condition, but an IM has no corresponding concept to terminate
 recursion. JADN uses "reference" relationships in situations
 where cycles occur in order to address this need. The method to
-define reference relationships is explained in Section 3.3.6,
+define reference relationships is explained in Section&nbsp;3.3.6,
 *Links*, of the [[JADN Specification](#jadn-v10)]. 
 
 Figure 4-1 illustrates permissible and impermissible "contains"
@@ -2683,7 +2683,7 @@ JADN tooling.
 
 ![Contains and References Relationships](images/contains-references.drawio.png)
 
-`Record J` in the lower right portion of the figure shows a self-referential `key / link` application. This is a generalization of the example from Section 3.3.6 of the JADN Specification, which allows for numerous relationships between objects of type `Person`:
+`Record J` in the lower right portion of the figure shows a self-referential `key / link` application. This is a generalization of the example from Section&nbsp;3.3.6 of the JADN Specification, which allows for numerous relationships between objects of type `Person`:
 
 ```
 Person = Record
@@ -2873,8 +2873,8 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Overall updates to types descriptions in 3.1.x (PR #58) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Generalize description of SDO management system IM (PR #60) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-23 | David Lemire | Update namespaces discussion (4.1.2) with JADN v1.1 capabilities (PR #61) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-23 | David Lemire | Initial revisions to Section 3.1 to improve readability (PR #63) |
-| imjadn-v1.0-cn01-wd02.md | 2023-11-xx | David Lemire | Revise structure of Section 3.1 for improved clarity and sequencing (PR #66) |
+| imjadn-v1.0-cn01-wd02.md | 2023-10-23 | David Lemire | Initial revisions to Section&nbsp;3.1 to improve readability (PR #63) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-xx | David Lemire | Revise structure of Section&nbsp;3.1 for improved clarity and sequencing (PR #66) |
 -------
 
 # Appendix D. Frequently Asked Questions (FAQ)
