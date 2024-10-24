@@ -1201,347 +1201,6 @@ The application of a type option to a field
 triggers an "anonymous" type definition when the JADN model is processed, as
 described in [Section 3.1.6](#316-anonymous-type-definitions).
 
-### 3.1.5 JADN Representations
-
-The native format of JADN is JSON, but JADN content can be
-represented in other ways that are often easier to edit or more
-useful for documentation. This section describes the JSON content
-used for each of the JADN basic types, and then illustrates the
-other representations using a simple example.
-
-#### 3.1.5.1 Native JSON Representation
-
-This section illustrates the JSON representations of the Base
-Types described in [Section 3.1](#31-jadn-overview). Depictions
-are provided for overall structure of a JADN schema and for 
-each of three ways that the **Fields** array is
-used, depending on the core type used in a particular type
-definition.
-
-Figure 3-3 illustrates the top-level structure of a native JADN schema document,
-as described in [Section 3.1](#31-jadn-overview).
-
-###### Figure 3-3 -- JADN Schema Top-Level Structure
-![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
-
-Figure 3-4 illustrates the structure of JADN for defining any
-Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
-the **Fields** array is empty:
-
-###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
-![JADN for Primitive, ArrayOf, MapOf
-Types](images/JADN-primitive-json.drawio.png)
-
-
-Figure 3-5 illustrates the structure of JADN for defining an
-Enumerated **BaseType**; for enumerations each item definition in the
-**Fields** array has three elements:
-
-###### Figure 3-5 -- JADN for Enumerated Types
-![JADN for Enumerated
-Types](images/JADN-with-items-json.drawio.png)
-
-
-Figure 3-6 illustrates the structure of JADN for defining a
-**BaseType** of Array, Choice, Map, or Record; for these types each
-field definition in the **Fields** array has five elements:
-
-###### Figure 3-6 -- JADN for Types with Fields
-![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
-
-
-#### 3.1.5.2 Alternative JADN Representations
-
-The [[JADN Specification](#jadn-v10)] identifies three formats
-(Section 5) in addition to the native format:
-
- - JADN Interface Definition Language (JIDL)
- - Property Tables
- - Entity Relationship Diagrams (ERDs)
-
-Figure 3-6a identifies the various representations. 
-The formal definitions of each of these types are found in
-sections 5.1, 5.2, and 5.3, respectively, of the 
-[[JADN Specification](#jadn-v10)].
-
-###### Figure 3-6a -- JADN Representations
-![JADN Representations](images/JADN-Representations.drawio.png)
-
-Automated tooling makes it straightforward to translate among all
-four of these formats in a lossless manner, and each format has
-its advantages:
-
- - JADN in native JSON format can be readily processed by common
-   JSON tooling.
- - JADN in table style presentation is often used in
-specifications (e.g., as property tables such as are commonly
-found in specifications).
- - JADN presented in entity relationship diagrams aids with
-visualization of an information model.
- - JADN in JIDL format, a simple text structure, is easy to edit,
-making it a good format for both the initial creation and the
-documentation of a JADN model. JIDL is also more compact than
-table style presentation.
-
-The table style and ERD representations can be readily generated
-in an automated manner by translating the JADN schema to source
-code for rendering in various formats. For example, tables can be
-created using Markdown or HTML code, and ERDs can be created from
-code for rendering engines such as [[Graphviz](#graphviz)] or
-[[PlantUML](#plantuml)].
-
-##### 3.1.5.2.1  Array "Field Names" in JIDL
-
-When defining elements of type Array or Enum.ID in JIDL, no field
-names are used. These types are defined using a field ID and a
-TypeName. For documentation and debugging purposes a FieldName
-can be included in the JIDL comment field, immediately following
-the `//` and followed by a double colon delimiter (i.e., `::`).
-For more information see the [[JADN Specification](#jadn-v10)]
-descriptions of Field Identifiers (section 3.2.1.1) and JADN-IDL
-format (section 5.1). Here is a brief JIDL example of this format:
-
-```
-Publication-Data = Array         // who and when of publication
-    1 String          // label:: name of record label 
-    2 String /date    // rel_date:: and when did they let this drop
-```
-
-
-#### 3.1.5.3 Multiple Representations Example
-
-The [[JADN Specification](#jadn-v10)], section 5.3,
-uses a simple example of an IM for a university to illustrate the
-use of ERDs for IMs. This section uses that ERD as a starting
-point for an example to illustrate the various JADN
-representations described in [Section 3.1.5.2](#3152-alternative-jadn-representations). The example
-begins with the ERD for the model:
-
-###### Figure 3-7 -- Simple University Example ERD
-
-<img src="images/university-erd.png" height="600px">
-
-The package (see [Section 4.1](#41-packages-and-namespaces)) 
-containing the JADN corresponding to the above ERD is shown here:
-
-###### Figure 3-8 -- Simple University Example JADN (JSON format)
-```json
-{
- "info": {
-  "package": "http://example.com/uni",
-  "exports": ["University"]
- },
-
- "types": [
-  ["University", "Record", [], "A place of learning", [
-    [1, "name", "String", [], "University Name"],
-    [2, "classes", "ArrayOf", ["*Class"], "Available classes"],
-    [3, "people", "ArrayOf", ["*Person"], "Students and faculty"]
-  ]],
-
-  ["Class", "Record", [], "Pertinent info about classes", [
-    [1, "name", "String", [], "Name of class"],
-    [2, "room", "String", [], "Where it happens"],
-    [3, "teachers", "Person", ["L", "]0", "q"], "Teacher(s) for this class"],
-    [4, "students", "Person", ["L", "]0", "q"], "Students attending this class"],
-    [5, "syllabus", "String", ["/uri"], "Link to class syllabus on the web"]
-  ]],
-
-  ["Person", "Record", [], "", [
-    [1, "name", "String", [], "Student / faculty member name"],
-    [2, "univ_id", "UnivId", ["K"], "Unique ID for student / faculty member"],
-    [3, "email", "String", ["/email"], "Student / faculty member email"]
-  ]],
-
-  ["UnivId", "String", ["%^U-\\d{6}$"], "University ID (U-nnnnnn)", []]
- ]
-}
-```
-
-Converting the JSON to JIDL yields a representation that is both
-more readable and easier to edit:
-
-###### Figure 3-9 -- Simple University Example JADN (JIDL format)
-
-```
-     package: "http://example.com/uni"
-     exports: ["University"]
-
-University = Record                               // A place of learning
-   1 name             String                      // University Name
-   2 classes          ArrayOf(Class)              // Available classes
-   3 people           ArrayOf(Person)             // Students and faculty
-
-Class = Record                                    // Pertinent info about classes
-   1 name             String                      // Name of class
-   2 room             String                      // Where it happens
-   3 teachers         Link(Person unique) [1..*]  // Teacher(s) for this class
-   4 students         Link(Person unique) [1..*]  // Students attending this class
-   5 syllabus         String /uri                 // Link to class syllabus on the web
-
-Person = Record
-   1 name             String                      // Student / faculty member name
-   2 univ_id          Key(UnivId)                 // Unique ID for student / faculty member
-   3 email            String /email               // Student / faculty member email
-
-UnivId = String{pattern="^U-\d{6}$"}              // University ID (U-nnnnnn)
-```
-
-Property tables are a common representation of data structures in
-specifications. JADN is easily converted to property tables,
-which are quite readable but somewhat more challenging to edit
-than JIDL (the package information has been omitted from the set
-of property tables).
-
-###### Figure 3-10 -- Simple University Example JADN (table format)
-
-A place of learning
-
-**Type: University (Record)**
-
-| ID | Name        | Type            | \# | Description          |
-|----|-------------|-----------------|----|----------------------|
-| 1  | **name**    | String          | 1  | University Name      |
-| 2  | **classes** | ArrayOf(Class)  | 1  | Available classes    |
-| 3  | **people**  | ArrayOf(Person) | 1  | Students and faculty |
-
-Pertinent info about classes
-
-**Type: Class (Record)**
-
-| ID | Name         | Type                | \#    | Description                       |
-|----|--------------|---------------------|-------|-----------------------------------|
-| 1  | **name**     | String              | 1     | Name of class                     |
-| 2  | **room**     | String              | 1     | Where it happens                  |
-| 3  | **teachers** | Link(Person unique) | 1..\* | Teacher(s) for this class         |
-| 4  | **students** | Link(Person unique) | 1..\* | Students attending this class     |
-| 5  | **syllabus** | String /uri         | 1     | Link to class syllabus on the web |
-
-**Type: Person (Record)**
-
-| ID | Name        | Type          | \# | Description                            |
-|----|-------------|---------------|----|----------------------------------------|
-| 1  | **name**    | String        | 1  | Student / faculty member name          |
-| 2  | **univ_id** | Key(UnivId)   | 1  | Unique ID for student / faculty member |
-| 3  | **email**   | String /email | 1  | Student / faculty member email         |
-
-| Type Name  | Type Definition             | Description              |
-|------------|-----------------------------|--------------------------|
-| **UnivId** | String{pattern="^U-\d{6}$"} | University ID (U-nnnnnn) |
-
-
-Finally, the code to generate the ERD presented at the beginning
-of the example is easily generated from the JADN model.  In this
-specific example code for the widely-used GraphViz tool is
-provided.
-
-###### Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)
-```
-# package: http://example.com/uni
-# exports: ['University']
-
-digraph G {
-  graph [fontname=Arial, fontsize=12];
-  node [fontname=Arial, fontsize=8, shape=record, style=filled, fillcolor=lightskyblue1];
-  edge [fontname=Arial, fontsize=7, arrowsize=0.5, labelangle=45.0, labeldistance=0.9];
-  bgcolor="transparent";
-
-n0 [label=<{<b>University : Record</b>|
-  1 name : String<br align="left"/>
-  2 classes : ArrayOf(Class)<br align="left"/>
-  3 people : ArrayOf(Person)<br align="left"/>
-}>]
-
-n1 [label=<{<b>Class : Record</b>|
-  1 name : String<br align="left"/>
-  2 room : String<br align="left"/>
-  3 teachers : Link(Person unique) [1..*]<br align="left"/>
-  4 students : Link(Person unique) [1..*]<br align="left"/>
-  5 syllabus : String /uri<br align="left"/>
-}>]
-
-n2 [label=<{<b>Person : Record</b>|
-  1 name : String<br align="left"/>
-  2 univ_id : Key(UnivId)<br align="left"/>
-  3 email : String /email<br align="left"/>
-}>]
-
-n3 [label=<<b>UnivId : String{pattern="^U-\d{6}$"}</b>>, shape=ellipse, style=filled, fillcolor=palegreen]
-
-  n0 -> n1 [label=classes]
-  n0 -> n2 [label=people]
-  n1 -> n2 [label=teachers, style="dashed"]
-  n1 -> n2 [label=students, style="dashed"]
-  n2 -> n3 [label=univ_id]
-}
-```
-
-### 3.1.6 "Anonymous" Type Definitions
-
-The [[JADN Specification](#jadn-v10)] conformance statement
-(section 7) separates the definition of JADN into "Core JADN"
-(sections 3.1, 3.2, 4, and 6) and "JADN Extensions" (section
-3.3). Section 3.3 explains that extensions "make type definitions
-more compact or support the Don't Repeat Yourself (DRY) software
-design principle. Extensions are syntactic sugar that can be
-replaced by core definitions without changing their meaning."
-While the implementation of extensions by JADN tools is optional,
-in a conformance sense, the availability of extensions reduces
-the level of effort required by a JADN schema author and can make
-a schema more compact and understandable.
-
-The JADN Specification also defines a "system character" (by
-default the dollar sign, `$`) and in the Name Formats (section
-3.1.2) reserves the use of that character to automated tooling,
-saying "Schema authors should not create TypeNames containing the
-System character, but schema processing tools may do so".
-
-Examples of the use of extensions and the role of the system
-character are provided in sections 3.3.1, 3.3.2, and 3.3.2 of the
-JADN Specification. As noted in [Section 3.1.4](#314-field-options), 
-JADN Type Options can be applied to
-fields in compound types, but as explained in section 3.3.1 of
-the JADN Specification, this is an extension that leads to the
-anonymous definition of a new type when processed by automated
-tooling. The example provided there is:
-
-```
-Member = Record
-  1 name         String
-  2 email        String /email
-```
-Unfolding replaces this with:
-```
-Member = Record
-  1 name         String
-  2 email        Member$email
-    
-Member$email = String /email    // Tool-generated type definition.
-```
-The type definition for `Member$email` was generated by the
-tooling, as both noted in the comment and indicated by the
-presence of the `$` character in the type name. The same result
-could be achieved in Core JADN by defining a separate `Email`
-type:
-
-```
-Member = Record
-  1 name         String
-  2 email        Email
-    
-Email = String /email
-```
-
-The author(s) of an IM can determine whether the use of anonymous
-type definitions generated by JADN tooling improves the clarity
-of an model. For the example above, defining an email type that
-can be referenced throughout the model would likely be better
-than multiple, equivalent anonymous email types. In other cases
-the readability of the model can benefit from concisely written
-JADN (or JIDL) that relies on the tooling to generate the
-necessary types.
-
-
 ### 3.1.7 Core Type Examples
 
 This section provides illustrative examples of the JADN core
@@ -2249,6 +1908,349 @@ minimum number of required fields even though every individual
 field is optional. An empty IPv4-Connection record is invalid,
 but an IPv4-Connection record where any one or more of the five
 fields exists is valid.
+
+
+### 3.1.5 JADN Representations
+
+The native format of JADN is JSON, but JADN content can be
+represented in other ways that are often easier to edit or more
+useful for documentation. This section describes the JSON content
+used for each of the JADN basic types, and then illustrates the
+other representations using a simple example.
+
+#### 3.1.5.1 Native JSON Representation
+
+This section illustrates the JSON representations of the Base
+Types described in [Section 3.1](#31-jadn-overview). Depictions
+are provided for overall structure of a JADN schema and for 
+each of three ways that the **Fields** array is
+used, depending on the core type used in a particular type
+definition.
+
+Figure 3-3 illustrates the top-level structure of a native JADN schema document,
+as described in [Section 3.1](#31-jadn-overview).
+
+###### Figure 3-3 -- JADN Schema Top-Level Structure
+![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
+
+Figure 3-4 illustrates the structure of JADN for defining any
+Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
+the **Fields** array is empty:
+
+###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
+![JADN for Primitive, ArrayOf, MapOf
+Types](images/JADN-primitive-json.drawio.png)
+
+
+Figure 3-5 illustrates the structure of JADN for defining an
+Enumerated **BaseType**; for enumerations each item definition in the
+**Fields** array has three elements:
+
+###### Figure 3-5 -- JADN for Enumerated Types
+![JADN for Enumerated
+Types](images/JADN-with-items-json.drawio.png)
+
+
+Figure 3-6 illustrates the structure of JADN for defining a
+**BaseType** of Array, Choice, Map, or Record; for these types each
+field definition in the **Fields** array has five elements:
+
+###### Figure 3-6 -- JADN for Types with Fields
+![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
+
+
+#### 3.1.5.2 Alternative JADN Representations
+
+The [[JADN Specification](#jadn-v10)] identifies three formats
+(Section 5) in addition to the native format:
+
+ - JADN Interface Definition Language (JIDL)
+ - Property Tables
+ - Entity Relationship Diagrams (ERDs)
+
+Figure 3-6a identifies the various representations. 
+The formal definitions of each of these types are found in
+sections 5.1, 5.2, and 5.3, respectively, of the 
+[[JADN Specification](#jadn-v10)].
+
+###### Figure 3-6a -- JADN Representations
+![JADN Representations](images/JADN-Representations.drawio.png)
+
+Automated tooling makes it straightforward to translate among all
+four of these formats in a lossless manner, and each format has
+its advantages:
+
+ - JADN in native JSON format can be readily processed by common
+   JSON tooling.
+ - JADN in table style presentation is often used in
+specifications (e.g., as property tables such as are commonly
+found in specifications).
+ - JADN presented in entity relationship diagrams aids with
+visualization of an information model.
+ - JADN in JIDL format, a simple text structure, is easy to edit,
+making it a good format for both the initial creation and the
+documentation of a JADN model. JIDL is also more compact than
+table style presentation.
+
+The table style and ERD representations can be readily generated
+in an automated manner by translating the JADN schema to source
+code for rendering in various formats. For example, tables can be
+created using Markdown or HTML code, and ERDs can be created from
+code for rendering engines such as [[Graphviz](#graphviz)] or
+[[PlantUML](#plantuml)].
+
+##### 3.1.5.2.1  Array "Field Names" in JIDL
+
+When defining elements of type Array or Enum.ID in JIDL, no field
+names are used. These types are defined using a field ID and a
+TypeName. For documentation and debugging purposes a FieldName
+can be included in the JIDL comment field, immediately following
+the `//` and followed by a double colon delimiter (i.e., `::`).
+For more information see the [[JADN Specification](#jadn-v10)]
+descriptions of Field Identifiers (section 3.2.1.1) and JADN-IDL
+format (section 5.1). Here is a brief JIDL example of this format:
+
+```
+Publication-Data = Array         // who and when of publication
+    1 String          // label:: name of record label 
+    2 String /date    // rel_date:: and when did they let this drop
+```
+
+
+#### 3.1.5.3 Multiple Representations Example
+
+The [[JADN Specification](#jadn-v10)], section 5.3,
+uses a simple example of an IM for a university to illustrate the
+use of ERDs for IMs. This section uses that ERD as a starting
+point for an example to illustrate the various JADN
+representations described in [Section 3.1.5.2](#3152-alternative-jadn-representations). The example
+begins with the ERD for the model:
+
+###### Figure 3-7 -- Simple University Example ERD
+
+<img src="images/university-erd.png" height="600px">
+
+The package (see [Section 4.1](#41-packages-and-namespaces)) 
+containing the JADN corresponding to the above ERD is shown here:
+
+###### Figure 3-8 -- Simple University Example JADN (JSON format)
+```json
+{
+ "info": {
+  "package": "http://example.com/uni",
+  "exports": ["University"]
+ },
+
+ "types": [
+  ["University", "Record", [], "A place of learning", [
+    [1, "name", "String", [], "University Name"],
+    [2, "classes", "ArrayOf", ["*Class"], "Available classes"],
+    [3, "people", "ArrayOf", ["*Person"], "Students and faculty"]
+  ]],
+
+  ["Class", "Record", [], "Pertinent info about classes", [
+    [1, "name", "String", [], "Name of class"],
+    [2, "room", "String", [], "Where it happens"],
+    [3, "teachers", "Person", ["L", "]0", "q"], "Teacher(s) for this class"],
+    [4, "students", "Person", ["L", "]0", "q"], "Students attending this class"],
+    [5, "syllabus", "String", ["/uri"], "Link to class syllabus on the web"]
+  ]],
+
+  ["Person", "Record", [], "", [
+    [1, "name", "String", [], "Student / faculty member name"],
+    [2, "univ_id", "UnivId", ["K"], "Unique ID for student / faculty member"],
+    [3, "email", "String", ["/email"], "Student / faculty member email"]
+  ]],
+
+  ["UnivId", "String", ["%^U-\\d{6}$"], "University ID (U-nnnnnn)", []]
+ ]
+}
+```
+
+Converting the JSON to JIDL yields a representation that is both
+more readable and easier to edit:
+
+###### Figure 3-9 -- Simple University Example JADN (JIDL format)
+
+```
+     package: "http://example.com/uni"
+     exports: ["University"]
+
+University = Record                               // A place of learning
+   1 name             String                      // University Name
+   2 classes          ArrayOf(Class)              // Available classes
+   3 people           ArrayOf(Person)             // Students and faculty
+
+Class = Record                                    // Pertinent info about classes
+   1 name             String                      // Name of class
+   2 room             String                      // Where it happens
+   3 teachers         Link(Person unique) [1..*]  // Teacher(s) for this class
+   4 students         Link(Person unique) [1..*]  // Students attending this class
+   5 syllabus         String /uri                 // Link to class syllabus on the web
+
+Person = Record
+   1 name             String                      // Student / faculty member name
+   2 univ_id          Key(UnivId)                 // Unique ID for student / faculty member
+   3 email            String /email               // Student / faculty member email
+
+UnivId = String{pattern="^U-\d{6}$"}              // University ID (U-nnnnnn)
+```
+
+Property tables are a common representation of data structures in
+specifications. JADN is easily converted to property tables,
+which are quite readable but somewhat more challenging to edit
+than JIDL (the package information has been omitted from the set
+of property tables).
+
+###### Figure 3-10 -- Simple University Example JADN (table format)
+
+A place of learning
+
+**Type: University (Record)**
+
+| ID | Name        | Type            | \# | Description          |
+|----|-------------|-----------------|----|----------------------|
+| 1  | **name**    | String          | 1  | University Name      |
+| 2  | **classes** | ArrayOf(Class)  | 1  | Available classes    |
+| 3  | **people**  | ArrayOf(Person) | 1  | Students and faculty |
+
+Pertinent info about classes
+
+**Type: Class (Record)**
+
+| ID | Name         | Type                | \#    | Description                       |
+|----|--------------|---------------------|-------|-----------------------------------|
+| 1  | **name**     | String              | 1     | Name of class                     |
+| 2  | **room**     | String              | 1     | Where it happens                  |
+| 3  | **teachers** | Link(Person unique) | 1..\* | Teacher(s) for this class         |
+| 4  | **students** | Link(Person unique) | 1..\* | Students attending this class     |
+| 5  | **syllabus** | String /uri         | 1     | Link to class syllabus on the web |
+
+**Type: Person (Record)**
+
+| ID | Name        | Type          | \# | Description                            |
+|----|-------------|---------------|----|----------------------------------------|
+| 1  | **name**    | String        | 1  | Student / faculty member name          |
+| 2  | **univ_id** | Key(UnivId)   | 1  | Unique ID for student / faculty member |
+| 3  | **email**   | String /email | 1  | Student / faculty member email         |
+
+| Type Name  | Type Definition             | Description              |
+|------------|-----------------------------|--------------------------|
+| **UnivId** | String{pattern="^U-\d{6}$"} | University ID (U-nnnnnn) |
+
+
+Finally, the code to generate the ERD presented at the beginning
+of the example is easily generated from the JADN model.  In this
+specific example code for the widely-used GraphViz tool is
+provided.
+
+###### Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)
+```
+# package: http://example.com/uni
+# exports: ['University']
+
+digraph G {
+  graph [fontname=Arial, fontsize=12];
+  node [fontname=Arial, fontsize=8, shape=record, style=filled, fillcolor=lightskyblue1];
+  edge [fontname=Arial, fontsize=7, arrowsize=0.5, labelangle=45.0, labeldistance=0.9];
+  bgcolor="transparent";
+
+n0 [label=<{<b>University : Record</b>|
+  1 name : String<br align="left"/>
+  2 classes : ArrayOf(Class)<br align="left"/>
+  3 people : ArrayOf(Person)<br align="left"/>
+}>]
+
+n1 [label=<{<b>Class : Record</b>|
+  1 name : String<br align="left"/>
+  2 room : String<br align="left"/>
+  3 teachers : Link(Person unique) [1..*]<br align="left"/>
+  4 students : Link(Person unique) [1..*]<br align="left"/>
+  5 syllabus : String /uri<br align="left"/>
+}>]
+
+n2 [label=<{<b>Person : Record</b>|
+  1 name : String<br align="left"/>
+  2 univ_id : Key(UnivId)<br align="left"/>
+  3 email : String /email<br align="left"/>
+}>]
+
+n3 [label=<<b>UnivId : String{pattern="^U-\d{6}$"}</b>>, shape=ellipse, style=filled, fillcolor=palegreen]
+
+  n0 -> n1 [label=classes]
+  n0 -> n2 [label=people]
+  n1 -> n2 [label=teachers, style="dashed"]
+  n1 -> n2 [label=students, style="dashed"]
+  n2 -> n3 [label=univ_id]
+}
+```
+
+### 3.1.6 "Anonymous" Type Definitions
+
+The [[JADN Specification](#jadn-v10)] conformance statement
+(section 7) separates the definition of JADN into "Core JADN"
+(sections 3.1, 3.2, 4, and 6) and "JADN Extensions" (section
+3.3). Section 3.3 explains that extensions "make type definitions
+more compact or support the Don't Repeat Yourself (DRY) software
+design principle. Extensions are syntactic sugar that can be
+replaced by core definitions without changing their meaning."
+While the implementation of extensions by JADN tools is optional,
+in a conformance sense, the availability of extensions reduces
+the level of effort required by a JADN schema author and can make
+a schema more compact and understandable.
+
+The JADN Specification also defines a "system character" (by
+default the dollar sign, `$`) and in the Name Formats (section
+3.1.2) reserves the use of that character to automated tooling,
+saying "Schema authors should not create TypeNames containing the
+System character, but schema processing tools may do so".
+
+Examples of the use of extensions and the role of the system
+character are provided in sections 3.3.1, 3.3.2, and 3.3.2 of the
+JADN Specification. As noted in [Section 3.1.4](#314-field-options), 
+JADN Type Options can be applied to
+fields in compound types, but as explained in section 3.3.1 of
+the JADN Specification, this is an extension that leads to the
+anonymous definition of a new type when processed by automated
+tooling. The example provided there is:
+
+```
+Member = Record
+  1 name         String
+  2 email        String /email
+```
+Unfolding replaces this with:
+```
+Member = Record
+  1 name         String
+  2 email        Member$email
+    
+Member$email = String /email    // Tool-generated type definition.
+```
+The type definition for `Member$email` was generated by the
+tooling, as both noted in the comment and indicated by the
+presence of the `$` character in the type name. The same result
+could be achieved in Core JADN by defining a separate `Email`
+type:
+
+```
+Member = Record
+  1 name         String
+  2 email        Email
+    
+Email = String /email
+```
+
+The author(s) of an IM can determine whether the use of anonymous
+type definitions generated by JADN tooling improves the clarity
+of an model. For the example above, defining an email type that
+can be referenced throughout the model would likely be better
+than multiple, equivalent anonymous email types. In other cases
+the readability of the model can benefit from concisely written
+JADN (or JIDL) that relies on the tooling to generate the
+necessary types.
+
+
 
 
 ## 3.2 Information Modeling Process
