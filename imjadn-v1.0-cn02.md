@@ -817,7 +817,7 @@ options (field options only apply to compound and union types).
 ###### Figure 3-1 -- JADN Type Definition Components
 ![Figure 3-1 -- JADN Concepts](images/JADN-Type-Definitions.drawio.png)
 
-A JADN schema in its native form is a JSON document containing an object labeled
+A JADN schema in its native form is a JSON document containing an optional object labeled
 "info" and an array labeled "types". 
 
 * The "info" object contains metadata about
