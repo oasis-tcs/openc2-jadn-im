@@ -132,11 +132,11 @@ For complete copyright information please see the full Notices section in [Appen
           - [Table 3-2 -- Multiplicity Types](#table-3-2----multiplicity-types)
     - [3.1.1 Type Definitions](#311-type-definitions)
           - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-type-definition-structure)
-    - [3.1.2 TypeOptions](#312-typeoptions)
+    - [3.1.2 TypeOptions](#3112-typeoptions)
           - [Table 3-3 -- JADN Type Options](#table-3-3----jadn-type-options)
           - [Table 3-4 -- Type Option Applicability](#table-3-4----type-option-applicability)
-    - [3.1.3 Item Or Field Definitions](#313-item-or-field-definitions)
-    - [3.1.4 Field Options](#314-field-options)
+    - [3.1.3 Item Or Field Definitions](#3113-item-or-field-definitions)
+    - [3.1.4 Field Options](#3114-field-options)
           - [Table 3-5 -- JADN Field Options](#table-3-5----jadn-field-options)
     - [3.1.5 JADN Representations](#315-jadn-representations)
       - [3.1.5.1 Native JSON Representation](#3151-native-json-representation)
@@ -922,7 +922,7 @@ The third element of a JADN type definition is an array of zero
 or more of the TypeOptions defined in section 3.2.1 of the
 [[JADN Specification](#jadn-v10)]. JADN includes options for both
 _types_ (discussed in this section) and _fields_ (discussed in
-[section 3.1.4](#314-field-options)). As explained in the JADN
+[section 3.1.4](#3114-field-options)). As explained in the JADN
 Specification:
 
 > Each option is a text string that may be included in
@@ -1025,9 +1025,9 @@ pertaining to the **Fields** array are as follows:
 #### 3.1.1.4 Field Options
 
 Compound types containing Items or Fields support field options
-in addition to the type options described in [Section
+in addition to the type options described in [Section3112-typeoptions
 3.1.2](#312-typeoptions). JADN defines six field options. As with
-the type options described in [section 3.1.2](#312-typeoptions),
+the type options described in [section 3.1.1.2](#3112-typeoptions),
 the ID characters are normative and used in standard JADN representation
 ([section 3.1.5.1](#3151-native-json-representation)) when
 specifying field options. Table 3-5 lists the JADN field options.
@@ -1043,7 +1043,7 @@ specifying field options. Table 3-5 lists the JADN field options.
 |    key     |  Boolean   |   `K`    | Field is a primary key for this type                          |         3.3.6         |
 |    link    |  Boolean   |   `L`    | Field is a foreign key reference to a type instance           |         3.3.6         |
 
-The type options described in [Section 3.1.2](#312-typeoptions) can also apply
+The type options described in [Section 3.1.1.2](#3112-typeoptions) can also apply
 to fields, with the constraint that the type option must be applicable to the
 field's type, as described in the core type examples in [Section 3.1.7](#317-base-type-examples). 
 The application of a type option to a field
@@ -1457,8 +1457,8 @@ The **Array** type is used to represent information
 where it is appropriate to group related information elements
 together, even if the elements of the array are heterogeneous.
 Each element in the array is defined as a field, using the field
-definitions described in [Section 3.1.3](#313-item-or-field-definitions) and refined using the
-field options described in [Section 3.1.4](#314-field-options).
+definitions described in [Section 3.1.3](#3113-item-or-field-definitions) and refined using the
+field options described in [Section 3.1.4](#3114-field-options).
 An information item fitting the Array core type would be defined
 as follows:
 
@@ -1623,7 +1623,7 @@ defines that there is a minimum number of required fields even
 though every individual field is optional. An empty `Hashes` map is
 invalid, but a map where any one or more of the three hash types
 exists is valid. This is an example of one application of _minv_,
-_maxv_, as described above in [Section 3.1.2](#312-typeoptions).
+_maxv_, as described above in [Section 3.1.2](#3112-typeoptions).
 
 
 
@@ -2063,7 +2063,7 @@ System character, but schema processing tools may do so".
 
 Examples of the use of extensions and the role of the system
 character are provided in sections 3.3.1, 3.3.2, and 3.3.2 of the
-JADN Specification. As noted in [Section 3.1.4](#314-field-options), 
+JADN Specification. As noted in [Section 3.1.4](#3114-field-options), 
 JADN Type Options can be applied to
 fields in compound types, but as explained in section 3.3.1 of
 the JADN Specification, this is an extension that leads to the
@@ -2240,7 +2240,7 @@ notation (see [section
    at least two fields populated, even though only one field is
    required (fields `field_2` and `field_3` are indicated as
    optional by the `["[0"]` *field* option 
-   [see [Section 3.1.4](#314-field-options)]):
+   [see [Section 3.1.4](#3114-field-options)]):
 
 ```
 ["RecordType", "Record", ["{2"], "requires field_1 and either or both field_2 and field_3", [
