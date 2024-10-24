@@ -2870,6 +2870,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Generalize description of SDO management system IM (PR #60) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-23 | David Lemire | Update namespaces discussion (4.1.2) with JADN v1.1 capabilities (PR #61) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-23 | David Lemire | Initial revisions to Section 3.1 to improve readability (PR #63) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-xx | David Lemire | Revise structure of Section 3.1 for improved clarity and sequencing (PR #66) |
 -------
 
 # Appendix D. Frequently Asked Questions (FAQ)
