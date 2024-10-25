@@ -32,7 +32,7 @@ Duncan Sparrell (duncan@sfractal.com), [sFractal Consulting LLC](http://www.sfra
 Michael Rosa (mjrosa@nsa.gov), [National Security Agency](https://www.nsa.gov)
 
 #### Editors:
-David Lemire (david.lemire@hii-tsd.com), [HII](https://hii.com/) \
+David Lemire (david.p.lemire@hii.com), [HII](https://hii.com/) \
 David Kemp (d.kemp@cyber.nsa.gov), [National Security Agency](https://www.nsa.gov/)
 
 #### Related work:
@@ -132,11 +132,11 @@ For complete copyright information please see the full Notices section in [Appen
           - [Table 3-2 -- Multiplicity Types](#table-3-2----multiplicity-types)
     - [3.1.1 Type Definitions](#311-type-definitions)
           - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-type-definition-structure)
-    - [3.1.2 TypeOptions](#312-typeoptions)
+    - [3.1.2 TypeOptions](#3112-typeoptions)
           - [Table 3-3 -- JADN Type Options](#table-3-3----jadn-type-options)
           - [Table 3-4 -- Type Option Applicability](#table-3-4----type-option-applicability)
-    - [3.1.3 Item Or Field Definitions](#313-item-or-field-definitions)
-    - [3.1.4 Field Options](#314-field-options)
+    - [3.1.3 Item Or Field Definitions](#3113-item-or-field-definitions)
+    - [3.1.4 Field Options](#3114-field-options)
           - [Table 3-5 -- JADN Field Options](#table-3-5----jadn-field-options)
     - [3.1.5 JADN Representations](#315-jadn-representations)
       - [3.1.5.1 Native JSON Representation](#3151-native-json-representation)
@@ -302,7 +302,7 @@ specify IMs is to use class diagrams of the Unified Modeling Language (UML).
 > * In general, it seems advisable to use object-oriented techniques to
 describe an IM. In particular, the notions of abstraction and
 encapsulation, as well as the possibility that object definitions
-include methods, are considered to be important. (Section 3)
+include methods, are considered to be important. (Section&nbsp;3)
 >
 > 
 > * Compared to IMs, DMs define managed objects at a lower level
@@ -526,7 +526,7 @@ lexical values then its information content is no greater than the
 smallest of those values.
 
 Additional quality metrics (completeness, sharability, structure, extensibility,
-etc.) are discussed in [Section 3](#3-creating-information-models-with-jadn).
+etc.) are discussed in [Section&nbsp;3](#3-creating-information-models-with-jadn).
 
 ## 1.2 Terminology
 
@@ -751,7 +751,7 @@ is guided by rules associated with applying the IM:
    external representation format
 
 The [[JADN Specification](#jadn-v10)] defines 12 core types, which
-are described in [Section 3.1.7](#317-base-type-examples) of this
+are described in [Section&nbsp;3.1.7](#317-base-type-examples) of this
 CN. The JADN Specification also defines serialization rules for
 JSON (with three levels of verbosity) and CBOR
 [[RFC7409](#rfc7049)]. Supporting a new data format ("external
@@ -799,9 +799,6 @@ As stated in the [[JADN Specification](#jadn-v10)] introduction:
 > abstraction based on information theory and structural
 > organization using results from graph theory.
 
-> **EDITOR'S NOTE:** adjust and/or remove the following discussion to mesh with
-> updates to Section 1 of this CN.
-
 From UML JADN takes the concept of modeling information/data
 using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
 opposed to the common practice of using Structured Classifiers
@@ -812,7 +809,7 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 ## 3.1 JADN Overview
 
-Figure 3-1 provides a high-level view of the the components of JADN type definitions that
+Figure 3-1 provides a high-level view of the components of JADN type definitions that
 will be described in this section. JADN provides *primitive*, 
 *compound*, and *union* core data types that can be refined using type and field
 options (field options only apply to compound and union types).
@@ -820,7 +817,7 @@ options (field options only apply to compound and union types).
 ###### Figure 3-1 -- JADN Type Definition Components
 ![Figure 3-1 -- JADN Concepts](images/JADN-Type-Definitions.drawio.png)
 
-A JADN schema in its native form is a JSON document containing an object labeled
+A JADN schema in its native form is a JSON document containing an optional object labeled
 "info" and an array labeled "types". 
 
 * The "info" object contains metadata about
@@ -834,7 +831,7 @@ Each type array has five fields, two of which are themselves arrays: one for
 type options and one for the fields or elements that make up a compound type.
 
 * The fields / elements array is always empty in the definition of a primitive type.
-For compound types, each field or element within the fields / elements array is
+For structured compound types and union types, each field or element within the fields / elements array is
 also an array, with three items in an element array and five items in a field
 array. 
 
@@ -845,7 +842,10 @@ graphical, and automated tooling can transform a JADN model
 between the different representations without loss of
 information. The Native JADN representation as JSON data is
 authoritative, but each representation has advantages. The other representations are described in 
-[Section&nbsp;3.1.5.2, Alternative JSON Representation](#3152-alternative-jadn-representations)
+[Section&nbsp;3.1.5.2, Alternative JSON Representation](#3152-alternative-jadn-representations). 
+The examples that follow in subsequent sections are typically illustrated using
+both normative JADN (i.e., JSON data) for precision and the JADN Interface
+Definition Language (JIDL) format for its easy readability.
 
 The [[JADN Specification](#jadn-v10)] defines twelve core types:
 
@@ -864,135 +864,36 @@ The [[JADN Specification](#jadn-v10)] defines twelve core types:
 > to use "compound" in order to avoid any potential confusion
 > with UML's use of "structured".
 
-> **To-Do:** The revised figure 3-2 groups Enumerated and Choice under Compound
-> types; need to reconcile the table above and that figure.
-
-
-Each of the compound types is a *container*, a named group of related items
-such as the latitude and longitude of a geographic coordinate, or the set of
-properties of an object. In addition to its individual items, every container
-has *multiplicity* attributes, including limits on the number of items,
-whether the items have a sequential ordering, and whether duplicate items
-are allowed.
-
-The JADN compound types and their options are chosen for an IM based on the
-information characteristics to be modeled:
-
-* Array and ArrayOf contain a group of values.
-* Map, MapOf and Record contain a group of keys and corresponding values (a mapping)
-* All items in ArrayOf and MapOf groups have the same value (and key) type
-* Each item in Array, Map, and Record groups has an individual value (and key) type
-
-and the decision tree for which compound type to use is shown in Table 3-1:
-
-###### Table 3-1 -- Compound Type Decision Tree
-
-| Value / Mapping | Same / Individual | JADN Type                |
-|:---------------:|:-----------------:|:------------------------:|
-|      Value      |       Same        | ArrayOf(ValueType)       |
-|      Value      |    Individual     | Array                    |
-|    Key:Value    |       Same        | MapOf(KeyType, ValueType)|
-|    Key:Value    |    Individual     | Map or Record            |
-
-For the last information type - containers of individually-defined key:value pairs -
-JADN provides two types: Map and Record. The difference is that Record keys have a
-sequential ordering while Map keys do not. Map instances are always serialized as
-key:value pairs, while Record instances may be serialized as either key:value pairs
-or table rows with values in column position, depending on data format.
-
-For example if Location is a Record type:
-```
-Location = Record
-  1 name       String
-  2 state      String
-  3 latitude   Number
-  4 longitude  Number
-```
-its instances are serialized using *verbose* JSON data format as:
-```json
-[
-  {
-    "name": "St. Louis",
-    "state": "Missouri",
-    "latitude": "38.627003",
-    "longitude": "-90.199402"
-  },
-  {
-    "name": "Seattle",
-    "state": "Washington",
-    "latitude": "47.60621",
-    "longitude": "-122.33207"
-  }
-]
-```
-The same Record values are serialized using *compact* JSON data format (where the column
-positions are 1: name, 2: state, 3: latitude, 4: longitude) as:
-```json
-[
-  ["St. Louis", "Missouri", "38.627003", "-90.199402"],
-  ["Seattle", "Washington", "47.60621", "-122.33207"]
-]
-```
-If Location is a Map type, its instances are always serialized as
-key:value pairs regardless of data format, the same as a Record
-in verbose JSON.
-
-**
-
-Another significant UML concept is that JADN distinguishes among
-all four multiplicity types ([[UML](#uml)], Table 7.1), while
-logical models typically support only sets. Table 3-2 replicates
-the information from UML Table 7.1 and adds the equivalent JADN
-types. Note that the UML Specification cites the "traditional
-names" in its "Collection Type" column.
-
-###### Table 3-2 -- Multiplicity Types
-
-| **isOrdered** | **isUnique** | **Collection<br>Type** |    **JADN Type**   |
-|:-------------:|:------------:|:----------------------:|:------------------:|
-|    _false_    |    _true_    |           Set          | ArrayOf+set, MapOf |
-|     _true_    |    _true_    |       OrderedSet       |   ArrayOf+unique   |
-|    _false_    |    _false_   |           Bag          |  ArrayOf+unordered |
-|     _true_    |    _false_   |        Sequence        |       ArrayOf      |
-
-
-JADN accepts the UML philosophy that schemas are classifiers that
-take a unit of data and determine whether it is an instance of a
-datatype, and recognizes the idea of generalization ([[UML](#uml)],
-9.9.7) through use of the Choice type.
-
-Beyond these UML concepts, JADN recognizes that information
-models are directed graphs with a small predefined set of core
-datatypes and only two kinds of relationship: "contain" and
-"reference".
-
 ### 3.1.1 Type Definitions
 
-Figure 3-2 summarizes the structure of a JADN Type Definition,
-and identifies values for each of the five elements in the
-definition; the elements must appear in the order listed here.
-The five elements are:
+Figure 3-2 summarizes the structure of a JADN Type Definition, and identifies
+values for each of the five elements in the definition. As noted above, a Type
+Definition is an array; the elements must appear in the order listed here. The
+five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
 that type.
- 2. The **BaseType** of the type, which is one the twelve core
+ 2. The **BaseType** for the definition, which must be one the twelve core
     types shown in Figure 3-2.
  3. Zero or more of the available JADN **TypeOptions** that
     refine the core types to fit particular needs.
  4. An optional **TypeDescription** string that provides
     additional information about the type.
- 5. For any of the Compound types, Enumerated, or Choice, a set
+ 5. For structured compound types and union types, a set
     of **Item** or **Field** options that define the items that
     comprise the compound type.
 
 ###### Figure 3-2 -- JADN Type Definition Structure
-![JADN Type Definition Structure](images/JADN-Structure_Overlay.png)
+![JADN Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
 
+#### 3.1.1.1 TypeNames and BaseTypes
+
+The first two elements of a type definition are the **TypeName** and **BaseType**. 
 A firm requirement of JADN is that a TypeName in a schema must not be a JADN
-predefined type. There are also conventions intended to improve
+predefined (i.e., core) type. There are also name formatting conventions intended to improve
 the consistency and readability of JADN specifications. These
 conventions are defined in JADN but can be overridden within a
-JADN schema if desired (see section 3.1.2 of the
+JADN schema if desired (see Section&nbsp;3.1.2 of the
 [[JADN Specification](#jadn-v10)]):
 
  - **TypeNames** are written in PascalCase or Train-Case (using
@@ -1013,14 +914,15 @@ JADN schema if desired (see section 3.1.2 of the
    processing a JADN model; it is not normally used by JADN
    schema authors.
 
+The BaseType must be one of the twelve JADN core types previously identified.
 
-### 3.1.2 TypeOptions
+#### 3.1.1.2 TypeOptions
 
 The third element of a JADN type definition is an array of zero
-or more of the TypeOptions defined in section 3.2.1 of the
+or more of the TypeOptions defined in Section&nbsp;3.2.1 of the
 [[JADN Specification](#jadn-v10)]. JADN includes options for both
 _types_ (discussed in this section) and _fields_ (discussed in
-[section 3.1.4](#314-field-options)). As explained in the JADN
+[Section&nbsp;3.1.1.4](#3114-field-options)). As explained in the JADN
 Specification:
 
 > Each option is a text string that may be included in
@@ -1035,11 +937,12 @@ BaseType to define valid instances of that string type using a
 regular expression conforming to [[ECMAScript](#ecmascript)]
 grammar.
 
-Table 3-3 lists the complete set of type options, including the
-option name, type, ID character, and description. The ID
-characters are used in standard JADN representation 
-([section 3.1.5.1](#3151-native-json-representation)) when specifying type
-options.
+Table 3-3 lists the complete set of type options, including the option name,
+type, ID character, and description. Note that the ID characters are the normative form and are used in
+standard JADN representation ([Section&nbsp;3.1.5.1](#3151-native-json-representation)) 
+when specifying type options. The text labels for the options (e.g., vtype,
+ktype, pattern) are non-normative and intended to be human friendly. Many of the
+Type and Field options labels have JSON Schema and XML Schema equivalents.
 
 ###### Table 3-3 -- JADN Type Options
 
@@ -1064,58 +967,6 @@ options.
 
 Detailed explanations of each type option can be found in
 Sections 3.2.1.1 through 3.2.1.12 of the [[JADN Specification](#jadn-v10)].
-
-The `minv` and `maxv` type options are distinctive in that they
-can apply to both primitive and compound types, with a different
-meaning in these two applications:
-
- - When applied to a primitive type (Binary, Integer or String),
-   the `minv` and `maxv` type options constrain the *values* an
-   instance of that type may hold. Specifically, when applied to:
-   - An Integer type, the `minv` and `maxv` type options constrain
-     the numeric values an instance of that type may hold.
-   - A String type, the `minv` and `maxv` type options constrain the
-     number of characters in the string.
-   - A Binary type, the `minv` and `maxv` type options constrain the
-     number of octets (bytes) in the binary value.
-   
-For example, the following specifies an Integer type that can be
-assigned values between `1` and `1000`, using both JADN (see
-[section 3.5.1.1](#3151-native-json-representation)) and JIDL
-notation (see [section
-3.5.1.2](#3152-alternative-jadn-representations)):
-
-```
-["count","integer",["{1", "}1000"], "count of objects",[]]
-
-// define a restricted count value
-  count = integer {1..1000}  // count of objects
-```
-
- - When applied to a compound type (Array, ArrayOf, Map, MapOf,
-   Record), the `minv` and `maxv` type options constrain the
-   *number of elements* an instance of that type may have. For
-   example, the following specifies a Record type that must have
-   at least two fields populated, even though only one field is
-   required (fields `field_2` and `field_3` are indicated as
-   optional by the `["[0"]` *field* option 
-   [see [Section 3.1.4](#314-field-options)]):
-
-```
-["RecordType", "Record", ["{2"], "requires field_1 and either or both field_2 and field_3", [
-  [1, "field_1", "String", [], ""],
-  [2, "field_2", "String", ["[0"], ""],
-  [3, "field_3", "String", ["[0"], ""],
-]]
-
-
-RecordType = Record {2..*} // requires field_1 and either or both field_2 and field_3
-  1 field_1   String
-  2 field_2   String optional
-  3 field_3   String optional  
-```
-
-
 Table 3-4 summarizes the applicability of type options to JADN core types.
 
 ###### Table 3-4 -- Type Option Applicability
@@ -1139,17 +990,15 @@ Table 3-4 summarizes the applicability of type options to JADN core types.
 |    extend |        |         |         |        |        |   X   |         |  X  |       |   X    |   X    |     X      |
 |   default |        |         |         |        |        |       |         |     |       |        |        |            |
 
-### 3.1.3 Item Or Field Definitions
+#### 3.1.1.3 Item Or Field Definitions
 
 The use of the **Fields** element to convey Item or Field
 Definitions is dependent on the **BaseType** selected, as
-illustrated in [Figure
-3-2](#figure-3-2----jadn-type-definition-structure). The rules
+illustrated in [Figure 3-2](#figure-3-2----jadn-type-definition-structure). The rules
 pertaining to the **Fields** array are as follows:
 
 * If the **BaseType** is a Primitive type, ArrayOf, or MapOf, no
   fields are permitted (i.e., the **Fields** array must be empty).
-
 
 * If the **BaseType** is Enumerated, the fields for each item
   definition in the **Fields** array are described with three
@@ -1173,14 +1022,18 @@ pertaining to the **Fields** array are as follows:
        field
     5. **FieldDescription:** a non-normative comment
 
-### 3.1.4 Field Options
+The selection of Map or Record for a type definition carries 
+serialization implications, which are discussed in 
+[Section&nbsp;3.1.X.2](#31x2-selection-and-use-of-jadn-compound-types).
+
+#### 3.1.1.4 Field Options
 
 Compound types containing Items or Fields support field options
-in addition to the type options described in [Section
-3.1.2](#312-typeoptions). JADN defines six field options. As with
-the type options described in [section 3.1.2](#312-typeoptions),
-the ID characters are used in standard JADN representation
-([section 3.1.5.1](#3151-native-json-representation)) when
+in addition to the type options described in [Section&nbsp;3.1.1.2](#3112-typeoptions). 
+JADN defines six field options. As with
+the type options described in Section&nbsp;3.1.1.2,
+the ID characters are normative and used in standard JADN representation
+([Section&nbsp;3.1.5.1](#3151-native-json-representation)) when
 specifying field options. Table 3-5 lists the JADN field options.
 
 ###### Table 3-5 -- JADN Field Options
@@ -1194,187 +1047,12 @@ specifying field options. Table 3-5 lists the JADN field options.
 |    key     |  Boolean   |   `K`    | Field is a primary key for this type                          |         3.3.6         |
 |    link    |  Boolean   |   `L`    | Field is a foreign key reference to a type instance           |         3.3.6         |
 
-The type options described in [Section 3.1.2](#312-typeoptions) can also apply
+The type options described in [Section&nbsp;3.1.1.2](#3112-typeoptions) can also apply
 to fields, with the constraint that the type option must be applicable to the
-field's type, as described in the core type examples in [Section 3.1.7](#317-base-type-examples). 
+field's type, as described in the core type examples in [Section&nbsp;3.1.7](#317-base-type-examples). 
 The application of a type option to a field
 triggers an "anonymous" type definition when the JADN model is processed, as
-described in [Section 3.1.6](#316-anonymous-type-definitions).
-
-### 3.1.5 JADN Representations
-
-The native format of JADN is JSON, but JADN content can be represented in other
-ways that are often easier to edit or more useful for documentation. This
-section describes the JSON content used for each of the JADN basic types (in
-3.1.5.1) and the available alternative representations (in 3.1.5.2). An
-illustration of each of the representations for a simple model is presented in
-[Section&nbsp;3.3.2](#332-multiple-representations-example).
-
-#### 3.1.5.1 Native JSON Representation
-
-This section illustrates the JSON representations of the Base
-Types described in [Section 3.1](#31-jadn-overview). Depictions
-are provided for overall structure of a JADN schema and for 
-each of three ways that the **Fields** array is
-used, depending on the core type used in a particular type
-definition.
-
-Figure 3-3 illustrates the top-level structure of a native JADN schema document,
-as described in [Section 3.1](#31-jadn-overview).
-
-###### Figure 3-3 -- JADN Schema Top-Level Structure
-![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
-
-Figure 3-4 illustrates the structure of JADN for defining any
-Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
-the **Fields** array is empty:
-
-###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
-![JADN for Primitive, ArrayOf, MapOf
-Types](images/JADN-primitive-json.drawio.png)
-
-
-Figure 3-5 illustrates the structure of JADN for defining an
-Enumerated **BaseType**; for enumerations each item definition in the
-**Fields** array has three elements:
-
-###### Figure 3-5 -- JADN for Enumerated Types
-![JADN for Enumerated
-Types](images/JADN-with-items-json.drawio.png)
-
-
-Figure 3-6 illustrates the structure of JADN for defining a
-**BaseType** of Array, Choice, Map, or Record; for these types each
-field definition in the **Fields** array has five elements:
-
-###### Figure 3-6 -- JADN for Types with Fields
-![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
-
-
-#### 3.1.5.2 Alternative JADN Representations
-
-The [[JADN Specification](#jadn-v10)] identifies three formats
-(Section 5) in addition to the native format:
-
- - JADN Interface Definition Language (JIDL)
- - Property Tables
- - Entity Relationship Diagrams (ERDs)
-
-Figure 3-6a identifies the various representations. 
-The formal definitions of each of these types are found in
-sections 5.1, 5.2, and 5.3, respectively, of the 
-[[JADN Specification](#jadn-v10)].
-
-###### Figure 3-6a -- JADN Representations
-![JADN Representations](images/JADN-Representations.drawio.png)
-
-Automated tooling makes it straightforward to translate among all
-four of these formats in a lossless manner, and each format has
-its advantages:
-
- - JADN in native JSON format can be readily processed by common
-   JSON tooling.
- - JADN in table style presentation is often used in
-specifications (e.g., as property tables such as are commonly
-found in specifications).
- - JADN presented in entity relationship diagrams aids with
-visualization of an information model.
- - JADN in JIDL format, a simple text structure, is easy to edit,
-making it a good format for both the initial creation and the
-documentation of a JADN model. JIDL is also more compact than
-table style presentation.
-
-The table style and ERD representations can be readily generated
-in an automated manner by translating the JADN schema to source
-code for rendering in various formats. For example, tables can be
-created using Markdown or HTML code, and ERDs can be created from
-code for rendering engines such as [[Graphviz](#graphviz)] or
-[[PlantUML](#plantuml)].
-
-##### 3.1.5.2.1  Array "Field Names" in JIDL
-
-When defining elements of type Array or Enum.ID in JIDL, no field
-names are used. These types are defined using a field ID and a
-TypeName. For documentation and debugging purposes a FieldName
-can be included in the JIDL comment field, immediately following
-the `//` and followed by a double colon delimiter (i.e., `::`).
-For more information see the [[JADN Specification](#jadn-v10)]
-descriptions of Field Identifiers (section 3.2.1.1) and JADN-IDL
-format (section 5.1). Here is a brief JIDL example of this format:
-
-```
-Publication-Data = Array         // who and when of publication
-    1 String          // label:: name of record label 
-    2 String /date    // rel_date:: and when did they let this drop
-```
-
-
-
-### 3.1.6 "Anonymous" Type Definitions
-
-The [[JADN Specification](#jadn-v10)] conformance statement
-(section 7) separates the definition of JADN into "Core JADN"
-(sections 3.1, 3.2, 4, and 6) and "JADN Extensions" (section
-3.3). Section 3.3 explains that extensions "make type definitions
-more compact or support the Don't Repeat Yourself (DRY) software
-design principle. Extensions are syntactic sugar that can be
-replaced by core definitions without changing their meaning."
-While the implementation of extensions by JADN tools is optional,
-in a conformance sense, the availability of extensions reduces
-the level of effort required by a JADN schema author and can make
-a schema more compact and understandable.
-
-The JADN Specification also defines a "system character" (by
-default the dollar sign, `$`) and in the Name Formats (section
-3.1.2) reserves the use of that character to automated tooling,
-saying "Schema authors should not create TypeNames containing the
-System character, but schema processing tools may do so".
-
-Examples of the use of extensions and the role of the system
-character are provided in sections 3.3.1, 3.3.2, and 3.3.2 of the
-JADN Specification. As noted in [Section 3.1.4](#314-field-options), 
-JADN Type Options can be applied to
-fields in compound types, but as explained in section 3.3.1 of
-the JADN Specification, this is an extension that leads to the
-anonymous definition of a new type when processed by automated
-tooling. The example provided there is:
-
-```
-Member = Record
-  1 name         String
-  2 email        String /email
-```
-Unfolding replaces this with:
-```
-Member = Record
-  1 name         String
-  2 email        Member$email
-    
-Member$email = String /email    // Tool-generated type definition.
-```
-The type definition for `Member$email` was generated by the
-tooling, as both noted in the comment and indicated by the
-presence of the `$` character in the type name. The same result
-could be achieved in Core JADN by defining a separate `Email`
-type:
-
-```
-Member = Record
-  1 name         String
-  2 email        Email
-    
-Email = String /email
-```
-
-The author(s) of an IM can determine whether the use of anonymous
-type definitions generated by JADN tooling improves the clarity
-of an model. For the example above, defining an email type that
-can be referenced throughout the model would likely be better
-than multiple, equivalent anonymous email types. In other cases
-the readability of the model can benefit from concisely written
-JADN (or JIDL) that relies on the tooling to generate the
-necessary types.
-
+described in [Section&nbsp;3.1.X.1](#31x1-anonymous-type-definitions).
 
 ### 3.1.7 Core Type Examples
 
@@ -1432,8 +1110,8 @@ Binary type:
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
 | eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [EUI](#eui) |
-| ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc791) Section 3.1 |
-| ipv6-addr    | Binary | IPv6 address as specified in [RFC 8200](#rfc8200)  Section 3 |
+| ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc791) Section&nbsp;3.1 |
+| ipv6-addr    | Binary | IPv6 address as specified in [RFC 8200](#rfc8200)  Section&nbsp;3 |
 
 #### 3.1.7.2 Boolean
 
@@ -1518,7 +1196,6 @@ UnlimitedNatural.
 Table 3-7 lists the *format* options applicable to the Integer type:
 
 ###### Table 3-7 -- Integer Type Format Options
-
 
 | Keyword  | Type    | Requirement                                                                               |
 |----------|---------|-------------------------------------------------------------------------------------------|
@@ -1644,7 +1321,7 @@ presentations of a String with an associated pattern:
 Barcode = String{pattern="^\d{12}$"}    // A UPC-A barcode is 12 digits
 ```
 
-The JADN Specification states (section 3.2.1.6):
+The JADN Specification states (Section&nbsp;3.2.1.6):
 
 > The *pattern* value SHOULD conform to the Pattern grammar of
 > ECMAScript Section 21.2.
@@ -1752,7 +1429,7 @@ IdentityType = Choice                // Nature of the referenced identity
    3 tool             Tool           // Identity refers to an automated tool
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions
+> EDITOR'S NOTE:  need examples of applying the TypeOptions include the v1.1 enhancements.
 
 
 #### 3.1.7.8 Array
@@ -1783,8 +1460,8 @@ The **Array** type is used to represent information
 where it is appropriate to group related information elements
 together, even if the elements of the array are heterogeneous.
 Each element in the array is defined as a field, using the field
-definitions described in [Section 3.1.3](#313-item-or-field-definitions) and refined using the
-field options described in [Section 3.1.4](#314-field-options).
+definitions described in [Section&nbsp;3.1.3](#3113-item-or-field-definitions) and refined using the
+field options described in [Section&nbsp;3.1.4](#3114-field-options).
 An information item fitting the Array core type would be defined
 as follows:
 
@@ -1809,7 +1486,7 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
 ```
 
 The example above illustrates the positioning of Array "field names" within the
-JIDL comments, as described in [Section 3.1.5.2.1](#31521-array-field-names-in-jidl).
+JIDL comments, as described in [Section&nbsp;3.1.5.2.1](#31521-array-field-names-in-jidl).
 
 Table 3-9 lists the *format* options applicable to the Array type:
 
@@ -1817,7 +1494,7 @@ Table 3-9 lists the *format* options applicable to the Array type:
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
-| ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [RFC 4632](#rfc4632) Section 3.1 |
+| ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [RFC 4632](#rfc4632) Section&nbsp;3.1 |
 | ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [RFC 4291](#rfc4291) Section 2.3 |
 
 The `ipv4-net` and `ipv6-net` format options impose several constraints when applied to an Array type:
@@ -1858,7 +1535,7 @@ elements together. The fields of the array are defined by the
 fitting the ArrayOf core type would be defined as follows. This
 example uses an explicit ArrayOf type derived using the 
 multiplicity extension on the "tracks" field of Album, as shown in
-[Section 3.3.1](#331-example-1-a-digital-music-library)):
+[Section&nbsp;3.3.1](#331-example-1-a-digital-music-library)):
 
 ```json
 [
@@ -1949,7 +1626,7 @@ defines that there is a minimum number of required fields even
 though every individual field is optional. An empty `Hashes` map is
 invalid, but a map where any one or more of the three hash types
 exists is valid. This is an example of one application of _minv_,
-_maxv_, as described above in [Section 3.1.2](#312-typeoptions).
+_maxv_, as described above in [Section&nbsp;3.1.X.4](#31x4-application-of-minv--maxv).
 
 
 
@@ -2077,13 +1754,510 @@ IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tc
    5 protocol         L4-Protocol optional        // Layer 4 protocol (e.g., TCP)
 ```
 
-As with the `Map` example in [Section 3.1.7.10](#31710-map), the
+As with the `Map` example in [Section&nbsp;3.1.7.10](#31710-map), the
 cardinality of `{1..*}` for the `Record` defines that there is a
 minimum number of required fields even though every individual
 field is optional. An empty IPv4-Connection record is invalid,
 but an IPv4-Connection record where any one or more of the five
 fields exists is valid.
 
+
+### 3.1.5 JADN Representations
+
+The native format of JADN is JSON, but JADN content can be
+represented in other ways that are often easier to edit or more
+useful for documentation. This section describes the JSON content
+used for each of the JADN basic types, and then illustrates the
+other representations using a simple example.
+
+#### 3.1.5.1 Native JSON Representation
+
+This section illustrates the JSON representations of the Base
+Types described in [Section&nbsp;3.1](#31-jadn-overview). Depictions
+are provided for overall structure of a JADN schema and for 
+each of three ways that the **Fields** array is
+used, depending on the core type used in a particular type
+definition.
+
+Figure 3-3 illustrates the top-level structure of a native JADN schema document,
+as described in [Section&nbsp;3.1](#31-jadn-overview).
+
+###### Figure 3-3 -- JADN Schema Top-Level Structure
+![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
+
+Figure 3-4 illustrates the structure of JADN for defining any
+Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
+the **Fields** array is empty:
+
+###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
+![JADN for Primitive, ArrayOf, MapOf
+Types](images/JADN-primitive-json.drawio.png)
+
+
+Figure 3-5 illustrates the structure of JADN for defining an
+Enumerated **BaseType**; for enumerations each item definition in the
+**Fields** array has three elements:
+
+###### Figure 3-5 -- JADN for Enumerated Types
+![JADN for Enumerated
+Types](images/JADN-with-items-json.drawio.png)
+
+
+Figure 3-6 illustrates the structure of JADN for defining a
+**BaseType** of Array, Choice, Map, or Record; for these types each
+field definition in the **Fields** array has five elements:
+
+###### Figure 3-6 -- JADN for Types with Fields
+![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
+
+
+#### 3.1.5.2 Alternative JADN Representations
+
+The [[JADN Specification](#jadn-v10)] identifies three formats
+(Section 5) in addition to the native format:
+
+ - JADN Interface Definition Language (JIDL)
+ - Property Tables
+ - Entity Relationship Diagrams (ERDs)
+
+Figure 3-6a identifies the various representations. 
+The formal definitions of each of these types are found in
+sections 5.1, 5.2, and 5.3, respectively, of the 
+[[JADN Specification](#jadn-v10)].
+
+###### Figure 3-6a -- JADN Representations
+![JADN Representations](images/JADN-Representations.drawio.png)
+
+Automated tooling makes it straightforward to translate among all
+four of these formats in a lossless manner, and each format has
+its advantages:
+
+ - JADN in native JSON format can be readily processed by common
+   JSON tooling.
+ - JADN in table style presentation is often used in
+specifications (e.g., as property tables such as are commonly
+found in specifications).
+ - JADN presented in entity relationship diagrams aids with
+visualization of an information model.
+ - JADN in JIDL format, a simple text structure, is easy to edit,
+making it a good format for both the initial creation and the
+documentation of a JADN model. JIDL is also more compact than
+table style presentation.
+
+The table style and ERD representations can be readily generated
+in an automated manner by translating the JADN schema to source
+code for rendering in various formats. For example, tables can be
+created using Markdown or HTML code, and ERDs can be created from
+code for rendering engines such as [[Graphviz](#graphviz)] or
+[[PlantUML](#plantuml)].
+
+##### 3.1.5.2.1  Array "Field Names" in JIDL
+
+When defining elements of type Array or Enum.ID in JIDL, no field
+names are used. These types are defined using a field ID and a
+TypeName. For documentation and debugging purposes a FieldName
+can be included in the JIDL comment field, immediately following
+the `//` and followed by a double colon delimiter (i.e., `::`).
+For more information see the [[JADN Specification](#jadn-v10)]
+descriptions of Field Identifiers (Section&nbsp;3.2.1.1) and JADN-IDL
+format (section 5.1). Here is a brief JIDL example of this format:
+
+```
+Publication-Data = Array         // who and when of publication
+    1 String          // label:: name of record label 
+    2 String /date    // rel_date:: and when did they let this drop
+```
+
+
+#### 3.1.5.3 Multiple Representations Example
+
+The [[JADN Specification](#jadn-v10)], section 5.3,
+uses a simple example of an IM for a university to illustrate the
+use of ERDs for IMs. This section uses that ERD as a starting
+point for an example to illustrate the various JADN
+representations described in [Section&nbsp;3.1.5.2](#3152-alternative-jadn-representations). The example
+begins with the ERD for the model:
+
+###### Figure 3-7 -- Simple University Example ERD
+
+<img src="images/university-erd.png" height="600px">
+
+The package (see [Section 4.1](#41-packages-and-namespaces)) 
+containing the JADN corresponding to the above ERD is shown here:
+
+###### Figure 3-8 -- Simple University Example JADN (JSON format)
+```json
+{
+ "info": {
+  "package": "http://example.com/uni",
+  "exports": ["University"]
+ },
+
+ "types": [
+  ["University", "Record", [], "A place of learning", [
+    [1, "name", "String", [], "University Name"],
+    [2, "classes", "ArrayOf", ["*Class"], "Available classes"],
+    [3, "people", "ArrayOf", ["*Person"], "Students and faculty"]
+  ]],
+
+  ["Class", "Record", [], "Pertinent info about classes", [
+    [1, "name", "String", [], "Name of class"],
+    [2, "room", "String", [], "Where it happens"],
+    [3, "teachers", "Person", ["L", "]0", "q"], "Teacher(s) for this class"],
+    [4, "students", "Person", ["L", "]0", "q"], "Students attending this class"],
+    [5, "syllabus", "String", ["/uri"], "Link to class syllabus on the web"]
+  ]],
+
+  ["Person", "Record", [], "", [
+    [1, "name", "String", [], "Student / faculty member name"],
+    [2, "univ_id", "UnivId", ["K"], "Unique ID for student / faculty member"],
+    [3, "email", "String", ["/email"], "Student / faculty member email"]
+  ]],
+
+  ["UnivId", "String", ["%^U-\\d{6}$"], "University ID (U-nnnnnn)", []]
+ ]
+}
+```
+
+Converting the JSON to JIDL yields a representation that is both
+more readable and easier to edit:
+
+###### Figure 3-9 -- Simple University Example JADN (JIDL format)
+
+```
+     package: "http://example.com/uni"
+     exports: ["University"]
+
+University = Record                               // A place of learning
+   1 name             String                      // University Name
+   2 classes          ArrayOf(Class)              // Available classes
+   3 people           ArrayOf(Person)             // Students and faculty
+
+Class = Record                                    // Pertinent info about classes
+   1 name             String                      // Name of class
+   2 room             String                      // Where it happens
+   3 teachers         Link(Person unique) [1..*]  // Teacher(s) for this class
+   4 students         Link(Person unique) [1..*]  // Students attending this class
+   5 syllabus         String /uri                 // Link to class syllabus on the web
+
+Person = Record
+   1 name             String                      // Student / faculty member name
+   2 univ_id          Key(UnivId)                 // Unique ID for student / faculty member
+   3 email            String /email               // Student / faculty member email
+
+UnivId = String{pattern="^U-\d{6}$"}              // University ID (U-nnnnnn)
+```
+
+Property tables are a common representation of data structures in
+specifications. JADN is easily converted to property tables,
+which are quite readable but somewhat more challenging to edit
+than JIDL (the package information has been omitted from the set
+of property tables).
+
+###### Figure 3-10 -- Simple University Example JADN (table format)
+
+A place of learning
+
+**Type: University (Record)**
+
+| ID | Name        | Type            | \# | Description          |
+|----|-------------|-----------------|----|----------------------|
+| 1  | **name**    | String          | 1  | University Name      |
+| 2  | **classes** | ArrayOf(Class)  | 1  | Available classes    |
+| 3  | **people**  | ArrayOf(Person) | 1  | Students and faculty |
+
+Pertinent info about classes
+
+**Type: Class (Record)**
+
+| ID | Name         | Type                | \#    | Description                       |
+|----|--------------|---------------------|-------|-----------------------------------|
+| 1  | **name**     | String              | 1     | Name of class                     |
+| 2  | **room**     | String              | 1     | Where it happens                  |
+| 3  | **teachers** | Link(Person unique) | 1..\* | Teacher(s) for this class         |
+| 4  | **students** | Link(Person unique) | 1..\* | Students attending this class     |
+| 5  | **syllabus** | String /uri         | 1     | Link to class syllabus on the web |
+
+**Type: Person (Record)**
+
+| ID | Name        | Type          | \# | Description                            |
+|----|-------------|---------------|----|----------------------------------------|
+| 1  | **name**    | String        | 1  | Student / faculty member name          |
+| 2  | **univ_id** | Key(UnivId)   | 1  | Unique ID for student / faculty member |
+| 3  | **email**   | String /email | 1  | Student / faculty member email         |
+
+| Type Name  | Type Definition             | Description              |
+|------------|-----------------------------|--------------------------|
+| **UnivId** | String{pattern="^U-\d{6}$"} | University ID (U-nnnnnn) |
+
+
+Finally, the code to generate the ERD presented at the beginning
+of the example is easily generated from the JADN model.  In this
+specific example code for the widely-used GraphViz tool is
+provided.
+
+###### Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)
+```
+# package: http://example.com/uni
+# exports: ['University']
+
+digraph G {
+  graph [fontname=Arial, fontsize=12];
+  node [fontname=Arial, fontsize=8, shape=record, style=filled, fillcolor=lightskyblue1];
+  edge [fontname=Arial, fontsize=7, arrowsize=0.5, labelangle=45.0, labeldistance=0.9];
+  bgcolor="transparent";
+
+n0 [label=<{<b>University : Record</b>|
+  1 name : String<br align="left"/>
+  2 classes : ArrayOf(Class)<br align="left"/>
+  3 people : ArrayOf(Person)<br align="left"/>
+}>]
+
+n1 [label=<{<b>Class : Record</b>|
+  1 name : String<br align="left"/>
+  2 room : String<br align="left"/>
+  3 teachers : Link(Person unique) [1..*]<br align="left"/>
+  4 students : Link(Person unique) [1..*]<br align="left"/>
+  5 syllabus : String /uri<br align="left"/>
+}>]
+
+n2 [label=<{<b>Person : Record</b>|
+  1 name : String<br align="left"/>
+  2 univ_id : Key(UnivId)<br align="left"/>
+  3 email : String /email<br align="left"/>
+}>]
+
+n3 [label=<<b>UnivId : String{pattern="^U-\d{6}$"}</b>>, shape=ellipse, style=filled, fillcolor=palegreen]
+
+  n0 -> n1 [label=classes]
+  n0 -> n2 [label=people]
+  n1 -> n2 [label=teachers, style="dashed"]
+  n1 -> n2 [label=students, style="dashed"]
+  n2 -> n3 [label=univ_id]
+}
+```
+
+### 3.1.X Type Definition Nuances
+
+> EDITOR'S NOTE: section heading subject to change
+
+This section describes JADN usage details that add flexibility or simplify the
+development of IMs.
+
+#### 3.1.X.1 "Anonymous" Type Definitions
+
+The [[JADN Specification](#jadn-v10)] conformance statement
+(section 7) separates the definition of JADN into "Core JADN"
+(sections 3.1, 3.2, 4, and 6) and "JADN Extensions" (section
+3.3). Section&nbsp;3.3 explains that extensions "make type definitions
+more compact or support the Don't Repeat Yourself (DRY) software
+design principle. Extensions are syntactic sugar that can be
+replaced by core definitions without changing their meaning."
+While the implementation of extensions by JADN tools is optional,
+in a conformance sense, the availability of extensions reduces
+the level of effort required by a JADN schema author and can make
+a schema more compact and understandable.
+
+The JADN Specification also defines a "system character" (by
+default the dollar sign, `$`) and in the Name Formats (section
+3.1.2) reserves the use of that character to automated tooling,
+saying "Schema authors should not create TypeNames containing the
+System character, but schema processing tools may do so".
+
+Examples of the use of extensions and the role of the system
+character are provided in sections 3.3.1, 3.3.2, and 3.3.2 of the
+JADN Specification. As noted in [Section&nbsp;3.1.1.4](#3114-field-options), 
+JADN Type Options can be applied to
+fields in compound types, but as explained in Section&nbsp;3.3.1 of
+the JADN Specification, this is an extension that leads to the
+anonymous definition of a new type when processed by automated
+tooling. The example provided there is:
+
+```
+Member = Record
+  1 name         String
+  2 email        String /email
+```
+Unfolding replaces this with:
+```
+Member = Record
+  1 name         String
+  2 email        Member$email
+    
+Member$email = String /email    // Tool-generated type definition.
+```
+The type definition for `Member$email` was generated by the
+tooling, as both noted in the comment and indicated by the
+presence of the `$` character in the type name. The same result
+could be achieved in Core JADN by defining a separate `Email`
+type:
+
+```
+Member = Record
+  1 name         String
+  2 email        Email
+    
+Email = String /email
+```
+
+The author(s) of an IM can determine whether the use of anonymous
+type definitions generated by JADN tooling improves the clarity
+of an model. For the example above, defining an email type that
+can be referenced throughout the model would likely be better
+than multiple, equivalent anonymous email types. In other cases
+the readability of the model can benefit from concisely written
+JADN (or JIDL) that relies on the tooling to generate the
+necessary types.
+
+#### 3.1.X.2 Selection and Use of JADN Compound Types
+
+Each of the compound types is a *container*, a named group of related items
+such as the latitude and longitude of a geographic coordinate, or the set of
+properties of an object. In addition to its individual items, every container
+has *multiplicity* attributes, including limits on the number of items,
+whether the items have a sequential ordering, and whether duplicate items
+are allowed.
+
+The JADN compound types and their options are chosen for an IM based on the
+information characteristics to be modeled:
+
+* Array and ArrayOf contain a group of values.
+* Map, MapOf and Record contain a group of keys and corresponding values (a mapping)
+* All items in ArrayOf and MapOf groups have the same value (and key) type
+* Each item in Array, Map, and Record groups has an individual value (and key) type
+
+and the decision tree for which compound type to use is shown in Table 3-1:
+
+###### Table 3-1 -- Compound Type Decision Tree
+
+|                     |      **Value**     |       **Key:Value**       |
+|:-------------------:|:------------------:|:-------------------------:|
+|    **Same Type**    | ArrayOf(ValueType) | MapOf(KeyType, ValueType) |
+| **Individual Type** |        Array       |       Map or Record       |
+
+For the last information type - containers of individually-defined key:value pairs -
+JADN provides two types: Map and Record. The difference is that Record keys have a
+sequential ordering while Map keys do not. Map instances are always serialized as
+key:value pairs, while Record instances may be serialized as either key:value pairs
+or table rows with values in column position, depending on data format.
+
+For example if Location is a Record type:
+```
+Location = Record
+  1 name       String
+  2 state      String
+  3 latitude   Number
+  4 longitude  Number
+```
+its instances are serialized using *verbose* JSON data format as:
+```json
+[
+  {
+    "name": "St. Louis",
+    "state": "Missouri",
+    "latitude": "38.627003",
+    "longitude": "-90.199402"
+  },
+  {
+    "name": "Seattle",
+    "state": "Washington",
+    "latitude": "47.60621",
+    "longitude": "-122.33207"
+  }
+]
+```
+The same Record values are serialized using *compact* JSON data format (where the column
+positions are 1: name, 2: state, 3: latitude, 4: longitude) as:
+```json
+[
+  ["St. Louis", "Missouri", "38.627003", "-90.199402"],
+  ["Seattle", "Washington", "47.60621", "-122.33207"]
+]
+```
+If Location is a Map type, its instances are always serialized as
+key:value pairs regardless of data format, the same as a Record
+in verbose JSON.
+
+#### 3.1.X.3  JADN Handling of UML Multiplicity Options
+
+Another significant UML concept is that JADN distinguishes among
+all four multiplicity types ([[UML](#uml)], Table 7.1), while
+logical models typically support only sets. Table 3-2 replicates
+the information from UML Table 7.1 and adds the equivalent JADN
+types. Note that the UML Specification cites the "traditional
+names" in its "Collection Type" column.
+
+###### Table 3-2 -- Multiplicity Types
+
+| **isOrdered** | **isUnique** | **Collection<br>Type** |    **JADN Type**   |
+|:-------------:|:------------:|:----------------------:|:------------------:|
+|    _false_    |    _true_    |           Set          | ArrayOf+set, MapOf |
+|     _true_    |    _true_    |       OrderedSet       |   ArrayOf+unique   |
+|    _false_    |    _false_   |           Bag          |  ArrayOf+unordered |
+|     _true_    |    _false_   |        Sequence        |       ArrayOf      |
+
+
+JADN accepts the UML philosophy that schemas are classifiers that
+take a unit of data and determine whether it is an instance of a
+datatype, and recognizes the idea of generalization ([[UML](#uml)],
+9.9.7) through use of the Choice type.
+
+Beyond these UML concepts, JADN recognizes that information
+models are directed graphs with a small predefined set of core
+datatypes and only two kinds of relationship: "contain" and
+"reference".
+
+#### 3.1.X.4 Application of `minv / maxv`
+
+The `minv` and `maxv` type options are distinctive in that they
+can apply to both primitive and compound types, with a different
+meaning in these two applications:
+
+ - When applied to a primitive type (Binary, Integer or String),
+   the `minv` and `maxv` type options constrain the *values* an
+   instance of that type may hold. Specifically, when applied to:
+   - An Integer type, the `minv` and `maxv` type options constrain
+     the numeric values an instance of that type may hold.
+   - A String type, the `minv` and `maxv` type options constrain the
+     number of characters in the string.
+   - A Binary type, the `minv` and `maxv` type options constrain the
+     number of octets (bytes) in the binary value.
+   
+For example, the following specifies an Integer type that can be
+assigned values between `1` and `1000`, using both JADN (see
+[Section&nbsp;3.5.1.1](#3151-native-json-representation)) and JIDL
+notation (see [section
+3.5.1.2](#3152-alternative-jadn-representations)):
+
+```
+["count","integer",["{1", "}1000"], "count of objects",[]]
+
+// define a restricted count value
+  count = integer {1..1000}  // count of objects
+```
+
+ - When applied to a compound type (Array, ArrayOf, Map, MapOf,
+   Record), the `minv` and `maxv` type options constrain the
+   *number of elements* an instance of that type may have. For
+   example, the following specifies a Record type that must have
+   at least two fields populated, even though only one field is
+   required (fields `field_2` and `field_3` are indicated as
+   optional by the `["[0"]` *field* option 
+   [see [Section&nbsp;3.1.4](#3114-field-options)]):
+
+```
+["RecordType", "Record", ["{2"], "requires field_1 and either or both field_2 and field_3", [
+  [1, "field_1", "String", [], ""],
+  [2, "field_2", "String", ["[0"], ""],
+  [3, "field_3", "String", ["[0"], ""],
+]]
+
+
+RecordType = Record {2..*} // requires field_1 and either or both field_2 and field_3
+  1 field_1   String
+  2 field_2   String optional
+  3 field_3   String optional  
+```
 
 ## 3.2 Information Modeling Process
 
@@ -2640,7 +2814,7 @@ referencing types from the three external schemas .
 
 ## 4.2 Reference Relationships: Keys and Links
 
-As noted at the end of Section 3.1 of this CN, JADN recognizes
+As noted at the end of Section&nbsp;3.1 of this CN, JADN recognizes
 only two kinds of relationship: "contain" and "reference". The
 relationships shown in previous examples are all of the "contain"
 variety. The "reference" relationship type applies when using the
@@ -2661,7 +2835,7 @@ When recursion is used in programming it is terminated by a base
 condition, but an IM has no corresponding concept to terminate
 recursion. JADN uses "reference" relationships in situations
 where cycles occur in order to address this need. The method to
-define reference relationships is explained in Section 3.3.6,
+define reference relationships is explained in Section&nbsp;3.3.6,
 *Links*, of the [[JADN Specification](#jadn-v10)]. 
 
 Figure 4-1 illustrates permissible and impermissible "contains"
@@ -2683,7 +2857,7 @@ JADN tooling.
 
 ![Contains and References Relationships](images/contains-references.drawio.png)
 
-`Record J` in the lower right portion of the figure shows a self-referential `key / link` application. This is a generalization of the example from Section 3.3.6 of the JADN Specification, which allows for numerous relationships between objects of type `Person`:
+`Record J` in the lower right portion of the figure shows a self-referential `key / link` application. This is a generalization of the example from Section&nbsp;3.3.6 of the JADN Specification, which allows for numerous relationships between objects of type `Person`:
 
 ```
 Person = Record
@@ -2875,6 +3049,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-10-23 | David Lemire | Update namespaces discussion (4.1.2) with JADN v1.1 capabilities (PR #61) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-23 | David Lemire | Initial revisions to Section 3.1 to improve readability (PR #63) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-xx | David Lemire | Relocate multiple representations example (from 3.1.5.3 to 3.3.2) (PR #65) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-xx | David Lemire | Revise structure of Section 3.1 for improved clarity and sequencing (PR #66) |
 -------
 
 # Appendix D. Frequently Asked Questions (FAQ)
