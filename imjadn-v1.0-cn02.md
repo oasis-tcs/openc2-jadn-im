@@ -1197,7 +1197,6 @@ Table 3-7 lists the *format* options applicable to the Integer type:
 
 ###### Table 3-7 -- Integer Type Format Options
 
-
 | Keyword  | Type    | Requirement                                                                               |
 |----------|---------|-------------------------------------------------------------------------------------------|
 | i8       | Integer | Signed 8 bit integer, value must be between -128 and 127.                                 |
@@ -2497,6 +2496,181 @@ the model components connect.
 
 <img src="images/music-library-v1_1-detailed-ERD-GV.png" height="720px">
 
+### 3.3.2 Multiple Representations Example
+
+The [[JADN Specification](#jadn-v10)], section 5.3,
+uses a simple example of an IM for a university to illustrate the
+use of ERDs for IMs. This section uses that ERD as a starting
+point for an example to illustrate the various JADN
+representations described in [Section 3.1.5.2](#3152-alternative-jadn-representations). The example
+begins with the ERD for the model:
+
+###### Figure 3-7 -- Simple University Example ERD
+
+<img src="images/university-erd.png" height="600px">
+
+The package (see [Section 4.1](#41-packages-and-namespaces)) 
+containing the JADN corresponding to the above ERD is shown here:
+
+###### Figure 3-8 -- Simple University Example JADN (JSON format)
+```json
+{
+ "info": {
+  "package": "http://example.com/uni",
+  "exports": ["University"]
+ },
+
+ "types": [
+  ["University", "Record", [], "A place of learning", [
+    [1, "name", "String", [], "University Name"],
+    [2, "classes", "ArrayOf", ["*Class"], "Available classes"],
+    [3, "people", "ArrayOf", ["*Person"], "Students and faculty"]
+  ]],
+
+  ["Class", "Record", [], "Pertinent info about classes", [
+    [1, "name", "String", [], "Name of class"],
+    [2, "room", "String", [], "Where it happens"],
+    [3, "teachers", "Person", ["L", "]0", "q"], "Teacher(s) for this class"],
+    [4, "students", "Person", ["L", "]0", "q"], "Students attending this class"],
+    [5, "syllabus", "String", ["/uri"], "Link to class syllabus on the web"]
+  ]],
+
+  ["Person", "Record", [], "", [
+    [1, "name", "String", [], "Student / faculty member name"],
+    [2, "univ_id", "UnivId", ["K"], "Unique ID for student / faculty member"],
+    [3, "email", "String", ["/email"], "Student / faculty member email"]
+  ]],
+
+  ["UnivId", "String", ["%^U-\\d{6}$"], "University ID (U-nnnnnn)", []]
+ ]
+}
+```
+
+Converting the JSON to JIDL yields a representation that is both
+more readable and easier to edit:
+
+###### Figure 3-9 -- Simple University Example JADN (JIDL format)
+
+```
+     package: "http://example.com/uni"
+     exports: ["University"]
+
+University = Record                               // A place of learning
+   1 name             String                      // University Name
+   2 classes          ArrayOf(Class)              // Available classes
+   3 people           ArrayOf(Person)             // Students and faculty
+
+Class = Record                                    // Pertinent info about classes
+   1 name             String                      // Name of class
+   2 room             String                      // Where it happens
+   3 teachers         Link(Person unique) [1..*]  // Teacher(s) for this class
+   4 students         Link(Person unique) [1..*]  // Students attending this class
+   5 syllabus         String /uri                 // Link to class syllabus on the web
+
+Person = Record
+   1 name             String                      // Student / faculty member name
+   2 univ_id          Key(UnivId)                 // Unique ID for student / faculty member
+   3 email            String /email               // Student / faculty member email
+
+UnivId = String{pattern="^U-\d{6}$"}              // University ID (U-nnnnnn)
+```
+
+Property tables are a common representation of data structures in
+specifications. JADN is easily converted to property tables, which are quite
+readable but somewhat more challenging to edit than JIDL (the package
+information has been omitted from the set of property tables illustrated here).
+Each property table is preceeded by the comment on the type definition that
+created that table (e.g., the University Record type has the comment "A place of
+learning"). Those comments are set in italics in this example for clarity.
+
+###### Figure 3-10 -- Simple University Example JADN (table format)
+
+*A place of learning*
+
+**Type: University (Record)**
+
+| ID | Name        | Type            | \# | Description          |
+|----|-------------|-----------------|----|----------------------|
+| 1  | **name**    | String          | 1  | University Name      |
+| 2  | **classes** | ArrayOf(Class)  | 1  | Available classes    |
+| 3  | **people**  | ArrayOf(Person) | 1  | Students and faculty |
+
+*Pertinent info about classes*
+
+**Type: Class (Record)**
+
+| ID | Name         | Type                | \#    | Description                       |
+|----|--------------|---------------------|-------|-----------------------------------|
+| 1  | **name**     | String              | 1     | Name of class                     |
+| 2  | **room**     | String              | 1     | Where it happens                  |
+| 3  | **teachers** | Link(Person unique) | 1..\* | Teacher(s) for this class         |
+| 4  | **students** | Link(Person unique) | 1..\* | Students attending this class     |
+| 5  | **syllabus** | String /uri         | 1     | Link to class syllabus on the web |
+
+**Type: Person (Record)**
+
+| ID | Name        | Type          | \# | Description                            |
+|----|-------------|---------------|----|----------------------------------------|
+| 1  | **name**    | String        | 1  | Student / faculty member name          |
+| 2  | **univ_id** | Key(UnivI+d)   | 1  | Unique ID for student / faculty member |
+| 3  | **email**   | String /email | 1  | Student / faculty member email         |
+
+| Type Name  | Type Definition             | Description              |
+|------------|-----------------------------|--------------------------|
+| **UnivId** | String{pattern="^U-\d{6}$"} | University ID (U-nnnnnn) |
+
+
+Finally, the code to generate the ERD presented at the beginning of the example
+is easily generated from the JADN model.  In this specific example code for the
+widely-used GraphViz tool is provided. JADN tooling can created "diagram as
+text" code for GraphVIZ and PlantUML with varying levels of detail (i.e., Conceptual, Logical, Informational). 
+For example, contrast the simple conceptual view of the music libary in 
+[Figure 3-Concept](#figure-3-concept----music-library-conceptual-overview) with the
+detailed informational ERD at the start of this section 
+([Figure 3-7](#figure-3-7----simple-university-example-erd)).
+
+###### Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)
+```
+# package: http://example.com/uni
+# exports: ['University']
+
+digraph G {
+  graph [fontname=Arial, fontsize=12];
+  node [fontname=Arial, fontsize=8, shape=record, style=filled, fillcolor=lightskyblue1];
+  edge [fontname=Arial, fontsize=7, arrowsize=0.5, labelangle=45.0, labeldistance=0.9];
+  bgcolor="transparent";
+
+n0 [label=<{<b>University : Record</b>|
+  1 name : String<br align="left"/>
+  2 classes : ArrayOf(Class)<br align="left"/>
+  3 people : ArrayOf(Person)<br align="left"/>
+}>]
+
+n1 [label=<{<b>Class : Record</b>|
+  1 name : String<br align="left"/>
+  2 room : String<br align="left"/>
+  3 teachers : Link(Person unique) [1..*]<br align="left"/>
+  4 students : Link(Person unique) [1..*]<br align="left"/>
+  5 syllabus : String /uri<br align="left"/>
+}>]
+
+n2 [label=<{<b>Person : Record</b>|
+  1 name : String<br align="left"/>
+  2 univ_id : Key(UnivId)<br align="left"/>
+  3 email : String /email<br align="left"/>
+}>]
+
+n3 [label=<<b>UnivId : String{pattern="^U-\d{6}$"}</b>>, shape=ellipse, style=filled, fillcolor=palegreen]
+
+  n0 -> n1 [label=classes]
+  n0 -> n2 [label=people]
+  n1 -> n2 [label=teachers, style="dashed"]
+  n1 -> n2 [label=students, style="dashed"]
+  n2 -> n3 [label=univ_id]
+}
+```
+
+
 -------
 # 4 Advanced Techniques
 
@@ -2873,8 +3047,9 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Overall updates to types descriptions in 3.1.x (PR #58) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Generalize description of SDO management system IM (PR #60) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-23 | David Lemire | Update namespaces discussion (4.1.2) with JADN v1.1 capabilities (PR #61) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-23 | David Lemire | Initial revisions to Section&nbsp;3.1 to improve readability (PR #63) |
-| imjadn-v1.0-cn01-wd02.md | 2023-11-xx | David Lemire | Revise structure of Section&nbsp;3.1 for improved clarity and sequencing (PR #66) |
+| imjadn-v1.0-cn01-wd02.md | 2023-10-23 | David Lemire | Initial revisions to Section 3.1 to improve readability (PR #63) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-xx | David Lemire | Relocate multiple representations example (from 3.1.5.3 to 3.3.2) (PR #65) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-xx | David Lemire | Revise structure of Section 3.1 for improved clarity and sequencing (PR #66) |
 -------
 
 # Appendix D. Frequently Asked Questions (FAQ)
