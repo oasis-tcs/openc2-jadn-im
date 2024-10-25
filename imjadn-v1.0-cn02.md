@@ -831,7 +831,7 @@ Each type array has five fields, two of which are themselves arrays: one for
 type options and one for the fields or elements that make up a compound type.
 
 * The fields / elements array is always empty in the definition of a primitive type.
-For union types and certain compound types, each field or element within the fields / elements array is
+For structured compound types and union types, each field or element within the fields / elements array is
 also an array, with three items in an element array and five items in a field
 array. 
 
@@ -879,7 +879,7 @@ that type.
     refine the core types to fit particular needs.
  4. An optional **TypeDescription** string that provides
     additional information about the type.
- 5. For certain of the Compound types, Enumerated, or Choice, a set
+ 5. For structured compound types and union types, a set
     of **Item** or **Field** options that define the items that
     comprise the compound type.
 
