@@ -127,7 +127,7 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.1.5 JADN Representations](#313-jadn-representations)
       - [3.1.5.1 Native JSON Representation](#3131-native-json-representation)
       - [3.1.5.2 Alternative JADN Representations](#3132-alternative-jadn-representations)
-        - [3.1.5.2.1  Array "Field Names" in JIDL](#31521--array-field-names-in-jidl)
+        - [3.1.5.2.1  Array "Field Names" in JIDL](#31321--array-field-names-in-jidl)
       - [3.1.5.3 Multiple Representations Example](#3153-multiple-representations-example)
     - [3.1.X Type Definition Nuances](#31x-type-definition-nuances)
       - [3.1.X.1 "Anonymous" Type Definitions](#31x1-anonymous-type-definitions)
@@ -1777,7 +1777,7 @@ created using Markdown or HTML code, and ERDs can be created from
 code for rendering engines such as [[Graphviz](#graphviz)] or
 [[PlantUML](#plantuml)].
 
-##### 3.1.5.2.1  Array "Field Names" in JIDL
+##### 3.1.3.2.1  Array "Field Names" in JIDL
 
 When defining elements of type Array or Enum.ID in JIDL, no field
 names are used. These types are defined using a field ID and a
