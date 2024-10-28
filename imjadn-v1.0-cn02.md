@@ -124,9 +124,9 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.7.10 Map](#31210-map)
       - [3.1.7.11 MapOf(_ktype_,_vtype_)](#31211-mapofktypevtype)
       - [3.1.7.12 Record](#31212-record)
-    - [3.1.5 JADN Representations](#315-jadn-representations)
-      - [3.1.5.1 Native JSON Representation](#3151-native-json-representation)
-      - [3.1.5.2 Alternative JADN Representations](#3152-alternative-jadn-representations)
+    - [3.1.5 JADN Representations](#313-jadn-representations)
+      - [3.1.5.1 Native JSON Representation](#3131-native-json-representation)
+      - [3.1.5.2 Alternative JADN Representations](#3132-alternative-jadn-representations)
         - [3.1.5.2.1  Array "Field Names" in JIDL](#31521--array-field-names-in-jidl)
       - [3.1.5.3 Multiple Representations Example](#3153-multiple-representations-example)
     - [3.1.X Type Definition Nuances](#31x-type-definition-nuances)
@@ -762,13 +762,13 @@ also an array, with three items in an element array and five items in a field
 array. 
 
 These structures are illustrated and explained in more detail 
-in [Section&nbsp;3.1.5.1, Native JSON Representation](#3151-native-json-representation).
+in [Section&nbsp;3.1.5.1, Native JSON Representation](#3131-native-json-representation).
 JADN can also be represented in multiple formats, both textual and
 graphical, and automated tooling can transform a JADN model
 between the different representations without loss of
 information. The Native JADN representation as JSON data is
 authoritative, but each representation has advantages. The other representations are described in 
-[Section&nbsp;3.1.5.2, Alternative JSON Representation](#3152-alternative-jadn-representations). 
+[Section&nbsp;3.1.5.2, Alternative JSON Representation](#3132-alternative-jadn-representations). 
 The examples that follow in subsequent sections are typically illustrated using
 both normative JADN (i.e., JSON data) for precision and the JADN Interface
 Definition Language (JIDL) format for its easy readability.
@@ -865,7 +865,7 @@ grammar.
 
 Table 3-3 lists the complete set of type options, including the option name,
 type, ID character, and description. Note that the ID characters are the normative form and are used in
-standard JADN representation ([Section&nbsp;3.1.5.1](#3151-native-json-representation)) 
+standard JADN representation ([Section&nbsp;3.1.5.1](#3131-native-json-representation)) 
 when specifying type options. The text labels for the options (e.g., vtype,
 ktype, pattern) are non-normative and intended to be human friendly. Many of the
 Type and Field options labels have JSON Schema and XML Schema equivalents.
@@ -959,7 +959,7 @@ in addition to the type options described in [Section&nbsp;3.1.1.2](#3112-typeop
 JADN defines six field options. As with
 the type options described in Section&nbsp;3.1.1.2,
 the ID characters are normative and used in standard JADN representation
-([Section&nbsp;3.1.5.1](#3151-native-json-representation)) when
+([Section&nbsp;3.1.5.1](#3131-native-json-representation)) when
 specifying field options. Table 3-5 lists the JADN field options.
 
 ###### Table 3-5 -- JADN Field Options
@@ -1688,7 +1688,7 @@ but an IPv4-Connection record where any one or more of the five
 fields exists is valid.
 
 
-### 3.1.5 JADN Representations
+### 3.1.3 JADN Representations
 
 The native format of JADN is JSON, but JADN content can be
 represented in other ways that are often easier to edit or more
@@ -1696,7 +1696,7 @@ useful for documentation. This section describes the JSON content
 used for each of the JADN basic types, and then illustrates the
 other representations using a simple example.
 
-#### 3.1.5.1 Native JSON Representation
+#### 3.1.3.1 Native JSON Representation
 
 This section illustrates the JSON representations of the Base
 Types described in [Section&nbsp;3.1](#31-jadn-overview). Depictions
@@ -1737,7 +1737,7 @@ field definition in the **Fields** array has five elements:
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
-#### 3.1.5.2 Alternative JADN Representations
+#### 3.1.3.2 Alternative JADN Representations
 
 The [[JADN Specification](#jadn-v10)] identifies three formats
 (Section 5) in addition to the native format:
@@ -1801,7 +1801,7 @@ The [[JADN Specification](#jadn-v10)], section 5.3,
 uses a simple example of an IM for a university to illustrate the
 use of ERDs for IMs. This section uses that ERD as a starting
 point for an example to illustrate the various JADN
-representations described in [Section&nbsp;3.1.5.2](#3152-alternative-jadn-representations). The example
+representations described in [Section&nbsp;3.1.5.2](#3132-alternative-jadn-representations). The example
 begins with the ERD for the model:
 
 ###### Figure 3-7 -- Simple University Example ERD
@@ -2151,8 +2151,8 @@ meaning in these two applications:
    
 For example, the following specifies an Integer type that can be
 assigned values between `1` and `1000`, using both JADN (see
-[Section&nbsp;3.5.1.1](#3151-native-json-representation)) and JIDL
-notation (see [section
+[Section&nbsp;3.5.1.1](#3131-native-json-representation)) and JIDL
+notation (see [section3132-alternative-jadn-representations
 3.5.1.2](#3152-alternative-jadn-representations)):
 
 ```
@@ -2428,7 +2428,7 @@ The [[JADN Specification](#jadn-v10)], section 5.3,
 uses a simple example of an IM for a university to illustrate the
 use of ERDs for IMs. This section uses that ERD as a starting
 point for an example to illustrate the various JADN
-representations described in [Section 3.1.5.2](#3152-alternative-jadn-representations). The example
+representations described in [Section 3.1.5.2](#3132-alternative-jadn-representations). The example
 begins with the ERD for the model:
 
 ###### Figure 3-7 -- Simple University Example ERD
@@ -2610,7 +2610,7 @@ packages, along with the associated concept of namespaces.
 ### 4.1.1 Packages
 
 At the simplest level, a package is a file containing a JADN
-schema in the form of JSON data, as described in [Section
+schema in the form of JSON data, as described in [Section3131-native-json-representation
 3.1.5.1](#3151-native-json-representation). The file has two
 top-level components: 
 
