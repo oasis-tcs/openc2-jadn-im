@@ -7,7 +7,7 @@
 
 ## Committee Note 02 - Working Draft 01
 
-## 23 October 2024
+## 28 October 2024
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
@@ -2808,6 +2808,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-10-23 | David Lemire | Initial revisions to Section 3.1 to improve readability (PR #63) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-xx | David Lemire | Relocate multiple representations example (from 3.1.5.3 to 3.3.2) (PR #65) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-xx | David Lemire | Revise structure of Section 3.1 for improved clarity and sequencing (PR #66) |
+
 -------
 
 # Appendix D. Frequently Asked Questions (FAQ)
