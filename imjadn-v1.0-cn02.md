@@ -111,29 +111,28 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.1.2 TypeOptions](#3112-typeoptions)
       - [3.1.1.3 Item Or Field Definitions](#3113-item-or-field-definitions)
       - [3.1.1.4 Field Options](#3114-field-options)
-    - [3.1.7 Core Type Examples](#317-core-type-examples)
-      - [3.1.7.1 Binary](#3171-binary)
-      - [3.1.7.2 Boolean](#3172-boolean)
-      - [3.1.7.3 Integer](#3173-integer)
-      - [3.1.7.4 Number](#3174-number)
-      - [3.1.7.5 String](#3175-string)
-      - [3.1.7.6 Enumerated](#3176-enumerated)
-      - [3.1.7.7 Choice](#3177-choice)
-      - [3.1.7.8 Array](#3178-array)
-      - [3.1.7.9 ArrayOf(_vtype_)](#3179-arrayofvtype)
-      - [3.1.7.10 Map](#31710-map)
-      - [3.1.7.11 MapOf(_ktype_,_vtype_)](#31711-mapofktypevtype)
-      - [3.1.7.12 Record](#31712-record)
-    - [3.1.5 JADN Representations](#315-jadn-representations)
-      - [3.1.5.1 Native JSON Representation](#3151-native-json-representation)
-      - [3.1.5.2 Alternative JADN Representations](#3152-alternative-jadn-representations)
-        - [3.1.5.2.1  Array "Field Names" in JIDL](#31521--array-field-names-in-jidl)
-      - [3.1.5.3 Multiple Representations Example](#3153-multiple-representations-example)
-    - [3.1.X Type Definition Nuances](#31x-type-definition-nuances)
-      - [3.1.X.1 "Anonymous" Type Definitions](#31x1-anonymous-type-definitions)
-      - [3.1.X.2 Selection and Use of JADN Compound Types](#31x2-selection-and-use-of-jadn-compound-types)
-      - [3.1.X.3  JADN Handling of UML Multiplicity Options](#31x3--jadn-handling-of-uml-multiplicity-options)
-      - [3.1.X.4 Application of `minv / maxv`](#31x4-application-of-minv--maxv)
+    - [3.1.2 Core Type Examples](#312-core-type-examples)
+      - [3.1.2.1 Binary](#3121-binary)
+      - [3.1.2.2 Boolean](#3122-boolean)
+      - [3.1.2.3 Integer](#3123-integer)
+      - [3.1.2.4 Number](#3124-number)
+      - [3.1.2.5 String](#3125-string)
+      - [3.1.2.6 Enumerated](#3126-enumerated)
+      - [3.1.2.7 Choice](#3127-choice)
+      - [3.1.2.8 Array](#3128-array)
+      - [3.1.2.9 ArrayOf(vtype)](#3129-arrayofvtype)
+      - [3.1.2.10 Map](#31210-map)
+      - [3.1.2.11 MapOf(ktype,vtype)](#31211-mapofktypevtype)
+      - [3.1.2.12 Record](#31212-record)
+    - [3.1.3 JADN Representations](#313-jadn-representations)
+      - [3.1.3.1 Native JSON Representation](#3131-native-json-representation)
+      - [3.1.3.2 Alternative JADN Representations](#3132-alternative-jadn-representations)
+        - [3.1.3.2.1  Array "Field Names" in JIDL](#31321--array-field-names-in-jidl)
+    - [3.1.4 Type Definition Nuances](#314-type-definition-nuances)
+      - [3.1.4.1 "Anonymous" Type Definitions](#3141-anonymous-type-definitions)
+      - [3.1.4.2 Selection and Use of JADN Compound Types](#3142-selection-and-use-of-jadn-compound-types)
+      - [3.1.4.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
+      - [3.1.4.4 Application of minv / maxv](#3144-application-of-minv--maxv)
   - [3.2 Information Modeling Process](#32-information-modeling-process)
     - [3.2.1 Y. Tina Lee Modeling Process](#321-y-tina-lee-modeling-process)
     - [3.2.2 Frederiks / van der Weide Modeling Process](#322-frederiks--van-der-weide-modeling-process)
@@ -762,13 +761,13 @@ also an array, with three items in an element array and five items in a field
 array. 
 
 These structures are illustrated and explained in more detail 
-in [Section&nbsp;3.1.5.1, Native JSON Representation](#3151-native-json-representation).
+in [Section&nbsp;3.1.5.1, Native JSON Representation](#3131-native-json-representation).
 JADN can also be represented in multiple formats, both textual and
 graphical, and automated tooling can transform a JADN model
 between the different representations without loss of
 information. The Native JADN representation as JSON data is
 authoritative, but each representation has advantages. The other representations are described in 
-[Section&nbsp;3.1.5.2, Alternative JSON Representation](#3152-alternative-jadn-representations). 
+[Section&nbsp;3.1.5.2, Alternative JSON Representation](#3132-alternative-jadn-representations). 
 The examples that follow in subsequent sections are typically illustrated using
 both normative JADN (i.e., JSON data) for precision and the JADN Interface
 Definition Language (JIDL) format for its easy readability.
@@ -865,7 +864,7 @@ grammar.
 
 Table 3-3 lists the complete set of type options, including the option name,
 type, ID character, and description. Note that the ID characters are the normative form and are used in
-standard JADN representation ([Section&nbsp;3.1.5.1](#3151-native-json-representation)) 
+standard JADN representation ([Section&nbsp;3.1.5.1](#3131-native-json-representation)) 
 when specifying type options. The text labels for the options (e.g., vtype,
 ktype, pattern) are non-normative and intended to be human friendly. Many of the
 Type and Field options labels have JSON Schema and XML Schema equivalents.
@@ -950,7 +949,7 @@ pertaining to the **Fields** array are as follows:
 
 The selection of Map or Record for a type definition carries 
 serialization implications, which are discussed in 
-[Section&nbsp;3.1.X.2](#31x2-selection-and-use-of-jadn-compound-types).
+[Section&nbsp;3.1.X.2](#3142-selection-and-use-of-jadn-compound-types).
 
 #### 3.1.1.4 Field Options
 
@@ -959,7 +958,7 @@ in addition to the type options described in [Section&nbsp;3.1.1.2](#3112-typeop
 JADN defines six field options. As with
 the type options described in Section&nbsp;3.1.1.2,
 the ID characters are normative and used in standard JADN representation
-([Section&nbsp;3.1.5.1](#3151-native-json-representation)) when
+([Section&nbsp;3.1.5.1](#3131-native-json-representation)) when
 specifying field options. Table 3-5 lists the JADN field options.
 
 ###### Table 3-5 -- JADN Field Options
@@ -978,9 +977,9 @@ to fields, with the constraint that the type option must be applicable to the
 field's type, as described in the core type examples in [Section&nbsp;3.1.7](#317-base-type-examples). 
 The application of a type option to a field
 triggers an "anonymous" type definition when the JADN model is processed, as
-described in [Section&nbsp;3.1.X.1](#31x1-anonymous-type-definitions).
+described in [Section&nbsp;3.1.X.1](#3141-anonymous-type-definitions).
 
-### 3.1.7 Core Type Examples
+### 3.1.2 Core Type Examples
 
 This section provides illustrative examples of the JADN core
 types. For each type, the definition from the [[JADN
@@ -988,7 +987,7 @@ Specification](#jadn-v10)] is quoted, the relevant type options
 are listed, and an example is provided using the JADN and JIDL
 formats.
 
-#### 3.1.7.1 Binary
+#### 3.1.2.1 Binary
 
 <table class="table">
   <thead>
@@ -1039,7 +1038,7 @@ Binary type:
 | ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc791) Section&nbsp;3.1 |
 | ipv6-addr    | Binary | IPv6 address as specified in [RFC 8200](#rfc8200)  Section&nbsp;3 |
 
-#### 3.1.7.2 Boolean
+#### 3.1.2.2 Boolean
 
 <table class="table">
   <thead>
@@ -1075,7 +1074,7 @@ The corresponding JIDL representation would be:
   AccessGranted = Boolean   // Result of access control decision
 ```
 
-#### 3.1.7.3 Integer
+#### 3.1.2.3 Integer
 
 <table class="table">
   <thead>
@@ -1130,7 +1129,7 @@ Table 3-7 lists the *format* options applicable to the Integer type:
 | i32      | Integer | Signed 32 bit integer, value must be between -2147483648 and 2147483647.                  |
 | u\<*n*\> | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1. |
 
-#### 3.1.7.4 Number
+#### 3.1.2.4 Number
 
 <table class="table">
   <thead>
@@ -1187,7 +1186,7 @@ Concise Data Definition Language (CDDL) Standard Prelude specified in Apppendix&
 of [[RFC8610](#rfc8610)].
 
 
-#### 3.1.7.5 String
+#### 3.1.2.5 String
 
 <table class="table">
   <thead>
@@ -1258,7 +1257,7 @@ in the current 15th edition (published in 2022) of the
 specification is in Section 22.2.
 
 
-#### 3.1.7.6 Enumerated
+#### 3.1.2.6 Enumerated
 
 <table class="table">
   <thead>
@@ -1309,7 +1308,7 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.7.7 Choice
+#### 3.1.2.7 Choice
 
 <table class="table">
   <thead>
@@ -1358,7 +1357,7 @@ IdentityType = Choice                // Nature of the referenced identity
 > EDITOR'S NOTE:  need examples of applying the TypeOptions include the v1.1 enhancements.
 
 
-#### 3.1.7.8 Array
+#### 3.1.2.8 Array
 
 <table class="table">
   <thead>
@@ -1430,7 +1429,7 @@ The `ipv4-net` and `ipv6-net` format options impose several constraints when app
 * Specifies that text representations of the type will use CIDR notation
 
 
-#### 3.1.7.9 ArrayOf(_vtype_)
+#### 3.1.2.9 ArrayOf(vtype)
 
 <table class="table">
   <thead>
@@ -1487,7 +1486,7 @@ Track = Record                                    // for each track there's a fi
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 
-#### 3.1.7.10 Map
+#### 3.1.2.10 Map
 
 <table class="table">
   <thead>
@@ -1552,11 +1551,11 @@ defines that there is a minimum number of required fields even
 though every individual field is optional. An empty `Hashes` map is
 invalid, but a map where any one or more of the three hash types
 exists is valid. This is an example of one application of _minv_,
-_maxv_, as described above in [Section&nbsp;3.1.X.4](#31x4-application-of-minv--maxv).
+_maxv_, as described above in [Section&nbsp;3.1.X.4](#3144-application-of-minv--maxv).
 
 
 
-#### 3.1.7.11 MapOf(_ktype_,_vtype_)
+#### 3.1.2.11 MapOf(ktype,vtype)
 
 <table class="table">
   <thead>
@@ -1626,7 +1625,7 @@ Employee = Record
 Date = String /date
 ```
 
-#### 3.1.7.12 Record
+#### 3.1.2.12 Record
 
 <table class="table">
   <thead>
@@ -1680,7 +1679,7 @@ IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tc
    5 protocol         L4-Protocol optional        // Layer 4 protocol (e.g., TCP)
 ```
 
-As with the `Map` example in [Section&nbsp;3.1.7.10](#31710-map), the
+As with the `Map` example in [Section&nbsp;3.1.7.10](#31210-map), the
 cardinality of `{1..*}` for the `Record` defines that there is a
 minimum number of required fields even though every individual
 field is optional. An empty IPv4-Connection record is invalid,
@@ -1688,7 +1687,7 @@ but an IPv4-Connection record where any one or more of the five
 fields exists is valid.
 
 
-### 3.1.5 JADN Representations
+### 3.1.3 JADN Representations
 
 The native format of JADN is JSON, but JADN content can be
 represented in other ways that are often easier to edit or more
@@ -1696,7 +1695,7 @@ useful for documentation. This section describes the JSON content
 used for each of the JADN basic types, and then illustrates the
 other representations using a simple example.
 
-#### 3.1.5.1 Native JSON Representation
+#### 3.1.3.1 Native JSON Representation
 
 This section illustrates the JSON representations of the Base
 Types described in [Section&nbsp;3.1](#31-jadn-overview). Depictions
@@ -1737,7 +1736,7 @@ field definition in the **Fields** array has five elements:
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
-#### 3.1.5.2 Alternative JADN Representations
+#### 3.1.3.2 Alternative JADN Representations
 
 The [[JADN Specification](#jadn-v10)] identifies three formats
 (Section 5) in addition to the native format:
@@ -1777,7 +1776,7 @@ created using Markdown or HTML code, and ERDs can be created from
 code for rendering engines such as [[Graphviz](#graphviz)] or
 [[PlantUML](#plantuml)].
 
-##### 3.1.5.2.1  Array "Field Names" in JIDL
+##### 3.1.3.2.1  Array "Field Names" in JIDL
 
 When defining elements of type Array or Enum.ID in JIDL, no field
 names are used. These types are defined using a field ID and a
@@ -1795,182 +1794,15 @@ Publication-Data = Array         // who and when of publication
 ```
 
 
-#### 3.1.5.3 Multiple Representations Example
 
-The [[JADN Specification](#jadn-v10)], section 5.3,
-uses a simple example of an IM for a university to illustrate the
-use of ERDs for IMs. This section uses that ERD as a starting
-point for an example to illustrate the various JADN
-representations described in [Section&nbsp;3.1.5.2](#3152-alternative-jadn-representations). The example
-begins with the ERD for the model:
-
-###### Figure 3-7 -- Simple University Example ERD
-
-<img src="images/university-erd.png" height="600px">
-
-The package (see [Section 4.1](#41-packages-and-namespaces)) 
-containing the JADN corresponding to the above ERD is shown here:
-
-###### Figure 3-8 -- Simple University Example JADN (JSON format)
-```json
-{
- "info": {
-  "package": "http://example.com/uni",
-  "exports": ["University"]
- },
-
- "types": [
-  ["University", "Record", [], "A place of learning", [
-    [1, "name", "String", [], "University Name"],
-    [2, "classes", "ArrayOf", ["*Class"], "Available classes"],
-    [3, "people", "ArrayOf", ["*Person"], "Students and faculty"]
-  ]],
-
-  ["Class", "Record", [], "Pertinent info about classes", [
-    [1, "name", "String", [], "Name of class"],
-    [2, "room", "String", [], "Where it happens"],
-    [3, "teachers", "Person", ["L", "]0", "q"], "Teacher(s) for this class"],
-    [4, "students", "Person", ["L", "]0", "q"], "Students attending this class"],
-    [5, "syllabus", "String", ["/uri"], "Link to class syllabus on the web"]
-  ]],
-
-  ["Person", "Record", [], "", [
-    [1, "name", "String", [], "Student / faculty member name"],
-    [2, "univ_id", "UnivId", ["K"], "Unique ID for student / faculty member"],
-    [3, "email", "String", ["/email"], "Student / faculty member email"]
-  ]],
-
-  ["UnivId", "String", ["%^U-\\d{6}$"], "University ID (U-nnnnnn)", []]
- ]
-}
-```
-
-Converting the JSON to JIDL yields a representation that is both
-more readable and easier to edit:
-
-###### Figure 3-9 -- Simple University Example JADN (JIDL format)
-
-```
-     package: "http://example.com/uni"
-     exports: ["University"]
-
-University = Record                               // A place of learning
-   1 name             String                      // University Name
-   2 classes          ArrayOf(Class)              // Available classes
-   3 people           ArrayOf(Person)             // Students and faculty
-
-Class = Record                                    // Pertinent info about classes
-   1 name             String                      // Name of class
-   2 room             String                      // Where it happens
-   3 teachers         Link(Person unique) [1..*]  // Teacher(s) for this class
-   4 students         Link(Person unique) [1..*]  // Students attending this class
-   5 syllabus         String /uri                 // Link to class syllabus on the web
-
-Person = Record
-   1 name             String                      // Student / faculty member name
-   2 univ_id          Key(UnivId)                 // Unique ID for student / faculty member
-   3 email            String /email               // Student / faculty member email
-
-UnivId = String{pattern="^U-\d{6}$"}              // University ID (U-nnnnnn)
-```
-
-Property tables are a common representation of data structures in
-specifications. JADN is easily converted to property tables,
-which are quite readable but somewhat more challenging to edit
-than JIDL (the package information has been omitted from the set
-of property tables).
-
-###### Figure 3-10 -- Simple University Example JADN (table format)
-
-A place of learning
-
-**Type: University (Record)**
-
-| ID | Name        | Type            | \# | Description          |
-|----|-------------|-----------------|----|----------------------|
-| 1  | **name**    | String          | 1  | University Name      |
-| 2  | **classes** | ArrayOf(Class)  | 1  | Available classes    |
-| 3  | **people**  | ArrayOf(Person) | 1  | Students and faculty |
-
-Pertinent info about classes
-
-**Type: Class (Record)**
-
-| ID | Name         | Type                | \#    | Description                       |
-|----|--------------|---------------------|-------|-----------------------------------|
-| 1  | **name**     | String              | 1     | Name of class                     |
-| 2  | **room**     | String              | 1     | Where it happens                  |
-| 3  | **teachers** | Link(Person unique) | 1..\* | Teacher(s) for this class         |
-| 4  | **students** | Link(Person unique) | 1..\* | Students attending this class     |
-| 5  | **syllabus** | String /uri         | 1     | Link to class syllabus on the web |
-
-**Type: Person (Record)**
-
-| ID | Name        | Type          | \# | Description                            |
-|----|-------------|---------------|----|----------------------------------------|
-| 1  | **name**    | String        | 1  | Student / faculty member name          |
-| 2  | **univ_id** | Key(UnivId)   | 1  | Unique ID for student / faculty member |
-| 3  | **email**   | String /email | 1  | Student / faculty member email         |
-
-| Type Name  | Type Definition             | Description              |
-|------------|-----------------------------|--------------------------|
-| **UnivId** | String{pattern="^U-\d{6}$"} | University ID (U-nnnnnn) |
-
-
-Finally, the code to generate the ERD presented at the beginning
-of the example is easily generated from the JADN model.  In this
-specific example code for the widely-used GraphViz tool is
-provided.
-
-###### Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)
-```
-# package: http://example.com/uni
-# exports: ['University']
-
-digraph G {
-  graph [fontname=Arial, fontsize=12];
-  node [fontname=Arial, fontsize=8, shape=record, style=filled, fillcolor=lightskyblue1];
-  edge [fontname=Arial, fontsize=7, arrowsize=0.5, labelangle=45.0, labeldistance=0.9];
-  bgcolor="transparent";
-
-n0 [label=<{<b>University : Record</b>|
-  1 name : String<br align="left"/>
-  2 classes : ArrayOf(Class)<br align="left"/>
-  3 people : ArrayOf(Person)<br align="left"/>
-}>]
-
-n1 [label=<{<b>Class : Record</b>|
-  1 name : String<br align="left"/>
-  2 room : String<br align="left"/>
-  3 teachers : Link(Person unique) [1..*]<br align="left"/>
-  4 students : Link(Person unique) [1..*]<br align="left"/>
-  5 syllabus : String /uri<br align="left"/>
-}>]
-
-n2 [label=<{<b>Person : Record</b>|
-  1 name : String<br align="left"/>
-  2 univ_id : Key(UnivId)<br align="left"/>
-  3 email : String /email<br align="left"/>
-}>]
-
-n3 [label=<<b>UnivId : String{pattern="^U-\d{6}$"}</b>>, shape=ellipse, style=filled, fillcolor=palegreen]
-
-  n0 -> n1 [label=classes]
-  n0 -> n2 [label=people]
-  n1 -> n2 [label=teachers, style="dashed"]
-  n1 -> n2 [label=students, style="dashed"]
-  n2 -> n3 [label=univ_id]
-}
-```
-
-### 3.1.X Type Definition Nuances
+### 3.1.4 Type Definition Nuances
 
 > EDITOR'S NOTE: section heading subject to change
 
 This section describes JADN usage details that add flexibility or simplify the
 development of IMs.
 
-#### 3.1.X.1 "Anonymous" Type Definitions
+#### 3.1.4.1 "Anonymous" Type Definitions
 
 The [[JADN Specification](#jadn-v10)] conformance statement
 (section 7) separates the definition of JADN into "Core JADN"
@@ -2035,7 +1867,7 @@ the readability of the model can benefit from concisely written
 JADN (or JIDL) that relies on the tooling to generate the
 necessary types.
 
-#### 3.1.X.2 Selection and Use of JADN Compound Types
+#### 3.1.4.2 Selection and Use of JADN Compound Types
 
 Each of the compound types is a *container*, a named group of related items
 such as the latitude and longitude of a geographic coordinate, or the set of
@@ -2104,7 +1936,7 @@ If Location is a Map type, its instances are always serialized as
 key:value pairs regardless of data format, the same as a Record
 in verbose JSON.
 
-#### 3.1.X.3  JADN Handling of UML Multiplicity Options
+#### 3.1.4.3  JADN Handling of UML Multiplicity Options
 
 Another significant UML concept is that JADN distinguishes among
 all four multiplicity types ([[UML](#uml)], Table 7.1), while
@@ -2133,7 +1965,7 @@ models are directed graphs with a small predefined set of core
 datatypes and only two kinds of relationship: "contain" and
 "reference".
 
-#### 3.1.X.4 Application of `minv / maxv`
+#### 3.1.4.4 Application of minv / maxv
 
 The `minv` and `maxv` type options are distinctive in that they
 can apply to both primitive and compound types, with a different
@@ -2151,8 +1983,8 @@ meaning in these two applications:
    
 For example, the following specifies an Integer type that can be
 assigned values between `1` and `1000`, using both JADN (see
-[Section&nbsp;3.5.1.1](#3151-native-json-representation)) and JIDL
-notation (see [section
+[Section&nbsp;3.5.1.1](#3131-native-json-representation)) and JIDL
+notation (see [section3132-alternative-jadn-representations
 3.5.1.2](#3152-alternative-jadn-representations)):
 
 ```
@@ -2428,7 +2260,7 @@ The [[JADN Specification](#jadn-v10)], section 5.3,
 uses a simple example of an IM for a university to illustrate the
 use of ERDs for IMs. This section uses that ERD as a starting
 point for an example to illustrate the various JADN
-representations described in [Section 3.1.5.2](#3152-alternative-jadn-representations). The example
+representations described in [Section 3.1.5.2](#3132-alternative-jadn-representations). The example
 begins with the ERD for the model:
 
 ###### Figure 3-7 -- Simple University Example ERD
@@ -2610,7 +2442,7 @@ packages, along with the associated concept of namespaces.
 ### 4.1.1 Packages
 
 At the simplest level, a package is a file containing a JADN
-schema in the form of JSON data, as described in [Section
+schema in the form of JSON data, as described in [Section3131-native-json-representation
 3.1.5.1](#3151-native-json-representation). The file has two
 top-level components: 
 
