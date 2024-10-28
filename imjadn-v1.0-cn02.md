@@ -129,11 +129,11 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.5.2 Alternative JADN Representations](#3132-alternative-jadn-representations)
         - [3.1.5.2.1  Array "Field Names" in JIDL](#31321--array-field-names-in-jidl)
       - [3.1.5.3 Multiple Representations Example](#3153-multiple-representations-example)
-    - [3.1.X Type Definition Nuances](#31x-type-definition-nuances)
-      - [3.1.X.1 "Anonymous" Type Definitions](#31x1-anonymous-type-definitions)
-      - [3.1.X.2 Selection and Use of JADN Compound Types](#31x2-selection-and-use-of-jadn-compound-types)
-      - [3.1.X.3  JADN Handling of UML Multiplicity Options](#31x3--jadn-handling-of-uml-multiplicity-options)
-      - [3.1.X.4 Application of `minv / maxv`](#31x4-application-of-minv--maxv)
+    - [3.1.X Type Definition Nuances](#314-type-definition-nuances)
+      - [3.1.X.1 "Anonymous" Type Definitions](#3141-anonymous-type-definitions)
+      - [3.1.X.2 Selection and Use of JADN Compound Types](#3142-selection-and-use-of-jadn-compound-types)
+      - [3.1.X.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
+      - [3.1.X.4 Application of `minv / maxv`](#3144-application-of-minv--maxv)
   - [3.2 Information Modeling Process](#32-information-modeling-process)
     - [3.2.1 Y. Tina Lee Modeling Process](#321-y-tina-lee-modeling-process)
     - [3.2.2 Frederiks / van der Weide Modeling Process](#322-frederiks--van-der-weide-modeling-process)
@@ -950,7 +950,7 @@ pertaining to the **Fields** array are as follows:
 
 The selection of Map or Record for a type definition carries 
 serialization implications, which are discussed in 
-[Section&nbsp;3.1.X.2](#31x2-selection-and-use-of-jadn-compound-types).
+[Section&nbsp;3.1.X.2](#3142-selection-and-use-of-jadn-compound-types).
 
 #### 3.1.1.4 Field Options
 
@@ -978,7 +978,7 @@ to fields, with the constraint that the type option must be applicable to the
 field's type, as described in the core type examples in [Section&nbsp;3.1.7](#317-base-type-examples). 
 The application of a type option to a field
 triggers an "anonymous" type definition when the JADN model is processed, as
-described in [Section&nbsp;3.1.X.1](#31x1-anonymous-type-definitions).
+described in [Section&nbsp;3.1.X.1](#3141-anonymous-type-definitions).
 
 ### 3.1.2 Core Type Examples
 
@@ -1552,7 +1552,7 @@ defines that there is a minimum number of required fields even
 though every individual field is optional. An empty `Hashes` map is
 invalid, but a map where any one or more of the three hash types
 exists is valid. This is an example of one application of _minv_,
-_maxv_, as described above in [Section&nbsp;3.1.X.4](#31x4-application-of-minv--maxv).
+_maxv_, as described above in [Section&nbsp;3.1.X.4](#3144-application-of-minv--maxv).
 
 
 
@@ -1796,14 +1796,14 @@ Publication-Data = Array         // who and when of publication
 
 
 
-### 3.1.X Type Definition Nuances
+### 3.1.4 Type Definition Nuances
 
 > EDITOR'S NOTE: section heading subject to change
 
 This section describes JADN usage details that add flexibility or simplify the
 development of IMs.
 
-#### 3.1.X.1 "Anonymous" Type Definitions
+#### 3.1.4.1 "Anonymous" Type Definitions
 
 The [[JADN Specification](#jadn-v10)] conformance statement
 (section 7) separates the definition of JADN into "Core JADN"
@@ -1868,7 +1868,7 @@ the readability of the model can benefit from concisely written
 JADN (or JIDL) that relies on the tooling to generate the
 necessary types.
 
-#### 3.1.X.2 Selection and Use of JADN Compound Types
+#### 3.1.4.2 Selection and Use of JADN Compound Types
 
 Each of the compound types is a *container*, a named group of related items
 such as the latitude and longitude of a geographic coordinate, or the set of
@@ -1937,7 +1937,7 @@ If Location is a Map type, its instances are always serialized as
 key:value pairs regardless of data format, the same as a Record
 in verbose JSON.
 
-#### 3.1.X.3  JADN Handling of UML Multiplicity Options
+#### 3.1.4.3  JADN Handling of UML Multiplicity Options
 
 Another significant UML concept is that JADN distinguishes among
 all four multiplicity types ([[UML](#uml)], Table 7.1), while
@@ -1966,7 +1966,7 @@ models are directed graphs with a small predefined set of core
 datatypes and only two kinds of relationship: "contain" and
 "reference".
 
-#### 3.1.X.4 Application of `minv / maxv`
+#### 3.1.4.4 Application of minv / maxv
 
 The `minv` and `maxv` type options are distinctive in that they
 can apply to both primitive and compound types, with a different
