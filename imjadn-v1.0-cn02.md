@@ -111,19 +111,19 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.1.2 TypeOptions](#3112-typeoptions)
       - [3.1.1.3 Item Or Field Definitions](#3113-item-or-field-definitions)
       - [3.1.1.4 Field Options](#3114-field-options)
-    - [3.1.7 Core Type Examples](#317-core-type-examples)
-      - [3.1.7.1 Binary](#3171-binary)
-      - [3.1.7.2 Boolean](#3172-boolean)
-      - [3.1.7.3 Integer](#3173-integer)
-      - [3.1.7.4 Number](#3174-number)
-      - [3.1.7.5 String](#3175-string)
-      - [3.1.7.6 Enumerated](#3176-enumerated)
-      - [3.1.7.7 Choice](#3177-choice)
-      - [3.1.7.8 Array](#3178-array)
-      - [3.1.7.9 ArrayOf(_vtype_)](#3179-arrayofvtype)
-      - [3.1.7.10 Map](#31710-map)
-      - [3.1.7.11 MapOf(_ktype_,_vtype_)](#31711-mapofktypevtype)
-      - [3.1.7.12 Record](#31712-record)
+    - [3.1.7 Core Type Examples](#312-core-type-examples)
+      - [3.1.7.1 Binary](#3121-binary)
+      - [3.1.7.2 Boolean](#3122-boolean)
+      - [3.1.7.3 Integer](#3123-integer)
+      - [3.1.7.4 Number](#3124-number)
+      - [3.1.7.5 String](#3125-string)
+      - [3.1.7.6 Enumerated](#3126-enumerated)
+      - [3.1.7.7 Choice](#3127-choice)
+      - [3.1.7.8 Array](#3128-array)
+      - [3.1.7.9 ArrayOf(_vtype_)](#3129-arrayofvtype)
+      - [3.1.7.10 Map](#31210-map)
+      - [3.1.7.11 MapOf(_ktype_,_vtype_)](#31211-mapofktypevtype)
+      - [3.1.7.12 Record](#31212-record)
     - [3.1.5 JADN Representations](#315-jadn-representations)
       - [3.1.5.1 Native JSON Representation](#3151-native-json-representation)
       - [3.1.5.2 Alternative JADN Representations](#3152-alternative-jadn-representations)
@@ -980,7 +980,7 @@ The application of a type option to a field
 triggers an "anonymous" type definition when the JADN model is processed, as
 described in [Section&nbsp;3.1.X.1](#31x1-anonymous-type-definitions).
 
-### 3.1.7 Core Type Examples
+### 3.1.2 Core Type Examples
 
 This section provides illustrative examples of the JADN core
 types. For each type, the definition from the [[JADN
@@ -988,7 +988,7 @@ Specification](#jadn-v10)] is quoted, the relevant type options
 are listed, and an example is provided using the JADN and JIDL
 formats.
 
-#### 3.1.7.1 Binary
+#### 3.1.2.1 Binary
 
 <table class="table">
   <thead>
@@ -1039,7 +1039,7 @@ Binary type:
 | ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc791) Section&nbsp;3.1 |
 | ipv6-addr    | Binary | IPv6 address as specified in [RFC 8200](#rfc8200)  Section&nbsp;3 |
 
-#### 3.1.7.2 Boolean
+#### 3.1.2.2 Boolean
 
 <table class="table">
   <thead>
@@ -1075,7 +1075,7 @@ The corresponding JIDL representation would be:
   AccessGranted = Boolean   // Result of access control decision
 ```
 
-#### 3.1.7.3 Integer
+#### 3.1.2.3 Integer
 
 <table class="table">
   <thead>
@@ -1130,7 +1130,7 @@ Table 3-7 lists the *format* options applicable to the Integer type:
 | i32      | Integer | Signed 32 bit integer, value must be between -2147483648 and 2147483647.                  |
 | u\<*n*\> | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1. |
 
-#### 3.1.7.4 Number
+#### 3.1.2.4 Number
 
 <table class="table">
   <thead>
@@ -1187,7 +1187,7 @@ Concise Data Definition Language (CDDL) Standard Prelude specified in Apppendix&
 of [[RFC8610](#rfc8610)].
 
 
-#### 3.1.7.5 String
+#### 3.1.2.5 String
 
 <table class="table">
   <thead>
@@ -1258,7 +1258,7 @@ in the current 15th edition (published in 2022) of the
 specification is in Section 22.2.
 
 
-#### 3.1.7.6 Enumerated
+#### 3.1.2.6 Enumerated
 
 <table class="table">
   <thead>
@@ -1309,7 +1309,7 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.7.7 Choice
+#### 3.1.2.7 Choice
 
 <table class="table">
   <thead>
@@ -1358,7 +1358,7 @@ IdentityType = Choice                // Nature of the referenced identity
 > EDITOR'S NOTE:  need examples of applying the TypeOptions include the v1.1 enhancements.
 
 
-#### 3.1.7.8 Array
+#### 3.1.2.8 Array
 
 <table class="table">
   <thead>
@@ -1430,7 +1430,7 @@ The `ipv4-net` and `ipv6-net` format options impose several constraints when app
 * Specifies that text representations of the type will use CIDR notation
 
 
-#### 3.1.7.9 ArrayOf(_vtype_)
+#### 3.1.2.9 ArrayOf(vtype)
 
 <table class="table">
   <thead>
@@ -1487,7 +1487,7 @@ Track = Record                                    // for each track there's a fi
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
 
-#### 3.1.7.10 Map
+#### 3.1.2.10 Map
 
 <table class="table">
   <thead>
@@ -1556,7 +1556,7 @@ _maxv_, as described above in [Section&nbsp;3.1.X.4](#31x4-application-of-minv--
 
 
 
-#### 3.1.7.11 MapOf(_ktype_,_vtype_)
+#### 3.1.2.11 MapOf(ktype,vtype)
 
 <table class="table">
   <thead>
@@ -1626,7 +1626,7 @@ Employee = Record
 Date = String /date
 ```
 
-#### 3.1.7.12 Record
+#### 3.1.2.12 Record
 
 <table class="table">
   <thead>
@@ -1680,7 +1680,7 @@ IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tc
    5 protocol         L4-Protocol optional        // Layer 4 protocol (e.g., TCP)
 ```
 
-As with the `Map` example in [Section&nbsp;3.1.7.10](#31710-map), the
+As with the `Map` example in [Section&nbsp;3.1.7.10](#31210-map), the
 cardinality of `{1..*}` for the `Record` defines that there is a
 minimum number of required fields even though every individual
 field is optional. An empty IPv4-Connection record is invalid,
