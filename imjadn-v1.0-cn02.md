@@ -501,7 +501,6 @@ the same datatype and their logical values are equal.
 -------
 
 =============== *Begin Section 2 from JADN CS* ======================================================
-<!--
 
 # 2 Information vs. Data
 
@@ -668,7 +667,7 @@ Implementations based on serialization-specific code interoperate with those usi
 allowing developers to use either approach. 
 
 -------
--->
+
 =============== *End Section 2 from JADN CS* ========================================================
 
 # 2 Information Modeling Overview
