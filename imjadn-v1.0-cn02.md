@@ -2434,14 +2434,14 @@ the model components connect.
 
 ### 3.3.2 Internet Protocol Version 4 Packet Header
 
-The definition of an IPv4 packet header originates from [[RFC 791](#rfc791)],
-with some details of the header modified by subsequent RFCs. This example
-illustrates developing an abstract IM from an existing well-defined data
-structure. While there may be limited utility in leveraging JADN's information
-equivalence focus to generate encodings of an IPv4 packet header other than
-binary, the model is useful to document the fields of the header and illustrate
-their conceptual purpose. This example model was developed based on the content
-of three Wikipedia pages related to the IPv4 packet header:
+This example illustrates developing an abstract IM from an existing well-defined
+data structure. The IPv4 packet header definition originates from 
+[[RFC 791](#rfc791)], with some details of the header modified by subsequent RFCs.
+While there may be limited utility in leveraging JADN's information equivalence
+focus to generate encodings of an IPv4 packet header other than binary, the
+model is useful to document the fields of the header and illustrate their
+conceptual purpose. This model was developed based on the content of
+three Wikipedia pages related to the IPv4 packet header:
 
  - The [Header](https://en.wikipedia.org/wiki/IPv4#Header) section of the
    [IPv4](https://en.wikipedia.org/wiki/IPv4) article 
@@ -2450,11 +2450,12 @@ of three Wikipedia pages related to the IPv4 packet header:
  - The [Operation of ECN with IP](https://en.wikipedia.org/wiki/Explicit_Congestion_Notification#Operation_of_ECN_with_IP) section of the
    [Explicit Congestion Notification](https://en.wikipedia.org/wiki/Explicit_Congestion_Notification#Operation_of_ECN_with_IP) article
 
-The model comprises a JADN Array containing all of the fields of the IPv4 packet
-header, supported by two enumerations to explicate the meanings of particular
-fields. Figure 3-ipv4-header shows the packet header array in JIDL form. In this
-representation the field "names" are embedded in the JIDL comment field between
-the `//` and `::` delimiters, as described in [Section 3.1.3.2.1](#31321--array-field-names-in-jidl).
+The model comprises a JADN Array type containing all of the fields of the IPv4
+packet header (except the `options` field), supported by two Enumerated types to
+explicate the meanings of particular fields. Figure 3-ipv4-header shows the
+packet header array in JIDL form. In this representation the field "names" are
+embedded in the JIDL comment field between the `//` and `::` delimiters, as
+described in [Section 3.1.3.2.1](#31321--array-field-names-in-jidl).
 
 > EDITOR'S NOTE: may need to reformat the following for readability
 
@@ -2484,7 +2485,7 @@ This portion of the model highlights the application of a number of JADN capabil
  - The use of the Array type for an information structure with rigid positioning
  - The use of the /u\<*n*\> Integer type format option to define fields of arbitrary bit length
  - The combination of a Binary type and the `/ipv4-addr` TypeOption to specify IPv4 network addresses
- - The use of Booleans to clarify the meaning of flag field bits
+ - The use of the Boolean type to clarify the meaning of flag field bits
  
 Three fields of the IPv4 packet header are functionally enumerations: 
 
@@ -2492,7 +2493,10 @@ Three fields of the IPv4 packet header are functionally enumerations:
  - Explicit Congestion Notification (ECN)
  - Protocol
 
-The values for the `Protocol` field are managed by the Internet Assigned Numbers Authority (IANA); this model does not include an explicit enumeration of the IANA-assigned values. The meaning and use of the DSCP and ECN fields are made clearer by definition associated enumerations, as illustrated in Figure 3-ipv4-enums.
+The values for the `Protocol` field are managed by the Internet Assigned Numbers
+Authority (IANA); this model does not include an explicit enumeration of the
+IANA-assigned values. The model makes the meaning and use of the DSCP and ECN fields 
+clearer by definiting associated enumerations, as illustrated in Figure 3-ipv4-enums.
 
 ###### Figure 3-ipv4-enums
 
@@ -2520,6 +2524,11 @@ ECN = Enumerated // Explicit Congestion Notification (RFC 3168)
    2 ect_0       // ECN Capable Transport(0), ECT(0)
    3 ce          // Congestion Experienced, CE
 ```
+
+In order to align with the various RFCs documenting the use of DCSP, the DSCP
+enumeration defines its field values in terms of the IETF's recommended values
+documented in the Wikipedia article, rather than a simple monontic sequence of
+field values that would be appropriate for a more design-oriented modeling activity.
 
 
 ### 3.3.3 Multiple Representations Example
