@@ -1,0 +1,44 @@
+{
+  "types": [
+    ["IPv4-Packet-Header", "Array", [], "fields in an IPv4 packet header, per RFC 791 and subsequent contributions", [
+        [1, "version", "Integer", ["/i8"], "version; always = 4 for an IPv4 packet header (4 bits)"],
+        [2, "ihl", "Integer", ["/i8"], "Internet Header Length (4 bits)"],
+        [3, "dscp", "Diff-Svcs-Code-Point", [], "Differentiated Services Code Point (enumeration, 6 bits)"],
+        [4, "ecn", "ECN", [], "Explicit Congestion Notification (enumeration, 2 bits)"],
+        [5, "total_length", "Integer", ["/i16", "{20", "}65535"], "entire packet size in bytes, including header and data (min: 20 bytes (header without data) / max: 65,535 bytes)"],
+        [6, "ident", "Integer", ["/i16"], "identification field; primarily used for uniquely identifying the group of fragments of a single IP datagram"],
+        [7, "reserved_flag", "Boolean", [], "Reserved flag field; should be set to 0 (1-bit)"],
+        [8, "dont_frag", "Boolean", [], "Don't Fragment flag (1 bit)"],
+        [9, "more_frags", "Boolean", [], "More Fragments (1 bit): cleared for unfragmented packets and last fragment of a fragmented packet"],
+        [10, "frag_offset", "Integer", ["/i8", "{0", "}8191"], "specifies the offset of a particular fragment relative to the beginning of the original unfragmented IP datagram (13 bits)"],
+        [11, "time_to_live", "Integer", ["/i8"], "datagram's lifetime specified in seconds, but time intervals less than 1 second are rounded up to 1. In practice, the field is used as a hop count"],
+        [12, "protocol", "Integer", ["/i8"], "transport layer protocol, per IANA registry "],
+        [13, "header_checksum", "Integer", ["/i16"], "used for error checking of the packet header"],
+        [14, "source_addr", "Binary", ["/ipv4-addr"], "source address for the packet sender; may be modified by NAT"],
+        [15, "dest_addr", "Binary", ["/ipv4-addr"], "address for the intended recipient of the packet; may be modified by NAT"]
+      ]],
+    ["Diff-Svcs-Code-Point", "Enumerated", [], "Differentiated Services Code Point, 6 bits, values (derived from Wikipedia article)", [
+        [0, "df", "Default Forwarding (best effort)"],
+        [10, "af-c1-dpL", "Assured Forwarding (RFCs 2597 / 3260) - class 1 / drop probability low"],
+        [12, "af-c1-dpM", "Assured Forwarding (RFCs 2597 / 3260) - class 1 / drop probability medium"],
+        [14, "af-c1-dpH", "Assured Forwarding (RFCs 2597 / 3260) - class 1 / drop probability high"],
+        [18, "af-c2-dpL", "Assured Forwarding (RFCs 2597 / 3260) - class 2 / drop probability low"],
+        [20, "af-c2-dpM", "Assured Forwarding (RFCs 2597 / 3260) - class 2 / drop probability medium"],
+        [22, "af-c2-dpH", "Assured Forwarding (RFCs 2597 / 3260) - class 2 / drop probability high"],
+        [26, "af-c3-dpL", "Assured Forwarding (RFCs 2597 / 3260) - class 3 / drop probability low"],
+        [28, "af-c3-dpM", "Assured Forwarding (RFCs 2597 / 3260) - class 3 / drop probability medium"],
+        [33, "af-c3-dpH", "Assured Forwarding (RFCs 2597 / 3260) - class 3 / drop probability high"],
+        [34, "af-c4-dpL", "Assured Forwarding (RFCs 2597 / 3260) - class 4 / drop probability low"],
+        [36, "af-c4-dpM", "Assured Forwarding (RFCs 2597 / 3260) - class 4 / drop probability medium"],
+        [43, "af-c4-dpH", "Assured Forwarding (RFCs 2597 / 3260) - class 4 / drop probability high"],
+        [44, "va", "Voice Admit (RFC 5865)"],
+        [46, "ef", "Expedited Routing (RFC 3246)"]
+      ]],
+    ["ECN", "Enumerated", [], "Explicit Congestion Notification (RFC 3168)", [
+        [0, "not_ect", "Not ECN-Capable Transport, Not-ECT"],
+        [1, "ect_1", "ECN Capable Transport(1), ECT(1)"],
+        [2, "ect_0", "ECN Capable Transport(0), ECT(0)"],
+        [3, "ce", "Congestion Experienced, CE"]
+      ]]
+  ]
+}
