@@ -138,7 +138,7 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.2.2 Frederiks / van der Weide Modeling Process](#322-frederiks--van-der-weide-modeling-process)
   - [3.3 Information Modeling Example](#33-information-modeling-example)
     - [3.3.1 Example 1: A Digital Music Library](#331-example-1-a-digital-music-library)
-    - [3.3.2 Multiple Representations Example](#332-multiple-representations-example)
+    - [3.3.2 Multiple Representations Example](#333-multiple-representations-example)
 - [4 Advanced Techniques](#4-advanced-techniques)
   - [4.1 Packages and Namespaces](#41-packages-and-namespaces)
     - [4.1.1 Packages](#411-packages)
@@ -2248,7 +2248,7 @@ and the process has four phases:
 The process is executed in an iterative sequence of modeling, verification and validation. At least one iteration of the modeling loop is required.
 
 
-## 3.3 Information Modeling Example
+## 3.3 Information Modeling Examples
 
 As discussed in [Section 1.1.1](#111-openc2-and-jadn), JADN is a
 general purpose tool for information modeling, and can be applied
@@ -2275,14 +2275,21 @@ are:
  - Music Database (artists, albums, songs, tracks, metadata,
    guest artists)
 
-This CN provides an example of an IM for a digital music library.
+This CN provides several examples to illustrate approaches to information
+modeling and the application of JADN. The example IMs are:
+
+ - A digital music library
+ - The header of an IP version 4 packet header
+ - A very simple example of a university with classes and people to illustrate
+   the available JADN representations
+  
 Additional examples may be added in future versions of the CN.
 
 ### 3.3.1 Example 1: A Digital Music Library
 
 This example shows a simple IM for a digital music library and
 can be considered a "Hello World" example of applying the
-concepts described above. The components of the library are presented
+concepts described in this committee note. The components of the library are presented
 here in JIDL form along with brief descriptions. The final ERD for the
 library appears at the end of this section. The complete,
 consolidated JADN, JIDL, and property tables can be found in
@@ -2425,7 +2432,12 @@ the model components connect.
 
 <img src="images/music-library-v1_1-detailed-ERD-GV.png" height="720px">
 
-### 3.3.2 Multiple Representations Example
+### 3.3.2 Internet Protocol Version 4 Packet Header
+
+
+
+
+### 3.3.3 Multiple Representations Example
 
 The [[JADN Specification](#jadn-v10)], section 5.3,
 uses a simple example of an IM for a university to illustrate the
