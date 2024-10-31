@@ -2497,7 +2497,7 @@ The values for the `Protocol` field are managed by the Internet Assigned Numbers
 ###### Figure 3-ipv4-enums
 
 ```
-Diff-Svcs-Code-Point = Enumerated       // Differentiated Services Code Point, 6 bits, values (derived from Wikipedia article)
+Diff-Svcs-Code-Point = Enumerated       // Differentiated Services Code Point, 6 bits
    0 df          // Default Forwarding (best effort)
   10 af-c1-dpL   // Assured Forwarding (RFCs 2597 / 3260) - class 1 / drop probability low
   12 af-c1-dpM   // Assured Forwarding (RFCs 2597 / 3260) - class 1 / drop probability medium
