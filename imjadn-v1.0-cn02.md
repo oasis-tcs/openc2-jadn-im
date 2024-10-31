@@ -2450,28 +2450,39 @@ of three Wikipedia pages related to the IPv4 packet header:
  - The [Operation of ECN with IP](https://en.wikipedia.org/wiki/Explicit_Congestion_Notification#Operation_of_ECN_with_IP) section of the
    [Explicit Congestion Notification](https://en.wikipedia.org/wiki/Explicit_Congestion_Notification#Operation_of_ECN_with_IP) article
 
-The model comprises a JADN Array containing all of the fields of the IPv4 packet header, supported by two enumerations to explicate the meanings of particular fields. Figure 3-ipv4-header shows the packet header array in JIDL form:
+The model comprises a JADN Array containing all of the fields of the IPv4 packet header, supported by two enumerations to explicate the meanings of particular fields. Figure 3-ipv4-header shows the packet header array in JIDL form.
 
 > EDITOR'S NOTE: may need to reformat the following for readability
 
+###### Figure 3-ipv4-header
+
 ```
 IPv4-Packet-Header = Array              // fields in an IPv4 packet header, per RFC 791 and subsequent contributions
-   1  Integer /i8                       // version:: version; always = 4 for an IPv4 packet header (4 bits)
-   2  Integer /i8                       // ihl:: Internet Header Length (4 bits)
+   1  Integer /u4                       // version:: version; always = 4 for an IPv4 packet header (4 bits)
+   2  Integer /u4                       // ihl:: Internet Header Length (4 bits)
    3  Diff-Svcs-Code-Point              // dscp:: Differentiated Services Code Point (enumeration, 6 bits)
    4  ECN                               // ecn:: Explicit Congestion Notification (enumeration, 2 bits)
-   5  Integer{20..65535} /i16           // total_length:: entire packet size in bytes, including header and data (min: 20 bytes (header without data) / max: 65,535 bytes)
-   6  Integer /i16                      // ident:: identification field; primarily used for uniquely identifying the group of fragments of a single IP datagram
+   5  Integer{20..65535} /u16           // total_length:: entire packet size in bytes, including header and data (min: 20 bytes (header without data) / max: 65,535 bytes)
+   6  Integer /u16                      // ident:: identification field; primarily used for uniquely identifying the group of fragments of a single IP datagram
    7  Boolean                           // reserved_flag:: Reserved flag field; should be set to 0 (1-bit)
    8  Boolean                           // dont_frag:: Don't Fragment flag (1 bit)
    9  Boolean                           // more_frags:: More Fragments (1 bit): cleared for unfragmented packets and last fragment of a fragmented packet
-  10  Integer{0..8191} /i8              // frag_offset:: specifies the offset of a particular fragment relative to the beginning of the original unfragmented IP datagram (13 bits)
-  11  Integer /i8                       // time_to_live:: datagram's lifetime specified in seconds, but time intervals less than 1 second are rounded up to 1. In practice, the field is used as a hop count
-  12  Integer /i8                       // protocol:: transport layer protocol, per IANA registry
-  13  Integer /i16                      // header_checksum:: used for error checking of the packet header
+  10  Integer{0..8191} /u13             // frag_offset:: specifies the offset of a particular fragment relative to the beginning of the original unfragmented IP datagram (13 bits)
+  11  Integer /u8                       // time_to_live:: datagram's lifetime specified in seconds, but time intervals less than 1 second are rounded up to 1. In practice, the field is used as a hop count
+  12  Integer /u8                       // protocol:: transport layer protocol, per IANA registry
+  13  Integer /u16                      // header_checksum:: used for error checking of the packet header
   14  Binary /ipv4-addr                 // source_addr:: source address for the packet sender; may be modified by NAT
   15  Binary /ipv4-addr                 // dest_addr:: address for the intended recipient of the packet; may be modified by NAT
-  ```
+```
+
+This portion of the model highlights the application of a number of JADN capabilities:
+
+ - The use of the Array type for an information structure with rigid positioning
+ - The use of the /u\<*n*\> Integer type format option to define fields of arbitrary bit length
+ - The combination of a Binary type and the `/ipv4-addr` TypeOption to specify IPv4 network addresses
+ - The use of Booleans to clarify the meaning of flag field bits
+ 
+
 
 
 
