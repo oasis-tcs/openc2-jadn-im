@@ -2438,8 +2438,8 @@ This example illustrates developing an abstract IM from an existing well-defined
 data structure. The IPv4 packet header definition originates from 
 [[RFC 791](#rfc791)], with some details of the header modified by subsequent RFCs.
 While there may be limited utility in leveraging JADN's information equivalence
-focus to generate encodings of an IPv4 packet header other than binary, the
-model is useful to document the fields of the header and illustrate their
+focus to generate IPv4 packet header encodings other than binary, the
+model is useful to document the fields of the header and describe their
 conceptual purpose. This model was developed based on the content of
 three Wikipedia pages related to the IPv4 packet header:
 
@@ -2455,9 +2455,9 @@ packet header (except the `options` field), supported by two Enumerated types to
 explicate the meanings of particular fields. Figure 3-ipv4-header shows the
 packet header array in JIDL form. In this representation the field "names" are
 embedded in the JIDL comment field between the `//` and `::` delimiters, as
-described in [Section 3.1.3.2.1](#31321--array-field-names-in-jidl).
+described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
 
-> EDITOR'S NOTE: may need to reformat the following for readability
+> EDITOR'S NOTE: may need to reformat the comments in the following for readability
 
 ###### Figure 3-ipv4-header
 
@@ -2527,9 +2527,8 @@ ECN = Enumerated // Explicit Congestion Notification (RFC 3168)
 
 In order to align with the various RFCs documenting the use of DCSP, the DSCP
 enumeration defines its field values in terms of the IETF's recommended values
-documented in the Wikipedia article, rather than a simple monontic sequence of
-field values that would be appropriate for a more design-oriented modeling activity.
-
+as documented in the Wikipedia article, rather than a simple monontic sequence of
+field values that would be the usual approach in a more design-oriented modeling activity.
 
 ### 3.3.3 Multiple Representations Example
 
