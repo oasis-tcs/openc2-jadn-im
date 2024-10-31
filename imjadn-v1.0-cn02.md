@@ -453,6 +453,65 @@ smallest of those values.
 Additional quality metrics (completeness, sharability, structure, extensibility,
 etc.) are discussed in [Section&nbsp;3](#3-creating-information-models-with-jadn).
 
+### 1.1.5 Information Modeling Languages
+
+[[YTLee](#ytlee)] describes an IM language as follows:
+
+> "An information modeling language is a formal syntax that
+> allows users to capture data semantics and constraints."
+
+and defines their importance:
+
+> "Formal information modeling languages that describe
+> information requirements unambiguously is an enabling
+> technology that facilitates the development of a large scale,
+> networked, computer environment that behaves consistently and
+> correctly."
+
+ _Report from IoT Semantic Interoperability Workshop 2016_ [[RFC
+8477](#rfc8477)] describes a lack of consistency across Standards
+Developing Organizations (SDOs) in defining application layer
+data, attributing it to the lack of an encoding-independent
+standardization of the information represented by that data. The
+JADN information modeling language is intended to address that
+gap. Abstract Syntax Notation One [[ASN.1](#asn1)] is another
+example of an abstract schema language.
+
+JADN is a syntax-independent schema language, based on Unified
+Modeling Language (UML) datatypes. JADN is designed to work with
+common Internet data formats (JSON, XML, CBOR), providing a
+schema to support them. JADN is also graph-oriented to align with
+the web and database design practices, with options to identify
+primary and foreign keys, including web URLs..
+
+JADN's native format is structured JSON, and a broad variety of
+tools exist for creating and manipulating information in JSON
+format.
+
+ - a JADN schema is structured data that can be generated and
+   transformed programmatically
+ - JADN schemas employ a simple, regular structure (every type
+   definition has the same five fields)
+
+​ASN.1 is a formal notation used for describing data transmitted
+by telecommunications protocols, regardless of language
+implementation and physical representation of these data,
+whatever the application, whether complex or very simple. The
+notation provides a certain number of pre-defined basic types,
+and makes it possible to define constructed types. Subtyping
+constraints can be also applied on any ASN.1 type in order to
+restrict its set of values. Data described in ASN.1 is serialized
+and deserialized based on set of encoding rules, which are
+defined for a broad variety of formats including the Basic
+Encoding Rules (BER) and similar, which are closely associated
+with ASN.1, as well as less closely tied standards such as XML
+and JSON.
+
+Other languages have been used for information modeling, although
+that is not their primary purposes.  Some examples are 
+Unified Modeling Language [[UML](#uml)], and 
+Integration DEFinition for information modeling [[IDEF1X](#idef1x)].
+
 ## 1.2 Terminology
 
 This CN uses the definitions contained in the [[JADN
@@ -737,65 +796,6 @@ communications bandwidth. However, particular requirements (e.g.,
 human readability) may indicate that a serialization that uses
 more data than sufficient is appropriate for particular
 situations.
-
-## 2.5 Information Modeling Languages
-
-[[YTLee](#ytlee)] describes an IM language as follows:
-
-> "An information modeling language is a formal syntax that
-> allows users to capture data semantics and constraints."
-
-and defines their importance:
-
-> "Formal information modeling languages that describe
-> information requirements unambiguously is an enabling
-> technology that facilitates the development of a large scale,
-> networked, computer environment that behaves consistently and
-> correctly."
-
- _Report from IoT Semantic Interoperability Workshop 2016_ [[RFC
-8477](#rfc8477)] describes a lack of consistency across Standards
-Developing Organizations (SDOs) in defining application layer
-data, attributing it to the lack of an encoding-independent
-standardization of the information represented by that data. The
-JADN information modeling language is intended to address that
-gap. Abstract Syntax Notation One [[ASN.1](#asn1)] is another
-example of an abstract schema language.
-
-JADN is a syntax-independent schema language, based on Unified
-Modeling Language (UML) datatypes. JADN is designed to work with
-common Internet data formats (JSON, XML, CBOR), providing a
-schema to support them. JADN is also graph-oriented to align with
-the web and database design practices, with options to identify
-primary and foreign keys, including web URLs..
-
-JADN's native format is structured JSON, and a broad variety of
-tools exist for creating and manipulating information in JSON
-format.
-
- - a JADN schema is structured data that can be generated and
-   transformed programmatically
- - JADN schemas employ a simple, regular structure (every type
-   definition has the same five fields)
-
-​ASN.1 is a formal notation used for describing data transmitted
-by telecommunications protocols, regardless of language
-implementation and physical representation of these data,
-whatever the application, whether complex or very simple. The
-notation provides a certain number of pre-defined basic types,
-and makes it possible to define constructed types. Subtyping
-constraints can be also applied on any ASN.1 type in order to
-restrict its set of values. Data described in ASN.1 is serialized
-and deserialized based on set of encoding rules, which are
-defined for a broad variety of formats including the Basic
-Encoding Rules (BER) and similar, which are closely associated
-with ASN.1, as well as less closely tied standards such as XML
-and JSON.
-
-Other languages have been used for information modeling, although
-that is not their primary purposes.  Some examples are 
-Unified Modeling Language [[UML](#uml)], and 
-Integration DEFinition for information modeling [[IDEF1X](#idef1x)].
 
 ## 2.6 Information Modeling Tools
 
