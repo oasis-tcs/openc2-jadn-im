@@ -1,7 +1,7 @@
 
-IPv4-Packet-Header = Array                              // fields in an IPv4 packet header, per RFC 791 and subsequent contributions
-   1  Integer /i8                       // version:: version; always = 4 for an IPv4 packet header (4 bits)
-   2  Integer /i8                       // ihl:: Internet Header Length (4 bits)
+IPv4-Packet-Header = Array              // fields in an IPv4 packet header, per RFC 791 and subsequent contributions
+   1  Integer /u4                       // version:: version; always = 4 for an IPv4 packet header (4 bits)
+   2  Integer /u4                       // ihl:: Internet Header Length (4 bits)
    3  Diff-Svcs-Code-Point              // dscp:: Differentiated Services Code Point (enumeration, 6 bits)
    4  ECN                               // ecn:: Explicit Congestion Notification (enumeration, 2 bits)
    5  Integer{20..65535} /i16           // total_length:: entire packet size in bytes, including header and data (min: 20 bytes (header without data) / max: 65,535 bytes)
@@ -9,14 +9,14 @@ IPv4-Packet-Header = Array                              // fields in an IPv4 pac
    7  Boolean                           // reserved_flag:: Reserved flag field; should be set to 0 (1-bit)
    8  Boolean                           // dont_frag:: Don't Fragment flag (1 bit)
    9  Boolean                           // more_frags:: More Fragments (1 bit): cleared for unfragmented packets and last fragment of a fragmented packet
-  10  Integer{0..8191} /i8              // frag_offset:: specifies the offset of a particular fragment relative to the beginning of the original unfragmented IP datagram (13 bits)
+  10  Integer{0..8191} /u13             // frag_offset:: specifies the offset of a particular fragment relative to the beginning of the original unfragmented IP datagram (13 bits)
   11  Integer /i8                       // time_to_live:: datagram's lifetime specified in seconds, but time intervals less than 1 second are rounded up to 1. In practice, the field is used as a hop count
   12  Integer /i8                       // protocol:: transport layer protocol, per IANA registry
   13  Integer /i16                      // header_checksum:: used for error checking of the packet header
   14  Binary /ipv4-addr                 // source_addr:: source address for the packet sender; may be modified by NAT
   15  Binary /ipv4-addr                 // dest_addr:: address for the intended recipient of the packet; may be modified by NAT
 
-Diff-Svcs-Code-Point = Enumerated                       // Differentiated Services Code Point, 6 bits, values (derived from Wikipedia article)
+Diff-Svcs-Code-Point = Enumerated       // Differentiated Services Code Point, 6 bits, values (derived from Wikipedia article)
    0 df                // Default Forwarding (best effort)
   10 af-c1-dpL         // Assured Forwarding (RFCs 2597 / 3260) - class 1 / drop probability low
   12 af-c1-dpM         // Assured Forwarding (RFCs 2597 / 3260) - class 1 / drop probability medium
@@ -33,7 +33,7 @@ Diff-Svcs-Code-Point = Enumerated                       // Differentiated Servic
   44 va                // Voice Admit (RFC 5865)
   46 ef                // Expedited Routing (RFC 3246)
 
-ECN = Enumerated                                        // Explicit Congestion Notification (RFC 3168)
+ECN = Enumerated       // Explicit Congestion Notification (RFC 3168)
    0 not_ect           // Not ECN-Capable Transport, Not-ECT
    1 ect_1             // ECN Capable Transport(1), ECT(1)
    2 ect_0             // ECN Capable Transport(0), ECT(0)

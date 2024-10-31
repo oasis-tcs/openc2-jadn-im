@@ -1,8 +1,8 @@
 {
   "types": [
     ["IPv4-Packet-Header", "Array", [], "fields in an IPv4 packet header, per RFC 791 and subsequent contributions", [
-        [1, "version", "Integer", ["/i8"], "version; always = 4 for an IPv4 packet header (4 bits)"],
-        [2, "ihl", "Integer", ["/i8"], "Internet Header Length (4 bits)"],
+        [1, "version", "Integer", ["/u4"], "version; always = 4 for an IPv4 packet header (4 bits)"],
+        [2, "ihl", "Integer", ["/u4"], "Internet Header Length (4 bits)"],
         [3, "dscp", "Diff-Svcs-Code-Point", [], "Differentiated Services Code Point (enumeration, 6 bits)"],
         [4, "ecn", "ECN", [], "Explicit Congestion Notification (enumeration, 2 bits)"],
         [5, "total_length", "Integer", ["/i16", "{20", "}65535"], "entire packet size in bytes, including header and data (min: 20 bytes (header without data) / max: 65,535 bytes)"],
@@ -10,7 +10,7 @@
         [7, "reserved_flag", "Boolean", [], "Reserved flag field; should be set to 0 (1-bit)"],
         [8, "dont_frag", "Boolean", [], "Don't Fragment flag (1 bit)"],
         [9, "more_frags", "Boolean", [], "More Fragments (1 bit): cleared for unfragmented packets and last fragment of a fragmented packet"],
-        [10, "frag_offset", "Integer", ["/i8", "{0", "}8191"], "specifies the offset of a particular fragment relative to the beginning of the original unfragmented IP datagram (13 bits)"],
+        [10, "frag_offset", "Integer", ["/u13", "{0", "}8191"], "specifies the offset of a particular fragment relative to the beginning of the original unfragmented IP datagram (13 bits)"],
         [11, "time_to_live", "Integer", ["/i8"], "datagram's lifetime specified in seconds, but time intervals less than 1 second are rounded up to 1. In practice, the field is used as a hop count"],
         [12, "protocol", "Integer", ["/i8"], "transport layer protocol, per IANA registry "],
         [13, "header_checksum", "Integer", ["/i16"], "used for error checking of the packet header"],
