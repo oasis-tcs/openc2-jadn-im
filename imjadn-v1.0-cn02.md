@@ -195,15 +195,15 @@ in the creation and use of IMs.
 
 ## 1.1 Background: Motivation for JADN
 
-Information models are a means to understand
-and document the essential information content relevant to a
-system, application, or protocol exchange without regard to how
-that information is represented in actual implementations.
-Having a clear view of the information required provides clarity
-regarding the goals that the eventual implementation must
-satisfy.
-This section provides the background for the creation of JADN as
-an information modeling language for a spectrum of applications.
+Information is *what* needs to be communicated between applications (i.e.,
+meaning), and data is *how* that information is represented when communicating
+(i.e., presentation). Information *models* are a means to understand and
+document the essential information content relevant to a system, application, or
+protocol exchange without regard to how that information is represented in
+actual implementations. Having a clear view of the information required provides
+clarity regarding the goals that the eventual implementation must satisfy. This
+section provides the background for the creation of JADN as an information
+modeling language for a spectrum of applications.
 
 ### 1.1.1 Information Models and Data Models
 
@@ -563,8 +563,7 @@ the same datatype and their logical values are equal.
 
 # 2 Information vs. Data
 
-Information is *what* needs to be communicated between applications, and data is *how* that information
-is represented when communicating.  More formally, information is the unexpected data, or entropy,
+  More formally, information is the unexpected data, or entropy,
 contained in a document.  When information is serialized for transmission in a canonical format, the additional
 data used for purposes such as text conversion, delimiting, and framing contains no information because it is known
 *a priori*. If the serialization is non-canonical, any additional entropy introduced during serialization
