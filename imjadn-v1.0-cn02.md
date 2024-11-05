@@ -611,7 +611,7 @@ begins with a set of types that reflect purpose rather than syntax.
 An information-centric design approach that creates 
 conceptual and logical models can readily be connected with a data-centric design, allowing bottom-up and top-down approaches to meet in the middle. 
 This connects information-centric synthesis and data-centric analysis, as described in [Section 1.1.1](#111-information-models-and-data-models).
-However, there are significant differences between these approaches, as shown in Table 2-1.
+However, there are significant process and outcome differences between these approaches, as shown in Table 2-1.
 
 ###### Table 2-1 Modeling Approach Comparison
 
