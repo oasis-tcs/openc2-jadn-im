@@ -649,42 +649,6 @@ CBOR style.
 Reverse-engineering an information model from existing data models allows commonalities and incompatibilities
 to be identified, facilitating convergence across multiple specifications with similar goals.
 
-## 2.3 Information Definition Formats
-
-Google Protocol Buffers ([Protobuf](#proto)) is a typical data definition language. A Protobuf definition looks like:
-```
-message Person {
-  required string name = 1;
-  required int32 id = 2;
-  optional string email = 3;
-}
-```
-The corresponding JADN definiton in IDL format ([Section 5](#5-definition-formats)) is structurally similar:
-```
-Person = Record
-   1 name     String
-   2 id       Integer
-   3 email    String optional
-```
-Property tables (also [Section 5](#5-definition-formats)) include the same content:
-
-**_Type: Person (Record)_**
-
-| ID | Name | Type | # | Description |
-| ---: | :--- | :--- | ---: | :--- |
-| 1 | **name** | String | 1 |  |
-| 2 | **id** | Integer | 1 |  |
-| 3 | **email** | String | 0..1 |  |
-
-The normative form of a JADN type definition ([Section 3](#3-jadn-types)) is JSON data:
-```
-["Person", "Record", [], "", [
-    [1, "name", "String", [], ""],
-    [2, "id", "Integer", [], ""],
-    [3, "email", "String", ["[0"], ""]
-]]
-```
-IDL or property tables are preferred for use in documentation, but conformance is based on normative JSON data.
 
 ## 2.4 Implementation
 
