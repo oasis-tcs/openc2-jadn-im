@@ -2920,7 +2920,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-10-28 | David Lemire | Relocate multiple representations example (from 3.1.5.3 to 3.3.2) (PR #65) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-28 | David Lemire | Revise structure of Section 3.1 for improved clarity and sequencing (PR #66) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-29 | David Lemire | Refine Figure 4-1 (references relationships) (PR #70) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Transfer Section 2 material from CS (PR #71) and integrate with existing content (PR #XX) |
+| imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Transfer Section 2 material from CS (PR #71) and integrate with existing content (PR #74) |
 
 -------
 
