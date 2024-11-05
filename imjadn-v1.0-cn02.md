@@ -623,17 +623,10 @@ However, there are significant differences between these approaches, as shown in
 Information-centric design promotes consensus when faced with conflicting developer preferences.
 Because information is the "substance" of a message, separating substance (information) from style (data format)
 may make it easier to agree on an information model first, deferring debate on data formats.
-  [JSON and XML Transformations](#transform) uses the terms
-"Friendly" for XML and JSON encodings that associate data types directly with variables and "Unfriendly"
-for encodings that use repeated variable names in name-value pairs. JADN uses Compact and Verbose respectively
-to refer to those styles. The name "Verbose" is intended to be descriptive rather than pejorative,
-as opposed to "Unfriendly".
-An information model allows designers to compare Verbose and Compact styles for usability, and allows
-data to be validated and successfully round tripped between a readable JSON style and an actually concise
-CBOR style.
 
-Reverse-engineering an information model from existing data models allows commonalities and incompatibilities
-to be identified, facilitating convergence across multiple specifications with similar goals.
+Reverse-engineering an information model from existing data models allows
+commonalities and incompatibilities to be identified, facilitating convergence
+across multiple specifications with similar goals.
 
 -------
 
@@ -690,7 +683,12 @@ include serialization rules for four different formats:
  - Concise JSON
  - CBOR
 
-The specification also describes what is needed to connect JADN
+The name "Verbose" here is intended to be descriptive rather than pejorative. An
+information model allows designers to compare Verbose and Compact styles for
+usability, and allows data to be validated and successfully round tripped
+between a readable JSON style and an actually concise CBOR style.
+
+The JADN Specification also describes what is needed to connect JADN
 and IMs defined in JADN to other serialization formats:
 
  - Specify an unambiguous serialized representation for each JADN type
