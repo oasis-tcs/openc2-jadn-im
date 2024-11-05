@@ -590,29 +590,7 @@ binary data formats such as Protobuf and CBOR and text formats such as XML and J
 Non-uniform or correlated data contains less than one byte of information per data byte,
 but source coding is beyond the scope of this specification.*
 
-## 2.1 Graph Modeling
 
-
-
-Logical models are undirected graphs, and a few results from graph theory are useful when
-constructing information models from logical models:
-* A tree is a connected acyclic undirected graph, where any pair of nodes is connected by exactly one path.
-* A directed (or rooted) tree is a hierarchy. A directed tree is constructed from an (undirected) tree by
-  selecting one node as root and assigning all edge directions either toward or away from the root.
-* A directed acyclic graph (DAG) is a directed graph with no directed cycles, or equivalently a directed graph with
-  a topological ordering, a sequence of nodes such that every edge is directed from earlier to later in the sequence.
-* A DAG differs from a directed tree in that nodes may have more than one parent.
-
-A DAG can be refactored into another DAG having the same underlying undirected graph,
-and two information models with the same underlying graph correspond to the same logical model.
-
-A DAG can be converted to a directed
-tree by denormalizing (copying subtrees below multi-parent nodes), and a directed tree can be converted
-to a DAG by normalizing (combining identical subtrees).
-Reuse of common types is an important goal in both design of information models and analysis of data.
-However, it is sometimes useful to have a [tree-structured representation](#graph) of a document's structure.
-Converting a DAG into a directed tree supports applications such as model queries that are
-otherwise difficult to implement, tree-structured content statistics, content transformations, and documentation.
 
 ## 2.2 Information Modeling
 Data modeling in the conceptual/logical/physical sense is a top-down process starting with goals and ending
