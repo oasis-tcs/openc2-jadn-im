@@ -623,21 +623,7 @@ However, there are significant differences between these approaches, as shown in
 Information-centric design promotes consensus when faced with conflicting developer preferences.
 Because information is the "substance" of a message, separating substance (information) from style (data format)
 may make it easier to agree on an information model first, deferring debate on data formats.
-JADN defines three kinds of information that have alternate representations:
-1. Primitive types such as dates and IP addresses: text representation or numeric value (formats)
-2. Enumerations: string value or numeric id (Enumerated vocabularies and field identifiers)
-3. Table rows: column name or position (Records)
-
-These alternatives can be grouped into distinct serialization styles:
-
-| Style:       | Verbose<br>repeated name-value pairs | Compact<br>element / property names-values | Concise<br>machine-to-machine optimized |
-| ------------ | ------------------- | ------------------- | ------------------------- |
-| Primitives   | Text Representation | Text Representation | Integer / Binary / Base64 |
-| Enumerations | String              | String              | Integer                   |
-| Table Rows   | Column Name         | Column Position     | Column Position           |
-
-A data format is a serialization style applied to a data language: "Compact JSON",
-"Concise JSON", "Compact XML", "Verbose CBOR", etc.  [JSON and XML Transformations](#transform) uses the terms
+  [JSON and XML Transformations](#transform) uses the terms
 "Friendly" for XML and JSON encodings that associate data types directly with variables and "Unfriendly"
 for encodings that use repeated variable names in name-value pairs. JADN uses Compact and Verbose respectively
 to refer to those styles. The name "Verbose" is intended to be descriptive rather than pejorative,
@@ -680,7 +666,23 @@ Serialization and deserialization are intimately connected to the
 chosen format: the same data can be serialized in JSON, CBOR, and
 XML, and while the serialized data will look very different,
 the received information that is recovered by deserialization
-should match the transmitted information. The [[JADN Specification](#jadn-v10)] 
+should match the transmitted information. 
+
+JADN defines three kinds of information that have alternate representations:
+1. Primitive types such as dates and IP addresses: text representation or numeric value (formats)
+2. Enumerations: string value or numeric id (Enumerated vocabularies and field identifiers)
+3. Table rows: column name or position (Records)
+
+These alternatives can be grouped into distinct serialization styles:
+
+| Style:       | Verbose<br>repeated name-value pairs | Compact<br>element / property names-values | Concise<br>machine-to-machine optimized |
+| ------------ | ------------------- | ------------------- | ------------------------- |
+| Primitives   | Text Representation | Text Representation | Integer / Binary / Base64 |
+| Enumerations | String              | String              | Integer                   |
+| Table Rows   | Column Name         | Column Position     | Column Position           |
+
+A data format is a serialization style applied to a data language: "Compact JSON",
+"Concise JSON", "Compact XML", "Verbose CBOR", etc. The [[JADN Specification](#jadn-v10)] 
 include serialization rules for four different formats:
 
  - Verbose JSON
