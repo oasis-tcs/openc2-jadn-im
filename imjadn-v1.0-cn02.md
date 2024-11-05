@@ -2279,7 +2279,7 @@ This CN provides several examples to illustrate approaches to information
 modeling and the application of JADN. The example IMs are:
 
  - A digital music library
- - The header of an IP version 4 packet header
+ - An IP version 4 packet header
  - A very simple example of a university with classes and people to illustrate
    the available JADN representations
   
@@ -2531,6 +2531,8 @@ as documented in the Wikipedia article, rather than a simple monontic sequence o
 field values that would be the usual approach in a more design-oriented modeling activity.
 
 ### 3.3.3 Multiple Representations Example
+
+> EDITOR'S NOTE: intro text may need revision if examples are removed from the JADN Specification
 
 The [[JADN Specification](#jadn-v10)], section 5.3,
 uses a simple example of an IM for a university to illustrate the
