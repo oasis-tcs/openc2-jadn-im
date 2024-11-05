@@ -403,6 +403,9 @@ file is:
 As with individual IP addresses, the information in an IPv4 header is
 no greater than the 24 byte RFC 791 lexical value regardless of data format.
 
+[Section 2](#2-information-modeling-overview) discusses information vs. data,
+information modeling, and related concepts in more detail.
+
 ### 1.1.4 Information Modeling Goals and Principles
 
 Lexical values are concrete visualizable representations of information,
