@@ -608,7 +608,7 @@ with a physical data model. But in practice "data modeling" is often a bottom-up
 a collection of desired data instances and ends with a concrete schema.
 That bottom-up process could be called data-centric design, in contrast with information-centric design which
 begins with a set of types that reflect purpose rather than syntax.
-An information-centric design approach integrates that creates 
+An information-centric design approach that creates 
 conceptual and logical models can readily be connected with a data-centric design, allowing bottom-up and top-down approaches to meet in the middle. 
 This connects information-centric synthesis and data-centric analysis, as described in [Section 1.1.1](#111-information-models-and-data-models).
 However, there are significant differences between these approaches, as shown in Table 2-1.
