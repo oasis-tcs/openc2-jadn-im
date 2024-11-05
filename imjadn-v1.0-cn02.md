@@ -649,11 +649,6 @@ CBOR style.
 Reverse-engineering an information model from existing data models allows commonalities and incompatibilities
 to be identified, facilitating convergence across multiple specifications with similar goals.
 
-
-## 2.4 Implementation
-
-
-
 -------
 
 =============== *End Section 2 from JADN CS* ========================================================
