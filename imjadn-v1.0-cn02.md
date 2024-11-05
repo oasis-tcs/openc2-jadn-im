@@ -406,6 +406,8 @@ no greater than the 24 byte RFC 791 lexical value regardless of data format.
 [Section 2](#2-information-modeling-overview) discusses information vs. data,
 information modeling, and related concepts in more detail.
 
+> TO-DO: add ref to the IPv4 packet example to the foregoing once merged.
+
 ### 1.1.4 Information Modeling Goals and Principles
 
 Lexical values are concrete visualizable representations of information,
@@ -566,7 +568,7 @@ the same datatype and their logical values are equal.
 
 # 2 Information vs. Data
 
-  More formally, information is the unexpected data, or entropy,
+Formally, information is the unexpected data, or entropy,
 contained in a document.  When information is serialized for transmission in a canonical format, the additional
 data used for purposes such as text conversion, delimiting, and framing contains no information because it is known
 *a priori*. If the serialization is non-canonical, any additional entropy introduced during serialization
@@ -595,14 +597,18 @@ but source coding is beyond the scope of this specification.*
 
 
 
-## 2.2 Information Modeling
-Data modeling in the conceptual/logical/physical sense is a top-down process starting with goals and ending
+## 2.1 Information Modeling
+Modeling in the conceptual \> logical \> physical sense is a top-down process starting with goals and ending
 with a physical data model. But in practice "data modeling" is often a bottom-up exercise that begins with
 a collection of desired data instances and ends with a concrete schema.
-That process could be called data-centric design, in contrast with information-centric design which
+That bottm-up process could be called data-centric design, in contrast with information-centric design which
 begins with a set of types that reflect purpose rather than syntax.
-Because an information model is a graph, information-centric design integrates easily with 
-conceptual and logical models, allowing bottom-up and top-down approaches to meet in the middle.
+An information-centric design approach integrates that creates 
+conceptual and logical models can readily be connected with a data-centric design, allowing bottom-up and top-down approaches to meet in the middle. 
+This connects information-centric synthesis and data-centric analysis, as described in [Section 1.1.1](#111-information-models-and-data-models).
+However, there are significant differences between these approaches, as shown in Table 2-1.
+
+###### Table 2-1 Modeling Approach Comparison
 
 | Data-centric | Information-centric |
 | --- | --- |
