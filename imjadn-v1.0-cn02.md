@@ -715,8 +715,6 @@ situations.
 
 ## 2.4 Applying an Information Model
 
-*Note: this becomes the heart of section 2, after rewriting.*
-
 A primary application of an IM is in the translation of data into
 and out of in-memory representation and serialized formats for
 storage and transmission. The IM defines the types, organization,
