@@ -482,7 +482,7 @@ Modeling Language (UML) datatypes. JADN is designed to work with
 common Internet data formats (JSON, XML, CBOR), providing a
 schema to support them. JADN is also graph-oriented to align with
 the web and database design practices, with options to identify
-primary and foreign keys, including web URLs..
+primary and foreign keys, including web URLs.
 
 JADN's native format is structured JSON, and a broad variety of
 tools exist for creating and manipulating information in JSON
@@ -592,18 +592,7 @@ but source coding is beyond the scope of this specification.*
 
 ## 2.1 Graph Modeling
 
-A JADN information model is a set of type definitions ([Section 3.1](#31-type-definitions)).
-Each field in a compound type may be associated with another model-defined type, and the set of
-associations between types forms a directed graph.  Each association is either a container or a
-reference, and the direction of each edge is toward the contained or referenced type.
 
-The container edges of an information model must be acyclic in order to ensure that:
-1) every model has one or more roots,
-2) every path from a root to any leaf has finite length, and equivalently
-3) every instance has finite nesting depth.
-
-There is no restriction on reference edges, so any container cycles in a model can be
-broken by converting one or more containers to references.
 
 Logical models are undirected graphs, and a few results from graph theory are useful when
 constructing information models from logical models:
@@ -892,6 +881,20 @@ As stated in the [[JADN Specification](#jadn-v10)] introduction:
 > constraints from the Unified Modeling Language (UML) with data
 > abstraction based on information theory and structural
 > organization using results from graph theory.
+
+A JADN information model is a set of type definitions. Each field in a compound
+type may be associated with another model-defined type, and the set of
+associations between types forms a directed graph.  Each association is either a
+container or a reference, and the direction of each edge is toward the contained
+or referenced type.
+
+The container edges of an information model must be acyclic in order to ensure that:
+1) every model has one or more roots,
+2) every path from a root to any leaf has finite length, and equivalently
+3) every instance has finite nesting depth.
+
+There is no restriction on reference edges, so any container cycles in a model can be
+broken by converting one or more containers to references.
 
 From UML JADN takes the concept of modeling information/data
 using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
