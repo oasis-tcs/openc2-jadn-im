@@ -652,17 +652,7 @@ to be identified, facilitating convergence across multiple specifications with s
 
 ## 2.4 Implementation
 
-Two general approaches can be used to implement IM-based protocol specifications:
-1) Translate the IM to a data-format-specific schema language such as [XSD](#xsd),
-[Relax-NG](#relaxng), [JSON Schema](#jsonschema), [Protobuf](#proto), or [CDDL](#rfc8610),
-then use format-specific serialization and validation libraries to process data in the selected format.
-Applications use data objects specific to each serialization format.
-2) Use the IM directly as a format-independent schema language, using IM serialization and validation libraries
-to process data without a separate schema generation step. Applications use the same IM instances regardless of
-serialization format, making it easy to bridge from one format to another.
- 
-Implementations based on serialization-specific code interoperate with those using an IM serialization library,
-allowing developers to use either approach. 
+
 
 -------
 
@@ -766,7 +756,21 @@ instantiated through the data structures and types supported by
 the chosen programming language. The IM also guides the creation
 of routines to parse and validate data being input from storage
 or through communications, and to serialize data being output to
-storage or transmission. Deriving the processing capabilities
+storage or transmission. 
+
+Two general approaches can be used to implement IM-based protocol specifications:
+
+1) Translate the IM to a data-format-specific schema language such as [XSD](#xsd),
+[Relax-NG](#relaxng), [JSON Schema](#jsonschema), [Protobuf](#proto), or [CDDL](#rfc8610),
+then use format-specific serialization and validation libraries to process data in the selected format.
+Applications use data objects specific to each serialization format.
+
+2) Use the IM directly as a format-independent schema language, using IM serialization and validation libraries
+to process data without a separate schema generation step. Applications use the same IM instances regardless of
+serialization format, making it easy to bridge from one format to another.
+ 
+Implementations based on serialization-specific code interoperate with those using an IM serialization library,
+allowing developers to use either approach. Deriving the processing capabilities
 from the IM ensures consistency as the data is manipulated.
 Figure 2-2 illustrates the concept of applying an IM to manage
 the associated data.
