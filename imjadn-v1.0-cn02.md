@@ -628,7 +628,6 @@ However, there are significant process and outcome differences between these app
 Information-centric design promotes consensus when faced with conflicting developer preferences.
 Because information is the "substance" of a message, separating substance (information) from style (data format)
 may make it easier to agree on an information model first, deferring debate on data formats.
-
 Reverse-engineering an information model from existing data models allows
 commonalities and incompatibilities to be identified, facilitating convergence
 across multiple specifications with similar goals.
