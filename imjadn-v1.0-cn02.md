@@ -564,10 +564,13 @@ the same datatype and their logical values are equal.
 
 -------
 
-=============== *Begin Section 2 from JADN CS* ======================================================
+# 2 Creation and Use of Information Models
 
-# 2 Information vs. Data
+This section discusses the nature and benefits of IMs, the role
+of serialization, types of available modeling languages, and
+tools that can be used in information modeling.
 
+## 2.1 Information vs. Data
 Formally, information is the unexpected data, or entropy,
 contained in a document.  When information is serialized for transmission in a canonical format, the additional
 data used for purposes such as text conversion, delimiting, and framing contains no information because it is known
@@ -595,9 +598,7 @@ binary data formats such as Protobuf and CBOR and text formats such as XML and J
 Non-uniform or correlated data contains less than one byte of information per data byte,
 but source coding is beyond the scope of this specification.*
 
-
-
-## 2.1 Information Modeling
+## 2.2 Information Modeling
 Modeling in the conceptual \> logical \> physical sense is a top-down process starting with goals and ending
 with a physical data model. But in practice "data modeling" is often a bottom-up exercise that begins with
 a collection of desired data instances and ends with a concrete schema.
@@ -628,19 +629,7 @@ Reverse-engineering an information model from existing data models allows
 commonalities and incompatibilities to be identified, facilitating convergence
 across multiple specifications with similar goals.
 
--------
-
-=============== *End Section 2 from JADN CS* ========================================================
-
-# 2 Information Modeling Overview
-
-*Note: to be deleted after merging any non-redundant content into section 1.*
-
-This section discusses the nature and benefits of IMs, the role
-of serialization, types of available modeling languages, and
-tools that can be used in information modeling.
-
-## 2.4 Serialization
+## 2.3 Serialization
 
 Information exists in the minds of users (producers and
 consumers), in the state of applications running on systems, and
@@ -721,24 +710,7 @@ human readability) may indicate that a serialization that uses
 more data than sufficient is appropriate for particular
 situations.
 
-## 2.6 Information Modeling Tools
-
-The value of an IM language multiplies when automated tooling is
-available to support creation, maintenance, and use of models
-created in that language. The need for tools is discussed in
-[[RFC 8477](#rfc8477)], citing particularly the need for code
-generation and debugging tools. A tool set to support an IM
-language should provide
-
- - Model creation capabilities
- - Model validation capabilities
- - Translation among alternative representations of the IM (e.g.,
-   textual, graphical)
- - Generation of language-specific schemas from an IM
- - Model translation to language- or protocol-specific
-   serialization / deserialization capabilities
-
-## 2.7 Applying an Information Model
+## 2.4 Applying an Information Model
 
 *Note: this becomes the heart of section 2, after rewriting.*
 
@@ -810,6 +782,23 @@ and values for a Boolean node, e.g. integer 0 or 37 or string
 true. A JSON representation can use a Boolean type with values
 'false' and 'true', but for efficient serialization might also
 use the JSON number type with values 0 and 1.
+
+## 2.5 Information Modeling Tools
+
+The value of an IM language multiplies when automated tooling is
+available to support creation, maintenance, and use of models
+created in that language. The need for tools is discussed in
+[[RFC 8477](#rfc8477)], citing particularly the need for code
+generation and debugging tools. A tool set to support an IM
+language should provide:
+
+ - Model creation capabilities
+ - Model validation capabilities
+ - Translation among alternative representations of the IM (e.g.,
+   textual, graphical)
+ - Generation of language-specific schemas from an IM
+ - Model translation to language- or protocol-specific
+   serialization / deserialization capabilities
 
 -------
 
