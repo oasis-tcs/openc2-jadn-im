@@ -606,7 +606,7 @@ but source coding is beyond the scope of this specification.*
 Modeling in the conceptual \> logical \> physical sense is a top-down process starting with goals and ending
 with a physical data model. But in practice "data modeling" is often a bottom-up exercise that begins with
 a collection of desired data instances and ends with a concrete schema.
-That bottm-up process could be called data-centric design, in contrast with information-centric design which
+That bottom-up process could be called data-centric design, in contrast with information-centric design which
 begins with a set of types that reflect purpose rather than syntax.
 An information-centric design approach integrates that creates 
 conceptual and logical models can readily be connected with a data-centric design, allowing bottom-up and top-down approaches to meet in the middle. 
