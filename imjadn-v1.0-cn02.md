@@ -138,7 +138,7 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.2.2 Frederiks / van der Weide Modeling Process](#322-frederiks--van-der-weide-modeling-process)
   - [3.3 Information Modeling Example](#33-information-modeling-example)
     - [3.3.1 Example 1: A Digital Music Library](#331-example-1-a-digital-music-library)
-    - [3.3.2 Multiple Representations Example](#332-multiple-representations-example)
+    - [3.3.2 Multiple Representations Example](#333-multiple-representations-example)
 - [4 Advanced Techniques](#4-advanced-techniques)
   - [4.1 Packages and Namespaces](#41-packages-and-namespaces)
     - [4.1.1 Packages](#411-packages)
@@ -2248,7 +2248,7 @@ and the process has four phases:
 The process is executed in an iterative sequence of modeling, verification and validation. At least one iteration of the modeling loop is required.
 
 
-## 3.3 Information Modeling Example
+## 3.3 Information Modeling Examples
 
 As discussed in [Section 1.1.1](#111-openc2-and-jadn), JADN is a
 general purpose tool for information modeling, and can be applied
@@ -2275,14 +2275,21 @@ are:
  - Music Database (artists, albums, songs, tracks, metadata,
    guest artists)
 
-This CN provides an example of an IM for a digital music library.
+This CN provides several examples to illustrate approaches to information
+modeling and the application of JADN. The example IMs are:
+
+ - A digital music library
+ - An IP version 4 packet header
+ - A very simple example of a university with classes and people to illustrate
+   the available JADN representations
+  
 Additional examples may be added in future versions of the CN.
 
 ### 3.3.1 Example 1: A Digital Music Library
 
 This example shows a simple IM for a digital music library and
 can be considered a "Hello World" example of applying the
-concepts described above. The components of the library are presented
+concepts described in this committee note. The components of the library are presented
 here in JIDL form along with brief descriptions. The final ERD for the
 library appears at the end of this section. The complete,
 consolidated JADN, JIDL, and property tables can be found in
@@ -2425,7 +2432,107 @@ the model components connect.
 
 <img src="images/music-library-v1_1-detailed-ERD-GV.png" height="720px">
 
-### 3.3.2 Multiple Representations Example
+### 3.3.2 Internet Protocol Version 4 Packet Header
+
+This example illustrates developing an abstract IM from an existing well-defined
+data structure. The IPv4 packet header definition originates from 
+[[RFC 791](#rfc791)], with some details of the header modified by subsequent RFCs.
+While there may be limited utility in leveraging JADN's information equivalence
+focus to generate IPv4 packet header encodings other than binary, the
+model is useful to document the fields of the header and describe their
+conceptual purpose. This model was developed based on the content of
+three Wikipedia pages related to the IPv4 packet header:
+
+ - The [Header](https://en.wikipedia.org/wiki/IPv4#Header) section of the
+   [IPv4](https://en.wikipedia.org/wiki/IPv4) article 
+ - The [Classification and Marking](https://en.wikipedia.org/wiki/Differentiated_services#Classification_and_marking)
+   section of the [Differentiated Services](https://en.wikipedia.org/wiki/Differentiated_services) article
+ - The [Operation of ECN with IP](https://en.wikipedia.org/wiki/Explicit_Congestion_Notification#Operation_of_ECN_with_IP) section of the
+   [Explicit Congestion Notification](https://en.wikipedia.org/wiki/Explicit_Congestion_Notification#Operation_of_ECN_with_IP) article
+
+The model comprises a JADN Array type containing all of the fields of the IPv4
+packet header (except the `options` field), supported by two Enumerated types to
+explicate the meanings of particular fields. Figure 3-ipv4-header shows the
+packet header array in JIDL form. In this representation the field "names" are
+embedded in the JIDL comment field between the `//` and `::` delimiters, as
+described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
+
+> EDITOR'S NOTE: may need to reformat the comments in the following for readability
+
+###### Figure 3-ipv4-header
+
+```
+IPv4-Packet-Header = Array    // fields in an IPv4 packet header, per RFC 791 and subsequent contributions
+   1  Integer /u4             // version:: version; always = 4 for an IPv4 packet header (4 bits)
+   2  Integer /u4             // ihl:: Internet Header Length (4 bits)
+   3  Diff-Svcs-Code-Point    // dscp:: Differentiated Services Code Point (enumeration, 6 bits)
+   4  ECN                     // ecn:: Explicit Congestion Notification (enumeration, 2 bits)
+   5  Integer{20..65535} /u16 // total_length:: entire packet size in bytes, including header and data (min: 20 bytes (header without data) / max: 65,535 bytes)
+   6  Integer /u16            // ident:: identification field; primarily used for uniquely identifying the group of fragments of a single IP datagram
+   7  Boolean                 // reserved_flag:: Reserved flag field; should be set to 0 (1-bit)
+   8  Boolean                 // dont_frag:: Don't Fragment flag (1 bit)
+   9  Boolean                 // more_frags:: More Fragments (1 bit): cleared for unfragmented packets and last fragment of a fragmented packet
+  10  Integer{0..8191} /u13   // frag_offset:: specifies the offset of a particular fragment relative to the beginning of the original unfragmented IP datagram (13 bits)
+  11  Integer /u8             // time_to_live:: datagram's lifetime specified in seconds, but time intervals less than 1 second are rounded up to 1. In practice, the field is used as a hop count
+  12  Integer /u8             // protocol:: transport layer protocol, per IANA registry
+  13  Integer /u16            // header_checksum:: used for error checking of the packet header
+  14  Binary /ipv4-addr       // source_addr:: source address for the packet sender; may be modified by NAT
+  15  Binary /ipv4-addr       // dest_addr:: address for the intended recipient of the packet; may be modified by NAT
+```
+
+This portion of the model highlights the application of a number of JADN capabilities:
+
+ - The use of the Array type for an information structure with rigid positioning
+ - The use of the /u\<*n*\> Integer type format option to define fields of arbitrary bit length
+ - The combination of a Binary type and the `/ipv4-addr` TypeOption to specify IPv4 network addresses
+ - The use of the Boolean type to clarify the meaning of flag field bits
+ 
+Three fields of the IPv4 packet header are functionally enumerations: 
+
+ - Differentiated Service Code Point (DSCP)
+ - Explicit Congestion Notification (ECN)
+ - Protocol
+
+The values for the `Protocol` field are managed by the Internet Assigned Numbers
+Authority (IANA); this model does not include an explicit enumeration of the
+IANA-assigned values. The model makes the meaning and use of the DSCP and ECN fields 
+clearer by definiting associated enumerations, as illustrated in Figure 3-ipv4-enums.
+
+###### Figure 3-ipv4-enums
+
+```
+Diff-Svcs-Code-Point = Enumerated       // Differentiated Services Code Point, 6 bits
+   0 df          // Default Forwarding (best effort)
+  10 af-c1-dpL   // Assured Forwarding (RFCs 2597 / 3260) - class 1 / drop probability low
+  12 af-c1-dpM   // Assured Forwarding (RFCs 2597 / 3260) - class 1 / drop probability medium
+  14 af-c1-dpH   // Assured Forwarding (RFCs 2597 / 3260) - class 1 / drop probability high
+  18 af-c2-dpL   // Assured Forwarding (RFCs 2597 / 3260) - class 2 / drop probability low
+  20 af-c2-dpM   // Assured Forwarding (RFCs 2597 / 3260) - class 2 / drop probability medium
+  22 af-c2-dpH   // Assured Forwarding (RFCs 2597 / 3260) - class 2 / drop probability high
+  26 af-c3-dpL   // Assured Forwarding (RFCs 2597 / 3260) - class 3 / drop probability low
+  28 af-c3-dpM   // Assured Forwarding (RFCs 2597 / 3260) - class 3 / drop probability medium
+  33 af-c3-dpH   // Assured Forwarding (RFCs 2597 / 3260) - class 3 / drop probability high
+  34 af-c4-dpL   // Assured Forwarding (RFCs 2597 / 3260) - class 4 / drop probability low
+  36 af-c4-dpM   // Assured Forwarding (RFCs 2597 / 3260) - class 4 / drop probability medium
+  43 af-c4-dpH   // Assured Forwarding (RFCs 2597 / 3260) - class 4 / drop probability high
+  44 va          // Voice Admit (RFC 5865)
+  46 ef          // Expedited Routing (RFC 3246)
+
+ECN = Enumerated // Explicit Congestion Notification (RFC 3168)
+   0 not_ect     // Not ECN-Capable Transport, Not-ECT
+   1 ect_1       // ECN Capable Transport(1), ECT(1)
+   2 ect_0       // ECN Capable Transport(0), ECT(0)
+   3 ce          // Congestion Experienced, CE
+```
+
+In order to align with the various RFCs documenting the use of DCSP, the DSCP
+enumeration defines its field values in terms of the IETF's recommended values
+as documented in the Wikipedia article, rather than a simple monontic sequence of
+field values that would be the usual approach in a more design-oriented modeling activity.
+
+### 3.3.3 Multiple Representations Example
+
+> EDITOR'S NOTE: intro text may need revision if examples are removed from the JADN Specification
 
 The [[JADN Specification](#jadn-v10)], section 5.3,
 uses a simple example of an IM for a university to illustrate the
@@ -2981,6 +3088,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-10-28 | David Lemire | Revise structure of Section 3.1 for improved clarity and sequencing (PR #66) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-29 | David Lemire | Refine Figure 4-1 (references relationships) (PR #70) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Transfer Section 2 material from CS (PR #71) and integrate with existing content (PR #XX) |
+| imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Add IPv4 packet header models as example of building from known structure (PR #71) |
 
 -------
 
