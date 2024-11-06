@@ -98,12 +98,14 @@ For complete copyright information please see the full Notices section in [Appen
     - [1.1.2 The Information Modeling Gap](#112-the-information-modeling-gap)
     - [1.1.3 Defining Information](#113-defining-information)
     - [1.1.4 Information Modeling Goals and Principles](#114-information-modeling-goals-and-principles)
+    - [1.1.5 Information Modeling Languages](#115-information-modeling-languages)
   - [1.2 Terminology](#12-terminology)
-- [2 Information Modeling Overview](#2-information-modeling-overview)
-  - [2.4 Serialization](#24-serialization)
-  - [2.5 Information Modeling Languages](#25-information-modeling-languages)
-  - [2.6 Information Modeling Tools](#26-information-modeling-tools)
-  - [2.7 Applying an Information Model](#27-applying-an-information-model)
+- [2 Creation and Use of Information Models](#2-creation-and-use-of-information-models)
+  - [2.1 Information vs. Data](#21-information-vs-data)
+  - [2.2 Information Modeling](#22-information-modeling)
+  - [2.3 Serialization](#23-serialization)
+  - [2.4 Applying an Information Model](#24-applying-an-information-model)
+  - [2.5 Information Modeling Tools](#25-information-modeling-tools)
 - [3 Creating Information Models with JADN](#3-creating-information-models-with-jadn)
   - [3.1 JADN Overview](#31-jadn-overview)
     - [3.1.1 Type Definitions](#311-type-definitions)
@@ -144,6 +146,7 @@ For complete copyright information please see the full Notices section in [Appen
     - [4.1.1 Packages](#411-packages)
     - [4.1.2 Namespaces](#412-namespaces)
   - [4.2 Reference Relationships: Keys and Links](#42-reference-relationships-keys-and-links)
+          - [Figure 4-1 -- Contains and References Relationships](#figure-4-1----contains-and-references-relationships)
 - [Appendix A. Informative References](#appendix-a-informative-references)
 - [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
 - [Appendix C. Revision History](#appendix-c-revision-history)
@@ -195,15 +198,15 @@ in the creation and use of IMs.
 
 ## 1.1 Background: Motivation for JADN
 
-Information models are a means to understand
-and document the essential information content relevant to a
-system, application, or protocol exchange without regard to how
-that information is represented in actual implementations.
-Having a clear view of the information required provides clarity
-regarding the goals that the eventual implementation must
-satisfy.
-This section provides the background for the creation of JADN as
-an information modeling language for a spectrum of applications.
+Information is *what* needs to be communicated between applications (i.e.,
+meaning), and data is *how* that information is represented when communicating
+(i.e., presentation). Information *models* are a means to understand and
+document the essential information content relevant to a system, application, or
+protocol exchange without regard to how that information is represented in
+actual implementations. Having a clear view of the information required provides
+clarity regarding the goals that the eventual implementation must satisfy. This
+section provides the background for the creation of JADN as an information
+modeling language for a spectrum of applications.
 
 ### 1.1.1 Information Models and Data Models
 
@@ -403,6 +406,11 @@ file is:
 As with individual IP addresses, the information in an IPv4 header is
 no greater than the 24 byte RFC 791 lexical value regardless of data format.
 
+[Section 2](#2-information-modeling-overview) discusses information vs. data,
+information modeling, and related concepts in more detail.
+
+> TO-DO: add ref to the IPv4 packet example to the foregoing once merged.
+
 ### 1.1.4 Information Modeling Goals and Principles
 
 Lexical values are concrete visualizable representations of information,
@@ -453,6 +461,66 @@ smallest of those values.
 Additional quality metrics (completeness, sharability, structure, extensibility,
 etc.) are discussed in [Section&nbsp;3](#3-creating-information-models-with-jadn).
 
+### 1.1.5 Information Modeling Languages
+
+[[YTLee](#ytlee)] describes an IM language as follows:
+
+> "An information modeling language is a formal syntax that
+> allows users to capture data semantics and constraints."
+
+and defines their importance:
+
+> "Formal information modeling languages that describe
+> information requirements unambiguously is an enabling
+> technology that facilitates the development of a large scale,
+> networked, computer environment that behaves consistently and
+> correctly."
+
+ _Report from IoT Semantic Interoperability Workshop 2016_ [[RFC
+8477](#rfc8477)] describes a lack of consistency across Standards
+Developing Organizations (SDOs) in defining application layer
+data, attributing it to the lack of an encoding-independent
+standardization of the information represented by that data. The
+JADN information modeling language is intended to address that
+gap.
+
+JADN is a syntax-independent schema language, based on Unified
+Modeling Language (UML) datatypes. JADN is designed to work with
+common Internet data formats (JSON, XML, CBOR), providing a
+schema to support them. JADN is also graph-oriented to align with
+the web and database design practices, with options to identify
+primary and foreign keys, including web URLs.
+
+JADN's native format is structured JSON, and a broad variety of
+tools exist for creating and manipulating information in JSON
+format.
+
+ - a JADN schema is structured data that can be generated and
+   transformed programmatically
+ - JADN schemas employ a simple, regular structure (every type
+   definition has the same five fields)
+
+Abstract Syntax Notation One [[ASN.1](#asn1)] is another
+example of an abstract schema language.
+​ASN.1 is a formal notation used for describing data transmitted
+by telecommunications protocols, regardless of language
+implementation and physical representation of these data,
+whatever the application, whether complex or very simple. The
+notation provides a certain number of pre-defined basic types,
+and makes it possible to define constructed types. Subtyping
+constraints can be also applied on any ASN.1 type in order to
+restrict its set of values. Data described in ASN.1 is serialized
+and deserialized based on set of encoding rules, which are
+defined for a broad variety of formats including the Basic
+Encoding Rules (BER) and similar, which are closely associated
+with ASN.1, as well as less closely tied standards such as XML
+and JSON.
+
+Other languages have been used for information modeling, although
+that is not their primary purposes.  Some examples are 
+Unified Modeling Language [[UML](#uml)], and 
+Integration DEFinition for information modeling [[IDEF1X](#idef1x)].
+
 ## 1.2 Terminology
 
 This CN uses the definitions contained in the [[JADN
@@ -500,13 +568,14 @@ the same datatype and their logical values are equal.
 
 -------
 
-=============== *Begin Section 2 from JADN CS* ======================================================
-<!--
+# 2 Creation and Use of Information Models
 
-# 2 Information vs. Data
+This section discusses the nature and benefits of IMs, the role
+of serialization, types of available modeling languages, and
+tools that can be used in information modeling.
 
-Information is *what* needs to be communicated between applications, and data is *how* that information
-is represented when communicating.  More formally, information is the unexpected data, or entropy,
+## 2.1 Information vs. Data
+Formally, information is the unexpected data, or entropy,
 contained in a document.  When information is serialized for transmission in a canonical format, the additional
 data used for purposes such as text conversion, delimiting, and framing contains no information because it is known
 *a priori*. If the serialization is non-canonical, any additional entropy introduced during serialization
@@ -533,49 +602,18 @@ binary data formats such as Protobuf and CBOR and text formats such as XML and J
 Non-uniform or correlated data contains less than one byte of information per data byte,
 but source coding is beyond the scope of this specification.*
 
-## 2.1 Graph Modeling
-
-A JADN information model is a set of type definitions ([Section 3.1](#31-type-definitions)).
-Each field in a compound type may be associated with another model-defined type, and the set of
-associations between types forms a directed graph.  Each association is either a container or a
-reference, and the direction of each edge is toward the contained or referenced type.
-
-The container edges of an information model must be acyclic in order to ensure that:
-1) every model has one or more roots,
-2) every path from a root to any leaf has finite length, and equivalently
-3) every instance has finite nesting depth.
-
-There is no restriction on reference edges, so any container cycles in a model can be
-broken by converting one or more containers to references.
-
-Logical models are undirected graphs, and a few results from graph theory are useful when
-constructing information models from logical models:
-* A tree is a connected acyclic undirected graph, where any pair of nodes is connected by exactly one path.
-* A directed (or rooted) tree is a hierarchy. A directed tree is constructed from an (undirected) tree by
-  selecting one node as root and assigning all edge directions either toward or away from the root.
-* A directed acyclic graph (DAG) is a directed graph with no directed cycles, or equivalently a directed graph with
-  a topological ordering, a sequence of nodes such that every edge is directed from earlier to later in the sequence.
-* A DAG differs from a directed tree in that nodes may have more than one parent.
-
-A DAG can be refactored into another DAG having the same underlying undirected graph,
-and two information models with the same underlying graph correspond to the same logical model.
-
-A DAG can be converted to a directed
-tree by denormalizing (copying subtrees below multi-parent nodes), and a directed tree can be converted
-to a DAG by normalizing (combining identical subtrees).
-Reuse of common types is an important goal in both design of information models and analysis of data.
-However, it is sometimes useful to have a [tree-structured representation](#graph) of a document's structure.
-Converting a DAG into a directed tree supports applications such as model queries that are
-otherwise difficult to implement, tree-structured content statistics, content transformations, and documentation.
-
 ## 2.2 Information Modeling
-Data modeling in the conceptual/logical/physical sense is a top-down process starting with goals and ending
+Modeling in the conceptual \> logical \> physical sense is a top-down process starting with goals and ending
 with a physical data model. But in practice "data modeling" is often a bottom-up exercise that begins with
 a collection of desired data instances and ends with a concrete schema.
-That process could be called data-centric design, in contrast with information-centric design which
+That bottom-up process could be called data-centric design, in contrast with information-centric design which
 begins with a set of types that reflect purpose rather than syntax.
-Because an information model is a graph, information-centric design integrates easily with 
-conceptual and logical models, allowing bottom-up and top-down approaches to meet in the middle.
+An information-centric design approach that creates 
+conceptual and logical models can readily be connected with a data-centric design, allowing bottom-up and top-down approaches to meet in the middle. 
+This connects information-centric synthesis and data-centric analysis, as described in [Section 1.1.1](#111-information-models-and-data-models).
+However, there are significant process and outcome differences between these approaches, as shown in Table 2-1.
+
+###### Table 2-1 Modeling Approach Comparison
 
 | Data-centric | Information-centric |
 | --- | --- |
@@ -590,96 +628,11 @@ conceptual and logical models, allowing bottom-up and top-down approaches to mee
 Information-centric design promotes consensus when faced with conflicting developer preferences.
 Because information is the "substance" of a message, separating substance (information) from style (data format)
 may make it easier to agree on an information model first, deferring debate on data formats.
-JADN defines three kinds of information that have alternate representations:
-1. Primitive types such as dates and IP addresses: text representation or numeric value (formats)
-2. Enumerations: string value or numeric id (Enumerated vocabularies and field identifiers)
-3. Table rows: column name or position (Records)
+Reverse-engineering an information model from existing data models allows
+commonalities and incompatibilities to be identified, facilitating convergence
+across multiple specifications with similar goals.
 
-These alternatives can be grouped into distinct serialization styles:
-
-| Style:       | Verbose<br>repeated name-value pairs | Compact<br>element / property names-values | Concise<br>machine-to-machine optimized |
-| ------------ | ------------------- | ------------------- | ------------------------- |
-| Primitives   | Text Representation | Text Representation | Integer / Binary / Base64 |
-| Enumerations | String              | String              | Integer                   |
-| Table Rows   | Column Name         | Column Position     | Column Position           |
-
-A data format is a serialization style applied to a data language: "Compact JSON",
-"Concise JSON", "Compact XML", "Verbose CBOR", etc.  [JSON and XML Transformations](#transform) uses the terms
-"Friendly" for XML and JSON encodings that associate data types directly with variables and "Unfriendly"
-for encodings that use repeated variable names in name-value pairs. JADN uses Compact and Verbose respectively
-to refer to those styles. The name "Verbose" is intended to be descriptive rather than pejorative,
-as opposed to "Unfriendly".
-An information model allows designers to compare Verbose and Compact styles for usability, and allows
-data to be validated and successfully round tripped between a readable JSON style and an actually concise
-CBOR style.
-
-Reverse-engineering an information model from existing data models allows commonalities and incompatibilities
-to be identified, facilitating convergence across multiple specifications with similar goals.
-
-## 2.3 Information Definition Formats
-
-Google Protocol Buffers ([Protobuf](#proto)) is a typical data definition language. A Protobuf definition looks like:
-```
-message Person {
-  required string name = 1;
-  required int32 id = 2;
-  optional string email = 3;
-}
-```
-The corresponding JADN definiton in IDL format ([Section 5](#5-definition-formats)) is structurally similar:
-```
-Person = Record
-   1 name     String
-   2 id       Integer
-   3 email    String optional
-```
-Property tables (also [Section 5](#5-definition-formats)) include the same content:
-
-**_Type: Person (Record)_**
-
-| ID | Name | Type | # | Description |
-| ---: | :--- | :--- | ---: | :--- |
-| 1 | **name** | String | 1 |  |
-| 2 | **id** | Integer | 1 |  |
-| 3 | **email** | String | 0..1 |  |
-
-The normative form of a JADN type definition ([Section 3](#3-jadn-types)) is JSON data:
-```
-["Person", "Record", [], "", [
-    [1, "name", "String", [], ""],
-    [2, "id", "Integer", [], ""],
-    [3, "email", "String", ["[0"], ""]
-]]
-```
-IDL or property tables are preferred for use in documentation, but conformance is based on normative JSON data.
-
-## 2.4 Implementation
-
-Two general approaches can be used to implement IM-based protocol specifications:
-1) Translate the IM to a data-format-specific schema language such as [XSD](#xsd),
-[Relax-NG](#relaxng), [JSON Schema](#jsonschema), [Protobuf](#proto), or [CDDL](#rfc8610),
-then use format-specific serialization and validation libraries to process data in the selected format.
-Applications use data objects specific to each serialization format.
-2) Use the IM directly as a format-independent schema language, using IM serialization and validation libraries
-to process data without a separate schema generation step. Applications use the same IM instances regardless of
-serialization format, making it easy to bridge from one format to another.
- 
-Implementations based on serialization-specific code interoperate with those using an IM serialization library,
-allowing developers to use either approach. 
-
--------
--->
-=============== *End Section 2 from JADN CS* ========================================================
-
-# 2 Information Modeling Overview
-
-*Note: to be deleted after merging any non-redundant content into section 1.*
-
-This section discusses the nature and benefits of IMs, the role
-of serialization, types of available modeling languages, and
-tools that can be used in information modeling.
-
-## 2.4 Serialization
+## 2.3 Serialization
 
 Information exists in the minds of users (producers and
 consumers), in the state of applications running on systems, and
@@ -698,7 +651,23 @@ Serialization and deserialization are intimately connected to the
 chosen format: the same data can be serialized in JSON, CBOR, and
 XML, and while the serialized data will look very different,
 the received information that is recovered by deserialization
-should match the transmitted information. The [[JADN Specification](#jadn-v10)] 
+should match the transmitted information. 
+
+JADN defines three kinds of information that have alternate representations:
+1. Primitive types such as dates and IP addresses: text representation or numeric value (formats)
+2. Enumerations: string value or numeric id (Enumerated vocabularies and field identifiers)
+3. Table rows: column name or position (Records)
+
+These alternatives can be grouped into distinct serialization styles:
+
+| Style:       | Verbose<br>repeated name-value pairs | Compact<br>element / property names-values | Concise<br>machine-to-machine optimized |
+| ------------ | ------------------- | ------------------- | ------------------------- |
+| Primitives   | Text Representation | Text Representation | Integer / Binary / Base64 |
+| Enumerations | String              | String              | Integer                   |
+| Table Rows   | Column Name         | Column Position     | Column Position           |
+
+A data format is a serialization style applied to a data language: "Compact JSON",
+"Concise JSON", "Compact XML", "Verbose CBOR", etc. The [[JADN Specification](#jadn-v10)] 
 include serialization rules for four different formats:
 
  - Verbose JSON
@@ -706,7 +675,12 @@ include serialization rules for four different formats:
  - Concise JSON
  - CBOR
 
-The specification also describes what is needed to connect JADN
+The name "Verbose" here is intended to be descriptive rather than pejorative. An
+information model allows designers to compare Verbose and Compact styles for
+usability, and allows data to be validated and successfully round tripped
+between a readable JSON style and an actually concise CBOR style.
+
+The JADN Specification also describes what is needed to connect JADN
 and IMs defined in JADN to other serialization formats:
 
  - Specify an unambiguous serialized representation for each JADN type
@@ -739,85 +713,7 @@ human readability) may indicate that a serialization that uses
 more data than sufficient is appropriate for particular
 situations.
 
-## 2.5 Information Modeling Languages
-
-[[YTLee](#ytlee)] describes an IM language as follows:
-
-> "An information modeling language is a formal syntax that
-> allows users to capture data semantics and constraints."
-
-and defines their importance:
-
-> "Formal information modeling languages that describe
-> information requirements unambiguously is an enabling
-> technology that facilitates the development of a large scale,
-> networked, computer environment that behaves consistently and
-> correctly."
-
- _Report from IoT Semantic Interoperability Workshop 2016_ [[RFC
-8477](#rfc8477)] describes a lack of consistency across Standards
-Developing Organizations (SDOs) in defining application layer
-data, attributing it to the lack of an encoding-independent
-standardization of the information represented by that data. The
-JADN information modeling language is intended to address that
-gap. Abstract Syntax Notation One [[ASN.1](#asn1)] is another
-example of an abstract schema language.
-
-JADN is a syntax-independent schema language, based on Unified
-Modeling Language (UML) datatypes. JADN is designed to work with
-common Internet data formats (JSON, XML, CBOR), providing a
-schema to support them. JADN is also graph-oriented to align with
-the web and database design practices, with options to identify
-primary and foreign keys, including web URLs..
-
-JADN's native format is structured JSON, and a broad variety of
-tools exist for creating and manipulating information in JSON
-format.
-
- - a JADN schema is structured data that can be generated and
-   transformed programmatically
- - JADN schemas employ a simple, regular structure (every type
-   definition has the same five fields)
-
-​ASN.1 is a formal notation used for describing data transmitted
-by telecommunications protocols, regardless of language
-implementation and physical representation of these data,
-whatever the application, whether complex or very simple. The
-notation provides a certain number of pre-defined basic types,
-and makes it possible to define constructed types. Subtyping
-constraints can be also applied on any ASN.1 type in order to
-restrict its set of values. Data described in ASN.1 is serialized
-and deserialized based on set of encoding rules, which are
-defined for a broad variety of formats including the Basic
-Encoding Rules (BER) and similar, which are closely associated
-with ASN.1, as well as less closely tied standards such as XML
-and JSON.
-
-Other languages have been used for information modeling, although
-that is not their primary purposes.  Some examples are 
-Unified Modeling Language [[UML](#uml)], and 
-Integration DEFinition for information modeling [[IDEF1X](#idef1x)].
-
-## 2.6 Information Modeling Tools
-
-The value of an IM language multiplies when automated tooling is
-available to support creation, maintenance, and use of models
-created in that language. The need for tools is discussed in
-[[RFC 8477](#rfc8477)], citing particularly the need for code
-generation and debugging tools. A tool set to support an IM
-language should provide
-
- - Model creation capabilities
- - Model validation capabilities
- - Translation among alternative representations of the IM (e.g.,
-   textual, graphical)
- - Generation of language-specific schemas from an IM
- - Model translation to language- or protocol-specific
-   serialization / deserialization capabilities
-
-## 2.7 Applying an Information Model
-
-*Note: this becomes the heart of section 2, after rewriting.*
+## 2.4 Applying an Information Model
 
 A primary application of an IM is in the translation of data into
 and out of in-memory representation and serialized formats for
@@ -828,7 +724,21 @@ instantiated through the data structures and types supported by
 the chosen programming language. The IM also guides the creation
 of routines to parse and validate data being input from storage
 or through communications, and to serialize data being output to
-storage or transmission. Deriving the processing capabilities
+storage or transmission. 
+
+Two general approaches can be used to implement IM-based protocol specifications:
+
+1) Translate the IM to a data-format-specific schema language such as [XSD](#xsd),
+[Relax-NG](#relaxng), [JSON Schema](#jsonschema), [Protobuf](#proto), or [CDDL](#rfc8610),
+then use format-specific serialization and validation libraries to process data in the selected format.
+Applications use data objects specific to each serialization format.
+
+2) Use the IM directly as a format-independent schema language, using IM serialization and validation libraries
+to process data without a separate schema generation step. Applications use the same IM instances regardless of
+serialization format, making it easy to bridge from one format to another.
+ 
+Implementations based on serialization-specific code interoperate with those using an IM serialization library,
+allowing developers to use either approach. Deriving the processing capabilities
 from the IM ensures consistency as the data is manipulated.
 Figure 2-2 illustrates the concept of applying an IM to manage
 the associated data.
@@ -874,6 +784,23 @@ true. A JSON representation can use a Boolean type with values
 'false' and 'true', but for efficient serialization might also
 use the JSON number type with values 0 and 1.
 
+## 2.5 Information Modeling Tools
+
+The value of an IM language multiplies when automated tooling is
+available to support creation, maintenance, and use of models
+created in that language. The need for tools is discussed in
+[[RFC 8477](#rfc8477)], citing particularly the need for code
+generation and debugging tools. A tool set to support an IM
+language should provide:
+
+ - Model creation capabilities
+ - Model validation capabilities
+ - Translation among alternative representations of the IM (e.g.,
+   textual, graphical)
+ - Generation of language-specific schemas from an IM
+ - Model translation to language- or protocol-specific
+   serialization / deserialization capabilities
+
 -------
 
 # 3 Creating Information Models with JADN
@@ -894,6 +821,20 @@ As stated in the [[JADN Specification](#jadn-v10)] introduction:
 > constraints from the Unified Modeling Language (UML) with data
 > abstraction based on information theory and structural
 > organization using results from graph theory.
+
+A JADN information model is a set of type definitions. Each field in a compound
+type may be associated with another model-defined type, and the set of
+associations between types forms a directed graph.  Each association is either a
+container or a reference, and the direction of each edge is toward the contained
+or referenced type.
+
+The container edges of an information model must be acyclic in order to ensure that:
+1) every model has one or more roots,
+2) every path from a root to any leaf has finite length, and equivalently
+3) every instance has finite nesting depth.
+
+There is no restriction on reference edges, so any container cycles in a model can be
+broken by converting one or more containers to references.
 
 From UML JADN takes the concept of modeling information/data
 using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
@@ -3087,7 +3028,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-10-28 | David Lemire | Relocate multiple representations example (from 3.1.5.3 to 3.3.2) (PR #65) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-28 | David Lemire | Revise structure of Section 3.1 for improved clarity and sequencing (PR #66) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-29 | David Lemire | Refine Figure 4-1 (references relationships) (PR #70) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Transfer Section 2 material from CS (PR #71) and integrate with existing content (PR #XX) |
+| imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Transfer Section 2 material from CS (PR #71) and integrate with existing content (PR #74) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Add IPv4 packet header models as example of building from known structure (PR #71) |
 
 -------
