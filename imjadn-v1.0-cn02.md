@@ -2138,7 +2138,7 @@ only two kinds of relationship: "contain" and "reference". The
 relationships shown in previous examples are all of the "contain"
 variety. The "reference" relationship type applies either when using the
 "contain" relationship would create a cycle or loop in the graph
-of the information model or when using "contain" relationships would create data duplication.  
+of the information model or when using "contain" relationships would create data duplication.
 An example of cycle creation might occur, for
 example, in an IM for an SBOM format: because software components
 often incorporate other components a recursive situation arises
