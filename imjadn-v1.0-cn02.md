@@ -2976,8 +2976,10 @@ https://www.omg.org/spec/UML/2.5.1/About-UML/
 
 ###### [XML-Schema-Datatypes]
 
-_XML Schema Part 2: Datatypes_, Paul V. Biron and Ashok Malhotra, eds., W3C, 2 May 2001,
-http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html
+World Wide Web Consortium. *XML Schema Version 1.1 Part 2: Datatypes*, ed. Dave
+Peterson, Paul V. Biron and Ashok Malhotra, and C. M. Sperberg-McQueen W3C
+Recommendation 5 April 2012. See
+http://www.w3.org/TR/2012/REC-xmlschema11-2-20120405/datatypes.html 
 
 ###### [YTLee]
 Lee, Y. (1999), *Information Modeling: From Design to
