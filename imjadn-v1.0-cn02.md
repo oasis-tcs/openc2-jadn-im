@@ -2965,6 +2965,11 @@ https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication
 "Unified Modeling Language", Version 2.5.1, December 2017,
 https://www.omg.org/spec/UML/2.5.1/About-UML/
 
+###### [XML-Schema-Datatypes]
+
+_XML Schema Part 2: Datatypes_, Paul V. Biron and Ashok Malhotra, eds., W3C, 2 May 2001,
+http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html
+
 ###### [YTLee]
 Lee, Y. (1999), *Information Modeling: From Design to
 Implementation*, IEEE Transactions on Robotics and Automation,
