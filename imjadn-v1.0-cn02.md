@@ -2129,6 +2129,12 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
   3 field_3   String optional  
 ```
 
+### 3.1.5 Reference Relationships: Keys and Links
+
+> NOTE: this material was previously section 4.2
+
+
+
 ## 3.2 Information Modeling Process
 
 The JADN language is generally applicable to information
