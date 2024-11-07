@@ -2203,6 +2203,141 @@ they are registered for.
 
 ### 3.1.6 Packages and Namespaces
 
+Section 6 of the [[JADN Specification](#jadn-v10)] introduces the
+use of packages as the mechanism for organizing JADN schemas.
+This section provides additional information on the use of
+packages, along with the associated concept of namespaces.
+
+### 4.1.1 Packages
+
+At the simplest level, a package is a file containing a JADN
+schema in the form of JSON data, as described in [Section3131-native-json-representation
+3.1.5.1](#3151-native-json-representation). The file has two
+top-level components: 
+
+ - metadata about the file, labeled as "information", and 
+ - the schema content itself, labeled as "types".
+
+Definitions of all of the `Information` fields are provided in
+the JADN specification. 
+
+The metadata portion is entirely optional, but if present must
+include the `package` field providing a URI for the package to
+enable the package to be referenced from other packages. A single
+schema may be divided into multiple packages (e.g., common types
+that are used extensively in a model might be collected into a
+library package), and a schema might also import one or more
+packages from a different schema (e.g., to use information
+objects defined in the official schema for a standard).
+
+The `exports` portion of the package information is
+informational; JADN packages aren't intended to enforce a
+rigorous distinction between public and private types
+distinction. The `exports` list provides a means for schema
+authors to indicate the intended public types, and a basis for
+JADN schema tools to detect discrepancies.
+
+### 4.1.2 Namespaces
+
+> NOTE: this discussion of namespace management includes features to be added in
+> JADN v1.1. The implementation of these features is backward-compatible with
+> the handling of namespaces in JADN v1.0.
+
+Namespaces identified in a schema package's metadata are the mechanism for managing the
+relationships among multiple schema packages. JADN namespace management provides
+for:
+
+* Breaking a schema into multiple packages that can be combined without defining
+  a namespace
+
+* Including types defined in other schema packages under a namespace, including
+  importing multiple packages under a single namespace
+
+The JIDL representation of JADN namespace definition is:
+
+```
+Information = Map                     // Information about this package
+     ...
+   8 namespaces   Namespaces optional // Referenced packages
+     ...
+
+Namespaces = Choice(anyOf)            // anyOf v1.1 or v1.0, in priority order
+   1  NsArr                           // ns_arr:: [prefix, namespace] syntax - v1.1
+   2  NsObj                           // ns_obj:: {prefix: namespace} syntax - v1.0
+
+NsArr = ArrayOf(PrefixNs){1..*}       // Type references to other packages - v1.1
+
+PrefixNs = Array                      // Prefix corresponding to a namespace IRI
+   1  NSID                            // prefix::
+   2  Namespace                       // namespace::
+
+NsObj = MapOf(NSID, Namespace){1..*}  // Type references to other packages - v1.0
+
+Namespace = String /uri               // Unique name of a package
+```
+
+The `Namespaces = Choice(AnyOf)` type allows the flexible association of
+Namespace Identifiers (`NSID`) with the `Namespace` other packages declare for
+themselves. A Namespace Identifier (NSID) is, by default, a 1-8 character string
+beginning with a letter and containing only letters and numbers (the default
+formatting can be overridden by inserting an alternative definition into a JADN
+schema). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
+packages to be mapped to one NSID to group all of the types defined in that
+collection of packages into a single namespace. For any array element where the
+`NSID` field is blank, the types in the referenced package are made available in
+the current package without need for any NSID.
+
+Within the schema package's Types definitions
+JADN uses the common convention of using the NSID followed by a
+colon to link an item to the namespace where it is defined (e.g.,
+NSID:TypeName).  So assuming the existence of `Package A`, and
+`Package B`, where `Package B` imports `Package A` with the NSID
+`packa`, then types defined in `Package A` can be used within
+`Package B` by identifying them as `packa:Some-Package-A-Type`.
+
+An example of grouping multiple packages into the namespace of the importing
+package can be drawn from an IM of the NIST Open Security Controls Assessment
+Language [[OSCAL](#oscal)], where the packages for the common `metadata` and
+`backmatter` structures, along with the various OSCAL document types, are
+imported without any NSID to create a single schema.
+
+```
+ namespaces: [["", "https://example.gov/ns/oscal/0.0.1/metadata/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/backmatter/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/catalog/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/profile/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/component/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/ssp/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/assessment_plan/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/assessment_results/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/component/poam/"]]
+```
+
+> EDITOR'S NOTE: is it worthwhile to present both the v1.0 and v1.1 approaches
+> to the following example?
+
+
+As a concrete example of applying distinct namespaces for multiple packages,
+here is the `info` portion of a JADN
+Schema for an OpenC2 consumer that implements two actuator
+profiles: stateless packet filtering (SLPF) and posture attribute
+collection, along with the OpenC2 Language Specification:
+
+```
+"info": {
+	  "package": "http://acme.com/schemas/device-base/pacf/v3",
+	  "title": "OpenC2 base device schema for the PACE collection service and packet filter",
+	  "exports": ["OpenC2-Command", "OpenC2-Response"],
+	  "namespaces": {
+	   "ls": "http://docs.oasis-open.org/openc2/ns/types/v2.0",
+	   "slpf": "http://docs.oasis-open.org/openc2/ns/ap-slpf/v2.0",
+	   "pac": "http://docs.oasis-open.org/openc2/ns/ap-pac/v2.0"
+	  }
+}
+```
+Within this schema `ls:`, `slpf:`, and `pac:` will be used when
+referencing types from the three external schemas .
+
 ## 3.2 Information Modeling Process
 
 The JADN language is generally applicable to information
@@ -2727,140 +2862,7 @@ n3 [label=<<b>UnivId : String{pattern="^U-\d{6}$"}</b>>, shape=ellipse, style=fi
 
 ## 4.1 Packages and Namespaces
 
-Section 6 of the [[JADN Specification](#jadn-v10)] introduces the
-use of packages as the mechanism for organizing JADN schemas.
-This section provides additional information on the use of
-packages, along with the associated concept of namespaces.
 
-### 4.1.1 Packages
-
-At the simplest level, a package is a file containing a JADN
-schema in the form of JSON data, as described in [Section3131-native-json-representation
-3.1.5.1](#3151-native-json-representation). The file has two
-top-level components: 
-
- - metadata about the file, labeled as "information", and 
- - the schema content itself, labeled as "types".
-
-Definitions of all of the `Information` fields are provided in
-the JADN specification. 
-
-The metadata portion is entirely optional, but if present must
-include the `package` field providing a URI for the package to
-enable the package to be referenced from other packages. A single
-schema may be divided into multiple packages (e.g., common types
-that are used extensively in a model might be collected into a
-library package), and a schema might also import one or more
-packages from a different schema (e.g., to use information
-objects defined in the official schema for a standard).
-
-The `exports` portion of the package information is
-informational; JADN packages aren't intended to enforce a
-rigorous distinction between public and private types
-distinction. The `exports` list provides a means for schema
-authors to indicate the intended public types, and a basis for
-JADN schema tools to detect discrepancies.
-
-### 4.1.2 Namespaces
-
-> NOTE: this discussion of namespace management includes features to be added in
-> JADN v1.1. The implementation of these features is backward-compatible with
-> the handling of namespaces in JADN v1.0.
-
-Namespaces identified in a schema package's metadata are the mechanism for managing the
-relationships among multiple schema packages. JADN namespace management provides
-for:
-
-* Breaking a schema into multiple packages that can be combined without defining
-  a namespace
-
-* Including types defined in other schema packages under a namespace, including
-  importing multiple packages under a single namespace
-
-The JIDL representation of JADN namespace definition is:
-
-```
-Information = Map                     // Information about this package
-     ...
-   8 namespaces   Namespaces optional // Referenced packages
-     ...
-
-Namespaces = Choice(anyOf)            // anyOf v1.1 or v1.0, in priority order
-   1  NsArr                           // ns_arr:: [prefix, namespace] syntax - v1.1
-   2  NsObj                           // ns_obj:: {prefix: namespace} syntax - v1.0
-
-NsArr = ArrayOf(PrefixNs){1..*}       // Type references to other packages - v1.1
-
-PrefixNs = Array                      // Prefix corresponding to a namespace IRI
-   1  NSID                            // prefix::
-   2  Namespace                       // namespace::
-
-NsObj = MapOf(NSID, Namespace){1..*}  // Type references to other packages - v1.0
-
-Namespace = String /uri               // Unique name of a package
-```
-
-The `Namespaces = Choice(AnyOf)` type allows the flexible association of
-Namespace Identifiers (`NSID`) with the `Namespace` other packages declare for
-themselves. A Namespace Identifier (NSID) is, by default, a 1-8 character string
-beginning with a letter and containing only letters and numbers (the default
-formatting can be overridden by inserting an alternative definition into a JADN
-schema). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
-packages to be mapped to one NSID to group all of the types defined in that
-collection of packages into a single namespace. For any array element where the
-`NSID` field is blank, the types in the referenced package are made available in
-the current package without need for any NSID.
-
-Within the schema package's Types definitions
-JADN uses the common convention of using the NSID followed by a
-colon to link an item to the namespace where it is defined (e.g.,
-NSID:TypeName).  So assuming the existence of `Package A`, and
-`Package B`, where `Package B` imports `Package A` with the NSID
-`packa`, then types defined in `Package A` can be used within
-`Package B` by identifying them as `packa:Some-Package-A-Type`.
-
-An example of grouping multiple packages into the namespace of the importing
-package can be drawn from an IM of the NIST Open Security Controls Assessment
-Language [[OSCAL](#oscal)], where the packages for the common `metadata` and
-`backmatter` structures, along with the various OSCAL document types, are
-imported without any NSID to create a single schema.
-
-```
- namespaces: [["", "https://example.gov/ns/oscal/0.0.1/metadata/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/backmatter/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/catalog/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/profile/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/component/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/ssp/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/assessment_plan/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/assessment_results/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/component/poam/"]]
-```
-
-> EDITOR'S NOTE: is it worthwhile to present both the v1.0 and v1.1 approaches
-> to the following example?
-
-
-As a concrete example of applying distinct namespaces for multiple packages,
-here is the `info` portion of a JADN
-Schema for an OpenC2 consumer that implements two actuator
-profiles: stateless packet filtering (SLPF) and posture attribute
-collection, along with the OpenC2 Language Specification:
-
-```
-"info": {
-	  "package": "http://acme.com/schemas/device-base/pacf/v3",
-	  "title": "OpenC2 base device schema for the PACE collection service and packet filter",
-	  "exports": ["OpenC2-Command", "OpenC2-Response"],
-	  "namespaces": {
-	   "ls": "http://docs.oasis-open.org/openc2/ns/types/v2.0",
-	   "slpf": "http://docs.oasis-open.org/openc2/ns/ap-slpf/v2.0",
-	   "pac": "http://docs.oasis-open.org/openc2/ns/ap-pac/v2.0"
-	  }
-}
-```
-Within this schema `ls:`, `slpf:`, and `pac:` will be used when
-referencing types from the three external schemas .
 
 
 ## 4.2 Reference Relationships: Keys and Links
