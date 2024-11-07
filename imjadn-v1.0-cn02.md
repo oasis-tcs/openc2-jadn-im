@@ -2194,10 +2194,10 @@ Person = Record
 
 The "references" relationship is also useful to reduce duplication when an
 information item may apprear multiple times in a data structure. This use of the
-`key` / `link` structure is demonstrated in the [[Section&nbsp;3.3.3](#333-multiple-representations-example)]. 
+`key` / `link` structure is demonstrated in [Section&nbsp;3.3.3](#333-multiple-representations-example).
 In that example university classes are linked to students by a reference
 relationship to account for the likelihood that any individual student will most
-likely be registered for multiple classes. By referencing students records, only
+likely be registered for multiple classes. By *referencing* students records, only
 record per student need appear in the data set regardless of how many classes
 they are registered for.
 
