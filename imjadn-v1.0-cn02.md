@@ -2142,6 +2142,212 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
   3 field_3   String optional  
 ```
 
+### 3.1.5 Reference Relationships: Keys and Links
+
+As explained in [Section&nbsp;3](#3-creating-information-models-with-jadn), JADN recognizes
+only two kinds of relationship: "contain" and "reference". The
+relationships shown in previous examples are all of the "contain"
+variety. The "reference" relationship type applies either when using the
+"contain" relationship would create a cycle or loop in the graph
+of the information model or when using "contain" relationships would create data duplication.
+An example of cycle creation might occur, for
+example, in an IM for an SBOM format: because software components
+often incorporate other components a recursive situation arises
+when referring to the incorporated components:
+
+```
+Component - Record
+  ...
+  8  Components  ArrayOf(Component) {0..*}
+  ...
+```
+
+When recursion is used in programming it is terminated by a base
+condition, but an IM has no corresponding concept to terminate
+recursion. JADN uses "reference" relationships in situations
+where cycles occur in order to address this need. The method to
+define reference relationships is explained in Section&nbsp;3.3.6,
+*Links*, of the [[JADN Specification](#jadn-v10)]. 
+
+Figure 3-Key-Link illustrates permissible and impermissible "contains"
+relationships, and the use of the `key` and `link` keywords
+combined with an identifier field to establish permissible
+"reference" relationships. The green lines show permissible
+relationships, the red lines impermissible ones that create
+cycles in the graph. The dotted green line in the lower left
+portion is a "reference" relationship enabled by the inclusion of
+a unique identifier in `Record H`, created by the use of the
+`key` field option to designate a primary key for objects
+described by `Record H`, and the corresponding use of the `link`
+field option in `Record G` when referring to such objects; the
+`link` field option both designates the field as a reference and
+generates the correct key type when extensions are removed by
+JADN tooling.
+
+###### Figure 3-Key-Link -- Contains and References Relationships
+
+![Contains and References Relationships](images/JADN-contains-references.drawio.png)
+
+`Record J` in the lower right portion of the figure shows a self-referential
+`key / link` application. This is a generalization of the example from
+Section&nbsp;3.3.6 of the JADN Specification, which allows for numerous
+relationships between objects of type `Person`:
+
+```
+Person = Record
+    1 id        Key(Integer)
+    2 name      String
+    3 mother    Link(Person)
+    4 father    Link(Person)
+    5 siblings  Link(Person) [0..*]
+    6 friends   Link(Person) [0..*]
+```
+
+The "references" relationship is also useful to reduce duplication when an
+information item may apprear multiple times in a data structure. This use of the
+`key` / `link` structure is demonstrated in [Section&nbsp;3.3.3](#333-multiple-representations-example).
+In that example university classes are linked to students by a reference
+relationship to account for the likelihood that any individual student will most
+likely be registered for multiple classes. By *referencing* students records, only one
+record per student need appear in the data set regardless of how many classes
+they are registered for.
+
+### 3.1.6 Packages and Namespaces
+
+Section 6 of the [[JADN Specification](#jadn-v10)] introduces the
+use of packages as the mechanism for organizing JADN schemas.
+This section provides additional information on the use of
+packages, along with the associated concept of namespaces.
+
+#### 3.1.6.1 Packages
+
+At the simplest level, a package is a file containing a JADN
+schema in the form of JSON data, as described in 
+[Section&nbsp;3.1.3.1](#3131-native-json-representation).
+The file has two top-level components: 
+
+ - metadata about the file, labeled as "information", and 
+ - the schema content itself, labeled as "types".
+
+Definitions of all of the `Information` fields are provided in
+the JADN specification. 
+
+The metadata portion is entirely optional, but if present must
+include the `package` field providing a URI for the package to
+enable the package to be referenced from other packages. A single
+schema may be divided into multiple packages (e.g., common types
+that are used extensively in a model might be collected into a
+library package), and a schema might also import one or more
+packages from a different schema (e.g., to use information
+objects defined in the official schema for a standard).
+
+The `exports` portion of the package information is
+informational; JADN packages aren't intended to enforce a
+rigorous distinction between public and private types
+distinction. The `exports` list provides a means for schema
+authors to indicate the intended public types, and a basis for
+JADN schema tools to detect discrepancies.
+
+#### 3.1.6.2 Namespaces
+
+> NOTE: this discussion of namespace management includes features to be added in
+> JADN v1.1. The implementation of these features is backward-compatible with
+> the handling of namespaces in JADN v1.0.
+
+Namespaces identified in a schema package's metadata are the mechanism for managing the
+relationships among multiple schema packages. JADN namespace management provides
+for:
+
+* Breaking a schema into multiple packages that can be combined without defining
+  a namespace
+
+* Including types defined in other schema packages under a namespace, including
+  importing multiple packages under a single namespace
+
+The JIDL representation of JADN namespace definition is:
+
+```
+Information = Map                     // Information about this package
+     ...
+   8 namespaces   Namespaces optional // Referenced packages
+     ...
+
+Namespaces = Choice(anyOf)            // anyOf v1.1 or v1.0, in priority order
+   1  NsArr                           // ns_arr:: [prefix, namespace] syntax - v1.1
+   2  NsObj                           // ns_obj:: {prefix: namespace} syntax - v1.0
+
+NsArr = ArrayOf(PrefixNs){1..*}       // Type references to other packages - v1.1
+
+PrefixNs = Array                      // Prefix corresponding to a namespace IRI
+   1  NSID                            // prefix::
+   2  Namespace                       // namespace::
+
+NsObj = MapOf(NSID, Namespace){1..*}  // Type references to other packages - v1.0
+
+Namespace = String /uri               // Unique name of a package
+```
+
+The `Namespaces = Choice(AnyOf)` type allows the flexible association of
+Namespace Identifiers (`NSID`) with the `Namespace` other packages declare for
+themselves. A Namespace Identifier (NSID) is, by default, a 1-8 character string
+beginning with a letter and containing only letters and numbers (the default
+formatting can be overridden by inserting an alternative definition into a JADN
+schema's `Information` map's `Config` section). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
+packages to be mapped to one NSID to group all of the types defined in that
+collection of packages into a single namespace. For any array element where the
+`NSID` field is blank, the types in the referenced package are made available in
+the current package without need for any NSID.
+
+Within the schema package's Types definitions
+JADN uses the common convention of using the NSID followed by a
+colon to link an item to the namespace where it is defined (e.g.,
+`NSID:TypeName`).  So assuming the existence of `Package A`, and
+`Package B`, where `Package B` imports `Package A` with the NSID
+`packa`, then types defined in `Package A` can be used within
+`Package B` by identifying them as `packa:Some-Package-A-Type`.
+
+An example of grouping multiple packages into the namespace of the importing
+package can be drawn from an IM of the NIST Open Security Controls Assessment
+Language [[OSCAL](#oscal)], where the packages for the common `metadata` and
+`backmatter` structures, along with the various OSCAL document types, are
+imported without any NSID to create a single schema.
+
+```
+ namespaces: [["", "https://example.gov/ns/oscal/0.0.1/metadata/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/backmatter/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/catalog/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/profile/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/component/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/ssp/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/assessment_plan/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/assessment_results/"],
+               ["", "https://example.gov/ns/oscal/0.0.1/component/poam/"]]
+```
+
+> EDITOR'S NOTE: is it worthwhile to present both the v1.0 and v1.1 approaches
+> to the following example?
+
+As a concrete example of applying distinct namespaces for multiple packages,
+here is the `info` portion of a JADN
+Schema for an OpenC2 consumer that implements two actuator
+profiles: stateless packet filtering (SLPF) and posture attribute
+collection, along with the OpenC2 Language Specification:
+
+```
+"info": {
+	  "package": "http://acme.com/schemas/device-base/pacf/v3",
+	  "title": "OpenC2 base device schema for the PACE collection service and packet filter",
+	  "exports": ["OpenC2-Command", "OpenC2-Response"],
+	  "namespaces": {
+	   "ls": "http://docs.oasis-open.org/openc2/ns/types/v2.0",
+	   "slpf": "http://docs.oasis-open.org/openc2/ns/ap-slpf/v2.0",
+	   "pac": "http://docs.oasis-open.org/openc2/ns/ap-pac/v2.0"
+	  }
+}
+```
+Within this schema `ls:`, `slpf:`, and `pac:` will be used when
+referencing types from the three external schemas .
+
 ## 3.2 Information Modeling Process
 
 The JADN language is generally applicable to information
@@ -2660,204 +2866,6 @@ n3 [label=<<b>UnivId : String{pattern="^U-\d{6}$"}</b>>, shape=ellipse, style=fi
 }
 ```
 
-
--------
-# 4 Advanced Techniques
-
-## 4.1 Packages and Namespaces
-
-Section 6 of the [[JADN Specification](#jadn-v10)] introduces the
-use of packages as the mechanism for organizing JADN schemas.
-This section provides additional information on the use of
-packages, along with the associated concept of namespaces.
-
-### 4.1.1 Packages
-
-At the simplest level, a package is a file containing a JADN
-schema in the form of JSON data, as described in [Section3131-native-json-representation
-3.1.5.1](#3151-native-json-representation). The file has two
-top-level components: 
-
- - metadata about the file, labeled as "information", and 
- - the schema content itself, labeled as "types".
-
-Definitions of all of the `Information` fields are provided in
-the JADN specification. 
-
-The metadata portion is entirely optional, but if present must
-include the `package` field providing a URI for the package to
-enable the package to be referenced from other packages. A single
-schema may be divided into multiple packages (e.g., common types
-that are used extensively in a model might be collected into a
-library package), and a schema might also import one or more
-packages from a different schema (e.g., to use information
-objects defined in the official schema for a standard).
-
-The `exports` portion of the package information is
-informational; JADN packages aren't intended to enforce a
-rigorous distinction between public and private types
-distinction. The `exports` list provides a means for schema
-authors to indicate the intended public types, and a basis for
-JADN schema tools to detect discrepancies.
-
-### 4.1.2 Namespaces
-
-> NOTE: this discussion of namespace management includes features to be added in
-> JADN v1.1. The implementation of these features is backward-compatible with
-> the handling of namespaces in JADN v1.0.
-
-Namespaces identified in a schema package's metadata are the mechanism for managing the
-relationships among multiple schema packages. JADN namespace management provides
-for:
-
-* Breaking a schema into multiple packages that can be combined without defining
-  a namespace
-
-* Including types defined in other schema packages under a namespace, including
-  importing multiple packages under a single namespace
-
-The JIDL representation of JADN namespace definition is:
-
-```
-Information = Map                     // Information about this package
-     ...
-   8 namespaces   Namespaces optional // Referenced packages
-     ...
-
-Namespaces = Choice(anyOf)            // anyOf v1.1 or v1.0, in priority order
-   1  NsArr                           // ns_arr:: [prefix, namespace] syntax - v1.1
-   2  NsObj                           // ns_obj:: {prefix: namespace} syntax - v1.0
-
-NsArr = ArrayOf(PrefixNs){1..*}       // Type references to other packages - v1.1
-
-PrefixNs = Array                      // Prefix corresponding to a namespace IRI
-   1  NSID                            // prefix::
-   2  Namespace                       // namespace::
-
-NsObj = MapOf(NSID, Namespace){1..*}  // Type references to other packages - v1.0
-
-Namespace = String /uri               // Unique name of a package
-```
-
-The `Namespaces = Choice(AnyOf)` type allows the flexible association of
-Namespace Identifiers (`NSID`) with the `Namespace` other packages declare for
-themselves. A Namespace Identifier (NSID) is, by default, a 1-8 character string
-beginning with a letter and containing only letters and numbers (the default
-formatting can be overridden by inserting an alternative definition into a JADN
-schema). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
-packages to be mapped to one NSID to group all of the types defined in that
-collection of packages into a single namespace. For any array element where the
-`NSID` field is blank, the types in the referenced package are made available in
-the current package without need for any NSID.
-
-Within the schema package's Types definitions
-JADN uses the common convention of using the NSID followed by a
-colon to link an item to the namespace where it is defined (e.g.,
-NSID:TypeName).  So assuming the existence of `Package A`, and
-`Package B`, where `Package B` imports `Package A` with the NSID
-`packa`, then types defined in `Package A` can be used within
-`Package B` by identifying them as `packa:Some-Package-A-Type`.
-
-An example of grouping multiple packages into the namespace of the importing
-package can be drawn from an IM of the NIST Open Security Controls Assessment
-Language [[OSCAL](#oscal)], where the packages for the common `metadata` and
-`backmatter` structures, along with the various OSCAL document types, are
-imported without any NSID to create a single schema.
-
-```
- namespaces: [["", "https://example.gov/ns/oscal/0.0.1/metadata/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/backmatter/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/catalog/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/profile/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/component/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/ssp/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/assessment_plan/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/assessment_results/"],
-               ["", "https://example.gov/ns/oscal/0.0.1/component/poam/"]]
-```
-
-> EDITOR'S NOTE: is it worthwhile to present both the v1.0 and v1.1 approaches
-> to the following example?
-
-
-As a concrete example of applying distinct namespaces for multiple packages,
-here is the `info` portion of a JADN
-Schema for an OpenC2 consumer that implements two actuator
-profiles: stateless packet filtering (SLPF) and posture attribute
-collection, along with the OpenC2 Language Specification:
-
-```
-"info": {
-	  "package": "http://acme.com/schemas/device-base/pacf/v3",
-	  "title": "OpenC2 base device schema for the PACE collection service and packet filter",
-	  "exports": ["OpenC2-Command", "OpenC2-Response"],
-	  "namespaces": {
-	   "ls": "http://docs.oasis-open.org/openc2/ns/types/v2.0",
-	   "slpf": "http://docs.oasis-open.org/openc2/ns/ap-slpf/v2.0",
-	   "pac": "http://docs.oasis-open.org/openc2/ns/ap-pac/v2.0"
-	  }
-}
-```
-Within this schema `ls:`, `slpf:`, and `pac:` will be used when
-referencing types from the three external schemas .
-
-
-## 4.2 Reference Relationships: Keys and Links
-
-As noted at the end of Section&nbsp;3.1 of this CN, JADN recognizes
-only two kinds of relationship: "contain" and "reference". The
-relationships shown in previous examples are all of the "contain"
-variety. The "reference" relationship type applies when using the
-"contain" relationship would create a cycle or loop in the graph
-of the information model.  An example of this might occur, for
-example, in an IM for an SBOM format: as software components
-often incorporate other components a recursive situation arises
-when referring to the incorporated components:
-
-```
-Component - Record
-  ...
-  8  Components  ArrayOf(Component) {0..*}
-  ...
-```
-
-When recursion is used in programming it is terminated by a base
-condition, but an IM has no corresponding concept to terminate
-recursion. JADN uses "reference" relationships in situations
-where cycles occur in order to address this need. The method to
-define reference relationships is explained in Section&nbsp;3.3.6,
-*Links*, of the [[JADN Specification](#jadn-v10)]. 
-
-Figure 4-1 illustrates permissible and impermissible "contains"
-relationships, and the use of the `key` and `link` keywords
-combined with an identifier field to establish permissible
-"reference" relationships. The green lines show permissible
-relationships, the red lines impermissible ones that create
-cycles in the graph. The dotted green line in the lower left
-portion is a "reference" relationship enabled by the inclusion of
-a unique identifier in `Record H`, created by the use of the
-`key` field option to designate a primary key for objects
-described by `Record H`, and the corresponding use of the `link`
-field option in `Record G` when referring to such objects; the
-`link` field option both designates the field as a reference and
-generates the correct key type when extensions are removed by
-JADN tooling.
-
-###### Figure 4-1 -- Contains and References Relationships
-
-![Contains and References Relationships](images/contains-references.drawio.png)
-
-`Record J` in the lower right portion of the figure shows a self-referential `key / link` application. This is a generalization of the example from Section&nbsp;3.3.6 of the JADN Specification, which allows for numerous relationships between objects of type `Person`:
-
-```
-Person = Record
-    1 id        Key(Integer)
-    2 name      String
-    3 mother    Link(Person)
-    4 father    Link(Person)
-    5 siblings  Link(Person) [0..*]
-    6 friends   Link(Person) [0..*]
-```
 -------
 
 # Appendix A. Informative References
@@ -3050,7 +3058,8 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-10-29 | David Lemire | Refine Figure 4-1 (references relationships) (PR #70) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-06 | David Lemire | Transfer Section 2 material from CS (PR #71) and integrate with existing content (PR #74) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-06 | David Lemire | Add IPv4 packet header models as example of building from known structure (PR #71) |
-| imjadn-v1.0-cn01-wd02.md | 2023-11-xx | David Lemire | Add definitions for lexical and value space and make associated adjustments (PR #76) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Add definitions for lexical and value space and make associated adjustments (PR #76) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Migrate Section 4 content into section 3.1 (PR #77) |
 
 -------
 
