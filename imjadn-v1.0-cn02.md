@@ -1411,7 +1411,7 @@ information item fitting the Enumerated type would be defined as
 follows:
 
 ```json
-["L4-Protocol", "Enumerated", [], "Value of the protocol (IPv4) or next header (IPv6) field in an IP packet. Any IANA value, [[RFC5237]](#rfc5237)", [
+["L4-Protocol", "Enumerated", [], "Value of the protocol (IPv4) or next header (IPv6) field in an IP packet. Any IANA value, [RFC5237]", [
     [1, "icmp", "Internet Control Message Protocol - [RFC0792]"],
     [6, "tcp", "Transmission Control Protocol - [RFC0793]"],
     [17, "udp", "User Datagram Protocol - [RFC0768]"],
@@ -1517,7 +1517,7 @@ as follows:
 
 ```json
   ["IPv4-Net", "Array", ["/ipv4-net"], "IPv4 address and prefix length", [
-    [1, "ipv4_addr", "IPv4-Addr", [], "IPv4 address as defined in [[RFC0791]](#rfc0791)"],
+    [1, "ipv4_addr", "IPv4-Addr", [], "IPv4 address as defined in [RFC0791]"],
     [2, "prefix_length", "Integer", ["[0"], "CIDR prefix-length. If omitted, refers to a single host address."]
   ]]
 ```
@@ -1536,7 +1536,7 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
 ```
 
 The example above illustrates the positioning of Array "field names" within the
-JIDL comments, as described in [Section&nbsp;3.1.5.2.1](#31521-array-field-names-in-jidl).
+JIDL comments, as described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
 
 Table 3-9 lists the *format* options applicable to the Array type:
 
@@ -1585,7 +1585,7 @@ elements together. The fields of the array are defined by the
 fitting the ArrayOf core type would be defined as follows. This
 example uses an explicit ArrayOf type derived using the 
 multiplicity extension on the "tracks" field of Album, as shown in
-[Section&nbsp;3.3.1](#331-example-1-a-digital-music-library)):
+[Section&nbsp;3.3.1](#331-digital-music-library)):
 
 ```json
 [
@@ -1652,9 +1652,9 @@ follows:
 
 ```json
   ["Hashes", "Map", ["{1"], "Cryptographic hash values", [
-    [1, "md5", "Binary", ["/x", "{16", "}16", "[0"], "MD5 hash as defined in [[RFC1321]](#rfc1321)"],
-    [2, "sha1", "Binary", ["/x", "{20", "}20", "[0"], "SHA1 hash as defined in [[RFC6234]](#rfc6234)"],
-    [3, "sha256", "Binary", ["/x", "{32", "}32", "[0"], "SHA256 hash as defined in [[RFC6234]](#rfc6234)"]
+    [1, "md5", "Binary", ["/x", "{16", "}16", "[0"], "MD5 hash as defined in [RFC1321]"],
+    [2, "sha1", "Binary", ["/x", "{20", "}20", "[0"], "SHA1 hash as defined in [RFC6234]"],
+    [3, "sha256", "Binary", ["/x", "{32", "}32", "[0"], "SHA256 hash as defined in [RFC6234]"]
   ]]
 ```
 
@@ -1676,9 +1676,7 @@ defines that there is a minimum number of required fields even
 though every individual field is optional. An empty `Hashes` map is
 invalid, but a map where any one or more of the three hash types
 exists is valid. This is an example of one application of _minv_,
-_maxv_, as described above in [Section&nbsp;3.1.X.4](#3144-application-of-minv--maxv).
-
-
+_maxv_, as described above in [Section&nbsp;3.1.4.4](#3144-application-of-minv--maxv).
 
 #### 3.1.2.11 MapOf(ktype,vtype)
 
@@ -1804,7 +1802,7 @@ IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tc
    5 protocol         L4-Protocol optional        // Layer 4 protocol (e.g., TCP)
 ```
 
-As with the `Map` example in [Section&nbsp;3.1.7.10](#31210-map), the
+As with the `Map` example in [Section&nbsp;3.1.2.10](#31210-map), the
 cardinality of `{1..*}` for the `Record` defines that there is a
 minimum number of required fields even though every individual
 field is optional. An empty IPv4-Connection record is invalid,
@@ -2108,9 +2106,9 @@ meaning in these two applications:
    
 For example, the following specifies an Integer type that can be
 assigned values between `1` and `1000`, using both JADN (see
-[Section&nbsp;3.5.1.1](#3131-native-json-representation)) and JIDL
-notation (see [section3132-alternative-jadn-representations
-3.5.1.2](#3152-alternative-jadn-representations)):
+[Section&nbsp;3.1.3.1](#3131-native-json-representation)) and JIDL
+notation (see 
+[Section&nbsp;3.1.3.2](#3132-alternative-jadn-representations)):
 
 ```
 ["count","integer",["{1", "}1000"], "count of objects",[]]
@@ -2126,7 +2124,7 @@ notation (see [section3132-alternative-jadn-representations
    at least two fields populated, even though only one field is
    required (fields `field_2` and `field_3` are indicated as
    optional by the `["[0"]` *field* option 
-   [see [Section&nbsp;3.1.4](#3114-field-options)]):
+   [see [Section&nbsp;3.1.1.4](#3114-field-options)]):
 
 ```
 ["RecordType", "Record", ["{2"], "requires field_1 and either or both field_2 and field_3", [
@@ -2410,7 +2408,7 @@ The process is executed in an iterative sequence of modeling, verification and v
 
 ## 3.3 Information Modeling Examples
 
-As discussed in [Section 1.1.1](#111-openc2-and-jadn), JADN is a
+As discussed in [Section 1.1.5](#115-information-modeling-languages), JADN is a
 general purpose tool for information modeling, and can be applied
 to a broad range of IM needs.  Some possible subjects for IMs
 are:
@@ -2495,7 +2493,7 @@ publication data, cover art, total track count, and an array of individual audio
 tracks. Multiple digital image formats are supported for the cover art. Note
 that this example also contains an example of an anonymous type definition
 (i.e., the `release_date` field in the `Publication-Data` record) as described 
-in [Section&nbsp;3.1.6](#316-anonymous-type-definitions).
+in [Section&nbsp;3.1.4.1](#3141-anonymous-type-definitions).
 
 ```
 Album = Record                         // model for the album
@@ -2616,8 +2614,6 @@ packet header array in JIDL form. In this representation the field "names" are
 embedded in the JIDL comment field between the `//` and `::` delimiters, as
 described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
 
-> EDITOR'S NOTE: may need to reformat the comments in the following for readability
-
 ###### Figure 3-ipv4-header
 
 ```
@@ -2702,14 +2698,14 @@ The [[JADN Specification](#jadn-v10)], section 5.3,
 uses a simple example of an IM for a university to illustrate the
 use of ERDs for IMs. This section uses that ERD as a starting
 point for an example to illustrate the various JADN
-representations described in [Section 3.1.5.2](#3132-alternative-jadn-representations). The example
+representations described in [Section 3.1.3.2](#3132-alternative-jadn-representations). The example
 begins with the ERD for the model:
 
 ###### Figure 3-7 -- Simple University Example ERD
 
 <img src="images/university-erd.png" height="600px">
 
-The package (see [Section 4.1](#41-packages-and-namespaces)) 
+The package (see [Section 3.1.6.1](#3161-packages)) 
 containing the JADN corresponding to the above ERD is shown here:
 
 ###### Figure 3-8 -- Simple University Example JADN (JSON format)
@@ -2969,6 +2965,16 @@ https://datatracker.ietf.org/doc/html/rfc791#section-3.1
 Pras, A., Schoenwaelder, J., "On the Difference between
 Information Models and Data Models", RFC 3444, January 2003,
 https://tools.ietf.org/html/rfc3444.
+
+###### [RFC4291]
+
+Hinden, R. and S. Deering, *"IP Version 6 Addressing Architecture"*,
+RFC 4291, DOI 10.17487/RFC4291, February 2006, <https://www.rfc-editor.org/info/rfc4291>.\
+
+###### [RFC4632]
+
+Fuller, V. and T. Li, *"Classless Inter-domain Routing (CIDR): The Internet Address Assignment and Aggregation Plan"*,
+BCP 122, RFC 4632, DOI 10.17487/RFC4632, August 2006, <https://www.rfc-editor.org/info/rfc4632>.
 
 ###### [RFC7049]
 Bormann, C., Hoffman, P., *"Concise Binary Object Representation
