@@ -2131,8 +2131,6 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
 
 ### 3.1.5 Reference Relationships: Keys and Links
 
-> NOTE: this material was previously section 4.2
-
 As explained in [Section&nbsp;3](#3-creating-information-models-with-jadn), JADN recognizes
 only two kinds of relationship: "contain" and "reference". The
 relationships shown in previous examples are all of the "contain"
