@@ -3060,6 +3060,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-11-06 | David Lemire | Add IPv4 packet header models as example of building from known structure (PR #71) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Add definitions for lexical and value space and make associated adjustments (PR #76) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Migrate Section 4 content into section 3.1 (PR #77) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Administrative clean-up (PR #78) |
 
 -------
 
