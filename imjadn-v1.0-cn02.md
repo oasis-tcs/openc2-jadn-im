@@ -589,7 +589,7 @@ tools that can be used in information modeling.
 Formally, information is the unexpected data, or entropy,
 contained in a document.  When information is serialized for transmission in a canonical format, the additional
 data used for purposes such as text conversion, delimiting, and framing contains no information because it is known
-*a priori*. If the serialization is non-canonical, any additional entropy introduced during serialization
+*a priori* by the sender(s) and receiver(s). If the serialization is non-canonical, any additional entropy introduced during serialization
 (e.g., whitespace, leading zeroes, field reordering, case-insensitive capitalization)
 is discarded on deserialization.
 
@@ -654,7 +654,13 @@ back into application state. This can also be stated as serialization is the
 transformation from value space to lexical space, and de-serialization is the
 inverse transformation. Serialization is not a goal in and of itself, it is the
 mechanism by which applications exchange information in order to make it
-available to users.
+available to users. The user cares about
+the information the serialized data represents, not the format by
+which it is moved from system to system. An Automated Teller
+Machine customer cares about their bank balance, and an airline
+customer cares that their tickets are for the proper flights. How
+the information system handles the bits to make that happen is of
+no concern to the customer.
 
 ###### Figure 2-1 -- Serialization / Deserialization
 ![**Figure 2-1 -- Serialization / Deserialization**](images/model-and-serialization.png)
@@ -704,15 +710,6 @@ Regardless of format, serialization should be:
    and all applications have the identical information
 2) **transparent**, so that information is unaffected by whether
 or how it has been serialized; users should not know or care.
-
-As noted above, serialization is an important aspect of
-implementation, but it is a means to an end. The user cares about
-the information the serialized data represents, not the format by
-which it is moved from system to system. An Automated Teller
-Machine customer cares about their bank balance, and an airline
-customer cares that their tickets are for the proper flights. How
-the information system handles the bits to make that happen is of
-no concern to the customer. 
 
 Shannon's information theory defines the relationship between
 information and serialization (coding). Mathematicians
