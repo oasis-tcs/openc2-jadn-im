@@ -239,7 +239,7 @@ protocol-specific details, e.g., rules that explain how to map
 managed objects onto lower-level protocol constructs. (Section 4)
 
 Although RFC 3444 references protocols and object methods, the Unified Modeling Language
-[UML](#uml) places data models and object-oriented programming models
+[[UML](#uml)] places data models and object-oriented programming models
 in separate categories:
 * Simple Classifiers (Section 10), including DataTypes (10.2), and
 * Structured Classifiers (Section 11), including Classes (11.4)
@@ -382,7 +382,7 @@ information content of a logical value can be no greater than the
 smallest lexical value for which lossless round-trip conversion
 is possible. For example, an IPv4 address represented in dotted
 quad format is 17 bytes of JSON string data ("192.168.101.213"),
-but can be converted to 4 byte [[RFC 791](#rfc791)] format and back without
+but can be converted to 4 byte [[RFC 791](#rfc0791)] format and back without
 loss. The information content of an IPv4 address can therefore be
 no greater than 4 bytes (32 bits), and an information model would
 define the IPv4 address datatype as a byte sequence of length 4. Expanding
@@ -406,7 +406,7 @@ file is:
 As with individual IP addresses, the information in an IPv4 header is
 no greater than the 24 byte RFC 791 lexical value regardless of data format.
 
-[Section 2](#2-information-modeling-overview) discusses information vs. data,
+[Section 2](#2-creation-and-use-of-information-models) discusses information vs. data,
 information modeling, and related concepts in more detail.
 [Section 3.3.2](#332-internet-protocol-version-4-packet-header)
 provides a more detailed illustration of an IM for an IPv4 packet header.
@@ -1160,7 +1160,7 @@ Binary type:
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
 | eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [EUI](#eui) |
-| ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc791) Section&nbsp;3.1 |
+| ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc0791) Section&nbsp;3.1 |
 | ipv6-addr    | Binary | IPv6 address as specified in [RFC 8200](#rfc8200)  Section&nbsp;3 |
 
 #### 3.1.2.2 Boolean
@@ -2595,7 +2595,7 @@ the model components connect.
 
 This example illustrates developing an abstract IM from an existing well-defined
 data structure. The IPv4 packet header definition originates from 
-[[RFC 791](#rfc791)], with some details of the header modified by subsequent RFCs.
+[[RFC 791](#rfc0791)], with some details of the header modified by subsequent RFCs.
 While there may be limited utility in leveraging JADN's information equivalence
 focus to generate IPv4 packet header encodings other than binary, the
 model is useful to document the fields of the header and describe their
@@ -2955,7 +2955,10 @@ https://plantuml.com/
 "Resource Description Framework (RDF) 1.2 Concepts and Abstract Syntax", W3C Working Draft, 22 August 2024,
 https://www.w3.org/TR/rdf12-concepts/#section-Datatypes
 
-###### [RFC791]
+###### [RELAXNG]
+OASIS Technical Committee, *"RELAX NG"*, November 2002, https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=relax-ng.
+
+###### [RFC0791]
 "Internet Protocol - DARPA Internet Program Protocol Specification", RFC 791, September 1981,
 https://datatracker.ietf.org/doc/html/rfc791#section-3.1
 
