@@ -553,8 +553,8 @@ the same datatype and their logical values are equal.
   specifies relationships that can exist between entities
   (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
 
-- **Lexical Space:** The set of valid literal representations of a value for a
-  datatype.<br>[[XML Schema Datatypes](#xml-schema-datatypes), adapted)
+- **Lexical Space:** The set of valid literal representations of a value from the *value space* for a
+  datatype.<br>([XML Schema Datatypes](#xml-schema-datatypes), adapted)
 
 - **Ontology:** (information science) A representation, formal
   naming, and definition of the categories, properties, and
@@ -568,6 +568,13 @@ the same datatype and their logical values are equal.
 - **Schema:**  *(markup languages)* A formal description of
    data, data types, and data file structures, such as XML
    schemas for XML files.<br>(Wiktionary, https://en.wiktionary.org/wiki/schema#Noun, definition #3)
+
+- **Value Space:** The set of values for a given datatype. Each value in the
+  value space of a datatype is denoted by one or more literals in its *lexical
+  space*. Value spaces have certain properties (e.g., cardinality, some
+  definition of equality, ordering) by which individual values within the value
+  space can be compared to one another.
+  <br>([XML Schema Datatypes](#xml-schema-datatypes), adapted)
 
 -------
 
