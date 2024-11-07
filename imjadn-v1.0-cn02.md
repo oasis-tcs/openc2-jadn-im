@@ -553,6 +553,9 @@ the same datatype and their logical values are equal.
   specifies relationships that can exist between entities
   (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
 
+- **Lexical Space:** The set of valid literal representations of a value for a
+  datatype.<br>[[XML Schema Datatypes](#xml-schema-datatypes), adapted)
+
 - **Ontology:** (information science) A representation, formal
   naming, and definition of the categories, properties, and
   relations between the concepts, data, and entities that
