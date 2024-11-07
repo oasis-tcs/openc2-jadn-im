@@ -2201,6 +2201,8 @@ likely be registered for multiple classes. By *referencing* students records, on
 record per student need appear in the data set regardless of how many classes
 they are registered for.
 
+### 3.1.6 Packages and Namespaces
+
 ## 3.2 Information Modeling Process
 
 The JADN language is generally applicable to information
