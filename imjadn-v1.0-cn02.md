@@ -408,8 +408,8 @@ no greater than the 24 byte RFC 791 lexical value regardless of data format.
 
 [Section 2](#2-information-modeling-overview) discusses information vs. data,
 information modeling, and related concepts in more detail.
-
-> TO-DO: add ref to the IPv4 packet example to the foregoing once merged.
+[Section 3.3.2](#332-internet-protocol-version-4-packet-header)
+provides a more detailed illustration of an IM for an IPv4 packet header.
 
 ### 1.1.4 Information Modeling Goals and Principles
 
@@ -553,6 +553,13 @@ the same datatype and their logical values are equal.
   specifies relationships that can exist between entities
   (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
 
+- **Lexical Mapping:** A prescribed relation which maps from the *lexical space* of the datatype into its *value space*.
+  <br>[[XML Schema Datatypes](#xml-schema-datatypes)], adapted
+
+- **Lexical Space:** The set of valid literal representations of a value from
+  the *value space* for a datatype.
+  <br>[[XML Schema Datatypes](#xml-schema-datatypes)], adapted
+
 - **Ontology:** (information science) A representation, formal
   naming, and definition of the categories, properties, and
   relations between the concepts, data, and entities that
@@ -566,6 +573,14 @@ the same datatype and their logical values are equal.
    data, data types, and data file structures, such as XML
    schemas for XML files.<br>(Wiktionary, https://en.wiktionary.org/wiki/schema#Noun, definition #3)
 
+- **Value Space:** The set of values for a given datatype. The value spaces 
+- and the values therein are abstractions. Each value in the
+  value space of a datatype is denoted by one or more literals in its *lexical
+  space*. Value spaces have certain properties (e.g., cardinality, some
+  definition of equality, ordering) by which individual values within the value
+  space can be compared to one another.
+  <br>[[XML Schema Datatypes](#xml-schema-datatypes)], adapted
+
 -------
 
 # 2 Creation and Use of Information Models
@@ -578,7 +593,7 @@ tools that can be used in information modeling.
 Formally, information is the unexpected data, or entropy,
 contained in a document.  When information is serialized for transmission in a canonical format, the additional
 data used for purposes such as text conversion, delimiting, and framing contains no information because it is known
-*a priori*. If the serialization is non-canonical, any additional entropy introduced during serialization
+*a priori* by the sender(s) and receiver(s). If the serialization is non-canonical, any additional entropy introduced during serialization
 (e.g., whitespace, leading zeroes, field reordering, case-insensitive capitalization)
 is discarded on deserialization.
 
@@ -634,15 +649,22 @@ across multiple specifications with similar goals.
 
 ## 2.3 Serialization
 
-Information exists in the minds of users (producers and
-consumers), in the state of applications running on systems, and
-in the data exchanged among applications. Serialization converts
-application information into byte sequences (a.k.a. protocol data
-units, messages, payloads, information exchange packages) that can
-be validated, communicated and stored. De-serialization parses
-payloads back into application state. Serialization is not a goal
-in and of itself, it is the mechanism by which applications
-exchange information in order to make it available to users.
+Information exists in the minds of users (producers and consumers), in the state
+of applications running on systems, and in the data exchanged among
+applications. Serialization converts application information into byte sequences
+(a.k.a. protocol data units, messages, payloads, information exchange packages)
+that can be validated, communicated and stored. De-serialization parses payloads
+back into application state. This can also be stated as serialization is the
+transformation from value space to lexical space, and de-serialization is the
+inverse transformation. Serialization is not a goal in and of itself, it is the
+mechanism by which applications exchange information in order to make it
+available to users. The user cares about
+the information the serialized data represents, not the format by
+which it is moved from system to system. An Automated Teller
+Machine customer cares about their bank balance, and an airline
+customer cares that their tickets are for the proper flights. How
+the information system handles the bits to make that happen is of
+no concern to the customer.
 
 ###### Figure 2-1 -- Serialization / Deserialization
 ![**Figure 2-1 -- Serialization / Deserialization**](images/model-and-serialization.png)
@@ -692,15 +714,6 @@ Regardless of format, serialization should be:
    and all applications have the identical information
 2) **transparent**, so that information is unaffected by whether
 or how it has been serialized; users should not know or care.
-
-As noted above, serialization is an important aspect of
-implementation, but it is a means to an end. The user cares about
-the information the serialized data represents, not the format by
-which it is moved from system to system. An Automated Teller
-Machine customer cares about their bank balance, and an airline
-customer cares that their tickets are for the proper flights. How
-the information system handles the bits to make that happen is of
-no concern to the customer. 
 
 Shannon's information theory defines the relationship between
 information and serialization (coding). Mathematicians
@@ -2965,6 +2978,13 @@ https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication
 "Unified Modeling Language", Version 2.5.1, December 2017,
 https://www.omg.org/spec/UML/2.5.1/About-UML/
 
+###### [XML-Schema-Datatypes]
+
+World Wide Web Consortium. *XML Schema Version 1.1 Part 2: Datatypes*, ed. Dave
+Peterson, Paul V. Biron and Ashok Malhotra, and C. M. Sperberg-McQueen W3C
+Recommendation 5 April 2012. See
+http://www.w3.org/TR/2012/REC-xmlschema11-2-20120405/datatypes.html 
+
 ###### [YTLee]
 Lee, Y. (1999), *Information Modeling: From Design to
 Implementation*, IEEE Transactions on Robotics and Automation,
@@ -3028,8 +3048,9 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-10-28 | David Lemire | Relocate multiple representations example (from 3.1.5.3 to 3.3.2) (PR #65) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-28 | David Lemire | Revise structure of Section 3.1 for improved clarity and sequencing (PR #66) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-29 | David Lemire | Refine Figure 4-1 (references relationships) (PR #70) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Transfer Section 2 material from CS (PR #71) and integrate with existing content (PR #74) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Add IPv4 packet header models as example of building from known structure (PR #71) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-06 | David Lemire | Transfer Section 2 material from CS (PR #71) and integrate with existing content (PR #74) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-06 | David Lemire | Add IPv4 packet header models as example of building from known structure (PR #71) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-xx | David Lemire | Add definitions for lexical and value space and make associated adjustments (PR #76) |
 
 -------
 
