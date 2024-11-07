@@ -2951,6 +2951,9 @@ Open Command and Control (OpenC2) Language Specification Version 1.0. Edited by 
 ###### [PlantUML]
 https://plantuml.com/
 
+###### [PROTO]
+Google Developers, *"Protocol Buffers"*, https://developers.google.com/protocol-buffers/.
+
 ###### [RDF]
 "Resource Description Framework (RDF) 1.2 Concepts and Abstract Syntax", W3C Working Draft, 22 August 2024,
 https://www.w3.org/TR/rdf12-concepts/#section-Datatypes
