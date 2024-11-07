@@ -2211,9 +2211,9 @@ packages, along with the associated concept of namespaces.
 #### 3.1.6.1 Packages
 
 At the simplest level, a package is a file containing a JADN
-schema in the form of JSON data, as described in [Section3131-native-json-representation
-3.1.5.1](#3151-native-json-representation). The file has two
-top-level components: 
+schema in the form of JSON data, as described in 
+[Section&nbsp;3.1.3.1](#3131-native-json-representation).
+The file has two top-level components: 
 
  - metadata about the file, labeled as "information", and 
  - the schema content itself, labeled as "types".
