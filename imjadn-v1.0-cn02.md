@@ -2445,7 +2445,7 @@ modeling and the application of JADN. The example IMs are:
   
 Additional examples may be added in future versions of the CN.
 
-### 3.3.1 Example 1: A Digital Music Library
+### 3.3.1 Digital Music Library
 
 This example shows a simple IM for a digital music library and
 can be considered a "Hello World" example of applying the
@@ -2466,7 +2466,6 @@ conceptual overview of the music library's structure.
 <img src="images/music_lib_v1_1_puml_conceptual.png" height="500px">
 
 The JADN package for the music library IM provides basic metadata:
-
 
 ```
        title: "Music Library"
@@ -2627,13 +2626,18 @@ IPv4-Packet-Header = Array    // fields in an IPv4 packet header, per RFC 791 an
    2  Integer /u4             // ihl:: Internet Header Length (4 bits)
    3  Diff-Svcs-Code-Point    // dscp:: Differentiated Services Code Point (enumeration, 6 bits)
    4  ECN                     // ecn:: Explicit Congestion Notification (enumeration, 2 bits)
-   5  Integer{20..65535} /u16 // total_length:: entire packet size in bytes, including header and data (min: 20 bytes (header without data) / max: 65,535 bytes)
-   6  Integer /u16            // ident:: identification field; primarily used for uniquely identifying the group of fragments of a single IP datagram
+   5  Integer{20..65535} /u16 // total_length:: entire packet size in bytes, including header and data 
+                              // (min: 20 bytes (header without data) / max: 65,535 bytes)
+   6  Integer /u16            // ident:: identification field; primarily used for uniquely identifying 
+                              // the group of fragments of a single IP datagram
    7  Boolean                 // reserved_flag:: Reserved flag field; should be set to 0 (1-bit)
    8  Boolean                 // dont_frag:: Don't Fragment flag (1 bit)
-   9  Boolean                 // more_frags:: More Fragments (1 bit): cleared for unfragmented packets and last fragment of a fragmented packet
-  10  Integer{0..8191} /u13   // frag_offset:: specifies the offset of a particular fragment relative to the beginning of the original unfragmented IP datagram (13 bits)
-  11  Integer /u8             // time_to_live:: datagram's lifetime specified in seconds, but time intervals less than 1 second are rounded up to 1. In practice, the field is used as a hop count
+   9  Boolean                 // more_frags:: More Fragments (1 bit): cleared for unfragmented packets 
+                              // and last fragment of a fragmented packet
+  10  Integer{0..8191} /u13   // frag_offset:: specifies the offset of a particular fragment relative to 
+                              // the beginning of the original unfragmented IP datagram (13 bits)
+  11  Integer /u8             // time_to_live:: datagram's lifetime specified in seconds, but time intervals less than 
+                              // 1 second are rounded up to 1. In practice, the field is used as a hop count
   12  Integer /u8             // protocol:: transport layer protocol, per IANA registry
   13  Integer /u16            // header_checksum:: used for error checking of the packet header
   14  Binary /ipv4-addr       // source_addr:: source address for the packet sender; may be modified by NAT
