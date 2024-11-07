@@ -2174,7 +2174,7 @@ JADN tooling.
 
 ###### Figure 3-Key-Link -- Contains and References Relationships
 
-![Contains and References Relationships](images/contains-references.drawio.png)
+![Contains and References Relationships](images/JADN-contains-references.drawio.png)
 
 `Record J` in the lower right portion of the figure shows a self-referential
 `key / link` application. This is a generalization of the example from
