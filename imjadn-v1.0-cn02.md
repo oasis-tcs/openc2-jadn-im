@@ -2856,18 +2856,6 @@ n3 [label=<<b>UnivId : String{pattern="^U-\d{6}$"}</b>>, shape=ellipse, style=fi
 }
 ```
 
-
--------
-# 4 Advanced Techniques
-
-## 4.1 Packages and Namespaces
-
-
-
-
-## 4.2 Reference Relationships: Keys and Links
-
-
 -------
 
 # Appendix A. Informative References
