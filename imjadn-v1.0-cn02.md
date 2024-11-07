@@ -554,11 +554,11 @@ the same datatype and their logical values are equal.
   (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
 
 - **Lexical Mapping:** A prescribed relation which maps from the *lexical space* of the datatype into its *value space*.
-  <br>[[XML Schema Datatypes](#xml-schema-datatypes)], adapted
+  <br>[[XSD](#xsd)], adapted
 
 - **Lexical Space:** The set of valid literal representations of a value from
   the *value space* for a datatype.
-  <br>[[XML Schema Datatypes](#xml-schema-datatypes)], adapted
+  <br>[[XSD](#xsd)], adapted
 
 - **Ontology:** (information science) A representation, formal
   naming, and definition of the categories, properties, and
@@ -579,7 +579,7 @@ the same datatype and their logical values are equal.
   space*. Value spaces have certain properties (e.g., cardinality, some
   definition of equality, ordering) by which individual values within the value
   space can be compared to one another.
-  <br>[[XML Schema Datatypes](#xml-schema-datatypes)], adapted
+  <br>[[XSD](#xsd)], adapted
 
 -------
 
