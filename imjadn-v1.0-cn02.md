@@ -3030,6 +3030,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-10-29 | David Lemire | Refine Figure 4-1 (references relationships) (PR #70) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Transfer Section 2 material from CS (PR #71) and integrate with existing content (PR #74) |
 | imjadn-v1.0-cn01-wd02.md | 2023-10-xx | David Lemire | Add IPv4 packet header models as example of building from known structure (PR #71) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-xx | David Lemire | Migrate Section 4 content into section 3.1 (PR #xx) |
 
 -------
 
