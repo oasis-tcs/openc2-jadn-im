@@ -2996,12 +2996,9 @@ https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication
 "Unified Modeling Language", Version 2.5.1, December 2017,
 https://www.omg.org/spec/UML/2.5.1/About-UML/
 
-###### [XML-Schema-Datatypes]
-
-World Wide Web Consortium. *XML Schema Version 1.1 Part 2: Datatypes*, ed. Dave
-Peterson, Paul V. Biron and Ashok Malhotra, and C. M. Sperberg-McQueen W3C
-Recommendation 5 April 2012. See
-http://www.w3.org/TR/2012/REC-xmlschema11-2-20120405/datatypes.html 
+###### [XSD]
+W3C, "XML Schema Definition Language (XSD) 1.1 Part 1: Structures", 5 April 2012, https://www.w3.org/TR/xmlschema11-1.
+W3C, "XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes", 5 April 2012, https://www.w3.org/TR/xmlschema11-2.
 
 ###### [YTLee]
 Lee, Y. (1999), *Information Modeling: From Design to
