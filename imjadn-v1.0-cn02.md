@@ -2208,7 +2208,7 @@ use of packages as the mechanism for organizing JADN schemas.
 This section provides additional information on the use of
 packages, along with the associated concept of namespaces.
 
-### 4.1.1 Packages
+#### 3.1.6.1 Packages
 
 At the simplest level, a package is a file containing a JADN
 schema in the form of JSON data, as described in [Section3131-native-json-representation
@@ -2237,7 +2237,7 @@ distinction. The `exports` list provides a means for schema
 authors to indicate the intended public types, and a basis for
 JADN schema tools to detect discrepancies.
 
-### 4.1.2 Namespaces
+#### 3.1.6.2 Namespaces
 
 > NOTE: this discussion of namespace management includes features to be added in
 > JADN v1.1. The implementation of these features is backward-compatible with
