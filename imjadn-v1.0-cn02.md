@@ -770,7 +770,7 @@ is guided by rules associated with applying the IM:
    external representation format
 
 The [[JADN Specification](#jadn-v10)] defines 12 core types, which
-are described in [Section&nbsp;3.1.7](#317-base-type-examples) of this
+are described in [Section&nbsp;3.1.2](#312-core-type-examples) of this
 CN. The JADN Specification also defines serialization rules for
 JSON (with three levels of verbosity) and CBOR
 [[RFC7409](#rfc7049)]. Supporting a new data format ("external
@@ -852,9 +852,9 @@ broken by converting one or more containers to references.
 From UML JADN takes the concept of modeling information/data
 using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
 opposed to the common practice of using Structured Classifiers
-([[UML](#uml)], 11.4 Classes), which do not define data in a unique
+(UML, 11.4 Classes), which do not define data in a unique
 way that can be validated and signed.  The JADN use of the UML
-primitive types defined in [[UML](#uml)], Table 21.1, can be found
+primitive types defined in UML, Table 21.1, can be found
 in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 ## 3.1 JADN Overview
