@@ -2157,7 +2157,7 @@ where cycles occur in order to address this need. The method to
 define reference relationships is explained in Section&nbsp;3.3.6,
 *Links*, of the [[JADN Specification](#jadn-v10)]. 
 
-Figure 4-1 illustrates permissible and impermissible "contains"
+Figure 3-Key-Link illustrates permissible and impermissible "contains"
 relationships, and the use of the `key` and `link` keywords
 combined with an identifier field to establish permissible
 "reference" relationships. The green lines show permissible
@@ -2172,7 +2172,7 @@ field option in `Record G` when referring to such objects; the
 generates the correct key type when extensions are removed by
 JADN tooling.
 
-###### Figure 4-1 -- Contains and References Relationships
+###### Figure 3-Key-Link -- Contains and References Relationships
 
 ![Contains and References Relationships](images/contains-references.drawio.png)
 
