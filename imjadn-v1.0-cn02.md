@@ -2133,13 +2133,13 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
 
 > NOTE: this material was previously section 4.2
 
-As noted at the end of Section&nbsp;3.1 of this CN, JADN recognizes
+As explained in Section&nbsp;3, JADN recognizes
 only two kinds of relationship: "contain" and "reference". The
 relationships shown in previous examples are all of the "contain"
 variety. The "reference" relationship type applies when using the
 "contain" relationship would create a cycle or loop in the graph
 of the information model.  An example of this might occur, for
-example, in an IM for an SBOM format: as software components
+example, in an IM for an SBOM format: because software components
 often incorporate other components a recursive situation arises
 when referring to the incorporated components:
 
