@@ -573,7 +573,8 @@ the same datatype and their logical values are equal.
    data, data types, and data file structures, such as XML
    schemas for XML files.<br>(Wiktionary, https://en.wiktionary.org/wiki/schema#Noun, definition #3)
 
-- **Value Space:** The set of values for a given datatype. Each value in the
+- **Value Space:** The set of values for a given datatype. The value spaces 
+- and the values therein are abstractions. Each value in the
   value space of a datatype is denoted by one or more literals in its *lexical
   space*. Value spaces have certain properties (e.g., cardinality, some
   definition of equality, ordering) by which individual values within the value
