@@ -2133,7 +2133,60 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
 
 > NOTE: this material was previously section 4.2
 
+As noted at the end of Section&nbsp;3.1 of this CN, JADN recognizes
+only two kinds of relationship: "contain" and "reference". The
+relationships shown in previous examples are all of the "contain"
+variety. The "reference" relationship type applies when using the
+"contain" relationship would create a cycle or loop in the graph
+of the information model.  An example of this might occur, for
+example, in an IM for an SBOM format: as software components
+often incorporate other components a recursive situation arises
+when referring to the incorporated components:
 
+```
+Component - Record
+  ...
+  8  Components  ArrayOf(Component) {0..*}
+  ...
+```
+
+When recursion is used in programming it is terminated by a base
+condition, but an IM has no corresponding concept to terminate
+recursion. JADN uses "reference" relationships in situations
+where cycles occur in order to address this need. The method to
+define reference relationships is explained in Section&nbsp;3.3.6,
+*Links*, of the [[JADN Specification](#jadn-v10)]. 
+
+Figure 4-1 illustrates permissible and impermissible "contains"
+relationships, and the use of the `key` and `link` keywords
+combined with an identifier field to establish permissible
+"reference" relationships. The green lines show permissible
+relationships, the red lines impermissible ones that create
+cycles in the graph. The dotted green line in the lower left
+portion is a "reference" relationship enabled by the inclusion of
+a unique identifier in `Record H`, created by the use of the
+`key` field option to designate a primary key for objects
+described by `Record H`, and the corresponding use of the `link`
+field option in `Record G` when referring to such objects; the
+`link` field option both designates the field as a reference and
+generates the correct key type when extensions are removed by
+JADN tooling.
+
+###### Figure 4-1 -- Contains and References Relationships
+
+![Contains and References Relationships](images/contains-references.drawio.png)
+
+`Record J` in the lower right portion of the figure shows a self-referential `key / link` application. This is a generalization of the example from Section&nbsp;3.3.6 of the JADN Specification, which allows for numerous relationships between objects of type `Person`:
+
+```
+Person = Record
+    1 id        Key(Integer)
+    2 name      String
+    3 mother    Link(Person)
+    4 father    Link(Person)
+    5 siblings  Link(Person) [0..*]
+    6 friends   Link(Person) [0..*]
+```
 
 ## 3.2 Information Modeling Process
 
@@ -2797,60 +2850,7 @@ referencing types from the three external schemas .
 
 ## 4.2 Reference Relationships: Keys and Links
 
-As noted at the end of Section&nbsp;3.1 of this CN, JADN recognizes
-only two kinds of relationship: "contain" and "reference". The
-relationships shown in previous examples are all of the "contain"
-variety. The "reference" relationship type applies when using the
-"contain" relationship would create a cycle or loop in the graph
-of the information model.  An example of this might occur, for
-example, in an IM for an SBOM format: as software components
-often incorporate other components a recursive situation arises
-when referring to the incorporated components:
 
-```
-Component - Record
-  ...
-  8  Components  ArrayOf(Component) {0..*}
-  ...
-```
-
-When recursion is used in programming it is terminated by a base
-condition, but an IM has no corresponding concept to terminate
-recursion. JADN uses "reference" relationships in situations
-where cycles occur in order to address this need. The method to
-define reference relationships is explained in Section&nbsp;3.3.6,
-*Links*, of the [[JADN Specification](#jadn-v10)]. 
-
-Figure 4-1 illustrates permissible and impermissible "contains"
-relationships, and the use of the `key` and `link` keywords
-combined with an identifier field to establish permissible
-"reference" relationships. The green lines show permissible
-relationships, the red lines impermissible ones that create
-cycles in the graph. The dotted green line in the lower left
-portion is a "reference" relationship enabled by the inclusion of
-a unique identifier in `Record H`, created by the use of the
-`key` field option to designate a primary key for objects
-described by `Record H`, and the corresponding use of the `link`
-field option in `Record G` when referring to such objects; the
-`link` field option both designates the field as a reference and
-generates the correct key type when extensions are removed by
-JADN tooling.
-
-###### Figure 4-1 -- Contains and References Relationships
-
-![Contains and References Relationships](images/contains-references.drawio.png)
-
-`Record J` in the lower right portion of the figure shows a self-referential `key / link` application. This is a generalization of the example from Section&nbsp;3.3.6 of the JADN Specification, which allows for numerous relationships between objects of type `Person`:
-
-```
-Person = Record
-    1 id        Key(Integer)
-    2 name      String
-    3 mother    Link(Person)
-    4 father    Link(Person)
-    5 siblings  Link(Person) [0..*]
-    6 friends   Link(Person) [0..*]
-```
 -------
 
 # Appendix A. Informative References
