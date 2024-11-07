@@ -645,15 +645,16 @@ across multiple specifications with similar goals.
 
 ## 2.3 Serialization
 
-Information exists in the minds of users (producers and
-consumers), in the state of applications running on systems, and
-in the data exchanged among applications. Serialization converts
-application information into byte sequences (a.k.a. protocol data
-units, messages, payloads, information exchange packages) that can
-be validated, communicated and stored. De-serialization parses
-payloads back into application state. Serialization is not a goal
-in and of itself, it is the mechanism by which applications
-exchange information in order to make it available to users.
+Information exists in the minds of users (producers and consumers), in the state
+of applications running on systems, and in the data exchanged among
+applications. Serialization converts application information into byte sequences
+(a.k.a. protocol data units, messages, payloads, information exchange packages)
+that can be validated, communicated and stored. De-serialization parses payloads
+back into application state. This can also be stated as serialization is the
+transformation from value space to lexical space, and de-serialization is the
+inverse transformation. Serialization is not a goal in and of itself, it is the
+mechanism by which applications exchange information in order to make it
+available to users.
 
 ###### Figure 2-1 -- Serialization / Deserialization
 ![**Figure 2-1 -- Serialization / Deserialization**](images/model-and-serialization.png)
