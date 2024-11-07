@@ -7,7 +7,7 @@
 
 ## Committee Note 02 - Working Draft 01
 
-## 29 October 2024
+## 07 November 2024
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
