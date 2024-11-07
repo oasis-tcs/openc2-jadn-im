@@ -7,7 +7,7 @@
 
 ## Committee Note 02 - Working Draft 01
 
-## 29 October 2024
+## 07 November 2024
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
@@ -239,7 +239,7 @@ protocol-specific details, e.g., rules that explain how to map
 managed objects onto lower-level protocol constructs. (Section 4)
 
 Although RFC 3444 references protocols and object methods, the Unified Modeling Language
-[UML](#uml) places data models and object-oriented programming models
+[[UML](#uml)] places data models and object-oriented programming models
 in separate categories:
 * Simple Classifiers (Section 10), including DataTypes (10.2), and
 * Structured Classifiers (Section 11), including Classes (11.4)
@@ -382,7 +382,7 @@ information content of a logical value can be no greater than the
 smallest lexical value for which lossless round-trip conversion
 is possible. For example, an IPv4 address represented in dotted
 quad format is 17 bytes of JSON string data ("192.168.101.213"),
-but can be converted to 4 byte [[RFC 791](#rfc791)] format and back without
+but can be converted to 4 byte [[RFC 791](#rfc0791)] format and back without
 loss. The information content of an IPv4 address can therefore be
 no greater than 4 bytes (32 bits), and an information model would
 define the IPv4 address datatype as a byte sequence of length 4. Expanding
@@ -406,7 +406,7 @@ file is:
 As with individual IP addresses, the information in an IPv4 header is
 no greater than the 24 byte RFC 791 lexical value regardless of data format.
 
-[Section 2](#2-information-modeling-overview) discusses information vs. data,
+[Section 2](#2-creation-and-use-of-information-models) discusses information vs. data,
 information modeling, and related concepts in more detail.
 [Section 3.3.2](#332-internet-protocol-version-4-packet-header)
 provides a more detailed illustration of an IM for an IPv4 packet header.
@@ -554,11 +554,11 @@ the same datatype and their logical values are equal.
   (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
 
 - **Lexical Mapping:** A prescribed relation which maps from the *lexical space* of the datatype into its *value space*.
-  <br>[[XML Schema Datatypes](#xml-schema-datatypes)], adapted
+  <br>[[XSD](#xsd)], adapted
 
 - **Lexical Space:** The set of valid literal representations of a value from
   the *value space* for a datatype.
-  <br>[[XML Schema Datatypes](#xml-schema-datatypes)], adapted
+  <br>[[XSD](#xsd)], adapted
 
 - **Ontology:** (information science) A representation, formal
   naming, and definition of the categories, properties, and
@@ -579,7 +579,7 @@ the same datatype and their logical values are equal.
   space*. Value spaces have certain properties (e.g., cardinality, some
   definition of equality, ordering) by which individual values within the value
   space can be compared to one another.
-  <br>[[XML Schema Datatypes](#xml-schema-datatypes)], adapted
+  <br>[[XSD](#xsd)], adapted
 
 -------
 
@@ -770,7 +770,7 @@ is guided by rules associated with applying the IM:
    external representation format
 
 The [[JADN Specification](#jadn-v10)] defines 12 core types, which
-are described in [Section&nbsp;3.1.7](#317-base-type-examples) of this
+are described in [Section&nbsp;3.1.2](#312-core-type-examples) of this
 CN. The JADN Specification also defines serialization rules for
 JSON (with three levels of verbosity) and CBOR
 [[RFC7409](#rfc7049)]. Supporting a new data format ("external
@@ -852,9 +852,9 @@ broken by converting one or more containers to references.
 From UML JADN takes the concept of modeling information/data
 using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
 opposed to the common practice of using Structured Classifiers
-([[UML](#uml)], 11.4 Classes), which do not define data in a unique
+(UML, 11.4 Classes), which do not define data in a unique
 way that can be validated and signed.  The JADN use of the UML
-primitive types defined in [[UML](#uml)], Table 21.1, can be found
+primitive types defined in UML, Table 21.1, can be found
 in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 ## 3.1 JADN Overview
@@ -886,13 +886,13 @@ also an array, with three items in an element array and five items in a field
 array. 
 
 These structures are illustrated and explained in more detail 
-in [Section&nbsp;3.1.5.1, Native JSON Representation](#3131-native-json-representation).
+in [Section&nbsp;3.1.3.1, Native JSON Representation](#3131-native-json-representation).
 JADN can also be represented in multiple formats, both textual and
 graphical, and automated tooling can transform a JADN model
 between the different representations without loss of
 information. The Native JADN representation as JSON data is
 authoritative, but each representation has advantages. The other representations are described in 
-[Section&nbsp;3.1.5.2, Alternative JSON Representation](#3132-alternative-jadn-representations). 
+[Section&nbsp;3.1.3.2, Alternative JSON Representation](#3132-alternative-jadn-representations). 
 The examples that follow in subsequent sections are typically illustrated using
 both normative JADN (i.e., JSON data) for precision and the JADN Interface
 Definition Language (JIDL) format for its easy readability.
@@ -989,7 +989,7 @@ grammar.
 
 Table 3-3 lists the complete set of type options, including the option name,
 type, ID character, and description. Note that the ID characters are the normative form and are used in
-standard JADN representation ([Section&nbsp;3.1.5.1](#3131-native-json-representation)) 
+standard JADN representation ([Section&nbsp;3.1.3.1](#3131-native-json-representation)) 
 when specifying type options. The text labels for the options (e.g., vtype,
 ktype, pattern) are non-normative and intended to be human friendly. Many of the
 Type and Field options labels have JSON Schema and XML Schema equivalents.
@@ -1074,7 +1074,7 @@ pertaining to the **Fields** array are as follows:
 
 The selection of Map or Record for a type definition carries 
 serialization implications, which are discussed in 
-[Section&nbsp;3.1.X.2](#3142-selection-and-use-of-jadn-compound-types).
+[Section&nbsp;3.1.4.2](#3142-selection-and-use-of-jadn-compound-types).
 
 #### 3.1.1.4 Field Options
 
@@ -1083,7 +1083,7 @@ in addition to the type options described in [Section&nbsp;3.1.1.2](#3112-typeop
 JADN defines six field options. As with
 the type options described in Section&nbsp;3.1.1.2,
 the ID characters are normative and used in standard JADN representation
-([Section&nbsp;3.1.5.1](#3131-native-json-representation)) when
+([Section&nbsp;3.1.3.1](#3131-native-json-representation)) when
 specifying field options. Table 3-5 lists the JADN field options.
 
 ###### Table 3-5 -- JADN Field Options
@@ -1099,10 +1099,10 @@ specifying field options. Table 3-5 lists the JADN field options.
 
 The type options described in [Section&nbsp;3.1.1.2](#3112-typeoptions) can also apply
 to fields, with the constraint that the type option must be applicable to the
-field's type, as described in the core type examples in [Section&nbsp;3.1.7](#317-base-type-examples). 
+field's type, as described in the core type examples in [Section&nbsp;3.1.2](#312-core-type-examples). 
 The application of a type option to a field
 triggers an "anonymous" type definition when the JADN model is processed, as
-described in [Section&nbsp;3.1.X.1](#3141-anonymous-type-definitions).
+described in [Section&nbsp;3.1.4.1](#3141-anonymous-type-definitions).
 
 ### 3.1.2 Core Type Examples
 
@@ -1160,7 +1160,7 @@ Binary type:
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
 | eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [EUI](#eui) |
-| ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc791) Section&nbsp;3.1 |
+| ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc0791) Section&nbsp;3.1 |
 | ipv6-addr    | Binary | IPv6 address as specified in [RFC 8200](#rfc8200)  Section&nbsp;3 |
 
 #### 3.1.2.2 Boolean
@@ -1411,7 +1411,7 @@ information item fitting the Enumerated type would be defined as
 follows:
 
 ```json
-["L4-Protocol", "Enumerated", [], "Value of the protocol (IPv4) or next header (IPv6) field in an IP packet. Any IANA value, [[RFC5237]](#rfc5237)", [
+["L4-Protocol", "Enumerated", [], "Value of the protocol (IPv4) or next header (IPv6) field in an IP packet. Any IANA value, [RFC5237]", [
     [1, "icmp", "Internet Control Message Protocol - [RFC0792]"],
     [6, "tcp", "Transmission Control Protocol - [RFC0793]"],
     [17, "udp", "User Datagram Protocol - [RFC0768]"],
@@ -1517,7 +1517,7 @@ as follows:
 
 ```json
   ["IPv4-Net", "Array", ["/ipv4-net"], "IPv4 address and prefix length", [
-    [1, "ipv4_addr", "IPv4-Addr", [], "IPv4 address as defined in [[RFC0791]](#rfc0791)"],
+    [1, "ipv4_addr", "IPv4-Addr", [], "IPv4 address as defined in [RFC0791]"],
     [2, "prefix_length", "Integer", ["[0"], "CIDR prefix-length. If omitted, refers to a single host address."]
   ]]
 ```
@@ -1536,7 +1536,7 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
 ```
 
 The example above illustrates the positioning of Array "field names" within the
-JIDL comments, as described in [Section&nbsp;3.1.5.2.1](#31521-array-field-names-in-jidl).
+JIDL comments, as described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
 
 Table 3-9 lists the *format* options applicable to the Array type:
 
@@ -1585,7 +1585,7 @@ elements together. The fields of the array are defined by the
 fitting the ArrayOf core type would be defined as follows. This
 example uses an explicit ArrayOf type derived using the 
 multiplicity extension on the "tracks" field of Album, as shown in
-[Section&nbsp;3.3.1](#331-example-1-a-digital-music-library)):
+[Section&nbsp;3.3.1](#331-digital-music-library)):
 
 ```json
 [
@@ -1652,9 +1652,9 @@ follows:
 
 ```json
   ["Hashes", "Map", ["{1"], "Cryptographic hash values", [
-    [1, "md5", "Binary", ["/x", "{16", "}16", "[0"], "MD5 hash as defined in [[RFC1321]](#rfc1321)"],
-    [2, "sha1", "Binary", ["/x", "{20", "}20", "[0"], "SHA1 hash as defined in [[RFC6234]](#rfc6234)"],
-    [3, "sha256", "Binary", ["/x", "{32", "}32", "[0"], "SHA256 hash as defined in [[RFC6234]](#rfc6234)"]
+    [1, "md5", "Binary", ["/x", "{16", "}16", "[0"], "MD5 hash as defined in [RFC1321]"],
+    [2, "sha1", "Binary", ["/x", "{20", "}20", "[0"], "SHA1 hash as defined in [RFC6234]"],
+    [3, "sha256", "Binary", ["/x", "{32", "}32", "[0"], "SHA256 hash as defined in [RFC6234]"]
   ]]
 ```
 
@@ -1676,9 +1676,7 @@ defines that there is a minimum number of required fields even
 though every individual field is optional. An empty `Hashes` map is
 invalid, but a map where any one or more of the three hash types
 exists is valid. This is an example of one application of _minv_,
-_maxv_, as described above in [Section&nbsp;3.1.X.4](#3144-application-of-minv--maxv).
-
-
+_maxv_, as described above in [Section&nbsp;3.1.4.4](#3144-application-of-minv--maxv).
 
 #### 3.1.2.11 MapOf(ktype,vtype)
 
@@ -1804,7 +1802,7 @@ IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tc
    5 protocol         L4-Protocol optional        // Layer 4 protocol (e.g., TCP)
 ```
 
-As with the `Map` example in [Section&nbsp;3.1.7.10](#31210-map), the
+As with the `Map` example in [Section&nbsp;3.1.2.10](#31210-map), the
 cardinality of `{1..*}` for the `Record` defines that there is a
 minimum number of required fields even though every individual
 field is optional. An empty IPv4-Connection record is invalid,
@@ -2108,9 +2106,9 @@ meaning in these two applications:
    
 For example, the following specifies an Integer type that can be
 assigned values between `1` and `1000`, using both JADN (see
-[Section&nbsp;3.5.1.1](#3131-native-json-representation)) and JIDL
-notation (see [section3132-alternative-jadn-representations
-3.5.1.2](#3152-alternative-jadn-representations)):
+[Section&nbsp;3.1.3.1](#3131-native-json-representation)) and JIDL
+notation (see 
+[Section&nbsp;3.1.3.2](#3132-alternative-jadn-representations)):
 
 ```
 ["count","integer",["{1", "}1000"], "count of objects",[]]
@@ -2126,7 +2124,7 @@ notation (see [section3132-alternative-jadn-representations
    at least two fields populated, even though only one field is
    required (fields `field_2` and `field_3` are indicated as
    optional by the `["[0"]` *field* option 
-   [see [Section&nbsp;3.1.4](#3114-field-options)]):
+   [see [Section&nbsp;3.1.1.4](#3114-field-options)]):
 
 ```
 ["RecordType", "Record", ["{2"], "requires field_1 and either or both field_2 and field_3", [
@@ -2410,7 +2408,7 @@ The process is executed in an iterative sequence of modeling, verification and v
 
 ## 3.3 Information Modeling Examples
 
-As discussed in [Section 1.1.1](#111-openc2-and-jadn), JADN is a
+As discussed in [Section 1.1.5](#115-information-modeling-languages), JADN is a
 general purpose tool for information modeling, and can be applied
 to a broad range of IM needs.  Some possible subjects for IMs
 are:
@@ -2445,7 +2443,7 @@ modeling and the application of JADN. The example IMs are:
   
 Additional examples may be added in future versions of the CN.
 
-### 3.3.1 Example 1: A Digital Music Library
+### 3.3.1 Digital Music Library
 
 This example shows a simple IM for a digital music library and
 can be considered a "Hello World" example of applying the
@@ -2466,7 +2464,6 @@ conceptual overview of the music library's structure.
 <img src="images/music_lib_v1_1_puml_conceptual.png" height="500px">
 
 The JADN package for the music library IM provides basic metadata:
-
 
 ```
        title: "Music Library"
@@ -2496,7 +2493,7 @@ publication data, cover art, total track count, and an array of individual audio
 tracks. Multiple digital image formats are supported for the cover art. Note
 that this example also contains an example of an anonymous type definition
 (i.e., the `release_date` field in the `Publication-Data` record) as described 
-in [Section&nbsp;3.1.6](#316-anonymous-type-definitions).
+in [Section&nbsp;3.1.4.1](#3141-anonymous-type-definitions).
 
 ```
 Album = Record                         // model for the album
@@ -2596,7 +2593,7 @@ the model components connect.
 
 This example illustrates developing an abstract IM from an existing well-defined
 data structure. The IPv4 packet header definition originates from 
-[[RFC 791](#rfc791)], with some details of the header modified by subsequent RFCs.
+[[RFC 791](#rfc0791)], with some details of the header modified by subsequent RFCs.
 While there may be limited utility in leveraging JADN's information equivalence
 focus to generate IPv4 packet header encodings other than binary, the
 model is useful to document the fields of the header and describe their
@@ -2617,8 +2614,6 @@ packet header array in JIDL form. In this representation the field "names" are
 embedded in the JIDL comment field between the `//` and `::` delimiters, as
 described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
 
-> EDITOR'S NOTE: may need to reformat the comments in the following for readability
-
 ###### Figure 3-ipv4-header
 
 ```
@@ -2627,13 +2622,18 @@ IPv4-Packet-Header = Array    // fields in an IPv4 packet header, per RFC 791 an
    2  Integer /u4             // ihl:: Internet Header Length (4 bits)
    3  Diff-Svcs-Code-Point    // dscp:: Differentiated Services Code Point (enumeration, 6 bits)
    4  ECN                     // ecn:: Explicit Congestion Notification (enumeration, 2 bits)
-   5  Integer{20..65535} /u16 // total_length:: entire packet size in bytes, including header and data (min: 20 bytes (header without data) / max: 65,535 bytes)
-   6  Integer /u16            // ident:: identification field; primarily used for uniquely identifying the group of fragments of a single IP datagram
+   5  Integer{20..65535} /u16 // total_length:: entire packet size in bytes, including header and data 
+                              // (min: 20 bytes (header without data) / max: 65,535 bytes)
+   6  Integer /u16            // ident:: identification field; primarily used for uniquely identifying 
+                              // the group of fragments of a single IP datagram
    7  Boolean                 // reserved_flag:: Reserved flag field; should be set to 0 (1-bit)
    8  Boolean                 // dont_frag:: Don't Fragment flag (1 bit)
-   9  Boolean                 // more_frags:: More Fragments (1 bit): cleared for unfragmented packets and last fragment of a fragmented packet
-  10  Integer{0..8191} /u13   // frag_offset:: specifies the offset of a particular fragment relative to the beginning of the original unfragmented IP datagram (13 bits)
-  11  Integer /u8             // time_to_live:: datagram's lifetime specified in seconds, but time intervals less than 1 second are rounded up to 1. In practice, the field is used as a hop count
+   9  Boolean                 // more_frags:: More Fragments (1 bit): cleared for unfragmented packets 
+                              // and last fragment of a fragmented packet
+  10  Integer{0..8191} /u13   // frag_offset:: specifies the offset of a particular fragment relative to 
+                              // the beginning of the original unfragmented IP datagram (13 bits)
+  11  Integer /u8             // time_to_live:: datagram's lifetime specified in seconds, but time intervals less than 
+                              // 1 second are rounded up to 1. In practice, the field is used as a hop count
   12  Integer /u8             // protocol:: transport layer protocol, per IANA registry
   13  Integer /u16            // header_checksum:: used for error checking of the packet header
   14  Binary /ipv4-addr       // source_addr:: source address for the packet sender; may be modified by NAT
@@ -2698,14 +2698,14 @@ The [[JADN Specification](#jadn-v10)], section 5.3,
 uses a simple example of an IM for a university to illustrate the
 use of ERDs for IMs. This section uses that ERD as a starting
 point for an example to illustrate the various JADN
-representations described in [Section 3.1.5.2](#3132-alternative-jadn-representations). The example
+representations described in [Section 3.1.3.2](#3132-alternative-jadn-representations). The example
 begins with the ERD for the model:
 
 ###### Figure 3-7 -- Simple University Example ERD
 
 <img src="images/university-erd.png" height="600px">
 
-The package (see [Section 4.1](#41-packages-and-namespaces)) 
+The package (see [Section 3.1.6.1](#3161-packages)) 
 containing the JADN corresponding to the above ERD is shown here:
 
 ###### Figure 3-8 -- Simple University Example JADN (JSON format)
@@ -2947,11 +2947,17 @@ Open Command and Control (OpenC2) Language Specification Version 1.0. Edited by 
 ###### [PlantUML]
 https://plantuml.com/
 
+###### [PROTO]
+Google Developers, *"Protocol Buffers"*, https://developers.google.com/protocol-buffers/.
+
 ###### [RDF]
 "Resource Description Framework (RDF) 1.2 Concepts and Abstract Syntax", W3C Working Draft, 22 August 2024,
 https://www.w3.org/TR/rdf12-concepts/#section-Datatypes
 
-###### [RFC791]
+###### [RELAXNG]
+OASIS Technical Committee, *"RELAX NG"*, November 2002, https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=relax-ng.
+
+###### [RFC0791]
 "Internet Protocol - DARPA Internet Program Protocol Specification", RFC 791, September 1981,
 https://datatracker.ietf.org/doc/html/rfc791#section-3.1
 
@@ -2960,10 +2966,24 @@ Pras, A., Schoenwaelder, J., "On the Difference between
 Information Models and Data Models", RFC 3444, January 2003,
 https://tools.ietf.org/html/rfc3444.
 
+###### [RFC4291]
+
+Hinden, R. and S. Deering, *"IP Version 6 Addressing Architecture"*,
+RFC 4291, DOI 10.17487/RFC4291, February 2006, <https://www.rfc-editor.org/info/rfc4291>.\
+
+###### [RFC4632]
+
+Fuller, V. and T. Li, *"Classless Inter-domain Routing (CIDR): The Internet Address Assignment and Aggregation Plan"*,
+BCP 122, RFC 4632, DOI 10.17487/RFC4632, August 2006, <https://www.rfc-editor.org/info/rfc4632>.
+
 ###### [RFC7049]
 Bormann, C., Hoffman, P., *"Concise Binary Object Representation
 (CBOR)"*, RFC 7049, October 2013,
 https://tools.ietf.org/html/rfc7049.
+
+###### [RFC8200] 
+Deering, S. and R. Hinden, *"Internet Protocol, Version 6 (IPv6) Specification"*,
+STD 86, RFC 8200, DOI 10.17487/RFC8200, July 2017, <https://www.rfc-editor.org/info/rfc8200>.
 
 ###### [RFC8477]
 Jimenez, J., Tschofenig, H., and D. Thaler, "Report from the
@@ -2986,12 +3006,9 @@ https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication
 "Unified Modeling Language", Version 2.5.1, December 2017,
 https://www.omg.org/spec/UML/2.5.1/About-UML/
 
-###### [XML-Schema-Datatypes]
-
-World Wide Web Consortium. *XML Schema Version 1.1 Part 2: Datatypes*, ed. Dave
-Peterson, Paul V. Biron and Ashok Malhotra, and C. M. Sperberg-McQueen W3C
-Recommendation 5 April 2012. See
-http://www.w3.org/TR/2012/REC-xmlschema11-2-20120405/datatypes.html 
+###### [XSD]
+W3C, "XML Schema Definition Language (XSD) 1.1 Part 1: Structures", 5 April 2012, https://www.w3.org/TR/xmlschema11-1.
+W3C, "XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes", 5 April 2012, https://www.w3.org/TR/xmlschema11-2.
 
 ###### [YTLee]
 Lee, Y. (1999), *Information Modeling: From Design to
@@ -3060,6 +3077,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-11-06 | David Lemire | Add IPv4 packet header models as example of building from known structure (PR #71) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Add definitions for lexical and value space and make associated adjustments (PR #76) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Migrate Section 4 content into section 3.1 (PR #77) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Administrative clean-up (PR #78) |
 
 -------
 
