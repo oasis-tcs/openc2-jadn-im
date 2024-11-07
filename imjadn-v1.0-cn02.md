@@ -408,8 +408,8 @@ no greater than the 24 byte RFC 791 lexical value regardless of data format.
 
 [Section 2](#2-information-modeling-overview) discusses information vs. data,
 information modeling, and related concepts in more detail.
-
-> TO-DO: add ref to the IPv4 packet example to the foregoing once merged.
+[Section 3.3.2](#332-internet-protocol-version-4-packet-header)
+provides a more detailed illustration of an IM for an IPv4 packet header.
 
 ### 1.1.4 Information Modeling Goals and Principles
 
