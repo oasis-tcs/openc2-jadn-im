@@ -886,13 +886,13 @@ also an array, with three items in an element array and five items in a field
 array. 
 
 These structures are illustrated and explained in more detail 
-in [Section&nbsp;3.1.5.1, Native JSON Representation](#3131-native-json-representation).
+in [Section&nbsp;3.1.3.1, Native JSON Representation](#3131-native-json-representation).
 JADN can also be represented in multiple formats, both textual and
 graphical, and automated tooling can transform a JADN model
 between the different representations without loss of
 information. The Native JADN representation as JSON data is
 authoritative, but each representation has advantages. The other representations are described in 
-[Section&nbsp;3.1.5.2, Alternative JSON Representation](#3132-alternative-jadn-representations). 
+[Section&nbsp;3.1.3.2, Alternative JSON Representation](#3132-alternative-jadn-representations). 
 The examples that follow in subsequent sections are typically illustrated using
 both normative JADN (i.e., JSON data) for precision and the JADN Interface
 Definition Language (JIDL) format for its easy readability.
@@ -989,7 +989,7 @@ grammar.
 
 Table 3-3 lists the complete set of type options, including the option name,
 type, ID character, and description. Note that the ID characters are the normative form and are used in
-standard JADN representation ([Section&nbsp;3.1.5.1](#3131-native-json-representation)) 
+standard JADN representation ([Section&nbsp;3.1.3.1](#3131-native-json-representation)) 
 when specifying type options. The text labels for the options (e.g., vtype,
 ktype, pattern) are non-normative and intended to be human friendly. Many of the
 Type and Field options labels have JSON Schema and XML Schema equivalents.
@@ -1074,7 +1074,7 @@ pertaining to the **Fields** array are as follows:
 
 The selection of Map or Record for a type definition carries 
 serialization implications, which are discussed in 
-[Section&nbsp;3.1.X.2](#3142-selection-and-use-of-jadn-compound-types).
+[Section&nbsp;3.1.4.2](#3142-selection-and-use-of-jadn-compound-types).
 
 #### 3.1.1.4 Field Options
 
@@ -1083,7 +1083,7 @@ in addition to the type options described in [Section&nbsp;3.1.1.2](#3112-typeop
 JADN defines six field options. As with
 the type options described in Section&nbsp;3.1.1.2,
 the ID characters are normative and used in standard JADN representation
-([Section&nbsp;3.1.5.1](#3131-native-json-representation)) when
+([Section&nbsp;3.1.3.1](#3131-native-json-representation)) when
 specifying field options. Table 3-5 lists the JADN field options.
 
 ###### Table 3-5 -- JADN Field Options
@@ -1099,10 +1099,10 @@ specifying field options. Table 3-5 lists the JADN field options.
 
 The type options described in [Section&nbsp;3.1.1.2](#3112-typeoptions) can also apply
 to fields, with the constraint that the type option must be applicable to the
-field's type, as described in the core type examples in [Section&nbsp;3.1.7](#317-base-type-examples). 
+field's type, as described in the core type examples in [Section&nbsp;3.1.2](#312-core-type-examples). 
 The application of a type option to a field
 triggers an "anonymous" type definition when the JADN model is processed, as
-described in [Section&nbsp;3.1.X.1](#3141-anonymous-type-definitions).
+described in [Section&nbsp;3.1.4.1](#3141-anonymous-type-definitions).
 
 ### 3.1.2 Core Type Examples
 
@@ -2974,6 +2974,10 @@ https://tools.ietf.org/html/rfc3444.
 Bormann, C., Hoffman, P., *"Concise Binary Object Representation
 (CBOR)"*, RFC 7049, October 2013,
 https://tools.ietf.org/html/rfc7049.
+
+###### [RFC8200] 
+Deering, S. and R. Hinden, *"Internet Protocol, Version 6 (IPv6) Specification"*,
+STD 86, RFC 8200, DOI 10.17487/RFC8200, July 2017, <https://www.rfc-editor.org/info/rfc8200>.
 
 ###### [RFC8477]
 Jimenez, J., Tschofenig, H., and D. Thaler, "Report from the
