@@ -553,6 +553,9 @@ the same datatype and their logical values are equal.
   specifies relationships that can exist between entities
   (instances of those entity types).<br>(Wikipedia, https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
 
+- **Lexical Mapping:** A prescribed relation which maps from the *lexical space* of the datatype into its *value space*.
+  <br>[[XML Schema Datatypes](#xml-schema-datatypes)], adapted
+
 - **Lexical Space:** The set of valid literal representations of a value from
   the *value space* for a datatype.
   <br>[[XML Schema Datatypes](#xml-schema-datatypes)], adapted
