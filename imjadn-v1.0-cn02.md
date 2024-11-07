@@ -2281,7 +2281,7 @@ Namespace Identifiers (`NSID`) with the `Namespace` other packages declare for
 themselves. A Namespace Identifier (NSID) is, by default, a 1-8 character string
 beginning with a letter and containing only letters and numbers (the default
 formatting can be overridden by inserting an alternative definition into a JADN
-schema). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
+schema's `Information` map's `Config` section). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
 packages to be mapped to one NSID to group all of the types defined in that
 collection of packages into a single namespace. For any array element where the
 `NSID` field is blank, the types in the referenced package are made available in
@@ -2290,7 +2290,7 @@ the current package without need for any NSID.
 Within the schema package's Types definitions
 JADN uses the common convention of using the NSID followed by a
 colon to link an item to the namespace where it is defined (e.g.,
-NSID:TypeName).  So assuming the existence of `Package A`, and
+`NSID:TypeName`).  So assuming the existence of `Package A`, and
 `Package B`, where `Package B` imports `Package A` with the NSID
 `packa`, then types defined in `Package A` can be used within
 `Package B` by identifying them as `packa:Some-Package-A-Type`.
@@ -2315,7 +2315,6 @@ imported without any NSID to create a single schema.
 
 > EDITOR'S NOTE: is it worthwhile to present both the v1.0 and v1.1 approaches
 > to the following example?
-
 
 As a concrete example of applying distinct namespaces for multiple packages,
 here is the `info` portion of a JADN
