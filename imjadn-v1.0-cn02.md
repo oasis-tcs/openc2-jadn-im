@@ -165,19 +165,19 @@ For complete copyright information please see the full Notices section in [Appen
  - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-type-definition-structure)
  - [Figure 3-3 -- JADN Schema Top-Level Structure](#figure-3-3----jadn-schema-top-level-structure)
  - [Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-4----jadn-for-primitive-arrayof-mapof-types)
- - [Figure 3-5 -- JADN for Enumerated Types](#figure-3-5----jadn-for-enumerated-types)
- - [Figure 3-6 -- JADN for Types with Fields](#figure-3-6----jadn-for-types-with-fields)
- - [Figure 3-6a -- JADN Representations](#figure-3-6a----jadn-representations)
- - [Figure 3-Key-Link -- Contains and References Relationships](#figure-3-key-link----contains-and-references-relationships)
- - [Figure 3-Concept -- Music Library Conceptual Overview](#figure-3-concept----music-library-conceptual-overview)
- - [Figure 3-11 -- Music Library Example ERD](#figure-3-11----music-library-example-erd)
- - [Figure 3-ipv4-header](#figure-3-ipv4-header)
- - [Figure 3-ipv4-enums](#figure-3-ipv4-enums)
- - [Figure 3-7 -- Simple University Example ERD](#figure-3-7----simple-university-example-erd)
- - [Figure 3-8 -- Simple University Example JADN (JSON format)](#figure-3-8----simple-university-example-jadn-json-format)
- - [Figure 3-9 -- Simple University Example JADN (JIDL format)](#figure-3-9----simple-university-example-jadn-jidl-format)
- - [Figure 3-10 -- Simple University Example JADN (table format)](#figure-3-10----simple-university-example-jadn-table-format)
- - [Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-11----simple-university-example-erd-source-code-graphviz)
+ - [Figure 3-5 -- JADN for Enumerated Types](#figure-3-5----jadn-fields-for-enumerated-types)
+ - [Figure 3-6 -- JADN for Types with Fields](#figure-3-6----jadn-fields-for-structured-compound-types)
+ - [Figure 3-6a -- JADN Representations](#figure-3-7----jadn-representations)
+ - [Figure 3-Key-Link -- Contains and References Relationships](#figure-3-8----contains-and-references-relationships)
+ - [Figure 3-Concept -- Music Library Conceptual Overview](#figure-3-9----music-library-conceptual-overview)
+ - [Figure 3-11 -- Music Library Example ERD](#figure-3-10----music-library-example-erd)
+ - [Figure 3-ipv4-header](#figure-3-11----ipv4-header-jidl)
+ - [Figure 3-ipv4-enums](#figure-3-12-ipv4-packet-header-enumerations)
+ - [Figure 3-7 -- Simple University Example ERD](#figure-3-13----simple-university-example-erd)
+ - [Figure 3-8 -- Simple University Example JADN (JSON format)](#figure-3-14----simple-university-example-jadn-json-format)
+ - [Figure 3-9 -- Simple University Example JADN (JIDL format)](#figure-3-15----simple-university-example-jadn-jidl-format)
+ - [Figure 3-10 -- Simple University Example JADN (table format)](#figure-3-16----simple-university-example-jadn-table-format)
+ - [Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-14----simple-university-example-erd-source-code-graphviz)
 
 
 **List of Tables**
@@ -1851,16 +1851,15 @@ Figure 3-5 illustrates the structure of JADN for defining an
 Enumerated **BaseType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
-###### Figure 3-5 -- JADN for Enumerated Types
-![JADN for Enumerated
-Types](images/JADN-with-items-json.drawio.png)
+###### Figure 3-5 -- JADN Fields for Enumerated Types
+![JADN for Enumerated Types](images/JADN-with-items-json.drawio.png)
 
 
 Figure 3-6 illustrates the structure of JADN for defining a
 **BaseType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
-###### Figure 3-6 -- JADN for Types with Fields
+###### Figure 3-6 -- JADN Fields for Structured Compound Types
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
@@ -1878,7 +1877,7 @@ The formal definitions of each of these types are found in
 sections 5.1, 5.2, and 5.3, respectively, of the 
 [[JADN Specification](#jadn-v10)].
 
-###### Figure 3-6a -- JADN Representations
+###### Figure 3-7 -- JADN Representations
 ![JADN Representations](images/JADN-Representations.drawio.png)
 
 Automated tooling makes it straightforward to translate among all
@@ -2172,7 +2171,7 @@ where cycles occur in order to address this need. The method to
 define reference relationships is explained in Section&nbsp;3.3.6,
 *Links*, of the [[JADN Specification](#jadn-v10)]. 
 
-Figure 3-Key-Link illustrates permissible and impermissible "contains"
+Figure 3-8 illustrates permissible and impermissible "contains"
 relationships, and the use of the `key` and `link` keywords
 combined with an identifier field to establish permissible
 "reference" relationships. The green lines show permissible
@@ -2187,7 +2186,7 @@ field option in `Record G` when referring to such objects; the
 generates the correct key type when extensions are removed by
 JADN tooling.
 
-###### Figure 3-Key-Link -- Contains and References Relationships
+###### Figure 3-8 -- Contains and References Relationships
 
 ![Contains and References Relationships](images/JADN-contains-references.drawio.png)
 
@@ -2461,10 +2460,10 @@ consolidated JADN, JIDL, and property tables can be found in
 The model assumes that each track is stored as a file with its audio in one of
 several recognized formats. The library organizes tracks into albums, which are
 associated with a barcode identifier. The model is loosely based
-on the ID3 metadata used with MP3 audio files. Figure 3-Concept provides a
+on the ID3 metadata used with MP3 audio files. Figure 3-9 provides a
 conceptual overview of the music library's structure.
 
-###### Figure 3-Concept -- Music Library Conceptual Overview
+###### Figure 3-9 -- Music Library Conceptual Overview
 
 <img src="images/music_lib_v1_1_puml_conceptual.png" height="500px">
 
@@ -2587,10 +2586,10 @@ File-Path = String                         // local storage location of file wit
                                            // from root, filename, and extension
 ```
 
-The entity relationship diagram in Figure 3-11 illustrates how
+The entity relationship diagram in Figure 3-10 illustrates how
 the model components connect.
 
-###### Figure 3-11 -- Music Library Example ERD
+###### Figure 3-10 -- Music Library Example ERD
 
 <img src="images/music-library-v1_1-detailed-ERD-GV.png" height="720px">
 
@@ -2614,12 +2613,12 @@ three Wikipedia pages related to the IPv4 packet header:
 
 The model comprises a JADN Array type containing all of the fields of the IPv4
 packet header (except the `options` field), supported by two Enumerated types to
-explicate the meanings of particular fields. Figure 3-ipv4-header shows the
+explicate the meanings of particular fields. Figure 3-11 shows the
 packet header array in JIDL form. In this representation the field "names" are
 embedded in the JIDL comment field between the `//` and `::` delimiters, as
 described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
 
-###### Figure 3-ipv4-header
+###### Figure 3-11 -- IPv4 Header (JIDL)
 
 ```
 IPv4-Packet-Header = Array    // fields in an IPv4 packet header, per RFC 791 and subsequent contributions
@@ -2661,9 +2660,9 @@ Three fields of the IPv4 packet header are functionally enumerations:
 The values for the `Protocol` field are managed by the Internet Assigned Numbers
 Authority (IANA); this model does not include an explicit enumeration of the
 IANA-assigned values. The model makes the meaning and use of the DSCP and ECN fields 
-clearer by definiting associated enumerations, as illustrated in Figure 3-ipv4-enums.
+clearer by definiting associated enumerations, as illustrated in Figure 3-12.
 
-###### Figure 3-ipv4-enums
+###### Figure 3-12 IPv4 Packet Header Enumerations
 
 ```
 Diff-Svcs-Code-Point = Enumerated       // Differentiated Services Code Point, 6 bits
@@ -2706,14 +2705,15 @@ point for an example to illustrate the various JADN
 representations described in [Section 3.1.3.2](#3132-alternative-jadn-representations). The example
 begins with the ERD for the model:
 
-###### Figure 3-7 -- Simple University Example ERD
+###### Figure 3-13 -- Simple University Example ERD
 
 <img src="images/university-erd.png" height="600px">
 
 The package (see [Section 3.1.6.1](#3161-packages)) 
 containing the JADN corresponding to the above ERD is shown here:
 
-###### Figure 3-8 -- Simple University Example JADN (JSON format)
+###### Figure 3-14 -- Simple University Example JADN (JSON format)
+
 ```json
 {
  "info": {
@@ -2750,7 +2750,7 @@ containing the JADN corresponding to the above ERD is shown here:
 Converting the JSON to JIDL yields a representation that is both
 more readable and easier to edit:
 
-###### Figure 3-9 -- Simple University Example JADN (JIDL format)
+###### Figure 3-15 -- Simple University Example JADN (JIDL format)
 
 ```
      package: "http://example.com/uni"
@@ -2784,7 +2784,7 @@ Each property table is preceeded by the comment on the type definition that
 created that table (e.g., the University Record type has the comment "A place of
 learning"). Those comments are set in italics in this example for clarity.
 
-###### Figure 3-10 -- Simple University Example JADN (table format)
+###### Figure 3-16 -- Simple University Example JADN (table format)
 
 *A place of learning*
 
@@ -2826,11 +2826,12 @@ is easily generated from the JADN model.  In this specific example code for the
 widely-used GraphViz tool is provided. JADN tooling can created "diagram as
 text" code for GraphVIZ and PlantUML with varying levels of detail (i.e., Conceptual, Logical, Informational). 
 For example, contrast the simple conceptual view of the music libary in 
-[Figure 3-Concept](#figure-3-concept----music-library-conceptual-overview) with the
+[Figure 3-9](#figure-3-9----music-library-conceptual-overview) with the
 detailed informational ERD at the start of this section 
-([Figure 3-7](#figure-3-7----simple-university-example-erd)).
+([Figure 3-13](#figure-3-13----simple-university-example-erd)).
 
-###### Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)
+###### Figure 3-14 -- Simple University Example ERD Source Code (GraphViz)
+
 ```
 # package: http://example.com/uni
 # exports: ['University']
