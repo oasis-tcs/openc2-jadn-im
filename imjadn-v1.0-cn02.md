@@ -156,42 +156,46 @@ For complete copyright information please see the full Notices section in [Appen
   - [D.2 Why JADN and not RDF?](#d2-why-jadn-and-not-rdf)
   - [D.3 Why JADN and not OWL?](#d3-why-jadn-and-not-owl)
 - [Appendix E. Example Information Model Source](#appendix-e-example-information-model-source)
+  - [E.1 Music Library](#e1-music-library)
 - [Appendix F. Notices](#appendix-f-notices)
 
 **List of Figures**
+
  - [Figure 2-1 -- Serialization / Deserialization](#figure-2-1----serialization--deserialization)
  - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
  - [Figure 3-1 -- JADN Type Definition Components](#figure-3-1----jadn-type-definition-components)
  - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-type-definition-structure)
  - [Figure 3-3 -- JADN Schema Top-Level Structure](#figure-3-3----jadn-schema-top-level-structure)
  - [Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-4----jadn-for-primitive-arrayof-mapof-types)
- - [Figure 3-5 -- JADN for Enumerated Types](#figure-3-5----jadn-for-enumerated-types)
- - [Figure 3-6 -- JADN for Types with Fields](#figure-3-6----jadn-for-types-with-fields)
- - [Figure 3-6a -- JADN Representations](#figure-3-6a----jadn-representations)
- - [Figure 3-Key-Link -- Contains and References Relationships](#figure-3-key-link----contains-and-references-relationships)
- - [Figure 3-Concept -- Music Library Conceptual Overview](#figure-3-concept----music-library-conceptual-overview)
- - [Figure 3-11 -- Music Library Example ERD](#figure-3-11----music-library-example-erd)
- - [Figure 3-ipv4-header](#figure-3-ipv4-header)
- - [Figure 3-ipv4-enums](#figure-3-ipv4-enums)
- - [Figure 3-7 -- Simple University Example ERD](#figure-3-7----simple-university-example-erd)
- - [Figure 3-8 -- Simple University Example JADN (JSON format)](#figure-3-8----simple-university-example-jadn-json-format)
- - [Figure 3-9 -- Simple University Example JADN (JIDL format)](#figure-3-9----simple-university-example-jadn-jidl-format)
- - [Figure 3-10 -- Simple University Example JADN (table format)](#figure-3-10----simple-university-example-jadn-table-format)
- - [Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-11----simple-university-example-erd-source-code-graphviz)
+ - [Figure 3-5 -- JADN Fields for Enumerated Types](#figure-3-5----jadn-fields-for-enumerated-types)
+ - [Figure 3-6 -- JADN Fields for Structured Compound Types](#figure-3-6----jadn-fields-for-structured-compound-types)
+ - [Figure 3-7 -- JADN Representations](#figure-3-7----jadn-representations)
+ - [Figure 3-8 -- Contains and References Relationships](#figure-3-8----contains-and-references-relationships)
+ - [Figure 3-9 -- Music Library Conceptual Overview](#figure-3-9----music-library-conceptual-overview)
+ - [Figure 3-10 -- Music Library Example ERD](#figure-3-10----music-library-example-erd)
+ - [Figure 3-11 -- IPv4 Header (JIDL)](#figure-3-11----ipv4-header-jidl)
+ - [Figure 3-12 -- IPv4 Packet Header Enumerations](#figure-3-12----ipv4-packet-header-enumerations)
+ - [Figure 3-13 -- Simple University Example ERD](#figure-3-13----simple-university-example-erd)
+ - [Figure 3-14 -- Simple University Example JADN (JSON format)](#figure-3-14----simple-university-example-jadn-json-format)
+ - [Figure 3-15 -- Simple University Example JADN (JIDL format)](#figure-3-15----simple-university-example-jadn-jidl-format)
+ - [Figure 3-16 -- Simple University Example JADN (table format)](#figure-3-16----simple-university-example-jadn-table-format)
+ - [Figure 3-17 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-17----simple-university-example-erd-source-code-graphviz)
 
 
 **List of Tables**
- - [Table 2-1 Modeling Approach Comparison](#table-2-1-modeling-approach-comparison)
- - [Table 3-3 -- JADN Type Options](#table-3-3----jadn-type-options)
- - [Table 3-4 -- Type Option Applicability](#table-3-4----type-option-applicability)
- - [Table 3-5 -- JADN Field Options](#table-3-5----jadn-field-options)
- - [Table 3-6 -- Binary Type Format Options](#table-3-6----binary-type-format-options)
- - [Table 3-7 -- Integer Type Format Options](#table-3-7----integer-type-format-options)
- - [Table 3-8 -- Number Type Format Options](#table-3-8----number-type-format-options)
- - [Table 3-9 -- Array Type Format Options](#table-3-9----array-type-format-options)
- - [Table 3-1 -- Compound Type Decision Tree](#table-3-1----compound-type-decision-tree)
- - [Table 3-2 -- Multiplicity Types](#table-3-2----multiplicity-types)
+
+ - [Table 2-1 -- Modeling Approach Comparison](#table-2-1----modeling-approach-comparison)
+ - [Table 3-1 -- JADN Type Options](#table-3-1----jadn-type-options)
+ - [Table 3-2 -- Type Option Applicability](#table-3-2----type-option-applicability)
+ - [Table 3-3 -- JADN Field Options](#table-3-3----jadn-field-options)
+ - [Table 3-4 -- Binary Type Format Options](#table-3-4----binary-type-format-options)
+ - [Table 3-5 -- Integer Type Format Options](#table-3-5----integer-type-format-options)
+ - [Table 3-6 -- Number Type Format Options](#table-3-6----number-type-format-options)
+ - [Table 3-7 -- Array Type Format Options](#table-3-7----array-type-format-options)
+ - [Table 3-8 -- Compound Type Decision Tree](#table-3-8----compound-type-decision-tree)
+ - [Table 3-9 -- Multiplicity Types](#table-3-9----multiplicity-types)
  - [Table D-1 -- UML and JADN Primitive Type Equivalence](#table-d-1----uml-and-jadn-primitive-type-equivalence)
+
 
 -------
 
@@ -633,7 +637,7 @@ conceptual and logical models can readily be connected with a data-centric desig
 This connects information-centric synthesis and data-centric analysis, as described in [Section 1.1.1](#111-information-models-and-data-models).
 However, there are significant process and outcome differences between these approaches, as shown in Table 2-1.
 
-###### Table 2-1 Modeling Approach Comparison
+###### Table 2-1 -- Modeling Approach Comparison
 
 | Data-centric | Information-centric |
 | --- | --- |
@@ -992,14 +996,14 @@ BaseType to define valid instances of that string type using a
 regular expression conforming to [[ECMAScript](#ecmascript)]
 grammar.
 
-Table 3-3 lists the complete set of type options, including the option name,
+Table 3-1 lists the complete set of type options, including the option name,
 type, ID character, and description. Note that the ID characters are the normative form and are used in
 standard JADN representation ([Section&nbsp;3.1.3.1](#3131-native-json-representation)) 
 when specifying type options. The text labels for the options (e.g., vtype,
 ktype, pattern) are non-normative and intended to be human friendly. Many of the
 Type and Field options labels have JSON Schema and XML Schema equivalents.
 
-###### Table 3-3 -- JADN Type Options
+###### Table 3-1 -- JADN Type Options
 
 | **Option** | **Type** | **ID** | **Description**                                                   |
 |:----------:|:--------:|:------:|:------------------------------------------------------------------|
@@ -1022,9 +1026,9 @@ Type and Field options labels have JSON Schema and XML Schema equivalents.
 
 Detailed explanations of each type option can be found in
 Sections 3.2.1.1 through 3.2.1.12 of the [[JADN Specification](#jadn-v10)].
-Table 3-4 summarizes the applicability of type options to JADN core types.
+Table 3-2 summarizes the applicability of type options to JADN core types.
 
-###### Table 3-4 -- Type Option Applicability
+###### Table 3-2 -- Type Option Applicability
 
 |           | Binary | Boolean | Integer | Number | String | Array | ArrayOf | Map | MapOf | Record | Choice | Enumerated |
 |----------:|:------:|:-------:|:-------:|:------:|:------:|:-----:|:-------:|:---:|:-----:|:------:|:------:|:----------:|
@@ -1089,9 +1093,9 @@ JADN defines six field options. As with
 the type options described in Section&nbsp;3.1.1.2,
 the ID characters are normative and used in standard JADN representation
 ([Section&nbsp;3.1.3.1](#3131-native-json-representation)) when
-specifying field options. Table 3-5 lists the JADN field options.
+specifying field options. Table 3-3 lists the JADN field options.
 
-###### Table 3-5 -- JADN Field Options
+###### Table 3-3 -- JADN Field Options
 
 | **Option** |  **Type**  |  **ID**  | **Description**                                               | **JADN Spec Section** |
 |:----------:|:----------:|:--------:|:--------------------------------------------------------------|:---------------------:|
@@ -1157,10 +1161,10 @@ The corresponding JIDL representation would be:
 
 The *minv* and *maxv* TypeOptions are used to specify a minimum and/or maximum
 number of octets for a binary type. If *minv* equals *maxv* the size of the
-binary type is fixed. Table 3-6 lists the *format* options applicable to the
+binary type is fixed. Table 3-4 lists the *format* options applicable to the
 Binary type:
 
-###### Table 3-6 -- Binary Type Format Options
+###### Table 3-4 -- Binary Type Format Options
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
@@ -1248,9 +1252,9 @@ encompasses the UML UnlimitedNatural primitive type through the use the *minv*
 Type Option: an Integer with a *minv* of `0` has the same range of values as an
 UnlimitedNatural.
 
-Table 3-7 lists the *format* options applicable to the Integer type:
+Table 3-5 lists the *format* options applicable to the Integer type:
 
-###### Table 3-7 -- Integer Type Format Options
+###### Table 3-5 -- Integer Type Format Options
 
 | Keyword  | Type    | Requirement                                                                               |
 |----------|---------|-------------------------------------------------------------------------------------------|
@@ -1298,11 +1302,11 @@ The corresponding JIDL representation would be:
 ```
 
 The *minf* and *maxf* TypeOptions are used to specify a minimum and/or maximum
-value that may be assigned to a Number type. Table 3-8 lists the *format*
+value that may be assigned to a Number type. Table 3-6 lists the *format*
 options applicable to the Number type. These *format* options are only relevant
 when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&nbsp;4.4:
 
-###### Table 3-8 -- Number Type Format Options
+###### Table 3-6 -- Number Type Format Options
 
 | Keyword |  Type  | Requirement                                                       |
 |:-------:|:------:|-------------------------------------------------------------------|
@@ -1543,9 +1547,9 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
 The example above illustrates the positioning of Array "field names" within the
 JIDL comments, as described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
 
-Table 3-9 lists the *format* options applicable to the Array type:
+Table 3-7 lists the *format* options applicable to the Array type:
 
-###### Table 3-9 -- Array Type Format Options
+###### Table 3-7 -- Array Type Format Options
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
@@ -1851,16 +1855,15 @@ Figure 3-5 illustrates the structure of JADN for defining an
 Enumerated **BaseType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
-###### Figure 3-5 -- JADN for Enumerated Types
-![JADN for Enumerated
-Types](images/JADN-with-items-json.drawio.png)
+###### Figure 3-5 -- JADN Fields for Enumerated Types
+![JADN for Enumerated Types](images/JADN-with-items-json.drawio.png)
 
 
 Figure 3-6 illustrates the structure of JADN for defining a
 **BaseType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
-###### Figure 3-6 -- JADN for Types with Fields
+###### Figure 3-6 -- JADN Fields for Structured Compound Types
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
@@ -1878,7 +1881,7 @@ The formal definitions of each of these types are found in
 sections 5.1, 5.2, and 5.3, respectively, of the 
 [[JADN Specification](#jadn-v10)].
 
-###### Figure 3-6a -- JADN Representations
+###### Figure 3-7 -- JADN Representations
 ![JADN Representations](images/JADN-Representations.drawio.png)
 
 Automated tooling makes it straightforward to translate among all
@@ -2012,9 +2015,9 @@ information characteristics to be modeled:
 * All items in ArrayOf and MapOf groups have the same value (and key) type
 * Each item in Array, Map, and Record groups has an individual value (and key) type
 
-and the decision tree for which compound type to use is shown in Table 3-1:
+and the decision tree for which compound type to use is shown in Table 3-8:
 
-###### Table 3-1 -- Compound Type Decision Tree
+###### Table 3-8 -- Compound Type Decision Tree
 
 |                     |      **Value**     |       **Key:Value**       |
 |:-------------------:|:------------------:|:-------------------------:|
@@ -2068,12 +2071,12 @@ in verbose JSON.
 
 Another significant UML concept is that JADN distinguishes among
 all four multiplicity types ([[UML](#uml)], Table 7.1), while
-logical models typically support only sets. Table 3-2 replicates
+logical models typically support only sets. Table 3-9 replicates
 the information from UML Table 7.1 and adds the equivalent JADN
 types. Note that the UML Specification cites the "traditional
 names" in its "Collection Type" column.
 
-###### Table 3-2 -- Multiplicity Types
+###### Table 3-9 -- Multiplicity Types
 
 | **isOrdered** | **isUnique** | **Collection<br>Type** |    **JADN Type**   |
 |:-------------:|:------------:|:----------------------:|:------------------:|
@@ -2172,7 +2175,7 @@ where cycles occur in order to address this need. The method to
 define reference relationships is explained in Section&nbsp;3.3.6,
 *Links*, of the [[JADN Specification](#jadn-v10)]. 
 
-Figure 3-Key-Link illustrates permissible and impermissible "contains"
+Figure 3-8 illustrates permissible and impermissible "contains"
 relationships, and the use of the `key` and `link` keywords
 combined with an identifier field to establish permissible
 "reference" relationships. The green lines show permissible
@@ -2187,7 +2190,7 @@ field option in `Record G` when referring to such objects; the
 generates the correct key type when extensions are removed by
 JADN tooling.
 
-###### Figure 3-Key-Link -- Contains and References Relationships
+###### Figure 3-8 -- Contains and References Relationships
 
 ![Contains and References Relationships](images/JADN-contains-references.drawio.png)
 
@@ -2461,10 +2464,10 @@ consolidated JADN, JIDL, and property tables can be found in
 The model assumes that each track is stored as a file with its audio in one of
 several recognized formats. The library organizes tracks into albums, which are
 associated with a barcode identifier. The model is loosely based
-on the ID3 metadata used with MP3 audio files. Figure 3-Concept provides a
+on the ID3 metadata used with MP3 audio files. Figure 3-9 provides a
 conceptual overview of the music library's structure.
 
-###### Figure 3-Concept -- Music Library Conceptual Overview
+###### Figure 3-9 -- Music Library Conceptual Overview
 
 <img src="images/music_lib_v1_1_puml_conceptual.png" height="500px">
 
@@ -2587,10 +2590,10 @@ File-Path = String                         // local storage location of file wit
                                            // from root, filename, and extension
 ```
 
-The entity relationship diagram in Figure 3-11 illustrates how
+The entity relationship diagram in Figure 3-10 illustrates how
 the model components connect.
 
-###### Figure 3-11 -- Music Library Example ERD
+###### Figure 3-10 -- Music Library Example ERD
 
 <img src="images/music-library-v1_1-detailed-ERD-GV.png" height="720px">
 
@@ -2614,12 +2617,12 @@ three Wikipedia pages related to the IPv4 packet header:
 
 The model comprises a JADN Array type containing all of the fields of the IPv4
 packet header (except the `options` field), supported by two Enumerated types to
-explicate the meanings of particular fields. Figure 3-ipv4-header shows the
+explicate the meanings of particular fields. Figure 3-11 shows the
 packet header array in JIDL form. In this representation the field "names" are
 embedded in the JIDL comment field between the `//` and `::` delimiters, as
 described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
 
-###### Figure 3-ipv4-header
+###### Figure 3-11 -- IPv4 Header (JIDL)
 
 ```
 IPv4-Packet-Header = Array    // fields in an IPv4 packet header, per RFC 791 and subsequent contributions
@@ -2661,9 +2664,9 @@ Three fields of the IPv4 packet header are functionally enumerations:
 The values for the `Protocol` field are managed by the Internet Assigned Numbers
 Authority (IANA); this model does not include an explicit enumeration of the
 IANA-assigned values. The model makes the meaning and use of the DSCP and ECN fields 
-clearer by definiting associated enumerations, as illustrated in Figure 3-ipv4-enums.
+clearer by definiting associated enumerations, as illustrated in Figure 3-12.
 
-###### Figure 3-ipv4-enums
+###### Figure 3-12 -- IPv4 Packet Header Enumerations
 
 ```
 Diff-Svcs-Code-Point = Enumerated       // Differentiated Services Code Point, 6 bits
@@ -2706,14 +2709,15 @@ point for an example to illustrate the various JADN
 representations described in [Section 3.1.3.2](#3132-alternative-jadn-representations). The example
 begins with the ERD for the model:
 
-###### Figure 3-7 -- Simple University Example ERD
+###### Figure 3-13 -- Simple University Example ERD
 
 <img src="images/university-erd.png" height="600px">
 
 The package (see [Section 3.1.6.1](#3161-packages)) 
 containing the JADN corresponding to the above ERD is shown here:
 
-###### Figure 3-8 -- Simple University Example JADN (JSON format)
+###### Figure 3-14 -- Simple University Example JADN (JSON format)
+
 ```json
 {
  "info": {
@@ -2750,7 +2754,7 @@ containing the JADN corresponding to the above ERD is shown here:
 Converting the JSON to JIDL yields a representation that is both
 more readable and easier to edit:
 
-###### Figure 3-9 -- Simple University Example JADN (JIDL format)
+###### Figure 3-15 -- Simple University Example JADN (JIDL format)
 
 ```
      package: "http://example.com/uni"
@@ -2784,7 +2788,7 @@ Each property table is preceeded by the comment on the type definition that
 created that table (e.g., the University Record type has the comment "A place of
 learning"). Those comments are set in italics in this example for clarity.
 
-###### Figure 3-10 -- Simple University Example JADN (table format)
+###### Figure 3-16 -- Simple University Example JADN (table format)
 
 *A place of learning*
 
@@ -2826,11 +2830,12 @@ is easily generated from the JADN model.  In this specific example code for the
 widely-used GraphViz tool is provided. JADN tooling can created "diagram as
 text" code for GraphVIZ and PlantUML with varying levels of detail (i.e., Conceptual, Logical, Informational). 
 For example, contrast the simple conceptual view of the music libary in 
-[Figure 3-Concept](#figure-3-concept----music-library-conceptual-overview) with the
+[Figure 3-9](#figure-3-9----music-library-conceptual-overview) with the
 detailed informational ERD at the start of this section 
-([Figure 3-7](#figure-3-7----simple-university-example-erd)).
+([Figure 3-13](#figure-3-13----simple-university-example-erd)).
 
-###### Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)
+###### Figure 3-17 -- Simple University Example ERD Source Code (GraphViz)
+
 ```
 # package: http://example.com/uni
 # exports: ['University']
