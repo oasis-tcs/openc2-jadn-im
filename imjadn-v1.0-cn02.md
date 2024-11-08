@@ -103,6 +103,7 @@ For complete copyright information please see the full Notices section in [Appen
 - [2 Creation and Use of Information Models](#2-creation-and-use-of-information-models)
   - [2.1 Information vs. Data](#21-information-vs-data)
   - [2.2 Information Modeling](#22-information-modeling)
+          - [Table 2-1 Modeling Approach Comparison](#table-2-1-modeling-approach-comparison)
   - [2.3 Serialization](#23-serialization)
   - [2.4 Applying an Information Model](#24-applying-an-information-model)
   - [2.5 Information Modeling Tools](#25-information-modeling-tools)
@@ -111,17 +112,24 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.1.1 Type Definitions](#311-type-definitions)
       - [3.1.1.1 TypeNames and BaseTypes](#3111-typenames-and-basetypes)
       - [3.1.1.2 TypeOptions](#3112-typeoptions)
+          - [Table 3-3 -- JADN Type Options](#table-3-3----jadn-type-options)
+          - [Table 3-4 -- Type Option Applicability](#table-3-4----type-option-applicability)
       - [3.1.1.3 Item Or Field Definitions](#3113-item-or-field-definitions)
       - [3.1.1.4 Field Options](#3114-field-options)
+          - [Table 3-5 -- JADN Field Options](#table-3-5----jadn-field-options)
     - [3.1.2 Core Type Examples](#312-core-type-examples)
       - [3.1.2.1 Binary](#3121-binary)
+          - [Table 3-6 -- Binary Type Format Options](#table-3-6----binary-type-format-options)
       - [3.1.2.2 Boolean](#3122-boolean)
       - [3.1.2.3 Integer](#3123-integer)
+          - [Table 3-7 -- Integer Type Format Options](#table-3-7----integer-type-format-options)
       - [3.1.2.4 Number](#3124-number)
+          - [Table 3-8 -- Number Type Format Options](#table-3-8----number-type-format-options)
       - [3.1.2.5 String](#3125-string)
       - [3.1.2.6 Enumerated](#3126-enumerated)
       - [3.1.2.7 Choice](#3127-choice)
       - [3.1.2.8 Array](#3128-array)
+          - [Table 3-9 -- Array Type Format Options](#table-3-9----array-type-format-options)
       - [3.1.2.9 ArrayOf(vtype)](#3129-arrayofvtype)
       - [3.1.2.10 Map](#31210-map)
       - [3.1.2.11 MapOf(ktype,vtype)](#31211-mapofktypevtype)
@@ -133,7 +141,9 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.1.4 Type Definition Nuances](#314-type-definition-nuances)
       - [3.1.4.1 "Anonymous" Type Definitions](#3141-anonymous-type-definitions)
       - [3.1.4.2 Selection and Use of JADN Compound Types](#3142-selection-and-use-of-jadn-compound-types)
+          - [Table 3-1 -- Compound Type Decision Tree](#table-3-1----compound-type-decision-tree)
       - [3.1.4.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
+          - [Table 3-2 -- Multiplicity Types](#table-3-2----multiplicity-types)
       - [3.1.4.4 Application of minv / maxv](#3144-application-of-minv--maxv)
     - [3.1.5 Reference Relationships: Keys and Links](#315-reference-relationships-keys-and-links)
     - [3.1.6 Packages and Namespaces](#316-packages-and-namespaces)
@@ -151,33 +161,36 @@ For complete copyright information please see the full Notices section in [Appen
 - [Appendix C. Revision History](#appendix-c-revision-history)
 - [Appendix D. Frequently Asked Questions (FAQ)](#appendix-d-frequently-asked-questions-faq)
   - [D.1 JADN vs. UML Primitive Data Types](#d1-jadn-vs-uml-primitive-data-types)
+          - [Table D-1 -- UML and JADN Primitive Type Equivalence](#table-d-1----uml-and-jadn-primitive-type-equivalence)
   - [D.1 Declarative Specifications](#d1-declarative-specifications)
   - [D.2 Applications](#d2-applications)
   - [D.2 Why JADN and not RDF?](#d2-why-jadn-and-not-rdf)
   - [D.3 Why JADN and not OWL?](#d3-why-jadn-and-not-owl)
 - [Appendix E. Example Information Model Source](#appendix-e-example-information-model-source)
+  - [E.1 Music Library](#e1-music-library)
 - [Appendix F. Notices](#appendix-f-notices)
 
 **List of Figures**
- - [Figure 2-1 -- Serialization / Deserialization](#figure-2-1----serialization--deserialization)
- - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
- - [Figure 3-1 -- JADN Type Definition Components](#figure-3-1----jadn-type-definition-components)
- - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-type-definition-structure)
- - [Figure 3-3 -- JADN Schema Top-Level Structure](#figure-3-3----jadn-schema-top-level-structure)
- - [Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-4----jadn-for-primitive-arrayof-mapof-types)
- - [Figure 3-5 -- JADN for Enumerated Types](#figure-3-5----jadn-fields-for-enumerated-types)
- - [Figure 3-6 -- JADN for Types with Fields](#figure-3-6----jadn-fields-for-structured-compound-types)
- - [Figure 3-6a -- JADN Representations](#figure-3-7----jadn-representations)
- - [Figure 3-Key-Link -- Contains and References Relationships](#figure-3-8----contains-and-references-relationships)
- - [Figure 3-Concept -- Music Library Conceptual Overview](#figure-3-9----music-library-conceptual-overview)
- - [Figure 3-11 -- Music Library Example ERD](#figure-3-10----music-library-example-erd)
- - [Figure 3-ipv4-header](#figure-3-11----ipv4-header-jidl)
- - [Figure 3-ipv4-enums](#figure-3-12-ipv4-packet-header-enumerations)
- - [Figure 3-7 -- Simple University Example ERD](#figure-3-13----simple-university-example-erd)
- - [Figure 3-8 -- Simple University Example JADN (JSON format)](#figure-3-14----simple-university-example-jadn-json-format)
- - [Figure 3-9 -- Simple University Example JADN (JIDL format)](#figure-3-15----simple-university-example-jadn-jidl-format)
- - [Figure 3-10 -- Simple University Example JADN (table format)](#figure-3-16----simple-university-example-jadn-table-format)
- - [Figure 3-11 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-14----simple-university-example-erd-source-code-graphviz)
+          - [Figure 2-1 -- Serialization / Deserialization](#figure-2-1----serialization--deserialization)
+          - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
+          - [Figure 3-1 -- JADN Type Definition Components](#figure-3-1----jadn-type-definition-components)
+          - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-type-definition-structure)
+          - [Figure 3-3 -- JADN Schema Top-Level Structure](#figure-3-3----jadn-schema-top-level-structure)
+          - [Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-4----jadn-for-primitive-arrayof-mapof-types)
+          - [Figure 3-5 -- JADN Fields for Enumerated Types](#figure-3-5----jadn-fields-for-enumerated-types)
+          - [Figure 3-6 -- JADN Fields for Structured Compound Types](#figure-3-6----jadn-fields-for-structured-compound-types)
+          - [Figure 3-7 -- JADN Representations](#figure-3-7----jadn-representations)
+          - [Figure 3-8 -- Contains and References Relationships](#figure-3-8----contains-and-references-relationships)
+          - [Figure 3-9 -- Music Library Conceptual Overview](#figure-3-9----music-library-conceptual-overview)
+          - [Figure 3-10 -- Music Library Example ERD](#figure-3-10----music-library-example-erd)
+          - [Figure 3-11 -- IPv4 Header (JIDL)](#figure-3-11----ipv4-header-jidl)
+          - [Figure 3-12 -- IPv4 Packet Header Enumerations](#figure-3-12----ipv4-packet-header-enumerations)
+          - [Figure 3-13 -- Simple University Example ERD](#figure-3-13----simple-university-example-erd)
+          - [Figure 3-14 -- Simple University Example JADN (JSON format)](#figure-3-14----simple-university-example-jadn-json-format)
+          - [Figure 3-15 -- Simple University Example JADN (JIDL format)](#figure-3-15----simple-university-example-jadn-jidl-format)
+          - [Figure 3-16 -- Simple University Example JADN (table format)](#figure-3-16----simple-university-example-jadn-table-format)
+          - [Figure 3-17 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-17----simple-university-example-erd-source-code-graphviz)
+
 
 
 **List of Tables**
@@ -2662,7 +2675,7 @@ Authority (IANA); this model does not include an explicit enumeration of the
 IANA-assigned values. The model makes the meaning and use of the DSCP and ECN fields 
 clearer by definiting associated enumerations, as illustrated in Figure 3-12.
 
-###### Figure 3-12 IPv4 Packet Header Enumerations
+###### Figure 3-12 -- IPv4 Packet Header Enumerations
 
 ```
 Diff-Svcs-Code-Point = Enumerated       // Differentiated Services Code Point, 6 bits
@@ -2830,7 +2843,7 @@ For example, contrast the simple conceptual view of the music libary in
 detailed informational ERD at the start of this section 
 ([Figure 3-13](#figure-3-13----simple-university-example-erd)).
 
-###### Figure 3-14 -- Simple University Example ERD Source Code (GraphViz)
+###### Figure 3-17 -- Simple University Example ERD Source Code (GraphViz)
 
 ```
 # package: http://example.com/uni
