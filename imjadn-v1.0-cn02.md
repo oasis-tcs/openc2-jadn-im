@@ -103,7 +103,7 @@ For complete copyright information please see the full Notices section in [Appen
 - [2 Creation and Use of Information Models](#2-creation-and-use-of-information-models)
   - [2.1 Information vs. Data](#21-information-vs-data)
   - [2.2 Information Modeling](#22-information-modeling)
-          - [Table 2-1 Modeling Approach Comparison](#table-2-1-modeling-approach-comparison)
+          - [Table 2-1 Modeling Approach Comparison](#table-2-1----modeling-approach-comparison)
   - [2.3 Serialization](#23-serialization)
   - [2.4 Applying an Information Model](#24-applying-an-information-model)
   - [2.5 Information Modeling Tools](#25-information-modeling-tools)
@@ -112,24 +112,24 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.1.1 Type Definitions](#311-type-definitions)
       - [3.1.1.1 TypeNames and BaseTypes](#3111-typenames-and-basetypes)
       - [3.1.1.2 TypeOptions](#3112-typeoptions)
-          - [Table 3-3 -- JADN Type Options](#table-3-3----jadn-type-options)
-          - [Table 3-4 -- Type Option Applicability](#table-3-4----type-option-applicability)
+          - [Table 3-3 -- JADN Type Options](#table-3-1----jadn-type-options)
+          - [Table 3-4 -- Type Option Applicability](#table-3-2----type-option-applicability)
       - [3.1.1.3 Item Or Field Definitions](#3113-item-or-field-definitions)
       - [3.1.1.4 Field Options](#3114-field-options)
-          - [Table 3-5 -- JADN Field Options](#table-3-5----jadn-field-options)
+          - [Table 3-5 -- JADN Field Options](#table-3-3----jadn-field-options)
     - [3.1.2 Core Type Examples](#312-core-type-examples)
       - [3.1.2.1 Binary](#3121-binary)
-          - [Table 3-6 -- Binary Type Format Options](#table-3-6----binary-type-format-options)
+          - [Table 3-6 -- Binary Type Format Options](#table-3-4----binary-type-format-options)
       - [3.1.2.2 Boolean](#3122-boolean)
       - [3.1.2.3 Integer](#3123-integer)
-          - [Table 3-7 -- Integer Type Format Options](#table-3-7----integer-type-format-options)
+          - [Table 3-7 -- Integer Type Format Options](#table-3-5----integer-type-format-options)
       - [3.1.2.4 Number](#3124-number)
-          - [Table 3-8 -- Number Type Format Options](#table-3-8----number-type-format-options)
+          - [Table 3-8 -- Number Type Format Options](#table-3-6----number-type-format-options)
       - [3.1.2.5 String](#3125-string)
       - [3.1.2.6 Enumerated](#3126-enumerated)
       - [3.1.2.7 Choice](#3127-choice)
       - [3.1.2.8 Array](#3128-array)
-          - [Table 3-9 -- Array Type Format Options](#table-3-9----array-type-format-options)
+          - [Table 3-9 -- Array Type Format Options](#table-3-7----array-type-format-options)
       - [3.1.2.9 ArrayOf(vtype)](#3129-arrayofvtype)
       - [3.1.2.10 Map](#31210-map)
       - [3.1.2.11 MapOf(ktype,vtype)](#31211-mapofktypevtype)
@@ -141,9 +141,9 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.1.4 Type Definition Nuances](#314-type-definition-nuances)
       - [3.1.4.1 "Anonymous" Type Definitions](#3141-anonymous-type-definitions)
       - [3.1.4.2 Selection and Use of JADN Compound Types](#3142-selection-and-use-of-jadn-compound-types)
-          - [Table 3-1 -- Compound Type Decision Tree](#table-3-1----compound-type-decision-tree)
+          - [Table 3-1 -- Compound Type Decision Tree](#table-3-8----compound-type-decision-tree)
       - [3.1.4.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
-          - [Table 3-2 -- Multiplicity Types](#table-3-2----multiplicity-types)
+          - [Table 3-2 -- Multiplicity Types](#table-3-9----multiplicity-types)
       - [3.1.4.4 Application of minv / maxv](#3144-application-of-minv--maxv)
     - [3.1.5 Reference Relationships: Keys and Links](#315-reference-relationships-keys-and-links)
     - [3.1.6 Packages and Namespaces](#316-packages-and-namespaces)
@@ -194,16 +194,16 @@ For complete copyright information please see the full Notices section in [Appen
 
 
 **List of Tables**
- - [Table 2-1 Modeling Approach Comparison](#table-2-1-modeling-approach-comparison)
- - [Table 3-3 -- JADN Type Options](#table-3-3----jadn-type-options)
- - [Table 3-4 -- Type Option Applicability](#table-3-4----type-option-applicability)
- - [Table 3-5 -- JADN Field Options](#table-3-5----jadn-field-options)
- - [Table 3-6 -- Binary Type Format Options](#table-3-6----binary-type-format-options)
- - [Table 3-7 -- Integer Type Format Options](#table-3-7----integer-type-format-options)
- - [Table 3-8 -- Number Type Format Options](#table-3-8----number-type-format-options)
- - [Table 3-9 -- Array Type Format Options](#table-3-9----array-type-format-options)
- - [Table 3-1 -- Compound Type Decision Tree](#table-3-1----compound-type-decision-tree)
- - [Table 3-2 -- Multiplicity Types](#table-3-2----multiplicity-types)
+ - [Table 2-1 Modeling Approach Comparison](#table-2-1----modeling-approach-comparison)
+ - [Table 3-3 -- JADN Type Options](#table-3-1----jadn-type-options)
+ - [Table 3-4 -- Type Option Applicability](#table-3-2----type-option-applicability)
+ - [Table 3-5 -- JADN Field Options](#table-3-3----jadn-field-options)
+ - [Table 3-6 -- Binary Type Format Options](#table-3-4----binary-type-format-options)
+ - [Table 3-7 -- Integer Type Format Options](#table-3-5----integer-type-format-options)
+ - [Table 3-8 -- Number Type Format Options](#table-3-6----number-type-format-options)
+ - [Table 3-9 -- Array Type Format Options](#table-3-7----array-type-format-options)
+ - [Table 3-1 -- Compound Type Decision Tree](#table-3-8----compound-type-decision-tree)
+ - [Table 3-2 -- Multiplicity Types](#table-3-9----multiplicity-types)
  - [Table D-1 -- UML and JADN Primitive Type Equivalence](#table-d-1----uml-and-jadn-primitive-type-equivalence)
 
 -------
@@ -646,7 +646,7 @@ conceptual and logical models can readily be connected with a data-centric desig
 This connects information-centric synthesis and data-centric analysis, as described in [Section 1.1.1](#111-information-models-and-data-models).
 However, there are significant process and outcome differences between these approaches, as shown in Table 2-1.
 
-###### Table 2-1 Modeling Approach Comparison
+###### Table 2-1 -- Modeling Approach Comparison
 
 | Data-centric | Information-centric |
 | --- | --- |
@@ -1005,14 +1005,14 @@ BaseType to define valid instances of that string type using a
 regular expression conforming to [[ECMAScript](#ecmascript)]
 grammar.
 
-Table 3-3 lists the complete set of type options, including the option name,
+Table 3-1 lists the complete set of type options, including the option name,
 type, ID character, and description. Note that the ID characters are the normative form and are used in
 standard JADN representation ([Section&nbsp;3.1.3.1](#3131-native-json-representation)) 
 when specifying type options. The text labels for the options (e.g., vtype,
 ktype, pattern) are non-normative and intended to be human friendly. Many of the
 Type and Field options labels have JSON Schema and XML Schema equivalents.
 
-###### Table 3-3 -- JADN Type Options
+###### Table 3-1 -- JADN Type Options
 
 | **Option** | **Type** | **ID** | **Description**                                                   |
 |:----------:|:--------:|:------:|:------------------------------------------------------------------|
@@ -1035,9 +1035,9 @@ Type and Field options labels have JSON Schema and XML Schema equivalents.
 
 Detailed explanations of each type option can be found in
 Sections 3.2.1.1 through 3.2.1.12 of the [[JADN Specification](#jadn-v10)].
-Table 3-4 summarizes the applicability of type options to JADN core types.
+Table 3-2 summarizes the applicability of type options to JADN core types.
 
-###### Table 3-4 -- Type Option Applicability
+###### Table 3-2 -- Type Option Applicability
 
 |           | Binary | Boolean | Integer | Number | String | Array | ArrayOf | Map | MapOf | Record | Choice | Enumerated |
 |----------:|:------:|:-------:|:-------:|:------:|:------:|:-----:|:-------:|:---:|:-----:|:------:|:------:|:----------:|
@@ -1102,9 +1102,9 @@ JADN defines six field options. As with
 the type options described in Section&nbsp;3.1.1.2,
 the ID characters are normative and used in standard JADN representation
 ([Section&nbsp;3.1.3.1](#3131-native-json-representation)) when
-specifying field options. Table 3-5 lists the JADN field options.
+specifying field options. Table 3-3 lists the JADN field options.
 
-###### Table 3-5 -- JADN Field Options
+###### Table 3-3 -- JADN Field Options
 
 | **Option** |  **Type**  |  **ID**  | **Description**                                               | **JADN Spec Section** |
 |:----------:|:----------:|:--------:|:--------------------------------------------------------------|:---------------------:|
@@ -1170,10 +1170,10 @@ The corresponding JIDL representation would be:
 
 The *minv* and *maxv* TypeOptions are used to specify a minimum and/or maximum
 number of octets for a binary type. If *minv* equals *maxv* the size of the
-binary type is fixed. Table 3-6 lists the *format* options applicable to the
+binary type is fixed. Table 3-4 lists the *format* options applicable to the
 Binary type:
 
-###### Table 3-6 -- Binary Type Format Options
+###### Table 3-4 -- Binary Type Format Options
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
@@ -1261,9 +1261,9 @@ encompasses the UML UnlimitedNatural primitive type through the use the *minv*
 Type Option: an Integer with a *minv* of `0` has the same range of values as an
 UnlimitedNatural.
 
-Table 3-7 lists the *format* options applicable to the Integer type:
+Table 3-5 lists the *format* options applicable to the Integer type:
 
-###### Table 3-7 -- Integer Type Format Options
+###### Table 3-5 -- Integer Type Format Options
 
 | Keyword  | Type    | Requirement                                                                               |
 |----------|---------|-------------------------------------------------------------------------------------------|
@@ -1311,11 +1311,11 @@ The corresponding JIDL representation would be:
 ```
 
 The *minf* and *maxf* TypeOptions are used to specify a minimum and/or maximum
-value that may be assigned to a Number type. Table 3-8 lists the *format*
+value that may be assigned to a Number type. Table 3-6 lists the *format*
 options applicable to the Number type. These *format* options are only relevant
 when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&nbsp;4.4:
 
-###### Table 3-8 -- Number Type Format Options
+###### Table 3-6 -- Number Type Format Options
 
 | Keyword |  Type  | Requirement                                                       |
 |:-------:|:------:|-------------------------------------------------------------------|
@@ -1556,9 +1556,9 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
 The example above illustrates the positioning of Array "field names" within the
 JIDL comments, as described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
 
-Table 3-9 lists the *format* options applicable to the Array type:
+Table 3-7 lists the *format* options applicable to the Array type:
 
-###### Table 3-9 -- Array Type Format Options
+###### Table 3-7 -- Array Type Format Options
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
@@ -2024,9 +2024,9 @@ information characteristics to be modeled:
 * All items in ArrayOf and MapOf groups have the same value (and key) type
 * Each item in Array, Map, and Record groups has an individual value (and key) type
 
-and the decision tree for which compound type to use is shown in Table 3-1:
+and the decision tree for which compound type to use is shown in Table 3-8:
 
-###### Table 3-1 -- Compound Type Decision Tree
+###### Table 3-8 -- Compound Type Decision Tree
 
 |                     |      **Value**     |       **Key:Value**       |
 |:-------------------:|:------------------:|:-------------------------:|
@@ -2080,12 +2080,12 @@ in verbose JSON.
 
 Another significant UML concept is that JADN distinguishes among
 all four multiplicity types ([[UML](#uml)], Table 7.1), while
-logical models typically support only sets. Table 3-2 replicates
+logical models typically support only sets. Table 3-9 replicates
 the information from UML Table 7.1 and adds the equivalent JADN
 types. Note that the UML Specification cites the "traditional
 names" in its "Collection Type" column.
 
-###### Table 3-2 -- Multiplicity Types
+###### Table 3-9 -- Multiplicity Types
 
 | **isOrdered** | **isUnique** | **Collection<br>Type** |    **JADN Type**   |
 |:-------------:|:------------:|:----------------------:|:------------------:|
