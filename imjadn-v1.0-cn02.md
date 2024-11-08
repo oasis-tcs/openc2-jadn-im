@@ -103,7 +103,6 @@ For complete copyright information please see the full Notices section in [Appen
 - [2 Creation and Use of Information Models](#2-creation-and-use-of-information-models)
   - [2.1 Information vs. Data](#21-information-vs-data)
   - [2.2 Information Modeling](#22-information-modeling)
-          - [Table 2-1 Modeling Approach Comparison](#table-2-1----modeling-approach-comparison)
   - [2.3 Serialization](#23-serialization)
   - [2.4 Applying an Information Model](#24-applying-an-information-model)
   - [2.5 Information Modeling Tools](#25-information-modeling-tools)
@@ -112,24 +111,17 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.1.1 Type Definitions](#311-type-definitions)
       - [3.1.1.1 TypeNames and BaseTypes](#3111-typenames-and-basetypes)
       - [3.1.1.2 TypeOptions](#3112-typeoptions)
-          - [Table 3-3 -- JADN Type Options](#table-3-1----jadn-type-options)
-          - [Table 3-4 -- Type Option Applicability](#table-3-2----type-option-applicability)
       - [3.1.1.3 Item Or Field Definitions](#3113-item-or-field-definitions)
       - [3.1.1.4 Field Options](#3114-field-options)
-          - [Table 3-5 -- JADN Field Options](#table-3-3----jadn-field-options)
     - [3.1.2 Core Type Examples](#312-core-type-examples)
       - [3.1.2.1 Binary](#3121-binary)
-          - [Table 3-6 -- Binary Type Format Options](#table-3-4----binary-type-format-options)
       - [3.1.2.2 Boolean](#3122-boolean)
       - [3.1.2.3 Integer](#3123-integer)
-          - [Table 3-7 -- Integer Type Format Options](#table-3-5----integer-type-format-options)
       - [3.1.2.4 Number](#3124-number)
-          - [Table 3-8 -- Number Type Format Options](#table-3-6----number-type-format-options)
       - [3.1.2.5 String](#3125-string)
       - [3.1.2.6 Enumerated](#3126-enumerated)
       - [3.1.2.7 Choice](#3127-choice)
       - [3.1.2.8 Array](#3128-array)
-          - [Table 3-9 -- Array Type Format Options](#table-3-7----array-type-format-options)
       - [3.1.2.9 ArrayOf(vtype)](#3129-arrayofvtype)
       - [3.1.2.10 Map](#31210-map)
       - [3.1.2.11 MapOf(ktype,vtype)](#31211-mapofktypevtype)
@@ -141,9 +133,7 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.1.4 Type Definition Nuances](#314-type-definition-nuances)
       - [3.1.4.1 "Anonymous" Type Definitions](#3141-anonymous-type-definitions)
       - [3.1.4.2 Selection and Use of JADN Compound Types](#3142-selection-and-use-of-jadn-compound-types)
-          - [Table 3-1 -- Compound Type Decision Tree](#table-3-8----compound-type-decision-tree)
       - [3.1.4.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
-          - [Table 3-2 -- Multiplicity Types](#table-3-9----multiplicity-types)
       - [3.1.4.4 Application of minv / maxv](#3144-application-of-minv--maxv)
     - [3.1.5 Reference Relationships: Keys and Links](#315-reference-relationships-keys-and-links)
     - [3.1.6 Packages and Namespaces](#316-packages-and-namespaces)
@@ -161,7 +151,6 @@ For complete copyright information please see the full Notices section in [Appen
 - [Appendix C. Revision History](#appendix-c-revision-history)
 - [Appendix D. Frequently Asked Questions (FAQ)](#appendix-d-frequently-asked-questions-faq)
   - [D.1 JADN vs. UML Primitive Data Types](#d1-jadn-vs-uml-primitive-data-types)
-          - [Table D-1 -- UML and JADN Primitive Type Equivalence](#table-d-1----uml-and-jadn-primitive-type-equivalence)
   - [D.1 Declarative Specifications](#d1-declarative-specifications)
   - [D.2 Applications](#d2-applications)
   - [D.2 Why JADN and not RDF?](#d2-why-jadn-and-not-rdf)
@@ -171,6 +160,7 @@ For complete copyright information please see the full Notices section in [Appen
 - [Appendix F. Notices](#appendix-f-notices)
 
 **List of Figures**
+
  - [Figure 2-1 -- Serialization / Deserialization](#figure-2-1----serialization--deserialization)
  - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
  - [Figure 3-1 -- JADN Type Definition Components](#figure-3-1----jadn-type-definition-components)
@@ -192,19 +182,20 @@ For complete copyright information please see the full Notices section in [Appen
  - [Figure 3-17 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-17----simple-university-example-erd-source-code-graphviz)
 
 
-
 **List of Tables**
- - [Table 2-1 Modeling Approach Comparison](#table-2-1----modeling-approach-comparison)
- - [Table 3-3 -- JADN Type Options](#table-3-1----jadn-type-options)
- - [Table 3-4 -- Type Option Applicability](#table-3-2----type-option-applicability)
- - [Table 3-5 -- JADN Field Options](#table-3-3----jadn-field-options)
- - [Table 3-6 -- Binary Type Format Options](#table-3-4----binary-type-format-options)
- - [Table 3-7 -- Integer Type Format Options](#table-3-5----integer-type-format-options)
- - [Table 3-8 -- Number Type Format Options](#table-3-6----number-type-format-options)
- - [Table 3-9 -- Array Type Format Options](#table-3-7----array-type-format-options)
- - [Table 3-1 -- Compound Type Decision Tree](#table-3-8----compound-type-decision-tree)
- - [Table 3-2 -- Multiplicity Types](#table-3-9----multiplicity-types)
+
+ - [Table 2-1 -- Modeling Approach Comparison](#table-2-1----modeling-approach-comparison)
+ - [Table 3-1 -- JADN Type Options](#table-3-1----jadn-type-options)
+ - [Table 3-2 -- Type Option Applicability](#table-3-2----type-option-applicability)
+ - [Table 3-3 -- JADN Field Options](#table-3-3----jadn-field-options)
+ - [Table 3-4 -- Binary Type Format Options](#table-3-4----binary-type-format-options)
+ - [Table 3-5 -- Integer Type Format Options](#table-3-5----integer-type-format-options)
+ - [Table 3-6 -- Number Type Format Options](#table-3-6----number-type-format-options)
+ - [Table 3-7 -- Array Type Format Options](#table-3-7----array-type-format-options)
+ - [Table 3-8 -- Compound Type Decision Tree](#table-3-8----compound-type-decision-tree)
+ - [Table 3-9 -- Multiplicity Types](#table-3-9----multiplicity-types)
  - [Table D-1 -- UML and JADN Primitive Type Equivalence](#table-d-1----uml-and-jadn-primitive-type-equivalence)
+
 
 -------
 
