@@ -967,9 +967,8 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 > * Replace Package with Schema as the top-level JADN type 
 > * Replace `info` / `Information` with `meta` / `Metadata` in JADN schema packages
 > 
-> The text and figures
-> in this CN use the JADN v2.0 terminology; this does not reflect alteration of
-> the underlying concepts.
+> The text and figures in this CN use the JADN v2.0 terminology; this does not
+> reflect alteration of the underlying concepts.
 
 Figure 3-1 provides a high-level view of the components of JADN type definitions that
 will be described in this section. JADN provides *primitive*, 
