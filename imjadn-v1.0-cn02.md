@@ -979,9 +979,9 @@ options (field options only apply to compound and union types).
 ![Figure 3-1 -- JADN Concepts](images/JADN-Type-Definitions.drawio.png)
 
 A JADN schema in its native form is a JSON document containing an optional object labeled
-"info" and an array labeled "types". 
+"meta" and an array labeled "types". 
 
-* The "info" object contains metadata about
+* The "meta" object contains metadata about
 the schema contained in the document, including the types exported from this
 schema and namespace information to connect it with other JADN schema documents.
 
@@ -2332,12 +2332,15 @@ packages, along with the associated concept of namespaces.
 At the simplest level, a package is a file containing a JADN
 schema in the form of JSON data, as described in 
 [Section&nbsp;3.1.3.1](#3131-native-json-representation).
+A JADN package document may contain a complete JADN schema 
+or contain a portion of a schema. The `namespace` mechanism
+is used to collect multiple packages into a schema.
 The file has two top-level components: 
 
- - metadata about the file, labeled as "information", and 
- - the schema content itself, labeled as "types".
+ - optional metadata about the file, labeled as `meta`, and 
+ - the schema content itself, labeled as `types`.
 
-Definitions of all of the `Information` fields are provided in
+Definitions of all of the `Metadata` fields are provided in
 the JADN specification. 
 
 The metadata portion is entirely optional, but if present must
@@ -2369,13 +2372,13 @@ for:
 * Breaking a schema into multiple packages that can be combined without defining
   a namespace
 
-* Including types defined in other schema packages under a namespace, including
+* Including types defined in other schema packages under a specified namespace, including
   importing multiple packages under a single namespace
 
 The JIDL representation of JADN namespace definition is:
 
 ```
-Information = Map                     // Information about this package
+Metadata = Map                     // Information about this package
      ...
    8 namespaces   Namespaces optional // Referenced packages
      ...
@@ -2400,13 +2403,13 @@ Namespace Identifiers (`NSID`) with the `Namespace` other packages declare for
 themselves. A Namespace Identifier (NSID) is, by default, a 1-8 character string
 beginning with a letter and containing only letters and numbers (the default
 formatting can be overridden by inserting an alternative definition into a JADN
-schema's `Information` map's `Config` section). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
+schema's `Metadata` map's `config` section). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
 packages to be mapped to one NSID to group all of the types defined in that
 collection of packages into a single namespace. For any array element where the
 `NSID` field is blank, the types in the referenced package are made available in
 the current package without need for any NSID.
 
-Within the schema package's Types definitions
+Within the schema package's `Types` definitions
 JADN uses the common convention of using the NSID followed by a
 colon to link an item to the namespace where it is defined (e.g.,
 `NSID:TypeName`).  So assuming the existence of `Package A`, and
@@ -2436,13 +2439,13 @@ imported without any NSID to create a single schema.
 > to the following example?
 
 As a concrete example of applying distinct namespaces for multiple packages,
-here is the `info` portion of a JADN
+here is the `meta` portion of a JADN
 Schema for an OpenC2 consumer that implements two actuator
 profiles: stateless packet filtering (SLPF) and posture attribute
 collection, along with the OpenC2 Language Specification:
 
 ```
-"info": {
+"meta": {
 	  "package": "http://acme.com/schemas/device-base/pacf/v3",
 	  "title": "OpenC2 base device schema for the PACE collection service and packet filter",
 	  "exports": ["OpenC2-Command", "OpenC2-Response"],
