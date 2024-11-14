@@ -172,7 +172,7 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.4.4 Application of minv / maxv](#3144-application-of-minv--maxv)
     - [3.1.5 Reference Relationships: Keys and Links](#315-reference-relationships-keys-and-links)
           - [Figure 3-8 -- Contains and References Relationships](#figure-3-8----contains-and-references-relationships)
-    - [3.1.6 Packages and Namespaces](#316-packages-and-namespaces)
+    - [3.1.6 Schemas, Packages and Namespaces](#316-schemas-packages-and-namespaces)
       - [3.1.6.1 Packages](#3161-packages)
       - [3.1.6.2 Namespaces](#3162-namespaces)
   - [3.2 Information Modeling Process](#32-information-modeling-process)
@@ -2320,7 +2320,7 @@ likely be registered for multiple classes. By *referencing* students records, on
 record per student need appear in the data set regardless of how many classes
 they are registered for.
 
-### 3.1.6 Packages and Namespaces
+### 3.1.6 Schemas, Packages and Namespaces
 
 Section 6 of the [[JADN Specification](#jadn-v10)] introduces the
 use of packages as the mechanism for organizing JADN schemas.
@@ -2333,7 +2333,7 @@ At the simplest level, a package is a file containing a JADN
 schema in the form of JSON data, as described in 
 [Section&nbsp;3.1.3.1](#3131-native-json-representation).
 A JADN package document may contain a complete JADN schema 
-or contain a portion of a schema. The `namespace` mechanism
+or a portion of a schema. The `namespace` mechanism
 is used to collect multiple packages into a schema.
 The file has two top-level components: 
 
