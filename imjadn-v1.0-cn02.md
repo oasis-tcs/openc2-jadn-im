@@ -965,6 +965,7 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 > particular, the JADN Specification updates:
 > * Replace BaseType with CoreType throughout
 > * Replace Package with Schema as the top-level JADN type 
+> * Replace `info` / `Information` with `meta` / `Metadata` in JADN schema packages
 > 
 > The text and figures
 > in this CN use the JADN v2.0 terminology; this does not reflect alteration of
