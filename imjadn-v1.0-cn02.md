@@ -130,7 +130,7 @@ For complete copyright information please see the full Notices section in [Appen
           - [Figure 3-1 -- JADN Type Definition Components](#figure-3-1----jadn-type-definition-components)
     - [3.1.1 Type Definitions](#311-type-definitions)
           - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-type-definition-structure)
-      - [3.1.1.1 TypeNames and BaseTypes](#3111-typenames-and-basetypes)
+      - [3.1.1.1 TypeNames and CoreTypes](#3111-typenames-and-coretypes)
       - [3.1.1.2 TypeOptions](#3112-typeoptions)
           - [Table 3-1 -- JADN Type Options](#table-3-1----jadn-type-options)
           - [Table 3-2 -- Type Option Applicability](#table-3-2----type-option-applicability)
@@ -1034,7 +1034,7 @@ five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
 that type.
- 2. The **BaseType** for the definition, which must be one the twelve core
+ 2. The **CoreType** for the definition, which must be one the twelve core
     types shown in Figure 3-2.
  3. Zero or more of the available JADN **TypeOptions** that
     refine the core types to fit particular needs.
@@ -1047,9 +1047,9 @@ that type.
 ###### Figure 3-2 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
 
-#### 3.1.1.1 TypeNames and BaseTypes
+#### 3.1.1.1 TypeNames and CoreTypes
 
-The first two elements of a type definition are the **TypeName** and **BaseType**. 
+The first two elements of a type definition are the **TypeName** and **CoreType**. 
 A firm requirement of JADN is that a TypeName in a schema must not be a JADN
 predefined (i.e., core) type. There are also name formatting conventions intended to improve
 the consistency and readability of JADN specifications. These
@@ -1075,7 +1075,7 @@ JADN schema if desired (see Section&nbsp;3.1.2 of the
    processing a JADN model; it is not normally used by JADN
    schema authors.
 
-The BaseType must be one of the twelve JADN core types previously identified.
+The CoreType must be one of the twelve JADN core types previously identified.
 
 #### 3.1.1.2 TypeOptions
 
@@ -1091,10 +1091,10 @@ Specification:
 > - The first character is the option ID.
 > - The remaining characters are the option value.
 
-TypeOptions are classifiers that, along with the BaseType,
+TypeOptions are classifiers that, along with the CoreType,
 determine whether data values are instances of the defined type.
 For example, the *pattern* TypeOption is used with the String
-BaseType to define valid instances of that string type using a
+CoreType to define valid instances of that string type using a
 regular expression conforming to [[ECMAScript](#ecmascript)]
 grammar.
 
@@ -1154,14 +1154,14 @@ Table 3-2 summarizes the applicability of type options to JADN core types.
 #### 3.1.1.3 Item Or Field Definitions
 
 The use of the **Fields** element to convey Item or Field
-Definitions is dependent on the **BaseType** selected, as
+Definitions is dependent on the **CoreType** selected, as
 illustrated in [Figure 3-2](#figure-3-2----jadn-type-definition-structure). The rules
 pertaining to the **Fields** array are as follows:
 
-* If the **BaseType** is a Primitive type, ArrayOf, or MapOf, no
+* If the **CoreType** is a Primitive type, ArrayOf, or MapOf, no
   fields are permitted (i.e., the **Fields** array must be empty).
 
-* If the **BaseType** is Enumerated, the fields for each item
+* If the **CoreType** is Enumerated, the fields for each item
   definition in the **Fields** array are described with three
   elements:
 
@@ -1169,7 +1169,7 @@ pertaining to the **Fields** array are as follows:
     2. **ItemValue:** the string value of the item
     3. **ItemDescription:** a non-normative comment
 
-* If the **BaseType** is Array, Choice, Map, or Record, the
+* If the **CoreType** is Array, Choice, Map, or Record, the
   fields for each item definition in the **Fields** array are
   described with five elements:
     1. **FieldID:** the integer identifier of the field
@@ -1945,7 +1945,7 @@ as described in [Section&nbsp;3.1](#31-jadn-overview).
 ![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
 
 Figure 3-4 illustrates the structure of JADN for defining any
-Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
+Primitive **CoreType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
 ###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
@@ -1954,7 +1954,7 @@ Types](images/JADN-primitive-json.drawio.png)
 
 
 Figure 3-5 illustrates the structure of JADN for defining an
-Enumerated **BaseType**; for enumerations each item definition in the
+Enumerated **CoreType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
 ###### Figure 3-5 -- JADN Fields for Enumerated Types
@@ -1962,7 +1962,7 @@ Enumerated **BaseType**; for enumerations each item definition in the
 
 
 Figure 3-6 illustrates the structure of JADN for defining a
-**BaseType** of Array, Choice, Map, or Record; for these types each
+**CoreType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
 ###### Figure 3-6 -- JADN Fields for Structured Compound Types
