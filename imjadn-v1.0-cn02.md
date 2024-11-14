@@ -293,6 +293,11 @@ For complete copyright information please see the full Notices section in [Appen
 
 # 1 Introduction
 
+> NOTE: The JADN Specification is undergoing revision toward version 2.0 of the
+> JADN language. Specific JADN Specification section references in this
+> Committee Note will be updated once the revised specification structure is
+> stabilized.
+
 This Committee Note (CN) describes the nature of information models and the application
 of the *JSON Abstract Data Notation* [[JADN Specification](#jadn-v10)] information modeling language
 in the creation and use of IMs.
