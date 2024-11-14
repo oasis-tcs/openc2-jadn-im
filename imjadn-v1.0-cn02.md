@@ -1851,6 +1851,8 @@ the **Fields** array is empty:
 Types](images/JADN-primitive-json.drawio.png)
 
 
+
+
 Figure 3-5 illustrates the structure of JADN for defining an
 Enumerated **BaseType**; for enumerations each item definition in the
 **Fields** array has three elements:
