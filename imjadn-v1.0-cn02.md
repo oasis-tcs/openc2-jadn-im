@@ -934,12 +934,10 @@ against specific objectives:
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
 
-As stated in the [[JADN Specification](#jadn-v10)] introduction:
-
-> JADN is a formal description technique that combines type
-> constraints from the Unified Modeling Language (UML) with data
-> abstraction based on information theory and structural
-> organization using results from graph theory.
+JADN is a formal description technique that combines type
+constraints from the Unified Modeling Language (UML) with data
+abstraction based on information theory and structural
+organization using results from graph theory.
 
 A JADN information model is a set of type definitions. Each field in a compound
 type may be associated with another model-defined type, and the set of
