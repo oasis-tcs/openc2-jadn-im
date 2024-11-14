@@ -964,8 +964,10 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 > changes toward the JADN v2.0 specification, including terminology changes. In
 > particular, the JADN Specification updates:
 > * Replace BaseType with CoreType throughout
-> * Replace Package with Schema as the top-level JADN type The text and figures
-> in the CN use the JADN v2.0 terminology; this does not reflect alteration of
+> * Replace Package with Schema as the top-level JADN type 
+> 
+> The text and figures
+> in this CN use the JADN v2.0 terminology; this does not reflect alteration of
 > the underlying concepts.
 
 Figure 3-1 provides a high-level view of the components of JADN type definitions that
