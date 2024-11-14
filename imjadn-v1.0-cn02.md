@@ -2554,10 +2554,12 @@ modeling and the application of JADN. The example IMs are:
 
  - A digital music library
  - An IP version 4 packet header
- - A very simple example of a university with classes and people to illustrate
-   the available JADN representations
-  
-Additional examples may be added in future versions of the CN.
+ - A university with classes and people (teachers and students)
+
+These examples use a mix of the various JADN representation formats described in
+[Section&nbsp;3.1.3](#313-jadn-representations), and the university example
+specifically illustrates the use of all of the representations to present a
+single information model.
 
 ### 3.3.1 Digital Music Library
 
