@@ -2244,8 +2244,7 @@ At the simplest level, a package is a file containing a JADN
 schema in the form of JSON data, as described in 
 [Section&nbsp;3.1.3.1](#3131-native-json-representation).
 A JADN package document may contain a complete JADN schema 
-or a portion of a schema. The `namespace` mechanism
-is used to collect multiple packages into a schema.
+or a portion of a schema. 
 The file has two top-level components: 
 
  - optional metadata about the file, labeled as `meta`, and 
