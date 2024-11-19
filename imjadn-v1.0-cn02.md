@@ -366,8 +366,8 @@ of the communication engineers training.
 Shannon's original article was later published as a book and gave
 rise to the field of Information Theory [[Shannon](#shannon)].
 
-The [[Resource Description Framework (RDF)](#rdf)], though limited
-in capability **, defines the concept of lexical-to-value mapping, which
+The [[Resource Description Framework (RDF)](#rdf)] 
+defines the concept of lexical-to-value mapping, which
 provides a precise vocabulary for describing the relationship between
 "data" and information:
 
@@ -377,14 +377,6 @@ provides a precise vocabulary for describing the relationship between
 > * The lexical-to-value mapping of a datatype is a set of pairs
 > whose first element belongs to the lexical space and the second element
 > belongs to the value space of the datatype.
-
-** *Note: the current version of RDF has two major limitations:
-its lexical space is limited to "a set of strings" and
-cannot support binary variables or data formats, and its datatypes
-are limited to primitive "values such as strings, numbers and dates".
-A future version of RDF could in principle be extended to support
-full information modeling datatypes, but there is no roadmap indicating
-plans to do so.*
 
 A small example may help clarify the concept of information. The
 information content of a logical value can be no greater than the
@@ -528,6 +520,15 @@ Other languages have been used for information modeling, although
 that is not their primary purposes.  Some examples are 
 Unified Modeling Language [[UML](#uml)], and 
 Integration DEFinition for information modeling [[IDEF1X](#idef1x)].
+
+The current version of RDF has two major limitations 
+related to its potential use for information modeling:
+its lexical space is limited to "a set of strings" and
+cannot support binary variables or data formats, and its datatypes
+are limited to primitive "values such as strings, numbers and dates".
+A future version of RDF could in principle be extended to support
+full information modeling datatypes, but there is no roadmap indicating
+plans to do so.
 
 ## 1.2 Terminology
 
