@@ -719,9 +719,9 @@ and IMs defined in JADN to other serialization formats:
  - Specify any validation requirements defined for that format.
 
 Regardless of format, serialization should be:
-1) **lossless**, so that information is not modified in transit
+1) **Lossless**, so that information is not modified in transit
    and all applications have the identical information
-2) **transparent**, so that information is unaffected by whether
+2) **Transparent**, so that information is unaffected by whether
 or how it has been serialized; users should not know or care.
 
 Shannon's information theory defines the relationship between
