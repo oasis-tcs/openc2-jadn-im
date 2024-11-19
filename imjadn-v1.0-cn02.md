@@ -510,8 +510,7 @@ format.
    definition has the same five fields)
 
 Abstract Syntax Notation One [[ASN.1](#asn1)] is another
-example of an abstract schema language.
-​ASN.1 is a formal notation used for describing data transmitted
+example of an abstract schema language. ​ASN.1 is a formal notation used for describing data transmitted
 by telecommunications protocols, regardless of language
 implementation and physical representation of these data,
 whatever the application, whether complex or very simple. The
