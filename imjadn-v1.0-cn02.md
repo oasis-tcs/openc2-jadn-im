@@ -371,8 +371,8 @@ of the communication engineers training.
 Shannon's original article was later published as a book and gave
 rise to the field of Information Theory [[Shannon](#shannon)].
 
-The [[Resource Description Framework (RDF)](#rdf)], though limited
-in capability **, defines the concept of lexical-to-value mapping, which
+The [[Resource Description Framework (RDF)](#rdf)] 
+defines the concept of lexical-to-value mapping, which
 provides a precise vocabulary for describing the relationship between
 "data" and information:
 
@@ -382,14 +382,6 @@ provides a precise vocabulary for describing the relationship between
 > * The lexical-to-value mapping of a datatype is a set of pairs
 > whose first element belongs to the lexical space and the second element
 > belongs to the value space of the datatype.
-
-** *Note: the current version of RDF has two major limitations:
-its lexical space is limited to "a set of strings" and
-cannot support binary variables or data formats, and its datatypes
-are limited to primitive "values such as strings, numbers and dates".
-A future version of RDF could in principle be extended to support
-full information modeling datatypes, but there is no roadmap indicating
-plans to do so.*
 
 A small example may help clarify the concept of information. The
 information content of a logical value can be no greater than the
@@ -509,14 +501,13 @@ JADN's native format is structured JSON, and a broad variety of
 tools exist for creating and manipulating information in JSON
 format.
 
- - a JADN schema is structured data that can be generated and
+ - A JADN schema is structured data that can be generated and
    transformed programmatically
- - JADN schemas employ a simple, regular structure (every type
+ - Types in JADN schemas are defined using a simple, regular structure (every type
    definition has the same five fields)
 
 Abstract Syntax Notation One [[ASN.1](#asn1)] is another
-example of an abstract schema language.
-​ASN.1 is a formal notation used for describing data transmitted
+example of an abstract schema language. ​ASN.1 is a formal notation used for describing data transmitted
 by telecommunications protocols, regardless of language
 implementation and physical representation of these data,
 whatever the application, whether complex or very simple. The
@@ -534,6 +525,15 @@ Other languages have been used for information modeling, although
 that is not their primary purposes.  Some examples are 
 Unified Modeling Language [[UML](#uml)], and 
 Integration DEFinition for information modeling [[IDEF1X](#idef1x)].
+
+The current version of RDF has two major limitations 
+related to its potential use for information modeling:
+its lexical space is limited to "a set of strings" and
+cannot support binary variables or data formats, and its datatypes
+are limited to primitive "values such as strings, numbers and dates".
+A future version of RDF could in principle be extended to support
+full information modeling datatypes, but there is no roadmap indicating
+plans to do so.
 
 ## 1.2 Terminology
 
@@ -588,7 +588,7 @@ the same datatype and their logical values are equal.
    schemas for XML files.<br>(Wiktionary, https://en.wiktionary.org/wiki/schema#Noun, definition #3)
 
 - **Value Space:** The set of values for a given datatype. The value spaces 
-- and the values therein are abstractions. Each value in the
+  and the values therein are abstractions. Each value in the
   value space of a datatype is denoted by one or more literals in its *lexical
   space*. Value spaces have certain properties (e.g., cardinality, some
   definition of equality, ordering) by which individual values within the value
@@ -724,9 +724,9 @@ and IMs defined in JADN to other serialization formats:
  - Specify any validation requirements defined for that format.
 
 Regardless of format, serialization should be:
-1) **lossless**, so that information is not modified in transit
+1) **Lossless**, so that information is not modified in transit
    and all applications have the identical information
-2) **transparent**, so that information is unaffected by whether
+2) **Transparent**, so that information is unaffected by whether
 or how it has been serialized; users should not know or care.
 
 Shannon's information theory defines the relationship between
@@ -1862,6 +1862,8 @@ the **Fields** array is empty:
 ###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
 ![JADN for Primitive, ArrayOf, MapOf
 Types](images/JADN-primitive-json.drawio.png)
+
+
 
 
 Figure 3-5 illustrates the structure of JADN for defining an
