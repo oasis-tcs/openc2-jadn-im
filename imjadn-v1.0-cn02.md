@@ -5,9 +5,9 @@
 
 # Information Modeling with JADN Version 1.0
 
-## Committee Note 02 - Working Draft 01
+## Committee Note 02
 
-## 07 November 2024
+## 19 November 2024
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
@@ -109,7 +109,7 @@ For complete copyright information please see the full Notices section in [Appen
 - [3 Creating Information Models with JADN](#3-creating-information-models-with-jadn)
   - [3.1 JADN Overview](#31-jadn-overview)
     - [3.1.1 Type Definitions](#311-type-definitions)
-      - [3.1.1.1 TypeNames and BaseTypes](#3111-typenames-and-basetypes)
+      - [3.1.1.1 TypeNames and CoreTypes](#3111-typenames-and-coretypes)
       - [3.1.1.2 TypeOptions](#3112-typeoptions)
       - [3.1.1.3 Item Or Field Definitions](#3113-item-or-field-definitions)
       - [3.1.1.4 Field Options](#3114-field-options)
@@ -136,7 +136,7 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.4.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
       - [3.1.4.4 Application of minv / maxv](#3144-application-of-minv--maxv)
     - [3.1.5 Reference Relationships: Keys and Links](#315-reference-relationships-keys-and-links)
-    - [3.1.6 Packages and Namespaces](#316-packages-and-namespaces)
+    - [3.1.6 Schemas, Packages and Namespaces](#316-schemas-packages-and-namespaces)
       - [3.1.6.1 Packages](#3161-packages)
       - [3.1.6.2 Namespaces](#3162-namespaces)
   - [3.2 Information Modeling Process](#32-information-modeling-process)
@@ -200,6 +200,11 @@ For complete copyright information please see the full Notices section in [Appen
 -------
 
 # 1 Introduction
+
+> NOTE: The JADN Specification is undergoing revision toward version 2.0 of the
+> JADN language. Specific JADN Specification section references in this
+> Committee Note will be updated once the revised specification structure is
+> stabilized.
 
 This Committee Note (CN) describes the nature of information models and the application
 of the *JSON Abstract Data Notation* [[JADN Specification](#jadn-v10)] information modeling language
@@ -366,8 +371,8 @@ of the communication engineers training.
 Shannon's original article was later published as a book and gave
 rise to the field of Information Theory [[Shannon](#shannon)].
 
-The [[Resource Description Framework (RDF)](#rdf)], though limited
-in capability **, defines the concept of lexical-to-value mapping, which
+The [[Resource Description Framework (RDF)](#rdf)] 
+defines the concept of lexical-to-value mapping, which
 provides a precise vocabulary for describing the relationship between
 "data" and information:
 
@@ -377,14 +382,6 @@ provides a precise vocabulary for describing the relationship between
 > * The lexical-to-value mapping of a datatype is a set of pairs
 > whose first element belongs to the lexical space and the second element
 > belongs to the value space of the datatype.
-
-** *Note: the current version of RDF has two major limitations:
-its lexical space is limited to "a set of strings" and
-cannot support binary variables or data formats, and its datatypes
-are limited to primitive "values such as strings, numbers and dates".
-A future version of RDF could in principle be extended to support
-full information modeling datatypes, but there is no roadmap indicating
-plans to do so.*
 
 A small example may help clarify the concept of information. The
 information content of a logical value can be no greater than the
@@ -504,14 +501,13 @@ JADN's native format is structured JSON, and a broad variety of
 tools exist for creating and manipulating information in JSON
 format.
 
- - a JADN schema is structured data that can be generated and
+ - A JADN schema is structured data that can be generated and
    transformed programmatically
- - JADN schemas employ a simple, regular structure (every type
+ - Types in JADN schemas are defined using a simple, regular structure (every type
    definition has the same five fields)
 
 Abstract Syntax Notation One [[ASN.1](#asn1)] is another
-example of an abstract schema language.
-​ASN.1 is a formal notation used for describing data transmitted
+example of an abstract schema language. ​ASN.1 is a formal notation used for describing data transmitted
 by telecommunications protocols, regardless of language
 implementation and physical representation of these data,
 whatever the application, whether complex or very simple. The
@@ -529,6 +525,15 @@ Other languages have been used for information modeling, although
 that is not their primary purposes.  Some examples are 
 Unified Modeling Language [[UML](#uml)], and 
 Integration DEFinition for information modeling [[IDEF1X](#idef1x)].
+
+The current version of RDF has two major limitations 
+related to its potential use for information modeling:
+its lexical space is limited to "a set of strings" and
+cannot support binary variables or data formats, and its datatypes
+are limited to primitive "values such as strings, numbers and dates".
+A future version of RDF could in principle be extended to support
+full information modeling datatypes, but there is no roadmap indicating
+plans to do so.
 
 ## 1.2 Terminology
 
@@ -583,7 +588,7 @@ the same datatype and their logical values are equal.
    schemas for XML files.<br>(Wiktionary, https://en.wiktionary.org/wiki/schema#Noun, definition #3)
 
 - **Value Space:** The set of values for a given datatype. The value spaces 
-- and the values therein are abstractions. Each value in the
+  and the values therein are abstractions. Each value in the
   value space of a datatype is denoted by one or more literals in its *lexical
   space*. Value spaces have certain properties (e.g., cardinality, some
   definition of equality, ordering) by which individual values within the value
@@ -719,9 +724,9 @@ and IMs defined in JADN to other serialization formats:
  - Specify any validation requirements defined for that format.
 
 Regardless of format, serialization should be:
-1) **lossless**, so that information is not modified in transit
+1) **Lossless**, so that information is not modified in transit
    and all applications have the identical information
-2) **transparent**, so that information is unaffected by whether
+2) **Transparent**, so that information is unaffected by whether
 or how it has been serialized; users should not know or care.
 
 Shannon's information theory defines the relationship between
@@ -837,12 +842,10 @@ against specific objectives:
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
 
-As stated in the [[JADN Specification](#jadn-v10)] introduction:
-
-> JADN is a formal description technique that combines type
-> constraints from the Unified Modeling Language (UML) with data
-> abstraction based on information theory and structural
-> organization using results from graph theory.
+JADN is a formal description technique that combines type
+constraints from the Unified Modeling Language (UML) with data
+abstraction based on information theory and structural
+organization using results from graph theory.
 
 A JADN information model is a set of type definitions. Each field in a compound
 type may be associated with another model-defined type, and the set of
@@ -868,18 +871,28 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 ## 3.1 JADN Overview
 
+> NOTE: the text in this section has been updated to align with in-progress
+> changes toward the JADN v2.0 specification, including terminology changes. In
+> particular, the JADN Specification updates:
+> * Replace BaseType with CoreType throughout
+> * Replace Package with Schema as the top-level JADN type 
+> * Replace `info` / `Information` with `meta` / `Metadata` in JADN schema packages
+> 
+> The text and figures in this CN use the JADN v2.0 terminology; this does not
+> reflect alteration of the underlying concepts.
+
 Figure 3-1 provides a high-level view of the components of JADN type definitions that
 will be described in this section. JADN provides *primitive*, 
-*compound*, and *union* core data types that can be refined using type and field
+*compound* (both structured and unstructured), and *union* core data types that can be refined using type and field
 options (field options only apply to compound and union types).
 
 ###### Figure 3-1 -- JADN Type Definition Components
 ![Figure 3-1 -- JADN Concepts](images/JADN-Type-Definitions.drawio.png)
 
 A JADN schema in its native form is a JSON document containing an optional object labeled
-"info" and an array labeled "types". 
+"meta" and an array labeled "types". 
 
-* The "info" object contains metadata about
+* The "meta" object contains metadata about
 the schema contained in the document, including the types exported from this
 schema and namespace information to connect it with other JADN schema documents.
 
@@ -932,7 +945,7 @@ five elements are:
 
  1. A **TypeName**, which is simply a string used to refer to
 that type.
- 2. The **BaseType** for the definition, which must be one the twelve core
+ 2. The **CoreType** for the definition, which must be one the twelve core
     types shown in Figure 3-2.
  3. Zero or more of the available JADN **TypeOptions** that
     refine the core types to fit particular needs.
@@ -945,9 +958,9 @@ that type.
 ###### Figure 3-2 -- JADN Type Definition Structure
 ![JADN Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
 
-#### 3.1.1.1 TypeNames and BaseTypes
+#### 3.1.1.1 TypeNames and CoreTypes
 
-The first two elements of a type definition are the **TypeName** and **BaseType**. 
+The first two elements of a type definition are the **TypeName** and **CoreType**. 
 A firm requirement of JADN is that a TypeName in a schema must not be a JADN
 predefined (i.e., core) type. There are also name formatting conventions intended to improve
 the consistency and readability of JADN specifications. These
@@ -973,7 +986,7 @@ JADN schema if desired (see Section&nbsp;3.1.2 of the
    processing a JADN model; it is not normally used by JADN
    schema authors.
 
-The BaseType must be one of the twelve JADN core types previously identified.
+The CoreType must be one of the twelve JADN core types previously identified.
 
 #### 3.1.1.2 TypeOptions
 
@@ -989,10 +1002,10 @@ Specification:
 > - The first character is the option ID.
 > - The remaining characters are the option value.
 
-TypeOptions are classifiers that, along with the BaseType,
+TypeOptions are classifiers that, along with the CoreType,
 determine whether data values are instances of the defined type.
 For example, the *pattern* TypeOption is used with the String
-BaseType to define valid instances of that string type using a
+CoreType to define valid instances of that string type using a
 regular expression conforming to [[ECMAScript](#ecmascript)]
 grammar.
 
@@ -1052,14 +1065,14 @@ Table 3-2 summarizes the applicability of type options to JADN core types.
 #### 3.1.1.3 Item Or Field Definitions
 
 The use of the **Fields** element to convey Item or Field
-Definitions is dependent on the **BaseType** selected, as
+Definitions is dependent on the **CoreType** selected, as
 illustrated in [Figure 3-2](#figure-3-2----jadn-type-definition-structure). The rules
 pertaining to the **Fields** array are as follows:
 
-* If the **BaseType** is a Primitive type, ArrayOf, or MapOf, no
+* If the **CoreType** is a Primitive type, ArrayOf, or MapOf, no
   fields are permitted (i.e., the **Fields** array must be empty).
 
-* If the **BaseType** is Enumerated, the fields for each item
+* If the **CoreType** is Enumerated, the fields for each item
   definition in the **Fields** array are described with three
   elements:
 
@@ -1067,7 +1080,7 @@ pertaining to the **Fields** array are as follows:
     2. **ItemValue:** the string value of the item
     3. **ItemDescription:** a non-normative comment
 
-* If the **BaseType** is Array, Choice, Map, or Record, the
+* If the **CoreType** is Array, Choice, Map, or Record, the
   fields for each item definition in the **Fields** array are
   described with five elements:
     1. **FieldID:** the integer identifier of the field
@@ -1843,7 +1856,7 @@ as described in [Section&nbsp;3.1](#31-jadn-overview).
 ![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
 
 Figure 3-4 illustrates the structure of JADN for defining any
-Primitive **BaseType**, or ArrayOf or MapOf type; for all of these
+Primitive **CoreType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
 ###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
@@ -1851,7 +1864,7 @@ the **Fields** array is empty:
 Types](images/JADN-primitive-json.drawio.png)
 
 Figure 3-5 illustrates the structure of JADN for defining an
-Enumerated **BaseType**; for enumerations each item definition in the
+Enumerated **CoreType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
 ###### Figure 3-5 -- JADN Fields for Enumerated Types
@@ -1859,7 +1872,7 @@ Enumerated **BaseType**; for enumerations each item definition in the
 
 
 Figure 3-6 illustrates the structure of JADN for defining a
-**BaseType** of Array, Choice, Map, or Record; for these types each
+**CoreType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
 ###### Figure 3-6 -- JADN Fields for Structured Compound Types
@@ -2217,7 +2230,7 @@ likely be registered for multiple classes. By *referencing* students records, on
 record per student need appear in the data set regardless of how many classes
 they are registered for.
 
-### 3.1.6 Packages and Namespaces
+### 3.1.6 Schemas, Packages and Namespaces
 
 Section 6 of the [[JADN Specification](#jadn-v10)] introduces the
 use of packages as the mechanism for organizing JADN schemas.
@@ -2229,12 +2242,14 @@ packages, along with the associated concept of namespaces.
 At the simplest level, a package is a file containing a JADN
 schema in the form of JSON data, as described in 
 [Section&nbsp;3.1.3.1](#3131-native-json-representation).
+A JADN package document may contain a complete JADN schema 
+or a portion of a schema. 
 The file has two top-level components: 
 
- - metadata about the file, labeled as "information", and 
- - the schema content itself, labeled as "types".
+ - optional metadata about the file, labeled as `meta`, and 
+ - the schema content itself, labeled as `types`.
 
-Definitions of all of the `Information` fields are provided in
+Definitions of all of the `Metadata` fields are provided in
 the JADN specification. 
 
 The metadata portion is entirely optional, but if present must
@@ -2266,13 +2281,13 @@ for:
 * Breaking a schema into multiple packages that can be combined without defining
   a namespace
 
-* Including types defined in other schema packages under a namespace, including
+* Including types defined in other schema packages under a specified namespace, including
   importing multiple packages under a single namespace
 
 The JIDL representation of JADN namespace definition is:
 
 ```
-Information = Map                     // Information about this package
+Metadata = Map                     // Information about this package
      ...
    8 namespaces   Namespaces optional // Referenced packages
      ...
@@ -2297,13 +2312,13 @@ Namespace Identifiers (`NSID`) with the `Namespace` other packages declare for
 themselves. A Namespace Identifier (NSID) is, by default, a 1-8 character string
 beginning with a letter and containing only letters and numbers (the default
 formatting can be overridden by inserting an alternative definition into a JADN
-schema's `Information` map's `Config` section). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
+schema's `Metadata` map's `config` section). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
 packages to be mapped to one NSID to group all of the types defined in that
 collection of packages into a single namespace. For any array element where the
 `NSID` field is blank, the types in the referenced package are made available in
 the current package without need for any NSID.
 
-Within the schema package's Types definitions
+Within the schema package's `Types` definitions
 JADN uses the common convention of using the NSID followed by a
 colon to link an item to the namespace where it is defined (e.g.,
 `NSID:TypeName`).  So assuming the existence of `Package A`, and
@@ -2333,13 +2348,13 @@ imported without any NSID to create a single schema.
 > to the following example?
 
 As a concrete example of applying distinct namespaces for multiple packages,
-here is the `info` portion of a JADN
+here is the `meta` portion of a JADN
 Schema for an OpenC2 consumer that implements two actuator
 profiles: stateless packet filtering (SLPF) and posture attribute
 collection, along with the OpenC2 Language Specification:
 
 ```
-"info": {
+"meta": {
 	  "package": "http://acme.com/schemas/device-base/pacf/v3",
 	  "title": "OpenC2 base device schema for the PACE collection service and packet filter",
 	  "exports": ["OpenC2-Command", "OpenC2-Response"],
@@ -2445,10 +2460,12 @@ modeling and the application of JADN. The example IMs are:
 
  - A digital music library
  - An IP version 4 packet header
- - A very simple example of a university with classes and people to illustrate
-   the available JADN representations
-  
-Additional examples may be added in future versions of the CN.
+ - A university with classes and people (teachers and students)
+
+These examples use a mix of the various JADN representation formats described in
+[Section&nbsp;3.1.3](#313-jadn-representations), and the university example
+specifically illustrates the use of all of the representations to present a
+single information model.
 
 ### 3.3.1 Digital Music Library
 
@@ -3087,6 +3104,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Add definitions for lexical and value space and make associated adjustments (PR #76) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Migrate Section 4 content into section 3.1 (PR #77) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Administrative clean-up (PR #78) |
+| imjadn-v1.0-cn01-wd02.md | 2023-11-14 | David Lemire | Update diagrams (PR #81) and text (PR #82) to align w/JADN Spec changes |
 
 -------
 
