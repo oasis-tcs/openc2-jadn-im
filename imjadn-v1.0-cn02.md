@@ -2891,6 +2891,57 @@ n3 [label=<<b>UnivId : String{pattern="^U-\d{6}$"}</b>>, shape=ellipse, style=fi
   n2 -> n3 [label=univ_id]
 }
 ```
+### 3.3.4 Converting JSON Schema to JADN
+
+This example begins with an existing JSON schema that is developed into a JADN
+IM. The starting point is the 
+[Calendar schema](https://json-schema.org/learn/json-schema-examples#calendar) on the
+examples page of the [json-schema.org](https://json-schema.org/) website. The
+first step was to validate the JSON schema using the 
+[JSON Schema Linter](https://www.json-schema-linter.com/). The changes from the starting
+example were:
+
+ 1) Change `"dtStart"` in the `"required"` field to `"startDate"`
+ 2) Remove the reference to the geographic location schema
+
+These changes enabled the JSON schema to pass validation. An automated JADN tool
+was used to convert the JSON scheme to JADN, leading to an initial JADN schema
+(JIDL representation):
+
+```
+     package: "https://example.com/calendar.schema.json"
+     exports: ["$Root"]
+      config: {"$FieldName": "^[$a-z][-_$A-Za-z0-9]{0,63}$", "$MaxString": 1000}
+
+$Root = Record                          // A representation of an event
+   1 startDate        String            // Event starting time
+   2 endDate          String optional   // Event ending time
+   3 summary          String
+   4 location         String optional
+   5 url              String optional
+   6 duration         String optional   // Event duration
+   7 recurrenceDate   String optional   // Recurrence date
+   8 recurrenceRule   String optional   // Recurrence rule
+   9 category         String optional
+  10 description      String optional
+```
+
+This schema reflects the original JSON schema with regard to field type and
+optionality but also highlights multiple opportunities for fine tuning:
+
+1) The `startDate`, `endDate`, `url`, and `recurrenceDate` fields could have
+   validation keywords applied to limit their content to appropriate values
+   (this would also be possible in JSON schema but was not included in the
+   original example)
+2) The `duration` field could be changed to an `Integer` representing duration
+   in a time unit (e.g., minutes) to simplify automated processing
+3) Guidance could be provided for the format of the recurrenceRule field
+4) The automatically generated `"$Root"` name for record in the schema could be
+   changed to something more meaningful
+5) Comments could be added to fields that lack them to further clarify their
+   intent
+
+
 
 -------
 
