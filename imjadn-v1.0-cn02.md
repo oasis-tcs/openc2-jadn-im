@@ -3046,7 +3046,9 @@ https://tools.ietf.org/html/rfc3444.
 
 ###### [RFC5545] 
 
-Desruisseaux, B., Ed., "Internet Calendaring and Scheduling Core Object Specification (iCalendar)", RFC 5545, DOI 10.17487/RFC5545, September 2009, <https://www.rfc-editor.org/info/rfc5545>.
+Desruisseaux, B., Ed., "Internet Calendaring and Scheduling 
+Core Object Specification (iCalendar)", RFC 5545, DOI 10.17487/RFC5545, 
+September 2009, <https://www.rfc-editor.org/info/rfc5545>.
 
 ###### [RFC4291]
 
