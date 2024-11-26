@@ -2950,7 +2950,7 @@ The starting JSON schema appears to have been modeled on the iCalendar standard
       align with its intended use as "a more complete description of the
       calendar component than that provided by the "SUMMARY" property"
 3) The `recurrenceDate` and `recurrenceRule` fields can be connected to their
-   iCalendar counterparts to clarify their use
+   iCalendar counterpart properties to clarify their use
 4) Field comments can be updated to reflect the intents for the corresponding
    iCalendar properties
 
