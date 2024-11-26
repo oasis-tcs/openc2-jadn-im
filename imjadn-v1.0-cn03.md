@@ -1861,8 +1861,7 @@ Primitive **CoreType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
 ###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
-![JADN for Primitive, ArrayOf, MapOfimages/JADN-primitive-json.drawio.png
-Types](images/JADN-primitive-json.drawio.png)
+![JADN for Primitive, ArrayOf, MapOf Types](images/JADN-primitive-json.drawio.png)
 
 Figure 3-5 illustrates the structure of JADN for defining an
 Enumerated **CoreType**; for enumerations each item definition in the
