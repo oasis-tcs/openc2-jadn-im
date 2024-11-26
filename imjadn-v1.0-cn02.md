@@ -2941,6 +2941,7 @@ optionality but also highlights multiple opportunities for fine tuning:
 5) Comments could be added to fields that lack them to further clarify their
    intent
 
+The starting JSON schema appears to draw inspiration from the iCalendar standard [[RFC5545]()]
 
 
 -------
@@ -3042,6 +3043,10 @@ https://datatracker.ietf.org/doc/html/rfc791#section-3.1
 Pras, A., Schoenwaelder, J., "On the Difference between
 Information Models and Data Models", RFC 3444, January 2003,
 https://tools.ietf.org/html/rfc3444.
+
+###### [RFC5545] 
+
+Desruisseaux, B., Ed., "Internet Calendaring and Scheduling Core Object Specification (iCalendar)", RFC 5545, DOI 10.17487/RFC5545, September 2009, <https://www.rfc-editor.org/info/rfc5545>.
 
 ###### [RFC4291]
 
