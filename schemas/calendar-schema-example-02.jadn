@@ -1,0 +1,24 @@
+{
+  "info": {
+    "config": {
+      "$FieldName": "^[$a-z][-_$A-Za-z0-9]{0,63}$",
+      "$MaxString": 1000
+    },
+    "exports": ["Event"],
+    "package": "https://example.com/calendar.schema.json"
+  },
+  "types": [
+    ["Event", "Record", [], "A representation of an event", [
+        [1, "startDate", "String", ["/date-time"], "Event starting time"],
+        [2, "endDate", "String", ["/date-time", "[0"], "Event ending time"],
+        [3, "summary", "String", ["{1", "}120"], "a short summary or subject of the event (<= 120 characters)"],
+        [4, "location", "String", ["[0"], "the intended venue for the event"],
+        [5, "url", "String", ["/uri", "[0"], "a Uniform Resource Locator (URL) associated with the event"],
+        [6, "duration", "Integer", [], "Event duration in minutes (should display as DD : HH : MM)"],
+        [7, "recurrenceDate", "String", ["/date-time", "[0"], "the list of DATE-TIME values for recurring events (populate per iCalendar RDATE property, RFC 5545, Section 3.8.5.2)"],
+        [8, "recurrenceRule", "String", ["[0"], "Recurrence rule (populate per iCalendar RRULE property, RFC 5545, Section 3.8.5.3)"],
+        [9, "category", "String", ["[0"], "defines the category (ies) for the event"],
+        [10, "description", "String", ["[0"], "a more complete description of the event than that provided by the summary"]
+      ]]
+  ]
+}
