@@ -2942,7 +2942,7 @@ optionality but also presents multiple opportunities for fine tuning:
    intent
 
 The starting JSON schema appears to have been modeled on the iCalendar standard
-[[RFC5545](#rfc5545)] so that standard can be used as a source for refinements:
+[[RFC5545](#rfc5545)] so that can be used as a source for refinements:
 
 1) The `summary` field can have a character limit applied to align with its
       intended use as "a short summary or subject for the calendar component"
