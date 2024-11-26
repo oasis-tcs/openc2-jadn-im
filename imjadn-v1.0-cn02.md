@@ -2931,7 +2931,7 @@ optionality but also highlights multiple opportunities for fine tuning:
 
 1) The `startDate`, `endDate`, `url`, and `recurrenceDate` fields could have
    validation keywords applied to limit their content to appropriate values
-   (this would also be possible in JSON schema but was not included in the
+   (this is also be possible in JSON schema but was not included in the
    original example)
 2) The `duration` field could be changed to an `Integer` representing duration
    in a time unit (e.g., minutes) to simplify automated processing
@@ -2941,7 +2941,16 @@ optionality but also highlights multiple opportunities for fine tuning:
 5) Comments could be added to fields that lack them to further clarify their
    intent
 
-The starting JSON schema appears to draw inspiration from the iCalendar standard [[RFC5545]()]
+The starting JSON schema appears to have been modeled on the iCalendar standard
+[[RFC5545](#rfc5545)] so that standard can be used as a source for refinements:
+
+1) The `summary` field can have a character limit applied to align with its
+      intended use as "a short summary or subject for the calendar component"
+2) Similarly, the `description` field could be given a larger character limit to
+      align with its intended use as "a more complete description of the
+      calendar component than that provided by the "SUMMARY" property"
+2) The `recurrenceDate` and `recurrenceRule` fields can be connected to their
+   iCalendar counterparts to clarify their use
 
 
 -------
