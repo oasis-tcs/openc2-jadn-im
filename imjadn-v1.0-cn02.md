@@ -2926,18 +2926,18 @@ $Root = Record                          // A representation of an event
   10 description      String optional
 ```
 
-This schema reflects the original JSON schema with regard to field type and
-optionality but also highlights multiple opportunities for fine tuning:
+The JADN schema reflects the original JSON schema with regard to field type and
+optionality but also presents multiple opportunities for fine tuning:
 
 1) The `startDate`, `endDate`, `url`, and `recurrenceDate` fields could have
    validation keywords applied to limit their content to appropriate values
-   (this is also be possible in JSON schema but was not included in the
-   original example)
+   (this is also possible in JSON schema but was not included in the original
+   example)
 2) The `duration` field could be changed to an `Integer` representing duration
    in a time unit (e.g., minutes) to simplify automated processing
 3) Guidance could be provided for the format of the recurrenceRule field
 4) The automatically generated `"$Root"` name for record in the schema could be
-   changed to something more meaningful
+   changed to something more meaningful (e.g., `Event`)
 5) Comments could be added to fields that lack them to further clarify their
    intent
 
@@ -2949,8 +2949,10 @@ The starting JSON schema appears to have been modeled on the iCalendar standard
 2) Similarly, the `description` field could be given a larger character limit to
       align with its intended use as "a more complete description of the
       calendar component than that provided by the "SUMMARY" property"
-2) The `recurrenceDate` and `recurrenceRule` fields can be connected to their
+3) The `recurrenceDate` and `recurrenceRule` fields can be connected to their
    iCalendar counterparts to clarify their use
+4) Field comments can be updated to reflect the intents for the corresponding
+   iCalendar properties
 
 
 -------
