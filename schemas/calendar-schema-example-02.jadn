@@ -14,7 +14,7 @@
         [3, "summary", "String", ["{1", "}120"], "a short summary or subject of the event (<= 120 characters)"],
         [4, "location", "String", ["[0"], "the intended venue for the event"],
         [5, "url", "String", ["/uri", "[0"], "a Uniform Resource Locator (URL) associated with the event"],
-        [6, "duration", "Integer", [], "Event duration in minutes (should display as DD : HH : MM)"],
+        [6, "duration", "Integer", ["[0"], "Event duration in minutes (should display as DD : HH : MM)"],
         [7, "recurrenceDate", "String", ["/date-time", "[0"], "the list of DATE-TIME values for recurring events (populate per iCalendar RDATE property, RFC 5545, Section 3.8.5.2)"],
         [8, "recurrenceRule", "String", ["[0"], "Recurrence rule (populate per iCalendar RRULE property, RFC 5545, Section 3.8.5.3)"],
         [9, "category", "String", ["[0"], "defines the category (ies) for the event"],
