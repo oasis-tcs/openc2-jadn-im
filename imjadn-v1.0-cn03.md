@@ -146,6 +146,7 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.3.1 Digital Music Library](#331-digital-music-library)
     - [3.3.2 Internet Protocol Version 4 Packet Header](#332-internet-protocol-version-4-packet-header)
     - [3.3.3 Multiple Representations Example](#333-multiple-representations-example)
+    - [3.3.4 Converting JSON Schema to JADN](#334-converting-json-schema-to-jadn)
 - [Appendix A. Informative References](#appendix-a-informative-references)
 - [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
 - [Appendix C. Revision History](#appendix-c-revision-history)
