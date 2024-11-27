@@ -2937,12 +2937,12 @@ optionality but also presents multiple opportunities for fine tuning:
 
 1) The `startDate`, `endDate`, `url`, and `recurrenceDate` fields could have
    validation keywords applied to limit their content to appropriate values
-   (this is also possible in JSON schema but was not included in the original
+   (this is also possible in JSON schema but was not a feature of original
    example)
 2) The `duration` field could be changed to an `Integer` representing duration
    in a time unit (e.g., minutes) to simplify automated processing
 3) Guidance could be provided for the format of the recurrenceRule field
-4) The automatically generated `"$Root"` name for record in the schema could be
+4) The automatically generated `"$Root"` name for record in the schema can be
    changed to something more meaningful (e.g., `Event`)
 5) Comments could be added to fields that lack them to further clarify their
    intent
@@ -2981,6 +2981,10 @@ Event = Record                                   // A representation of an event
    9 category         String optional            // defines the category (ies) for the event
   10 description      String optional            // a more complete description of the event than that provided by the summary
 ```
+
+Compared to the complexity of the iCalendar standard this IM for a calendar
+event is greatly simplified but could serve as the starting point for a more
+complete IM for describing calendar information for exchange among systems.
 
 -------
 
