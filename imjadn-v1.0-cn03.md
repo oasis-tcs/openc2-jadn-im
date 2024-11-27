@@ -2470,7 +2470,7 @@ modeling and the application of JADN. The example IMs are:
 These examples use a mixture of the various JADN representation formats
 described in [Section&nbsp;3.1.3](#313-jadn-representations), and the university
 example in [Section&nbsp;3.3.3](#333-multiple-representations-example)
-specifically illustrates the use of all of the representations describing a
+specifically incorporates all of the representations describing a
 single information model.
 
 ### 3.3.1 Digital Music Library
