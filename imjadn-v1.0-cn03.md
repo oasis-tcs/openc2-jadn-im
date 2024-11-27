@@ -2458,13 +2458,19 @@ are:
 This CN provides several examples to illustrate approaches to information
 modeling and the application of JADN. The example IMs are:
 
- - A digital music library
- - An IP version 4 packet header
- - A university with classes and people (teachers and students)
+ - A digital music library: an example of top-down analysis to develop an IM
+ - An IP version 4 packet header: an example of developing an IM from a
+   well-defined data structure
+ - A university with classes and people (teachers and students): an example to
+   illustrate the relationship among the available JADN representations
+   described in [Section 3.1.3](#313-jadn-representations)
+ - A calendar event model: an example of developing a JADN model from an existing
+   JSON schema
 
-These examples use a mix of the various JADN representation formats described in
-[Section&nbsp;3.1.3](#313-jadn-representations), and the university example
-specifically illustrates the use of all of the representations to present a
+These examples use a mixture of the various JADN representation formats
+described in [Section&nbsp;3.1.3](#313-jadn-representations), and the university
+example in [Section&nbsp;3.3.3](#333-multiple-representations-example)
+specifically illustrates the use of all of the representations describing a
 single information model.
 
 ### 3.3.1 Digital Music Library
