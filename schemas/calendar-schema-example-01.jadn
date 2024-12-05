@@ -1,0 +1,24 @@
+{
+  "info": {
+    "config": {
+      "$FieldName": "^[$a-z][-_$A-Za-z0-9]{0,63}$",
+      "$MaxString": 1000
+    },
+    "exports": ["$Root"],
+    "package": "https://example.com/calendar.schema.json"
+  },
+  "types": [
+    ["$Root", "Record", [], "A representation of an event", [
+        [1, "startDate", "String", [], "Event starting time"],
+        [2, "endDate", "String", ["[0"], "Event ending time"],
+        [3, "summary", "String", [], ""],
+        [4, "location", "String", ["[0"], ""],
+        [5, "url", "String", ["[0"], ""],
+        [6, "duration", "String", ["[0"], "Event duration"],
+        [7, "recurrenceDate", "String", ["[0"], "Recurrence date"],
+        [8, "recurrenceDule", "String", ["[0"], "Recurrence rule"],
+        [9, "category", "String", ["[0"], ""],
+        [10, "description", "String", ["[0"], ""]
+      ]]
+  ]
+}

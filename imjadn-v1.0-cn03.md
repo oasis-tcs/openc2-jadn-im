@@ -146,6 +146,7 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.3.1 Digital Music Library](#331-digital-music-library)
     - [3.3.2 Internet Protocol Version 4 Packet Header](#332-internet-protocol-version-4-packet-header)
     - [3.3.3 Multiple Representations Example](#333-multiple-representations-example)
+    - [3.3.4 Converting JSON Schema to JADN](#334-converting-json-schema-to-jadn)
 - [Appendix A. Informative References](#appendix-a-informative-references)
 - [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
 - [Appendix C. Revision History](#appendix-c-revision-history)
@@ -1860,8 +1861,7 @@ Primitive **CoreType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
 ###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
-![JADN for Primitive, ArrayOf, MapOf
-Types](images/JADN-primitive-json.drawio.png)
+![JADN for Primitive, ArrayOf, MapOf Types](images/JADN-primitive-json.drawio.png)
 
 Figure 3-5 illustrates the structure of JADN for defining an
 Enumerated **CoreType**; for enumerations each item definition in the
@@ -2458,13 +2458,19 @@ are:
 This CN provides several examples to illustrate approaches to information
 modeling and the application of JADN. The example IMs are:
 
- - A digital music library
- - An IP version 4 packet header
- - A university with classes and people (teachers and students)
+ - A digital music library: an example of top-down analysis to develop an IM
+ - An IP version 4 packet header: an example of developing an IM from a
+   well-defined data structure
+ - A university with classes and people (teachers and students): an example to
+   illustrate the relationship among the available JADN representations
+   described in [Section 3.1.3](#313-jadn-representations)
+ - A calendar event model: an example of developing a JADN model from an existing
+   JSON schema
 
-These examples use a mix of the various JADN representation formats described in
-[Section&nbsp;3.1.3](#313-jadn-representations), and the university example
-specifically illustrates the use of all of the representations to present a
+These examples use a mixture of the various JADN representation formats
+described in [Section&nbsp;3.1.3](#313-jadn-representations), and the university
+example in [Section&nbsp;3.3.3](#333-multiple-representations-example)
+specifically incorporates all of the representations describing a
 single information model.
 
 ### 3.3.1 Digital Music Library
@@ -2891,6 +2897,94 @@ n3 [label=<<b>UnivId : String{pattern="^U-\d{6}$"}</b>>, shape=ellipse, style=fi
   n2 -> n3 [label=univ_id]
 }
 ```
+### 3.3.4 Converting JSON Schema to JADN
+
+This example begins with an existing JSON schema that is developed into a JADN
+IM. The starting point is the 
+[Calendar schema](https://json-schema.org/learn/json-schema-examples#calendar) on the
+examples page of the [json-schema.org](https://json-schema.org/) website. The
+first step was to validate the JSON schema using the 
+[JSON Schema Linter](https://www.json-schema-linter.com/). The changes from the starting
+example were:
+
+ 1) Change `"dtStart"` in the `"required"` field to `"startDate"`
+ 2) Remove the reference to the geographic location schema
+
+These changes enabled the JSON schema to pass validation. An automated JADN tool
+was used to convert the JSON scheme to JADN, leading to an initial JADN schema
+(JIDL representation):
+
+```
+     package: "https://example.com/calendar.schema.json"
+     exports: ["$Root"]
+      config: {"$FieldName": "^[$a-z][-_$A-Za-z0-9]{0,63}$", "$MaxString": 1000}
+
+$Root = Record                          // A representation of an event
+   1 startDate        String            // Event starting time
+   2 endDate          String optional   // Event ending time
+   3 summary          String
+   4 location         String optional
+   5 url              String optional
+   6 duration         String optional   // Event duration
+   7 recurrenceDate   String optional   // Recurrence date
+   8 recurrenceRule   String optional   // Recurrence rule
+   9 category         String optional
+  10 description      String optional
+```
+
+The JADN schema reflects the original JSON schema with regard to field type and
+optionality but also presents multiple opportunities for fine tuning:
+
+1) The `startDate`, `endDate`, `url`, and `recurrenceDate` fields could have
+   validation keywords applied to limit their content to appropriate values
+   (this is also possible in JSON schema but was not a feature of original
+   example)
+2) The `duration` field could be changed to an `Integer` representing duration
+   in a time unit (e.g., minutes) to simplify automated processing
+3) Guidance could be provided for the format of the recurrenceRule field
+4) The automatically generated `"$Root"` name for record in the schema can be
+   changed to something more meaningful (e.g., `Event`)
+5) Comments could be added to fields that lack them to further clarify their
+   intent
+
+The starting JSON schema appears to have been modeled on the iCalendar standard
+[[RFC5545](#rfc5545)] so that can be used as a source for refinements:
+
+1) The `summary` field can have a character limit applied to align with its
+      intended use as "a short summary or subject for the calendar component"
+2) Similarly, the `description` field could be given a larger character limit to
+      align with its intended use as "a more complete description of the
+      calendar component than that provided by the "SUMMARY" property"
+3) The `recurrenceDate` and `recurrenceRule` fields can be connected to their
+   iCalendar counterpart properties to clarify their use
+4) Field comments can be updated to reflect the intents for the corresponding
+   iCalendar properties
+
+Applying these changes leads to a refined model for the event schema:
+
+```
+     package: "https://example.com/calendar.schema.json"
+     exports: ["Event"]
+      config: {"$FieldName": "^[$a-z][-_$A-Za-z0-9]{0,63}$", "$MaxString": 1000}
+
+Event = Record                                   // A representation of an event
+   1 startDate        String /date-time          // Event starting time
+   2 endDate          String /date-time optional // Event ending time
+   3 summary          String{1..120}             // a short summary or subject of the event (<= 120 characters)
+   4 location         String optional            // the intended venue for the event
+   5 url              String /uri optional       // a Uniform Resource Locator (URL) associated with the event
+   6 duration         Integer optional           // Event duration in minutes (should display as DD : HH : MM)
+   7 recurrenceDate   String /date-time optional // the list of DATE-TIME values for recurring events (populate 
+                                                    per iCalendar RDATE property, RFC 5545, Section 3.8.5.2)
+   8 recurrenceRule   String optional            // Recurrence rule (populate per iCalendar 
+                                                    RRULE property, RFC 5545, Section 3.8.5.3)
+   9 category         String optional            // defines the category (ies) for the event
+  10 description      String optional            // a more complete description of the event than that provided by the summary
+```
+
+Compared to the complexity of the iCalendar standard this IM for a calendar
+event is greatly simplified but could serve as the starting point for a more
+complete IM for describing calendar information for exchange among systems.
 
 -------
 
@@ -2991,6 +3085,12 @@ https://datatracker.ietf.org/doc/html/rfc791#section-3.1
 Pras, A., Schoenwaelder, J., "On the Difference between
 Information Models and Data Models", RFC 3444, January 2003,
 https://tools.ietf.org/html/rfc3444.
+
+###### [RFC5545] 
+
+Desruisseaux, B., Ed., "Internet Calendaring and Scheduling 
+Core Object Specification (iCalendar)", RFC 5545, DOI 10.17487/RFC5545, 
+September 2009, <https://www.rfc-editor.org/info/rfc5545>.
 
 ###### [RFC4291]
 
@@ -3105,6 +3205,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Migrate Section 4 content into section 3.1 (PR #77) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Administrative clean-up (PR #78) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-14 | David Lemire | Update diagrams (PR #81) and text (PR #82) to align w/JADN Spec changes |
+| imjadn-v1.0-cn03.md      | 2023-11-26 | David Lemire | Add example development JADN IM from JSON schema starting point (PR #xx), rename document for next CN version |
 
 -------
 
