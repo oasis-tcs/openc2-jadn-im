@@ -236,7 +236,8 @@ information of interest:
 > _**TO-DO:** Update the music library information model to better support this
 > introductory example and update the excerpts here_
 
-An excerpt from the Digital Music Library example in [Section&nbsp;3.3.1](#331-digital-music-library)
+An excerpt from the Digital Music Library example presented in full 
+in [Section&nbsp;3.3.1](#331-digital-music-library)
 helps illustrate. Each music track in the library is described by a collection of metadata
 (present here in JADN Interface Definition Language [JIDL] format):
 
