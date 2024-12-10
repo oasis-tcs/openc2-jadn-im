@@ -5,9 +5,9 @@
 
 # Information Modeling with JADN Version 1.0
 
-## Committee Note 02
+## Committee Note 03
 
-## 19 November 2024
+## 11 December 2024
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
@@ -222,6 +222,55 @@ actual implementations. Having a clear view of the information required provides
 clarity regarding the goals that the eventual implementation must satisfy. This
 section provides the background for the creation of JADN as an information
 modeling language for a spectrum of applications.
+
+JADN complements existing schema languages such as JSON Schema and XSD while
+providing distinctive features that focus on accurate definition of the
+information of interest:
+
+ * Unambiguous definition of the meaning of information separate from its representation for transmission or storage
+ * Ready translation of JADN models to widely-used format such as JSON Schema and XML Schema that can then be used with common tooling for those formats
+ * Serialization rules for JSON and CBOR, easily extensible to other representations
+ * Conversion of representation between formats that preserves the underlying meaning
+ * Concise, readable format that accurately represents the information model and is readily translatable
+
+> TO-DO: Update the music library information model to better support this
+> introductory example and update the excerpts here
+
+An excerpt from the Digital Music Library example in [Section&nbsp;3.3.1](#331-digital-music-library) 
+helps illustrate. Each musical track is described by a collection of metadata
+(present here in JADN Interface Definition Language [JIDL] format):
+
+```
+Track-Info = Record                          // information about the individual audio tracks
+   1 track_number     Integer                // track sequence number
+   2 title            String                 // track title
+   3 length           Integer{1..*}          // length of track in seconds; 
+                                             // anticipated user display is mm:ss; minimum length is 1 second
+   4 audio_format     Audio-Format           // format of the digital audio (enumeration)
+   5 featured_artist  Artist unique [0..*]   // optional notable guest performers 
+   6 track_art        Image optional         // each track can have optionally have individual artwork
+   7 genre            Genre                  // musical genre of the track (enumeration)
+```
+
+The JIDL presentation is concise and easily understood. The details of `Artist`,
+`Image` and other types referenced in this metadata record are defined in other
+structures. The JADN from which the JIDL is generated can be readily translated
+into JSON or XML schema forms for use with existing tooling but the readability
+of the JIDL format simplifies development, examination, and refinement of the
+model:
+
+**JSON Schema**
+```json
+
+```
+
+**XML Schema***
+```xml
+
+```
+
+
+
 
 ### 1.1.1 Information Models and Data Models
 
