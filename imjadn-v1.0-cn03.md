@@ -233,7 +233,7 @@ information of interest:
  * Conversion of representation between formats that preserves the underlying meaning
  * Concise, readable format that accurately represents the information model and is readily translatable
 
-> TO-DO: Update the music library information model to better support this
+> **TO-DO:** Update the music library information model to better support this
 > introductory example and update the excerpts here
 
 An excerpt from the Digital Music Library example in [Section&nbsp;3.3.1](#331-digital-music-library) 
@@ -261,12 +261,82 @@ model:
 
 **JSON Schema**
 ```json
-
+    "Track-Info": {
+      "title": "Track Info",
+      "type": "object",
+      "description": "information about the individual audio tracks",
+      "additionalProperties": false,
+      "required": [
+        "track_number",
+        "title",
+        "length",
+        "audio_format",
+        "genre"
+      ],
+      "maxProperties": 100,
+      "properties": {
+        "track_number": {
+          "type": "integer",
+          "description": "track sequence number"
+        },
+        "title": {
+          "type": "string",
+          "description": "track title",
+          "maxLength": 255
+        },
+        "length": {
+          "type": "integer",
+          "description": "length of track in seconds; anticipated user display is mm:ss; minimum length is 1 second",
+          "minimum": 1
+        },
+        "audio_format": {
+          "$ref": "#/definitions/Audio-Format",
+          "description": "format of the digital audio (enumeration"
+        },
+        "featured_artist": {
+          "type": "array",
+          "description": "notable guest performers",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/Artist",
+            "description": "notable guest performers"
+          }
+        },
+        "track_art": {
+          "$ref": "#/definitions/Image",
+          "description": "each track can have optionally have individual artwork"
+        },
+        "genre": {
+          "$ref": "#/definitions/Genre",
+          "description": "musical genre of the track (enumeration)"
+        }
+      }
+    },
 ```
+
+> **NOTE:** update once the Sandbox glitch of not propogating comments to XSD is corrected
+
 
 **XML Schema***
 ```xml
-
+	<xs:complexType name="Track-Info">
+		<xs:sequence>
+			<xs:element id="track_info_track_number" name="track_number" type="jadn:Integer" minOccurs="1" />
+			<xs:element id="track_info_title" name="title" type="jadn:String" />
+			<xs:element id="track_info_length" name="length">
+				<xs:simpleType>
+					<xs:restriction base="jadn:Integer">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element id="track_info_audio_format" name="audio_format" type="Audio-Format" />
+			<xs:element id="track_info_featured_artist" name="featured_artist" type="Artist" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element id="track_info_track_art" name="track_art" type="Image" minOccurs="0" />
+			<xs:element id="track_info_genre" name="genre" type="Genre" />
+		</xs:sequence>
+	</xs:complexType>
 ```
 
 
