@@ -233,11 +233,11 @@ information of interest:
  * Conversion of representation between formats that preserves the underlying meaning
  * Concise, readable format that accurately represents the information model and is readily translatable
 
-> **TO-DO:** Update the music library information model to better support this
-> introductory example and update the excerpts here
+> _**TO-DO:** Update the music library information model to better support this
+> introductory example and update the excerpts here_
 
-An excerpt from the Digital Music Library example in [Section&nbsp;3.3.1](#331-digital-music-library) 
-helps illustrate. Each musical track is described by a collection of metadata
+An excerpt from the Digital Music Library example in [Section&nbsp;3.3.1](#331-digital-music-library)
+helps illustrate. Each music track in the library is described by a collection of metadata
 (present here in JADN Interface Definition Language [JIDL] format):
 
 ```
@@ -252,14 +252,15 @@ Track-Info = Record                          // information about the individual
    7 genre            Genre                  // musical genre of the track (enumeration)
 ```
 
-The JIDL presentation is concise and easily understood. The details of `Artist`,
-`Image` and other types referenced in this metadata record are defined in other
-structures. The JADN from which the JIDL is generated can be readily translated
-into JSON or XML schema forms for use with existing tooling but the readability
-of the JIDL format simplifies development, examination, and refinement of the
-model:
+The JIDL presentation is concise and easily understood. Each element is defined
+by its meaning (e.g., the track number is an _integer_, not a string containing
+only digits). The details of `Artist`, `Image`, and other types referenced in
+this metadata record are defined in other structures. The JADN from which the
+JIDL is generated can be readily translated into JSON or XML schema forms for
+use with existing tooling but the readability of the JIDL format simplifies
+development, examination, and refinement of the model:
 
-**JSON Schema**
+**Track-Info in JSON Schema**
 ```json
     "Track-Info": {
       "title": "Track Info",
@@ -318,7 +319,7 @@ model:
 > **NOTE:** update once the Sandbox glitch of not propogating comments to XSD is corrected
 
 
-**XML Schema***
+**Track-Info in XML Schema***
 ```xml
 	<xs:complexType name="Track-Info">
 		<xs:sequence>
@@ -339,8 +340,8 @@ model:
 	</xs:complexType>
 ```
 
-
-
+The following sections examine the meaning of information and the value of
+information models in more detail.
 
 ### 1.1.1 Information Models and Data Models
 
