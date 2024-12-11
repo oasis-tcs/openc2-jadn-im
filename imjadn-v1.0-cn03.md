@@ -295,7 +295,7 @@ development, examination, and refinement of the model.
         "featured_artist": {
           "type": "array",
           "uniqueItems": true,
-          "minItems": 1,
+          "minItems": 0,
           "items": {
             "$ref": "#/definitions/Artist",
           }
