@@ -309,10 +309,7 @@ development, examination, and refinement of the model.
       }
     },
 ```
-
-> **NOTE:** update once the Sandbox glitch of not propagating comments to XSD is corrected
-
-
+<br><br>
 **Track-Info in XML Schema***
 ```xml
 	<xs:complexType name="Track-Info">
