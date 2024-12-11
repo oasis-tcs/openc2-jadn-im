@@ -259,14 +259,15 @@ only digits). The details of `Artist`, `Image`, and other types referenced in
 this metadata record are defined in other similar structures. The JADN from which the
 JIDL is generated can be readily translated into JSON or XML schema forms for
 use with existing tooling for those formats but the readability of the JIDL format simplifies
-development, examination, and refinement of the model:
+development, examination, and refinement of the model.
+
+> NOTE: Comments have been omitted from the JSON and XML schemas below for space reasons.
 
 **Track-Info in JSON Schema**
 ```json
     "Track-Info": {
       "title": "Track Info",
       "type": "object",
-      "description": "information about the individual audio tracks",
       "additionalProperties": false,
       "required": [
         "track_number",
@@ -279,39 +280,31 @@ development, examination, and refinement of the model:
       "properties": {
         "track_number": {
           "type": "integer",
-          "description": "track sequence number"
         },
         "title": {
           "type": "string",
-          "description": "track title",
           "maxLength": 255
         },
         "length": {
           "type": "integer",
-          "description": "length of track in seconds; anticipated user display is mm:ss; minimum length is 1 second",
           "minimum": 1
         },
         "audio_format": {
           "$ref": "#/definitions/Audio-Format",
-          "description": "format of the digital audio (enumeration"
         },
         "featured_artist": {
           "type": "array",
-          "description": "notable guest performers",
           "uniqueItems": true,
           "minItems": 1,
           "items": {
             "$ref": "#/definitions/Artist",
-            "description": "notable guest performers"
           }
         },
         "track_art": {
           "$ref": "#/definitions/Image",
-          "description": "each track can have optionally have individual artwork"
         },
         "genre": {
           "$ref": "#/definitions/Genre",
-          "description": "musical genre of the track (enumeration)"
         }
       }
     },
