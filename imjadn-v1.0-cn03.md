@@ -5,9 +5,9 @@
 
 # Information Modeling with JADN Version 1.0
 
-## Committee Note 02
+## Committee Note 03
 
-## 19 November 2024
+## 11 December 2024
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
@@ -222,6 +222,117 @@ actual implementations. Having a clear view of the information required provides
 clarity regarding the goals that the eventual implementation must satisfy. This
 section provides the background for the creation of JADN as an information
 modeling language for a spectrum of applications.
+
+JADN complements existing schema languages such as JSON Schema and XSD while
+providing distinctive features that focus on accurate definition of the
+information of interest:
+
+ * Unambiguous definition of the meaning of information separate from its representation for transmission or storage
+ * Ready translation of JADN models to widely-used format such as JSON Schema and XML Schema that can then be used with common tooling for those formats
+ * Serialization rules for JSON and CBOR, easily extensible to other representations
+ * Conversion of representation between formats that preserves the underlying meaning
+ * Concise, readable format that accurately represents the information model and is readily translatable
+
+> _**TO-DO:** Update the music library information model to better support this
+> introductory example and update the excerpts here_
+
+An excerpt from the Digital Music Library example presented in full 
+in [Section&nbsp;3.3.1](#331-digital-music-library)
+helps illustrate. Each music track in the library is described by a collection of metadata
+(present here in JADN Interface Definition Language [JIDL] format):
+
+```
+Track-Info = Record                          // information about the individual audio tracks
+   1 track_number     Integer                // track sequence number
+   2 title            String                 // track title
+   3 length           Integer{1..*}          // length of track in seconds; 
+                                             // anticipated user display is mm:ss; minimum length is 1 second
+   4 audio_format     Audio-Format           // format of the digital audio (enumeration)
+   5 featured_artist  Artist unique [0..*]   // optional notable guest performers 
+   6 track_art        Image optional         // each track can have optionally have individual artwork
+   7 genre            Genre                  // musical genre of the track (enumeration)
+```
+
+The JIDL presentation is concise and easily understood. Each element is defined
+by its meaning (e.g., the track number is an _integer_, not a string containing
+only digits). The details of `Artist`, `Image`, and other types referenced in
+this metadata record are defined in other similar structures. The JADN from which the
+JIDL is generated can be readily translated into JSON or XML schema forms for
+use with existing tooling for those formats but the readability of the JIDL format simplifies
+development, examination, and refinement of the model.
+
+> NOTE: Comments have been omitted from the JSON and XML schemas below for space reasons.
+
+**Track-Info in JSON Schema**
+```json
+    "Track-Info": {
+      "title": "Track Info",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "track_number",
+        "title",
+        "length",
+        "audio_format",
+        "genre"
+      ],
+      "maxProperties": 100,
+      "properties": {
+        "track_number": {
+          "type": "integer",
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "length": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "audio_format": {
+          "$ref": "#/definitions/Audio-Format",
+        },
+        "featured_artist": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 0,
+          "items": {
+            "$ref": "#/definitions/Artist",
+          }
+        },
+        "track_art": {
+          "$ref": "#/definitions/Image",
+        },
+        "genre": {
+          "$ref": "#/definitions/Genre",
+        }
+      }
+    },
+```
+<br><br>
+**Track-Info in XML Schema***
+```xml
+	<xs:complexType name="Track-Info">
+		<xs:sequence>
+			<xs:element id="track_info_track_number" name="track_number" type="jadn:Integer" minOccurs="1" />
+			<xs:element id="track_info_title" name="title" type="jadn:String" />
+			<xs:element id="track_info_length" name="length">
+				<xs:simpleType>
+					<xs:restriction base="jadn:Integer">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element id="track_info_audio_format" name="audio_format" type="Audio-Format" />
+			<xs:element id="track_info_featured_artist" name="featured_artist" type="Artist" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element id="track_info_track_art" name="track_art" type="Image" minOccurs="0" />
+			<xs:element id="track_info_genre" name="genre" type="Genre" />
+		</xs:sequence>
+	</xs:complexType>
+```
+
+The following sections examine the meaning of information and the value of
+information models in more detail.
 
 ### 1.1.1 Information Models and Data Models
 
@@ -1044,24 +1155,7 @@ Table 3-2 summarizes the applicability of type options to JADN core types.
 
 ###### Table 3-2 -- Type Option Applicability
 
-|           | Binary | Boolean | Integer | Number | String | Array | ArrayOf | Map | MapOf | Record | Choice | Enumerated |
-|----------:|:------:|:-------:|:-------:|:------:|:------:|:-----:|:-------:|:---:|:-----:|:------:|:------:|:----------:|
-|        id |        |         |         |        |        |       |         |  X  |       |        |   X    |     X      |
-|     vtype |        |         |         |        |        |       |    X    |     |   X   |        |        |            |
-|     ktype |        |         |         |        |        |       |         |     |   X   |        |        |            |
-|      enum |        |         |         |        |        |       |         |     |       |        |        |     X      |
-|   pointer |        |         |         |        |        |       |         |     |       |        |        |     X      |
-|    format |   X    |         |    X    |   X    |   X    |   X   |         |     |       |        |        |            |
-|   pattern |        |         |         |        |   X    |       |         |     |       |        |        |            |
-|      minf |        |         |         |   X    |        |       |         |     |       |        |        |            |
-|      maxf |        |         |         |   X    |        |       |         |     |       |        |        |            |
-|      minv |   X    |         |    X    |        |   X    |   X   |    X    |  X  |   X   |   X    |        |            |
-|      maxv |   X    |         |    X    |        |   X    |   X   |    X    |  X  |   X   |   X    |        |            |
-|    unique |        |         |         |        |        |       |    X    |     |       |        |        |            |
-|       set |        |         |         |        |        |       |    X    |     |       |        |        |            |
-| unordered |        |         |         |        |        |       |    X    |     |       |        |        |            |
-|    extend |        |         |         |        |        |   X   |         |  X  |       |   X    |   X    |     X      |
-|   default |        |         |         |        |        |       |         |     |       |        |        |            |
+![Table 3-2 -- Type Option Applicability](images/table-3-2.png)
 
 #### 3.1.1.3 Item Or Field Definitions
 
@@ -3206,6 +3300,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Administrative clean-up (PR #78) |
 | imjadn-v1.0-cn01-wd02.md | 2023-11-14 | David Lemire | Update diagrams (PR #81) and text (PR #82) to align w/JADN Spec changes |
 | imjadn-v1.0-cn03.md      | 2023-11-26 | David Lemire | Add example development JADN IM from JSON schema starting point (PR #xx), rename document for next CN version |
+| imjadn-v1.0-cn03.md      | 2023-12-11 | David Lemire | Add "Why JADN?" material in Section 1.1 (PR #88) |
 
 -------
 
