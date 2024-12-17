@@ -1155,24 +1155,7 @@ Table 3-2 summarizes the applicability of type options to JADN core types.
 
 ###### Table 3-2 -- Type Option Applicability
 
-|           | Binary | Boolean | Integer | Number | String | Array | ArrayOf | Map | MapOf | Record | Choice | Enumerated |
-|----------:|:------:|:-------:|:-------:|:------:|:------:|:-----:|:-------:|:---:|:-----:|:------:|:------:|:----------:|
-|        id |        |         |         |        |        |       |         |  X  |       |        |   X    |     X      |
-|     vtype |        |         |         |        |        |       |    X    |     |   X   |        |        |            |
-|     ktype |        |         |         |        |        |       |         |     |   X   |        |        |            |
-|      enum |        |         |         |        |        |       |         |     |       |        |        |     X      |
-|   pointer |        |         |         |        |        |       |         |     |       |        |        |     X      |
-|    format |   X    |         |    X    |   X    |   X    |   X   |         |     |       |        |        |            |
-|   pattern |        |         |         |        |   X    |       |         |     |       |        |        |            |
-|      minf |        |         |         |   X    |        |       |         |     |       |        |        |            |
-|      maxf |        |         |         |   X    |        |       |         |     |       |        |        |            |
-|      minv |   X    |         |    X    |        |   X    |   X   |    X    |  X  |   X   |   X    |        |            |
-|      maxv |   X    |         |    X    |        |   X    |   X   |    X    |  X  |   X   |   X    |        |            |
-|    unique |        |         |         |        |        |       |    X    |     |       |        |        |            |
-|       set |        |         |         |        |        |       |    X    |     |       |        |        |            |
-| unordered |        |         |         |        |        |       |    X    |     |       |        |        |            |
-|    extend |        |         |         |        |        |   X   |         |  X  |       |   X    |   X    |     X      |
-|   default |        |         |         |        |        |       |         |     |       |        |        |            |
+![Table 3-2 -- Type Option Applicability](images/table-3-2.png)
 
 #### 3.1.1.3 Item Or Field Definitions
 
