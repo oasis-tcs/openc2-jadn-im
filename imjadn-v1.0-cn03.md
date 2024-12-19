@@ -739,8 +739,8 @@ the same datatype and their logical values are equal.
 # 2 Creation and Use of Information Models
 
 This section discusses the nature and benefits of IMs, the role
-of serialization, types of available modeling languages, and
-tools that can be used in information modeling.
+of serialization, the application of information models, and
+desirable tool capabilities for information modeling.
 
 ## 2.1 Information Modeling
 Modeling in the conceptual \> logical \> physical sense is a top-down process starting with goals and ending
