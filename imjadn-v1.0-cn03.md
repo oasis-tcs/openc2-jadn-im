@@ -883,9 +883,9 @@ the associated data.
 
 ###### Figure 2-2 -- Parsing and Serializing With An IM
 
-![Parsing and Serializing With An IM](images/parse-serialize.png)
+<img src="images/parse-serialize.png" alt="Figure 2-2 -- Parsing and Serializing with an IM" width="750" />
 
-The internal representation, illustrated in Figure 2-1 as a graph,
+The internal representation, illustrated in Figure 2-2 as a graph,
 is guided by rules associated with applying the IM:
 
  - the internal representation conforms to the IM
