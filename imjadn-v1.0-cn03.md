@@ -3316,7 +3316,26 @@ This section details differences between versions 1 and 2 of JADN.
 
 ### C.2.3 -- Type Option Changes
 
+The following changes were made to JADN type options:
+
+- New options:
+  - `minExclusive, maxExclusive`: used to specify number ranges that don't include the stated minimum or maximum values
+  - `minLength, maxLength`: a distinct option from `minv, maxv`; with this new option strings can have both `minInclusive` and `minLength`
+  - `sequence`: enables specifying that `Map, MapOf, Record` types have a required field order 
+  - `combine`: provides greater flexibility for `Choice` types with `oneOf, anyOf, allOf, not` sub-options
+  - `abstract, extends, restricts, final`: options related to defining and controlling types using inheritance
+- Replaced options:
+  - `minv, maxv`: these options have been renamed to `minInclusive, maxInclusive`
+  - `minf, maxf`: these floating-point specific options have been replaced by `minInclusive, maxInclusive`
+- Removed option:
+  - `extend`: this option has been deprecated
+
 ### C.2.4 -- Field Option Changes
+
+The following changes were made to JADN type options:
+
+- Replaced option:
+  - `minc, maxc`: these options have been renamed to `minOccurs, maxOccurs`
 
 -------
 
