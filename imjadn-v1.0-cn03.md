@@ -101,11 +101,10 @@ For complete copyright information please see the full Notices section in [Appen
     - [1.1.5 Information Modeling Languages](#115-information-modeling-languages)
   - [1.2 Terminology](#12-terminology)
 - [2 Creation and Use of Information Models](#2-creation-and-use-of-information-models)
-  - [2.1 Information vs. Data](#21-information-vs-data)
-  - [2.2 Information Modeling](#22-information-modeling)
-  - [2.3 Serialization](#23-serialization)
-  - [2.4 Applying an Information Model](#24-applying-an-information-model)
-  - [2.5 Information Modeling Tools](#25-information-modeling-tools)
+  - [2.1 Information Modeling](#21-information-modeling)
+  - [2.2 Serialization](#22-serialization)
+  - [2.3 Applying an Information Model](#23-applying-an-information-model)
+  - [2.4 Information Modeling Tools](#24-information-modeling-tools)
 - [3 Creating Information Models with JADN](#3-creating-information-models-with-jadn)
   - [3.1 JADN Overview](#31-jadn-overview)
     - [3.1.1 Type Definitions](#311-type-definitions)
@@ -455,10 +454,19 @@ _information equivalence_.
 
 ### 1.1.3 Defining Information
 
+Formally, information is the unexpected data, or entropy, contained in a
+document.  When information is serialized for transmission in a canonical
+format, the additional data used for purposes such as text conversion,
+delimiting, and framing contains no information because it is known *a priori*
+by the sender(s) and receiver(s). If the serialization is non-canonical, any
+additional entropy introduced during serialization (e.g., whitespace, leading
+zeroes, field reordering, case-insensitive capitalization) is discarded on
+deserialization.
+
 JADN is based on Information Theory
 [[Info-Theory](#info-theory)], which provides a concrete way of
 quantifying information that is explicitly independent of both
-semantic meaning and data representation. This may sound paradoxical,
+semantic meaning and data representation. It may sound paradoxical,
 but information modeling is based on separating
 application-specific abstract schemas from application-independent
 encoding rules. A data format specifies encoding rules used for each
@@ -495,17 +503,38 @@ provides a precise vocabulary for describing the relationship between
 > whose first element belongs to the lexical space and the second element
 > belongs to the value space of the datatype.
 
-A small example may help clarify the concept of information. The
-information content of a logical value can be no greater than the
-smallest lexical value for which lossless round-trip conversion
-is possible. For example, an IPv4 address represented in dotted
-quad format is 17 bytes of JSON string data ("192.168.101.213"),
-but can be converted to 4 byte [[RFC 791](#rfc0791)] format and back without
-loss. The information content of an IPv4 address can therefore be
-no greater than 4 bytes (32 bits), and an information model would
-define the IPv4 address datatype as a byte sequence of length 4. Expanding
-the example to include a full RFC 791 IP header illustrates some of the
-equivalent terms used to describe logical and lexical values:
+A small example may help clarify the concept of information. The information
+content of a logical value can be no greater than the smallest lexical value for
+which lossless round-trip conversion is possible. A variable that can take on
+2^N different values conveys at most N bits of information. For example, an IPv4
+address (as defined in [[RFC 791](#rfc0791)]) can specify exactly 2^32 different addresses and therefore is, by definition, a 32-bit
+value*.  But different data may be used to represent that information:
+
+* IPv4 dotted-quad contained in a JSON string: "192.168.141.240" (17 bytes / 136
+  bits).
+* IPv4 dotted-quad contained in a CBOR string:
+  0x6F3139322E3136382E3134312E323430 (16 bytes / 128 bits)
+* Hex value contained in a JSON string: "C0A88DF0" (10 bytes / 80 bits)
+* CBOR byte string: 0x44c0a88df0 (5 bytes / 40 bits).
+* IPv4 packet (unadorned RFC791-style serialization): 0xc0a88df0 (4 bytes / 32
+  bits).
+
+\* *Note: all references to information assume independent uniformly-distributed
+values. Non-uniform or correlated data contains less than one byte of
+information per data byte, but source coding is beyond the scope of this
+specification.*
+
+The 13 extra bytes used to format a 4-byte IP address as a dotted quad are
+useful for display purposes, but provide no information to the receiving
+application.  Field names and enumerated strings selected from a dozen
+possibilities convey less than four *bits* of information, while the strings
+themselves may be half a dozen to hundreds of *bytes* of data. By distinguishing
+information from data, information modeling is key to effectively using both
+binary data formats such as Protobuf and CBOR and text formats such as XML and
+JSON.
+
+Expanding the example to include a full RFC 791 IP header illustrates some of
+the equivalent terms used to describe logical and lexical values:
 
 * An Information Model abstract datatype defines the "essential content"
 of an IPv4 Header
@@ -521,12 +550,9 @@ file is:
   * IM: lexical value (instance of the IP Header abstract datatype, external representation)
   * DM: physical value (instance of an IP Header concrete datatype)
 
-As with individual IP addresses, the information in an IPv4 header is
-no greater than the 24 byte RFC 791 lexical value regardless of data format.
-
-[Section 2](#2-creation-and-use-of-information-models) discusses information vs. data,
-information modeling, and related concepts in more detail.
-[Section 3.3.2](#332-internet-protocol-version-4-packet-header)
+As with individual IP addresses, the information in an IPv4 header is no greater
+than the 24 byte RFC 791 lexical value regardless of data format. 
+[Section&nbsp;3.3.2](#332-internet-protocol-version-4-packet-header) 
 provides a more detailed illustration of an IM for an IPv4 packet header.
 
 ### 1.1.4 Information Modeling Goals and Principles
@@ -712,38 +738,10 @@ the same datatype and their logical values are equal.
 # 2 Creation and Use of Information Models
 
 This section discusses the nature and benefits of IMs, the role
-of serialization, types of available modeling languages, and
-tools that can be used in information modeling.
+of serialization, the application of information models, and
+desirable tool capabilities for information modeling.
 
-## 2.1 Information vs. Data
-Formally, information is the unexpected data, or entropy,
-contained in a document.  When information is serialized for transmission in a canonical format, the additional
-data used for purposes such as text conversion, delimiting, and framing contains no information because it is known
-*a priori* by the sender(s) and receiver(s). If the serialization is non-canonical, any additional entropy introduced during serialization
-(e.g., whitespace, leading zeroes, field reordering, case-insensitive capitalization)
-is discarded on deserialization.
-
-A variable that can take on 2^N different values conveys at most N bits of information.
-For example, an IPv4 address that can specify 2^32 different addresses is, by definition,
-a 32 bit value*.  But different data may be used to represent that information:
-* IPv4 dotted-quad contained in a JSON string: "192.168.141.240" (17 bytes / 136 bits).
-* IPv4 dotted-quad contained in a CBOR string: 0x6F3139322E3136382E3134312E323430 (16 bytes / 128 bits)
-* Hex value contained in a JSON string: "C0A88DF0" (10 bytes / 80 bits)
-* CBOR byte string: 0x44c0a88df0 (5 bytes / 40 bits).
-* IPv4 packet (unadorned RFC791-style serialization): 0xc0a88df0 (4 bytes / 32 bits).
-
-The 13 extra bytes used to format a 4 byte IP address as a dotted quad are useful for display purposes,
-but provide no information to the receiving application.  Field names and enumerated strings selected
-from a dozen possibilities convey less than four *bits* of information, while the strings themselves
-may be half a dozen to hundreds of *bytes* of data.
-By distinguishing information from data, information modeling is key to effectively using both
-binary data formats such as Protobuf and CBOR and text formats such as XML and JSON.
-
-\* *Note: all references to information assume independent uniformly-distributed values.
-Non-uniform or correlated data contains less than one byte of information per data byte,
-but source coding is beyond the scope of this specification.*
-
-## 2.2 Information Modeling
+## 2.1 Information Modeling
 Modeling in the conceptual \> logical \> physical sense is a top-down process starting with goals and ending
 with a physical data model. But in practice "data modeling" is often a bottom-up exercise that begins with
 a collection of desired data instances and ends with a concrete schema.
@@ -773,7 +771,7 @@ Reverse-engineering an information model from existing data models allows
 commonalities and incompatibilities to be identified, facilitating convergence
 across multiple specifications with similar goals.
 
-## 2.3 Serialization
+## 2.2 Serialization
 
 Information exists in the minds of users (producers and consumers), in the state
 of applications running on systems, and in the data exchanged among
@@ -852,7 +850,7 @@ human readability) may indicate that a serialization that uses
 more data than sufficient is appropriate for particular
 situations.
 
-## 2.4 Applying an Information Model
+## 2.3 Applying an Information Model
 
 A primary application of an IM is in the translation of data into
 and out of in-memory representation and serialized formats for
@@ -884,9 +882,9 @@ the associated data.
 
 ###### Figure 2-2 -- Parsing and Serializing With An IM
 
-![Parsing and Serializing With An IM](images/parse-serialize.png)
+<img src="images/parse-serialize.png" alt="Figure 2-2 -- Parsing and Serializing with an IM" width="750" />
 
-The internal representation, illustrated in Figure 2-1 as a graph,
+The internal representation, illustrated in Figure 2-2 as a graph,
 is guided by rules associated with applying the IM:
 
  - the internal representation conforms to the IM
@@ -923,7 +921,7 @@ true. A JSON representation can use a Boolean type with values
 'false' and 'true', but for efficient serialization might also
 use the JSON number type with values 0 and 1.
 
-## 2.5 Information Modeling Tools
+## 2.4 Information Modeling Tools
 
 The value of an IM language multiplies when automated tooling is
 available to support creation, maintenance, and use of models
@@ -3301,6 +3299,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn01-wd02.md | 2023-11-14 | David Lemire | Update diagrams (PR #81) and text (PR #82) to align w/JADN Spec changes |
 | imjadn-v1.0-cn03.md      | 2023-11-26 | David Lemire | Add example development JADN IM from JSON schema starting point (PR #xx), rename document for next CN version |
 | imjadn-v1.0-cn03.md      | 2023-12-11 | David Lemire | Add "Why JADN?" material in Section 1.1 (PR #88) |
+| imjadn-v1.0-cn03.md      | 2023-12-xx | David Lemire | Consolidate duplicative 2.1 content into 1.1.3 (PR #89) |
 
 -------
 
