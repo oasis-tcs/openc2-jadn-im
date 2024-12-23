@@ -3310,7 +3310,14 @@ The following individuals have participated in the creation of this document and
 
 This section details differences between versions 1 and 2 of JADN.
 
-### C.2.1 -- Breaking Changes
+### C.2.1 -- Breaking Change
+
+In JADN v2.0 the "unlimited" value for the `maxOccurs` (formerly `maxc`)
+sentinel is changed from 0 to -1. *This minor but incompatible change required a
+new major version.* Two options are provided for an unspecified `maxOccurs` value:
+
+- `maxOccurs` = -1 denotes an upper size limit defined by the JADN default value or package-specified upper value
+- `maxOccurs` = -2 denotes an unbounded upper size limit
 
 ### C.2.2 -- Inheritance
 
@@ -3336,6 +3343,14 @@ The following changes were made to JADN type options:
 
 - Replaced option:
   - `minc, maxc`: these options have been renamed to `minOccurs, maxOccurs`
+
+### C.2.5 -- General Changes
+
+The following general changes were made:
+
+- The "namespaces" prefix list was change from mappings to pairings to provide greater flexibility in managing namespaces and packages.
+- The package "Information" element was renamed to "Metadata" to avoid conflation with information modeling.
+- The package "exports" element was renamed to "roots" to better describe its purpose and effect.
 
 -------
 
