@@ -3319,9 +3319,7 @@ new major version.* Two options are provided for an unspecified `maxOccurs` valu
 - `maxOccurs` = -1 denotes an upper size limit defined by the JADN default value or package-specified upper value
 - `maxOccurs` = -2 denotes an unbounded upper size limit
 
-### C.2.2 -- Inheritance
-
-### C.2.3 -- Type Option Changes
+### C.2.2 -- Type Option Changes
 
 The following changes were made to JADN type options:
 
@@ -3337,12 +3335,14 @@ The following changes were made to JADN type options:
 - Removed option:
   - `extend`: this option has been deprecated
 
-### C.2.4 -- Field Option Changes
+### C.2.3 -- Field Option Changes
 
 The following changes were made to JADN type options:
 
 - Replaced option:
   - `minc, maxc`: these options have been renamed to `minOccurs, maxOccurs`
+
+### C.2.4 -- Inheritance
 
 ### C.2.5 -- General Changes
 
