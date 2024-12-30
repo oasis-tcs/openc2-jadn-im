@@ -1416,7 +1416,7 @@ The corresponding JIDL representation would be:
   Temperature = Number   // Current temperature observation in degrees C
 ```
 
-The *minf* and *maxf* TypeOptions are used to specify a minimum and/or maximum
+The *minInclusive* and *maxInclusive* TypeOptions are used to specify a minimum and/or maximum
 value that may be assigned to a Number type. Table 3-6 lists the *format*
 options applicable to the Number type. These *format* options are only relevant
 when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&nbsp;4.4:
@@ -1427,7 +1427,8 @@ when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&
 |:-------:|:------:|-------------------------------------------------------------------|
 | **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25)   |
 | **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26) |
-| **f64** | Number | **float64**: Serialize as IEEE 754 Single-Precision Float (#7.27) |
+| **f64** | Number | **float64**: Serialize as IEEE 754 Double-Precision Float (#7.27) |
+| **f128** | Number | **float64**: Serialize as IEEE 754 Quadruple-Precision Float (#7.27) |
 
 The parenthetical (#7.2x) references in the above table identify the CBOR major
 type (7) and associated additional information (25/26/27) as defined in the
