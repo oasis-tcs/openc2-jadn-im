@@ -1274,8 +1274,8 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
-The *minv* and *maxv* TypeOptions are used to specify a minimum and/or maximum
-number of octets for a binary type. If *minv* equals *maxv* the size of the
+The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
+number of octets for a binary type. If *minLength* equals *maxLength* the size of the
 binary type is fixed. Table 3-4 lists the *format* options applicable to the
 Binary type:
 
