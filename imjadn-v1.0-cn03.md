@@ -3344,6 +3344,13 @@ The following changes were made to JADN type options:
 
 ### C.2.4 -- Inheritance
 
+Four new type options were introduced to support inheritance in information models:
+
+- `abstract`: a type definition with this option is only usable as a base type that other types can extend or restrict. Abstract types are never instantiated in serialized data.
+- `restricts`: this option is used when defining a type that is a subset of the type that it references.
+- `extends`: this option is used when defining a type that is a superset of the type that it references.
+- `final`: this option is used to designate a type that cannot be referenced to create a subtype.
+
 ### C.2.5 -- General Changes
 
 The following general changes were made:
