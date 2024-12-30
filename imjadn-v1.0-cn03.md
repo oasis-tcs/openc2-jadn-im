@@ -3346,12 +3346,31 @@ The following changes were made to JADN type options:
 
 Four new type options were introduced to support inheritance in information models:
 
-- `abstract`: a type definition with this option is only usable as a base type that other types can extend or restrict. Abstract types are never instantiated in serialized data.
-- `restricts`: this option is used when defining a type that is a subset of the type that it references.
-- `extends`: this option is used when defining a type that is a superset of the type that it references.
-- `final`: this option is used to designate a type that cannot be referenced to create a subtype.
+- `abstract`: a type definition with this option is only usable as a base type
+  that other types can extend or restrict. Abstract types are never instantiated
+  in serialized data.
+- `restricts`: this option is used when defining a type that is a subset of the
+  type that it references; it enables removing optional fields from the
+  referenced type (required fields cannot be removed).
+- `extends`: this option is used when defining a type that is a superset of the
+  type that it references; it enables adding new non-conflicting fields to a
+  subtype but cannot redefine existing fields from the referenced type.
+- `final`: this option is used to designate a type that cannot be referenced to
+  create a subtype.
 
-### C.2.5 -- General Changes
+The `extends` and `restricts` options are complementary: if B `extends` A then
+every instance of A MUST be an instance of B.  If B `restricts` A then every
+instance of B MUST be an instance of A. 
+
+### C.2.5 -- Format and Validation Options Changes
+
+The following changes were made to format and validation options:
+
+- `/d#` was added as an option for the time-oriented format options (i.e., `date-time`, `date`, `time`, `duration`) to allow for sub-second precision for the time aspect.
+- `i<n>` replaces the `i8`, `i16`, `i32` format options to provide greater flexibility in specifying signed integer types; the permissable values are between -2^(n-1) and 2^(n-1)-1.
+- `d<n>` applies a decimal integer scale factor of 10^n: value has n digits after decimal point, n > 0.
+
+### C.2.6 -- General Changes
 
 The following general changes were made:
 
