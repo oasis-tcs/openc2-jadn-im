@@ -996,6 +996,8 @@ will be described in this section. JADN provides *primitive*,
 *compound* (both structured and unstructured), and *union* core data types that can be refined using type and field
 options (field options only apply to compound and union types).
 
+> **TO-DO:** Determine whether the ASCII code numbers in Figure 3-1 have value
+
 ###### Figure 3-1 -- JADN Type Definition Components
 ![Figure 3-1 -- JADN Concepts](images/JADN-Type-Definitions.drawio.png)
 
