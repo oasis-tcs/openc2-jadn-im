@@ -1428,7 +1428,7 @@ when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&
 | **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25)   |
 | **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26) |
 | **f64** | Number | **float64**: Serialize as IEEE 754 Double-Precision Float (#7.27) |
-| **f128** | Number | **float64**: Serialize as IEEE 754 Quadruple-Precision Float (#7.27) |
+| **f128** | Number | **float64**: Serialize as IEEE 754 Quadruple-Precision Float (n/a) |
 
 The parenthetical (#7.2x) references in the above table identify the CBOR major
 type (7) and associated additional information (25/26/27) as defined in the
@@ -1604,7 +1604,7 @@ IdentityType = Choice                // Nature of the referenced identity
    3 tool             Tool           // Identity refers to an automated tool
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions include the v1.1 enhancements.
+> EDITOR'S NOTE:  need examples of applying the TypeOptions include the v2.0 enhancements.
 
 
 #### 3.1.2.8 Array
@@ -1671,6 +1671,7 @@ Table 3-7 lists the *format* options applicable to the Array type:
 | ------------ | ------ | ------------|
 | ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [RFC 4632](#rfc4632) Section&nbsp;3.1 |
 | ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [RFC 4291](#rfc4291) Section 2.3 |
+| tag-uuid     | Array  | Tag portion is a String, UUID portion is a 128-bit (16 byte) binary value |
 
 The `ipv4-net` and `ipv6-net` format options impose several constraints when applied to an Array type:
 
@@ -1678,6 +1679,12 @@ The `ipv4-net` and `ipv6-net` format options impose several constraints when app
 * Constrains the Integer prefix value to a range of 0..32 or 0..128, respectively
 * Specifies that text representations of the type will use CIDR notation
 
+The `tag-uuid` format option imposes similar constraints:
+
+* Specifies a two-field Array with one String and one Binary value
+* The String value contains the tag, which is descriptive text and may contain hyphens
+* The Binary value contains the 128-bit UUID value
+* The JSON serialization will be `"tagString--<UUID as text>"`; e.g., `"my-tag-type--ccf8a573-bbf3-48b8-b0ba-b14ddd1fc27d"`
 
 #### 3.1.2.9 ArrayOf(vtype)
 
