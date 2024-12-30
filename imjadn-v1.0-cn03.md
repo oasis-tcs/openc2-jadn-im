@@ -1158,7 +1158,7 @@ Detailed explanations of each type option can be found in Sections 3.2.1.1
 through 3.2.1.12 of the [[JADN Specification](#jadn-v10)]. Table 3-2 summarizes
 the applicability of type options to JADN core types. The `ArrayOf` and `MapOf`
 types have required options, as indicated. Other type options can be applied to
-individual types as indicated by table cells with an "X".
+individual types where the option is relevant, as indicated by table cells with an "X".
 
 ###### Table 3-2 -- Type Option Applicability
 
