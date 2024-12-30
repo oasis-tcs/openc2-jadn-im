@@ -1128,24 +1128,31 @@ Type and Field options labels have JSON Schema and XML Schema equivalents.
 
 ###### Table 3-1 -- JADN Type Options
 
-| **Option** | **Type** | **ID** | **Description**                                                   |
-|:----------:|:--------:|:------:|:------------------------------------------------------------------|
-|     id     | Boolean  |   `=`  | Items and Fields are denoted by FieldID rather than FieldName     |
-|   vtype    |  String  |   `*`  | Value type for ArrayOf and MapOf                                  |
-|   ktype    |  String  |   `+`  | Key type for MapOf                                                |
-|    enum    |  String  |   `#`  | Extension: Enumerated type derived from a specified type          |
-|  pointer   |  String  |   `>`  | Extension: Enumerated type pointers derived from a specified type |
-|   format   |  String  |   `/`  | Semantic validation keyword                                       |
-|  pattern   |  String  |   `%`  | Regular expression used to validate a String type                 |
-|    minf    |  Number  |   `y`  | Minimum real number value                                         |
-|    maxf    |  Number  |   `z`  | Maximum real number value                                         |
-|    minv    | Integer  |   `{`  | Minimum integer value, octet or character count, or element count |
-|    maxv    | Integer  |   `}`  | Maximum integer value, octet or character count, or element count |
-|   unique   | Boolean  |   `q`  | ArrayOf instance must not contain duplicate values                |
-|    set     | Boolean  |   `s`  | ArrayOf instance is unordered and unique                          |
-| unordered  | Boolean  |   `b`  | ArrayOf instance is unordered                                     |
-|   extend   | Boolean  |   `X`  | Type is extensible; new Items or Fields may be appended           |
-|  default   |  String  |   `!`  | Default value                                                     |
+|  **Option**  | **Type** | **ID** | **Description**                                                   |
+|:------------:|:--------:|:------:|-------------------------------------------------------------------|
+|      id      |  Boolean |   `=`  | Items and Fields are denoted by FieldID rather than FieldName     |
+|     vtype    |  String  |   `*`  | Value type for ArrayOf and MapOf                                  |
+|     ktype    |  String  |   `+`  | Key type for MapOf                                                |
+|     enum     |  String  |   `#`  | Extension: Enumerated type derived from a specified type          |
+|    pointer   |  String  |   `>`  | Extension: Enumerated type pointers derived from a specified type |
+|    format    |  String  |   `/`  | Semantic validation keyword                                       |
+|    pattern   |  String  |   `%`  | Regular expression used to validate a String type                 |
+| minExclusive |  Number  |   `w`  | Minimum numeric/string value, excluding bound                     |
+| maxExclusive |  Number  |   `x`  | Maximum numeric/string value, excluding bound                     |
+| minInclusive |  Number  |   `y`  | Minimum numeric/string value                                      |
+| maxInclusive |  Number  |   `z`  | Maximum numeric/string value                                      |
+|   minLength  |  Integer |   `{`  | Minimum byte or text string length, collection item count         |
+|   maxLength  |  Integer |   `}`  | Maximum byte or text string length, collection item count         |
+|    unique    |  Boolean |   `q`  | ArrayOf instance must not contain duplicate values                |
+|      set     |  Boolean |   `s`  | ArrayOf instance is unordered and unique                          |
+|   unordered  |  Boolean |   `b`  | ArrayOf instance is unordered and not unique (bag)                |
+|   sequence   |  Boolean |   `o`  | Map, MapOr or Record instance is ordered and unique (ordered set) |
+|    combine   |  Boolean |   `C`  | Choice instance is a logical combination (anyOf, allOf, oneOf)    |
+|   abstract   |  Boolean |   `a`  | Inheritance: abstract, non-instantiatable                         |
+|   restricts  |  Boolean |   `r`  | Inheritance: restriction - subset of referenced type              |
+|    extends   |  Boolean |   `e`  | Inheritance: extension - superset of referenced type              |
+|     final    |  Boolean |   `f`  | Inheritance: final - cannot have subtype                          |
+|    default   |  String  |   `!`  | Default value                                                     |
 
 Detailed explanations of each type option can be found in
 Sections 3.2.1.1 through 3.2.1.12 of the [[JADN Specification](#jadn-v10)].
@@ -1203,14 +1210,14 @@ specifying field options. Table 3-3 lists the JADN field options.
 
 ###### Table 3-3 -- JADN Field Options
 
-| **Option** |  **Type**  |  **ID**  | **Description**                                               | **JADN Spec Section** |
-|:----------:|:----------:|:--------:|:--------------------------------------------------------------|:---------------------:|
-|    minc    |  Integer   |   `[`    | Minimum cardinality, default = 1, 0 = optional                |        3.2.2.1        |
-|    maxc    |  Integer   |   `]`    | Maximum cardinality, default = 1, 0 = default max, >1 = array |        3.2.2.1        |
-|   tagid    | Enumerated |   `&`    | Field containing an explicit tag for this Choice type         |        3.2.2.2        |
-|    dir     |  Boolean   |   `<`    | Pointer enumeration treats field as a group of items          |         3.3.5         |
-|    key     |  Boolean   |   `K`    | Field is a primary key for this type                          |         3.3.6         |
-|    link    |  Boolean   |   `L`    | Field is a foreign key reference to a type instance           |         3.3.6         |
+| **Option** |  **Type**  | **ID** | **Description**                                               | **JADN Spec Section** |
+|:----------:|:----------:|:------:|---------------------------------------------------------------|:---------------------:|
+|  minOccurs |   Integer  |   `[`  | Minimum cardinality, default = 1, 0 = optional                |                       |
+|  maxOccurs |   Integer  |   `]`  | Maximum cardinality, default = 1, 0 = default max, >1 = array |                       |
+|    tagid   | Enumerated |   `&`  | Field containing an explicit tag for this Choice type         |                       |
+|     dir    |   Boolean  |   `<`  | Pointer enumeration treats field as a group of items          |                       |
+|     key    |   Boolean  |   `K`  | Field is a primary key for this type                          |                       |
+|    link    |   Boolean  |   `L`  | Field is a foreign key reference to a type instance           |                       |
 
 The type options described in [Section&nbsp;3.1.1.2](#3112-typeoptions) can also apply
 to fields, with the constraint that the type option must be applicable to the
