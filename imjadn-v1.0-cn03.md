@@ -1252,7 +1252,7 @@ formats.
       </td>
       <td class="td">
         <i>
-          <center>minv, maxv, format</center>
+          <center>format, minLength, maxlength</center>
         </i>
       </td>
     </tr>
@@ -1339,7 +1339,7 @@ The corresponding JIDL representation would be:
       </td>
       <td class="td">
         <i>
-          <center>minv, maxv, format</center>
+          <center>format, minInclusive, maxInclusive, minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
@@ -1394,7 +1394,7 @@ Table 3-5 lists the *format* options applicable to the Integer type:
       </td>
       <td class="td">
         <i>
-          <center>minf, maxf, format, pattern</center>
+          <center>format, minInclusive, maxInclusive, minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
@@ -1451,7 +1451,7 @@ of [[RFC8610](#rfc8610)].
       </td>
       <td class="td">
         <i>
-          <center>minv, maxv, format, pattern</center>
+          <center>format, pattern, minLength, maxLength</center>
         </i>
       </td>
     </tr>
@@ -1522,7 +1522,7 @@ specification is in Section 22.2.
       </td>
       <td class="td">
         <i>
-          <center>id, enum, pointer, extend</center>
+          <center>id, enum, pointer</center>
         </i>
       </td>
     </tr>
@@ -1573,7 +1573,7 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
       </td>
       <td class="td">
         <i>
-          <center>id, extend</center>
+          <center>id, combine</center>
         </i>
       </td>
     </tr>
@@ -1623,7 +1623,7 @@ IdentityType = Choice                // Nature of the referenced identity
       </td>
       <td class="td">
         <i>
-          <center>extend, minv, maxv, format</center>
+          <center>format, minLength, maxLength</center>
         </i>
       </td>
     </tr>
@@ -1695,7 +1695,7 @@ The `ipv4-net` and `ipv6-net` format options impose several constraints when app
       </td>
       <td class="td">
         <i>
-          <center>vtype, minv, maxv, unique, set, unordered</center>
+          <center>vtype, minLength, maxLength, unique, set, unordered</center>
         </i>
       </td>
     </tr>
@@ -1752,7 +1752,7 @@ Track = Record                                    // for each track there's a fi
       </td>
       <td class="td">
         <i>
-          <center>id, extend, minv, maxv</center>
+          <center>id, minLength, maxLength, sequence</center>
         </i>
       </td>
     </tr>
@@ -1819,7 +1819,7 @@ _maxv_, as described above in [Section&nbsp;3.1.4.4](#3144-application-of-minv--
       </td>
       <td class="td">
         <i>
-          <center>ktype, vtype, minv, maxv</center>
+          <center>ktype, vtype, minLength, maxLength, sequence</center>
         </i>
       </td>
     </tr>
@@ -1890,7 +1890,7 @@ Date = String /date
       </td>
       <td class="td">
         <i>
-          <center>extend, minv, maxv</center>
+          <center>minLength, maxLength, sequence</center>
         </i>
       </td>
     </tr>
