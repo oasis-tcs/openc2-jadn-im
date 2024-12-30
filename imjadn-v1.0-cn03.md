@@ -1361,10 +1361,10 @@ The corresponding JIDL representation would be:
   TrackNumber = Integer   // Track number for current song
 ```
 
-The *minv* and *maxv* TypeOptions are used to specify a minimum and/or maximum
+The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
 value that may be assigned to an Integer type. The JADN Integer primitive type
-encompasses the UML UnlimitedNatural primitive type through the use the *minv*
-Type Option: an Integer with a *minv* of `0` has the same range of values as an
+encompasses the UML UnlimitedNatural primitive type through the use the *minLength*
+Type Option: an Integer with a *minLength* of `0` has the same range of values as an
 UnlimitedNatural.
 
 Table 3-5 lists the *format* options applicable to the Integer type:
@@ -1474,8 +1474,8 @@ The corresponding JIDL representation would be:
 ```
 
 All semantic validation keywords defined in Section 7.3 of [[JSON
-Schema](#jsonschema)] are valid *format* options for the String type. The *minv*
-and *maxv* TypeOptions are used to specify a minimum and/or maximum number of
+Schema](#jsonschema)] are valid *format* options for the String type. The *minLength*
+and *maxLength* TypeOptions are used to specify a minimum and/or maximum number of
 characters that may be assigned to a String type (i.e., the acceptable range of
 string lengths). 
 
