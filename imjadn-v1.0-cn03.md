@@ -1688,6 +1688,10 @@ The `tag-uuid` format option imposes similar constraints:
 * The Binary value contains the 128-bit UUID value
 * The JSON serialization will be `"tagString--<UUID as text>"`; e.g., `"my-tag-type--ccf8a573-bbf3-48b8-b0ba-b14ddd1fc27d"`
 
+The `tag-uuid` format for identifiers is used in the [[STIX](#stix-v21)] and
+[[CACAO](#cacao-security-playbooks-v20)] specifications (see sections 2.9 and
+10.10, respectively).
+
 #### 3.1.2.9 ArrayOf(vtype)
 
 <table class="table">
@@ -3110,6 +3114,9 @@ While any hyperlinks included in this appendix were valid at the time of publica
 ###### [ASN.1]
 Recommendation ITU-T X.680 (2021) *Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation* 
 
+###### [CACAO-Security-Playbooks-v2.0]
+_CACAO Security Playbooks Version 2.0_. Edited by Bret Jordan and Allan Thomson. 27 November 2023. OASIS Committee Specification 01. https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html. Latest version: https://docs.oasis-open.org/cacao/security-playbooks/v2.0/security-playbooks-v2.0.html.
+
 ###### [Declarative]
 "The Data Engineer's Guide to Declarative vs Imperative for Data",
 https://www.dataops.live/the-data-engineers-guide-to-declarative-vs-imperative-for-data
@@ -3238,6 +3245,9 @@ https://www.rfc-editor.org/info/rfc8610
 ###### [Shannon]
 "A Mathematical Theory of Communication", 
 https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication
+
+###### [STIX-v2.1]
+_STIX Version 2.1_. Edited by Bret Jordan, Rich Piazza, and Trey Darley. 10 June 2021. OASIS Standard. https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html. Latest stage: https://docs.oasis-open.org/cti/stix/v2.1/stix-v2.1.html.
 
 ###### [UML]
 "Unified Modeling Language", Version 2.5.1, December 2017,
