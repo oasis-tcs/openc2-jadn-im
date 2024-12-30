@@ -133,7 +133,7 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.4.1 "Anonymous" Type Definitions](#3141-anonymous-type-definitions)
       - [3.1.4.2 Selection and Use of JADN Compound Types](#3142-selection-and-use-of-jadn-compound-types)
       - [3.1.4.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
-      - [3.1.4.4 Application of minv / maxv](#3144-application-of-minv--maxv)
+      - [3.1.4.4 Application of minLength / maxLength](#3144-application-of-minlength--maxlength)
     - [3.1.5 Reference Relationships: Keys and Links](#315-reference-relationships-keys-and-links)
     - [3.1.6 Schemas, Packages and Namespaces](#316-schemas-packages-and-namespaces)
       - [3.1.6.1 Packages](#3161-packages)
@@ -1800,15 +1800,15 @@ Hashes = Map{1..*}    // Cryptographic hash values
    3 sha256     Binary{32..32} /x optional   // SHAs26 hash as defined in RFC6234
 ```
 
-In the example above, note the combination of the `{minv..maxv}`
+In the example above, note the combination of the `{minLength..maxLength}`
 type options in the record's definition and the presence of the
 `optional` keyword on all fields of the record. This reflects a
 design pattern: the compound type's cardinality of `{1..*}`
 defines that there is a minimum number of required fields even
 though every individual field is optional. An empty `Hashes` map is
 invalid, but a map where any one or more of the three hash types
-exists is valid. This is an example of one application of _minv_,
-_maxv_, as described above in [Section&nbsp;3.1.4.4](#3144-application-of-minv--maxv).
+exists is valid. This is an example of one application of _minLength_,
+_maxLength_, as described above in [Section&nbsp;3.1.4.4](#3144-application-of-minlength--maxlength).
 
 #### 3.1.2.11 MapOf(ktype,vtype)
 
@@ -2217,20 +2217,20 @@ models are directed graphs with a small predefined set of core
 datatypes and only two kinds of relationship: "contain" and
 "reference".
 
-#### 3.1.4.4 Application of minv / maxv
+#### 3.1.4.4 Application of minLength / maxLength
 
-The `minv` and `maxv` type options are distinctive in that they
+The `minLength` and `maxLength` type options are distinctive in that they
 can apply to both primitive and compound types, with a different
 meaning in these two applications:
 
  - When applied to a primitive type (Binary, Integer or String),
-   the `minv` and `maxv` type options constrain the *values* an
+   the `minLength` and `maxLength` type options constrain the *values* an
    instance of that type may hold. Specifically, when applied to:
-   - An Integer type, the `minv` and `maxv` type options constrain
+   - An Integer type, the `minLength` and `maxLength` type options constrain
      the numeric values an instance of that type may hold.
-   - A String type, the `minv` and `maxv` type options constrain the
+   - A String type, the `minLength` and `maxLength` type options constrain the
      number of characters in the string.
-   - A Binary type, the `minv` and `maxv` type options constrain the
+   - A Binary type, the `minLength` and `maxLength` type options constrain the
      number of octets (bytes) in the binary value.
    
 For example, the following specifies an Integer type that can be
@@ -2247,7 +2247,7 @@ notation (see
 ```
 
  - When applied to a compound type (Array, ArrayOf, Map, MapOf,
-   Record), the `minv` and `maxv` type options constrain the
+   Record), the `minLength` and `maxLength` type options constrain the
    *number of elements* an instance of that type may have. For
    example, the following specifies a Record type that must have
    at least two fields populated, even though only one field is
