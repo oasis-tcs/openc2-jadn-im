@@ -3307,7 +3307,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn03.md      | 2023-11-26 | David Lemire | Add example development JADN IM from JSON schema starting point (PR #xx), rename document for next CN version |
 | imjadn-v1.0-cn03.md      | 2023-12-11 | David Lemire | Add "Why JADN?" material in Section 1.1 (PR #88) |
 | imjadn-v1.0-cn03.md      | 2023-12-xx | David Lemire | Consolidate duplicative 2.1 content into 1.1.3 (PR #89) |
-
+| imjadn-v1.0-cn03.md      | 2023-12-xx | David Lemire | Update Type & Field Options in section 3.x (PR #91) |
 -------
 
 # Appendix D. Frequently Asked Questions (FAQ)
