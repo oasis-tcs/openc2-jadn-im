@@ -1472,7 +1472,7 @@ of [[RFC8610](#rfc8610)].
       </td>
       <td class="td">
         <i>
-          <center>format, pattern, minLength, maxLength, minInclusive, maxInclusive, minExclusive, maxExclusive</center>
+          <center>format, pattern, minLength, maxLength,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
