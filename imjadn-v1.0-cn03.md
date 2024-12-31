@@ -1412,7 +1412,7 @@ option /d1 or /d2 to give precision of tenths or hundredths of a degree.
       </td>
       <td class="td">
         <i>
-          <center>format, minInclusive, maxInclusive, minExclusive, maxExclusive</center>
+          <center>format, minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
