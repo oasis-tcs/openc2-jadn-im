@@ -1253,7 +1253,7 @@ formats.
   <tbody>
     <tr>
       <td class="td">
-        A sequence of octets. Length is the number of octets.
+        A Binary instance is sequence of octets. Binary values are not ordered so range options do not apply.
       </td>
       <td class="td">
         <i>
