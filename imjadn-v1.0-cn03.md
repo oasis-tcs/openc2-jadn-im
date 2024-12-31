@@ -164,7 +164,7 @@ For complete copyright information please see the full Notices section in [Appen
  - [Figure 2-1 -- Serialization / Deserialization](#figure-2-1----serialization--deserialization)
  - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
  - [Figure 3-1 -- JADN Type Definition Components](#figure-3-1----jadn-type-definition-components)
- - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-type-definition-structure)
+ - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-v2-type-definition-structure)
  - [Figure 3-3 -- JADN Schema Top-Level Structure](#figure-3-3----jadn-schema-top-level-structure)
  - [Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-4----jadn-for-primitive-arrayof-mapof-types)
  - [Figure 3-5 -- JADN Fields for Enumerated Types](#figure-3-5----jadn-fields-for-enumerated-types)
@@ -1068,10 +1068,10 @@ that type.
     of **Item** or **Field** options that define the items that
     comprise the compound type.
 
-> **TO-DO:** Determine whether the ASCII code numbers in Figure 3-2 have value
+> **TO-DO:** Determine whether including the ASCII code numbers in Figure 3-2 is worthwhile
 
-###### Figure 3-2 -- JADN Type Definition Structure
-![JADN Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
+###### Figure 3-2 -- JADN V2 Type Definition Structure
+![JADN V2 Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
 
 #### 3.1.1.1 TypeNames and CoreTypes
 
@@ -1173,7 +1173,7 @@ individual types where the option is relevant, as indicated by table cells with 
 
 The use of the **Fields** element to convey Item or Field
 Definitions is dependent on the **CoreType** selected, as
-illustrated in [Figure 3-2](#figure-3-2----jadn-type-definition-structure). The rules
+illustrated in [Figure 3-2](#figure-3-2----jadn-v2-type-definition-structure). The rules
 pertaining to the **Fields** array are as follows:
 
 * If the **CoreType** is a Primitive type, ArrayOf, or MapOf, no
