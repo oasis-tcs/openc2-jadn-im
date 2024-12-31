@@ -1392,10 +1392,9 @@ performing fixed point math against Integer types without rounding errors or
 loss of precision. For example, the Integer option /d3 specifies an integer that
 is scaled by 10^3, providing three decimal digits after a "decimal point".  So
 an integer Time with no option would be seconds before or after the Posix epoch,
-and with /d3 it would be milliseconds, or /d6 would be microseconds.  The value
-is just an integer without needing an array.  If an integer temperature is
-documented to be degrees Celsius, its type could use the option /d1 or /d2 to
-give precision of tenths or hundredths of a degree.
+and with /d3 it would be milliseconds, or /d6 would be microseconds. If an
+integer temperature is documented to be degrees Celsius, its type could use the
+option /d1 or /d2 to give precision of tenths or hundredths of a degree.
 
 #### 3.1.2.4 Number
 
