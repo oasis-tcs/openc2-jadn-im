@@ -1165,6 +1165,10 @@ the applicability of type options to JADN core types. The `ArrayOf` and `MapOf`
 types have required options, as indicated. Other type options can be applied to
 individual types where the option is relevant, as indicated by table cells with an "X".
 
+> **TO-DO:** Add clarification text regarding min/maxLength as _size_ options
+> versus min/max Inclusive/Exclusive as _value_ options.
+
+
 ###### Table 3-2 -- Type Option Applicability
 
 ![Table 3-2 -- Type Option Applicability](images/table-3-2.png)
