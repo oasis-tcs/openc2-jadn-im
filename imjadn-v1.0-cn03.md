@@ -1304,7 +1304,7 @@ Binary type:
   <tbody>
     <tr>
       <td class="td">
-        An element with one of two values: true or false.
+        A Boolean instance is one of the predefined values *true* and *false*.
       </td>
       <td class="td">
           <center>None</center>
