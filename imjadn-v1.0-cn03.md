@@ -1383,6 +1383,20 @@ Table 3-5 lists the *format* options applicable to the Integer type:
 | i32      | Integer | Signed 32 bit integer, value must be between -2147483648 and 2147483647.                  |
 | u\<*n*\> | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1. |
 
+> **TO-DO:** Need to discuss the /d<n> format, per DK's description:  And for the
+> old topic of SI units, we were discussing Array[value, unit] pairs, but after
+> noticing that IEEE 754 defines both base2 and base10 formats, I'm going to add
+> an Integer type option "d<n>" to allow fixed point math using integers to
+> ensure zero rounding errors or loss of precision.  Like the Number option /f64
+> means double precision 64 bit floating point, the Integer option /d3 would
+> mean the integer is scaled by 10^3 with three decimal digits after a "decimal
+> point".  So an integer Time with no option would be seconds before or after
+> the Posix epoch, and with /d3 it would be milliseconds, or /d6 would be
+> microseconds.  The value is just an integer without needing an array.  If an
+> integer temperature is documented to be degrees C, its type could use the
+> option /d1 or /d2 to give precision of tenths or hundredths of a degree.
+
+
 #### 3.1.2.4 Number
 
 <table class="table">
