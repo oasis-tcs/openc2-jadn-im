@@ -1395,7 +1395,7 @@ Table 3-5 lists the *format* options applicable to the Integer type:
   <tbody>
     <tr>
       <td class="td">
-        A real number.
+        A Number instance is a value in the ordered infinite set of real numbers.
       </td>
       <td class="td">
         <i>
