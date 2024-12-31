@@ -1453,11 +1453,11 @@ of [[RFC8610](#rfc8610)].
   <tbody>
     <tr>
       <td class="td">
-        A sequence of characters, each of which has a Unicode codepoint. Length is the number of characters.
+        A String instance is a sequence of characters in a character set.
       </td>
       <td class="td">
         <i>
-          <center>format, pattern, minLength, maxLength</center>
+          <center>format, pattern, minLength, maxLength, minInclusive, maxInclusive, minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
