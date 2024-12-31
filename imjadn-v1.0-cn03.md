@@ -1442,11 +1442,11 @@ when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&
 
 ###### Table 3-6 -- Number Type Format Options
 
-| Keyword |  Type  | Requirement                                                       |
-|:-------:|:------:|-------------------------------------------------------------------|
-| **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25)   |
-| **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26) |
-| **f64** | Number | **float64**: Serialize as IEEE 754 Double-Precision Float (#7.27) |
+| Keyword  |  Type  | Requirement                                                        |
+|:--------:|:------:|--------------------------------------------------------------------|
+| **f16**  | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25)    |
+| **f32**  | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26)  |
+| **f64**  | Number | **float64**: Serialize as IEEE 754 Double-Precision Float (#7.27)  |
 | **f128** | Number | **float64**: Serialize as IEEE 754 Quadruple-Precision Float (n/a) |
 
 The parenthetical (#7.2x) references in the above table identify the CBOR major
