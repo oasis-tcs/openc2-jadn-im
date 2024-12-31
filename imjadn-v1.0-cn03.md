@@ -1386,16 +1386,16 @@ Table 3-5 lists the *format* options applicable to the Integer type:
 | u\<*n*\> | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1. |
 | d\<*n*\> | Integer | _n_-bit fixed precision integer.                                                          |
 
-The "i\<*n*\>" format option provides flexible scaling for the value range of
-Integer types.  The "d\<*n*\>" format option allows using performing fixed point
-math against Integer types without rounding errors or loss of precision. For
-example, the Integer option /d3 specifies an integer that is scaled by 10^3,
-providing three decimal digits after a "decimal point".  So an integer Time with
-no option would be seconds before or after the Posix epoch, and with /d3 it
-would be milliseconds, or /d6 would be microseconds.  The value is just an
-integer without needing an array.  If an integer temperature is documented to be
-degrees Celsius, its type could use the option /d1 or /d2 to give precision of tenths
-or hundredths of a degree.
+The "i\<*n*\>" format option provides flexible scaling for size of an Integer
+type and its associated value range. The "d\<*n*\>" format option allows using
+performing fixed point math against Integer types without rounding errors or
+loss of precision. For example, the Integer option /d3 specifies an integer that
+is scaled by 10^3, providing three decimal digits after a "decimal point".  So
+an integer Time with no option would be seconds before or after the Posix epoch,
+and with /d3 it would be milliseconds, or /d6 would be microseconds.  The value
+is just an integer without needing an array.  If an integer temperature is
+documented to be degrees Celsius, its type could use the option /d1 or /d2 to
+give precision of tenths or hundredths of a degree.
 
 #### 3.1.2.4 Number
 
