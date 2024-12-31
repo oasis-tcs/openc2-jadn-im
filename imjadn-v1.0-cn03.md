@@ -1340,7 +1340,7 @@ The corresponding JIDL representation would be:
   <tbody>
     <tr>
       <td class="td">
-        A positive or negative whole number.
+        An Integer instance is a value in the ordered infinite set of integers (…, -2, -1, 0, 1, 2, …).
       </td>
       <td class="td">
         <i>
