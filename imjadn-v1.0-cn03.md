@@ -1348,7 +1348,7 @@ The corresponding JIDL representation would be:
       </td>
       <td class="td">
         <i>
-          <center>format, minInclusive, maxInclusive, minExclusive, maxExclusive</center>
+          <center>format, minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
