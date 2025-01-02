@@ -1105,17 +1105,25 @@ The CoreType must be one of the twelve JADN core types previously identified.
 
 #### 3.1.1.2 TypeOptions
 
-The third element of a JADN type definition is an array of zero
-or more of the TypeOptions defined in Section&nbsp;3.2.1 of the
-[[JADN Specification](#jadn-v10)]. JADN includes options for both
-_types_ (discussed in this section) and _fields_ (discussed in
+The third element of a JADN type definition is an array of zero or more of the
+TypeOptions defined in Section&nbsp;3.2.1 of the [[JADN
+Specification](#jadn-v10)]. JADN includes options for both _types_ (discussed in
+this section) and _fields_ (discussed in
 [Section&nbsp;3.1.1.4](#3114-field-options)). As explained in the JADN
-Specification:
+Specification, options are presented in the normative JSON format as the option
+ID character concatenated with the option value:
 
 > Each option is a text string that may be included in
 > TypeOptions or FieldOptions, encoded as follows:
 > - The first character is the option ID.
 > - The remaining characters are the option value.
+
+As an example the TypeOption "minLength = 1" is represented as:
+```
++----+-----------+     Option ID = 0x7b (Left Curley Bracket) = "minLength"
+| ID | Value     |     Value = 1
++----+-----------+     TypeOption string = "{1"
+```
 
 TypeOptions are classifiers that, along with the CoreType,
 determine whether data values are instances of the defined type.
