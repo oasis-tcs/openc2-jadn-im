@@ -2252,6 +2252,52 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
   3 field_3   String optional  
 ```
 
+#### 3.1.4.5 Inheritance
+
+> NOTE 1: Inheritance capabilities are a new feature in JADN v2.0.
+
+> NOTE 2: The JADN v2 inheritance-oriented `extends` type option is unrelated to
+> deprecated `extend` type option in JADN v1.
+
+JADN supports inheritance in information modeling, providing for class /
+subclass relationships. There are four type options to manage the class
+relationships among types.
+
+- `abstract`: The `abstract` option indicates that a type definition is only a
+  basis for defining sub-classes and should never be instantiated in data. 
+
+- `extends`: The `extends` option indicates that the associated type definition
+  is adding to the super-type on which it is based. An extending sub-type can
+  add new fields to its supertype but cannot redefine existing, inherited
+  fields.
+
+> *QUESTION:  Can a sub-type that extends specify that optional fields in the
+> supertype are requires in the subtype?*
+
+- `restricts`: The `restricts` option indicates that the associated type
+  definition is subtracting from the super-type on which it is based. A
+  restricting sub-type can remove optional fields defined in its supertype,
+  however required fields cannot be removed.
+
+- `final`: The `final` type option identifies a type that cannot have sub-types
+  defined based on it.
+
+Inheritance can be applied both to primitive and compound types, although only
+the `restricts` type option is applicable to primitive types. For example,
+consider the following set of types:
+
+```
+A = String{1..32} abstract
+B = String restricts(A) /email
+C = String restricts(A) /hostname
+```
+
+Type "A" defines a String of between 1 and 32 characters, but because it is
+`abstract` no actual string data can be validated as conforming to type "A".
+However an email address shorter than 33 characters can be validated against
+type "B"; similarly a hostname shorter than 33 characters can be validated
+against type "C".
+
 ### 3.1.5 Reference Relationships: Keys and Links
 
 As explained in [Section&nbsp;3](#3-creating-information-models-with-jadn), JADN recognizes
