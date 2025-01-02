@@ -1110,13 +1110,8 @@ TypeOptions defined in Section&nbsp;3.2.1 of the [[JADN
 Specification](#jadn-v10)]. JADN includes options for both _types_ (discussed in
 this section) and _fields_ (discussed in
 [Section&nbsp;3.1.1.4](#3114-field-options)). As explained in the JADN
-Specification, options are presented in the normative JSON format as the option
-ID character concatenated with the option value:
-
-> Each option is a text string that may be included in
-> TypeOptions or FieldOptions, encoded as follows:
-> - The first character is the option ID.
-> - The remaining characters are the option value.
+Specification, options are presented in the normative JSON format as text
+strings containing the option ID character concatenated with the option value:
 
 As an example the TypeOption "minLength = 1" is represented as:
 ```
