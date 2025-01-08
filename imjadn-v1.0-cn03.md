@@ -7,7 +7,7 @@
 
 ## Committee Note 03
 
-## 11 December 2024
+## 08 January 2025
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
@@ -3276,30 +3276,108 @@ The following individuals have participated in the creation of this document and
 -------
 
 # Appendix C. Revision History
+
+## C.1 -- Revision History Table
+
 | Revision           | Date       | Editor      | Changes Made          |
 |:-------------------|:-----------|:------------|:----------------------|
 | imjadn-v1.0-cn01-wd01.md | 2023-01-18 | David Kemp | Initial working draft / CND01 |
 | imjadn-v1.0-cn01-wd02.md | 2023-04-19 | David Kemp | Second WD / CN01 candidate |
-| imjadn-v1.0-cn01-wd02.md | 2023-09-25 | David Lemire | Music librar example updates (PR #53) |
-| imjadn-v1.0-cn01-wd02.md | 2023-09-25 | David Kemp | Reorganize introduction (PR #55) |
-| imjadn-v1.0-cn01-wd02.md | 2023-09-25 | David Lemire | Normalize JADN Spec reference style (PR #56) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-04 | David Kemp | Move information definition to introduction (PR #57) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Overall updates to types descriptions in 3.1.x (PR #58) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-09 | David Lemire | Generalize description of SDO management system IM (PR #60) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-23 | David Lemire | Update namespaces discussion (4.1.2) with JADN v1.1 capabilities (PR #61) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-23 | David Lemire | Initial revisions to Section 3.1 to improve readability (PR #63) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-28 | David Lemire | Relocate multiple representations example (from 3.1.5.3 to 3.3.2) (PR #65) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-28 | David Lemire | Revise structure of Section 3.1 for improved clarity and sequencing (PR #66) |
-| imjadn-v1.0-cn01-wd02.md | 2023-10-29 | David Lemire | Refine Figure 4-1 (references relationships) (PR #70) |
-| imjadn-v1.0-cn01-wd02.md | 2023-11-06 | David Lemire | Transfer Section 2 material from CS (PR #71) and integrate with existing content (PR #74) |
-| imjadn-v1.0-cn01-wd02.md | 2023-11-06 | David Lemire | Add IPv4 packet header models as example of building from known structure (PR #71) |
-| imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Add definitions for lexical and value space and make associated adjustments (PR #76) |
-| imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Migrate Section 4 content into section 3.1 (PR #77) |
-| imjadn-v1.0-cn01-wd02.md | 2023-11-07 | David Lemire | Administrative clean-up (PR #78) |
-| imjadn-v1.0-cn01-wd02.md | 2023-11-14 | David Lemire | Update diagrams (PR #81) and text (PR #82) to align w/JADN Spec changes |
-| imjadn-v1.0-cn03.md      | 2023-11-26 | David Lemire | Add example development JADN IM from JSON schema starting point (PR #xx), rename document for next CN version |
-| imjadn-v1.0-cn03.md      | 2023-12-11 | David Lemire | Add "Why JADN?" material in Section 1.1 (PR #88) |
-| imjadn-v1.0-cn03.md      | 2023-12-xx | David Lemire | Consolidate duplicative 2.1 content into 1.1.3 (PR #89) |
+| imjadn-v1.0-cn01-wd02.md | 2024-09-25 | David Lemire | Music library example updates (PR #53) |
+| imjadn-v1.0-cn01-wd02.md | 2024-09-25 | David Kemp | Reorganize introduction (PR #55) |
+| imjadn-v1.0-cn01-wd02.md | 2024-09-25 | David Lemire | Normalize JADN Spec reference style (PR #56) |
+| imjadn-v1.0-cn01-wd02.md | 2024-10-04 | David Kemp | Move information definition to introduction (PR #57) |
+| imjadn-v1.0-cn01-wd02.md | 2024-10-09 | David Lemire | Overall updates to types descriptions in 3.1.x (PR #58) |
+| imjadn-v1.0-cn01-wd02.md | 2024-10-09 | David Lemire | Generalize description of SDO management system IM (PR #60) |
+| imjadn-v1.0-cn01-wd02.md | 2024-10-23 | David Lemire | Update namespaces discussion (4.1.2) with JADN v1.1 capabilities (PR #61) |
+| imjadn-v1.0-cn01-wd02.md | 2024-10-23 | David Lemire | Initial revisions to Section 3.1 to improve readability (PR #63) |
+| imjadn-v1.0-cn01-wd02.md | 2024-10-28 | David Lemire | Relocate multiple representations example (from 3.1.5.3 to 3.3.2) (PR #65) |
+| imjadn-v1.0-cn01-wd02.md | 2024-10-28 | David Lemire | Revise structure of Section 3.1 for improved clarity and sequencing (PR #66) |
+| imjadn-v1.0-cn01-wd02.md | 2024-10-29 | David Lemire | Refine Figure 4-1 (references relationships) (PR #70) |
+| imjadn-v1.0-cn01-wd02.md | 2024-11-06 | David Lemire | Transfer Section 2 material from CS (PR #71) and integrate with existing content (PR #74) |
+| imjadn-v1.0-cn01-wd02.md | 2024-11-06 | David Lemire | Add IPv4 packet header models as example of building from known structure (PR #71) |
+| imjadn-v1.0-cn01-wd02.md | 2024-11-07 | David Lemire | Add definitions for lexical and value space and make associated adjustments (PR #76) |
+| imjadn-v1.0-cn01-wd02.md | 2024-11-07 | David Lemire | Migrate Section 4 content into section 3.1 (PR #77) |
+| imjadn-v1.0-cn01-wd02.md | 2024-11-07 | David Lemire | Administrative clean-up (PR #78) |
+| imjadn-v1.0-cn01-wd02.md | 2024-11-14 | David Lemire | Update diagrams (PR #81) and text (PR #82) to align w/JADN Spec changes |
+| imjadn-v1.0-cn03.md      | 2024-11-26 | David Lemire | Add example development JADN IM from JSON schema starting point (PR #xx), rename document for next CN version |
+| imjadn-v1.0-cn03.md      | 2024-12-11 | David Lemire | Add "Why JADN?" material in Section 1.1 (PR #88) |
+| imjadn-v1.0-cn03.md      | 2024-12-23 | David Lemire | Consolidate duplicative 2.1 content into 1.1.3 (PR #89) |
+| imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Document v2 changes in Appendix C, corrections to revision table (PR #90) |
+
+
+## C.2 -- JADN Version 2 Changes
+
+This section details differences between versions 1 and 2 of JADN.
+
+### C.2.1 -- Breaking Change
+
+In JADN v2.0 the "unlimited" value for the `maxOccurs` (formerly `maxc`)
+sentinel is changed from 0 to -1. *This minor but incompatible change required a
+new major version.* Two options are provided for an unspecified `maxOccurs` value:
+
+- `maxOccurs` = -1 denotes an upper size limit defined by the JADN default value or package-specified upper value
+- `maxOccurs` = -2 denotes an unbounded upper size limit
+
+### C.2.2 -- Type Option Changes
+
+The following changes were made to JADN type options:
+
+- New options:
+  - `minExclusive, maxExclusive`: used to specify number ranges that don't include the stated minimum or maximum values
+  - `minLength, maxLength`: a distinct option from `minv, maxv`; with this new option strings can have both `minInclusive` and `minLength`
+  - `sequence`: enables specifying that `Map, MapOf, Record` types have a required field order 
+  - `combine`: provides greater flexibility for `Choice` types with `oneOf, anyOf, allOf, not` sub-options
+  - `abstract, extends, restricts, final`: options related to defining and controlling types using inheritance
+- Replaced options:
+  - `minv, maxv`: these options have been renamed to `minInclusive, maxInclusive`
+  - `minf, maxf`: these floating-point specific options have been replaced by `minInclusive, maxInclusive`
+- Removed option:
+  - `extend`: this option has been deprecated
+
+### C.2.3 -- Field Option Changes
+
+The following changes were made to JADN type options:
+
+- Replaced option:
+  - `minc, maxc`: these options have been renamed to `minOccurs, maxOccurs`
+
+### C.2.4 -- Inheritance
+
+Four new type options were introduced to support inheritance in information models:
+
+- `abstract`: a type definition with this option is only usable as a base type
+  that other types can extend or restrict. Abstract types are never instantiated
+  in serialized data.
+- `restricts`: this option is used when defining a type that is a subset of the
+  type that it references; it enables removing optional fields from the
+  referenced type (required fields cannot be removed).
+- `extends`: this option is used when defining a type that is a superset of the
+  type that it references; it enables adding new non-conflicting fields to a
+  subtype but cannot redefine existing fields from the referenced type.
+- `final`: this option is used to designate a type that cannot be referenced to
+  create a subtype.
+
+The `extends` and `restricts` options are complementary: if B `extends` A then
+every instance of A MUST be an instance of B.  If B `restricts` A then every
+instance of B MUST be an instance of A. 
+
+### C.2.5 -- Format and Validation Options Changes
+
+The following changes were made to format and validation options:
+
+- `/d#` was added as an option for the time-oriented format options (i.e., `date-time`, `date`, `time`, `duration`) to allow for sub-second precision for the time aspect.
+- `i<n>` replaces the `i8`, `i16`, `i32` format options to provide greater flexibility in specifying signed integer types; the permissable values are between -2^(n-1) and 2^(n-1)-1.
+- `d<n>` applies a decimal integer scale factor of 10^n: value has n digits after decimal point, n > 0.
+
+### C.2.6 -- General Changes
+
+The following general changes were made:
+
+- The "namespaces" prefix list was change from mappings to pairings to provide greater flexibility in managing namespaces and packages.
+- The package "Information" element was renamed to "Metadata" to avoid conflation with information modeling.
+- The package "exports" element was renamed to "roots" to better describe its purpose and effect.
+- Type Options have been revised and expanded to support defining both size and content (value) range limits for primitive types
 
 -------
 
