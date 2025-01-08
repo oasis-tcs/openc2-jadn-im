@@ -211,6 +211,13 @@ This Committee Note (CN) describes the nature of information models and the appl
 of the *JSON Abstract Data Notation* [[JADN Specification](#jadn-v10)] information modeling language
 in the creation and use of IMs.
 
+JADN is a simple standard language for specifying strong typing of messages and
+other data structures using Unified Modeling Language (UML) DataTypes. It
+establishes information equivalence (i.e., consistency of meaning) across
+multiple serialization options to enhance interoperability between systems and
+among systems of systems and type definition options that enable addressing a
+broad range of information modeling needs.
+
 ## 1.1 Background: Motivation for JADN
 
 Information is *what* needs to be communicated between applications (i.e.,
