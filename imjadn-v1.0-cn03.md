@@ -7,7 +7,7 @@
 
 ## Committee Note 03
 
-## 11 December 2024
+## 08 January 2025
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
@@ -3303,7 +3303,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn03.md      | 2024-11-26 | David Lemire | Add example development JADN IM from JSON schema starting point (PR #xx), rename document for next CN version |
 | imjadn-v1.0-cn03.md      | 2024-12-11 | David Lemire | Add "Why JADN?" material in Section 1.1 (PR #88) |
 | imjadn-v1.0-cn03.md      | 2024-12-23 | David Lemire | Consolidate duplicative 2.1 content into 1.1.3 (PR #89) |
-| imjadn-v1.0-cn03.md      | 2024-12-xx | David Lemire | Document v2 changes in Appendix C, corrections to revision table (PR #90) |
+| imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Document v2 changes in Appendix C, corrections to revision table (PR #90) |
 
 
 ## C.2 -- JADN Version 2 Changes
