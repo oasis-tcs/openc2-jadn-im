@@ -47,7 +47,8 @@ independently of how it is represented for processing, communication or storage.
 JSON Abstract Data Notation (JADN) is an information modeling language based on
 Unified Modeling Language (UML) datatypes designed to both express the meaning
 of data items at a conceptual level and formally type and validate their essential content.
-It uses information theory to define logical equivalence, allowing translation
+Essentially it is a UML profile for defining messages and other data structures.
+JADN uses information theory to define logical equivalence, allowing translation
 of essential content across a wide range of representations without loss.
 This Committee Note explains how to construct IMs using JADN, represent them
 in various formats such as formal languages and entity-relationship diagrams,
@@ -209,6 +210,13 @@ For complete copyright information please see the full Notices section in [Appen
 This Committee Note (CN) describes the nature of information models and the application
 of the *JSON Abstract Data Notation* [[JADN Specification](#jadn-v10)] information modeling language
 in the creation and use of IMs.
+
+JADN is a simple standard language for specifying strong typing of messages and
+other data structures using Unified Modeling Language (UML) DataTypes. It
+establishes information equivalence (i.e., consistency of meaning) across
+multiple serialization options to enhance interoperability between systems and
+among systems of systems and type definition options that enable addressing a
+broad range of information modeling needs.
 
 ## 1.1 Background: Motivation for JADN
 
@@ -3355,7 +3363,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn03.md      | 2024-12-23 | David Lemire | Consolidate duplicative 2.1 content into 1.1.3 (PR #89) |
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Document v2 changes in Appendix C, corrections to revision table (PR #90) |
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Update Type & Field Options in section 3.x (PR #91) |
-
+| imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Incorporate "elevator speech" into abstract and section 1.0 (PR #93) |
 
 ## C.2 -- JADN Version 2 Changes
 
