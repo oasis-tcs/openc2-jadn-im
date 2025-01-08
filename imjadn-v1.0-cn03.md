@@ -133,7 +133,7 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.4.1 "Anonymous" Type Definitions](#3141-anonymous-type-definitions)
       - [3.1.4.2 Selection and Use of JADN Compound Types](#3142-selection-and-use-of-jadn-compound-types)
       - [3.1.4.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
-      - [3.1.4.4 Application of minv / maxv](#3144-application-of-minv--maxv)
+      - [3.1.4.4 Application of minLength / maxLength](#3144-application-of-minlength--maxlength)
     - [3.1.5 Reference Relationships: Keys and Links](#315-reference-relationships-keys-and-links)
     - [3.1.6 Schemas, Packages and Namespaces](#316-schemas-packages-and-namespaces)
       - [3.1.6.1 Packages](#3161-packages)
@@ -164,7 +164,7 @@ For complete copyright information please see the full Notices section in [Appen
  - [Figure 2-1 -- Serialization / Deserialization](#figure-2-1----serialization--deserialization)
  - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
  - [Figure 3-1 -- JADN Type Definition Components](#figure-3-1----jadn-type-definition-components)
- - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-type-definition-structure)
+ - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-v2-type-definition-structure)
  - [Figure 3-3 -- JADN Schema Top-Level Structure](#figure-3-3----jadn-schema-top-level-structure)
  - [Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-4----jadn-for-primitive-arrayof-mapof-types)
  - [Figure 3-5 -- JADN Fields for Enumerated Types](#figure-3-5----jadn-fields-for-enumerated-types)
@@ -987,6 +987,8 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 > * Replace BaseType with CoreType throughout
 > * Replace Package with Schema as the top-level JADN type 
 > * Replace `info` / `Information` with `meta` / `Metadata` in JADN schema packages
+> * Updates Type and Field Options for greater flexibility and improved alignment with JSON and XML schema terminology
+> * Incorporates Type Options to support the use of inheritance concepts in developing information models
 > 
 > The text and figures in this CN use the JADN v2.0 terminology; this does not
 > reflect alteration of the underlying concepts.
@@ -999,12 +1001,13 @@ options (field options only apply to compound and union types).
 ###### Figure 3-1 -- JADN Type Definition Components
 ![Figure 3-1 -- JADN Concepts](images/JADN-Type-Definitions.drawio.png)
 
-A JADN schema in its native form is a JSON document containing an optional object labeled
-"meta" and an array labeled "types". 
+A JADN schema in its native form is a JSON document with a single object that contains an optional map labeled
+"meta" and an array labeled "types".
 
-* The "meta" object contains metadata about
-the schema contained in the document, including the types exported from this
-schema and namespace information to connect it with other JADN schema documents.
+* The "meta" map contains metadata about the schema contained in the document,
+including the types exported from this schema and namespace information to
+connect it with other JADN schema documents. The "meta" map is optional but if
+included it must define a namespace for the model.
 
 * The "types" section of the schema document is an array of arrays, with each of
 the inner arrays defining one type in the schema. Each type in the schema
@@ -1065,8 +1068,10 @@ that type.
     of **Item** or **Field** options that define the items that
     comprise the compound type.
 
-###### Figure 3-2 -- JADN Type Definition Structure
-![JADN Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
+> **TO-DO:** Determine whether including the ASCII code numbers in Figure 3-2 is worthwhile
+
+###### Figure 3-2 -- JADN V2 Type Definition Structure
+![JADN V2 Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
 
 #### 3.1.1.1 TypeNames and CoreTypes
 
@@ -1100,17 +1105,20 @@ The CoreType must be one of the twelve JADN core types previously identified.
 
 #### 3.1.1.2 TypeOptions
 
-The third element of a JADN type definition is an array of zero
-or more of the TypeOptions defined in Section&nbsp;3.2.1 of the
-[[JADN Specification](#jadn-v10)]. JADN includes options for both
-_types_ (discussed in this section) and _fields_ (discussed in
+The third element of a JADN type definition is an array of zero or more of the
+TypeOptions defined in Section&nbsp;3.2.1 of the [[JADN
+Specification](#jadn-v10)]. JADN includes options for both _types_ (discussed in
+this section) and _fields_ (discussed in
 [Section&nbsp;3.1.1.4](#3114-field-options)). As explained in the JADN
-Specification:
+Specification, options are presented in the normative JSON format as text
+strings containing the option ID character concatenated with the option value:
 
-> Each option is a text string that may be included in
-> TypeOptions or FieldOptions, encoded as follows:
-> - The first character is the option ID.
-> - The remaining characters are the option value.
+As an example the TypeOption "minLength = 1" is represented as:
+```
++----+-----------+     Option ID = 0x7b (Left Curley Bracket) = "minLength"
+| ID | Value     |     Value = 1
++----+-----------+     TypeOption string = "{1"
+```
 
 TypeOptions are classifiers that, along with the CoreType,
 determine whether data values are instances of the defined type.
@@ -1128,28 +1136,41 @@ Type and Field options labels have JSON Schema and XML Schema equivalents.
 
 ###### Table 3-1 -- JADN Type Options
 
-| **Option** | **Type** | **ID** | **Description**                                                   |
-|:----------:|:--------:|:------:|:------------------------------------------------------------------|
-|     id     | Boolean  |   `=`  | Items and Fields are denoted by FieldID rather than FieldName     |
-|   vtype    |  String  |   `*`  | Value type for ArrayOf and MapOf                                  |
-|   ktype    |  String  |   `+`  | Key type for MapOf                                                |
-|    enum    |  String  |   `#`  | Extension: Enumerated type derived from a specified type          |
-|  pointer   |  String  |   `>`  | Extension: Enumerated type pointers derived from a specified type |
-|   format   |  String  |   `/`  | Semantic validation keyword                                       |
-|  pattern   |  String  |   `%`  | Regular expression used to validate a String type                 |
-|    minf    |  Number  |   `y`  | Minimum real number value                                         |
-|    maxf    |  Number  |   `z`  | Maximum real number value                                         |
-|    minv    | Integer  |   `{`  | Minimum integer value, octet or character count, or element count |
-|    maxv    | Integer  |   `}`  | Maximum integer value, octet or character count, or element count |
-|   unique   | Boolean  |   `q`  | ArrayOf instance must not contain duplicate values                |
-|    set     | Boolean  |   `s`  | ArrayOf instance is unordered and unique                          |
-| unordered  | Boolean  |   `b`  | ArrayOf instance is unordered                                     |
-|   extend   | Boolean  |   `X`  | Type is extensible; new Items or Fields may be appended           |
-|  default   |  String  |   `!`  | Default value                                                     |
+|  **Option**  | **Type** | **ID** | **Description**                                                   |
+|:------------:|:--------:|:------:|-------------------------------------------------------------------|
+|      id      |  Boolean |   `=`  | Items and Fields are denoted by FieldID rather than FieldName     |
+|     vtype    |  String  |   `*`  | Value type for ArrayOf and MapOf                                  |
+|     ktype    |  String  |   `+`  | Key type for MapOf                                                |
+|     enum     |  String  |   `#`  | Extension: Enumerated type derived from a specified type          |
+|    pointer   |  String  |   `>`  | Extension: Enumerated type pointers derived from a specified type |
+|    format    |  String  |   `/`  | Semantic validation keyword                                       |
+|    pattern   |  String  |   `%`  | Regular expression used to validate a String type                 |
+| minExclusive |  Number  |   `w`  | Minimum numeric/string value, excluding bound                     |
+| maxExclusive |  Number  |   `x`  | Maximum numeric/string value, excluding bound                     |
+| minInclusive |  Number  |   `y`  | Minimum numeric/string value                                      |
+| maxInclusive |  Number  |   `z`  | Maximum numeric/string value                                      |
+|   minLength  |  Integer |   `{`  | Minimum byte or text string length, collection item count         |
+|   maxLength  |  Integer |   `}`  | Maximum byte or text string length, collection item count         |
+|    unique    |  Boolean |   `q`  | ArrayOf instance must not contain duplicate values                |
+|      set     |  Boolean |   `s`  | ArrayOf instance is unordered and unique                          |
+|   unordered  |  Boolean |   `b`  | ArrayOf instance is unordered and not unique (bag)                |
+|   sequence   |  Boolean |   `o`  | Map, MapOr or Record instance is ordered and unique (ordered set) |
+|    combine   |  Boolean |   `C`  | Choice instance is a logical combination (anyOf, allOf, oneOf)    |
+|   abstract   |  Boolean |   `a`  | Inheritance: abstract, non-instantiatable                         |
+|   restricts  |  Boolean |   `r`  | Inheritance: restriction - subset of referenced type              |
+|    extends   |  Boolean |   `e`  | Inheritance: extension - superset of referenced type              |
+|     final    |  Boolean |   `f`  | Inheritance: final - cannot have subtype                          |
+|    default   |  String  |   `!`  | Default value                                                     |
 
-Detailed explanations of each type option can be found in
-Sections 3.2.1.1 through 3.2.1.12 of the [[JADN Specification](#jadn-v10)].
-Table 3-2 summarizes the applicability of type options to JADN core types.
+Detailed explanations of each type option can be found in Sections 3.2.1.1
+through 3.2.1.12 of the [[JADN Specification](#jadn-v10)]. Table 3-2 summarizes
+the applicability of type options to JADN core types. The `ArrayOf` and `MapOf`
+types have required options, as indicated. Other type options can be applied to
+individual types where the option is relevant, as indicated by table cells with an "X".
+
+> **TO-DO:** Add clarification text regarding min/maxLength as _size_ options
+> versus min/max Inclusive/Exclusive as _value_ options.
+
 
 ###### Table 3-2 -- Type Option Applicability
 
@@ -1159,7 +1180,7 @@ Table 3-2 summarizes the applicability of type options to JADN core types.
 
 The use of the **Fields** element to convey Item or Field
 Definitions is dependent on the **CoreType** selected, as
-illustrated in [Figure 3-2](#figure-3-2----jadn-type-definition-structure). The rules
+illustrated in [Figure 3-2](#figure-3-2----jadn-v2-type-definition-structure). The rules
 pertaining to the **Fields** array are as follows:
 
 * If the **CoreType** is a Primitive type, ArrayOf, or MapOf, no
@@ -1203,14 +1224,14 @@ specifying field options. Table 3-3 lists the JADN field options.
 
 ###### Table 3-3 -- JADN Field Options
 
-| **Option** |  **Type**  |  **ID**  | **Description**                                               | **JADN Spec Section** |
-|:----------:|:----------:|:--------:|:--------------------------------------------------------------|:---------------------:|
-|    minc    |  Integer   |   `[`    | Minimum cardinality, default = 1, 0 = optional                |        3.2.2.1        |
-|    maxc    |  Integer   |   `]`    | Maximum cardinality, default = 1, 0 = default max, >1 = array |        3.2.2.1        |
-|   tagid    | Enumerated |   `&`    | Field containing an explicit tag for this Choice type         |        3.2.2.2        |
-|    dir     |  Boolean   |   `<`    | Pointer enumeration treats field as a group of items          |         3.3.5         |
-|    key     |  Boolean   |   `K`    | Field is a primary key for this type                          |         3.3.6         |
-|    link    |  Boolean   |   `L`    | Field is a foreign key reference to a type instance           |         3.3.6         |
+| **Option** |  **Type**  | **ID** | **Description**                                               | **JADN Spec Section** |
+|:----------:|:----------:|:------:|---------------------------------------------------------------|:---------------------:|
+|  minOccurs |   Integer  |   `[`  | Minimum cardinality, default = 1, 0 = optional                |                       |
+|  maxOccurs |   Integer  |   `]`  | Maximum cardinality, default = 1, 0 = default max, >1 = array |                       |
+|    tagid   | Enumerated |   `&`  | Field containing an explicit tag for this Choice type         |                       |
+|     dir    |   Boolean  |   `<`  | Pointer enumeration treats field as a group of items          |                       |
+|     key    |   Boolean  |   `K`  | Field is a primary key for this type                          |                       |
+|    link    |   Boolean  |   `L`  | Field is a foreign key reference to a type instance           |                       |
 
 The type options described in [Section&nbsp;3.1.1.2](#3112-typeoptions) can also apply
 to fields, with the constraint that the type option must be applicable to the
@@ -1239,11 +1260,11 @@ formats.
   <tbody>
     <tr>
       <td class="td">
-        A sequence of octets. Length is the number of octets.
+        A Binary instance is sequence of octets. Binary values are not ordered so range options do not apply.
       </td>
       <td class="td">
         <i>
-          <center>minv, maxv, format</center>
+          <center>format, minLength, maxlength</center>
         </i>
       </td>
     </tr>
@@ -1265,8 +1286,8 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
-The *minv* and *maxv* TypeOptions are used to specify a minimum and/or maximum
-number of octets for a binary type. If *minv* equals *maxv* the size of the
+The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
+number of octets for a binary type. If *minLength* equals *maxLength* the size of the
 binary type is fixed. Table 3-4 lists the *format* options applicable to the
 Binary type:
 
@@ -1290,7 +1311,7 @@ Binary type:
   <tbody>
     <tr>
       <td class="td">
-        An element with one of two values: true or false.
+        A Boolean instance is one of the predefined values *true* and *false*.
       </td>
       <td class="td">
           <center>None</center>
@@ -1326,11 +1347,11 @@ The corresponding JIDL representation would be:
   <tbody>
     <tr>
       <td class="td">
-        A positive or negative whole number.
+        An Integer instance is a value in the ordered infinite set of integers (…, -2, -1, 0, 1, 2, …).
       </td>
       <td class="td">
         <i>
-          <center>minv, maxv, format</center>
+          <center>format, minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
@@ -1352,10 +1373,10 @@ The corresponding JIDL representation would be:
   TrackNumber = Integer   // Track number for current song
 ```
 
-The *minv* and *maxv* TypeOptions are used to specify a minimum and/or maximum
+The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
 value that may be assigned to an Integer type. The JADN Integer primitive type
-encompasses the UML UnlimitedNatural primitive type through the use the *minv*
-Type Option: an Integer with a *minv* of `0` has the same range of values as an
+encompasses the UML UnlimitedNatural primitive type through the use the *minLength*
+Type Option: an Integer with a *minLength* of `0` has the same range of values as an
 UnlimitedNatural.
 
 Table 3-5 lists the *format* options applicable to the Integer type:
@@ -1364,10 +1385,19 @@ Table 3-5 lists the *format* options applicable to the Integer type:
 
 | Keyword  | Type    | Requirement                                                                               |
 |----------|---------|-------------------------------------------------------------------------------------------|
-| i8       | Integer | Signed 8 bit integer, value must be between -128 and 127.                                 |
-| i16      | Integer | Signed 16 bit integer, value must be between -32768 and 32767.                            |
-| i32      | Integer | Signed 32 bit integer, value must be between -2147483648 and 2147483647.                  |
+| i\<*n*\> | Integer | Signed _n_-byte integer; the value of _n_ must be a power of 2.                           |
 | u\<*n*\> | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1. |
+| d\<*n*\> | Integer | _n_-bit fixed precision integer.                                                          |
+
+The "i\<*n*\>" format option provides flexible scaling for size of an Integer
+type and its associated value range. The "d\<*n*\>" format option allows using
+performing fixed point math against Integer types without rounding errors or
+loss of precision. For example, the Integer option /d3 specifies an integer that
+is scaled by 10^3, providing three decimal digits after a "decimal point".  So
+an integer Time with no option would be seconds before or after the Posix epoch,
+and with /d3 it would be milliseconds, or /d6 would be microseconds. If an
+integer temperature is documented to be degrees Celsius, its type could use the
+option /d1 or /d2 to give precision of tenths or hundredths of a degree.
 
 #### 3.1.2.4 Number
 
@@ -1381,11 +1411,11 @@ Table 3-5 lists the *format* options applicable to the Integer type:
   <tbody>
     <tr>
       <td class="td">
-        A real number.
+        A Number instance is a value in the ordered infinite set of real numbers.
       </td>
       <td class="td">
         <i>
-          <center>minf, maxf, format, pattern</center>
+          <center>format, minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
@@ -1407,18 +1437,21 @@ The corresponding JIDL representation would be:
   Temperature = Number   // Current temperature observation in degrees C
 ```
 
-The *minf* and *maxf* TypeOptions are used to specify a minimum and/or maximum
+> **TO-DO:** should the "only relevant" language be expanded to cite serializing with binary formats?
+
+The *minInclusive* and *maxInclusive* TypeOptions are used to specify a minimum and/or maximum
 value that may be assigned to a Number type. Table 3-6 lists the *format*
 options applicable to the Number type. These *format* options are only relevant
 when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&nbsp;4.4:
 
 ###### Table 3-6 -- Number Type Format Options
 
-| Keyword |  Type  | Requirement                                                       |
-|:-------:|:------:|-------------------------------------------------------------------|
-| **f16** | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25)   |
-| **f32** | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26) |
-| **f64** | Number | **float64**: Serialize as IEEE 754 Single-Precision Float (#7.27) |
+| Keyword  |  Type  | Requirement                                                        |
+|:--------:|:------:|--------------------------------------------------------------------|
+| **f16**  | Number | **float16**: Serialize as IEEE 754 Half-Precision Float (#7.25)    |
+| **f32**  | Number | **float32**: Serialize as IEEE 754 Single-Precision Float (#7.26)  |
+| **f64**  | Number | **float64**: Serialize as IEEE 754 Double-Precision Float (#7.27)  |
+| **f128** | Number | **float64**: Serialize as IEEE 754 Quadruple-Precision Float (n/a) |
 
 The parenthetical (#7.2x) references in the above table identify the CBOR major
 type (7) and associated additional information (25/26/27) as defined in the
@@ -1438,11 +1471,11 @@ of [[RFC8610](#rfc8610)].
   <tbody>
     <tr>
       <td class="td">
-        A sequence of characters, each of which has a Unicode codepoint. Length is the number of characters.
+        A String instance is a sequence of characters in a character set.
       </td>
       <td class="td">
         <i>
-          <center>minv, maxv, format, pattern</center>
+          <center>format, pattern, minLength, maxLength,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
@@ -1465,8 +1498,8 @@ The corresponding JIDL representation would be:
 ```
 
 All semantic validation keywords defined in Section 7.3 of [[JSON
-Schema](#jsonschema)] are valid *format* options for the String type. The *minv*
-and *maxv* TypeOptions are used to specify a minimum and/or maximum number of
+Schema](#jsonschema)] are valid *format* options for the String type. The *minLength*
+and *maxLength* TypeOptions are used to specify a minimum and/or maximum number of
 characters that may be assigned to a String type (i.e., the acceptable range of
 string lengths). 
 
@@ -1513,7 +1546,7 @@ specification is in Section 22.2.
       </td>
       <td class="td">
         <i>
-          <center>id, enum, pointer, extend</center>
+          <center>id, enum, pointer</center>
         </i>
       </td>
     </tr>
@@ -1564,7 +1597,7 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
       </td>
       <td class="td">
         <i>
-          <center>id, extend</center>
+          <center>id, combine</center>
         </i>
       </td>
     </tr>
@@ -1594,7 +1627,7 @@ IdentityType = Choice                // Nature of the referenced identity
    3 tool             Tool           // Identity refers to an automated tool
 ```
 
-> EDITOR'S NOTE:  need examples of applying the TypeOptions include the v1.1 enhancements.
+> EDITOR'S NOTE:  need examples of applying the TypeOptions include the v2.0 enhancements.
 
 
 #### 3.1.2.8 Array
@@ -1614,7 +1647,7 @@ IdentityType = Choice                // Nature of the referenced identity
       </td>
       <td class="td">
         <i>
-          <center>extend, minv, maxv, format</center>
+          <center>format, minLength, maxLength</center>
         </i>
       </td>
     </tr>
@@ -1661,6 +1694,7 @@ Table 3-7 lists the *format* options applicable to the Array type:
 | ------------ | ------ | ------------|
 | ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [RFC 4632](#rfc4632) Section&nbsp;3.1 |
 | ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [RFC 4291](#rfc4291) Section 2.3 |
+| tag-uuid     | Array  | Tag portion is a String, UUID portion is a 128-bit (16 byte) binary value |
 
 The `ipv4-net` and `ipv6-net` format options impose several constraints when applied to an Array type:
 
@@ -1668,6 +1702,16 @@ The `ipv4-net` and `ipv6-net` format options impose several constraints when app
 * Constrains the Integer prefix value to a range of 0..32 or 0..128, respectively
 * Specifies that text representations of the type will use CIDR notation
 
+The `tag-uuid` format option imposes similar constraints:
+
+* Specifies a two-field Array with one String and one Binary value
+* The String value contains the tag, which is descriptive text and may contain hyphens
+* The Binary value contains the 128-bit UUID value
+* The JSON serialization will be `"tagString--<UUID as text>"`; e.g., `"my-tag-type--ccf8a573-bbf3-48b8-b0ba-b14ddd1fc27d"`
+
+The `tag-uuid` format for identifiers is used in the [[STIX](#stix-v21)] and
+[[CACAO](#cacao-security-playbooks-v20)] specifications (see sections 2.9 and
+10.10, respectively).
 
 #### 3.1.2.9 ArrayOf(vtype)
 
@@ -1686,7 +1730,7 @@ The `ipv4-net` and `ipv6-net` format options impose several constraints when app
       </td>
       <td class="td">
         <i>
-          <center>vtype, minv, maxv, unique, set, unordered</center>
+          <center>vtype, minLength, maxLength, unique, set, unordered</center>
         </i>
       </td>
     </tr>
@@ -1743,7 +1787,7 @@ Track = Record                                    // for each track there's a fi
       </td>
       <td class="td">
         <i>
-          <center>id, extend, minv, maxv</center>
+          <center>id, minLength, maxLength, sequence</center>
         </i>
       </td>
     </tr>
@@ -1783,15 +1827,15 @@ Hashes = Map{1..*}    // Cryptographic hash values
    3 sha256     Binary{32..32} /x optional   // SHAs26 hash as defined in RFC6234
 ```
 
-In the example above, note the combination of the `{minv..maxv}`
+In the example above, note the combination of the `{minLength..maxLength}`
 type options in the record's definition and the presence of the
 `optional` keyword on all fields of the record. This reflects a
 design pattern: the compound type's cardinality of `{1..*}`
 defines that there is a minimum number of required fields even
 though every individual field is optional. An empty `Hashes` map is
 invalid, but a map where any one or more of the three hash types
-exists is valid. This is an example of one application of _minv_,
-_maxv_, as described above in [Section&nbsp;3.1.4.4](#3144-application-of-minv--maxv).
+exists is valid. This is an example of one application of _minLength_,
+_maxLength_, as described above in [Section&nbsp;3.1.4.4](#3144-application-of-minlength--maxlength).
 
 #### 3.1.2.11 MapOf(ktype,vtype)
 
@@ -1810,7 +1854,7 @@ _maxv_, as described above in [Section&nbsp;3.1.4.4](#3144-application-of-minv--
       </td>
       <td class="td">
         <i>
-          <center>ktype, vtype, minv, maxv</center>
+          <center>ktype, vtype, minLength, maxLength, sequence</center>
         </i>
       </td>
     </tr>
@@ -1881,7 +1925,7 @@ Date = String /date
       </td>
       <td class="td">
         <i>
-          <center>extend, minv, maxv</center>
+          <center>minLength, maxLength, sequence</center>
         </i>
       </td>
     </tr>
@@ -2200,20 +2244,20 @@ models are directed graphs with a small predefined set of core
 datatypes and only two kinds of relationship: "contain" and
 "reference".
 
-#### 3.1.4.4 Application of minv / maxv
+#### 3.1.4.4 Application of minLength / maxLength
 
-The `minv` and `maxv` type options are distinctive in that they
+The `minLength` and `maxLength` type options are distinctive in that they
 can apply to both primitive and compound types, with a different
 meaning in these two applications:
 
  - When applied to a primitive type (Binary, Integer or String),
-   the `minv` and `maxv` type options constrain the *values* an
+   the `minLength` and `maxLength` type options constrain the *values* an
    instance of that type may hold. Specifically, when applied to:
-   - An Integer type, the `minv` and `maxv` type options constrain
+   - An Integer type, the `minLength` and `maxLength` type options constrain
      the numeric values an instance of that type may hold.
-   - A String type, the `minv` and `maxv` type options constrain the
+   - A String type, the `minLength` and `maxLength` type options constrain the
      number of characters in the string.
-   - A Binary type, the `minv` and `maxv` type options constrain the
+   - A Binary type, the `minLength` and `maxLength` type options constrain the
      number of octets (bytes) in the binary value.
    
 For example, the following specifies an Integer type that can be
@@ -2230,7 +2274,7 @@ notation (see
 ```
 
  - When applied to a compound type (Array, ArrayOf, Map, MapOf,
-   Record), the `minv` and `maxv` type options constrain the
+   Record), the `minLength` and `maxLength` type options constrain the
    *number of elements* an instance of that type may have. For
    example, the following specifies a Record type that must have
    at least two fields populated, even though only one field is
@@ -3091,6 +3135,9 @@ While any hyperlinks included in this appendix were valid at the time of publica
 ###### [ASN.1]
 Recommendation ITU-T X.680 (2021) *Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation* 
 
+###### [CACAO-Security-Playbooks-v2.0]
+_CACAO Security Playbooks Version 2.0_. Edited by Bret Jordan and Allan Thomson. 27 November 2023. OASIS Committee Specification 01. https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html. Latest version: https://docs.oasis-open.org/cacao/security-playbooks/v2.0/security-playbooks-v2.0.html.
+
 ###### [Declarative]
 "The Data Engineer's Guide to Declarative vs Imperative for Data",
 https://www.dataops.live/the-data-engineers-guide-to-declarative-vs-imperative-for-data
@@ -3220,6 +3267,9 @@ https://www.rfc-editor.org/info/rfc8610
 "A Mathematical Theory of Communication", 
 https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication
 
+###### [STIX-v2.1]
+_STIX Version 2.1_. Edited by Bret Jordan, Rich Piazza, and Trey Darley. 10 June 2021. OASIS Standard. https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html. Latest stage: https://docs.oasis-open.org/cti/stix/v2.1/stix-v2.1.html.
+
 ###### [UML]
 "Unified Modeling Language", Version 2.5.1, December 2017,
 https://www.omg.org/spec/UML/2.5.1/About-UML/
@@ -3304,6 +3354,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn03.md      | 2024-12-11 | David Lemire | Add "Why JADN?" material in Section 1.1 (PR #88) |
 | imjadn-v1.0-cn03.md      | 2024-12-23 | David Lemire | Consolidate duplicative 2.1 content into 1.1.3 (PR #89) |
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Document v2 changes in Appendix C, corrections to revision table (PR #90) |
+| imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Update Type & Field Options in section 3.x (PR #91) |
 
 
 ## C.2 -- JADN Version 2 Changes
