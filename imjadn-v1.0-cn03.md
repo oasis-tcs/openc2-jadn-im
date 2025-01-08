@@ -47,7 +47,8 @@ independently of how it is represented for processing, communication or storage.
 JSON Abstract Data Notation (JADN) is an information modeling language based on
 Unified Modeling Language (UML) datatypes designed to both express the meaning
 of data items at a conceptual level and formally type and validate their essential content.
-It uses information theory to define logical equivalence, allowing translation
+Essentially it is a UML profile for defining messages and other data structures.
+JADN uses information theory to define logical equivalence, allowing translation
 of essential content across a wide range of representations without loss.
 This Committee Note explains how to construct IMs using JADN, represent them
 in various formats such as formal languages and entity-relationship diagrams,
