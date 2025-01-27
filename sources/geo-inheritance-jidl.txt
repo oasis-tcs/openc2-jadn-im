@@ -18,8 +18,8 @@ OpenSpace = Record extends Location
 
 Road = Record abstract extends Location
     3 endPoints     Endpoints       // center of start and end points of a linear feature, in lat / long
-    4 wayPoints     Coordinates     // list of centerpoints (lat / long) of a road or bridge that define 
-                                    // its route; curvature is approximates as straight line segments 
+    4 wayPoints     Coordinates     // list of center points (lat / long) of a road or bridge that define 
+                                    // its route; curvature is approximated as straight line segments 
                                     // between waypoints, enabling arbitrary precision about the route
     5 width         Number (0., -1.]    // width of the road in meters, MUST be >0
     6 name          String          // official (or commonly used) name of the road
@@ -44,3 +44,9 @@ Maintainer = Enumerated // level of government responsible for maintaining a roa
     2   county
     3   state
     4   federal
+
+Surface = Choice (oneOf)
+    1 dirt
+    2 gravel
+    3 asphalt
+    4 concrete
