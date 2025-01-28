@@ -23,7 +23,7 @@ OpenSpace = Record extends(Location)
                             // the first and last Coordinates in the array MUST match
 
 Road = Record extends(Location) abstract
-    3 endPoints     Endpoints       // center of start/end points of a road, in lat/long
+    3 endPoints     Endpoints       // center of start/end points of a road, in lat/long + political unit
     4 wayPoints     Coordinates     // list of center points (lat/long) of a road that defines 
                                     // its route; curvature is approximated as straight line segments 
                                     // between waypoints, enabling arbitrary precision about the route
@@ -69,7 +69,7 @@ Building = Record extends(Construction)
     6 function  BuildingFunction{1..*}
 
 Tunnel = Record extends(Construction)
-    3 endPoints     Endpoints       // center of start and end points of a road, in lat/long
+    3 endPoints     Endpoints       // center of start and end points of a tunnel, in lat/long plus political unit
     4 wayPoints     Coordinates     // list of center points (lat/long) of a tunnel that defines 
                                     // its route; curvature is approximated as straight line segments 
                                     // between waypoints, enabling arbitrary precision about the route
@@ -86,7 +86,8 @@ Bridge = Record extends(Construction)
                                     // between waypoints, enabling arbitrary precision about the route
     5 width         Number (0., -1.]    // width of the bridge in meters, MUST be >0
     6 maxHeight     Number              // maximum height of the bridge in meters
-    7 name          String          // official (or commonly used) name of the tunnel
+    7 name          String          // official (or commonly used) name of the bridge
+    8 purpose       BridgePurpose{1..*} // purpose of this Bridge
 
 BuildingFunction = Enumerated
     1 Single-Family Dwelling
@@ -101,6 +102,11 @@ TunnelPurpose = Enumerated
     2 pedestrian
     3 railroad
     4 water
+
+BridgePurpose = Enumerated
+    1 vehicular
+    2 pedestrian
+    3 railroad
 
 Address = Map
     1 street    String
