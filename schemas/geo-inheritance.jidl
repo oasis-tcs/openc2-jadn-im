@@ -72,7 +72,6 @@ Tunnel = Record extends(Construction)
     8 name          String          // official (or commonly used) name of the tunnel
     9 purpose       TunnelPurpose{1..*} // purpose of this tunnel
 
-
 Bridge = Record extends(Construction)
     3 endPoints     Endpoints       // center of start and end points of a bridge, in lat / long
     4 wayPoints     Coordinates     // list of center points (lat / long) of a bridge that defines 
@@ -85,9 +84,10 @@ Bridge = Record extends(Construction)
 BuildingFunction = Enumerated
     1 Single-Family Dwelling
     2 Multi-Family Dwelling
-    3 Commercial
-    4 Medical
-    5 Government
+    3 Commercial-Office
+    4 Commercial-Retail
+    5 Medical
+    6 Government
 
 TunnelPurpose = Enumerated
     1 vehicular
