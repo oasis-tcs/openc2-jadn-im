@@ -48,8 +48,9 @@ Maintainer = Enumerated // level of government responsible for maintaining a roa
 Surface = Choice (oneOf)
     1 dirt
     2 gravel
-    3 asphalt
-    4 concrete
+    3 macadam
+    4 asphalt
+    5 concrete
 
 Construction = Record extends(Location) abstract
 
