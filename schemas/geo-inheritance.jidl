@@ -4,7 +4,7 @@ Coordinate = Array
 
 Coordinates = ArrayOf(Coordinate)
 
-EndPoints = ArrayOf(EndPoint)[2..2]     // center of start/end points of a linear feature, in lat/long
+EndPoints = ArrayOf(EndPoint){2..2}     // center of start/end points of a linear feature, in lat/long
 
 EndPoint = Record
     1 endpoint          Coordinate      // center of start or end point of a linear feature, in lat/long
