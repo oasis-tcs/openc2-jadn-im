@@ -102,4 +102,4 @@ Address = Map
     4 county    String optional
     5 city      String
     6 state     String{pattern="[A-Z]{2}"}
-    7 postCode  Integer{5..5}
+    7 postCode  String{pattern="/\d{5}(\-\d{4}){0,1}"}
