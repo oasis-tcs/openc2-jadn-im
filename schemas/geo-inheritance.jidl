@@ -14,8 +14,8 @@ PolUnit = String    // the name of the political area where the feature exists
                     // (city / county / state level, as appropriate);
 
 Location = Record abstract
-    1 geoCenter         Coordinate  // geographic center of the feature of interest at the location
-    2 politicalUnit     PolUnit     // the name of the political area where the location exists 
+    1 geoCenter         Coordinate          // geographic center of the feature of interest at the location
+    2 politicalUnit     PolUnit optional    // the name of the political area where the location exists 
 
 OpenSpace = Record extends(Location)
     3 edges     Coordinates // an array of lat/long points defining the line segments around 
