@@ -27,7 +27,7 @@ Road = Record extends(Location) abstract
     4 wayPoints     Coordinates     // list of center points (lat/long) of a road that defines 
                                     // its route; curvature is approximated as straight line segments 
                                     // between waypoints, enabling arbitrary precision about the route
-    5 width         Number (0., -1.]    // width of the road in meters, MUST be >0
+    5 width         Number (0., ]   // width of the road in meters, MUST be >0
     6 name          String          // official (or commonly used) name of the road
     7 maintainedBy  Maintainer      // what level of government is responsible for maintenance
 
