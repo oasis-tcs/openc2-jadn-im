@@ -4,7 +4,7 @@ Coordinate = Array
 
 Coordinates = ArrayOf(Coordinate)
 
-EndPoints = ArrayOf(Coordinate)[2..2]   // center of start and end points of a linear feature, in lat / long
+EndPoints = ArrayOf(Coordinate)[2..2]   // center of start/end points of a linear feature, in lat/long
 
 Location = Record abstract
     1 geoCenter         Coordinate  // geographic center of the feature of interest at the location
@@ -12,13 +12,13 @@ Location = Record abstract
                                     // (city / county / state level, as appropriate);
 
 OpenSpace = Record extends(Location)
-    3 edges     Coordinates // an array of lat / long points defining the line segments around 
+    3 edges     Coordinates // an array of lat/long points defining the line segments around 
                             // the perimeter of a feature, equivalent to the gml:LinearRing
                             // the first and last Coordinates in the array MUST match
 
 Road = Record extends(Location) abstract
-    3 endPoints     Endpoints       // center of start and end points of a road, in lat / long
-    4 wayPoints     Coordinates     // list of center points (lat / long) of a road that defines 
+    3 endPoints     Endpoints       // center of start/end points of a road, in lat/long
+    4 wayPoints     Coordinates     // list of center points (lat/long) of a road that defines 
                                     // its route; curvature is approximated as straight line segments 
                                     // between waypoints, enabling arbitrary precision about the route
     5 width         Number (0., -1.]    // width of the road in meters, MUST be >0
@@ -56,15 +56,15 @@ Construction = Record extends(Location) abstract
 
 Building = Record extends(Construction)
     3 address   Address
-    4 edges     Coordinates // an array of lat / long points defining the line segments around 
+    4 edges     Coordinates // an array of lat/long points defining the line segments around 
                             // the perimeter of a feature, equivalent to the gml:LinearRing
                             // the first and last Coordinates in the array MUST match
     5 maxHeight Number      // maximum height of the building in meters
     6 function  BuildingFunction{1..*}
 
 Tunnel = Record extends(Construction)
-    3 endPoints     Endpoints       // center of start and end points of a road, in lat / long
-    4 wayPoints     Coordinates     // list of center points (lat / long) of a tunnel that defines 
+    3 endPoints     Endpoints       // center of start and end points of a road, in lat/long
+    4 wayPoints     Coordinates     // list of center points (lat/long) of a tunnel that defines 
                                     // its route; curvature is approximated as straight line segments 
                                     // between waypoints, enabling arbitrary precision about the route
     5 width         Number (0., -1.]    // width of the tunnel in meters, MUST be >0
@@ -74,8 +74,8 @@ Tunnel = Record extends(Construction)
     9 purpose       TunnelPurpose{1..*} // purpose of this tunnel
 
 Bridge = Record extends(Construction)
-    3 endPoints     Endpoints       // center of start and end points of a bridge, in lat / long
-    4 wayPoints     Coordinates     // list of center points (lat / long) of a bridge that defines 
+    3 endPoints     Endpoints       // center of start and end points of a bridge, in lat/long
+    4 wayPoints     Coordinates     // list of center points (lat/long) of a bridge that defines 
                                     // its route; curvature is approximated as straight line segments 
                                     // between waypoints, enabling arbitrary precision about the route
     5 width         Number (0., -1.]    // width of the bridge in meters, MUST be >0
