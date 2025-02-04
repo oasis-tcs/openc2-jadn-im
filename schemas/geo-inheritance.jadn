@@ -4,17 +4,17 @@
         [1, "latitude", "Number", ["y-90", "z90"], ""],
         [2, "longitude", "Number", ["y-180", "z180"], ""]
       ]],
-    ["Coordinates", "ArrayOf", ["*Coordinate"], "A list of geographic points"],
     ["PolUnit", "String", [], "the name of the political area where the feature exists (city / county / state level, as appropriate)"],
+    ["Location", "Record", [], "", [
+        [1, "geoCenter", "Coordinate", [], "geographic center of the feature of interest at the location"],
+        [2, "politicalUnit", "PolUnit", [], "the name of the political area where the location exists"]
+      ]],
     ["Endpoint", "Record", [], "", [
         [1, "endpoint", "Coordinate", [], "center of start or end point of a linear feature, in lat/long"],
         [2, "politicalUnit", "PolUnit", [], "the name of the political area where the endpoint exists"]
       ]],
     ["Endpoints", "ArrayOf", ["*Endpoint", "{2", "}2", "q"], "center of start/end points of a linear feature, in lat/long"],
-    ["Location", "Record", [], "", [
-        [1, "geoCenter", "Coordinate", [], "geographic center of the feature of interest at the location"],
-        [2, "politicalUnit", "PolUnit", [], "the name of the political area where the location exists"]
-      ]],
+    ["Coordinates", "ArrayOf", ["*Coordinate"], "A list of geographic points"],
     ["OpenSpace", "Record", [], "extends(Location) -- a defined area of open space", [
         [1, "boundary", "Coordinates", [], "an array of lat/long points defining the line segments around the perimeter of a feature, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"]
       ]],
