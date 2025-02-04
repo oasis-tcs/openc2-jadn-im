@@ -16,7 +16,7 @@
         [2, "politicalUnit", "PolUnit", [], "the name of the political area where the location exists"]
       ]],
     ["OpenSpace", "Record", [], "extends(Location) -- a defined area of open space", [
-        [1, "edges", "Coordinates", [], "an array of lat/long points defining the line segments around the perimeter of a feature, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"]
+        [1, "boundary", "Coordinates", [], "an array of lat/long points defining the line segments around the perimeter of a feature, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"]
       ]],
     ["Road", "Record", [], "extends(Location) abstract -- essential information about any road", [
         [1, "endpoints", "Endpoints", [], "center of start/end points of a road, in lat/long + political unit"],
@@ -76,7 +76,7 @@
       ]],
     ["Building", "Record", [], "extends(Construction)", [
         [1, "address", "Address", [], ""],
-        [2, "edges", "Coordinates", [], "an array of lat/long points defining the line segments around the perimeter of a feature, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"],
+        [2, "perimeter", "Coordinates", [], "an array of lat/long points defining the line segments around the perimeter of a feature, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"],
         [3, "maxHeight", "Number", [], "maximum height of the building in meters"],
         [4, "function", "BuildingFunction", ["[1"], ""]
       ]],

@@ -18,9 +18,9 @@ EndPoints = ArrayOf(EndPoint){2..2}     // center of start/end points of a linea
 Coordinates = ArrayOf(Coordinate)
 
 OpenSpace = Record extends(Location)
-    3 edges     Coordinates // an array of lat/long points defining the line segments around 
+    3 boundary  Coordinates // an array of lat/long points defining the line segments around 
                             // the perimeter of a feature, equivalent to the gml:LinearRing
-                            // the first and last Coordinates in the array MUST match
+                            // USAGE: the first and last Coordinates in the array MUST match
 
 Road = Record extends(Location) abstract
     3 endPoints     Endpoints       // center of start/end points of a road, in lat/long + political unit
@@ -62,9 +62,9 @@ Construction = Record extends(Location) abstract
 
 Building = Record extends(Construction)
     3 address   Address
-    4 edges     Coordinates // an array of lat/long points defining the line segments around 
+    4 perimeter Coordinates // an array of lat/long points defining the line segments around 
                             // the perimeter of a feature, equivalent to the gml:LinearRing
-                            // the first and last Coordinates in the array MUST match
+                            // USAGE: the first and last Coordinates in the array MUST match
     5 maxHeight Number      // maximum height of the building in meters
     6 function  BuildingFunction{1..*}
 
