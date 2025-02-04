@@ -7,11 +7,11 @@
     ["PolUnit", "String", [], "the name of the political area where the feature exists (city / county / state level, as appropriate)"],
     ["Location", "Record", [], "", [
         [1, "geoCenter", "Coordinate", [], "geographic center of the feature of interest at the location"],
-        [2, "politicalUnit", "PolUnit", [], "the name of the political area where the location exists"]
+        [2, "politicalUnit", "PolUnit", ["{0","}1"], "the name of the political area where the location exists"]
       ]],
-    ["Endpoint", "Record", [], "", [
+    ["Endpoint", "Record", [], "restricts(Location) -- physical and political location of a coordinate", [
         [1, "endpoint", "Coordinate", [], "center of start or end point of a linear feature, in lat/long"],
-        [2, "politicalUnit", "PolUnit", [], "the name of the political area where the endpoint exists"]
+        [2, "politicalUnit", "PolUnit", ["{1","}1"], "the name of the political area where the endpoint exists"]
       ]],
     ["Endpoints", "ArrayOf", ["*Endpoint", "{2", "}2", "q"], "center of start/end points of a linear feature, in lat/long"],
     ["Coordinates", "ArrayOf", ["*Coordinate"], "A list of geographic points"],
