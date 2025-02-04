@@ -2,20 +2,20 @@ Coordinate = Array
   1 Number {-90., 90.}      // latitude::
   2 Number {-180., 180.}    // longitude::
 
-Coordinates = ArrayOf(Coordinate)
-
-EndPoints = ArrayOf(EndPoint){2..2}     // center of start/end points of a linear feature, in lat/long
-
-EndPoint = Record
-    1 endpoint          Coordinate      // center of start or end point of a linear feature, in lat/long
-    2 politicalUnit     PolUnit         // the name of the political area where the endpoint exists 
-
 PolUnit = String    // the name of the political area where the feature exists 
                     // (city / county / state level, as appropriate);
 
 Location = Record abstract
     1 geoCenter         Coordinate          // geographic center of the feature of interest at the location
     2 politicalUnit     PolUnit optional    // the name of the political area where the location exists 
+
+EndPoint = Record restricts(Location)
+    1 endpoint          Coordinate          // center of start or end point of a linear feature, in lat/long
+    2 politicalUnit     PolUnit required    // the name of the political area where the endpoint exists 
+
+EndPoints = ArrayOf(EndPoint){2..2}     // center of start/end points of a linear feature, in lat/long
+
+Coordinates = ArrayOf(Coordinate)
 
 OpenSpace = Record extends(Location)
     3 edges     Coordinates // an array of lat/long points defining the line segments around 
