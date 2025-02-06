@@ -2268,11 +2268,9 @@ relationships among types.
 
 - `extends`: The `extends` option indicates that the associated type definition
   is adding to the super-type on which it is based. An extending sub-type can
-  add new fields to its supertype but cannot redefine existing, inherited
+  add new fields to its supertype. An extending sub-type can modify the cardinality 
+  of a field in the super-type but cannot redefine other aspects of existing, inherited
   fields.
-
-> *QUESTION:  Can a sub-type that extends specify that optional fields in the
-> supertype are requires in the subtype?*
 
 - `restricts`: The `restricts` option indicates that the associated type
   definition is subtracting from the super-type on which it is based. A
