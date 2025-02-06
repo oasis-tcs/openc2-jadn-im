@@ -3125,9 +3125,35 @@ complete IM for describing calendar information for exchange among systems.
 ### 3.3.5 Inheritance Example
 
 JADN v2.0 introduced inheritance features to support constructing DataType
-inheritance hierarchies. This example uses concepts from the [[ CityGML](#citygml)] and
-[[CityJSON](#cityjson)] geographic modeling languages to provide an introduction to the use of
-inheritance in JADN.
+inheritance hierarchies. This example uses concepts inspired by the 
+[[CityGML](#citygml)] and [[CityJSON](#cityjson)] geographic modeling languages to
+provide an introduction to the use of inheritance in JADN. An overview of the
+key types defined in this example and their inheritance relationships is shown
+in Figure 3-18.
+
+###### Figure 3-18 -- Basic Inheritance Example Overview
+
+<img src="images/Inheritance-Example-Vert.drawio.png">
+
+The example defines abstract (i.e., non-instantiable) types for
+`Location`,`Road`, and `Construction` as a basis for more specific types in the
+model. The `Location` type simply identifies the geographic center of a feature
+(i.e., its latitude and longitude) and optionally the political unit within
+which the feature resides:
+
+```
+Coordinate = Array            // A single geographic point (latitude / longitude)
+   1  Number{-90.0..90.0}     // latitude::
+   2  Number{-180.0..180.0}   // longitude::
+
+PolUnit = String              // the name of the political area where the feature exists 
+                              // (city / county / state level, as appropriate)
+
+Location = Record abstract
+   1 geoCenter        Coordinate        // geographic center of the feature of interest at the location
+   2 politicalUnit    PolUnit optional  // the name of the political area where the location exists
+```
+
 
 -------
 
