@@ -20,7 +20,7 @@ Endpoints = ArrayOf(Endpoint){2..2} unique              // center of start/end p
 
 Coordinates = ArrayOf(Coordinate)                       // A list of geographic points
 
-OpenSpace = Record exports(Location)                    // a defined area of open space
+OpenSpace = Record extends(Location)                    // a defined area of open space
    3 boundary         Coordinates                       // an array of lat/long points defining the line segments around the boundary of an OpenSpace, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match
 
 Road = Record                                           // extends(Location) abstract -- essential information about any road
