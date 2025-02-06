@@ -79,11 +79,11 @@
         [8, "name", "String", [], "official (or commonly used) name of the tunnel"],
         [9, "purpose", "TunnelPurpose", ["[1"], "purpose of this tunnel"]
       ]],
-    ["Building", "Record", [], "extends(Construction)", [
-        [1, "address", "Address", [], ""],
-        [2, "perimeter", "Coordinates", [], "an array of lat/long points defining the line segments around the perimeter of a building, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"],
-        [3, "maxHeight", "Number", [], "maximum height of the building in meters"],
-        [4, "function", "BuildingFunction", ["[1"], ""]
+    ["Building", "Record", ["eConstruction"], "", [
+        [3, "address", "Address", [], ""],\
+        [4, "perimeter", "Coordinates", [], "an array of lat/long points defining the line segments around the perimeter of a building, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"],
+        [5, "maxHeight", "Number", [], "maximum height of the building in meters"],
+        [6, "function", "BuildingFunction", ["[1"], ""]
       ]],
     ["Address", "Map", [], "A street / postal address associated with a building", [
         [1, "street", "String", [], ""],
