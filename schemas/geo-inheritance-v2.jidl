@@ -71,14 +71,14 @@ Bridge = Record extends(Construction)
    7 name             String                            // official (or commonly used) name of the bridge
    8 purpose          BridgePurpose                     // purpose of this bridge
 
-Tunnel = Record                                         // extends(Construction)
-   1 endpoints        Endpoints                         // center of start and end points of a tunnel, in lat/long plus political unit
-   2 waypoints        Coordinates                       // list of center points (lat/long) of a tunnel that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route
-   3 width            Number                            // width of the tunnel in meters, must be >0
-   4 height           Number                            // height of a tunnel from road surface to ceiling, in meters
-   5 depth            Number                            // lowest elevation of a tunnel's road surface, in meters
-   6 name             String                            // official (or commonly used) name of the tunnel
-   7 purpose          TunnelPurpose                     // purpose of this tunnel
+Tunnel = Record extends(Construction)
+   3 endpoints        Endpoints                         // center of start and end points of a tunnel, in lat/long plus political unit
+   4 waypoints        Coordinates                       // list of center points (lat/long) of a tunnel that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route
+   5 width            Number                            // width of the tunnel in meters, must be >0
+   6 height           Number                            // height of a tunnel from road surface to ceiling, in meters
+   7 depth            Number                            // lowest elevation of a tunnel's road surface, in meters
+   8 name             String                            // official (or commonly used) name of the tunnel
+   9 purpose          TunnelPurpose                     // purpose of this tunnel
 
 Building = Record                                       // extends(Construction)
    1 address          Address
