@@ -20,8 +20,8 @@
       ]],
     ["Endpoints", "ArrayOf", ["*Endpoint", "{2", "}2", "q"], "center of start/end points of a linear feature, in lat/long"],
     ["Coordinates", "ArrayOf", ["*Coordinate"], "A list of geographic points"],
-    ["OpenSpace", "Record", [], "extends(Location) -- a defined area of open space", [
-        [1, "boundary", "Coordinates", [], "an array of lat/long points defining the line segments around the boundary of an OpenSpace, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"]
+    ["OpenSpace", "Record", ["eLocation"], "a defined area of open space", [
+        [3, "boundary", "Coordinates", [], "an array of lat/long points defining the line segments around the boundary of an OpenSpace, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"]
       ]],
     ["Road", "Record", [], "extends(Location) abstract -- essential information about any road", [
         [1, "endpoints", "Endpoints", [], "center of start/end points of a road, in lat/long + political unit"],
