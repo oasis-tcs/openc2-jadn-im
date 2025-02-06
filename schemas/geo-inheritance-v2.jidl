@@ -1,7 +1,7 @@
        title: "Inheritance Example"
      package: "http://inheritance/v2"
  description: "Example illustrating the application of JADN v2 inheritance features. Very loosely based on CityGML concepts."
-     exports: ["Location"]
+     roots: ["Location"]
 
 Coordinate = Array                                      // A single geographic point (latitude / longitude)
    1  Number{-90.0..90.0}               // latitude::

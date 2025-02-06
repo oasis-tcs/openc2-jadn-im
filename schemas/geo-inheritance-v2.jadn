@@ -1,9 +1,9 @@
 {
-  "info": {
+  "meta": {
     "package": "http://inheritance/v2",
     "title": "Inheritance Example",
     "description": "Example illustrating the application of JADN v2 inheritance features. Very loosely based on CityGML concepts.",
-    "exports": ["Location"]
+    "roots": ["Location"]
   },
   "types": [
     ["Coordinate", "Array", [], "A single geographic point (latitude / longitude)", [
