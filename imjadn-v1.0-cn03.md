@@ -3136,7 +3136,7 @@ in Figure 3-18.
 <img src="images/Inheritance-Example-Vert.drawio.png">
 
 The example defines abstract (i.e., non-instantiable) types for
-`Location`,`Road`, and `Construction` as a basis for more specific types in the
+`Location`, `Road`, and `Construction` as a basis for more specific types in the
 model. The `Location` type simply identifies the geographic center of a feature
 (i.e., its latitude and longitude) and optionally the political unit within
 which the feature resides:
