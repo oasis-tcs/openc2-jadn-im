@@ -13,8 +13,7 @@ Location = Record
    1 geoCenter        Coordinate                        // geographic center of the feature of interest at the location
    2 politicalUnit    PolUnit optional                  // the name of the political area where the location exists
 
-Endpoint = Record
-   1 endpoint         Coordinate                        // center of start or end point of a linear feature, in lat/long
+Endpoint = Record restricts(Location)                   // politicalUnit is required for an endpoint
    2 politicalUnit    PolUnit                           // the name of the political area where the endpoint exists
 
 Endpoints = ArrayOf(Endpoint){2..2} unique              // center of start/end points of a linear feature, in lat/long
