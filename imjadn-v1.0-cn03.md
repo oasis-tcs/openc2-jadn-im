@@ -3122,6 +3122,13 @@ Compared to the complexity of the iCalendar standard this IM for a calendar
 event is greatly simplified but could serve as the starting point for a more
 complete IM for describing calendar information for exchange among systems.
 
+### 3.3.5 Inheritance Example
+
+JADN v2.0 introduced inheritance features to support constructing DataType
+inheritance hierarchies. This example uses concepts from the [[ CityGML](#citygml)] and
+[[CityJSON](#cityjson)] geographic modeling languages to provide an introduction to the use of
+inheritance in JADN.
+
 -------
 
 # Appendix A. Informative References
@@ -3134,6 +3141,13 @@ While any hyperlinks included in this appendix were valid at the time of publica
 
 ###### [ASN.1]
 Recommendation ITU-T X.680 (2021) *Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation* 
+
+###### [CityGML]
+OGC City Geography Markup Language (CityGML) Part 1: Conceptual Model Standard, 
+13 September 2021, http://www.opengis.net/doc/IS/CityGML-1/3.0 
+
+###### [CityJSON]
+CityJSON Specifications 2.0.1, 11 April 2024, https://www.cityjson.org/specs/2.0.1/
 
 ###### [Declarative]
 "The Data Engineer's Guide to Declarative vs Imperative for Data",
