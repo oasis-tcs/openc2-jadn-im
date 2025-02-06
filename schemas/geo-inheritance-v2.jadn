@@ -23,21 +23,21 @@
     ["OpenSpace", "Record", ["eLocation"], "a defined area of open space", [
         [3, "boundary", "Coordinates", [], "an array of lat/long points defining the line segments around the boundary of an OpenSpace, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"]
       ]],
-    ["Road", "Record", [], "extends(Location) abstract -- essential information about any road", [
-        [1, "endpoints", "Endpoints", [], "center of start/end points of a road, in lat/long + political unit"],
-        [2, "waypoints", "Coordinates", [], "list of center points (lat/long) of a road that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route"],
-        [3, "width", "Number", ["y1"], "Width of the road in meters. MUST be >0"],
-        [4, "name", "String", [], "official (or commonly used) name of the road"],
-        [5, "maintainedBy", "Maintainer", [], "what level of government is responsible for maintenance"]
+    ["Road", "Record", ["a","eLocation"], "essential information about any road", [
+        [3, "endpoints", "Endpoints", [], "center of start/end points of a road, in lat/long + political unit"],
+        [4, "waypoints", "Coordinates", [], "list of center points (lat/long) of a road that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route"],
+        [5, "width", "Number", ["y1"], "Width of the road in meters. MUST be >0"],
+        [6, "name", "String", [], "official (or commonly used) name of the road"],
+        [7, "maintainedBy", "Maintainer", [], "what level of government is responsible for maintenance"]
       ]],
-    ["LocalRoad", "Record", [], "extends(Road)", [
-        [1, "surfaceType", "Surface", [], "Choice identifying the type of road surface"]
+    ["LocalRoad", "Record", ["eRoad"], "a local, unnumbered road", [
+        [8, "surfaceType", "Surface", [], "Choice identifying the type of road surface"]
       ]],
-    ["NumberedRoad", "Record", [], "extends(Road)", [
-        [1, "routeNumber", "RouteNumber", [], "State or U.S. identifying number of the road"]
+    ["NumberedRoad", "Record", ["eRoad"], "A road with an identifying number (e.g., MD32, US1)", [
+        [8, "routeNumber", "RouteNumber", [], "State or U.S. identifying number of the road"]
       ]],
-    ["Interstate", "Record", [], "extends(Road)", [
-        [1, "interstateNumber", "Integer", ["{1", "}999"], "Interstate number of the road"]
+    ["Interstate", "Record", ["eRoad"], "A road in the Interstate highway system", [
+        [8, "interstateNumber", "Integer", ["{1", "}999"], "Interstate number of the road"]
       ]],
     ["RouteNumber", "Array", [], "", [
         [1, "owningEntity", "String", ["%[A-Z]{2}"], "\"US\" or 2-character State portion of road number"],
