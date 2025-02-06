@@ -61,7 +61,7 @@
         [2, "pedestrian", ""],
         [3, "railroad", ""]
       ]],
-    ["Construction", "Record", [], "extends(Location) abstract -- no unique fields", []],
+    ["Construction", "Record", ["eLocation"], "Bridge type from location to constructed types, no unique fields", []],
     ["Bridge", "Record", [], "extends(Construction)", [
         [1, "endpoints", "Endpoints", [], "center of start and end points of a bridge, in lat/long plus political unit"],
         [2, "waypoints", "Coordinates", [], "list of center points (lat/long) of a bridge that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route"],

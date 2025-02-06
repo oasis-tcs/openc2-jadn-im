@@ -61,7 +61,7 @@ BridgePurpose = Enumerated
    2 pedestrian
    3 railroad
 
-Construction = Record                                   // extends(Location) abstract -- no unique fields
+Construction = Record extends(Location) abstract        // Bridge type from location to constructed types, no unique fields
 
 Bridge = Record                                         // extends(Construction)
    1 endpoints        Endpoints                         // center of start and end points of a bridge, in lat/long plus political unit
