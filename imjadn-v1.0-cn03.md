@@ -2261,7 +2261,7 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
 
 JADN supports inheritance in information modeling, providing for class /
 subclass relationships. There are four type options to manage the class
-relationships among types, which are defined in Section 4.2.4 of [JADN](#jad).
+relationships among types, which are defined in Section 4.2.4 of [JADN](#jadn-v10).
 
 - `abstract`: The `abstract` option indicates that a type definition is only a
   basis for defining sub-classes and should never be instantiated in data. 
@@ -3236,7 +3236,7 @@ Building = Record extends(Construction)
                                       // the first and last Coordinates in the array MUST match
    5 maxHeight        Number          // maximum height of the building in meters
    6 function         BuildingFunction
-
+```
 
 
 
