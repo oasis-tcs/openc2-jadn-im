@@ -3131,7 +3131,7 @@ provide an introduction to the use of inheritance in JADN. An overview of the
 key types defined in this example and their inheritance relationships is shown
 in Figure 3-18.
 
-###### Figure 3-18 -- Basic Inheritance Example Overview
+**Figure 3-18 -- Basic Inheritance Example Overview**
 
 <img src="images/Inheritance-Example-Vert.drawio.png">
 
@@ -4309,7 +4309,120 @@ Enumeration of common genres
 | 6  | **classical**          |             |
 | 7  | **spoken_word**        |             |
 
+## E.2 Inheritance Example JIDL
 
+{
+  "meta": {
+    "package": "http://inheritance/v2",
+    "title": "Inheritance Example",
+    "description": "Example illustrating the application of JADN v2 inheritance features. Very loosely based on CityGML concepts.",
+    "roots": ["Location"]
+  },
+  "types": [
+    ["Coordinate", "Array", [], "A single geographic point (latitude / longitude)", [
+        [1, "latitude", "Number", ["y-90", "z90"], ""],
+        [2, "longitude", "Number", ["y-180", "z180"], ""]
+      ]],
+    ["PolUnit", "String", [], "the name of the political area where the feature exists (city / county / state level, as appropriate)"],
+    ["Location", "Record", [], "", [
+        [1, "geoCenter", "Coordinate", [], "geographic center of the feature of interest at the location"],
+        [2, "politicalUnit", "PolUnit", ["[0", "]1"], "the name of the political area where the location exists"]
+      ]],
+    ["Endpoint", "Record", ["rLocation"], "politicalUnit is required for an endpoint", [
+        [2, "politicalUnit", "PolUnit", ["[1", "]1"], "the name of the political area where the endpoint exists"]
+      ]],
+    ["Endpoints", "ArrayOf", ["*Endpoint", "{2", "}2", "q"], "center of start/end points of a linear feature, in lat/long"],
+    ["Coordinates", "ArrayOf", ["*Coordinate"], "A list of geographic points"],
+    ["OpenSpace", "Record", ["eLocation"], "a defined area of open space", [
+        [3, "boundary", "Coordinates", [], "an array of lat/long points defining the line segments around the boundary of an OpenSpace, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"]
+      ]],
+    ["Road", "Record", ["a","eLocation"], "essential information about any road", [
+        [3, "endpoints", "Endpoints", [], "center of start/end points of a road, in lat/long + political unit"],
+        [4, "waypoints", "Coordinates", [], "list of center points (lat/long) of a road that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route"],
+        [5, "width", "Number", ["y1"], "Width of the road in meters. MUST be >0"],
+        [6, "name", "String", [], "official (or commonly used) name of the road"],
+        [7, "maintainedBy", "Maintainer", [], "what level of government is responsible for maintenance"]
+      ]],
+    ["LocalRoad", "Record", ["eRoad"], "a local, unnumbered road", [
+        [8, "surfaceType", "Surface", [], "Choice identifying the type of road surface"]
+      ]],
+    ["NumberedRoad", "Record", ["eRoad"], "A road with an identifying number (e.g., MD32, US1)", [
+        [8, "routeNumber", "RouteNumber", [], "State or U.S. identifying number of the road"]
+      ]],
+    ["Interstate", "Record", ["eRoad"], "A road in the Interstate highway system", [
+        [8, "interstateNumber", "Integer", ["{1", "}999"], "Interstate number of the road"]
+      ]],
+    ["RouteNumber", "Array", [], "", [
+        [1, "owningEntity", "String", ["%[A-Z]{2}"], "\"US\" or 2-character State portion of road number"],
+        [2, "routeNum", "Integer", ["{1", "}1000"], "numeric portion of road identifier"]
+      ]],
+    ["Surface", "Choice", [], "(oneOf) possible road surfaces", [
+        [1, "dirt", "String", [], ""],
+        [2, "gravel", "String", [], ""],
+        [3, "macadam", "String", [], ""],
+        [4, "concrete", "String", [], ""],
+        [5, "asphalt", "String", [], ""]
+      ]],
+    ["Maintainer", "Enumerated", [], "level of government responsible for maintaining a road", [
+        [1, "local", "town or city"],
+        [2, "county", ""],
+        [3, "state", ""],
+        [4, "federal", ""]
+      ]],
+    ["BridgePurpose", "Enumerated", [], "", [
+        [1, "vehicular", ""],
+        [2, "pedestrian", ""],
+        [3, "railroad", ""]
+      ]],
+    ["Construction", "Record", ["eLocation"], "Bridge type from location to constructed types, no unique fields", []],
+    ["Bridge", "Record", ["eConstruction"], "", [
+        [3, "endpoints", "Endpoints", [], "center of start and end points of a bridge, in lat/long plus political unit"],
+        [4, "waypoints", "Coordinates", [], "list of center points (lat/long) of a bridge that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route"],
+        [5, "width", "Number", [], "width of the bridge in meters, must be >0"],
+        [6, "maxHeight", "Number", [], "maximum height of the bridge in meters"],
+        [7, "name", "String", [], "official (or commonly used) name of the bridge"],
+        [8, "purpose", "BridgePurpose", ["[1"], "purpose of this bridge"]
+      ]],
+    ["Tunnel", "Record", ["eConstruction"], "", [
+        [3, "endpoints", "Endpoints", [], "center of start and end points of a tunnel, in lat/long plus political unit"],
+        [4, "waypoints", "Coordinates", [], "list of center points (lat/long) of a tunnel that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route"],
+        [5, "width", "Number", [], "width of the tunnel in meters, must be >0"],
+        [6, "height", "Number", [], "height of a tunnel from road surface to ceiling, in meters"],
+        [7, "depth", "Number", [], "lowest elevation of a tunnel's road surface, in meters"],
+        [8, "name", "String", [], "official (or commonly used) name of the tunnel"],
+        [9, "purpose", "TunnelPurpose", ["[1"], "purpose of this tunnel"]
+      ]],
+    ["Building", "Record", ["eConstruction"], "", [
+        [3, "address", "Address", [], ""],\
+        [4, "perimeter", "Coordinates", [], "an array of lat/long points defining the line segments around the perimeter of a building, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"],
+        [5, "maxHeight", "Number", [], "maximum height of the building in meters"],
+        [6, "function", "BuildingFunction", ["[1"], ""]
+      ]],
+    ["Address", "Map", [], "A street / postal address associated with a building", [
+        [1, "street", "String", [], ""],
+        [2, "apartment", "String", ["[0", "]1"], ""],
+        [3, "suite", "String", ["[0", "]1"], ""],
+        [4, "county", "String", ["[0", "]1"], ""],
+        [5, "city", "String", [], ""],
+        [6, "state", "String", ["%[A-Z]{2}"], ""],
+        [7, "zipCode", "String", ["%\\d{5}(\\-\\d{4}){0,1}"], "zip+4 format implies a U.S. postal code"]
+      ]],
+    ["TunnelPurpose", "Enumerated", [], "", [
+        [1, "vehicular", ""],
+        [2, "pedestrian", ""],
+        [3, "railroad", ""],
+        [4, "water", ""]
+      ]],
+    ["BuildingFunction", "Enumerated", [], "", [
+        [1, "Single-Family Dwelling", ""],
+        [2, "Multi-Family Dwelling", ""],
+        [3, "Commercial-Office", ""],
+        [4, "Commercial-Retail", ""],
+        [5, "Medical", ""],
+        [6, "Government", ""]
+      ]]
+  ]
+}
 
 ------
 
