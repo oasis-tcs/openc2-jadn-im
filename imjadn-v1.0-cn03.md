@@ -3189,6 +3189,55 @@ OpenSpace = Record extends(Location)  // a defined area of open space
 In this case `OpenSpace` adds a field to the referenced `Location` type so a new
 identifier is required for the new field.
 
+The `Location` type is more extensively extended by the `Road`, `Bridge`,
+`Tunnel`, and `Building` types. The latter three types are grouped under the
+abstract `Construction` type which groups the subtypes. As with the extension
+for `OpenSpace`, all of the extensions for these new subtypes assign unique
+field IDs for the added fields.
+
+```
+Road = Record extends(Location) abstract                // essential information about any road
+   3 endpoints        Endpoints       // center of start/end points of a road, in lat/long + political unit
+   4 waypoints        Coordinates     // list of center points (lat/long) of a road that defines its route;
+                                      // curvature is approximated as straight line segments between waypoints
+                                      // enabling arbitrary precision about the route
+   5 width            Number{1.0..*}  // Width of the road in meters. MUST be >0
+   6 name             String          // official (or commonly used) name of the road
+   7 maintainedBy     Maintainer      // what level of government is responsible for maintenance
+
+Construction = Record extends(Location) abstract        // Bridge type from location to constructed types, no unique fields
+
+Bridge = Record extends(Construction)
+   3 endpoints        Endpoints       // center of start and end points of a bridge, in lat/long plus political unit
+   4 waypoints        Coordinates     // list of center points (lat/long) of a bridge that defines its route;
+                                      // curvature is approximated as straight line segments between waypoints,
+                                      // enabling arbitrary precision about the route
+   5 width            Number          // width of the bridge in meters, must be >0
+   6 maxHeight        Number          // maximum height of the bridge in meters
+   7 name             String          // official (or commonly used) name of the bridge
+   8 purpose          BridgePurpose   // purpose of this bridge
+
+Tunnel = Record extends(Construction)
+   3 endpoints        Endpoints       // center of start and end points of a tunnel, in lat/long plus political unit
+   4 waypoints        Coordinates     // list of center points (lat/long) of a tunnel that defines its route;
+                                      // curvature is approximated as straight line segments between waypoints,
+                                      // enabling arbitrary precision about the route
+   5 width            Number          // width of the tunnel in meters, must be >0
+   6 height           Number          // height of a tunnel from road surface to ceiling, in meters
+   7 depth            Number          // lowest elevation of a tunnel's road surface, in meters
+   8 name             String          // official (or commonly used) name of the tunnel
+   9 purpose          TunnelPurpose   // purpose of this tunnel
+
+Building = Record extends(Construction)
+   3 address          Address
+   4 perimeter        Coordinates     // an array of lat/long points defining the line segments around the
+                                      // perimeter of a building, equivalent to the gml:LinearRing type; 
+                                      // the first and last Coordinates in the array MUST match
+   5 maxHeight        Number          // maximum height of the building in meters
+   6 function         BuildingFunction
+
+
+
 
 
 -------
