@@ -3124,7 +3124,7 @@ complete IM for describing calendar information for exchange among systems.
 
 ### 3.3.5 Inheritance Example
 
-JADN v2.0 introduced inheritance features to support constructing DataType
+JADN v2.0 introduces inheritance features to support constructing DataType
 inheritance hierarchies. This example uses concepts inspired by the 
 [[CityGML](#citygml)] and [[CityJSON](#cityjson)] geographic modeling languages to
 provide an introduction to the use of inheritance in JADN. An overview of the
@@ -3153,6 +3153,42 @@ Location = Record abstract
    1 geoCenter        Coordinate        // geographic center of the feature of interest at the location
    2 politicalUnit    PolUnit optional  // the name of the political area where the location exists
 ```
+
+Note that this simplified model is 2-dimensional; the definition of `Coordinate`
+does not include an elevation component.
+
+Endpoints use the `restricts` inheritance option to make the political unit
+field required in order to be able to specify where, politically, the endpoints
+of a road, tunnel, or bridge segment reside.
+
+```
+Endpoint = Record restricts(Location)                   // politicalUnit is required for an endpoint
+   2 politicalUnit    PolUnit                           // the name of the political area where the endpoint exists
+```
+
+This supports situations where, for example, a bridge or tunnel spans a river
+that runs between different states. Note that both `Location` and `Endpoint` are
+Record types, and in the definition of `Endpoint` the restricted field has the
+same identifier as in the referenced `Location` type. Both of these are
+important aspects when applying the inheritance type options.
+
+The model uses the `extends` inheritance type option in multiple places. The first
+is `OpenSpace`, which extends the `Location` Record type with a field to define
+the boundary of an open space using the `Coordinates` type.
+
+```
+Coordinates = ArrayOf(Coordinate)     // A list of geographic points
+
+OpenSpace = Record extends(Location)  // a defined area of open space
+   3 boundary Coordinates     // an array of lat/long points defining the line segments
+                              // around the boundary of an OpenSpace, equivalent to the
+                              // gml:LinearRing type; the first and last Coordinates in
+                              // the array MUST match
+```
+
+In this case `OpenSpace` adds a field to the referenced `Location` type so a new
+identifier is required for the new field.
+
 
 
 -------
