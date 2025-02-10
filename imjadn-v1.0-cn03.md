@@ -3193,7 +3193,8 @@ The `Location` type is more extensively extended by the `Road`, `Bridge`,
 `Tunnel`, and `Building` types. The latter three types are grouped under the
 abstract `Construction` type which groups the subtypes. As with the extension
 for `OpenSpace`, all of the extensions for these new subtypes assign unique
-field IDs for the added fields.
+field IDs for the added fields. The same is true for the subtypes of `Road` (see
+the full JIDL in Appendix E.2 for details).
 
 ```
 Road = Record extends(Location) abstract                // essential information about any road
