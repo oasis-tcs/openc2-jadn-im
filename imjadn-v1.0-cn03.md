@@ -3253,7 +3253,7 @@ Road = Record extends(Location) abstract                // essential information
    6 name             String          // official (or commonly used) name of the road
    7 maintainedBy     Maintainer      // what level of government is responsible for maintenance
 
-Construction = Record extends(Location) abstract        // Bridge type from location to constructed types, no unique fields
+Construction = Record extends(Location) abstract  // Abstract type to connect location to constructed types, no unique fields
 
 Bridge = Record extends(Construction)
    3 endpoints        Endpoints       // center of start and end points of a bridge, in lat/long plus political unit
