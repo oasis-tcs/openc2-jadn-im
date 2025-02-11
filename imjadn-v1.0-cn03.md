@@ -3178,7 +3178,7 @@ provide an introduction to the use of inheritance in JADN. An overview of the
 key types defined in this example and their inheritance relationships is shown
 in Figure 3-18.
 
-**Figure 3-18 -- Basic Inheritance Example Overview**
+###### **Figure 3-18 -- Basic Inheritance Example Overview**
 
 <img src="images/Inheritance-Example-Vert.drawio.png">
 
