@@ -3501,7 +3501,7 @@ The following individuals have participated in the creation of this document and
 
 # Appendix C. Revision History
 
-## C.1 -- Revision History Table
+## C.1 Revision History Table
 
 | Revision           | Date       | Editor      | Changes Made          |
 |:-------------------|:-----------|:------------|:----------------------|
@@ -3532,11 +3532,11 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Incorporate "elevator speech" into abstract and section 1.0 (PR #93) |
 | imjadn-v1.0-cn03.md      | 2025-02-xx | David Lemire | New content addressing inheritance features added in JADV v2 (PR #92) |
 
-## C.2 -- JADN Version 2 Changes
+## C.2 JADN Version 2 Changes
 
 This section details differences between versions 1 and 2 of JADN.
 
-### C.2.1 -- Breaking Change
+### C.2.1 Breaking Change
 
 In JADN v2.0 the "unlimited" value for the `maxOccurs` (formerly `maxc`)
 sentinel is changed from 0 to -1. *This minor but incompatible change required a
@@ -3545,7 +3545,16 @@ new major version.* Two options are provided for an unspecified `maxOccurs` valu
 - `maxOccurs` = -1 denotes an upper size limit defined by the JADN default value or package-specified upper value
 - `maxOccurs` = -2 denotes an unbounded upper size limit
 
-### C.2.2 -- Type Option Changes
+### C.2.2 General Changes
+
+The following general changes were made:
+
+- The "namespaces" prefix list was change from mappings to pairings to provide greater flexibility in managing namespaces and packages.
+- The package "Information" element was renamed to "Metadata" to avoid conflation with information modeling.
+- The package "exports" element was renamed to "roots" to better describe its purpose and effect.
+- Type Options have been revised and expanded to support defining both size and content (value) range limits for primitive types
+
+### C.2.3 Type Option Changes
 
 The following changes were made to JADN type options:
 
@@ -3561,14 +3570,7 @@ The following changes were made to JADN type options:
 - Removed option:
   - `extend`: this option has been deprecated
 
-### C.2.3 -- Field Option Changes
-
-The following changes were made to JADN type options:
-
-- Replaced option:
-  - `minc, maxc`: these options have been renamed to `minOccurs, maxOccurs`
-
-### C.2.4 -- Inheritance
+### C.2.4 Inheritance
 
 Four new type options were introduced to support inheritance in information models:
 
@@ -3588,7 +3590,14 @@ The `extends` and `restricts` options are complementary: if B `extends` A then
 every instance of A MUST be an instance of B.  If B `restricts` A then every
 instance of B MUST be an instance of A. 
 
-### C.2.5 -- Format and Validation Options Changes
+### C.2.5 Field Option Changes
+
+The following changes were made to JADN type options:
+
+- Replaced option:
+  - `minc, maxc`: these options have been renamed to `minOccurs, maxOccurs`
+
+### C.2.6 Format and Validation Options Changes
 
 The following changes were made to format and validation options:
 
@@ -3596,14 +3605,6 @@ The following changes were made to format and validation options:
 - `i<n>` replaces the `i8`, `i16`, `i32` format options to provide greater flexibility in specifying signed integer types; the permissable values are between -2^(n-1) and 2^(n-1)-1.
 - `d<n>` applies a decimal integer scale factor of 10^n: value has n digits after decimal point, n > 0.
 
-### C.2.6 -- General Changes
-
-The following general changes were made:
-
-- The "namespaces" prefix list was change from mappings to pairings to provide greater flexibility in managing namespaces and packages.
-- The package "Information" element was renamed to "Metadata" to avoid conflation with information modeling.
-- The package "exports" element was renamed to "roots" to better describe its purpose and effect.
-- Type Options have been revised and expanded to support defining both size and content (value) range limits for primitive types
 
 -------
 
