@@ -2280,21 +2280,16 @@ relationships among types, which are defined in Section 4.2.4 of [JADN](#jadn-v1
 - `final`: The `final` type option identifies a type that cannot have sub-types
   defined based on it.
 
-Inheritance can be applied both to primitive and compound types, although only
-the `restricts` type option is applicable to primitive types. For example,
-consider the following set of types:
+Type inheritance is static and can be applied both to primitive and compound
+types. However, as explained in the [JADNv2] specification, there are other
+mechanisms applicable to primitive and some compound types to achieve equivalent
+results. The primary applications on inheritance identified in the specification are: 
 
-```
-A = String{1..32} abstract
-B = String restricts(A) /email
-C = String restricts(A) /hostname
-```
+- adding, removing, or modifying the cardinality of fields in structured compound types
+- adding items to Enumerated types
 
-Type "A" defines a String of between 1 and 32 characters, but because it is
-`abstract` no actual string data can be validated as conforming to type "A".
-However an email address shorter than 33 characters can be validated against
-type "B"; similarly a hostname shorter than 33 characters can be validated
-against type "C".
+An example of applying the inheritance type options to an IM loosely based on
+geography markup language concepts can be found in [Section&nbsp;3.3.5](#335-inheritance-example).
 
 ### 3.1.5 Reference Relationships: Keys and Links
 
