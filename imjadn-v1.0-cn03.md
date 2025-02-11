@@ -7,7 +7,7 @@
 
 ## Committee Note 03
 
-## 08 January 2025
+## xx February 2025
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
