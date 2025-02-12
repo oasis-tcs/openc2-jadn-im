@@ -236,7 +236,7 @@ providing distinctive features that focus on accurate definition of the
 information of interest:
 
  * Unambiguous definition of the meaning of information separate from its representation for transmission or storage
- * Ready translation of JADN models to widely-used format such as JSON Schema and XML Schema that can then be used with common tooling for those formats
+ * Ready translation of JADN models to widely-used formats such as JSON Schema and XML Schema that can then be used with common tooling for those formats
  * Serialization rules for JSON and CBOR, easily extensible to other representations
  * Conversion of representation between formats that preserves the underlying meaning
  * Concise, readable format that accurately represents the information model and is readily translatable
