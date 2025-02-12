@@ -241,9 +241,6 @@ information of interest:
  * Conversion of representation between formats that preserves the underlying meaning
  * Concise, readable format that accurately represents the information model and is readily translatable
 
-> _**TO-DO:** Update the music library information model to better support this
-> introductory example and update the excerpts here_
-
 An excerpt from the Digital Music Library example presented in full 
 in [Section&nbsp;3.3.1](#331-digital-music-library)
 helps illustrate. Each music track in the library is described by a collection of metadata
