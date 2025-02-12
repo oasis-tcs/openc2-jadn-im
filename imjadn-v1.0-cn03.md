@@ -2456,7 +2456,7 @@ JADN schema tools to detect discrepancies.
 #### 3.1.6.2 Namespaces
 
 > NOTE: this discussion of namespace management includes features to be added in
-> JADN v1.1. The implementation of these features is backward-compatible with
+> JADN v2.0. The implementation of these features is backward-compatible with
 > the handling of namespaces in JADN v1.0.
 
 Namespaces identified in a schema package's metadata are the mechanism for managing the
