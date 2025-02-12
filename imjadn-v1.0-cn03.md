@@ -1503,7 +1503,7 @@ a String type would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of an String datatype
+// Example JIDL definition of a String datatype
   TrackTitle = String   // Title of the song in the selected track
 ```
 
