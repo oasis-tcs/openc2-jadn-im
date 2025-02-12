@@ -3212,8 +3212,8 @@ field required in order to be able to specify where, politically, the endpoints
 of a road, tunnel, or bridge segment reside.
 
 ```
-Endpoint = Record restricts(Location)                   // politicalUnit is required for an endpoint
-   2 politicalUnit    PolUnit                           // the name of the political area where the endpoint exists
+Endpoint = Record restricts(Location) // politicalUnit is required for an endpoint
+   2 politicalUnit    PolUnit         // the name of the political area where the endpoint exists
 ```
 
 This supports situations where, for example, a bridge or tunnel spans a river
