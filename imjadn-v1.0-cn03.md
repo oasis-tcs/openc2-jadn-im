@@ -1383,10 +1383,10 @@ The corresponding JIDL representation would be:
   TrackNumber = Integer   // Track number for current song
 ```
 
-The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
+The *minInclusive/maxInclusive* and *minExclusive/maxExclusive* TypeOptions are used to specify minimum and/or maximum
 value that may be assigned to an Integer type. The JADN Integer primitive type
-encompasses the UML UnlimitedNatural primitive type through the use the *minLength*
-Type Option: an Integer with a *minLength* of `0` has the same range of values as an
+encompasses the UML UnlimitedNatural primitive type through the use the *minInclusive*
+Type Option: an Integer with a *minInclusive* of `0` has the same range of values as an
 UnlimitedNatural.
 
 Table 3-5 lists the *format* options applicable to the Integer type:
