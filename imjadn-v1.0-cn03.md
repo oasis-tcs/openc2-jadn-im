@@ -419,9 +419,8 @@ to a lack of information modeling:
      environment at the highest level of abstraction and
      expresses the desired functionality. Information models can
      be defined informally (e.g., in prose) or more formally 
-     (e.g., Unified Modeling Language (UML), Entity-
-     Relationship Diagrams, etc.).  Implementation details are
-     hidden.
+     (e.g., Unified Modeling Language (UML), Entity-Relationship Diagrams, etc.).
+     Implementation details are hidden.
 
 > - **Data Model** -- A data model defines concrete data
      representations *at a lower level of abstraction, including
