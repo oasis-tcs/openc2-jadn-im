@@ -315,7 +315,8 @@ development, examination, and refinement of the model.
     },
 ```
 <br><br>
-**Track-Info in XML Schema***
+**Track-Info in XML Schema**
+
 ```xml
 	<xs:complexType name="Track-Info">
 		<xs:sequence>
