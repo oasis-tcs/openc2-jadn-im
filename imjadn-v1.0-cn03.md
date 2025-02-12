@@ -1102,7 +1102,7 @@ JADN schema if desired (see Section&nbsp;3.1.2 of the
    case, lower case or numeric characters and must begin with a
    letter.
 
- - The **"system character"** (which defaults to `$`) is used by
+ - The **"system character"** (which defaults to `.`) is used by
    JADN processing tools when generating derived types while
    processing a JADN model; it is not normally used by JADN
    schema authors.
