@@ -2651,6 +2651,7 @@ modeling and the application of JADN. The example IMs are:
    described in [Section 3.1.3](#313-jadn-representations)
  - A calendar event model: an example of developing a JADN model from an existing
    JSON schema
+ - An example applying the new JADN v2.0 inheritance features
 
 These examples use a mixture of the various JADN representation formats
 described in [Section&nbsp;3.1.3](#313-jadn-representations), and the university
