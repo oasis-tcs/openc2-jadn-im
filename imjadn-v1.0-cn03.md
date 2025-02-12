@@ -2094,14 +2094,14 @@ development of IMs.
 #### 3.1.4.1 "Anonymous" Type Definitions
 
 The [[JADN Specification](#jadn-v10)] conformance statement
-(section 7) separates the definition of JADN into "Core JADN"
-(sections 3.1, 3.2, 4, and 6) and "JADN Extensions" (section
-3.3). Section&nbsp;3.3 explains that extensions "make type definitions
+(section 8) separates the definition of JADN into "Core JADN"
+(sections 3.1, 3.2, 4, and 6) and "JADN Shortcuts" (section
+3.3). Section&nbsp;3.3 explains that shortcuts "make type definitions
 more compact or support the Don't Repeat Yourself (DRY) software
-design principle. Extensions are syntactic sugar that can be
+design principle. Shortcuts are syntactic sugar that can be
 replaced by core definitions without changing their meaning."
-While the implementation of extensions by JADN tools is optional,
-in a conformance sense, the availability of extensions reduces
+While the implementation of shortcuts by JADN tools is optional,
+in a conformance sense, the availability of shortcuts reduces
 the level of effort required by a JADN schema author and can make
 a schema more compact and understandable.
 
@@ -2111,12 +2111,12 @@ default the period, `.`) and in the Name Formats (section
 saying "Schema authors should not create TypeNames containing the
 System character, but schema processing tools may do so".
 
-Examples of the use of extensions and the role of the system
+Examples of the use of shortcuts and the role of the system
 character are provided in sections 3.3.1, 3.3.2, and 3.3.2 of the
 JADN Specification. As noted in [Section&nbsp;3.1.1.4](#3114-field-options), 
 JADN Type Options can be applied to
 fields in compound types, but as explained in Section&nbsp;3.3.1 of
-the JADN Specification, this is an extension that leads to the
+the JADN Specification, this is an shortcut that leads to the
 anonymous definition of a new type when processed by automated
 tooling. The example provided there is:
 
