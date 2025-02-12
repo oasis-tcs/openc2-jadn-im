@@ -2910,7 +2910,7 @@ field values that would be the usual approach in a more design-oriented modeling
 
 > EDITOR'S NOTE: intro text may need revision if examples are removed from the JADN Specification
 
-The [[JADN Specification](#jadn-v10)], section 5.3,
+The [[JADN Specification](#jadn-v10)], section 7.3,
 uses a simple example of an IM for a university to illustrate the
 use of ERDs for IMs. This section uses that ERD as a starting
 point for an example to illustrate the various JADN
