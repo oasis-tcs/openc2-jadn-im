@@ -2034,7 +2034,7 @@ The [[JADN Specification](#jadn-v10)] identifies three formats
  - Property Tables
  - Entity Relationship Diagrams (ERDs)
 
-Figure 3-6a identifies the various representations. 
+Figure 3-7 identifies the various representations. 
 The formal definitions of each of these types are found in
 sections 5.1, 5.2, and 5.3, respectively, of the 
 [[JADN Specification](#jadn-v10)].
