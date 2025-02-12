@@ -999,6 +999,10 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 > The text and figures in this CN use the JADN v2.0 terminology; this does not
 > reflect alteration of the underlying concepts.
 
+> NOTE: The [[JADN Specification](#jadn-v10)] is the authoritative normative
+> definition of the JADN language. Any discrepancies between that specification
+> and this committee note should be resolved based on the specification.
+
 Figure 3-1 provides a high-level view of the components of JADN type definitions that
 will be described in this section. JADN provides *primitive*, 
 *compound* (both structured and unstructured), and *union* core data types that can be refined using type and field
