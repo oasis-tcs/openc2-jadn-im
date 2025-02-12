@@ -7,7 +7,7 @@
 
 ## Committee Note 03
 
-## 08 January 2025
+## xx February 2025
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
@@ -135,6 +135,7 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.4.2 Selection and Use of JADN Compound Types](#3142-selection-and-use-of-jadn-compound-types)
       - [3.1.4.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
       - [3.1.4.4 Application of minLength / maxLength](#3144-application-of-minlength--maxlength)
+      - [3.1.4.5 Inheritance](#3145-inheritance)
     - [3.1.5 Reference Relationships: Keys and Links](#315-reference-relationships-keys-and-links)
     - [3.1.6 Schemas, Packages and Namespaces](#316-schemas-packages-and-namespaces)
       - [3.1.6.1 Packages](#3161-packages)
@@ -147,17 +148,16 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.3.2 Internet Protocol Version 4 Packet Header](#332-internet-protocol-version-4-packet-header)
     - [3.3.3 Multiple Representations Example](#333-multiple-representations-example)
     - [3.3.4 Converting JSON Schema to JADN](#334-converting-json-schema-to-jadn)
+    - [3.3.5 Inheritance Example](#335-inheritance-example)
 - [Appendix A. Informative References](#appendix-a-informative-references)
 - [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
 - [Appendix C. Revision History](#appendix-c-revision-history)
+  - [C.1 Revision History Table](#c1-revision-history-table)
+  - [C.2 JADN Version 2 Changes](#c2-jadn-version-2-changes)
 - [Appendix D. Frequently Asked Questions (FAQ)](#appendix-d-frequently-asked-questions-faq)
-  - [D.1 JADN vs. UML Primitive Data Types](#d1-jadn-vs-uml-primitive-data-types)
-  - [D.1 Declarative Specifications](#d1-declarative-specifications)
-  - [D.2 Applications](#d2-applications)
-  - [D.2 Why JADN and not RDF?](#d2-why-jadn-and-not-rdf)
-  - [D.3 Why JADN and not OWL?](#d3-why-jadn-and-not-owl)
 - [Appendix E. Example Information Model Source](#appendix-e-example-information-model-source)
   - [E.1 Music Library](#e1-music-library)
+  - [E.2 Inheritance Example JIDL](#e2-inheritance-example-jidl)
 - [Appendix F. Notices](#appendix-f-notices)
 
 **List of Figures**
@@ -165,7 +165,7 @@ For complete copyright information please see the full Notices section in [Appen
  - [Figure 2-1 -- Serialization / Deserialization](#figure-2-1----serialization--deserialization)
  - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
  - [Figure 3-1 -- JADN Type Definition Components](#figure-3-1----jadn-type-definition-components)
- - [Figure 3-2 -- JADN Type Definition Structure](#figure-3-2----jadn-v2-type-definition-structure)
+ - [Figure 3-2 -- JADN V2 Type Definition Structure](#figure-3-2----jadn-v2-type-definition-structure)
  - [Figure 3-3 -- JADN Schema Top-Level Structure](#figure-3-3----jadn-schema-top-level-structure)
  - [Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-4----jadn-for-primitive-arrayof-mapof-types)
  - [Figure 3-5 -- JADN Fields for Enumerated Types](#figure-3-5----jadn-fields-for-enumerated-types)
@@ -181,6 +181,7 @@ For complete copyright information please see the full Notices section in [Appen
  - [Figure 3-15 -- Simple University Example JADN (JIDL format)](#figure-3-15----simple-university-example-jadn-jidl-format)
  - [Figure 3-16 -- Simple University Example JADN (table format)](#figure-3-16----simple-university-example-jadn-table-format)
  - [Figure 3-17 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-17----simple-university-example-erd-source-code-graphviz)
+ - [Figure 3-18 -- Basic Inheritance Example Overview](#figure-3-18----basic-inheritance-example-overview)
 
 
 **List of Tables**
@@ -2304,6 +2305,45 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
   3 field_3   String optional  
 ```
 
+#### 3.1.4.5 Inheritance
+
+> NOTE 1: Inheritance capabilities are a new feature in JADN v2.0.
+
+> NOTE 2: The JADN v2 inheritance-oriented `extends` type option is unrelated to
+> deprecated `extend` type option in JADN v1.
+
+JADN supports inheritance in information modeling, providing for class /
+subclass relationships. There are four type options to manage the class
+relationships among types, which are defined in Section 4.2.4 of [JADN](#jadn-v10).
+
+- `abstract`: The `abstract` option indicates that a type definition is only a
+  basis for defining sub-classes and should never be instantiated in data. 
+
+- `extends`: The `extends` option indicates that the associated type definition
+  is adding to the super-type on which it is based. An extending sub-type can
+  add new fields to its supertype. An extending sub-type can modify the cardinality 
+  of a field in the super-type but cannot redefine other aspects of existing, inherited
+  fields.
+
+- `restricts`: The `restricts` option indicates that the associated type
+  definition is subtracting from the super-type on which it is based. A
+  restricting sub-type can remove optional fields defined in its supertype,
+  however required fields cannot be removed.
+
+- `final`: The `final` type option identifies a type that cannot have sub-types
+  defined based on it.
+
+Type inheritance is static and can be applied both to primitive and compound
+types. However, as explained in the [JADNv2] specification, there are other
+mechanisms applicable to primitive and some compound types to achieve equivalent
+results. The primary applications on inheritance identified in the specification are: 
+
+- adding, removing, or modifying the cardinality of fields in structured compound types
+- adding items to Enumerated types
+
+An example of applying the inheritance type options to an IM loosely based on
+geography markup language concepts can be found in [Section&nbsp;3.3.5](#335-inheritance-example).
+
 ### 3.1.5 Reference Relationships: Keys and Links
 
 As explained in [Section&nbsp;3](#3-creating-information-models-with-jadn), JADN recognizes
@@ -3130,6 +3170,125 @@ Compared to the complexity of the iCalendar standard this IM for a calendar
 event is greatly simplified but could serve as the starting point for a more
 complete IM for describing calendar information for exchange among systems.
 
+### 3.3.5 Inheritance Example
+
+JADN v2.0 introduces inheritance features to support constructing DataType
+inheritance hierarchies. This example uses concepts inspired by the 
+[[CityGML](#citygml)] and [[CityJSON](#cityjson)] geographic modeling languages to
+provide an introduction to the use of inheritance in JADN. An overview of the
+key types defined in this example and their inheritance relationships is shown
+in Figure 3-18.
+
+###### Figure 3-18 -- Basic Inheritance Example Overview
+
+<img src="images/Inheritance-Example-Vert.drawio.png">
+
+The example defines abstract (i.e., non-instantiable) types for
+`Location`, `Road`, and `Construction` as a basis for more specific types in the
+model. The `Location` type simply identifies the geographic center of a feature
+(i.e., its latitude and longitude) and optionally the political unit within
+which the feature resides:
+
+```
+Coordinate = Array            // A single geographic point (latitude / longitude)
+   1  Number{-90.0..90.0}     // latitude::
+   2  Number{-180.0..180.0}   // longitude::
+
+PolUnit = String              // the name of the political area where the feature exists 
+                              // (city / county / state level, as appropriate)
+
+Location = Record abstract
+   1 geoCenter        Coordinate        // geographic center of the feature of interest at the location
+   2 politicalUnit    PolUnit optional  // the name of the political area where the location exists
+```
+
+Note that this simplified model is 2-dimensional; the definition of `Coordinate`
+does not include an elevation component.
+
+Endpoints use the `restricts` inheritance option to make the political unit
+field required in order to be able to specify where, politically, the endpoints
+of a road, tunnel, or bridge segment reside.
+
+```
+Endpoint = Record restricts(Location)                   // politicalUnit is required for an endpoint
+   2 politicalUnit    PolUnit                           // the name of the political area where the endpoint exists
+```
+
+This supports situations where, for example, a bridge or tunnel spans a river
+that runs between different states. Note that both `Location` and `Endpoint` are
+Record types, and in the definition of `Endpoint` the restricted field has the
+same identifier as in the referenced `Location` type. Both of these are
+important aspects when applying the inheritance type options.
+
+The model uses the `extends` inheritance type option in multiple places. The first
+is `OpenSpace`, which extends the `Location` Record type with a field to define
+the boundary of an open space using the `Coordinates` type.
+
+```
+Coordinates = ArrayOf(Coordinate)     // A list of geographic points
+
+OpenSpace = Record extends(Location)  // a defined area of open space
+   3 boundary Coordinates     // an array of lat/long points defining the line segments
+                              // around the boundary of an OpenSpace, equivalent to the
+                              // gml:LinearRing type; the first and last Coordinates in
+                              // the array MUST match
+```
+
+In this case `OpenSpace` adds a field to the referenced `Location` type so a new
+identifier is required for the new field.
+
+The `Location` type is more extensively extended by the `Road`, `Bridge`,
+`Tunnel`, and `Building` types. The latter three types are grouped under the
+abstract `Construction` type which groups the subtypes. As with the extension
+for `OpenSpace`, all of the extensions for these new subtypes assign unique
+field IDs for the added fields. The same is true for the subtypes of `Road` (see
+the full JIDL in [Appendix E.2](#e2-inheritance-example-jidl) for details).
+
+```
+Road = Record extends(Location) abstract                // essential information about any road
+   3 endpoints        Endpoints       // center of start/end points of a road, in lat/long + political unit
+   4 waypoints        Coordinates     // list of center points (lat/long) of a road that defines its route;
+                                      // curvature is approximated as straight line segments between waypoints
+                                      // enabling arbitrary precision about the route
+   5 width            Number{1.0..*}  // Width of the road in meters. MUST be >0
+   6 name             String          // official (or commonly used) name of the road
+   7 maintainedBy     Maintainer      // what level of government is responsible for maintenance
+
+Construction = Record extends(Location) abstract  // Abstract type to connect location to constructed types, no unique fields
+
+Bridge = Record extends(Construction)
+   3 endpoints        Endpoints       // center of start and end points of a bridge, in lat/long plus political unit
+   4 waypoints        Coordinates     // list of center points (lat/long) of a bridge that defines its route;
+                                      // curvature is approximated as straight line segments between waypoints,
+                                      // enabling arbitrary precision about the route
+   5 width            Number          // width of the bridge in meters, must be >0
+   6 maxHeight        Number          // maximum height of the bridge in meters
+   7 name             String          // official (or commonly used) name of the bridge
+   8 purpose          BridgePurpose   // purpose of this bridge
+
+Tunnel = Record extends(Construction)
+   3 endpoints        Endpoints       // center of start and end points of a tunnel, in lat/long plus political unit
+   4 waypoints        Coordinates     // list of center points (lat/long) of a tunnel that defines its route;
+                                      // curvature is approximated as straight line segments between waypoints,
+                                      // enabling arbitrary precision about the route
+   5 width            Number          // width of the tunnel in meters, must be >0
+   6 height           Number          // height of a tunnel from road surface to ceiling, in meters
+   7 depth            Number          // lowest elevation of a tunnel's road surface, in meters
+   8 name             String          // official (or commonly used) name of the tunnel
+   9 purpose          TunnelPurpose   // purpose of this tunnel
+
+Building = Record extends(Construction)
+   3 address          Address
+   4 perimeter        Coordinates     // an array of lat/long points defining the line segments around the
+                                      // perimeter of a building, equivalent to the gml:LinearRing type; 
+                                      // the first and last Coordinates in the array MUST match
+   5 maxHeight        Number          // maximum height of the building in meters
+   6 function         BuildingFunction
+```
+
+
+
+
 -------
 
 # Appendix A. Informative References
@@ -3142,6 +3301,14 @@ While any hyperlinks included in this appendix were valid at the time of publica
 
 ###### [ASN.1]
 Recommendation ITU-T X.680 (2021) *Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation* 
+
+
+###### [CityGML]
+OGC City Geography Markup Language (CityGML) Part 1: Conceptual Model Standard, 
+13 September 2021, http://www.opengis.net/doc/IS/CityGML-1/3.0 
+
+###### [CityJSON]
+CityJSON Specifications 2.0.1, 11 April 2024, https://www.cityjson.org/specs/2.0.1/
 
 ###### [CACAO-Security-Playbooks-v2.0]
 _CACAO Security Playbooks Version 2.0_. Edited by Bret Jordan and Allan Thomson. 27 November 2023. OASIS Committee Specification 01. https://docs.oasis-open.org/cacao/security-playbooks/v2.0/cs01/security-playbooks-v2.0-cs01.html. Latest version: https://docs.oasis-open.org/cacao/security-playbooks/v2.0/security-playbooks-v2.0.html.
@@ -3335,7 +3502,7 @@ The following individuals have participated in the creation of this document and
 
 # Appendix C. Revision History
 
-## C.1 -- Revision History Table
+## C.1 Revision History Table
 
 | Revision           | Date       | Editor      | Changes Made          |
 |:-------------------|:-----------|:------------|:----------------------|
@@ -3364,12 +3531,13 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Document v2 changes in Appendix C, corrections to revision table (PR #90) |
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Update Type & Field Options in section 3.x (PR #91) |
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Incorporate "elevator speech" into abstract and section 1.0 (PR #93) |
+| imjadn-v1.0-cn03.md      | 2025-02-xx | David Lemire | New content addressing inheritance features added in JADV v2 (PR #92) |
 
-## C.2 -- JADN Version 2 Changes
+## C.2 JADN Version 2 Changes
 
 This section details differences between versions 1 and 2 of JADN.
 
-### C.2.1 -- Breaking Change
+### C.2.1 Breaking Change
 
 In JADN v2.0 the "unlimited" value for the `maxOccurs` (formerly `maxc`)
 sentinel is changed from 0 to -1. *This minor but incompatible change required a
@@ -3378,7 +3546,16 @@ new major version.* Two options are provided for an unspecified `maxOccurs` valu
 - `maxOccurs` = -1 denotes an upper size limit defined by the JADN default value or package-specified upper value
 - `maxOccurs` = -2 denotes an unbounded upper size limit
 
-### C.2.2 -- Type Option Changes
+### C.2.2 General Changes
+
+The following general changes were made:
+
+- The "namespaces" prefix list was change from mappings to pairings to provide greater flexibility in managing namespaces and packages.
+- The package "Information" element was renamed to "Metadata" to avoid conflation with information modeling.
+- The package "exports" element was renamed to "roots" to better describe its purpose and effect.
+- Type Options have been revised and expanded to support defining both size and content (value) range limits for primitive types
+
+### C.2.3 Type Option Changes
 
 The following changes were made to JADN type options:
 
@@ -3394,14 +3571,7 @@ The following changes were made to JADN type options:
 - Removed option:
   - `extend`: this option has been deprecated
 
-### C.2.3 -- Field Option Changes
-
-The following changes were made to JADN type options:
-
-- Replaced option:
-  - `minc, maxc`: these options have been renamed to `minOccurs, maxOccurs`
-
-### C.2.4 -- Inheritance
+### C.2.4 Inheritance
 
 Four new type options were introduced to support inheritance in information models:
 
@@ -3421,7 +3591,14 @@ The `extends` and `restricts` options are complementary: if B `extends` A then
 every instance of A MUST be an instance of B.  If B `restricts` A then every
 instance of B MUST be an instance of A. 
 
-### C.2.5 -- Format and Validation Options Changes
+### C.2.5 Field Option Changes
+
+The following changes were made to JADN type options:
+
+- Replaced option:
+  - `minc, maxc`: these options have been renamed to `minOccurs, maxOccurs`
+
+### C.2.6 Format and Validation Options Changes
 
 The following changes were made to format and validation options:
 
@@ -3429,14 +3606,6 @@ The following changes were made to format and validation options:
 - `i<n>` replaces the `i8`, `i16`, `i32` format options to provide greater flexibility in specifying signed integer types; the permissable values are between -2^(n-1) and 2^(n-1)-1.
 - `d<n>` applies a decimal integer scale factor of 10^n: value has n digits after decimal point, n > 0.
 
-### C.2.6 -- General Changes
-
-The following general changes were made:
-
-- The "namespaces" prefix list was change from mappings to pairings to provide greater flexibility in managing namespaces and packages.
-- The package "Information" element was renamed to "Metadata" to avoid conflation with information modeling.
-- The package "exports" element was renamed to "roots" to better describe its purpose and effect.
-- Type Options have been revised and expanded to support defining both size and content (value) range limits for primitive types
 
 -------
 
@@ -4276,7 +4445,120 @@ Enumeration of common genres
 | 6  | **classical**          |             |
 | 7  | **spoken_word**        |             |
 
+## E.2 Inheritance Example JIDL
 
+{
+  "meta": {
+    "package": "http://inheritance/v2",
+    "title": "Inheritance Example",
+    "description": "Example illustrating the application of JADN v2 inheritance features. Very loosely based on CityGML concepts.",
+    "roots": ["Location"]
+  },
+  "types": [
+    ["Coordinate", "Array", [], "A single geographic point (latitude / longitude)", [
+        [1, "latitude", "Number", ["y-90", "z90"], ""],
+        [2, "longitude", "Number", ["y-180", "z180"], ""]
+      ]],
+    ["PolUnit", "String", [], "the name of the political area where the feature exists (city / county / state level, as appropriate)"],
+    ["Location", "Record", [], "", [
+        [1, "geoCenter", "Coordinate", [], "geographic center of the feature of interest at the location"],
+        [2, "politicalUnit", "PolUnit", ["[0", "]1"], "the name of the political area where the location exists"]
+      ]],
+    ["Endpoint", "Record", ["rLocation"], "politicalUnit is required for an endpoint", [
+        [2, "politicalUnit", "PolUnit", ["[1", "]1"], "the name of the political area where the endpoint exists"]
+      ]],
+    ["Endpoints", "ArrayOf", ["*Endpoint", "{2", "}2", "q"], "center of start/end points of a linear feature, in lat/long"],
+    ["Coordinates", "ArrayOf", ["*Coordinate"], "A list of geographic points"],
+    ["OpenSpace", "Record", ["eLocation"], "a defined area of open space", [
+        [3, "boundary", "Coordinates", [], "an array of lat/long points defining the line segments around the boundary of an OpenSpace, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"]
+      ]],
+    ["Road", "Record", ["a","eLocation"], "essential information about any road", [
+        [3, "endpoints", "Endpoints", [], "center of start/end points of a road, in lat/long + political unit"],
+        [4, "waypoints", "Coordinates", [], "list of center points (lat/long) of a road that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route"],
+        [5, "width", "Number", ["y1"], "Width of the road in meters. MUST be >0"],
+        [6, "name", "String", [], "official (or commonly used) name of the road"],
+        [7, "maintainedBy", "Maintainer", [], "what level of government is responsible for maintenance"]
+      ]],
+    ["LocalRoad", "Record", ["eRoad"], "a local, unnumbered road", [
+        [8, "surfaceType", "Surface", [], "Choice identifying the type of road surface"]
+      ]],
+    ["NumberedRoad", "Record", ["eRoad"], "A road with an identifying number (e.g., MD32, US1)", [
+        [8, "routeNumber", "RouteNumber", [], "State or U.S. identifying number of the road"]
+      ]],
+    ["Interstate", "Record", ["eRoad"], "A road in the Interstate highway system", [
+        [8, "interstateNumber", "Integer", ["{1", "}999"], "Interstate number of the road"]
+      ]],
+    ["RouteNumber", "Array", [], "", [
+        [1, "owningEntity", "String", ["%[A-Z]{2}"], "\"US\" or 2-character State portion of road number"],
+        [2, "routeNum", "Integer", ["{1", "}1000"], "numeric portion of road identifier"]
+      ]],
+    ["Surface", "Choice", [], "(oneOf) possible road surfaces", [
+        [1, "dirt", "String", [], ""],
+        [2, "gravel", "String", [], ""],
+        [3, "macadam", "String", [], ""],
+        [4, "concrete", "String", [], ""],
+        [5, "asphalt", "String", [], ""]
+      ]],
+    ["Maintainer", "Enumerated", [], "level of government responsible for maintaining a road", [
+        [1, "local", "town or city"],
+        [2, "county", ""],
+        [3, "state", ""],
+        [4, "federal", ""]
+      ]],
+    ["BridgePurpose", "Enumerated", [], "", [
+        [1, "vehicular", ""],
+        [2, "pedestrian", ""],
+        [3, "railroad", ""]
+      ]],
+    ["Construction", "Record", ["eLocation"], "Bridge type from location to constructed types, no unique fields", []],
+    ["Bridge", "Record", ["eConstruction"], "", [
+        [3, "endpoints", "Endpoints", [], "center of start and end points of a bridge, in lat/long plus political unit"],
+        [4, "waypoints", "Coordinates", [], "list of center points (lat/long) of a bridge that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route"],
+        [5, "width", "Number", [], "width of the bridge in meters, must be >0"],
+        [6, "maxHeight", "Number", [], "maximum height of the bridge in meters"],
+        [7, "name", "String", [], "official (or commonly used) name of the bridge"],
+        [8, "purpose", "BridgePurpose", ["[1"], "purpose of this bridge"]
+      ]],
+    ["Tunnel", "Record", ["eConstruction"], "", [
+        [3, "endpoints", "Endpoints", [], "center of start and end points of a tunnel, in lat/long plus political unit"],
+        [4, "waypoints", "Coordinates", [], "list of center points (lat/long) of a tunnel that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route"],
+        [5, "width", "Number", [], "width of the tunnel in meters, must be >0"],
+        [6, "height", "Number", [], "height of a tunnel from road surface to ceiling, in meters"],
+        [7, "depth", "Number", [], "lowest elevation of a tunnel's road surface, in meters"],
+        [8, "name", "String", [], "official (or commonly used) name of the tunnel"],
+        [9, "purpose", "TunnelPurpose", ["[1"], "purpose of this tunnel"]
+      ]],
+    ["Building", "Record", ["eConstruction"], "", [
+        [3, "address", "Address", [], ""],\
+        [4, "perimeter", "Coordinates", [], "an array of lat/long points defining the line segments around the perimeter of a building, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"],
+        [5, "maxHeight", "Number", [], "maximum height of the building in meters"],
+        [6, "function", "BuildingFunction", ["[1"], ""]
+      ]],
+    ["Address", "Map", [], "A street / postal address associated with a building", [
+        [1, "street", "String", [], ""],
+        [2, "apartment", "String", ["[0", "]1"], ""],
+        [3, "suite", "String", ["[0", "]1"], ""],
+        [4, "county", "String", ["[0", "]1"], ""],
+        [5, "city", "String", [], ""],
+        [6, "state", "String", ["%[A-Z]{2}"], ""],
+        [7, "zipCode", "String", ["%\\d{5}(\\-\\d{4}){0,1}"], "zip+4 format implies a U.S. postal code"]
+      ]],
+    ["TunnelPurpose", "Enumerated", [], "", [
+        [1, "vehicular", ""],
+        [2, "pedestrian", ""],
+        [3, "railroad", ""],
+        [4, "water", ""]
+      ]],
+    ["BuildingFunction", "Enumerated", [], "", [
+        [1, "Single-Family Dwelling", ""],
+        [2, "Multi-Family Dwelling", ""],
+        [3, "Commercial-Office", ""],
+        [4, "Commercial-Retail", ""],
+        [5, "Medical", ""],
+        [6, "Government", ""]
+      ]]
+  ]
+}
 
 ------
 

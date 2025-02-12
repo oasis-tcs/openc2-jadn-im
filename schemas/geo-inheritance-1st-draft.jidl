@@ -1,0 +1,118 @@
+Coordinate = Array
+  1 Number {-90., 90.}      // latitude::
+  2 Number {-180., 180.}    // longitude::
+
+PolUnit = String    // the name of the political area where the feature exists 
+                    // (city / county / state level, as appropriate);
+
+Location = Record abstract
+    1 geoCenter         Coordinate          // geographic center of the feature of interest at the location
+    2 politicalUnit     PolUnit optional    // the name of the political area where the location exists 
+
+EndPoint = Record restricts(Location)
+    1 endpoint          Coordinate          // center of start or end point of a linear feature, in lat/long
+    2 politicalUnit     PolUnit required    // the name of the political area where the endpoint exists 
+
+EndPoints = ArrayOf(EndPoint){2..2}     // center of start/end points of a linear feature, in lat/long
+
+Coordinates = ArrayOf(Coordinate)
+
+OpenSpace = Record extends(Location)
+    3 boundary  Coordinates // an array of lat/long points defining the line segments around 
+                            // the perimeter of a feature, equivalent to the gml:LinearRing
+                            // USAGE: the first and last Coordinates in the array MUST match
+
+Road = Record extends(Location) abstract
+    3 endPoints     Endpoints       // center of start/end points of a road, in lat/long + political unit
+    4 wayPoints     Coordinates     // list of center points (lat/long) of a road that defines 
+                                    // its route; curvature is approximated as straight line segments 
+                                    // between waypoints, enabling arbitrary precision about the route
+    5 width         Number (0., ]   // width of the road in meters, MUST be >0
+    6 name          String          // official (or commonly used) name of the road
+    7 maintainedBy  Maintainer      // what level of government is responsible for maintenance
+
+LocalRoad = Record extends(Road)
+    8 surfaceType   Surface         // Choice identifying the type of road surface 
+                                    // (e.g., asphalt, concrete, gravel, dirt)
+
+NumberedRoad = Record extends(Road)
+    8 routeNumber   RouteNumber     // State or U.S. identifying number of the road, if applicable
+
+Interstate = Record extends(Road)
+    8 interstateNumber   Integer [1, 999]   // Interstate number of the road
+
+RouteNumber = Array
+    1 String                //owningEntity:: "US" or 2-character State portion of road number
+    2 Integer [1, 1000]     //routeNum:: numeric portion of road identifier
+
+Maintainer = Enumerated // level of government responsible for maintaining a road
+    1   local   // city or town
+    2   county
+    3   state
+    4   federal
+
+Surface = Choice (oneOf)
+    1 dirt
+    2 gravel
+    3 macadam
+    4 asphalt
+    5 concrete
+
+Construction = Record extends(Location) abstract
+
+Building = Record extends(Construction)
+    3 address   Address
+    4 perimeter Coordinates // an array of lat/long points defining the line segments around 
+                            // the perimeter of a feature, equivalent to the gml:LinearRing
+                            // USAGE: the first and last Coordinates in the array MUST match
+    5 maxHeight Number      // maximum height of the building in meters
+    6 function  BuildingFunction{1..*}
+
+Tunnel = Record extends(Construction)
+    3 endPoints     Endpoints       // center of start and end points of a tunnel, in lat/long plus political unit
+    4 wayPoints     Coordinates     // list of center points (lat/long) of a tunnel that defines 
+                                    // its route; curvature is approximated as straight line segments 
+                                    // between waypoints, enabling arbitrary precision about the route
+    5 width         Number (0., -1.]    // width of the tunnel in meters, MUST be >0
+    6 height        Number          // height of a tunnel from road surface to ceiling, in meters
+    7 depth         Number          // lowest elevation of a tunnel's road surface, in meters
+    8 name          String          // official (or commonly used) name of the tunnel
+    9 purpose       TunnelPurpose{1..*} // purpose of this tunnel
+
+Bridge = Record extends(Construction)
+    3 endPoints     Endpoints       // center of start and end points of a bridge, in lat/long plus political unit 
+    4 wayPoints     Coordinates     // list of center points (lat/long) of a bridge that defines 
+                                    // its route; curvature is approximated as straight line segments 
+                                    // between waypoints, enabling arbitrary precision about the route
+    5 width         Number (0., -1.]    // width of the bridge in meters, MUST be >0
+    6 maxHeight     Number              // maximum height of the bridge in meters
+    7 name          String          // official (or commonly used) name of the bridge
+    8 purpose       BridgePurpose{1..*} // purpose of this Bridge
+
+BuildingFunction = Enumerated
+    1 Single-Family Dwelling
+    2 Multi-Family Dwelling
+    3 Commercial-Office
+    4 Commercial-Retail
+    5 Medical
+    6 Government
+
+TunnelPurpose = Enumerated
+    1 vehicular
+    2 pedestrian
+    3 railroad
+    4 water
+
+BridgePurpose = Enumerated
+    1 vehicular
+    2 pedestrian
+    3 railroad
+
+Address = Map
+    1 street    String
+    2 apartment String optional
+    3 suite     String optional
+    4 county    String optional
+    5 city      String
+    6 state     String{pattern="[A-Z]{2}"}
+    7 postCode  String{pattern="/\d{5}(\-\d{4}){0,1}"}
