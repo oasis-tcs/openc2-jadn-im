@@ -4448,7 +4448,7 @@ Enumeration of common genres
 | 7  | **spoken_word**        |             |
 
 ## E.2 Inheritance Example JIDL
-
+```
        title: "Inheritance Example"
      package: "http://inheritance/v2"
  description: "Example illustrating the application of JADN v2 inheritance features. Very loosely based on CityGML concepts."
@@ -4559,6 +4559,7 @@ BuildingFunction = Enumerated
    4 Commercial-Retail
    5 Medical
    6 Government
+```
 
 ------
 
