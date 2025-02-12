@@ -528,7 +528,7 @@ value*.  But different data may be used to represent that information:
 \* *Note: all references to information assume independent uniformly-distributed
 values. Non-uniform or correlated data contains less than one byte of
 information per data byte, but source coding is beyond the scope of this
-specification.*
+description.*
 
 The 13 extra bytes used to format a 4-byte IP address as a dotted quad are
 useful for display purposes, but provide no information to the receiving
