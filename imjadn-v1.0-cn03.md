@@ -1485,7 +1485,7 @@ of [[RFC8610](#rfc8610)].
       </td>
       <td class="td">
         <i>
-          <center>format, pattern, minLength, maxLength,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
+          <center>pattern, const, default, format,<br>minLength, maxLength,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
@@ -1507,8 +1507,12 @@ The corresponding JIDL representation would be:
   TrackTitle = String   // Title of the song in the selected track
 ```
 
-All semantic validation keywords defined in Section 7.3 of [[JSON
-Schema](#jsonschema)] are valid *format* options for the String type. The *minLength*
+Semantic validation keywords for Strings are defined in Sections 4.2.5.2 and
+54.2.5.3 the [[JADN](#jadn-v10)] specification. These keywords support
+constraining a String type to represent a variety of commonly used formats, such
+as dates and times, emails, hostnames, etc.
+
+ing are valid *format* options for the String type. The *minLength*
 and *maxLength* TypeOptions are used to specify a minimum and/or maximum number of
 characters that may be assigned to a String type (i.e., the acceptable range of
 string lengths). 
