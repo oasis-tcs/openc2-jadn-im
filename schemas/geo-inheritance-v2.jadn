@@ -37,11 +37,11 @@
         [8, "routeNumber", "RouteNumber", [], "State or U.S. identifying number of the road"]
       ]],
     ["Interstate", "Record", ["eRoad"], "A road in the Interstate highway system", [
-        [8, "interstateNumber", "Integer", ["{1", "}999"], "Interstate number of the road"]
+        [8, "interstateNumber", "Integer", ["y1", "z999"], "Interstate number of the road"]
       ]],
     ["RouteNumber", "Array", [], "", [
         [1, "owningEntity", "String", ["%[A-Z]{2}"], "\"US\" or 2-character State portion of road number"],
-        [2, "routeNum", "Integer", ["{1", "}1000"], "numeric portion of road identifier"]
+        [2, "routeNum", "Integer", ["y1", "z1000"], "numeric portion of road identifier"]
       ]],
     ["Surface", "Choice", [], "(oneOf) possible road surfaces", [
         [1, "dirt", "String", [], ""],
