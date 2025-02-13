@@ -1521,9 +1521,9 @@ conditions." In particular:
 
 Any of those options could potentially overlap with a pattern specification.
 
-The *pattern* option in JADN is used to provide a regular expression to be
+The `pattern` option in JADN is used to provide a regular expression to be
 applied to a string type instance. When
-representing the *pattern* option in JIDL, it should be directly
+representing the `pattern` option in JIDL, it should be directly
 connected to the `String` type name. The JIDL pattern
 specification is surrounded with braces "{ }", containing
 `pattern="REGEX"` where `REGEX` is the regular expression that
