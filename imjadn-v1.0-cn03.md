@@ -3193,8 +3193,8 @@ which the feature resides:
 
 ```
 Coordinate = Array            // A single geographic point (latitude / longitude)
-   1  Number[-90.0..90.0]     // latitude::
-   2  Number[-180.0..180.0]   // longitude::
+   1  Number=[-90.0, 90.0]     // latitude::
+   2  Number=[-180.0, 180.0]   // longitude::
 
 PolUnit = String              // the name of the political area where the feature exists 
                               // (city / county / state level, as appropriate)
@@ -4456,8 +4456,8 @@ Enumeration of common genres
      roots: ["Location"]
 
 Coordinate = Array                                      // A single geographic point (latitude / longitude)
-   1  Number[-90.0..90.0]               // latitude::
-   2  Number[-180.0..180.0]             // longitude::
+   1  Number=[-90.0, 90.0]               // latitude::
+   2  Number=[-180.0, 180.0]             // longitude::
 
 PolUnit = String                                        // the name of the political area where the feature exists (city / county / state level, as appropriate)
 
