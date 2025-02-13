@@ -1519,9 +1519,10 @@ conditions." In particular:
    define ranges of acceptable content for an instance of a String type if the
    character set defines a collation order.
 
-The *pattern* option in JADN is identified by the `%` type option
-character followed immediately by the regular expression to be
-applied, with the entire option contained in double-quotes. When
+Any of those options could potentially overlap with a pattern specification.
+
+The *pattern* option in JADN is used to provide a regular expression to be
+applied to a string type instance. When
 representing the *pattern* option in JIDL, it should be directly
 connected to the `String` type name. The JIDL pattern
 specification is surrounded with braces "{ }", containing
