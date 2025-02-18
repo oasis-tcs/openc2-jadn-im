@@ -1485,7 +1485,7 @@ of [[RFC8610](#rfc8610)].
       </td>
       <td class="td">
         <i>
-          <center>format, pattern, minLength, maxLength,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
+          <center>pattern, const, default, format,<br>minLength, maxLength,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
@@ -1507,16 +1507,23 @@ The corresponding JIDL representation would be:
   TrackTitle = String   // Title of the song in the selected track
 ```
 
-All semantic validation keywords defined in Section 7.3 of [[JSON
-Schema](#jsonschema)] are valid *format* options for the String type. The *minLength*
-and *maxLength* TypeOptions are used to specify a minimum and/or maximum number of
-characters that may be assigned to a String type (i.e., the acceptable range of
-string lengths). 
+Strings have a large variety of applicable type options that have the potential
+for overlapping meanings. As stated in the [[JADN](#jadn-v10)] specification:
+"The pattern, length, and range options are not normally used together, but if
+more than one kind is present in a type definition an instance must satisfy all
+conditions." In particular:
 
-The *pattern* option in JADN is identified by the `%` type option
-character followed immediately by the regular expression to be
-applied, with the entire option contained in double-quotes. When
-applying the *pattern* option in JIDL, it should be directly
+ - The `minLength / maxLength` options define the acceptable character count for
+   an instance of a String type.
+ - The `minInclusive / maxInclusive / minExclusive / maxExclusive` options
+   define ranges of acceptable content for an instance of a String type if the
+   character set defines a collation order.
+
+Any of those options could potentially overlap with a pattern specification.
+
+The `pattern` option in JADN is used to provide a regular expression to be
+applied to a string type instance. When
+representing the `pattern` option in JIDL, it should be directly
 connected to the `String` type name. The JIDL pattern
 specification is surrounded with braces "{ }", containing
 `pattern="REGEX"` where `REGEX` is the regular expression that
@@ -1529,16 +1536,13 @@ presentations of a String with an associated pattern:
 Barcode = String{pattern="^\d{12}$"}    // A UPC-A barcode is 12 digits
 ```
 
-The JADN Specification states (Section&nbsp;3.2.1.6):
+The preferred pattern grammar for JADN is defined in the 15th edition of the
+[[ECMAScript](#ecmascript)] specification (June 2024).
 
-> The *pattern* value SHOULD conform to the Pattern grammar of
-> ECMAScript Section 21.2.
-
-and references the 9th edition (published in 2018) of the
-[[ECMAScript](#ecmascript)] specification.  The pattern grammar
-in the current 15th edition (published in 2022) of the
-specification is in Section 22.2.
-
+Semantic validation keywords for Strings are defined in Sections 4.2.5.2 and
+54.2.5.3 the JADN Specification. These keywords support constraining a String
+type to represent a variety of commonly used formats, such as dates and times,
+emails, hostnames, etc.
 
 #### 3.1.2.6 Enumerated
 
@@ -3330,8 +3334,8 @@ Volume 58, Issue 1, 2006,
 https://www.sciencedirect.com/science/article/pii/S0169023X05000753
 
 ###### [ECMAScript]
-CMA International, "ECMAScript 2022 Language Specification",
-ECMA-262 15th Edition, June 2022,
+CMA International, "ECMAScript 2024 Language Specification",
+ECMA-262 15th Edition, June 2024,
 https://www.ecma-international.org/ecma-262.
 
 ###### [Graphviz]
