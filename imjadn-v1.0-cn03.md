@@ -75,12 +75,12 @@ When referencing this document the following citation format should be used:
 
 **[IM-JADN-v1.0]**
 
-_Information Modeling with JADN Version 1.0_. Edited by David Kemp. 17 August 2021.
-OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v1.0/cs01/imjadn-v1.0-cs01.html.
+_Information Modeling with JADN Version 1.0_. Edited by David Lemire and David Kemp. 19 February 2025.
+OASIS Committee Note 03. https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.html.
 Latest stage: https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html.
 
 #### Notices
-Copyright &copy; OASIS Open 2023. All Rights Reserved.
+Copyright &copy; OASIS Open 2025. All Rights Reserved.
 
 Distributed under the terms of the OASIS [IPR Policy](https://www.oasis-open.org/policies-guidelines/ipr/).
 
