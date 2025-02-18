@@ -3533,7 +3533,8 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Document v2 changes in Appendix C, corrections to revision table (PR #90) |
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Update Type & Field Options in section 3.x (PR #91) |
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Incorporate "elevator speech" into abstract and section 1.0 (PR #93) |
-| imjadn-v1.0-cn03.md      | 2025-02-12 | David Lemire | New content addressing inheritance features added in JADV v2 (PR #92) |
+| imjadn-v1.0-cn03.md      | 2025-02-12 | David Lemire | New content addressing inheritance features added in JADV v2 (PRs #92 & #97) |
+| imjadn-v1.0-cn03.md      | 2025-02-18 | David Lemire | Update discussion of String type options for JADV v2 (PR #98) |
 
 ## C.2 JADN Version 2 Changes
 
