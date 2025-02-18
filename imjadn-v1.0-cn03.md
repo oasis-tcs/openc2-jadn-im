@@ -7,17 +7,17 @@
 
 ## Committee Note 03
 
-## xx February 2025
+## 19 February 2025
 
 #### This stage:
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.md (Authoritative) \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.html \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.pdf
+https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.md (Authoritative) \
+https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.html \
+https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.pdf
 
 #### Previous stage of Version 1.0:
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cnd01/imjadn-v1.0-cnd01.md (Authoritative) \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cnd01/imjadn-v1.0-cnd01.html \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cnd01/imjadn-v1.0-cnd01.pdf
+https://docs.oasis-open.org/openc2/imjadn/v1.0/cn02/imjadn-v1.0-cn02.md (Authoritative) \
+https://docs.oasis-open.org/openc2/imjadn/v1.0/cn02/imjadn-v1.0-cn02.html \
+https://docs.oasis-open.org/openc2/imjadn/v1.0/cn02/imjadn-v1.0-cn02.pdf
 
 #### Latest stage of Version 1.0:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.md (Authoritative) \
@@ -75,8 +75,8 @@ When referencing this document the following citation format should be used:
 
 **[IM-JADN-v1.0]**
 
-_Information Modeling with JADN Version 1.0_. Edited by David Kemp. 19 April 2023.
-OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v1.0/cn01/imjadn-v1.0-cn01.html.
+_Information Modeling with JADN Version 1.0_. Edited by David Kemp. 17 August 2021.
+OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v1.0/cs01/imjadn-v1.0-cs01.html.
 Latest stage: https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html.
 
 #### Notices
@@ -236,13 +236,10 @@ providing distinctive features that focus on accurate definition of the
 information of interest:
 
  * Unambiguous definition of the meaning of information separate from its representation for transmission or storage
- * Ready translation of JADN models to widely-used format such as JSON Schema and XML Schema that can then be used with common tooling for those formats
+ * Ready translation of JADN models to widely-used formats such as JSON Schema and XML Schema that can then be used with common tooling for those formats
  * Serialization rules for JSON and CBOR, easily extensible to other representations
  * Conversion of representation between formats that preserves the underlying meaning
  * Concise, readable format that accurately represents the information model and is readily translatable
-
-> _**TO-DO:** Update the music library information model to better support this
-> introductory example and update the excerpts here_
 
 An excerpt from the Digital Music Library example presented in full 
 in [Section&nbsp;3.3.1](#331-digital-music-library)
@@ -265,7 +262,7 @@ The JIDL presentation is concise and easily understood. Each element is defined
 by its meaning (e.g., the track number is an _integer_, not a string containing
 only digits). The details of `Artist`, `Image`, and other types referenced in
 this metadata record are defined in other similar structures. The JADN from which the
-JIDL is generated can be readily translated into JSON or XML schema forms for
+JIDL is generated can be readily translated into JSON schema or XML schema forms for
 use with existing tooling for those formats but the readability of the JIDL format simplifies
 development, examination, and refinement of the model.
 
@@ -318,7 +315,8 @@ development, examination, and refinement of the model.
     },
 ```
 <br><br>
-**Track-Info in XML Schema***
+**Track-Info in XML Schema**
+
 ```xml
 	<xs:complexType name="Track-Info">
 		<xs:sequence>
@@ -421,9 +419,8 @@ to a lack of information modeling:
      environment at the highest level of abstraction and
      expresses the desired functionality. Information models can
      be defined informally (e.g., in prose) or more formally 
-     (e.g., Unified Modeling Language (UML), Entity-
-     Relationship Diagrams, etc.).  Implementation details are
-     hidden.
+     (e.g., Unified Modeling Language (UML), Entity-Relationship Diagrams, etc.).
+     Implementation details are hidden.
 
 > - **Data Model** -- A data model defines concrete data
      representations *at a lower level of abstraction, including
@@ -531,7 +528,7 @@ value*.  But different data may be used to represent that information:
 \* *Note: all references to information assume independent uniformly-distributed
 values. Non-uniform or correlated data contains less than one byte of
 information per data byte, but source coding is beyond the scope of this
-specification.*
+description.*
 
 The 13 extra bytes used to format a 4-byte IP address as a dotted quad are
 useful for display purposes, but provide no information to the receiving
@@ -1002,6 +999,10 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 > The text and figures in this CN use the JADN v2.0 terminology; this does not
 > reflect alteration of the underlying concepts.
 
+> NOTE: The [[JADN Specification](#jadn-v10)] is the authoritative normative
+> definition of the JADN language. Any discrepancies between that specification
+> and this committee note should be resolved based on the specification.
+
 Figure 3-1 provides a high-level view of the components of JADN type definitions that
 will be described in this section. JADN provides *primitive*, 
 *compound* (both structured and unstructured), and *union* core data types that can be refined using type and field
@@ -1077,7 +1078,7 @@ that type.
     of **Item** or **Field** options that define the items that
     comprise the compound type.
 
-> **TO-DO:** Determine whether including the ASCII code numbers in Figure 3-2 is worthwhile
+> **TO-DO:** Determine whether including the ASCII code numbers for type and field options in Figure 3-2 is worthwhile
 
 ###### Figure 3-2 -- JADN V2 Type Definition Structure
 ![JADN V2 Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
@@ -1105,7 +1106,7 @@ JADN schema if desired (see Section&nbsp;3.1.2 of the
    case, lower case or numeric characters and must begin with a
    letter.
 
- - The **"system character"** (which defaults to `$`) is used by
+ - The **"system character"** (which defaults to `.`) is used by
    JADN processing tools when generating derived types while
    processing a JADN model; it is not normally used by JADN
    schema authors.
@@ -1382,10 +1383,10 @@ The corresponding JIDL representation would be:
   TrackNumber = Integer   // Track number for current song
 ```
 
-The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
+The *minInclusive/maxInclusive* and *minExclusive/maxExclusive* TypeOptions are used to specify minimum and/or maximum
 value that may be assigned to an Integer type. The JADN Integer primitive type
-encompasses the UML UnlimitedNatural primitive type through the use the *minLength*
-Type Option: an Integer with a *minLength* of `0` has the same range of values as an
+encompasses the UML UnlimitedNatural primitive type through the use the *minInclusive*
+Type Option: an Integer with a *minInclusive* of `0` has the same range of values as an
 UnlimitedNatural.
 
 Table 3-5 lists the *format* options applicable to the Integer type:
@@ -1502,7 +1503,7 @@ a String type would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of an String datatype
+// Example JIDL definition of a String datatype
   TrackTitle = String   // Title of the song in the selected track
 ```
 
@@ -2033,7 +2034,7 @@ The [[JADN Specification](#jadn-v10)] identifies three formats
  - Property Tables
  - Entity Relationship Diagrams (ERDs)
 
-Figure 3-6a identifies the various representations. 
+Figure 3-7 identifies the various representations. 
 The formal definitions of each of these types are found in
 sections 5.1, 5.2, and 5.3, respectively, of the 
 [[JADN Specification](#jadn-v10)].
@@ -2093,29 +2094,29 @@ development of IMs.
 #### 3.1.4.1 "Anonymous" Type Definitions
 
 The [[JADN Specification](#jadn-v10)] conformance statement
-(section 7) separates the definition of JADN into "Core JADN"
-(sections 3.1, 3.2, 4, and 6) and "JADN Extensions" (section
-3.3). Section&nbsp;3.3 explains that extensions "make type definitions
+(section 8) separates the definition of JADN into "Core JADN"
+(sections 3.1, 3.2, 4, and 6) and "JADN Shortcuts" (section
+3.3). Section&nbsp;3.3 explains that shortcuts "make type definitions
 more compact or support the Don't Repeat Yourself (DRY) software
-design principle. Extensions are syntactic sugar that can be
+design principle. Shortcuts are syntactic sugar that can be
 replaced by core definitions without changing their meaning."
-While the implementation of extensions by JADN tools is optional,
-in a conformance sense, the availability of extensions reduces
+While the implementation of shortcuts by JADN tools is optional,
+in a conformance sense, the availability of shortcuts reduces
 the level of effort required by a JADN schema author and can make
 a schema more compact and understandable.
 
 The JADN Specification also defines a "system character" (by
-default the dollar sign, `$`) and in the Name Formats (section
+default the period, `.`) and in the Name Formats (section
 3.1.2) reserves the use of that character to automated tooling,
 saying "Schema authors should not create TypeNames containing the
 System character, but schema processing tools may do so".
 
-Examples of the use of extensions and the role of the system
+Examples of the use of shortcuts and the role of the system
 character are provided in sections 3.3.1, 3.3.2, and 3.3.2 of the
 JADN Specification. As noted in [Section&nbsp;3.1.1.4](#3114-field-options), 
 JADN Type Options can be applied to
 fields in compound types, but as explained in Section&nbsp;3.3.1 of
-the JADN Specification, this is an extension that leads to the
+the JADN Specification, this is an shortcut that leads to the
 anonymous definition of a new type when processed by automated
 tooling. The example provided there is:
 
@@ -2128,13 +2129,13 @@ Unfolding replaces this with:
 ```
 Member = Record
   1 name         String
-  2 email        Member$email
+  2 email        Member.email
     
-Member$email = String /email    // Tool-generated type definition.
+Member.email = String /email    // Tool-generated type definition.
 ```
-The type definition for `Member$email` was generated by the
+The type definition for `Member.email` was generated by the
 tooling, as both noted in the comment and indicated by the
-presence of the `$` character in the type name. The same result
+presence of the `.` character in the type name. The same result
 could be achieved in Core JADN by defining a separate `Email`
 type:
 
@@ -2455,7 +2456,7 @@ JADN schema tools to detect discrepancies.
 #### 3.1.6.2 Namespaces
 
 > NOTE: this discussion of namespace management includes features to be added in
-> JADN v1.1. The implementation of these features is backward-compatible with
+> JADN v2.0. The implementation of these features is backward-compatible with
 > the handling of namespaces in JADN v1.0.
 
 Namespaces identified in a schema package's metadata are the mechanism for managing the
@@ -2650,6 +2651,7 @@ modeling and the application of JADN. The example IMs are:
    described in [Section 3.1.3](#313-jadn-representations)
  - A calendar event model: an example of developing a JADN model from an existing
    JSON schema
+ - An example applying the new JADN v2.0 inheritance features
 
 These examples use a mixture of the various JADN representation formats
 described in [Section&nbsp;3.1.3](#313-jadn-representations), and the university
@@ -2908,7 +2910,7 @@ field values that would be the usual approach in a more design-oriented modeling
 
 > EDITOR'S NOTE: intro text may need revision if examples are removed from the JADN Specification
 
-The [[JADN Specification](#jadn-v10)], section 5.3,
+The [[JADN Specification](#jadn-v10)], section 7.3,
 uses a simple example of an IM for a university to illustrate the
 use of ERDs for IMs. This section uses that ERD as a starting
 point for an example to illustrate the various JADN
@@ -3210,8 +3212,8 @@ field required in order to be able to specify where, politically, the endpoints
 of a road, tunnel, or bridge segment reside.
 
 ```
-Endpoint = Record restricts(Location)                   // politicalUnit is required for an endpoint
-   2 politicalUnit    PolUnit                           // the name of the political area where the endpoint exists
+Endpoint = Record restricts(Location) // politicalUnit is required for an endpoint
+   2 politicalUnit    PolUnit         // the name of the political area where the endpoint exists
 ```
 
 This supports situations where, for example, a bridge or tunnel spans a river
@@ -3531,7 +3533,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Document v2 changes in Appendix C, corrections to revision table (PR #90) |
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Update Type & Field Options in section 3.x (PR #91) |
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Incorporate "elevator speech" into abstract and section 1.0 (PR #93) |
-| imjadn-v1.0-cn03.md      | 2025-02-xx | David Lemire | New content addressing inheritance features added in JADV v2 (PR #92) |
+| imjadn-v1.0-cn03.md      | 2025-02-12 | David Lemire | New content addressing inheritance features added in JADV v2 (PR #92) |
 
 ## C.2 JADN Version 2 Changes
 
@@ -4446,119 +4448,118 @@ Enumeration of common genres
 | 7  | **spoken_word**        |             |
 
 ## E.2 Inheritance Example JIDL
+```
+       title: "Inheritance Example"
+     package: "http://inheritance/v2"
+ description: "Example illustrating the application of JADN v2 inheritance features. Very loosely based on CityGML concepts."
+     roots: ["Location"]
 
-{
-  "meta": {
-    "package": "http://inheritance/v2",
-    "title": "Inheritance Example",
-    "description": "Example illustrating the application of JADN v2 inheritance features. Very loosely based on CityGML concepts.",
-    "roots": ["Location"]
-  },
-  "types": [
-    ["Coordinate", "Array", [], "A single geographic point (latitude / longitude)", [
-        [1, "latitude", "Number", ["y-90", "z90"], ""],
-        [2, "longitude", "Number", ["y-180", "z180"], ""]
-      ]],
-    ["PolUnit", "String", [], "the name of the political area where the feature exists (city / county / state level, as appropriate)"],
-    ["Location", "Record", [], "", [
-        [1, "geoCenter", "Coordinate", [], "geographic center of the feature of interest at the location"],
-        [2, "politicalUnit", "PolUnit", ["[0", "]1"], "the name of the political area where the location exists"]
-      ]],
-    ["Endpoint", "Record", ["rLocation"], "politicalUnit is required for an endpoint", [
-        [2, "politicalUnit", "PolUnit", ["[1", "]1"], "the name of the political area where the endpoint exists"]
-      ]],
-    ["Endpoints", "ArrayOf", ["*Endpoint", "{2", "}2", "q"], "center of start/end points of a linear feature, in lat/long"],
-    ["Coordinates", "ArrayOf", ["*Coordinate"], "A list of geographic points"],
-    ["OpenSpace", "Record", ["eLocation"], "a defined area of open space", [
-        [3, "boundary", "Coordinates", [], "an array of lat/long points defining the line segments around the boundary of an OpenSpace, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"]
-      ]],
-    ["Road", "Record", ["a","eLocation"], "essential information about any road", [
-        [3, "endpoints", "Endpoints", [], "center of start/end points of a road, in lat/long + political unit"],
-        [4, "waypoints", "Coordinates", [], "list of center points (lat/long) of a road that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route"],
-        [5, "width", "Number", ["y1"], "Width of the road in meters. MUST be >0"],
-        [6, "name", "String", [], "official (or commonly used) name of the road"],
-        [7, "maintainedBy", "Maintainer", [], "what level of government is responsible for maintenance"]
-      ]],
-    ["LocalRoad", "Record", ["eRoad"], "a local, unnumbered road", [
-        [8, "surfaceType", "Surface", [], "Choice identifying the type of road surface"]
-      ]],
-    ["NumberedRoad", "Record", ["eRoad"], "A road with an identifying number (e.g., MD32, US1)", [
-        [8, "routeNumber", "RouteNumber", [], "State or U.S. identifying number of the road"]
-      ]],
-    ["Interstate", "Record", ["eRoad"], "A road in the Interstate highway system", [
-        [8, "interstateNumber", "Integer", ["{1", "}999"], "Interstate number of the road"]
-      ]],
-    ["RouteNumber", "Array", [], "", [
-        [1, "owningEntity", "String", ["%[A-Z]{2}"], "\"US\" or 2-character State portion of road number"],
-        [2, "routeNum", "Integer", ["{1", "}1000"], "numeric portion of road identifier"]
-      ]],
-    ["Surface", "Choice", [], "(oneOf) possible road surfaces", [
-        [1, "dirt", "String", [], ""],
-        [2, "gravel", "String", [], ""],
-        [3, "macadam", "String", [], ""],
-        [4, "concrete", "String", [], ""],
-        [5, "asphalt", "String", [], ""]
-      ]],
-    ["Maintainer", "Enumerated", [], "level of government responsible for maintaining a road", [
-        [1, "local", "town or city"],
-        [2, "county", ""],
-        [3, "state", ""],
-        [4, "federal", ""]
-      ]],
-    ["BridgePurpose", "Enumerated", [], "", [
-        [1, "vehicular", ""],
-        [2, "pedestrian", ""],
-        [3, "railroad", ""]
-      ]],
-    ["Construction", "Record", ["eLocation"], "Bridge type from location to constructed types, no unique fields", []],
-    ["Bridge", "Record", ["eConstruction"], "", [
-        [3, "endpoints", "Endpoints", [], "center of start and end points of a bridge, in lat/long plus political unit"],
-        [4, "waypoints", "Coordinates", [], "list of center points (lat/long) of a bridge that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route"],
-        [5, "width", "Number", [], "width of the bridge in meters, must be >0"],
-        [6, "maxHeight", "Number", [], "maximum height of the bridge in meters"],
-        [7, "name", "String", [], "official (or commonly used) name of the bridge"],
-        [8, "purpose", "BridgePurpose", ["[1"], "purpose of this bridge"]
-      ]],
-    ["Tunnel", "Record", ["eConstruction"], "", [
-        [3, "endpoints", "Endpoints", [], "center of start and end points of a tunnel, in lat/long plus political unit"],
-        [4, "waypoints", "Coordinates", [], "list of center points (lat/long) of a tunnel that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route"],
-        [5, "width", "Number", [], "width of the tunnel in meters, must be >0"],
-        [6, "height", "Number", [], "height of a tunnel from road surface to ceiling, in meters"],
-        [7, "depth", "Number", [], "lowest elevation of a tunnel's road surface, in meters"],
-        [8, "name", "String", [], "official (or commonly used) name of the tunnel"],
-        [9, "purpose", "TunnelPurpose", ["[1"], "purpose of this tunnel"]
-      ]],
-    ["Building", "Record", ["eConstruction"], "", [
-        [3, "address", "Address", [], ""],\
-        [4, "perimeter", "Coordinates", [], "an array of lat/long points defining the line segments around the perimeter of a building, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match"],
-        [5, "maxHeight", "Number", [], "maximum height of the building in meters"],
-        [6, "function", "BuildingFunction", ["[1"], ""]
-      ]],
-    ["Address", "Map", [], "A street / postal address associated with a building", [
-        [1, "street", "String", [], ""],
-        [2, "apartment", "String", ["[0", "]1"], ""],
-        [3, "suite", "String", ["[0", "]1"], ""],
-        [4, "county", "String", ["[0", "]1"], ""],
-        [5, "city", "String", [], ""],
-        [6, "state", "String", ["%[A-Z]{2}"], ""],
-        [7, "zipCode", "String", ["%\\d{5}(\\-\\d{4}){0,1}"], "zip+4 format implies a U.S. postal code"]
-      ]],
-    ["TunnelPurpose", "Enumerated", [], "", [
-        [1, "vehicular", ""],
-        [2, "pedestrian", ""],
-        [3, "railroad", ""],
-        [4, "water", ""]
-      ]],
-    ["BuildingFunction", "Enumerated", [], "", [
-        [1, "Single-Family Dwelling", ""],
-        [2, "Multi-Family Dwelling", ""],
-        [3, "Commercial-Office", ""],
-        [4, "Commercial-Retail", ""],
-        [5, "Medical", ""],
-        [6, "Government", ""]
-      ]]
-  ]
-}
+Coordinate = Array    // A single geographic point (latitude / longitude)
+   1  Number{-90.0..90.0}               // latitude::
+   2  Number{-180.0..180.0}             // longitude::
+
+PolUnit = String      // the name of the political area where the feature exists (city / county / state level, as appropriate)
+
+Location = Record abstract
+   1 geoCenter        Coordinate          // geographic center of the feature of interest at the location
+   2 politicalUnit    PolUnit optional    // the name of the political area where the location exists
+
+Endpoint = Record restricts(Location)     // politicalUnit is required for an endpoint
+   2 politicalUnit    PolUnit             // the name of the political area where the endpoint exists
+
+Endpoints = ArrayOf(Endpoint){2..2} unique  // center of start/end points of a linear feature, in lat/long
+
+Coordinates = ArrayOf(Coordinate)           // A list of geographic points
+
+OpenSpace = Record extends(Location)       // a defined area of open space
+   3 boundary         Coordinates          // an array of lat/long points defining the line segments around the boundary of an OpenSpace, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match
+
+Road = Record extends(Location) abstract  // essential information about any road
+   3 endpoints        Endpoints           // center of start/end points of a road, in lat/long + political unit
+   4 waypoints        Coordinates         // list of center points (lat/long) of a road that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route
+   5 width            Number{1.0..*}      // Width of the road in meters. MUST be >0
+   6 name             String              // official (or commonly used) name of the road
+   7 maintainedBy     Maintainer          // what level of government is responsible for maintenance
+
+LocalRoad = Record extends(Road)          // a local, unnumbered road
+   8 surfaceType      Surface             // Choice identifying the type of road surface
+
+NumberedRoad = Record extends(Road)       // A road with an identifying number (e.g., MD32, US1)
+   8 routeNumber      RouteNumber         // State or U.S. identifying number of the road
+
+Interstate = Record  extends(Road)        // A road in the Interstate highway system
+   8 interstateNumber Integer{1..999}     // Interstate number of the road
+
+RouteNumber = Array
+   1  String{pattern="[A-Z]{2}"}        // owningEntity:: "US" or 2-character State portion of road number
+   2  Integer{1..1000}                  // routeNum:: numeric portion of road identifier
+
+Surface = Choice      // (oneOf) possible road surfaces
+   1 dirt             String
+   2 gravel           String
+   3 macadam          String
+   4 concrete         String
+   5 asphalt          String
+
+Maintainer = Enumerated  // level of government responsible for maintaining a road
+   1 local             // town or city
+   2 county
+   3 state
+   4 federal
+
+BridgePurpose = Enumerated
+   1 vehicular
+   2 pedestrian
+   3 railroad
+
+Construction = Record extends(Location) abstract        // Bridge type from location to constructed types, no unique fields
+
+Bridge = Record extends(Construction)
+   3 endpoints        Endpoints       // center of start and end points of a bridge, in lat/long plus political unit
+   4 waypoints        Coordinates     // list of center points (lat/long) of a bridge that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route
+   5 width            Number          // width of the bridge in meters, must be >0
+   6 maxHeight        Number          // maximum height of the bridge in meters
+   7 name             String          // official (or commonly used) name of the bridge
+   8 purpose          BridgePurpose   // purpose of this bridge
+
+Tunnel = Record extends(Construction)
+   3 endpoints        Endpoints       // center of start and end points of a tunnel, in lat/long plus political unit
+   4 waypoints        Coordinates     // list of center points (lat/long) of a tunnel that defines its route; curvature is approximated as straight line segments between waypoints, enabling arbitrary precision about the route
+   5 width            Number          // width of the tunnel in meters, must be >0
+   6 height           Number          // height of a tunnel from road surface to ceiling, in meters
+   7 depth            Number          // lowest elevation of a tunnel's road surface, in meters
+   8 name             String          // official (or commonly used) name of the tunnel
+   9 purpose          TunnelPurpose   // purpose of this tunnel
+
+Building = Record extends(Construction)
+   3 address          Address
+   4 perimeter        Coordinates     // an array of lat/long points defining the line segments around the perimeter of a building, equivalent to the gml:LinearRing; the first and last Coordinates in the array MUST match
+   5 maxHeight        Number          // maximum height of the building in meters
+   6 function         BuildingFunction
+
+Address = Map         // A street / postal address associated with a building
+   1 street           String
+   2 apartment        String optional
+   3 suite            String optional
+   4 county           String optional
+   5 city             String
+   6 state            String{pattern="[A-Z]{2}"}
+   7 zipCode          String{pattern="\d{5}(\-\d{4}){0,1}"} // zip+4 format implies a U.S. postal code
+
+TunnelPurpose = Enumerated
+   1 vehicular
+   2 pedestrian
+   3 railroad
+   4 water
+
+BuildingFunction = Enumerated
+   1 Single-Family Dwelling
+   2 Multi-Family Dwelling
+   3 Commercial-Office
+   4 Commercial-Retail
+   5 Medical
+   6 Government
+```
 
 ------
 
