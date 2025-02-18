@@ -342,7 +342,7 @@ information models in more detail.
 
 ### 1.1.1 Information Models and Data Models
 
-Internet Engineering Task Force (IETF) [RFC 3444](#rfc3444),
+Internet Engineering Task Force (IETF) [[RFC 3444](#rfc3444)],
 "On the Difference between Information Models and Data Models", says:
 
 > * The main purpose of an IM is to model managed objects at a conceptual
@@ -438,7 +438,7 @@ Datatypes can define object state, function signatures, and protocol
 messages, but imperative specification of methods and protocols is
 out of scope.
 
-[DThaler's _IoT Bridge Taxonomy_](#dthaler) addresses the challenges
+DThaler's [[_IoT Bridge Taxonomy_](#dthaler)] addresses the challenges
 created when "many organizations develop and implement different schemas
 for the same kind of things", and concludes:
 
@@ -871,8 +871,8 @@ storage or transmission.
 
 Two general approaches can be used to implement IM-based protocol specifications:
 
-1) Translate the IM to a data-format-specific schema language such as [XSD](#xsd),
-[Relax-NG](#relaxng), [JSON Schema](#jsonschema), [Protobuf](#proto), or [CDDL](#rfc8610),
+1) Translate the IM to a data-format-specific schema language such as [[XSD](#xsd)],
+[[Relax-NG](#relaxng)], [[JSON Schema](#jsonschema)], [[Protobuf](#proto)], or [[CDDL](#rfc8610)],
 then use format-specific serialization and validation libraries to process data in the selected format.
 Applications use data objects specific to each serialization format.
 
@@ -1305,9 +1305,9 @@ Binary type:
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
-| eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [EUI](#eui) |
-| ipv4-addr    | Binary | IPv4 address as specified in [RFC 791](#rfc0791) Section&nbsp;3.1 |
-| ipv6-addr    | Binary | IPv6 address as specified in [RFC 8200](#rfc8200)  Section&nbsp;3 |
+| eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [[EUI](#eui)] |
+| ipv4-addr    | Binary | IPv4 address as specified in [[RFC 791](#rfc0791)] Section&nbsp;3.1 |
+| ipv6-addr    | Binary | IPv6 address as specified in [[RFC 8200](#rfc8200)]  Section&nbsp;3 |
 
 #### 3.1.2.2 Boolean
 
@@ -1702,8 +1702,8 @@ Table 3-7 lists the *format* options applicable to the Array type:
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
-| ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [RFC 4632](#rfc4632) Section&nbsp;3.1 |
-| ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [RFC 4291](#rfc4291) Section 2.3 |
+| ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [[RFC 4632](#rfc4632)] Section&nbsp;3.1 |
+| ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [[RFC 4291](#rfc4291)] Section 2.3 |
 | tag-uuid     | Array  | Tag portion is a String, UUID portion is a 128-bit (16 byte) binary value |
 
 The `ipv4-net` and `ipv6-net` format options impose several constraints when applied to an Array type:
@@ -2315,7 +2315,7 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
 
 JADN supports inheritance in information modeling, providing for class /
 subclass relationships. There are four type options to manage the class
-relationships among types, which are defined in Section 4.2.4 of [JADN](#jadn-v10).
+relationships among types, which are defined in Section 4.2.4 of [[JADN](#jadn-v10)].
 
 - `abstract`: The `abstract` option indicates that a type definition is only a
   basis for defining sub-classes and should never be instantiated in data. 
@@ -4567,7 +4567,7 @@ BuildingFunction = Enumerated
 
 # Appendix F. Notices
 
-Copyright &copy; OASIS Open 2023. All Rights Reserved.
+Copyright &copy; OASIS Open 2025. All Rights Reserved.
 
 All capitalized terms in the following text have the meanings assigned to them in the OASIS Intellectual Property Rights Policy (the "OASIS IPR Policy"). The full [Policy](https://www.oasis-open.org/policies-guidelines/ipr/) may be found at the OASIS website.
 
