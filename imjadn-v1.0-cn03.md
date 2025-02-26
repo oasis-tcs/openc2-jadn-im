@@ -682,7 +682,7 @@ plans to do so.
 ## 1.2 Terminology
 
 This CN uses the definitions contained in the [[JADN
-Specification](#jadn-v10)], section 1.2.1. The following
+Specification](#jadn-v10)], section 1.1.1. The following
 additional terms are defined for this document:
 
 - **Classifier:** The core organizational concept of UML is the
