@@ -1443,7 +1443,7 @@ The corresponding JIDL representation would be:
 The *minInclusive* and *maxInclusive* TypeOptions are used to specify a minimum and/or maximum
 value that may be assigned to a Number type. Table 3-6 lists the *format*
 options applicable to the Number type. These *format* options are only relevant
-when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&nbsp;4.4:
+when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&nbsp;6.4:
 
 ###### Table 3-6 -- Number Type Format Options
 
