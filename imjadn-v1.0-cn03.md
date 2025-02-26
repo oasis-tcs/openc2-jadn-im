@@ -1044,20 +1044,13 @@ Definition Language (JIDL) format for its easy readability.
 
 The [[JADN Specification](#jadn-v10)], Section&nbsp;4, defines twelve core types:
 
-| **Primitive** | **Compound** | **Selection /<br> Union** |
+| **Primitive** | **Compound** | **Union** |
 |:-------------:|:------------:|:-------------------------:|
 |     Binary    |     Array    |         Enumerated        |
 |    Boolean    |    ArrayOf   |           Choice          |
 |    Integer    |      Map     |                           |
 |     Number    |     MapOf    |                           |
 |     String    |    Record    |                           |
-
-> **NOTE:** The JADN v1.0 Committee Specification
-> [[JADN](#jadn-v10)] uses the term "structured" rather than
-> "compound" when referring to Array, ArrayOf, Map, MapOf, and
-> Record types. An update is planned to change the specification
-> to use "compound" in order to avoid any potential confusion
-> with UML's use of "structured".
 
 ### 3.1.1 Type Definitions
 
