@@ -1165,8 +1165,8 @@ Type and Field options labels have JSON Schema and XML Schema equivalents.
 |     final    |  Boolean |   `f`  | Inheritance: final - cannot have subtype                          |
 |    default   |  String  |   `!`  | Default value                                                     |
 
-Detailed explanations of each type option can be found in Sections 3.2.1.1
-through 3.2.1.12 of the [[JADN Specification](#jadn-v10)]. Table 3-2 summarizes
+Detailed explanations of each type option can be found in Table 4-1, Table 4-2 
+and Sections 4.2.3 and 4.2.4of the [[JADN Specification](#jadn-v10)]. Table 3-2 summarizes
 the applicability of type options to JADN core types. The `ArrayOf` and `MapOf`
 types have required options, as indicated. Other type options can be applied to
 individual types where the option is relevant, as indicated by table cells with an "X".
