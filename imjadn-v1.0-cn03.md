@@ -819,7 +819,7 @@ These alternatives can be grouped into distinct serialization styles:
 | Table Rows   | Column Name         | Column Position     | Column Position           |
 
 A data format is a serialization style applied to a data language: "Compact JSON",
-"Concise JSON", "Compact XML", "Verbose CBOR", etc. The [[JADN Specification](#jadn-v10)], Section 6, 
+"Concise JSON", "Compact XML", "Verbose CBOR", etc. The [[JADN Specification](#jadn-v10)], Section&nbsp;6,
 include serialization rules for four different formats:
 
  - Verbose JSON
@@ -1042,7 +1042,7 @@ The examples that follow in subsequent sections are typically illustrated using
 both normative JADN (i.e., JSON data) for precision and the JADN Interface
 Definition Language (JIDL) format for its easy readability.
 
-The [[JADN Specification](#jadn-v10)] defines twelve core types:
+The [[JADN Specification](#jadn-v10)], Section&nbsp;4, defines twelve core types:
 
 | **Primitive** | **Compound** | **Selection /<br> Union** |
 |:-------------:|:------------:|:-------------------------:|
