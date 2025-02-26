@@ -1206,9 +1206,7 @@ pertaining to the **Fields** array are as follows:
        a TypeName with optional Namespace ID prefix
        **NSID:TypeName**
     4. **FieldOptions:** an array of zero or more **FieldOption**
-       or **TypeOption** ([[JADN Specification](#jadn-v10)]
-       sections 3.2.2, or 3.2.1, respectively) applicable to the
-       field
+       or **TypeOption** applicable to the field
     5. **FieldDescription:** a non-normative comment
 
 The selection of Map or Record for a type definition carries 
