@@ -819,7 +819,7 @@ These alternatives can be grouped into distinct serialization styles:
 | Table Rows   | Column Name         | Column Position     | Column Position           |
 
 A data format is a serialization style applied to a data language: "Compact JSON",
-"Concise JSON", "Compact XML", "Verbose CBOR", etc. The [[JADN Specification](#jadn-v10)] 
+"Concise JSON", "Compact XML", "Verbose CBOR", etc. The [[JADN Specification](#jadn-v10)], Section 6, 
 include serialization rules for four different formats:
 
  - Verbose JSON
