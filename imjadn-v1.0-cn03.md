@@ -1109,7 +1109,7 @@ The CoreType must be one of the twelve JADN core types previously identified.
 #### 3.1.1.2 TypeOptions
 
 The third element of a JADN type definition is an array of zero or more of the
-TypeOptions defined in Section&nbsp;3.2.1 of the [[JADN
+TypeOptions as described in Section&nbsp;4.1.4 of the [[JADN
 Specification](#jadn-v10)]. JADN includes options for both _types_ (discussed in
 this section) and _fields_ (discussed in
 [Section&nbsp;3.1.1.4](#3114-field-options)). As explained in the JADN
