@@ -3,11 +3,11 @@
 # OASIS Committee Note
 -------
 
-# Information Modeling with JADN Version 1.0
+# Information Modeling with JADN Version 2.0
 
-## Committee Note 03
+## Committee Note 01
 
-## 19 February 2025
+## 03 March 2025
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.md (Authoritative) \
