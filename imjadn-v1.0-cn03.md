@@ -2022,17 +2022,14 @@ field definition in the **Fields** array has five elements:
 
 #### 3.1.3.2 Alternative JADN Representations
 
-The [[JADN Specification](#jadn-v10)] identifies three formats
-(Section 5) in addition to the native format:
+The [[JADN Specification](#jadn-v10)] identifies three presentation formats
+in addition to the native JSON format:
 
- - JADN Interface Definition Language (JIDL)
- - Property Tables
- - Entity Relationship Diagrams (ERDs)
+ - JADN Interface Definition Language (JIDL, Section 7.1)
+ - Property Tables (Section 7.2)
+ - Entity Relationship Diagrams (ERDs, Section 7.3)
 
 Figure 3-7 identifies the various representations. 
-The formal definitions of each of these types are found in
-sections 5.1, 5.2, and 5.3, respectively, of the 
-[[JADN Specification](#jadn-v10)].
 
 ###### Figure 3-7 -- JADN Representations
 ![JADN Representations](images/JADN-Representations.drawio.png)
