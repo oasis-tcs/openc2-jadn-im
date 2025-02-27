@@ -114,11 +114,11 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.1.3 Item Or Field Definitions](#3113-item-or-field-definitions)
       - [3.1.1.4 Field Options](#3114-field-options)
     - [3.1.2 Core Type Examples](#312-core-type-examples)
-      - [3.1.2.1 Binary](#3121-binary)
-      - [3.1.2.2 Boolean](#3122-boolean)
-      - [3.1.2.3 Integer](#3123-integer)
-      - [3.1.2.4 Number](#3124-number)
-      - [3.1.2.5 String](#3125-string)
+      - [3.1.2.1 Binary](#3125-binary)
+      - [3.1.2.2 Boolean](#3121-boolean)
+      - [3.1.2.3 Integer](#3122-integer)
+      - [3.1.2.4 Number](#3123-number)
+      - [3.1.2.5 String](#3124-string)
       - [3.1.2.6 Enumerated](#3126-enumerated)
       - [3.1.2.7 Choice](#3127-choice)
       - [3.1.2.8 Array](#3128-array)
@@ -1248,58 +1248,7 @@ type, the relevant [[JADN Specification](#jadn-v10)] section is identified, the
 definition from the JADN Specification is quoted, the relevant type options are
 listed, and an example is provided using the JADN and JIDL formats.
 
-#### 3.1.2.1 Binary
-
-<table class="table">
-  <thead>
-    <tr>
-      <th class="th">Definition (JADN Spec 4.2.1.5)</th>
-      <th class="th">TypeOptions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="td">
-        A Binary instance is sequence of octets. Binary values are not ordered so range options do not apply.
-      </td>
-      <td class="td">
-        <i>
-          <center>format, minLength, maxlength</center>
-        </i>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-The **Binary** core type is used for representing
-arbitrary binary data.  An information item fitting a Binary type
-would be defined as follows:
-
-```json
-["FileData", "Binary", [], "Binary contents of file", []]
-```
-
-The corresponding JIDL representation would be:
-
-```
-// Example JIDL definition of a binary datatype
-  FileData = Binary   // Binary contents of file
-```
-
-The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
-number of octets for a binary type. If *minLength* equals *maxLength* the size of the
-binary type is fixed. Table 3-4 lists the *format* options applicable to the
-Binary type:
-
-###### Table 3-4 -- Binary Type Format Options
-
-| Keyword      | Type   | Requirement |
-| ------------ | ------ | ------------|
-| eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [[EUI](#eui)] |
-| ipv4-addr    | Binary | IPv4 address as specified in [[RFC 791](#rfc0791)] Section&nbsp;3.1 |
-| ipv6-addr    | Binary | IPv6 address as specified in [[RFC 8200](#rfc8200)]  Section&nbsp;3 |
-
-#### 3.1.2.2 Boolean
+#### 3.1.2.1 Boolean
 
 <table class="table">
   <thead>
@@ -1335,7 +1284,7 @@ The corresponding JIDL representation would be:
   AccessGranted = Boolean   // Result of access control decision
 ```
 
-#### 3.1.2.3 Integer
+#### 3.1.2.2 Integer
 
 <table class="table">
   <thead>
@@ -1399,7 +1348,7 @@ and with /d3 it would be milliseconds, or /d6 would be microseconds. If an
 integer temperature is documented to be degrees Celsius, its type could use the
 option /d1 or /d2 to give precision of tenths or hundredths of a degree.
 
-#### 3.1.2.4 Number
+#### 3.1.2.3 Number
 
 <table class="table">
   <thead>
@@ -1459,7 +1408,7 @@ Concise Data Definition Language (CDDL) Standard Prelude specified in Apppendix&
 of [[RFC8610](#rfc8610)].
 
 
-#### 3.1.2.5 String
+#### 3.1.2.4 String
 
 <table class="table">
   <thead>
@@ -1534,6 +1483,57 @@ Semantic validation keywords for Strings are defined in Sections 4.2.5.2 and
 type to represent a variety of commonly used formats, such as dates and times,
 emails, hostnames, etc.
 
+#### 3.1.2.5 Binary
+
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition (JADN Spec 4.2.1.5)</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A Binary instance is sequence of octets. Binary values are not ordered so range options do not apply.
+      </td>
+      <td class="td">
+        <i>
+          <center>format, minLength, maxlength</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+The **Binary** core type is used for representing
+arbitrary binary data.  An information item fitting a Binary type
+would be defined as follows:
+
+```json
+["FileData", "Binary", [], "Binary contents of file", []]
+```
+
+The corresponding JIDL representation would be:
+
+```
+// Example JIDL definition of a binary datatype
+  FileData = Binary   // Binary contents of file
+```
+
+The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
+number of octets for a binary type. If *minLength* equals *maxLength* the size of the
+binary type is fixed. Table 3-4 lists the *format* options applicable to the
+Binary type:
+
+###### Table 3-4 -- Binary Type Format Options
+
+| Keyword      | Type   | Requirement |
+| ------------ | ------ | ------------|
+| eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [[EUI](#eui)] |
+| ipv4-addr    | Binary | IPv4 address as specified in [[RFC 791](#rfc0791)] Section&nbsp;3.1 |
+| ipv6-addr    | Binary | IPv6 address as specified in [[RFC 8200](#rfc8200)]  Section&nbsp;3 |
+
 #### 3.1.2.6 Enumerated
 
 <table class="table">
@@ -1585,7 +1585,7 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.2.7 Choice
+#### 3.1.2.7 Choice (Tagged / Untagged)
 
 <table class="table">
   <thead>
@@ -1597,7 +1597,8 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
   <tbody>
     <tr>
       <td class="td">
-        A discriminated union: one type selected from a set of named or labeled types.
+        Without a <em>combine</em> TypeOption: a tagged union, a structure that defines a set of tag:type pairs.<br>
+        With a <em>combine</em> TypeOption: an untagged union, a structure that defines a set of types used collectively to classify a value.
       </td>
       <td class="td">
         <i>
