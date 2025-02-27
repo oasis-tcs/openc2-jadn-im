@@ -2065,8 +2065,8 @@ TypeName. For documentation and debugging purposes a FieldName
 can be included in the JIDL comment field, immediately following
 the `//` and followed by a double colon delimiter (i.e., `::`).
 For more information see the [[JADN Specification](#jadn-v10)]
-descriptions of Field Identifiers (Section&nbsp;3.2.1.1) and JADN-IDL
-format (section 5.1). Here is a brief JIDL example of this format:
+discussion of fields in Compound types (Section&nbsp;4.2.2) and JADN-IDL
+format (section 7.1). Here is a brief JIDL example of this format:
 
 ```
 Publication-Data = Array         // who and when of publication
