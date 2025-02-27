@@ -1253,7 +1253,7 @@ listed, and an example is provided using the JADN and JIDL formats.
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.1.5)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1304,7 +1304,7 @@ Binary type:
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.1.1)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1340,7 +1340,7 @@ The corresponding JIDL representation would be:
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.1.2)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1404,7 +1404,7 @@ option /d1 or /d2 to give precision of tenths or hundredths of a degree.
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.1.3)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1464,7 +1464,7 @@ of [[RFC8610](#rfc8610)].
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.1.4)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1539,7 +1539,7 @@ emails, hostnames, etc.
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.3.1)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1590,7 +1590,7 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.3.2 / 4.2.3.3)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1639,7 +1639,7 @@ IdentityType = Choice                // Nature of the referenced identity
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.2)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1722,7 +1722,7 @@ The `tag-uuid` format for identifiers is used in the [[STIX](#stix-v21)] and
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.2)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1779,7 +1779,7 @@ Track = Record                                    // for each track there's a fi
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.2)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1846,7 +1846,7 @@ _maxLength_, as described above in [Section&nbsp;3.1.4.4](#3144-application-of-m
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.2)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1916,7 +1916,7 @@ Date = String /date
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.2)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
