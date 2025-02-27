@@ -1166,7 +1166,7 @@ Type and Field options labels have JSON Schema and XML Schema equivalents.
 |    default   |  String  |   `!`  | Default value                                                     |
 
 Detailed explanations of each type option can be found in Table 4-1, Table 4-2 
-and Sections 4.2.3 and 4.2.4of the [[JADN Specification](#jadn-v10)]. Table 3-2 summarizes
+and Sections 4.2.3 and 4.2.4 of the [[JADN Specification](#jadn-v10)]. Table 3-2 summarizes
 the applicability of type options to JADN core types. The `ArrayOf` and `MapOf`
 types have required options, as indicated. Other type options can be applied to
 individual types where the option is relevant, as indicated by table cells with an "X".
@@ -1243,11 +1243,10 @@ described in [Section&nbsp;3.1.4.1](#3141-anonymous-type-definitions).
 
 ### 3.1.2 Core Type Examples
 
-This section provides illustrative examples of the JADN core
-types. For each type, the definition from the [[JADN
-Specification](#jadn-v10)] is quoted, the relevant type options
-are listed, and an example is provided using the JADN and JIDL
-formats.
+This section provides illustrative examples of the JADN core types. For each
+type, the relevant [[JADN Specification](#jadn-v10)] section is identified, the
+definition from the JADN Specification is quoted, the relevant type options are
+listed, and an example is provided using the JADN and JIDL formats.
 
 #### 3.1.2.1 Binary
 
