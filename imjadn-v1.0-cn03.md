@@ -3,11 +3,11 @@
 # OASIS Committee Note
 -------
 
-# Information Modeling with JADN Version 1.0
+# Information Modeling with JADN Version 2.0
 
-## Committee Note 03
+## Committee Note 01
 
-## 19 February 2025
+## 05 March 2025
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.md (Authoritative) \
@@ -114,11 +114,11 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.1.3 Item Or Field Definitions](#3113-item-or-field-definitions)
       - [3.1.1.4 Field Options](#3114-field-options)
     - [3.1.2 Core Type Examples](#312-core-type-examples)
-      - [3.1.2.1 Binary](#3121-binary)
-      - [3.1.2.2 Boolean](#3122-boolean)
-      - [3.1.2.3 Integer](#3123-integer)
-      - [3.1.2.4 Number](#3124-number)
-      - [3.1.2.5 String](#3125-string)
+      - [3.1.2.1 Binary](#3125-binary)
+      - [3.1.2.2 Boolean](#3121-boolean)
+      - [3.1.2.3 Integer](#3122-integer)
+      - [3.1.2.4 Number](#3123-number)
+      - [3.1.2.5 String](#3124-string)
       - [3.1.2.6 Enumerated](#3126-enumerated)
       - [3.1.2.7 Choice](#3127-choice)
       - [3.1.2.8 Array](#3128-array)
@@ -682,7 +682,7 @@ plans to do so.
 ## 1.2 Terminology
 
 This CN uses the definitions contained in the [[JADN
-Specification](#jadn-v10)], section 1.2.1. The following
+Specification](#jadn-v10)], section 1.1.1. The following
 additional terms are defined for this document:
 
 - **Classifier:** The core organizational concept of UML is the
@@ -819,7 +819,7 @@ These alternatives can be grouped into distinct serialization styles:
 | Table Rows   | Column Name         | Column Position     | Column Position           |
 
 A data format is a serialization style applied to a data language: "Compact JSON",
-"Concise JSON", "Compact XML", "Verbose CBOR", etc. The [[JADN Specification](#jadn-v10)] 
+"Concise JSON", "Compact XML", "Verbose CBOR", etc. The [[JADN Specification](#jadn-v10)], Section&nbsp;6,
 include serialization rules for four different formats:
 
  - Verbose JSON
@@ -1042,22 +1042,15 @@ The examples that follow in subsequent sections are typically illustrated using
 both normative JADN (i.e., JSON data) for precision and the JADN Interface
 Definition Language (JIDL) format for its easy readability.
 
-The [[JADN Specification](#jadn-v10)] defines twelve core types:
+The [[JADN Specification](#jadn-v10)], Section&nbsp;4, defines twelve core types:
 
-| **Primitive** | **Compound** | **Selection /<br> Union** |
+| **Primitive** | **Compound** | **Union** |
 |:-------------:|:------------:|:-------------------------:|
 |     Binary    |     Array    |         Enumerated        |
 |    Boolean    |    ArrayOf   |           Choice          |
 |    Integer    |      Map     |                           |
 |     Number    |     MapOf    |                           |
 |     String    |    Record    |                           |
-
-> **NOTE:** The JADN v1.0 Committee Specification
-> [[JADN](#jadn-v10)] uses the term "structured" rather than
-> "compound" when referring to Array, ArrayOf, Map, MapOf, and
-> Record types. An update is planned to change the specification
-> to use "compound" in order to avoid any potential confusion
-> with UML's use of "structured".
 
 ### 3.1.1 Type Definitions
 
@@ -1090,7 +1083,7 @@ A firm requirement of JADN is that a TypeName in a schema must not be a JADN
 predefined (i.e., core) type. There are also name formatting conventions intended to improve
 the consistency and readability of JADN specifications. These
 conventions are defined in JADN but can be overridden within a
-JADN schema if desired (see Section&nbsp;3.1.2 of the
+JADN schema if desired (see "Name Formats" in Section&nbsp;3.1.2 of the
 [[JADN Specification](#jadn-v10)]):
 
  - **TypeNames** are written in PascalCase or Train-Case (using
@@ -1116,7 +1109,7 @@ The CoreType must be one of the twelve JADN core types previously identified.
 #### 3.1.1.2 TypeOptions
 
 The third element of a JADN type definition is an array of zero or more of the
-TypeOptions defined in Section&nbsp;3.2.1 of the [[JADN
+TypeOptions as described in Section&nbsp;4.1.4 of the [[JADN
 Specification](#jadn-v10)]. JADN includes options for both _types_ (discussed in
 this section) and _fields_ (discussed in
 [Section&nbsp;3.1.1.4](#3114-field-options)). As explained in the JADN
@@ -1172,8 +1165,8 @@ Type and Field options labels have JSON Schema and XML Schema equivalents.
 |     final    |  Boolean |   `f`  | Inheritance: final - cannot have subtype                          |
 |    default   |  String  |   `!`  | Default value                                                     |
 
-Detailed explanations of each type option can be found in Sections 3.2.1.1
-through 3.2.1.12 of the [[JADN Specification](#jadn-v10)]. Table 3-2 summarizes
+Detailed explanations of each type option can be found in Table 4-1, Table 4-2 
+and Sections 4.2.3 and 4.2.4 of the [[JADN Specification](#jadn-v10)]. Table 3-2 summarizes
 the applicability of type options to JADN core types. The `ArrayOf` and `MapOf`
 types have required options, as indicated. Other type options can be applied to
 individual types where the option is relevant, as indicated by table cells with an "X".
@@ -1213,9 +1206,7 @@ pertaining to the **Fields** array are as follows:
        a TypeName with optional Namespace ID prefix
        **NSID:TypeName**
     4. **FieldOptions:** an array of zero or more **FieldOption**
-       or **TypeOption** ([[JADN Specification](#jadn-v10)]
-       sections 3.2.2, or 3.2.1, respectively) applicable to the
-       field
+       or **TypeOption** applicable to the field
     5. **FieldDescription:** a non-normative comment
 
 The selection of Map or Record for a type definition carries 
@@ -1252,69 +1243,17 @@ described in [Section&nbsp;3.1.4.1](#3141-anonymous-type-definitions).
 
 ### 3.1.2 Core Type Examples
 
-This section provides illustrative examples of the JADN core
-types. For each type, the definition from the [[JADN
-Specification](#jadn-v10)] is quoted, the relevant type options
-are listed, and an example is provided using the JADN and JIDL
-formats.
+This section provides illustrative examples of the JADN core types. For each
+type, the relevant [[JADN Specification](#jadn-v10)] section is identified, the
+definition from the JADN Specification is quoted, the relevant type options are
+listed, and an example is provided using the JADN and JIDL formats.
 
-#### 3.1.2.1 Binary
-
-<table class="table">
-  <thead>
-    <tr>
-      <th class="th">Definition</th>
-      <th class="th">TypeOptions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="td">
-        A Binary instance is sequence of octets. Binary values are not ordered so range options do not apply.
-      </td>
-      <td class="td">
-        <i>
-          <center>format, minLength, maxlength</center>
-        </i>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-The **Binary** core type is used for representing
-arbitrary binary data.  An information item fitting a Binary type
-would be defined as follows:
-
-```json
-["FileData", "Binary", [], "Binary contents of file", []]
-```
-
-The corresponding JIDL representation would be:
-
-```
-// Example JIDL definition of a binary datatype
-  FileData = Binary   // Binary contents of file
-```
-
-The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
-number of octets for a binary type. If *minLength* equals *maxLength* the size of the
-binary type is fixed. Table 3-4 lists the *format* options applicable to the
-Binary type:
-
-###### Table 3-4 -- Binary Type Format Options
-
-| Keyword      | Type   | Requirement |
-| ------------ | ------ | ------------|
-| eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [[EUI](#eui)] |
-| ipv4-addr    | Binary | IPv4 address as specified in [[RFC 791](#rfc0791)] Section&nbsp;3.1 |
-| ipv6-addr    | Binary | IPv6 address as specified in [[RFC 8200](#rfc8200)]  Section&nbsp;3 |
-
-#### 3.1.2.2 Boolean
+#### 3.1.2.1 Boolean
 
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.1.1)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1345,12 +1284,12 @@ The corresponding JIDL representation would be:
   AccessGranted = Boolean   // Result of access control decision
 ```
 
-#### 3.1.2.3 Integer
+#### 3.1.2.2 Integer
 
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.1.2)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1409,12 +1348,12 @@ and with /d3 it would be milliseconds, or /d6 would be microseconds. If an
 integer temperature is documented to be degrees Celsius, its type could use the
 option /d1 or /d2 to give precision of tenths or hundredths of a degree.
 
-#### 3.1.2.4 Number
+#### 3.1.2.3 Number
 
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.1.3)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1452,7 +1391,7 @@ The corresponding JIDL representation would be:
 The *minInclusive* and *maxInclusive* TypeOptions are used to specify a minimum and/or maximum
 value that may be assigned to a Number type. Table 3-6 lists the *format*
 options applicable to the Number type. These *format* options are only relevant
-when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&nbsp;4.4:
+when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&nbsp;6.4:
 
 ###### Table 3-6 -- Number Type Format Options
 
@@ -1469,12 +1408,12 @@ Concise Data Definition Language (CDDL) Standard Prelude specified in Apppendix&
 of [[RFC8610](#rfc8610)].
 
 
-#### 3.1.2.5 String
+#### 3.1.2.4 String
 
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.1.4)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1544,12 +1483,63 @@ Semantic validation keywords for Strings are defined in Sections 4.2.5.2 and
 type to represent a variety of commonly used formats, such as dates and times,
 emails, hostnames, etc.
 
+#### 3.1.2.5 Binary
+
+<table class="table">
+  <thead>
+    <tr>
+      <th class="th">Definition (JADN Spec 4.2.1.5)</th>
+      <th class="th">TypeOptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="td">
+        A Binary instance is sequence of octets. Binary values are not ordered so range options do not apply.
+      </td>
+      <td class="td">
+        <i>
+          <center>format, minLength, maxlength</center>
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+The **Binary** core type is used for representing
+arbitrary binary data.  An information item fitting a Binary type
+would be defined as follows:
+
+```json
+["FileData", "Binary", [], "Binary contents of file", []]
+```
+
+The corresponding JIDL representation would be:
+
+```
+// Example JIDL definition of a binary datatype
+  FileData = Binary   // Binary contents of file
+```
+
+The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
+number of octets for a binary type. If *minLength* equals *maxLength* the size of the
+binary type is fixed. Table 3-4 lists the *format* options applicable to the
+Binary type:
+
+###### Table 3-4 -- Binary Type Format Options
+
+| Keyword      | Type   | Requirement |
+| ------------ | ------ | ------------|
+| eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [[EUI](#eui)] |
+| ipv4-addr    | Binary | IPv4 address as specified in [[RFC 791](#rfc0791)] Section&nbsp;3.1 |
+| ipv6-addr    | Binary | IPv6 address as specified in [[RFC 8200](#rfc8200)]  Section&nbsp;3 |
+
 #### 3.1.2.6 Enumerated
 
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.3.1)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1595,19 +1585,20 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
-#### 3.1.2.7 Choice
+#### 3.1.2.7 Choice (Tagged / Untagged)
 
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.3.2 / 4.2.3.3)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td class="td">
-        A discriminated union: one type selected from a set of named or labeled types.
+        Without a <em>combine</em> TypeOption: a tagged union, a structure that defines a set of tag:type pairs.<br>
+        With a <em>combine</em> TypeOption: an untagged union, a structure that defines a set of types used collectively to classify a value.
       </td>
       <td class="td">
         <i>
@@ -1649,7 +1640,7 @@ IdentityType = Choice                // Nature of the referenced identity
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.2)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1732,7 +1723,7 @@ The `tag-uuid` format for identifiers is used in the [[STIX](#stix-v21)] and
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.2)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1789,7 +1780,7 @@ Track = Record                                    // for each track there's a fi
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.2)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1856,7 +1847,7 @@ _maxLength_, as described above in [Section&nbsp;3.1.4.4](#3144-application-of-m
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.2)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -1926,7 +1917,7 @@ Date = String /date
 <table class="table">
   <thead>
     <tr>
-      <th class="th">Definition</th>
+      <th class="th">Definition (JADN Spec 4.2.2)</th>
       <th class="th">TypeOptions</th>
     </tr>
   </thead>
@@ -2031,17 +2022,14 @@ field definition in the **Fields** array has five elements:
 
 #### 3.1.3.2 Alternative JADN Representations
 
-The [[JADN Specification](#jadn-v10)] identifies three formats
-(Section 5) in addition to the native format:
+The [[JADN Specification](#jadn-v10)] identifies three presentation formats
+in addition to the native JSON format:
 
- - JADN Interface Definition Language (JIDL)
- - Property Tables
- - Entity Relationship Diagrams (ERDs)
+ - JADN Interface Definition Language (JIDL, Section 7.1)
+ - Property Tables (Section 7.2)
+ - Entity Relationship Diagrams (ERDs, Section 7.3)
 
 Figure 3-7 identifies the various representations. 
-The formal definitions of each of these types are found in
-sections 5.1, 5.2, and 5.3, respectively, of the 
-[[JADN Specification](#jadn-v10)].
 
 ###### Figure 3-7 -- JADN Representations
 ![JADN Representations](images/JADN-Representations.drawio.png)
@@ -2077,8 +2065,8 @@ TypeName. For documentation and debugging purposes a FieldName
 can be included in the JIDL comment field, immediately following
 the `//` and followed by a double colon delimiter (i.e., `::`).
 For more information see the [[JADN Specification](#jadn-v10)]
-descriptions of Field Identifiers (Section&nbsp;3.2.1.1) and JADN-IDL
-format (section 5.1). Here is a brief JIDL example of this format:
+discussion of fields in Compound types (Section&nbsp;4.2.2) and JADN-IDL
+format (section 7.1). Here is a brief JIDL example of this format:
 
 ```
 Publication-Data = Array         // who and when of publication
@@ -3539,6 +3527,7 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Incorporate "elevator speech" into abstract and section 1.0 (PR #93) |
 | imjadn-v1.0-cn03.md      | 2025-02-12 | David Lemire | New content addressing inheritance features added in JADV v2 (PRs #92 & #97) |
 | imjadn-v1.0-cn03.md      | 2025-02-18 | David Lemire | Update discussion of String type options for JADV v2 (PR #98) |
+| imjadn-v1.0-cn03.md      | 2025-03-05 | David Lemire | Update JADN Spec references, reorder primitive types to match |
 
 ## C.2 JADN Version 2 Changes
 
