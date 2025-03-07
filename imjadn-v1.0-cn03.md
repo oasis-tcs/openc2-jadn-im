@@ -1982,6 +1982,20 @@ useful for documentation. This section describes the JSON content
 used for each of the JADN basic types, and then illustrates the
 other representations using a simple example.
 
+The [[JADN Specification](#jadn-v10)] identifies three presentation formats
+in addition to the native JSON format:
+
+ - JADN Interface Definition Language (JIDL, Section 7.1)
+ - Property Tables (Section 7.2)
+ - Entity Relationship Diagrams (ERDs, Section 7.3)
+
+Figure 3-7 identifies the various representations. 
+
+###### Figure 3-7 -- JADN Representations
+![JADN Representations](images/JADN-Representations.drawio.png)
+
+
+
 #### 3.1.3.1 Native JSON Representation
 
 This section illustrates the JSON representations of the Base
@@ -1997,14 +2011,14 @@ as described in [Section&nbsp;3.1](#31-jadn-overview).
 ###### Figure 3-3 -- JADN Schema Top-Level Structure
 ![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
 
-Figure 3-4 illustrates the structure of JADN for defining any
+Figure 3-4 illustrates the JADN structure for defining any
 Primitive **CoreType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
 ###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
 ![JADN for Primitive, ArrayOf, MapOf Types](images/JADN-primitive-json.drawio.png)
 
-Figure 3-5 illustrates the structure of JADN for defining an
+Figure 3-5 illustrates the JADN structure for defining an
 Enumerated **CoreType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
@@ -2012,7 +2026,7 @@ Enumerated **CoreType**; for enumerations each item definition in the
 ![JADN for Enumerated Types](images/JADN-with-items-json.drawio.png)
 
 
-Figure 3-6 illustrates the structure of JADN for defining a
+Figure 3-6 illustrates the JADN structure for defining a
 **CoreType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
@@ -2021,18 +2035,6 @@ field definition in the **Fields** array has five elements:
 
 
 #### 3.1.3.2 Alternative JADN Representations
-
-The [[JADN Specification](#jadn-v10)] identifies three presentation formats
-in addition to the native JSON format:
-
- - JADN Interface Definition Language (JIDL, Section 7.1)
- - Property Tables (Section 7.2)
- - Entity Relationship Diagrams (ERDs, Section 7.3)
-
-Figure 3-7 identifies the various representations. 
-
-###### Figure 3-7 -- JADN Representations
-![JADN Representations](images/JADN-Representations.drawio.png)
 
 Automated tooling makes it straightforward to translate among all
 four of these formats in a lossless manner, and each format has
