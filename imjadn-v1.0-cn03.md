@@ -1520,7 +1520,7 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
-Binary values are not ordered so range options do not apply. 
+Binary values are not ordered so the range Type Options are not applicable. 
 The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
 number of octets for a binary type. If *minLength* equals *maxLength* the size of the
 binary type is fixed. Table 3-4 lists the *format* options applicable to the
