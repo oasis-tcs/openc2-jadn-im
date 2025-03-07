@@ -73,11 +73,10 @@ button on the TC's web page at https://www.oasis-open.org/committees/openc2/.
 #### Citation format:
 When referencing this document the following citation format should be used:
 
-**[IM-JADN-v1.0]**
-
-_Information Modeling with JADN Version 1.0_. Edited by David Lemire and David Kemp. 19 February 2025.
-OASIS Committee Note 03. https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.html.
-Latest stage: https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html.
+**[JADN-v2.0]**  
+_JSON Abstract Data Notation Version 2.0_. Edited by David Kemp. 19 February 2025. 
+OASIS Committee Specification Draft 01. https://docs.oasis-open.org/openc2/jadn/v2.0/csd01/jadn-v2.0-csd01.html. 
+Latest version: https://docs.oasis-open.org/openc2/jadn/v2.0/jadn-v2.0.html.
 
 #### Notices
 Copyright &copy; OASIS Open 2025. All Rights Reserved.
@@ -216,7 +215,7 @@ JADN is a simple standard language for specifying strong typing of messages and
 other data structures using Unified Modeling Language (UML) DataTypes. It
 establishes information equivalence (i.e., consistency of meaning) across
 multiple serialization options to enhance interoperability between systems and
-among systems of systems and type definition options that enable addressing a
+among systems of systems and provides a range of type definition options that enable addressing a
 broad range of information modeling needs.
 
 ## 1.1 Background: Motivation for JADN
@@ -243,8 +242,8 @@ information of interest:
 
 An excerpt from the Digital Music Library example presented in full 
 in [Section&nbsp;3.3.1](#331-digital-music-library)
-helps illustrate. Each music track in the library is described by a collection of metadata
-(present here in JADN Interface Definition Language [JIDL] format):
+helps to illustrate. Each music track in the library is described by a collection of metadata
+(presented here in JADN Interface Definition Language [JIDL] format):
 
 ```
 Track-Info = Record                          // information about the individual audio tracks
@@ -506,7 +505,7 @@ provides a precise vocabulary for describing the relationship between
 > a **lexical-to-value mapping**.
 > 
 > * The lexical-to-value mapping of a datatype is a set of pairs
-> whose first element belongs to the lexical space and the second element
+> whose first element belongs to the lexical space and second element
 > belongs to the value space of the datatype.
 
 A small example may help clarify the concept of information. The information
@@ -573,7 +572,7 @@ application of data and independent of how the data is physically
 stored or accessed. It provides a consistent definition of the
 meanings and interrelationship of the data in order to share,
 integrate, and manage the data.
-
+>
 > The advantage of using an information model is that it can
 provide sharable, stable, and organized structure of
 information requirements for the domain context.
@@ -597,7 +596,7 @@ JADN's approach to precision and ambiguity is summarized in these key principles
 data with zero false positives and zero false negatives. That is,
 an information model is the authoritative definition of essential
 content, and all serialized data is unambiguously one of:
-a) consistent with the model, b) inconsistent with the model, or c) insignificant.
+a)&nbsp;consistent with the model, b)&nbsp;inconsistent with the model, or c)&nbsp;insignificant.
 
  - An application compares logical values in accordance
 with the UML properties defined by their abstract datatype.
@@ -628,7 +627,7 @@ and defines their importance:
 
  _Report from IoT Semantic Interoperability Workshop 2016_ [[RFC
 8477](#rfc8477)] describes a lack of consistency across Standards
-Developing Organizations (SDOs) in defining application layer
+Development Organizations (SDOs) in defining application layer
 data, attributing it to the lack of an encoding-independent
 standardization of the information represented by that data. The
 JADN information modeling language is intended to address that
@@ -783,7 +782,7 @@ Information exists in the minds of users (producers and consumers), in the state
 of applications running on systems, and in the data exchanged among
 applications. Serialization converts application information into byte sequences
 (a.k.a. protocol data units, messages, payloads, information exchange packages)
-that can be validated, communicated and stored. De-serialization parses payloads
+that can be validated, communicated, and stored. De-serialization parses payloads
 back into application state. This can also be stated as serialization is the
 transformation from value space to lexical space, and de-serialization is the
 inverse transformation. Serialization is not a goal in and of itself, it is the
@@ -2476,11 +2475,11 @@ Metadata = Map                     // Information about this package
    8 namespaces   Namespaces optional // Referenced packages
      ...
 
-Namespaces = Choice(anyOf)            // anyOf v1.1 or v1.0, in priority order
-   1  NsArr                           // ns_arr:: [prefix, namespace] syntax - v1.1
+Namespaces = Choice(anyOf)            // anyOf v2.0 or v1.0, in priority order
+   1  NsArr                           // ns_arr:: [prefix, namespace] syntax - v2.0
    2  NsObj                           // ns_obj:: {prefix: namespace} syntax - v1.0
 
-NsArr = ArrayOf(PrefixNs){1..*}       // Type references to other packages - v1.1
+NsArr = ArrayOf(PrefixNs){1..*}       // Type references to other packages - v2.0
 
 PrefixNs = Array                      // Prefix corresponding to a namespace IRI
    1  NSID                            // prefix::
@@ -2496,7 +2495,7 @@ Namespace Identifiers (`NSID`) with the `Namespace` other packages declare for
 themselves. A Namespace Identifier (NSID) is, by default, a 1-8 character string
 beginning with a letter and containing only letters and numbers (the default
 formatting can be overridden by inserting an alternative definition into a JADN
-schema's `Metadata` map's `config` section). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
+schema's `Metadata` map's `config` section). The JADN v2.0 `NsAr / PrefixNS` structure enables multiple schema
 packages to be mapped to one NSID to group all of the types defined in that
 collection of packages into a single namespace. For any array element where the
 `NSID` field is blank, the types in the referenced package are made available in
