@@ -3353,6 +3353,11 @@ https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html.
 Latest stage:
 https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 
+###### [JADN-v2.0]
+_JSON Abstract Data Notation Version 2.0_. Edited by David Kemp. 19 February 2025. 
+OASIS Committee Specification Draft 01. https://docs.oasis-open.org/openc2/jadn/v2.0/csd01/jadn-v2.0-csd01.html. 
+Latest version: https://docs.oasis-open.org/openc2/jadn/v2.0/jadn-v2.0.html.
+
 ###### [JSONSCHEMA]
 Wright, A., Andrews, H., Hutton, B., *"JSON Schema Validation"*,
 Internet-Draft, 16 September 2019,
