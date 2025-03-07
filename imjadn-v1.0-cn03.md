@@ -2643,7 +2643,9 @@ modeling and the application of JADN. The example IMs are:
    described in [Section 3.1.3](#313-jadn-representations)
  - A calendar event model: an example of developing a JADN model from an existing
    JSON schema
- - An example applying the new JADN v2.0 inheritance features
+ - An example applying the new JADN v2.0 inheritance features, loosely inspired
+by the [[CityGML](#citygml)] and [[CityJSON](#cityjson)] geographic modeling
+languages
 
 These examples use a mixture of the various JADN representation formats
 described in [Section&nbsp;3.1.3](#313-jadn-representations), and the university
@@ -3110,23 +3112,23 @@ $Root = Record                          // A representation of an event
   10 description      String optional
 ```
 
-The JADN schema reflects the original JSON schema with regard to field type and
+This initial JADN schema reflects the original JSON schema with regard to field type and
 optionality but also presents multiple opportunities for fine tuning:
 
-1) The `startDate`, `endDate`, `url`, and `recurrenceDate` fields could have
+1) The `startDate`, `endDate`, `url`, and `recurrenceDate` fields can have
    validation keywords applied to limit their content to appropriate values
    (this is also possible in JSON schema but was not a feature of original
    example)
-2) The `duration` field could be changed to an `Integer` representing duration
+2) The `duration` field can be changed to an `Integer` representing duration
    in a time unit (e.g., minutes) to simplify automated processing
-3) Guidance could be provided for the format of the recurrenceRule field
+3) Guidance can be provided for the format of the recurrenceRule field
 4) The automatically generated `"$Root"` name for record in the schema can be
    changed to something more meaningful (e.g., `Event`)
-5) Comments could be added to fields that lack them to further clarify their
+5) Comments can be added to fields that lack them to further clarify their
    intent
 
 The starting JSON schema appears to have been modeled on the iCalendar standard
-[[RFC5545](#rfc5545)] so that can be used as a source for refinements:
+[[RFC5545](#rfc5545)] which also can be used as a source for refinements:
 
 1) The `summary` field can have a character limit applied to align with its
       intended use as "a short summary or subject for the calendar component"
@@ -3167,11 +3169,13 @@ complete IM for describing calendar information for exchange among systems.
 ### 3.3.5 Inheritance Example
 
 JADN v2.0 introduces inheritance features to support constructing DataType
-inheritance hierarchies. This example uses concepts inspired by the 
-[[CityGML](#citygml)] and [[CityJSON](#cityjson)] geographic modeling languages to
-provide an introduction to the use of inheritance in JADN. An overview of the
+inheritance hierarchies. This example uses concepts inspired by the
+[[CityGML](#citygml)] and [[CityJSON](#cityjson)] geographic modeling languages
+to provide an introduction to the use of inheritance in JADN. An overview of the
 key types defined in this example and their inheritance relationships is shown
-in Figure 3-18.
+in Figure 3-18. This description focuses on the inheritance-related aspects of the
+model; the JIDL for the complete model is provided in [Appendix
+E.2](#e2-inheritance-example-jidl).
 
 ###### Figure 3-18 -- Basic Inheritance Example Overview
 
@@ -3228,8 +3232,9 @@ OpenSpace = Record extends(Location)  // a defined area of open space
                               // the array MUST match
 ```
 
-In this case `OpenSpace` adds a field to the referenced `Location` type so a new
-identifier is required for the new field.
+Because the `OpenSpace` type is adding a field to the referenced `Location` type a new
+identifier (`3`) is required for the new field
+(in contrast with the `Enpoint` restriction re-using the field identifier for `politicalUnit`).
 
 The `Location` type is more extensively extended by the `Road`, `Bridge`,
 `Tunnel`, and `Building` types. The latter three types are grouped under the
@@ -3537,7 +3542,7 @@ This section details differences between versions 1 and 2 of JADN.
 
 In JADN v2.0 the "unlimited" value for the `maxOccurs` (formerly `maxc`)
 sentinel is changed from 0 to -1. *This minor but incompatible change required a
-new major version.* Two options are provided for an unspecified `maxOccurs` value:
+new major version.* Two options are defined for an unspecified `maxOccurs` value:
 
 - `maxOccurs` = -1 denotes an upper size limit defined by the JADN default value or package-specified upper value
 - `maxOccurs` = -2 denotes an unbounded upper size limit
