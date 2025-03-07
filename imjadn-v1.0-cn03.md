@@ -2444,10 +2444,10 @@ library package), and a schema might also import one or more
 packages from a different schema (e.g., to use information
 objects defined in the official schema for a standard).
 
-The `exports` portion of the package information is
+The `roots` portion of the package information is
 informational; JADN packages aren't intended to enforce a
 rigorous distinction between public and private types
-distinction. The `exports` list provides a means for schema
+distinction. The `roots` list provides a means for schema
 authors to indicate the intended public types, and a basis for
 JADN schema tools to detect discrepancies.
 
@@ -2540,7 +2540,7 @@ collection, along with the OpenC2 Language Specification:
 "meta": {
 	  "package": "http://acme.com/schemas/device-base/pacf/v3",
 	  "title": "OpenC2 base device schema for the PACE collection service and packet filter",
-	  "exports": ["OpenC2-Command", "OpenC2-Response"],
+	  "roots": ["OpenC2-Command", "OpenC2-Response"],
 	  "namespaces": {
 	   "ls": "http://docs.oasis-open.org/openc2/ns/types/v2.0",
 	   "slpf": "http://docs.oasis-open.org/openc2/ns/ap-slpf/v2.0",
@@ -2690,7 +2690,7 @@ The JADN package for the music library IM provides basic metadata:
               each track. It is modeled on the types of library data 
               maintained by common websites and music file tag editors."
      license: "CC0-1.0"
-     exports: ["Library"]
+     roots: ["Library"]
 ```
 
 At the top level, the library is map of barcodes to albums. The barcode serves
@@ -2930,7 +2930,7 @@ containing the JADN corresponding to the above ERD is shown here:
 {
  "info": {
   "package": "http://example.com/uni",
-  "exports": ["University"]
+  "roots": ["University"]
  },
 
  "types": [
@@ -2966,7 +2966,7 @@ more readable and easier to edit:
 
 ```
      package: "http://example.com/uni"
-     exports: ["University"]
+     roots: ["University"]
 
 University = Record                               // A place of learning
    1 name             String                      // University Name
@@ -3046,7 +3046,7 @@ detailed informational ERD at the start of this section
 
 ```
 # package: http://example.com/uni
-# exports: ['University']
+# roots: ['University']
 
 digraph G {
   graph [fontname=Arial, fontsize=12];
@@ -3102,7 +3102,7 @@ was used to convert the JSON scheme to JADN, leading to an initial JADN schema
 
 ```
      package: "https://example.com/calendar.schema.json"
-     exports: ["$Root"]
+     roots: ["$Root"]
       config: {"$FieldName": "^[$a-z][-_$A-Za-z0-9]{0,63}$", "$MaxString": 1000}
 
 $Root = Record                          // A representation of an event
@@ -3150,7 +3150,7 @@ Applying these changes leads to a refined model for the event schema:
 
 ```
      package: "https://example.com/calendar.schema.json"
-     exports: ["Event"]
+     roots: ["Event"]
       config: {"$FieldName": "^[$a-z][-_$A-Za-z0-9]{0,63}$", "$MaxString": 1000}
 
 Event = Record                                   // A representation of an event
@@ -4118,7 +4118,7 @@ constructing an information graph from an ontology graph:
     "version": "1.1",
     "description": "This information model defines a library of audio tracks, organized by album, with associated metadata regarding each track. It is modeled on the types of library data maintained by common websites and music file tag editors.",
     "license": "CC0-1.0",
-    "exports": ["Library"]
+    "roots": ["Library"]
   },
   "types": [
     ["Library", "MapOf", ["+Barcode", "*Album", "{1"], "Top level of the library is a map of CDs by barcode", []],
@@ -4205,7 +4205,7 @@ constructing an information graph from an ontology graph:
                with associated metadata regarding each track. It is modeled on the types of 
                library data maintained by common websites and music file tag editors."
      license: "CC0-1.0"
-     exports: ["Library"]
+     roots: ["Library"]
 
 Library = MapOf(Barcode, Album){1..*}  // Top level of the library is a map of CDs by barcode
 
@@ -4295,7 +4295,7 @@ Information Header
                  track. It is modeled on the types of library data maintained 
                  by common websites and music file tag editors."
        license: "CC0-1.0"
-       exports: ["Library"]
+       roots: ["Library"]
 ```
 
 | Type Name   | Type Definition             | Description                                         |
