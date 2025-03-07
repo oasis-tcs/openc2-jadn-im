@@ -50,9 +50,10 @@ of data items at a conceptual level and formally type and validate their essenti
 Essentially it is a UML profile for defining messages and other data structures.
 JADN uses information theory to define logical equivalence, allowing translation
 of essential content across a wide range of representations without loss.
-This Committee Note explains how to construct IMs using JADN, represent them
+This Committee Note provides background on the nature and value of IMs,
+contrasts JADN with other IM languages such as ASN.1,
+and explains how to construct IMs using JADN, represent them
 in various formats such as formal languages and entity-relationship diagrams,
-contrast them with other IM languages such as ASN.1,
 and integrate them with knowledge graphs and concrete data models.
 
 #### Status:
