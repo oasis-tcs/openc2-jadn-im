@@ -1032,7 +1032,7 @@ array.
 
 These structures are illustrated and explained in more detail 
 in [Section&nbsp;3.1.3.1, Native JSON Representation](#3131-native-json-representation).
-JADN can also be represented in multiple formats, both textual and
+JADN can be represented in multiple formats, both textual and
 graphical, and automated tooling can transform a JADN model
 between the different representations without loss of
 information. The Native JADN representation as JSON data is
@@ -1054,7 +1054,7 @@ The [[JADN Specification](#jadn-v10)], Section&nbsp;4, defines twelve core types
 
 ### 3.1.1 Type Definitions
 
-Figure 3-2 summarizes the structure of a JADN Type Definition, and identifies
+Figure 3-2 illustrates the components of a JADN Type Definition, and identifies
 values for each of the five elements in the definition. As noted above, a Type
 Definition is an array; the elements must appear in the order listed here. The
 five elements are:
@@ -1068,7 +1068,7 @@ that type.
  4. An optional **TypeDescription** string that provides
     additional information about the type.
  5. For structured compound types and union types, a set
-    of **Item** or **Field** options that define the items that
+    of **Item** or **Field** definitions for the items or fields that
     comprise the compound type.
 
 > **TO-DO:** Determine whether including the ASCII code numbers for type and field options in Figure 3-2 is worthwhile
@@ -1109,7 +1109,7 @@ The CoreType must be one of the twelve JADN core types previously identified.
 #### 3.1.1.2 TypeOptions
 
 The third element of a JADN type definition is an array of zero or more of the
-TypeOptions as described in Section&nbsp;4.1.4 of the [[JADN
+**TypeOptions** as described in Section&nbsp;4.1.4 of the [[JADN
 Specification](#jadn-v10)]. JADN includes options for both _types_ (discussed in
 this section) and _fields_ (discussed in
 [Section&nbsp;3.1.1.4](#3114-field-options)). As explained in the JADN
@@ -1139,14 +1139,14 @@ Type and Field options labels have JSON Schema and XML Schema equivalents.
 
 ###### Table 3-1 -- JADN Type Options
 
-|  **Option**  | **Type** | **ID** | **Description**                                                   |
+|  **Option**  | **Type** | **ID** | **Description**                                                  |
 |:------------:|:--------:|:------:|-------------------------------------------------------------------|
 |      id      |  Boolean |   `=`  | Items and Fields are denoted by FieldID rather than FieldName     |
 |     vtype    |  String  |   `*`  | Value type for ArrayOf and MapOf                                  |
 |     ktype    |  String  |   `+`  | Key type for MapOf                                                |
 |     enum     |  String  |   `#`  | Extension: Enumerated type derived from a specified type          |
 |    pointer   |  String  |   `>`  | Extension: Enumerated type pointers derived from a specified type |
-|    format    |  String  |   `/`  | Semantic validation keyword                                       |
+|    format    |  String  |   `/`  | Semantic validation keyword identifying data value boundaries     |
 |    pattern   |  String  |   `%`  | Regular expression used to validate a String type                 |
 | minExclusive |  Number  |   `w`  | Minimum numeric/string value, excluding bound                     |
 | maxExclusive |  Number  |   `x`  | Maximum numeric/string value, excluding bound                     |
@@ -1323,7 +1323,7 @@ The corresponding JIDL representation would be:
 ```
 
 The *minInclusive/maxInclusive* and *minExclusive/maxExclusive* TypeOptions are used to specify minimum and/or maximum
-value that may be assigned to an Integer type. The JADN Integer primitive type
+values that may be assigned to an Integer type. The JADN Integer primitive type
 encompasses the UML UnlimitedNatural primitive type through the use the *minInclusive*
 Type Option: an Integer with a *minInclusive* of `0` has the same range of values as an
 UnlimitedNatural.
@@ -1388,7 +1388,7 @@ The corresponding JIDL representation would be:
 
 > **TO-DO:** should the "only relevant" language be expanded to cite serializing with binary formats?
 
-The *minInclusive* and *maxInclusive* TypeOptions are used to specify a minimum and/or maximum
+The *minInclusive/maxInclusive* and *minExclusive/maxExclusive* TypeOptions are used to specify a minimum and/or maximum
 value that may be assigned to a Number type. Table 3-6 lists the *format*
 options applicable to the Number type. These *format* options are only relevant
 when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&nbsp;6.4:
@@ -1447,7 +1447,7 @@ The corresponding JIDL representation would be:
 ```
 
 Strings have a large variety of applicable type options that have the potential
-for overlapping meanings. As stated in the [[JADN](#jadn-v10)] specification:
+for overlapping meanings. As stated in the [[JADN Specification](#jadn-v10)]:
 "The pattern, length, and range options are not normally used together, but if
 more than one kind is present in a type definition an instance must satisfy all
 conditions." In particular:
@@ -1495,7 +1495,7 @@ emails, hostnames, etc.
   <tbody>
     <tr>
       <td class="td">
-        A Binary instance is sequence of octets. Binary values are not ordered so range options do not apply.
+        A Binary instance is sequence of octets.
       </td>
       <td class="td">
         <i>
@@ -1521,6 +1521,7 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
+Binary values are not ordered so range options do not apply. 
 The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
 number of octets for a binary type. If *minLength* equals *maxLength* the size of the
 binary type is fixed. Table 3-4 lists the *format* options applicable to the
@@ -1703,7 +1704,7 @@ Table 3-7 lists the *format* options applicable to the Array type:
 
 The `ipv4-net` and `ipv6-net` format options impose several constraints when applied to an Array type:
 
-* Specifies that the Binary element of the Array to be 32 or 128 bits, respectively
+* Specifies the Binary element of the Array to be 32 or 128 bits, respectively
 * Constrains the Integer prefix value to a range of 0..32 or 0..128, respectively
 * Specifies that text representations of the type will use CIDR notation
 
