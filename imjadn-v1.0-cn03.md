@@ -2081,14 +2081,10 @@ Publication-Data = Array         // who and when of publication
 > EDITOR'S NOTE: section heading subject to change
 
 This section describes JADN usage details that add flexibility or simplify the
-development of IMs.
-
-#### 3.1.4.1 "Anonymous" Type Definitions
-
-The [[JADN Specification](#jadn-v10)] conformance statement
+development of IMs. The [[JADN Specification](#jadn-v10)] conformance statement
 (section 8) separates the definition of JADN into "Core JADN"
-(sections 3.1, 3.2, 4, and 6) and "JADN Shortcuts" (section
-3.3). Section&nbsp;3.3 explains that shortcuts "make type definitions
+(sections 3.1, 3.2, 4, and 6) and "JADN Shortcuts" (section&nbsp;3.3).
+Section&nbsp;3.3 explains that shortcuts "make type definitions
 more compact or support the Don't Repeat Yourself (DRY) software
 design principle. Shortcuts are syntactic sugar that can be
 replaced by core definitions without changing their meaning."
@@ -2098,14 +2094,18 @@ the level of effort required by a JADN schema author and can make
 a schema more compact and understandable.
 
 The JADN Specification also defines a "system character" (by
-default the period, `.`) and in the Name Formats (section
-3.1.2) reserves the use of that character to automated tooling,
+default the period, `.`) and in the Name Formats (section&nbsp;3.1.2)
+reserves the use of that character to automated tooling,
 saying "Schema authors should not create TypeNames containing the
 System character, but schema processing tools may do so".
 
 Examples of the use of shortcuts and the role of the system
 character are provided in sections 3.3.1, 3.3.2, and 3.3.2 of the
-JADN Specification. As noted in [Section&nbsp;3.1.1.4](#3114-field-options), 
+JADN Specification.
+
+#### 3.1.4.1 "Anonymous" Type Definitions
+
+As noted in [Section&nbsp;3.1.1.4](#3114-field-options), 
 JADN Type Options can be applied to
 fields in compound types, but as explained in Section&nbsp;3.3.1 of
 the JADN Specification, this is an shortcut that leads to the
@@ -2117,7 +2117,9 @@ Member = Record
   1 name         String
   2 email        String /email
 ```
-Unfolding replaces this with:
+
+Expanding replaces this with:
+
 ```
 Member = Record
   1 name         String
@@ -2340,11 +2342,13 @@ geography markup language concepts can be found in [Section&nbsp;3.3.5](#335-inh
 ### 3.1.5 Reference Relationships: Keys and Links
 
 As explained in [Section&nbsp;3](#3-creating-information-models-with-jadn), JADN recognizes
-only two kinds of relationship: "contain" and "reference". The
-relationships shown in previous examples are all of the "contain"
-variety. The "reference" relationship type applies either when using the
-"contain" relationship would create a cycle or loop in the graph
-of the information model or when using "contain" relationships would create data duplication.
+only two kinds of relationship: "collections" and "references". The
+relationships shown in previous examples are all of the "collection"
+variety. The "reference" relationship type applies when using a "collection" relationship would either 
+
+  1) create a cycle or loop in the graph of the information model, or 
+  2) create data duplication.
+
 An example of cycle creation might occur, for
 example, in an IM for an SBOM format: because software components
 often incorporate other components a recursive situation arises
@@ -2358,13 +2362,13 @@ Component - Record
 ```
 
 When recursion is used in programming it is terminated by a base
-condition, but an IM has no corresponding concept to terminate
+condition, but as a declarative specification an IM has no corresponding concept to terminate
 recursion. JADN uses "reference" relationships in situations
 where cycles occur in order to address this need. The method to
 define reference relationships is explained in Section&nbsp;3.3.6,
 *Links*, of the [[JADN Specification](#jadn-v10)]. 
 
-Figure 3-8 illustrates permissible and impermissible "contains"
+Figure 3-8 illustrates permissible and impermissible "collection"
 relationships, and the use of the `key` and `link` keywords
 combined with an identifier field to establish permissible
 "reference" relationships. The green lines show permissible
