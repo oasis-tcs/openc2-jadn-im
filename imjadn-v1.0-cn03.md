@@ -3239,7 +3239,7 @@ OpenSpace = Record extends(Location)  // a defined area of open space
 
 Because the `OpenSpace` type is adding a field to the referenced `Location` type a new
 identifier (`3`) is required for the new field
-(in contrast with the `Enpoint` restriction re-using the field identifier for `politicalUnit`).
+(in contrast with the `Endpoint` restriction re-using the field identifier for `politicalUnit`).
 
 The `Location` type is more extensively extended by the `Road`, `Bridge`,
 `Tunnel`, and `Building` types. The latter three types are grouped under the
