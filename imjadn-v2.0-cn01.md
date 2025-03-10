@@ -2321,7 +2321,7 @@ relationships among types, which are defined in Section 4.2.4 of [[JADN Specific
   defined based on it.
 
 Type inheritance is static and can be applied both to primitive and compound
-types. However, as explained in the [JADNv2] specification, there are other
+types. However, as explained in the JADN Specification, there are other
 mechanisms applicable to primitive and some compound types to achieve equivalent
 results. The primary applications on inheritance identified in the specification are: 
 
