@@ -808,11 +808,13 @@ JADN defines three kinds of information that have alternate representations:
 
 These alternatives can be grouped into distinct serialization styles:
 
-| Style:       | Verbose<br>repeated name-value pairs | Compact<br>element / property names-values | Concise<br>machine-to-machine optimized |
-| ------------ | ------------------- | ------------------- | ------------------------- |
-| Primitives   | Text Representation | Text Representation | Integer / Binary / Base64 |
-| Enumerations | String              | String              | Integer                   |
-| Table Rows   | Column Name         | Column Position     | Column Position           |
+|         Style             |           **Verbose**          |              **Compact**             |            **Concise**            |
+|--------------------------:|:------------------------------:|:------------------------------------:|:---------------------------------:|
+| _Serialization<br>Method_ | _repeated<br>name-value pairs_ | _element / property<br>names-values_ | _machine-to-machine<br>optimized_ |
+|                Primitives |       Text Representation      |          Text Representation         |     Integer / Binary / Base64     |
+|              Enumerations |             String             |                String                |              Integer              |
+|                Table Rows |           Column Name          |            Column Position           |          Column Position          |
+
 
 A data format is a serialization style applied to a data language: "Compact JSON",
 "Concise JSON", "Compact XML", "Verbose CBOR", etc. The [[JADN Specification](#jadn-v20)], Section&nbsp;6,
