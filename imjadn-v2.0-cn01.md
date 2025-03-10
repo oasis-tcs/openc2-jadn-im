@@ -163,8 +163,8 @@ For complete copyright information please see the full Notices section in [Appen
 
 **List of Figures**
 
- - [Figure 2-1 -- Serialization / Deserialization](#figure-2-1----serialization--deserialization)
- - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
+ - [Figure 2-1 -- Serialization / Deserialization](#figure-2-2----serialization--deserialization)
+ - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-1----parsing-and-serializing-with-an-im)
  - [Figure 3-1 -- JADN Type Definition Components](#figure-3-1----jadn-type-definition-components)
  - [Figure 3-2 -- JADN V2 Type Definition Structure](#figure-3-2----jadn-v2-type-definition-structure)
  - [Figure 3-3 -- JADN Schema Top-Level Structure](#figure-3-3----jadn-schema-top-level-structure)
@@ -800,14 +800,14 @@ serialization format, making it easy to bridge from one format to another.
 Implementations based on serialization-specific code interoperate with those using an IM serialization library,
 allowing developers to use either approach. Deriving the processing capabilities
 from the IM ensures consistency as the data is manipulated.
-Figure 2-2 illustrates the concept of applying an IM to manage
+Figure 2-1 illustrates the concept of applying an IM to manage
 the associated data.
 
-###### Figure 2-2 -- Parsing and Serializing With An IM
+###### Figure 2-1 -- Parsing and Serializing With An IM
 
-<img src="images/parse-serialize.png" alt="Figure 2-2 -- Parsing and Serializing with an IM" width="750" />
+<img src="images/parse-serialize.png" alt="Figure 2-1 -- Parsing and Serializing with an IM" width="750" />
 
-The internal representation, illustrated in Figure 2-2 as a graph,
+The internal representation, illustrated in Figure 2-1 as a graph,
 is guided by rules associated with applying the IM:
 
  - the internal representation conforms to the IM
@@ -855,8 +855,8 @@ customer cares that their tickets are for the proper flights. How
 the information system handles the bits to make that happen is of
 no concern to the customer.
 
-###### Figure 2-1 -- Serialization / Deserialization
-![**Figure 2-1 -- Serialization / Deserialization**](images/model-and-serialization.png)
+###### Figure 2-2 -- Serialization / Deserialization
+![**Figure 2-2 -- Serialization / Deserialization**](images/model-and-serialization.png)
 
 Serialization and deserialization are intimately connected to the
 chosen format: the same data can be serialized in JSON, CBOR, and
