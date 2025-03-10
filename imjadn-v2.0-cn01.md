@@ -10,19 +10,19 @@
 ## 05 March 2025
 
 #### This stage:
+https://docs.oasis-open.org/openc2/imjadn/v2.0/cn01/imjadn-v2.0-cn01.md (Authoritative) \
+https://docs.oasis-open.org/openc2/imjadn/v2.0/cn01/imjadn-v2.0-cn01.html \
+https://docs.oasis-open.org/openc2/imjadn/v2.0/cn01/imjadn-v2.0-cn01.pdf
+
+#### Previous stage of Version 1.0:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.md (Authoritative) \
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.html \
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.pdf
 
-#### Previous stage of Version 1.0:
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cn02/imjadn-v1.0-cn02.md (Authoritative) \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cn02/imjadn-v1.0-cn02.html \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cn02/imjadn-v1.0-cn02.pdf
-
-#### Latest stage of Version 1.0:
-https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.md (Authoritative) \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.pdf
+#### Latest stage of Version 2.0:
+https://docs.oasis-open.org/openc2/imjadn/v2.0/imjadn-v2.0.md (Authoritative) \
+https://docs.oasis-open.org/openc2/imjadn/v2.0/imjadn-v2.0.html \
+https://docs.oasis-open.org/openc2/imjadn/v2.0/imjadn-v2.0.pdf
 
 #### Technical Committee:
 [OASIS Open Command and Control (OpenC2) TC](https://www.oasis-open.org/committees/openc2/)
