@@ -74,10 +74,11 @@ button on the TC's web page at https://www.oasis-open.org/committees/openc2/.
 #### Citation format:
 When referencing this document the following citation format should be used:
 
-**[JADN-v2.0]**  
-_JSON Abstract Data Notation Version 2.0_. Edited by David Kemp. 19 February 2025. 
-OASIS Committee Specification Draft 01. https://docs.oasis-open.org/openc2/jadn/v2.0/csd01/jadn-v2.0-csd01.html. 
-Latest version: https://docs.oasis-open.org/openc2/jadn/v2.0/jadn-v2.0.html.
+**[IM-JADN-v2.0]**
+
+_Information Modeling with JADN Version 2.0_. Edited by David Lemire and David Kemp. 19 February 2025.
+OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v2.0/cn01/imjadn-v2.0-cn01.html.
+Latest stage: https://docs.oasis-open.org/openc2/imjadn/v2.0/imjadn-v2.0.html.
 
 #### Notices
 Copyright &copy; OASIS Open 2025. All Rights Reserved.
