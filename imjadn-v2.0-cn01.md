@@ -1056,8 +1056,6 @@ that type.
     of **Item** or **Field** definitions for the items or fields that
     comprise the compound type.
 
-> **TO-DO:** Determine whether including the ASCII code numbers for type and field options in Figure 3-2 is worthwhile
-
 ###### Figure 3-2 -- JADN V2 Type Definition Structure
 ![JADN V2 Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
 
