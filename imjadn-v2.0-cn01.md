@@ -338,8 +338,8 @@ information models in more detail.
 
 ### 1.1.1 Information Models and Data Models
 
-Internet Engineering Task Force (IETF) [[RFC 3444](#rfc3444)],
-"On the Difference between Information Models and Data Models", says:
+"On the Difference between Information Models and Data Models",
+Internet Engineering Task Force (IETF) [[RFC 3444](#rfc3444)], says:
 
 > * The main purpose of an IM is to model managed objects at a conceptual
 level, independent of any specific implementations or protocols used
@@ -398,10 +398,10 @@ on storage and transmission details until a clear understanding of purpose has b
 
 ### 1.1.2 The Information Modeling Gap
 
-The IETF, in the "Report from the Internet of Things (IoT)
+In the "Report from the Internet of Things (IoT)
 Semantic Interoperability (IOTSI) Workshop 2016"
 [[RFC 8477](https://www.rfc-editor.org/info/rfc8477)],
-attributed challenges in achieving interoperability
+the IETF attributed challenges in achieving interoperability
 to a lack of information modeling:
 
 > One common problem is the lack of an encoding-independent
@@ -409,7 +409,7 @@ to a lack of information modeling:
 > model. Another problem is the strong relationship between data
 > formats and the underlying communication architecture. (Section 1)
 
-[[RFC 8477](https://www.rfc-editor.org/info/rfc8477)] recapitulates RFC 3444 terminology (Section 2):
+Section 2 of the IOTSI Workshop Report recapitulates RFC 3444 terminology:
 
 > - **Information Model** -- An information model defines an
      environment at the highest level of abstraction and
