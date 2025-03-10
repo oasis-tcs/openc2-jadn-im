@@ -2301,7 +2301,7 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
 
 JADN supports inheritance in information modeling, providing for class /
 subclass relationships. There are four type options to manage the class
-relationships among types, which are defined in Section 4.2.4 of [[JADN](#jadn-v20)].
+relationships among types, which are defined in Section 4.2.4 of [[JADN Specification](#jadn-v20)].
 
 - `abstract`: The `abstract` option indicates that a type definition is only a
   basis for defining sub-classes and should never be instantiated in data. 
