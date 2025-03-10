@@ -494,16 +494,16 @@ Shannon's original article was later published as a book and gave
 rise to the field of Information Theory [[Shannon](#shannon)].
 
 The [[Resource Description Framework (RDF)](#rdf)] 
-defines the concept of lexical-to-value mapping, which
+defines the concept of _lexical-to-value mapping_, which
 provides a precise vocabulary for describing the relationship between
 "data" and information:
 
-> * A **datatype** consists of a **lexical space**, a **value space**, and
-> a **lexical-to-value mapping**.
+> * A *datatype* consists of a *lexical space*, a *value space*, and
+> a *lexical-to-value mapping*.
 > 
-> * The lexical-to-value mapping of a datatype is a set of pairs
-> whose first element belongs to the lexical space and second element
-> belongs to the value space of the datatype.
+> * The *lexical-to-value* mapping of a datatype is a set of pairs
+> whose first element belongs to the *lexical space* and second element
+> belongs to the *value space* of the datatype.
 
 A small example may help clarify the concept of information. The information
 content of a logical value can be no greater than the smallest lexical value for
