@@ -3708,8 +3708,11 @@ review](https://lists.oasis-open.org/archives/openc2/202106/msg00019.html):
 > consideration.*
 
 ### Response
+
+> NOTE: Need to update the following as the JADN v2 Spec does not contain the quoted wording.
+
 The short answer (RDF models *knowledge* while JADN models
-*information*) is provided in the [[JADN Specification](#jadn-v10)] introduction:
+*information*) is provided in the [[JADN Specification](#jadn-v20)] introduction:
 
 > *UML class models and diagrams are commonly referred to as
 > "Data Models", but they model knowledge of real-world entities
