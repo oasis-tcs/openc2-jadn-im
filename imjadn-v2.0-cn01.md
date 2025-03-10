@@ -1670,7 +1670,7 @@ would be:
 // the IPv4-Net type is an array used to represent a CIDR block
 
 IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
-   1  IPv4-Addr              // ipv4_addr:: IPv4 address as defined in RF 791
+   1  IPv4-Addr              // ipv4_addr:: IPv4 address as defined in RFC 791
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
 
