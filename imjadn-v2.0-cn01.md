@@ -398,8 +398,8 @@ on storage and transmission details until a clear understanding of purpose has b
 
 ### 1.1.2 The Information Modeling Gap
 
-The IETF, in the _Report from the Internet of Things (IoT)
-Semantic Interoperability (IOTSI) Workshop 2016_
+The IETF, in the "Report from the Internet of Things (IoT)
+Semantic Interoperability (IOTSI) Workshop 2016"
 [[RFC 8477](https://www.rfc-editor.org/info/rfc8477)],
 attributed challenges in achieving interoperability
 to a lack of information modeling:
@@ -518,7 +518,7 @@ value*.  But different data may be used to represent that information:
   0x6F3139322E3136382E3134312E323430 (16 bytes / 128 bits)
 * Hex value contained in a JSON string: "C0A88DF0" (10 bytes / 80 bits)
 * CBOR byte string: 0x44c0a88df0 (5 bytes / 40 bits).
-* IPv4 packet (unadorned RFC791-style serialization): 0xc0a88df0 (4 bytes / 32
+* IPv4 packet (unadorned RFC 791-style serialization): 0xc0a88df0 (4 bytes / 32
   bits).
 
 \* *Note: all references to information assume independent uniformly-distributed
@@ -622,8 +622,8 @@ and defines their importance:
 > networked, computer environment that behaves consistently and
 > correctly."
 
- _Report from IoT Semantic Interoperability Workshop 2016_ [[RFC
-8477](#rfc8477)] describes a lack of consistency across Standards
+_Report from IoT Semantic Interoperability Workshop 2016_ [[RFC 8477](#rfc8477)] 
+describes a lack of consistency across Standards
 Development Organizations (SDOs) in defining application layer
 data, attributing it to the lack of an encoding-independent
 standardization of the information represented by that data. The
@@ -899,7 +899,7 @@ The [[JADN Specification](#jadn-v20)] defines 12 core types, which
 are described in [Section&nbsp;3.1.2](#312-core-type-examples) of this
 CN. The JADN Specification also defines serialization rules for
 JSON (with three levels of verbosity) and CBOR
-[[RFC7409](#rfc7049)]. Supporting a new data format ("external
+[[RFC 7409](#rfc7049)]. Supporting a new data format ("external
 representation") requires defining serialization rules to
 translate each core type to that data format.
 
@@ -1389,7 +1389,7 @@ when serializing using CBOR; see the [[JADN Specification](#jadn-v20)], Section&
 The parenthetical (#7.2x) references in the above table identify the CBOR major
 type (7) and associated additional information (25/26/27) as defined in the
 Concise Data Definition Language (CDDL) Standard Prelude specified in Apppendix&nbsp;D 
-of [[RFC8610](#rfc8610)].
+of [[RFC 8610](#rfc8610)].
 
 
 #### 3.1.2.4 String
@@ -1548,11 +1548,11 @@ information item fitting the Enumerated type would be defined as
 follows:
 
 ```json
-["L4-Protocol", "Enumerated", [], "Value of the protocol (IPv4) or next header (IPv6) field in an IP packet. Any IANA value, [RFC5237]", [
-    [1, "icmp", "Internet Control Message Protocol - [RFC0792]"],
-    [6, "tcp", "Transmission Control Protocol - [RFC0793]"],
-    [17, "udp", "User Datagram Protocol - [RFC0768]"],
-    [132, "sctp", "Stream Control Transmission Protocol - [RFC4960]"]
+["L4-Protocol", "Enumerated", [], "Value of the protocol (IPv4) or next header (IPv6) field in an IP packet. Any IANA value, [RFC 5237]", [
+    [1, "icmp", "Internet Control Message Protocol - [RFC 0792]"],
+    [6, "tcp", "Transmission Control Protocol - [RFC 0793]"],
+    [17, "udp", "User Datagram Protocol - [RFC 0768]"],
+    [132, "sctp", "Stream Control Transmission Protocol - [RFC 4960]"]
 ]]
 ```
 
@@ -1561,11 +1561,11 @@ The corresponding JIDL representation would be:
 ```
 // Example JIDL definition of an Enumerated datatype
 L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
-                          // field in an IP packet. Any IANA value per RFC5237
-   1 icmp                 // Internet Control Message Protocol - [RFC0792]
-   6 tcp                  // Transmission Control Protocol - [RFC0793]
-  17 udp                  // User Datagram Protocol - [RFC0768]
- 132 sctp                 // Stream Control Transmission Protocol - [RFC4960]
+                          // field in an IP packet. Any IANA value per RFC 5237
+   1 icmp                 // Internet Control Message Protocol - [RFC 0792]
+   6 tcp                  // Transmission Control Protocol - [RFC 0793]
+  17 udp                  // User Datagram Protocol - [RFC 0768]
+ 132 sctp                 // Stream Control Transmission Protocol - [RFC 4960]
 ```
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
@@ -1655,7 +1655,7 @@ as follows:
 
 ```json
   ["IPv4-Net", "Array", ["/ipv4-net"], "IPv4 address and prefix length", [
-    [1, "ipv4_addr", "IPv4-Addr", [], "IPv4 address as defined in [RFC0791]"],
+    [1, "ipv4_addr", "IPv4-Addr", [], "IPv4 address as defined in [RFC 791]"],
     [2, "prefix_length", "Integer", ["[0"], "CIDR prefix-length. If omitted, refers to a single host address."]
   ]]
 ```
@@ -1669,7 +1669,7 @@ would be:
 // the IPv4-Net type is an array used to represent a CIDR block
 
 IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
-   1  IPv4-Addr              // ipv4_addr:: IPv4 address as defined in RFC0791
+   1  IPv4-Addr              // ipv4_addr:: IPv4 address as defined in RF 791
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
 
@@ -1801,9 +1801,9 @@ follows:
 
 ```json
   ["Hashes", "Map", ["{1"], "Cryptographic hash values", [
-    [1, "md5", "Binary", ["/x", "{16", "}16", "[0"], "MD5 hash as defined in [RFC1321]"],
-    [2, "sha1", "Binary", ["/x", "{20", "}20", "[0"], "SHA1 hash as defined in [RFC6234]"],
-    [3, "sha256", "Binary", ["/x", "{32", "}32", "[0"], "SHA256 hash as defined in [RFC6234]"]
+    [1, "md5", "Binary", ["/x", "{16", "}16", "[0"], "MD5 hash as defined in [RFC 1321]"],
+    [2, "sha1", "Binary", ["/x", "{20", "}20", "[0"], "SHA1 hash as defined in [RFC 6234]"],
+    [3, "sha256", "Binary", ["/x", "{32", "}32", "[0"], "SHA256 hash as defined in [RFC 6234]"]
   ]]
 ```
 
@@ -1812,9 +1812,9 @@ The corresponding JIDL representation would be:
 ```
 // Example JIDL definition of an Map datatype
 Hashes = Map{1..*}    // Cryptographic hash values
-   1 md5        Binary{16..16} /x optional   // MD5 hash as defined in RFC1321
-   2 sha1       Binary{20..20} /x optional   // SHA1 hash as defined in RFC6234
-   3 sha256     Binary{32..32} /x optional   // SHAs26 hash as defined in RFC6234
+   1 md5        Binary{16..16} /x optional   // MD5 hash as defined in RFC 1321
+   2 sha1       Binary{20..20} /x optional   // SHA1 hash as defined in RFC 6234
+   3 sha256     Binary{32..32} /x optional   // SHAs26 hash as defined in RFC 6234
 ```
 
 In the example above, note the combination of the `{minLength..maxLength}`
@@ -1930,9 +1930,9 @@ Record type for the common 5-tuple often used to describe a network connection.
 ```json
   ["IPv4-Connection", "Record", ["{1"], "5-tuple that specifies a tcp/ip connection", [
     [1, "src_addr", "IPv4-Net", ["[0"], "IPv4 source address range"],
-    [2, "src_port", "Port", ["[0"], "Source service per RFC6335"],
+    [2, "src_port", "Port", ["[0"], "Source service per RFC 6335"],
     [3, "dst_addr", "IPv4-Net", ["[0"], "IPv4 destination address range"],
-    [4, "dst_port", "Port", ["[0"], "Destination service per RFC6335"],
+    [4, "dst_port", "Port", ["[0"], "Destination service per RFC 6335"],
     [5, "protocol", "L4-Protocol", ["[0"], "Layer 4 protocol (e.g., TCP)"]
   ]]
   ```
@@ -1945,9 +1945,9 @@ The corresponding JIDL representation would be:
 
 IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tcp/ip connection
    1 src_addr         IPv4-Net optional           // IPv4 source address range
-   2 src_port         Port optional               // Source service per RFC6335
+   2 src_port         Port optional               // Source service per RFC 6335
    3 dst_addr         IPv4-Net optional           // IPv4 destination address range
-   4 dst_port         Port optional               // Destination service per RFC6335
+   4 dst_port         Port optional               // Destination service per RFC 6335
    5 protocol         L4-Protocol optional        // Layer 4 protocol (e.g., TCP)
 ```
 
@@ -2879,7 +2879,7 @@ Diff-Svcs-Code-Point = Enumerated       // Differentiated Services Code Point, 6
   44 va          // Voice Admit (RFC 5865)
   46 ef          // Expedited Routing (RFC 3246)
 
-ECN = Enumerated // Explicit Congestion Notification (RFC 3168)
+ECN = Enumerated // Explicit Congestion Notification (RF 3168)
    0 not_ect     // Not ECN-Capable Transport, Not-ECT
    1 ect_1       // ECN Capable Transport(1), ECT(1)
    2 ect_0       // ECN Capable Transport(0), ECT(0)
@@ -3117,7 +3117,7 @@ optionality but also presents multiple opportunities for fine tuning:
    intent
 
 The starting JSON schema appears to have been modeled on the iCalendar standard
-[[RFC5545](#rfc5545)] which also can be used as a source for refinements:
+[[RFC 5545](#rfc5545)] which also can be used as a source for refinements:
 
 1) The `summary` field can have a character limit applied to align with its
       intended use as "a short summary or subject for the calendar component"
