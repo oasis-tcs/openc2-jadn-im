@@ -681,15 +681,15 @@ This CN uses the definitions contained in the [[JADN
 Specification](#jadn-v20)], section 1.1.1. The following
 additional terms are defined for this document:
 
-- **Classifier:** The core organizational concept of UML is the
-classifier, used to classify different kinds of values according
-to their features. UML is a complex specification defining many
-kinds of simple and structured classifiers, but the only kind used
-by JADN is the simple Datatype. Given a data value, a datatype
-classifier determines whether the value is an instance of a type,
-indicating both whether the data is valid, and if so, its logical
-type(s). Two data values are equivalent if they are instances of
-the same datatype and their logical values are equal.
+- **Classifier:** The core organizational concept of UML is the classifier, used
+to classify different kinds of values according to their features. UML is a
+complex specification defining many kinds of simple and structured classifiers,
+but the only kind used by JADN is the simple Datatype. Given a data value, a
+datatype classifier determines whether the value is an instance of a type,
+indicating both whether the data is valid, and if so, its logical type(s). Two
+data values are equivalent if they are instances of the same datatype and their
+logical values are equal. (See [[UML Specification](#uml)] section 10.2.3 for
+additional details.)
 
 - **Directed Acyclic Graph:** A directed acyclic graph (DAG) is
   a directed graph with no directed cycles. That is, it consists
