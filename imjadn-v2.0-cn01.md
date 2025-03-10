@@ -796,7 +796,7 @@ Applications use data objects specific to each serialization format.
 2) Use the IM directly as a format-independent schema language, using IM serialization and validation libraries
 to process data without a separate schema generation step. Applications use the same IM instances regardless of
 serialization format, making it easy to bridge from one format to another.
- 
+
 Implementations based on serialization-specific code interoperate with those using an IM serialization library,
 allowing developers to use either approach. Deriving the processing capabilities
 from the IM ensures consistency as the data is manipulated.
