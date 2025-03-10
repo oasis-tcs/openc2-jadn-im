@@ -3335,13 +3335,6 @@ ISO/IEC/IEEE 31320-2:2012 _Information technology — Modeling Languages — Par
 ###### [Info-Theory]
 "Entropy (information theory)", https://en.wikipedia.org/wiki/Entropy_(information_theory)
 
-###### [JADN-v1.0]
-JSON Abstract Data Notation Version 1.0. Edited by David Kemp. 17
-August 2021. OASIS Committee Specification 01.
-https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html.
-Latest stage:
-https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
-
 ###### [JADN-v2.0]
 _JSON Abstract Data Notation Version 2.0_. Edited by David Kemp. 19 February 2025. 
 OASIS Committee Specification Draft 01. https://docs.oasis-open.org/openc2/jadn/v2.0/csd01/jadn-v2.0-csd01.html. 
