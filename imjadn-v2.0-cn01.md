@@ -457,7 +457,7 @@ _information equivalence_.
 ### 1.1.3 Defining Information
 
 Formally, information is the unexpected data, or entropy, contained in a
-document.  When information is serialized for transmission in a canonical
+document, file, or message.  When information is serialized for transmission in a canonical
 format, the additional data used for purposes such as text conversion,
 delimiting, and framing contains no information because it is known *a priori*
 by the sender(s) and receiver(s). If the serialization is non-canonical, any
