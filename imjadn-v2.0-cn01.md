@@ -37,8 +37,8 @@ David Kemp (d.kemp@cyber.nsa.gov), [National Security Agency](https://www.nsa.go
 
 #### Related work:
 This document is related to:
-* _JSON Abstract Data Notation Version 1.0_. Edited by David Kemp.
-Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
+* _JSON Abstract Data Notation Version 2.0_. Edited by David Kemp.
+Latest stage: https://docs.oasis-open.org/openc2/jadn/v2.0/jadn-v2.0.html.
 
 #### Abstract:
 
