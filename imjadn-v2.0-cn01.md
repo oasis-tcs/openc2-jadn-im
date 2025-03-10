@@ -816,14 +816,6 @@ is guided by rules associated with applying the IM:
  - each core type has associated serialization rules for each
    external representation format
 
-The [[JADN Specification](#jadn-v20)] defines 12 core types, which
-are described in [Section&nbsp;3.1.2](#312-core-type-examples) of this
-CN. The JADN Specification also defines serialization rules for
-JSON (with three levels of verbosity) and CBOR
-[[RFC 7409](#rfc7049)]. Supporting a new data format ("external
-representation") requires defining serialization rules to
-translate each core type to that data format.
-
 As an example, consider an information element defined as a
 boolean type, which is the simplest core type. The essential
 nature of a boolean is that it is limited to only two values,
@@ -886,10 +878,14 @@ These alternatives can be grouped into distinct serialization styles:
 |              Enumerations |             String             |                String                |              Integer              |
 |                Table Rows |           Column Name          |            Column Position           |          Column Position          |
 
-
 A data format is a serialization style applied to a data language: "Compact JSON",
-"Concise JSON", "Compact XML", "Verbose CBOR", etc. The [[JADN Specification](#jadn-v20)], Section&nbsp;6,
-include serialization rules for four different formats:
+"Concise JSON", "Compact XML", "Verbose CBOR", etc. 
+
+The [[JADN Specification](#jadn-v20)] defines 12 core types, which
+are described in [Section&nbsp;3.1.2](#312-core-type-examples) of this
+CN. The JADN Specification, Section&nbsp;6, also defines serialization rules for
+JSON (with three levels of verbosity) and CBOR
+[[RFC 7409](#rfc7049)]:
 
  - Verbose JSON
  - Compact JSON
@@ -901,8 +897,10 @@ information model allows designers to compare Verbose and Compact styles for
 usability, and allows data to be validated and successfully round tripped
 between a readable JSON style and an actually concise CBOR style.
 
-The JADN Specification also describes what is needed to connect JADN
-and IMs defined in JADN to other serialization formats:
+Supporting a new data format ("external representation") requires defining
+serialization rules to translate each core type to that data format. The JADN
+Specification describes what is needed to connect JADN and IMs defined in JADN
+to other serialization formats:
 
  - Specify an unambiguous serialized representation for each JADN type
  - Specify how each option applicable to a type affects serialized values
@@ -924,7 +922,6 @@ communications bandwidth. However, particular requirements (e.g.,
 human readability) may indicate that a serialization that uses
 more data than sufficient is appropriate for particular
 situations.
-
 
 ## 2.4 Information Modeling Tools
 
