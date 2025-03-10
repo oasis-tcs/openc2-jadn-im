@@ -361,7 +361,7 @@ encapsulation, as well as the possibility that object definitions
 include methods, are considered to be important. (Section&nbsp;3)
 >
 > 
-> * Compared to IMs, DMs define managed objects at a lower level
+> * Compared to IMs, [Data Models] define managed objects at a lower level
 of abstraction.  They include implementation- and
 protocol-specific details, e.g., rules that explain how to map
 managed objects onto lower-level protocol constructs. (Section 4)
