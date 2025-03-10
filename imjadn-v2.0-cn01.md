@@ -3655,7 +3655,7 @@ Neo4j, and non-database artifacts such as protocol messages and documents.
 
 The *Guide* points out that:
 > A declarative approach is an abstraction based on our interaction with the system.
-> When you look under the hood, all systems depend on a set of [imperative] instructions.
+> When you look under the hood, all systems depend on a set of imperative instructions.
 > Instead of the system depending on you to supply those instructions, they are predefined. 
 
 An information model combines the abstraction of declarative specifications with
