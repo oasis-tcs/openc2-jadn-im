@@ -1030,11 +1030,11 @@ The [[JADN Specification](#jadn-v20)], Section&nbsp;4, defines twelve core types
 
 | **Primitive** | **Compound** | **Union** |
 |:-------------:|:------------:|:-------------------------:|
-|     Binary    |     Array    |         Enumerated        |
-|    Boolean    |    ArrayOf   |           Choice          |
-|    Integer    |      Map     |                           |
-|     Number    |     MapOf    |                           |
-|     String    |    Record    |                           |
+|    Boolean    |     Array    |         Enumerated        |
+|    Integer    |    ArrayOf   |           Choice          |
+|     Number    |      Map     |                           |
+|     String    |     MapOf    |                           |
+|     Binary    |    Record    |                           |
 
 ### 3.1.1 Type Definitions
 
