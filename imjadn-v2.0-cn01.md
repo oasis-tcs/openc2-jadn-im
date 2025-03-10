@@ -2893,8 +2893,6 @@ field values that would be the usual approach in a more design-oriented modeling
 
 ### 3.3.3 Multiple Representations Example
 
-> EDITOR'S NOTE: intro text may need revision if examples are removed from the JADN Specification
-
 The [[JADN Specification](#jadn-v20)], section 7.3,
 uses a simple example of an IM for a university to illustrate the
 use of ERDs for IMs. This section uses that ERD as a starting
