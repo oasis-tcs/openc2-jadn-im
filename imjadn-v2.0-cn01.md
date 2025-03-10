@@ -104,8 +104,8 @@ For complete copyright information please see the full Notices section in [Appen
   - [1.2 Terminology](#12-terminology)
 - [2 Creation and Use of Information Models](#2-creation-and-use-of-information-models)
   - [2.1 Information Modeling](#21-information-modeling)
-  - [2.2 Serialization](#22-serialization)
-  - [2.3 Applying an Information Model](#23-applying-an-information-model)
+  - [2.2 Serialization](#23-serialization)
+  - [2.3 Applying an Information Model](#22-applying-an-information-model)
   - [2.4 Information Modeling Tools](#24-information-modeling-tools)
 - [3 Creating Information Models with JADN](#3-creating-information-models-with-jadn)
   - [3.1 JADN Overview](#31-jadn-overview)
@@ -773,7 +773,78 @@ Reverse-engineering an information model from existing data models allows
 commonalities and incompatibilities to be identified, facilitating convergence
 across multiple specifications with similar goals.
 
-## 2.2 Serialization
+## 2.2 Applying an Information Model
+
+A primary application of an IM is in the translation of data into
+and out of in-memory representation and serialized formats for
+storage and transmission. The IM defines the types, organization,
+and validation requirements for the information manipulated by an
+application or protocol. Within an application the IM is
+instantiated through the data structures and types supported by
+the chosen programming language. The IM also guides the creation
+of routines to parse and validate data being input from storage
+or through communications, and to serialize data being output to
+storage or transmission. 
+
+Two general approaches can be used to implement IM-based protocol specifications:
+
+1) Translate the IM to a data-format-specific schema language such as [[XSD](#xsd)],
+[[Relax-NG](#relaxng)], [[JSON Schema](#jsonschema)], [[Protobuf](#proto)], or [[CDDL](#rfc8610)],
+then use format-specific serialization and validation libraries to process data in the selected format.
+Applications use data objects specific to each serialization format.
+
+2) Use the IM directly as a format-independent schema language, using IM serialization and validation libraries
+to process data without a separate schema generation step. Applications use the same IM instances regardless of
+serialization format, making it easy to bridge from one format to another.
+ 
+Implementations based on serialization-specific code interoperate with those using an IM serialization library,
+allowing developers to use either approach. Deriving the processing capabilities
+from the IM ensures consistency as the data is manipulated.
+Figure 2-2 illustrates the concept of applying an IM to manage
+the associated data.
+
+###### Figure 2-2 -- Parsing and Serializing With An IM
+
+<img src="images/parse-serialize.png" alt="Figure 2-2 -- Parsing and Serializing with an IM" width="750" />
+
+The internal representation, illustrated in Figure 2-2 as a graph,
+is guided by rules associated with applying the IM:
+
+ - the internal representation conforms to the IM
+ - each node in the internal representation has an abstract core
+   type from the IM
+ - each core type has associated serialization rules for each
+   external representation format
+
+The [[JADN Specification](#jadn-v20)] defines 12 core types, which
+are described in [Section&nbsp;3.1.2](#312-core-type-examples) of this
+CN. The JADN Specification also defines serialization rules for
+JSON (with three levels of verbosity) and CBOR
+[[RFC 7409](#rfc7049)]. Supporting a new data format ("external
+representation") requires defining serialization rules to
+translate each core type to that data format.
+
+As an example, consider an information element defined as a
+boolean type, which is the simplest core type. The essential
+nature of a boolean is that it is limited to only two values,
+usually identified as "true" and "false". However, the *data*
+representing a Boolean value is determined by serialization
+rules, and could be any of "false" and "true", 0 and 1, "n" and
+"y", etc. In a programming language, many variable types and
+values may evaluate as "true":
+
+ - Non-zero integers
+ - Non-empty strings
+ - Non-empty arrays
+
+An abstract representation of an IM does not capture data types
+and values for a Boolean node, e.g. integer 0 or 37 or string
+"yes". It has only the characteristics of the node type: false or
+true. A JSON representation can use a Boolean type with values
+'false' and 'true', but for efficient serialization might also
+use the JSON number type with values 0 and 1.
+
+## 2.3 Serialization
 
 Information exists in the minds of users (producers and consumers), in the state
 of applications running on systems, and in the data exchanged among
@@ -854,76 +925,6 @@ human readability) may indicate that a serialization that uses
 more data than sufficient is appropriate for particular
 situations.
 
-## 2.3 Applying an Information Model
-
-A primary application of an IM is in the translation of data into
-and out of in-memory representation and serialized formats for
-storage and transmission. The IM defines the types, organization,
-and validation requirements for the information manipulated by an
-application or protocol. Within an application the IM is
-instantiated through the data structures and types supported by
-the chosen programming language. The IM also guides the creation
-of routines to parse and validate data being input from storage
-or through communications, and to serialize data being output to
-storage or transmission. 
-
-Two general approaches can be used to implement IM-based protocol specifications:
-
-1) Translate the IM to a data-format-specific schema language such as [[XSD](#xsd)],
-[[Relax-NG](#relaxng)], [[JSON Schema](#jsonschema)], [[Protobuf](#proto)], or [[CDDL](#rfc8610)],
-then use format-specific serialization and validation libraries to process data in the selected format.
-Applications use data objects specific to each serialization format.
-
-2) Use the IM directly as a format-independent schema language, using IM serialization and validation libraries
-to process data without a separate schema generation step. Applications use the same IM instances regardless of
-serialization format, making it easy to bridge from one format to another.
- 
-Implementations based on serialization-specific code interoperate with those using an IM serialization library,
-allowing developers to use either approach. Deriving the processing capabilities
-from the IM ensures consistency as the data is manipulated.
-Figure 2-2 illustrates the concept of applying an IM to manage
-the associated data.
-
-###### Figure 2-2 -- Parsing and Serializing With An IM
-
-<img src="images/parse-serialize.png" alt="Figure 2-2 -- Parsing and Serializing with an IM" width="750" />
-
-The internal representation, illustrated in Figure 2-2 as a graph,
-is guided by rules associated with applying the IM:
-
- - the internal representation conforms to the IM
- - each node in the internal representation has an abstract core
-   type from the IM
- - each core type has associated serialization rules for each
-   external representation format
-
-The [[JADN Specification](#jadn-v20)] defines 12 core types, which
-are described in [Section&nbsp;3.1.2](#312-core-type-examples) of this
-CN. The JADN Specification also defines serialization rules for
-JSON (with three levels of verbosity) and CBOR
-[[RFC 7409](#rfc7049)]. Supporting a new data format ("external
-representation") requires defining serialization rules to
-translate each core type to that data format.
-
-As an example, consider an information element defined as a
-boolean type, which is the simplest core type. The essential
-nature of a boolean is that it is limited to only two values,
-usually identified as "true" and "false". However, the *data*
-representing a Boolean value is determined by serialization
-rules, and could be any of "false" and "true", 0 and 1, "n" and
-"y", etc. In a programming language, many variable types and
-values may evaluate as "true":
-
- - Non-zero integers
- - Non-empty strings
- - Non-empty arrays
-
-An abstract representation of an IM does not capture data types
-and values for a Boolean node, e.g. integer 0 or 37 or string
-"yes". It has only the characteristics of the node type: false or
-true. A JSON representation can use a Boolean type with values
-'false' and 'true', but for efficient serialization might also
-use the JSON number type with values 0 and 1.
 
 ## 2.4 Information Modeling Tools
 
