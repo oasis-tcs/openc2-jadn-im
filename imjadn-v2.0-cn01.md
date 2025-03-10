@@ -988,18 +988,6 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 ## 3.1 JADN Overview
 
-> NOTE: the text in this section has been updated to align with in-progress
-> changes toward the JADN v2.0 specification, including terminology changes. In
-> particular, the JADN Specification updates:
-> * Replace BaseType with CoreType throughout
-> * Replace Package with Schema as the top-level JADN type 
-> * Replace `info` / `Information` with `meta` / `Metadata` in JADN schema packages
-> * Updates Type and Field Options for greater flexibility and improved alignment with JSON and XML schema terminology
-> * Incorporates Type Options to support the use of inheritance concepts in developing information models
-> 
-> The text and figures in this CN use the JADN v2.0 terminology; this does not
-> reflect alteration of the underlying concepts.
-
 > NOTE: The [[JADN Specification](#jadn-v20)] is the authoritative normative
 > definition of the JADN language. Any discrepancies between that specification
 > and this committee note should be resolved based on the specification.
