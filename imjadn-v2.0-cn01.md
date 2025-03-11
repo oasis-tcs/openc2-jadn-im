@@ -2123,11 +2123,6 @@ created using Markdown or HTML code, and ERDs can be created from
 code for rendering engines such as [[Graphviz](#graphviz)] or
 [[PlantUML](#plantuml)].
 
-##### 3.1.3.2.1  Array "Field Names" in JIDL
-
-
-
-
 ### 3.1.4 Type Definition Nuances
 
 > EDITOR'S NOTE: section heading subject to change
