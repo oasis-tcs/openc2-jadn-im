@@ -128,7 +128,7 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.2.11 MapOf(ktype,vtype)](#31211-mapofktypevtype)
       - [3.1.2.12 Record](#31212-record)
     - [3.1.3 JADN Representations](#313-jadn-representations)
-      - [3.1.3.1 Native JSON Representation](#3131-native-json-representation)
+      - [3.1.3.1 Native JSON Representation](#3131-native-json-representation-normative)
       - [3.1.3.2 Alternative JADN Representations](#3132-alternative-jadn-representations)
         - [3.1.3.2.1  Array "Field Names" in JIDL](#31321--array-field-names-in-jidl)
     - [3.1.4 Type Definition Nuances](#314-type-definition-nuances)
@@ -1016,7 +1016,7 @@ also an array, with three items in an element array and five items in a field
 array. 
 
 These structures are illustrated and explained in more detail 
-in [Section&nbsp;3.1.3.1, Native JSON Representation](#3131-native-json-representation).
+in [Section&nbsp;3.1.3.1, Native JSON Representation](#3131-native-json-representation-normative).
 JADN can be represented in multiple formats, both textual and
 graphical, and automated tooling can transform a JADN model
 between the different representations without loss of
@@ -1115,7 +1115,7 @@ grammar.
 
 Table 3-1 lists the complete set of type options, including the option name,
 type, ID character, and description. Note that the ID characters are the normative form and are used in
-standard JADN representation ([Section&nbsp;3.1.3.1](#3131-native-json-representation)) 
+standard JADN representation ([Section&nbsp;3.1.3.1](#3131-native-json-representation-normative)) 
 when specifying type options. The text labels for the options (e.g., vtype,
 ktype, pattern) are non-normative and intended to be human friendly. Many of the
 Type and Field options labels have JSON Schema and XML Schema equivalents.
@@ -1203,7 +1203,7 @@ in addition to the type options described in [Section&nbsp;3.1.1.2](#3112-typeop
 JADN defines six field options. As with
 the type options described in Section&nbsp;3.1.1.2,
 the ID characters are normative and used in standard JADN representation
-([Section&nbsp;3.1.3.1](#3131-native-json-representation)) when
+([Section&nbsp;3.1.3.1](#3131-native-json-representation-normative)) when
 specifying field options. Table 3-3 lists the JADN field options.
 
 ###### Table 3-3 -- JADN Field Options
@@ -1980,7 +1980,7 @@ Figure 3-7 identifies the various representations.
 
 
 
-#### 3.1.3.1 Native JSON Representation
+#### 3.1.3.1 Native JSON Representation (Normative)
 
 This section illustrates the JSON representations of the Base
 Types described in [Section&nbsp;3.1](#31-jadn-overview). Depictions
@@ -2018,7 +2018,19 @@ field definition in the **Fields** array has five elements:
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
-#### 3.1.3.2 Alternative JADN Representations
+#### 3.1.3.2 JADN Interface Definition Language (JIDL)
+
+#### 3.1.3.3 Property Tables
+
+#### 3.1.3.4 Entity Relationship Diagrams (ERDs)
+
+ - JADN Interface Definition Language (JIDL, Section 7.1)
+ - Property Tables (Section 7.2)
+ - Entity Relationship Diagrams (ERDs, Section 7.3)
+
+
+
+#### 3.1.3.5 Translation Among JADN Representations
 
 Automated tooling makes it straightforward to translate among all
 four of these formats in a lossless manner, and each format has
@@ -2257,7 +2269,7 @@ meaning in these two applications:
    
 For example, the following specifies an Integer type that can be
 assigned values between `1` and `1000`, using both JADN (see
-[Section&nbsp;3.1.3.1](#3131-native-json-representation)) and JIDL
+[Section&nbsp;3.1.3.1](#3131-native-json-representation-normative)) and JIDL
 notation (see 
 [Section&nbsp;3.1.3.2](#3132-alternative-jadn-representations)):
 
@@ -2413,7 +2425,7 @@ packages, along with the associated concept of namespaces.
 
 At the simplest level, a package is a file containing a JADN
 schema in the form of JSON data, as described in 
-[Section&nbsp;3.1.3.1](#3131-native-json-representation).
+[Section&nbsp;3.1.3.1](#3131-native-json-representation-normative).
 A JADN package document may contain a complete JADN schema 
 or a portion of a schema. 
 The file has two top-level components: 
