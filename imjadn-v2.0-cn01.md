@@ -2035,7 +2035,7 @@ defined, for example:
 
 ```
 ARecordType = Record <type options> // an illustrative record type
-  1 fieldName FieldType <field option>  // field description
+  1 fieldName FieldType <field options>  // field description
   ...
 ```  
 
