@@ -2027,7 +2027,7 @@ lossless conversion between the normative JSON format and JIDL is
 straightforward. The basic structure of a simple type in JIDL is:
 
 ```
-TypeName = <Primitive Core Type or IM-defined > <type options> // <description>
+TypeName = <Primitive Core Type or IM-defined type> <type options> // <description>
 ```
 
 Types with fields or items show those indented underneath the TypeName being
