@@ -1100,6 +1100,7 @@ Specification, options are presented in the normative JSON format as text
 strings containing the option ID character concatenated with the option value:
 
 As an example the TypeOption "minLength = 1" is represented as:
+
 ```
 +----+-----------+     Option ID = 0x7b (Left Curley Bracket) = "minLength"
 | ID | Value     |     Value = 1
@@ -1118,7 +1119,10 @@ type, ID character, and description. Note that the ID characters are the normati
 standard JADN representation ([Section&nbsp;3.1.3.1](#3131-native-json-representation-normative)) 
 when specifying type options. The text labels for the options (e.g., vtype,
 ktype, pattern) are non-normative and intended to be human friendly. Many of the
-Type and Field options labels have JSON Schema and XML Schema equivalents.
+Type and Field options labels have JSON Schema and XML Schema equivalents. An
+option whose type is Boolean is True if the option ID appears in a type
+definition. Options whose type is String, Integer, or Number indicate the type
+of information expected as the option's value.
 
 ###### Table 3-1 -- JADN Type Options
 
