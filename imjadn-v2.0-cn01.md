@@ -2045,6 +2045,21 @@ the normative JSON illustrated in Figures 3-5 and 3-6. The Information Modeling
 Examples in [Section 3.3](#33-information-modeling-examples) include numerous
 examples of JIDL representation of a variety of JADN types.
 
+When defining elements of type Array or Enum.ID in JIDL, no field
+names are used. These types are defined using a field ID and a
+TypeName. For documentation and debugging purposes a FieldName
+can be included in the JIDL comment field, immediately following
+the `//` and followed by a double colon delimiter (i.e., `::`).
+For more information see the [[JADN Specification](#jadn-v20)]
+discussion of fields in Compound types (Section&nbsp;4.2.2) and JADN-IDL
+format (section 7.1). Here is a brief JIDL example of this format:
+
+```
+Publication-Data = Array         // who and when of publication
+    1 String          // label:: name of record label 
+    2 String /date    // rel_date:: and when did they let this drop
+```
+
 #### 3.1.3.3 Property Tables
 
 Property tables commonly used in specifications to describe the format of, e.g.,
@@ -2110,20 +2125,6 @@ code for rendering engines such as [[Graphviz](#graphviz)] or
 
 ##### 3.1.3.2.1  Array "Field Names" in JIDL
 
-When defining elements of type Array or Enum.ID in JIDL, no field
-names are used. These types are defined using a field ID and a
-TypeName. For documentation and debugging purposes a FieldName
-can be included in the JIDL comment field, immediately following
-the `//` and followed by a double colon delimiter (i.e., `::`).
-For more information see the [[JADN Specification](#jadn-v20)]
-discussion of fields in Compound types (Section&nbsp;4.2.2) and JADN-IDL
-format (section 7.1). Here is a brief JIDL example of this format:
-
-```
-Publication-Data = Array         // who and when of publication
-    1 String          // label:: name of record label 
-    2 String /date    // rel_date:: and when did they let this drop
-```
 
 
 
