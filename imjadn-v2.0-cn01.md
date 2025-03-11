@@ -1984,7 +1984,7 @@ Figure 3-7 identifies the various representations.
 
 This section illustrates the JSON representations of the Base
 Types described in [Section&nbsp;3.1](#31-jadn-overview). Depictions
-are provided for overall structure of a JADN schema and for 
+are provided for the overall structure of a JADN schema and for 
 each of three ways that the **Fields** array is
 used, depending on the core type used in a particular type
 definition.
@@ -2019,6 +2019,30 @@ field definition in the **Fields** array has five elements:
 
 
 #### 3.1.3.2 JADN Interface Definition Language (JIDL)
+
+JIDL is a compact representation of JADN that is both easily readable, even for
+those with a minimal familiarity with JADN, and easy to edit. JIDL combines each
+type and its options into a single string formatted for readability, and
+lossless conversion between the normative JSON format and JIDL is
+straightforward. The basic structure of a simple type in JIDL is:
+
+```
+TypeName = <Primitive Core Type or IM-defined > <type options> // <description>
+```
+
+Types with fields or items show those indented underneath the TypeName being
+defined, for example:
+
+```
+ARecordType = Record <type options> // an illustrative record type
+  1 fieldName FieldType <field option>  // field description
+  ...
+```  
+
+The field or items definitions in the JIDL convey all of the same information as
+the normative JSON illustrated in Figures 3-5 and 3-6. The Information Modeling
+Examples in [Section 3.3](#33-information-modeling-examples) include numerous
+example of JIDL representation of both all JADN types.
 
 #### 3.1.3.3 Property Tables
 
