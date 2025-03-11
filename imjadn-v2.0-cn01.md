@@ -1137,8 +1137,8 @@ of information expected as the option's value.
 |    pattern   |  String  |   `%`  | Regular expression used to validate a String type                 |
 | minExclusive |  Number  |   `w`  | Minimum numeric/string value, excluding bound                     |
 | maxExclusive |  Number  |   `x`  | Maximum numeric/string value, excluding bound                     |
-| minInclusive |  Number  |   `y`  | Minimum numeric/string value                                      |
-| maxInclusive |  Number  |   `z`  | Maximum numeric/string value                                      |
+| minInclusive |  Number  |   `y`  | Minimum numeric/string value, including bound                     |
+| maxInclusive |  Number  |   `z`  | Maximum numeric/string value, including bound                     |
 |   minLength  |  Integer |   `{`  | Minimum byte or text string length, collection item count         |
 |   maxLength  |  Integer |   `}`  | Maximum byte or text string length, collection item count         |
 |    unique    |  Boolean |   `q`  | ArrayOf instance must not contain duplicate values                |
