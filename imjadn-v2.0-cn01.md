@@ -2069,11 +2069,19 @@ illustrate the use of property table presentation of JADN type definitions.
 
 #### 3.1.3.4 Entity Relationship Diagrams (ERDs)
 
- - JADN Interface Definition Language (JIDL, Section 7.1)
- - Property Tables (Section 7.2)
- - Entity Relationship Diagrams (ERDs, Section 7.3)
+Entity relationship diagrams (ERDs) are used to visually display the structure
+of an IM and can convey varying levels of detail. A normative JADN schema can be
+translated into a diagram-as-code representation such as [[GraphViz](#graphviz)]
+or [[PlantUML](#plantuml)] to generate ERDs, at any of three levels of detail:
 
+- Conceptual: A top-level overview of the IM showing the organization of types
+- Logical: A more detailed illustration of the IM including attributes of its types
+- Informational: A complete illustration with all of the details of the constituent types
 
+The music library example in [Section&nbsp;3.3.1](#331-digital-music-library)
+and the multiple representation examples in
+[Section&nbsp;3.3.3](#333-multiple-representations-example) both provide
+examples of ERDs generated from JADN models at various levels of detail.
 
 #### 3.1.3.5 Translation Among JADN Representations
 
