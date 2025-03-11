@@ -1131,8 +1131,8 @@ of information expected as the option's value.
 |      id      |  Boolean |   `=`  | Items and Fields are denoted by FieldID rather than FieldName     |
 |     vtype    |  String  |   `*`  | Value type for ArrayOf and MapOf                                  |
 |     ktype    |  String  |   `+`  | Key type for MapOf                                                |
-|     enum     |  String  |   `#`  | Extension: Enumerated type derived from a specified type          |
-|    pointer   |  String  |   `>`  | Extension: Enumerated type pointers derived from a specified type |
+|     enum     |  String  |   `#`  | Shortcut: Enumerated type derived from a specified type           |
+|    pointer   |  String  |   `>`  | Shortcut: Enumerated type pointers derived from a specified type  |
 |    format    |  String  |   `/`  | Semantic validation keyword identifying data value boundaries     |
 |    pattern   |  String  |   `%`  | Regular expression used to validate a String type                 |
 | minExclusive |  Number  |   `w`  | Minimum numeric/string value, excluding bound                     |
