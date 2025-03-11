@@ -2042,7 +2042,7 @@ ARecordType = Record <type options> // an illustrative record type
 The field or items definitions in the JIDL convey all of the same information as
 the normative JSON illustrated in Figures 3-5 and 3-6. The Information Modeling
 Examples in [Section 3.3](#33-information-modeling-examples) include numerous
-example of JIDL representation of both all JADN types.
+examples of JIDL representation of a variety of JADN types.
 
 #### 3.1.3.3 Property Tables
 
