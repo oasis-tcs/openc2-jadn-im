@@ -1973,7 +1973,8 @@ in addition to the native JSON format:
  - Property Tables (Section 7.2)
  - Entity Relationship Diagrams (ERDs, Section 7.3)
 
-Figure 3-7 identifies the various representations. 
+Figure 3-7 identifies the various representations. Each of the four
+representations is described below. 
 
 ###### Figure 3-7 -- JADN Representations
 ![JADN Representations](images/JADN-Representations.drawio.png)
@@ -2045,6 +2046,26 @@ Examples in [Section 3.3](#33-information-modeling-examples) include numerous
 examples of JIDL representation of a variety of JADN types.
 
 #### 3.1.3.3 Property Tables
+
+Property tables commonly used in specifications to describe the format of, e.g.,
+database records or protocol data units provide a structured representation that
+is easy to read but less efficient for editing. The JADN Specification describes
+the characteristics of property tables but does not define a normative format
+for them. 
+
+A typical property table for a JADN type with fields will have columns for:
+
+- Identifier (ID), a number
+- Name
+- Type
+- Cardinality constraints
+- Description
+
+where the Type column will also convey field options other than cardinality
+constraints. The multiple representations example in
+[Section&nbsp;3.3.3](#333-multiple-representations-example) and the tables for
+the music library example in [Appendix&nbsp;E.1.3](#e13-music-library-tables)
+illustrate the use of property table presentation of JADN type definitions.
 
 #### 3.1.3.4 Entity Relationship Diagrams (ERDs)
 
