@@ -1158,13 +1158,21 @@ the applicability of type options to JADN core types. The `ArrayOf` and `MapOf`
 types have required options, as indicated. Other type options can be applied to
 individual types where the option is relevant, as indicated by table cells with an "X".
 
-> **TO-DO:** Add clarification text regarding min/maxLength as _size_ options
-> versus min/max Inclusive/Exclusive as _value_ options.
-
-
 ###### Table 3-2 -- Type Option Applicability
 
 ![Table 3-2 -- Type Option Applicability](images/table-3-2.png)
+
+The `min / max` type options fall into two groups:
+
+- `minLength / maxLength` apply to the *size* of a Binary or String type; an
+  instance of either of those types must be of at least the specified
+  `minLength` and not longer than the specified `maxLength`, but these options
+  place no constraints on the value contained in that instance.
+
+- `min / max / Inclusive / Exclusive` apply to the *value* that an instance that
+  a numeric or String type can contain. These type options imply that there is
+  an ordering of possible values for the type they are applied to, but place no
+  constraints on the size of an instance of the type, only its possible values.
 
 #### 3.1.1.3 Item Or Field Definitions
 
