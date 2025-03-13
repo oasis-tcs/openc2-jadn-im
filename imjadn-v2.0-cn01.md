@@ -1667,16 +1667,29 @@ as follows:
 
 ```
 ["License-Data", "Array", [], "Driver's license data based on Real ID requirements", [
-    [1, "last_name", "String", ["[1", "]1"], "family name of license holder"],
-    [2, "given_names", "String", ["[1", "]1"], "given (first and zero or more middle) names of license holder"],
+    [1, "last_name", "String", [], "family name of license holder"],
+    [2, "given_names", "String", [], "given (first and zero or more middle) names of license holder"],
     [3, "issuing_state", "String", ["%[A-Z]{2}"], "State of issuance (simple pattern to match pairs of capital letters)"],
-    [4, "license_number", "String", [], "identification number for license per format used by issuing state"],
+    [4, "license_number", "String", [], "Identification number for license per format used by issuing state"],
     [5, "vision_correction", "Boolean", [], "Is license holder required to use vision correction?"],
-    [6, "exp_date", "Integer", [], "License expiration date as number of days since January 1, 2000 (/date)"],
-    [7, "dob", "Integer", [], "License holder's date-of-birth (/date)"],
+    [6, "dob", "Integer", [], "License holder's date of birth (date)"],
+    [7, "exp_date", "Integer", [], "License expiration date (/date)"],
     [8, "photo", "Binary", [], "Photo of license holder (JPEG format)"]
-  ]
+  ]]
 ```
+
+```
+License-Data = Array  // Driver's license data based on Real ID requirements
+   1  String                      // last_name:: family name of license holder
+   2  String                      // given_names:: given (first and zero or more middle) names of license holder
+   3  String{pattern="[A-Z]{2}"}  // issuing_state:: State of issuance (simple pattern to match pairs of capital letters)
+   4  String                      // license_number:: Identification number for license per format used by issuing state
+   5  Boolean                     // vision_correction:: Is license holder required to use vision correction?
+   6  Integer                     // dob:: License holder's date of birth (/date)
+   7  Integer                     // exp_date:: License expiration date (/date)
+   8  Binary                      // photo:: Photo of license holder (JPEG format)
+```
+
 
 
 ```json
