@@ -1664,56 +1664,60 @@ field options described in [Section&nbsp;3.1.4](#3114-field-options).
 An information item fitting the Array core type would be defined
 as follows:
 
-
 ```
 ["License-Data", "Array", [], "Driver's license data based on Real ID requirements", [
     [1, "last_name", "String", [], "family name of license holder"],
     [2, "given_names", "String", [], "given (first and zero or more middle) names of license holder"],
-    [3, "issuing_state", "String", ["%[A-Z]{2}"], "State of issuance (simple pattern to match pairs of capital letters)"],
-    [4, "license_number", "String", [], "Identification number for license per format used by issuing state"],
+    [3, "issuing_state", "String", ["%[A-Z]{2}"], "State of issuance (pattern matching pairs of capital letters)"],
+    [4, "license_number", "String", [], "License identification number per format used by issuing state"],
     [5, "vision_correction", "Boolean", [], "Is license holder required to use vision correction?"],
-    [6, "dob", "Integer", [], "License holder's date of birth (date)"],
-    [7, "exp_date", "Integer", [], "License expiration date (/date)"],
+    [6, "dob", "Integer", ["/date"], "License holder's date of birth"],
+    [7, "exp_date", "Integer", ["/date"], "License expiration date"],
     [8, "photo", "Binary", [], "Photo of license holder (JPEG format)"]
   ]]
 ```
+
+and the corresponding JIDL representation:
 
 ```
 License-Data = Array  // Driver's license data based on Real ID requirements
    1  String                      // last_name:: family name of license holder
    2  String                      // given_names:: given (first and zero or more middle) names of license holder
-   3  String{pattern="[A-Z]{2}"}  // issuing_state:: State of issuance (simple pattern to match pairs of capital letters)
-   4  String                      // license_number:: Identification number for license per format used by issuing state
+   3  String{pattern="[A-Z]{2}"}  // issuing_state:: State of issuance (pattern matching pairs of capital letters)
+   4  String                      // license_number:: License identification number per format used by issuing state
    5  Boolean                     // vision_correction:: Is license holder required to use vision correction?
-   6  Integer                     // dob:: License holder's date of birth (/date)
-   7  Integer                     // exp_date:: License expiration date (/date)
+   6  Integer /date               // dob:: License holder's date of birth (/date)
+   7  Integer /date               // exp_date:: License expiration date (/date)
    8  Binary                      // photo:: Photo of license holder (JPEG format)
 ```
 
+Note that in the JIDL representationn the Array field names are moved into the
+description field, as described in
+[Section&nbsp;3.1.3.2](#3132-jadn-interface-definition-language-jidl).
 
+JADN provides several semantic validation keywords for the Array type which invoke
+pre-defined Array structures that fit specific information modeling needs. The
+following example shows the `/ipv4-net` keyword, which defines an array that
+conveys the address in CIDR form with a 32-bit binary field and an integer
+prefix.
 
 ```json
   ["IPv4-Net", "Array", ["/ipv4-net"], "IPv4 address and prefix length", [
-    [1, "ipv4_addr", "IPv4-Addr", [], "IPv4 address as defined in [RFC 791]"],
+    [1, "ipv4_addr", "Binary", ["/ipv4-addr], "32-bit IPv4 address as defined in [RFC 791]"],
     [2, "prefix_length", "Integer", ["[0"], "CIDR prefix-length. If omitted, refers to a single host address."]
   ]]
 ```
 
-Note this example also uses a type option for semantic validation
-(the `ipv4-net` keyword). The corresponding JIDL representation
-would be:
+The corresponding JIDL representation would be:
 
 ```
 // Example JIDL definition of an Array datatype with heterogenous elements
 // the IPv4-Net type is an array used to represent a CIDR block
 
 IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
-   1  IPv4-Addr              // ipv4_addr:: IPv4 address as defined in RFC 791
+   1  Binary /ipv4-addr      // ipv4_addr:: 32-bit IPv4 address as defined in RFC 791
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
-
-The example above illustrates the positioning of Array "field names" within the
-JIDL comments, as described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
 
 Table 3-7 lists the *format* options applicable to the Array type:
 
@@ -1725,7 +1729,8 @@ Table 3-7 lists the *format* options applicable to the Array type:
 | ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [[RFC 4291](#rfc4291)] Section 2.3 |
 | tag-uuid     | Array  | Tag portion is a String, UUID portion is a 128-bit (16 byte) binary value |
 
-The `ipv4-net` and `ipv6-net` format options impose several constraints when applied to an Array type:
+The `ipv4-net` and `ipv6-net` format options impose constraints appropriate for
+their respective address type:
 
 * Specifies the Binary element of the Array to be 32 or 128 bits, respectively
 * Constrains the Integer prefix value to a range of 0..32 or 0..128, respectively
@@ -1740,7 +1745,7 @@ The `tag-uuid` format option imposes similar constraints:
 
 The `tag-uuid` format for identifiers is used in the [[STIX](#stix-v21)] and
 [[CACAO](#cacao-security-playbooks-v20)] specifications (see sections 2.9 and
-10.10, respectively).
+10.10, respectively, of those specifications).
 
 #### 3.1.2.9 ArrayOf(vtype)
 
