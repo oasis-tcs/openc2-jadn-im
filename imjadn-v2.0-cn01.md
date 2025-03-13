@@ -1204,6 +1204,8 @@ pertaining to the **Fields** array are as follows:
        or **TypeOption** applicable to the field
     5. **FieldDescription:** a non-normative comment
 
+Note that the JADN Specification constrains the ItemID and FieldID values to be Integers.
+
 The selection of Map or Record for a type definition carries 
 serialization implications, which are discussed in 
 [Section&nbsp;3.1.4.2](#3142-selection-and-use-of-jadn-compound-types).
@@ -1236,7 +1238,7 @@ The application of a type option to a field
 triggers an "anonymous" type definition when the JADN model is processed, as
 described in [Section&nbsp;3.1.4.1](#3141-anonymous-type-definitions).
 
-### 3.1.2 Core Type Examples
+### 3.1.2 Core Type Examples 
 
 This section provides illustrative examples of the JADN core types. For each
 type, the relevant [[JADN Specification](#jadn-v20)] section is identified, the
