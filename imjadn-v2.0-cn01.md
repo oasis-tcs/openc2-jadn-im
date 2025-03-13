@@ -1664,6 +1664,21 @@ field options described in [Section&nbsp;3.1.4](#3114-field-options).
 An information item fitting the Array core type would be defined
 as follows:
 
+
+```
+["License-Data", "Array", [], "Driver's license data based on Real ID requirements", [
+    [1, "last_name", "String", ["[1", "]1"], "family name of license holder"],
+    [2, "given_names", "String", ["[1", "]1"], "given (first and zero or more middle) names of license holder"],
+    [3, "issuing_state", "String", ["%[A-Z]{2}"], "State of issuance (simple pattern to match pairs of capital letters)"],
+    [4, "license_number", "String", [], "identification number for license per format used by issuing state"],
+    [5, "vision_correction", "Boolean", [], "Is license holder required to use vision correction?"],
+    [6, "exp_date", "Integer", [], "License expiration date as number of days since January 1, 2000 (/date)"],
+    [7, "dob", "Integer", [], "License holder's date-of-birth (/date)"],
+    [8, "photo", "Binary", [], "Photo of license holder (JPEG format)"]
+  ]
+```
+
+
 ```json
   ["IPv4-Net", "Array", ["/ipv4-net"], "IPv4 address and prefix length", [
     [1, "ipv4_addr", "IPv4-Addr", [], "IPv4 address as defined in [RFC 791]"],
