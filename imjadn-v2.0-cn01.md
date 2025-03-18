@@ -944,8 +944,12 @@ language should provide:
 
 # 3 Creating Information Models with JADN
 
-This section provides a brief overview of JADN, and describes the use of JADN in
-information modeling. The JADN information modeling language was developed
+This section provides a description of the JADN language and its use in
+information modeling. JADN is a formal description technique that combines type
+constraints from the Unified Modeling Language (UML) with data
+abstraction based on information theory and structural
+organization using results from graph theory.
+The JADN information modeling language was developed
 against specific objectives:
 
  1) Core types represent application-relevant "information", not "data"
@@ -953,11 +957,6 @@ against specific objectives:
  3) Specification uses named type definitions equivalent to property tables
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
-
-JADN is a formal description technique that combines type
-constraints from the Unified Modeling Language (UML) with data
-abstraction based on information theory and structural
-organization using results from graph theory.
 
 A JADN information model is a set of type definitions. Each field in a compound
 type may be associated with another model-defined type, and the set of
