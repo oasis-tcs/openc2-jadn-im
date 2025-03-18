@@ -1319,10 +1319,7 @@ The corresponding JIDL representation would be:
 ```
 
 The *minInclusive/maxInclusive* and *minExclusive/maxExclusive* TypeOptions are used to specify minimum and/or maximum
-values that may be assigned to an Integer type. The JADN Integer primitive type
-encompasses the UML UnlimitedNatural primitive type through the use the *minInclusive*
-Type Option: an Integer with a *minInclusive* of `0` has the same range of values as an
-UnlimitedNatural.
+values that may be assigned to an Integer type.
 
 Table 3-5 lists the *format* options applicable to the Integer type:
 
