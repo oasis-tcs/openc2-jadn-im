@@ -2122,7 +2122,7 @@ A typical property table for a JADN type with fields will have columns for:
 
 - Identifier (ID), a number
 - Name
-- Type
+- Type (with field options)
 - Cardinality constraints
 - Description
 
