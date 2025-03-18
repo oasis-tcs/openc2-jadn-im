@@ -2513,6 +2513,9 @@ likely be registered for multiple classes. By *referencing* students records, on
 record per student need appear in the data set regardless of how many classes
 they are registered for.
 
+While is it common to use a primitive type such as `Integer` for a key, JADN
+permits the use of a compound type to support composite keys.
+
 ### 3.1.6 Schemas, Packages and Namespaces
 
 Section 6 of the [[JADN Specification](#jadn-v20)] introduces the
