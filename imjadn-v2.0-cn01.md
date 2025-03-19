@@ -1226,7 +1226,6 @@ specifying field options. Table 3-3 lists the JADN field options.
 |  minOccurs |   Integer  |   `[`  | Minimum cardinality, default = 1, 0 = optional                |     4.2.2.2           |
 |  maxOccurs |   Integer  |   `]`  | Maximum cardinality, default = 1, 0 = default max, >1 = array |     4.2.2.2           |
 |    tagid   | Enumerated |   `&`  | Field containing an explicit tag for this Choice type         |     4.2.3.4           |
-|     dir    |   Boolean  |   `<`  | Pointer enumeration treats field as a group of items          |                       |
 |     key    |   Boolean  |   `K`  | Field is a primary key for this type                          |     4.2.2.3           |
 |    link    |   Boolean  |   `L`  | Field is a foreign key reference to a type instance           |     4.2.2.3           |
 
