@@ -3573,11 +3573,9 @@ https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=821265
 The OpenC2 TC thanks the following individuals for their
 assistance in the development of this Committee Note:
 
+ - Larry Feldman, HII
  - Kevin Cressman, Praxis Engineering
  - Matthew Roberts, Bestgate Engineering
- - Kaitlyn Hsu, Bestgate Engineering
- - Kouloum Abidji, HII Mission Technologies
- - Jerome Czachor, HII Mission Technologies
 
 ## B.2 Participants
 
