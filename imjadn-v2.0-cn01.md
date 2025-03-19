@@ -3658,7 +3658,7 @@ The following general changes were made:
 - The package "exports" element was renamed to "roots" to better describe its purpose and effect.
 - Type Options have been revised and expanded to support defining both size and content (value) range limits for primitive types
 
-### C.2.3 Type Option Changes
+### C.2.3 Type and Field Option Changes
 
 The following changes were made to JADN type options:
 
@@ -3671,8 +3671,8 @@ The following changes were made to JADN type options:
 - Replaced options:
   - `minv, maxv`: these options have been renamed to `minInclusive, maxInclusive`
   - `minf, maxf`: these floating-point specific options have been replaced by `minInclusive, maxInclusive`
-- Removed option:
-  - `extend`: this option has been deprecated
+- Removed options:
+  - `extend`, `dir`
 
 ### C.2.4 Inheritance
 
