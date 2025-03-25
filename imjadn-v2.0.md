@@ -3638,9 +3638,9 @@ new major version.* Two options are defined for an unspecified `maxOccurs` value
 
 The following general changes were made:
 
-- The "namespaces" prefix list was change from mappings to pairings to provide greater flexibility in managing namespaces and packages.
-- The package "Information" element was renamed to "Metadata" to avoid conflation with information modeling.
-- The package "exports" element was renamed to "roots" to better describe its purpose and effect.
+- The `namespaces` prefix list was change from mappings to pairings to provide greater flexibility in managing namespaces and packages.
+- The package `Information` element was renamed to `Metadata` to avoid conflation with information modeling.
+- The package `exports` element was renamed to `roots` to better describe its purpose and effect.
 - Type Options have been revised and expanded to support defining both size and content (value) range limits for primitive types
 
 ### C.2.3 Type and Field Option Changes
