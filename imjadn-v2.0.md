@@ -2177,7 +2177,7 @@ code for rendering engines such as [[Graphviz](#graphviz)] or
 
 > EDITOR'S NOTE: section heading subject to change
 
-This section describes JADN usage details that add flexibility or simplify the
+This section describes JADN shortcuts and other usage details that add flexibility or simplify the
 development of IMs. The [[JADN Specification](#jadn-v20)] conformance statement
 (section 8) separates the definition of JADN into "Core JADN"
 (sections 3.1, 3.2, 4, and 6) and "JADN Shortcuts" (section&nbsp;3.3).
@@ -3648,14 +3648,15 @@ The following general changes were made:
 The following changes were made to JADN type options:
 
 - New options:
-  - `minExclusive, maxExclusive`: used to specify number ranges that don't include the stated minimum or maximum values
-  - `minLength, maxLength`: a distinct option from `minv, maxv`; with this new option strings can have both `minInclusive` and `minLength`
+  - `minExclusive`, `maxExclusive`, `minInclusive`, `maxInclusive`: used to specify allowable value ranges for instances of types
+  - `minLength, maxLength`: used to specify the allowable size range for a binary or string type and to specify the number of items in a collection type
   - `sequence`: enables specifying that `Map, MapOf, Record` types have a required field order 
   - `combine`: provides greater flexibility for `Choice` types with `oneOf, anyOf, allOf, not` sub-options
-  - `abstract, extends, restricts, final`: options related to defining and controlling types using inheritance
+  - `abstract`, `extends`, `restricts`, `final`: options related to defining and controlling types using inheritance
 - Replaced options:
-  - `minv, maxv`: these options have been renamed to `minInclusive, maxInclusive`
-  - `minf, maxf`: these floating-point specific options have been replaced by `minInclusive, maxInclusive`
+  - `minc, maxc`: these options have been renamed to `minOccurs, maxOccurs`
+  - `minv`, `maxv`: these options have been renamed to `minInclusive, maxInclusive`
+  - `minf`, `maxf`: these floating-point specific options have been replaced by `minInclusive, maxInclusive`
 - Removed options:
   - `extend`, `dir`
 
@@ -3679,14 +3680,7 @@ The `extends` and `restricts` options are complementary: if B `extends` A then
 every instance of A MUST be an instance of B.  If B `restricts` A then every
 instance of B MUST be an instance of A. 
 
-### C.2.5 Field Option Changes
-
-The following changes were made to JADN type options:
-
-- Replaced option:
-  - `minc, maxc`: these options have been renamed to `minOccurs, maxOccurs`
-
-### C.2.6 Format and Validation Options Changes
+### C.2.5 Format and Validation Options Changes
 
 The following changes were made to format and validation options:
 
