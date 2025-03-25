@@ -1244,7 +1244,10 @@ described in [Section&nbsp;3.1.4.1](#3141-anonymous-type-definitions).
 This section provides illustrative examples of the JADN core types. For each
 type, the relevant [[JADN Specification](#jadn-v20)] section is identified, the
 definition from the JADN Specification is quoted, the relevant type options are
-listed, and an example is provided using the JADN and JIDL formats.
+listed, and an example is provided using the JADN and JIDL formats. The
+inheritance type options described in [Section&nbsp;3.1.4.5](#3145-inheritance)
+are applicable to all JADN types and so are not included in the type option
+lists in this section.
 
 #### 3.1.2.1 Boolean
 
@@ -1261,7 +1264,9 @@ listed, and an example is provided using the JADN and JIDL formats.
         A Boolean instance is one of the predefined values *true* and *false*.
       </td>
       <td class="td">
-          <center>None</center>
+        <i>
+          <center>const, default</center>
+        </i>
       </td>
     </tr>
   </tbody>
@@ -1298,7 +1303,7 @@ The corresponding JIDL representation would be:
       </td>
       <td class="td">
         <i>
-          <center>format, minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
+          <center>const, default, format,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
@@ -1366,7 +1371,7 @@ temperature is documented to be degrees Celsius, its type could use the option
       </td>
       <td class="td">
         <i>
-          <center>format, minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
+          <center>const, default, format,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
@@ -1426,7 +1431,7 @@ of [[RFC 8610](#rfc8610)].
       </td>
       <td class="td">
         <i>
-          <center>pattern, const, default, format,<br>minLength, maxLength,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
+          <center>const, default, pattern, format,<br>minLength, maxLength,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
@@ -1501,7 +1506,7 @@ emails, hostnames, etc.
       </td>
       <td class="td">
         <i>
-          <center>format, minLength, maxlength</center>
+          <center>const, default, format,<br>minLength, maxlength</center>
         </i>
       </td>
     </tr>
@@ -1771,7 +1776,7 @@ The `tag-uuid` format for identifiers is used in the [[STIX](#stix-v21)] and
       </td>
       <td class="td">
         <i>
-          <center>vtype, minLength, maxLength, unique, set, unordered</center>
+          <center>vtype, minLength, maxLength,<br>unique, set, unordered</center>
         </i>
       </td>
     </tr>
@@ -1828,7 +1833,7 @@ Track = Record                                    // for each track there's a fi
       </td>
       <td class="td">
         <i>
-          <center>id, minLength, maxLength, sequence</center>
+          <center>id, ordered, sequence,<br>minLength, maxLength</center>
         </i>
       </td>
     </tr>
@@ -1895,7 +1900,7 @@ _maxLength_, as described above in [Section&nbsp;3.1.4.4](#3144-application-of-m
       </td>
       <td class="td">
         <i>
-          <center>ktype, vtype, minLength, maxLength, sequence</center>
+          <center>ktype, vtype, minLength, maxLength, ordered, sequence</center>
         </i>
       </td>
     </tr>
@@ -1966,7 +1971,7 @@ Date = String /date
       </td>
       <td class="td">
         <i>
-          <center>minLength, maxLength, sequence</center>
+          <center>minLength, maxLength, ordered, sequence</center>
         </i>
       </td>
     </tr>
