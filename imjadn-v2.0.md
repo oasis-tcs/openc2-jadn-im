@@ -3649,14 +3649,15 @@ The following changes were made to JADN type options:
 
 - New options:
   - `minExclusive`, `maxExclusive`, `minInclusive`, `maxInclusive`: used to specify allowable value ranges for instances of types
+  - `const`: specifies a pre-set value used as a classifier, equivalent to setting both `minInclusive` and `maxInclusive` to that value.
   - `minLength, maxLength`: used to specify the allowable size range for a binary or string type and to specify the number of items in a collection type
   - `sequence`: enables specifying that `Map, MapOf, Record` types have a required field order 
   - `combine`: provides greater flexibility for `Choice` types with `oneOf, anyOf, allOf, not` sub-options
   - `abstract`, `extends`, `restricts`, `final`: options related to defining and controlling types using inheritance
 - Replaced options:
-  - `minc, maxc`: these options have been renamed to `minOccurs, maxOccurs`
-  - `minv`, `maxv`: these options have been renamed to `minInclusive, maxInclusive`
-  - `minf`, `maxf`: these floating-point specific options have been replaced by `minInclusive, maxInclusive`
+  - `minc`, `maxc`: these options have been renamed to `minOccurs, maxOccurs`
+  - `minv`, `maxv`: these options have been separated into `minInclusive`, `maxInclusive` to specify value ranges and `minLength`, `maxLength` to specify size and item count ranges
+  - `minf`, `maxf`: these floating-point specific options have been replaced by `minInclusive`, `maxInclusive`
 - Removed options:
   - `extend`, `dir`
 
