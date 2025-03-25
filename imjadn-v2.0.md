@@ -1651,7 +1651,7 @@ one of three values can be applied to a Choice using the `combine` option:
 When either the `allOf` or `oneOf` values is used, the order of the fields in
 the Choice is irrelevant as the value of an instance must be compared to all of
 the possible types to determine its validity. In contrast, order is significant
-for the `andOf` option value because the instance values are checked against the
+for the `anyOf` option value because the instance values are checked against the
 Choice fields in the order they are defined. 
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions include the v2.0 enhancements.
