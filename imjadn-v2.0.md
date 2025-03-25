@@ -2249,9 +2249,9 @@ necessary types.
 
 #### 3.1.4.2 Selection and Use of JADN Compound Types
 
-Each of the compound types is a *container*, a named group of related items
+As described in Section 4.2.2 of the JADN Specification, each of the compound types defines a *collection* of related items
 such as the latitude and longitude of a geographic coordinate, or the set of
-properties of an object. In addition to its individual items, every container
+properties of an object. In addition to its individual items, every collection
 has *multiplicity* attributes, including limits on the number of items,
 whether the items have a sequential ordering, and whether duplicate items
 are allowed.
@@ -2270,7 +2270,7 @@ and the decision tree for which compound type to use is shown in Figure 3-8X:
 
 ![Figure 3-8X -- Compound Type Decision Tree](./images/JADN-Compound-Type-Decision-Tree.drawio.png)
 
-For the last information type - containers of individually-defined key:value pairs -
+For the last information type - collections of individually-defined key:value pairs -
 JADN provides two types: Map and Record. The difference is that Record keys have a
 sequential ordering while Map keys do not. Map instances are always serialized as
 key:value pairs, while Record instances may be serialized as either key:value pairs
