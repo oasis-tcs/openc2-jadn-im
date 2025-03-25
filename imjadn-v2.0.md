@@ -1617,9 +1617,9 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
   </tbody>
 </table>
 
-The **Choice** core type is used to represent information
+The **Choice** core type, without any `combine` option is used to represent information
 limited to selecting one type from a defined set of named or
-labeled types. An information item fitting the Choice type would
+labeled types. An information item fitting such a Choice type would
 be defined as follows:
 
 ```json
@@ -1639,6 +1639,20 @@ IdentityType = Choice                // Nature of the referenced identity
    2 organization     Organization   // Identity refers to an organization
    3 tool             Tool           // Identity refers to an automated tool
 ```
+
+The `combine` option provides additional flexibility in applying the **Choice**
+type by specifying a required combination of the field types in the Choice. Any
+one of three values can be applied to a Choice using the `combine` option:
+
+- `A`: value must be an instance of `allOf` the types
+- `O`: value must be an instance of `anyOf` the types, tried in field order until a match is found
+- `X`: value must be an instance of `oneOf` the types and no others
+
+When either the `allOf` or `oneOf` values is used, the order of the fields in
+the Choice is irrelevant as the value of an instance must be compared to all of
+the possible types to determine its validity. In contrast, order is significant
+for the `andOf` option value because the instance values are checked against the
+Choice fields in the order they are defined. 
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions include the v2.0 enhancements.
 
