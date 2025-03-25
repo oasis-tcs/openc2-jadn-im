@@ -25,7 +25,7 @@ https://docs.oasis-open.org/openc2/imjadn/v2.0/imjadn-v2.0.html \
 https://docs.oasis-open.org/openc2/imjadn/v2.0/imjadn-v2.0.pdf
 
 #### Technical Committee:
-[OASIS Open Command and Control (OpenC2) TC](https://www.oasis-open.org/committees/openc2/)
+[OASIS Open Command and Control (OpenC2) TC](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=a34c9baf-48b2-44c5-a567-018dc7d32296)
 
 #### Chairs:
 Duncan Sparrell (duncan@sfractal.com), [sFractal Consulting LLC](http://www.sfractal.com/) \
@@ -68,8 +68,7 @@ Committee (TC) are listed at https://www.oasis-open.org/committees/tc_home.php?w
 
 TC members should send comments on this document to the TC's email list.
 Others should send comments to the TC's public comment list, after
-subscribing to it by following the instructions at the "Send A Comment"
-button on the TC's web page at https://www.oasis-open.org/committees/openc2/.
+subscribing to it by following the instructions on the [openc2-comment](https://groups.oasis-open.org/communities/community-home?communitykey=9ae0f0f9-24b5-44ea-9fe7-018dce260e09) page at OASIS.
 
 #### Citation format:
 When referencing this document the following citation format should be used:
