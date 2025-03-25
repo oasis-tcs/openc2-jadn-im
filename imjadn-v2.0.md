@@ -2264,19 +2264,11 @@ information characteristics to be modeled:
 * All items in ArrayOf and MapOf groups have the same value (and key) type
 * Each item in Array, Map, and Record groups has an individual value (and key) type
 
-and the   tree for which compound type to use is shown in Table 3-8:
-
-###### Table 3-8 -- Compound Type Decision Tree
-
-|                     |      **Value**     |       **Key:Value**       |
-|:-------------------:|:------------------:|:-------------------------:|
-|    **Same Type**    | ArrayOf(ValueType) | MapOf(KeyType, ValueType) |
-| **Individual Type** |        Array       |       Map or Record       |
+and the decision tree for which compound type to use is shown in Figure 3-8X:
 
 ###### Figure 3-8X -- Compound Type Decision Tree
 
 ![Figure 3-8X -- Compound Type Decision Tree](./images/JADN-Compound-Type-Decision-Tree.drawio.png)
-
 
 For the last information type - containers of individually-defined key:value pairs -
 JADN provides two types: Map and Record. The difference is that Record keys have a
