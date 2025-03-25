@@ -64,11 +64,13 @@ This document was last revised or approved by the OASIS Open Command and Control
 The level of approval is also listed above. Check the "Latest stage" location
 noted above for possible later revisions of this document.
 Any other numbered Versions and other technical work produced by the Technical
-Committee (TC) are listed at https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2#technical.
+Committee (TC) are listed on the TC's OASIS home page under 
+[Technical Work Product by the Committee](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=a34c9baf-48b2-44c5-a567-018dc7d32296#technical).
 
 TC members should send comments on this document to the TC's email list.
 Others should send comments to the TC's public comment list, after
-subscribing to it by following the instructions on the [openc2-comment](https://groups.oasis-open.org/communities/community-home?communitykey=9ae0f0f9-24b5-44ea-9fe7-018dce260e09) page at OASIS.
+subscribing to it by following the instructions on the 
+[openc2-comment](https://groups.oasis-open.org/communities/community-home?communitykey=9ae0f0f9-24b5-44ea-9fe7-018dce260e09) page at OASIS.
 
 #### Citation format:
 When referencing this document the following citation format should be used:
