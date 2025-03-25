@@ -2347,8 +2347,8 @@ datatype, and recognizes the idea of generalization ([[UML](#uml)],
 
 Beyond these UML concepts, JADN recognizes that information
 models are directed graphs with a small predefined set of core
-datatypes and only two kinds of relationship: "contain" and
-"reference".
+datatypes and only two kinds of relationship: "collection" and
+"reference" (Section 4.2.2.3 of the JADN Specification).
 
 #### 3.1.4.4 Application of minLength / maxLength
 
@@ -2485,9 +2485,9 @@ field option in `Record G` when referring to such objects; the
 generates the correct key type when extensions are removed by
 JADN tooling.
 
-###### Figure 3-8 -- Contains and References Relationships
+###### Figure 3-8 -- Collection and Reference Relationships
 
-![Contains and References Relationships](images/JADN-contains-references.drawio.png)
+![Collection and Reference Relationships](images/JADN-contains-references.drawio.png)
 
 `Record J` in the lower right portion of the figure shows a self-referential
 `key / link` application. This is a generalization of the example from
