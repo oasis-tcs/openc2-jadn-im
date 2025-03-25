@@ -1142,15 +1142,17 @@ of information expected as the option's value.
 |   minLength  |  Integer |   `{`  | Minimum byte or text string length, collection item count         |
 |   maxLength  |  Integer |   `}`  | Maximum byte or text string length, collection item count         |
 |    unique    |  Boolean |   `q`  | ArrayOf instance must not contain duplicate values                |
+|    ordered   |  Boolean |   `q`  | MapOf, Map, Record instance is an ordered set                     |
 |      set     |  Boolean |   `s`  | ArrayOf instance is unordered and unique                          |
 |   unordered  |  Boolean |   `b`  | ArrayOf instance is unordered and not unique (bag)                |
 |   sequence   |  Boolean |   `o`  | Map, MapOr or Record instance is ordered and unique (ordered set) |
 |    combine   |  Boolean |   `C`  | Choice instance is a logical combination (anyOf, allOf, oneOf)    |
-|   abstract   |  Boolean |   `a`  | Inheritance: abstract, non-instantiatable                         |
-|   restricts  |  Boolean |   `r`  | Inheritance: restriction - subset of referenced type              |
 |    extends   |  Boolean |   `e`  | Inheritance: extension - superset of referenced type              |
+|   restricts  |  Boolean |   `r`  | Inheritance: restriction - subset of referenced type              |
+|   abstract   |  Boolean |   `a`  | Inheritance: abstract, non-instantiatable                         |
 |     final    |  Boolean |   `f`  | Inheritance: final - cannot have subtype                          |
-|    default   |  String  |   `!`  | Default value                                                     |
+|    default   |  String  |   `u`  | Default value                                                     |
+|     const    |  String  |   `v`  | Constant value                                                    |
 
 Detailed explanations of each type option can be found in Table 4-1, Table 4-2 
 and Sections 4.2.3 and 4.2.4 of the [[JADN Specification](#jadn-v20)]. Table 3-2 summarizes
