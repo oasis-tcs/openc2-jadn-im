@@ -10,22 +10,22 @@
 ## 05 March 2025
 
 #### This stage:
+https://docs.oasis-open.org/openc2/imjadn/v2.0/cn01/imjadn-v2.0-cn01.md (Authoritative) \
+https://docs.oasis-open.org/openc2/imjadn/v2.0/cn01/imjadn-v2.0-cn01.html \
+https://docs.oasis-open.org/openc2/imjadn/v2.0/cn01/imjadn-v2.0-cn01.pdf
+
+#### Previous stage of Version 1.0:
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.md (Authoritative) \
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.html \
 https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.pdf
 
-#### Previous stage of Version 1.0:
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cn02/imjadn-v1.0-cn02.md (Authoritative) \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cn02/imjadn-v1.0-cn02.html \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/cn02/imjadn-v1.0-cn02.pdf
-
-#### Latest stage of Version 1.0:
-https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.md (Authoritative) \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html \
-https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.pdf
+#### Latest stage of Version 2.0:
+https://docs.oasis-open.org/openc2/imjadn/v2.0/imjadn-v2.0.md (Authoritative) \
+https://docs.oasis-open.org/openc2/imjadn/v2.0/imjadn-v2.0.html \
+https://docs.oasis-open.org/openc2/imjadn/v2.0/imjadn-v2.0.pdf
 
 #### Technical Committee:
-[OASIS Open Command and Control (OpenC2) TC](https://www.oasis-open.org/committees/openc2/)
+[OASIS Open Command and Control (OpenC2) TC](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=a34c9baf-48b2-44c5-a567-018dc7d32296)
 
 #### Chairs:
 Duncan Sparrell (duncan@sfractal.com), [sFractal Consulting LLC](http://www.sfractal.com/) \
@@ -37,8 +37,8 @@ David Kemp (d.kemp@cyber.nsa.gov), [National Security Agency](https://www.nsa.go
 
 #### Related work:
 This document is related to:
-* _JSON Abstract Data Notation Version 1.0_. Edited by David Kemp.
-Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
+* _JSON Abstract Data Notation Version 2.0_. Edited by David Kemp.
+Latest stage: https://docs.oasis-open.org/openc2/jadn/v2.0/jadn-v2.0.html.
 
 #### Abstract:
 
@@ -50,9 +50,10 @@ of data items at a conceptual level and formally type and validate their essenti
 Essentially it is a UML profile for defining messages and other data structures.
 JADN uses information theory to define logical equivalence, allowing translation
 of essential content across a wide range of representations without loss.
-This Committee Note explains how to construct IMs using JADN, represent them
+This Committee Note provides background on the nature and value of IMs,
+contrasts JADN with other IM languages such as ASN.1,
+and explains how to construct IMs using JADN, represent them
 in various formats such as formal languages and entity-relationship diagrams,
-contrast them with other IM languages such as ASN.1,
 and integrate them with knowledge graphs and concrete data models.
 
 #### Status:
@@ -63,21 +64,22 @@ This document was last revised or approved by the OASIS Open Command and Control
 The level of approval is also listed above. Check the "Latest stage" location
 noted above for possible later revisions of this document.
 Any other numbered Versions and other technical work produced by the Technical
-Committee (TC) are listed at https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=openc2#technical.
+Committee (TC) are listed on the TC's OASIS home page under 
+[Technical Work Product by the Committee](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=a34c9baf-48b2-44c5-a567-018dc7d32296#technical).
 
 TC members should send comments on this document to the TC's email list.
 Others should send comments to the TC's public comment list, after
-subscribing to it by following the instructions at the "Send A Comment"
-button on the TC's web page at https://www.oasis-open.org/committees/openc2/.
+subscribing to it by following the instructions on the 
+[openc2-comment](https://groups.oasis-open.org/communities/community-home?communitykey=9ae0f0f9-24b5-44ea-9fe7-018dce260e09) page at OASIS.
 
 #### Citation format:
 When referencing this document the following citation format should be used:
 
-**[IM-JADN-v1.0]**
+**[IM-JADN-v2.0]**
 
-_Information Modeling with JADN Version 1.0_. Edited by David Lemire and David Kemp. 19 February 2025.
-OASIS Committee Note 03. https://docs.oasis-open.org/openc2/imjadn/v1.0/cn03/imjadn-v1.0-cn03.html.
-Latest stage: https://docs.oasis-open.org/openc2/imjadn/v1.0/imjadn-v1.0.html.
+_Information Modeling with JADN Version 2.0_. Edited by David Lemire and David Kemp. 19 February 2025.
+OASIS Committee Note 01. https://docs.oasis-open.org/openc2/imjadn/v2.0/cn01/imjadn-v2.0-cn01.html.
+Latest stage: https://docs.oasis-open.org/openc2/imjadn/v2.0/imjadn-v2.0.html.
 
 #### Notices
 Copyright &copy; OASIS Open 2025. All Rights Reserved.
@@ -103,8 +105,8 @@ For complete copyright information please see the full Notices section in [Appen
   - [1.2 Terminology](#12-terminology)
 - [2 Creation and Use of Information Models](#2-creation-and-use-of-information-models)
   - [2.1 Information Modeling](#21-information-modeling)
-  - [2.2 Serialization](#22-serialization)
-  - [2.3 Applying an Information Model](#23-applying-an-information-model)
+  - [2.2 Serialization](#23-serialization)
+  - [2.3 Applying an Information Model](#22-applying-an-information-model)
   - [2.4 Information Modeling Tools](#24-information-modeling-tools)
 - [3 Creating Information Models with JADN](#3-creating-information-models-with-jadn)
   - [3.1 JADN Overview](#31-jadn-overview)
@@ -127,7 +129,7 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.2.11 MapOf(ktype,vtype)](#31211-mapofktypevtype)
       - [3.1.2.12 Record](#31212-record)
     - [3.1.3 JADN Representations](#313-jadn-representations)
-      - [3.1.3.1 Native JSON Representation](#3131-native-json-representation)
+      - [3.1.3.1 Native JSON Representation](#3131-native-json-representation-normative)
       - [3.1.3.2 Alternative JADN Representations](#3132-alternative-jadn-representations)
         - [3.1.3.2.1  Array "Field Names" in JIDL](#31321--array-field-names-in-jidl)
     - [3.1.4 Type Definition Nuances](#314-type-definition-nuances)
@@ -162,8 +164,8 @@ For complete copyright information please see the full Notices section in [Appen
 
 **List of Figures**
 
- - [Figure 2-1 -- Serialization / Deserialization](#figure-2-1----serialization--deserialization)
- - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-2----parsing-and-serializing-with-an-im)
+ - [Figure 2-1 -- Serialization / Deserialization](#figure-2-2----serialization--deserialization)
+ - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-1----parsing-and-serializing-with-an-im)
  - [Figure 3-1 -- JADN Type Definition Components](#figure-3-1----jadn-type-definition-components)
  - [Figure 3-2 -- JADN V2 Type Definition Structure](#figure-3-2----jadn-v2-type-definition-structure)
  - [Figure 3-3 -- JADN Schema Top-Level Structure](#figure-3-3----jadn-schema-top-level-structure)
@@ -203,20 +205,15 @@ For complete copyright information please see the full Notices section in [Appen
 
 # 1 Introduction
 
-> NOTE: The JADN Specification is undergoing revision toward version 2.0 of the
-> JADN language. Specific JADN Specification section references in this
-> Committee Note will be updated once the revised specification structure is
-> stabilized.
-
 This Committee Note (CN) describes the nature of information models and the application
-of the *JSON Abstract Data Notation* [[JADN Specification](#jadn-v10)] information modeling language
+of the *JSON Abstract Data Notation* [[JADN Specification](#jadn-v20)] information modeling language
 in the creation and use of IMs.
 
 JADN is a simple standard language for specifying strong typing of messages and
 other data structures using Unified Modeling Language (UML) DataTypes. It
 establishes information equivalence (i.e., consistency of meaning) across
 multiple serialization options to enhance interoperability between systems and
-among systems of systems and type definition options that enable addressing a
+among systems of systems and provides a range of type definition options that enable addressing a
 broad range of information modeling needs.
 
 ## 1.1 Background: Motivation for JADN
@@ -243,8 +240,8 @@ information of interest:
 
 An excerpt from the Digital Music Library example presented in full 
 in [Section&nbsp;3.3.1](#331-digital-music-library)
-helps illustrate. Each music track in the library is described by a collection of metadata
-(present here in JADN Interface Definition Language [JIDL] format):
+helps to illustrate. Each music track in the library is described by a collection of metadata
+(presented here in JADN Interface Definition Language [JIDL] format):
 
 ```
 Track-Info = Record                          // information about the individual audio tracks
@@ -342,8 +339,8 @@ information models in more detail.
 
 ### 1.1.1 Information Models and Data Models
 
-Internet Engineering Task Force (IETF) [[RFC 3444](#rfc3444)],
-"On the Difference between Information Models and Data Models", says:
+"On the Difference between Information Models and Data Models",
+Internet Engineering Task Force (IETF) [[RFC 3444](#rfc3444)], says:
 
 > * The main purpose of an IM is to model managed objects at a conceptual
 level, independent of any specific implementations or protocols used
@@ -365,7 +362,7 @@ encapsulation, as well as the possibility that object definitions
 include methods, are considered to be important. (Section&nbsp;3)
 >
 > 
-> * Compared to IMs, DMs define managed objects at a lower level
+> * Compared to IMs, [Data Models] define managed objects at a lower level
 of abstraction.  They include implementation- and
 protocol-specific details, e.g., rules that explain how to map
 managed objects onto lower-level protocol constructs. (Section 4)
@@ -402,10 +399,10 @@ on storage and transmission details until a clear understanding of purpose has b
 
 ### 1.1.2 The Information Modeling Gap
 
-The IETF, in the _Report from the Internet of Things (IoT)
-Semantic Interoperability (IOTSI) Workshop 2016_
+In the "Report from the Internet of Things (IoT)
+Semantic Interoperability (IOTSI) Workshop 2016"
 [[RFC 8477](https://www.rfc-editor.org/info/rfc8477)],
-attributed challenges in achieving interoperability
+the IETF attributed challenges in achieving interoperability
 to a lack of information modeling:
 
 > One common problem is the lack of an encoding-independent
@@ -413,7 +410,7 @@ to a lack of information modeling:
 > model. Another problem is the strong relationship between data
 > formats and the underlying communication architecture. (Section 1)
 
-[[RFC 8477](https://www.rfc-editor.org/info/rfc8477)] recapitulates RFC 3444 terminology (Section 2):
+Section 2 of the IOTSI Workshop Report recapitulates RFC 3444 terminology:
 
 > - **Information Model** -- An information model defines an
      environment at the highest level of abstraction and
@@ -461,7 +458,7 @@ _information equivalence_.
 ### 1.1.3 Defining Information
 
 Formally, information is the unexpected data, or entropy, contained in a
-document.  When information is serialized for transmission in a canonical
+document, file, or message.  When information is serialized for transmission in a canonical
 format, the additional data used for purposes such as text conversion,
 delimiting, and framing contains no information because it is known *a priori*
 by the sender(s) and receiver(s). If the serialization is non-canonical, any
@@ -498,16 +495,16 @@ Shannon's original article was later published as a book and gave
 rise to the field of Information Theory [[Shannon](#shannon)].
 
 The [[Resource Description Framework (RDF)](#rdf)] 
-defines the concept of lexical-to-value mapping, which
+defines the concept of _lexical-to-value mapping_, which
 provides a precise vocabulary for describing the relationship between
 "data" and information:
 
-> * A **datatype** consists of a **lexical space**, a **value space**, and
-> a **lexical-to-value mapping**.
+> * A *datatype* consists of a *lexical space*, a *value space*, and
+> a *lexical-to-value mapping*.
 > 
-> * The lexical-to-value mapping of a datatype is a set of pairs
-> whose first element belongs to the lexical space and the second element
-> belongs to the value space of the datatype.
+> * The *lexical-to-value* mapping of a datatype is a set of pairs
+> whose first element belongs to the *lexical space* and second element
+> belongs to the *value space* of the datatype.
 
 A small example may help clarify the concept of information. The information
 content of a logical value can be no greater than the smallest lexical value for
@@ -522,7 +519,7 @@ value*.  But different data may be used to represent that information:
   0x6F3139322E3136382E3134312E323430 (16 bytes / 128 bits)
 * Hex value contained in a JSON string: "C0A88DF0" (10 bytes / 80 bits)
 * CBOR byte string: 0x44c0a88df0 (5 bytes / 40 bits).
-* IPv4 packet (unadorned RFC791-style serialization): 0xc0a88df0 (4 bytes / 32
+* IPv4 packet (unadorned RFC 791-style serialization): 0xc0a88df0 (4 bytes / 32
   bits).
 
 \* *Note: all references to information assume independent uniformly-distributed
@@ -573,7 +570,7 @@ application of data and independent of how the data is physically
 stored or accessed. It provides a consistent definition of the
 meanings and interrelationship of the data in order to share,
 integrate, and manage the data.
-
+>
 > The advantage of using an information model is that it can
 provide sharable, stable, and organized structure of
 information requirements for the domain context.
@@ -597,7 +594,7 @@ JADN's approach to precision and ambiguity is summarized in these key principles
 data with zero false positives and zero false negatives. That is,
 an information model is the authoritative definition of essential
 content, and all serialized data is unambiguously one of:
-a) consistent with the model, b) inconsistent with the model, or c) insignificant.
+a)&nbsp;consistent with the model, b)&nbsp;inconsistent with the model, or c)&nbsp;insignificant.
 
  - An application compares logical values in accordance
 with the UML properties defined by their abstract datatype.
@@ -626,9 +623,9 @@ and defines their importance:
 > networked, computer environment that behaves consistently and
 > correctly."
 
- _Report from IoT Semantic Interoperability Workshop 2016_ [[RFC
-8477](#rfc8477)] describes a lack of consistency across Standards
-Developing Organizations (SDOs) in defining application layer
+_Report from IoT Semantic Interoperability Workshop 2016_ [[RFC 8477](#rfc8477)] 
+describes a lack of consistency across Standards
+Development Organizations (SDOs) in defining application layer
 data, attributing it to the lack of an encoding-independent
 standardization of the information represented by that data. The
 JADN information modeling language is intended to address that
@@ -682,18 +679,18 @@ plans to do so.
 ## 1.2 Terminology
 
 This CN uses the definitions contained in the [[JADN
-Specification](#jadn-v10)], section 1.1.1. The following
+Specification](#jadn-v20)], section 1.1.1. The following
 additional terms are defined for this document:
 
-- **Classifier:** The core organizational concept of UML is the
-classifier, used to classify different kinds of values according
-to their features. UML is a complex specification defining many
-kinds of simple and structured classifiers, but the only kind used
-by JADN is the simple Datatype. Given a data value, a datatype
-classifier determines whether the value is an instance of a type,
-indicating both whether the data is valid, and if so, its logical
-type(s). Two data values are equivalent if they are instances of
-the same datatype and their logical values are equal.
+- **Classifier:** The core organizational concept of UML is the classifier, used
+to classify different kinds of values according to their features. UML is a
+complex specification defining many kinds of simple and structured classifiers,
+but the only kind used by JADN is the simple Datatype. Given a data value, a
+datatype classifier determines whether the value is an instance of a type,
+indicating both whether the data is valid, and if so, its logical type(s). Two
+data values are equivalent if they are instances of the same datatype and their
+logical values are equal. (See [[UML Specification](#uml)] section 10.2.3 for
+additional details.)
 
 - **Directed Acyclic Graph:** A directed acyclic graph (DAG) is
   a directed graph with no directed cycles. That is, it consists
@@ -777,86 +774,7 @@ Reverse-engineering an information model from existing data models allows
 commonalities and incompatibilities to be identified, facilitating convergence
 across multiple specifications with similar goals.
 
-## 2.2 Serialization
-
-Information exists in the minds of users (producers and consumers), in the state
-of applications running on systems, and in the data exchanged among
-applications. Serialization converts application information into byte sequences
-(a.k.a. protocol data units, messages, payloads, information exchange packages)
-that can be validated, communicated and stored. De-serialization parses payloads
-back into application state. This can also be stated as serialization is the
-transformation from value space to lexical space, and de-serialization is the
-inverse transformation. Serialization is not a goal in and of itself, it is the
-mechanism by which applications exchange information in order to make it
-available to users. The user cares about
-the information the serialized data represents, not the format by
-which it is moved from system to system. An Automated Teller
-Machine customer cares about their bank balance, and an airline
-customer cares that their tickets are for the proper flights. How
-the information system handles the bits to make that happen is of
-no concern to the customer.
-
-###### Figure 2-1 -- Serialization / Deserialization
-![**Figure 2-1 -- Serialization / Deserialization**](images/model-and-serialization.png)
-
-Serialization and deserialization are intimately connected to the
-chosen format: the same data can be serialized in JSON, CBOR, and
-XML, and while the serialized data will look very different,
-the received information that is recovered by deserialization
-should match the transmitted information. 
-
-JADN defines three kinds of information that have alternate representations:
-1. Primitive types such as dates and IP addresses: text representation or numeric value (formats)
-2. Enumerations: string value or numeric id (Enumerated vocabularies and field identifiers)
-3. Table rows: column name or position (Records)
-
-These alternatives can be grouped into distinct serialization styles:
-
-| Style:       | Verbose<br>repeated name-value pairs | Compact<br>element / property names-values | Concise<br>machine-to-machine optimized |
-| ------------ | ------------------- | ------------------- | ------------------------- |
-| Primitives   | Text Representation | Text Representation | Integer / Binary / Base64 |
-| Enumerations | String              | String              | Integer                   |
-| Table Rows   | Column Name         | Column Position     | Column Position           |
-
-A data format is a serialization style applied to a data language: "Compact JSON",
-"Concise JSON", "Compact XML", "Verbose CBOR", etc. The [[JADN Specification](#jadn-v10)], Section&nbsp;6,
-include serialization rules for four different formats:
-
- - Verbose JSON
- - Compact JSON
- - Concise JSON
- - CBOR
-
-The name "Verbose" here is intended to be descriptive rather than pejorative. An
-information model allows designers to compare Verbose and Compact styles for
-usability, and allows data to be validated and successfully round tripped
-between a readable JSON style and an actually concise CBOR style.
-
-The JADN Specification also describes what is needed to connect JADN
-and IMs defined in JADN to other serialization formats:
-
- - Specify an unambiguous serialized representation for each JADN type
- - Specify how each option applicable to a type affects serialized values
- - Specify any validation requirements defined for that format.
-
-Regardless of format, serialization should be:
-1) **Lossless**, so that information is not modified in transit
-   and all applications have the identical information
-2) **Transparent**, so that information is unaffected by whether
-or how it has been serialized; users should not know or care.
-
-Shannon's information theory defines the relationship between
-information and serialization (coding). Mathematicians
-characterize conditions applied to a mechanism as *necessary*
-and/or *sufficient*: a serialization that omits necessary data
-loses information, one that uses more data than sufficient
-conveys no extra information, and potentially wastes storage or
-communications bandwidth. However, particular requirements (e.g.,
-human readability) may indicate that a serialization that uses
-more data than sufficient is appropriate for particular
-situations.
-
-## 2.3 Applying an Information Model
+## 2.2 Applying an Information Model
 
 A primary application of an IM is in the translation of data into
 and out of in-memory representation and serialized formats for
@@ -879,18 +797,18 @@ Applications use data objects specific to each serialization format.
 2) Use the IM directly as a format-independent schema language, using IM serialization and validation libraries
 to process data without a separate schema generation step. Applications use the same IM instances regardless of
 serialization format, making it easy to bridge from one format to another.
- 
+
 Implementations based on serialization-specific code interoperate with those using an IM serialization library,
 allowing developers to use either approach. Deriving the processing capabilities
 from the IM ensures consistency as the data is manipulated.
-Figure 2-2 illustrates the concept of applying an IM to manage
+Figure 2-1 illustrates the concept of applying an IM to manage
 the associated data.
 
-###### Figure 2-2 -- Parsing and Serializing With An IM
+###### Figure 2-1 -- Parsing and Serializing With An IM
 
-<img src="images/parse-serialize.png" alt="Figure 2-2 -- Parsing and Serializing with an IM" width="750" />
+<img src="images/parse-serialize.png" alt="Figure 2-1 -- Parsing and Serializing with an IM" width="750" />
 
-The internal representation, illustrated in Figure 2-2 as a graph,
+The internal representation, illustrated in Figure 2-1 as a graph,
 is guided by rules associated with applying the IM:
 
  - the internal representation conforms to the IM
@@ -898,14 +816,6 @@ is guided by rules associated with applying the IM:
    type from the IM
  - each core type has associated serialization rules for each
    external representation format
-
-The [[JADN Specification](#jadn-v10)] defines 12 core types, which
-are described in [Section&nbsp;3.1.2](#312-core-type-examples) of this
-CN. The JADN Specification also defines serialization rules for
-JSON (with three levels of verbosity) and CBOR
-[[RFC7409](#rfc7049)]. Supporting a new data format ("external
-representation") requires defining serialization rules to
-translate each core type to that data format.
 
 As an example, consider an information element defined as a
 boolean type, which is the simplest core type. The essential
@@ -926,6 +836,93 @@ and values for a Boolean node, e.g. integer 0 or 37 or string
 true. A JSON representation can use a Boolean type with values
 'false' and 'true', but for efficient serialization might also
 use the JSON number type with values 0 and 1.
+
+## 2.3 Serialization
+
+Information exists in the minds of users (producers and consumers), in the state
+of applications running on systems, and in the data exchanged among
+applications. Serialization converts application information into byte sequences
+(a.k.a. protocol data units, messages, payloads, information exchange packages)
+that can be validated, communicated, and stored. De-serialization parses payloads
+back into application state. This can also be stated as serialization is the
+transformation from value space to lexical space, and de-serialization is the
+inverse transformation. Serialization is not a goal in and of itself, it is the
+mechanism by which applications exchange information in order to make it
+available to users. The user cares about
+the information the serialized data represents, not the format by
+which it is moved from system to system. An Automated Teller
+Machine customer cares about their bank balance, and an airline
+customer cares that their tickets are for the proper flights. How
+the information system handles the bits to make that happen is of
+no concern to the customer.
+
+###### Figure 2-2 -- Serialization / Deserialization
+![**Figure 2-2 -- Serialization / Deserialization**](images/model-and-serialization.png)
+
+Serialization and deserialization are intimately connected to the
+chosen format: the same data can be serialized in JSON, CBOR, and
+XML, and while the serialized data will look very different,
+the received information that is recovered by deserialization
+should match the transmitted information. 
+
+JADN defines three kinds of information that have alternate representations:
+1. Primitive types such as dates and IP addresses: text representation or numeric value (formats)
+2. Enumerations: string value or numeric id (Enumerated vocabularies and field identifiers)
+3. Table rows: column name or position (Records)
+
+These alternatives can be grouped into distinct serialization styles:
+
+|         Style             |           **Verbose**          |              **Compact**             |            **Concise**            |
+|--------------------------:|:------------------------------:|:------------------------------------:|:---------------------------------:|
+| _Serialization<br>Method_ | _repeated<br>name-value pairs_ | _element / property<br>names-values_ | _machine-to-machine<br>optimized_ |
+|                Primitives |       Text Representation      |          Text Representation         |     Integer / Binary / Base64     |
+|              Enumerations |             String             |                String                |              Integer              |
+|                Table Rows |           Column Name          |            Column Position           |          Column Position          |
+
+A data format is a serialization style applied to a data language: "Compact JSON",
+"Concise JSON", "Compact XML", "Verbose CBOR", etc. 
+
+The [[JADN Specification](#jadn-v20)] defines 12 core types, which
+are described in [Section&nbsp;3.1.2](#312-core-type-examples) of this
+CN. The JADN Specification, Section&nbsp;6, also defines serialization rules for
+JSON (with three levels of verbosity) and CBOR
+[[RFC 7409](#rfc7049)]:
+
+ - Verbose JSON
+ - Compact JSON
+ - Concise JSON
+ - CBOR
+
+The name "Verbose" here is intended to be descriptive rather than pejorative. An
+information model allows designers to compare Verbose and Compact styles for
+usability, and allows data to be validated and successfully round tripped
+between a readable JSON style and an actually concise CBOR style.
+
+Supporting a new data format ("external representation") requires defining
+serialization rules to translate each core type to that data format. The JADN
+Specification describes what is needed to connect JADN and IMs defined in JADN
+to other serialization formats:
+
+ - Specify an unambiguous serialized representation for each JADN type
+ - Specify how each option applicable to a type affects serialized values
+ - Specify any validation requirements defined for that format.
+
+Regardless of format, serialization should be:
+1) **Lossless**, so that information is not modified in transit
+   and all applications have the identical information
+2) **Transparent**, so that information is unaffected by whether
+or how it has been serialized; users should not know or care.
+
+Shannon's information theory defines the relationship between
+information and serialization (coding). Mathematicians
+characterize conditions applied to a mechanism as *necessary*
+and/or *sufficient*: a serialization that omits necessary data
+loses information, one that uses more data than sufficient
+conveys no extra information, and potentially wastes storage or
+communications bandwidth. However, particular requirements (e.g.,
+human readability) may indicate that a serialization that uses
+more data than sufficient is appropriate for particular
+situations.
 
 ## 2.4 Information Modeling Tools
 
@@ -948,8 +945,12 @@ language should provide:
 
 # 3 Creating Information Models with JADN
 
-This section provides a brief overview of JADN, and describes the use of JADN in
-information modeling. The JADN information modeling language was developed
+This section provides a description of the JADN language and its use in
+information modeling. JADN is a formal description technique that combines type
+constraints from the Unified Modeling Language (UML) with data
+abstraction based on information theory and structural
+organization using results from graph theory.
+The JADN information modeling language was developed
 against specific objectives:
 
  1) Core types represent application-relevant "information", not "data"
@@ -957,11 +958,6 @@ against specific objectives:
  3) Specification uses named type definitions equivalent to property tables
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
-
-JADN is a formal description technique that combines type
-constraints from the Unified Modeling Language (UML) with data
-abstraction based on information theory and structural
-organization using results from graph theory.
 
 A JADN information model is a set of type definitions. Each field in a compound
 type may be associated with another model-defined type, and the set of
@@ -987,19 +983,7 @@ in [Appendix D.1](#d1-jadn-vs-uml-primitive-data-types).
 
 ## 3.1 JADN Overview
 
-> NOTE: the text in this section has been updated to align with in-progress
-> changes toward the JADN v2.0 specification, including terminology changes. In
-> particular, the JADN Specification updates:
-> * Replace BaseType with CoreType throughout
-> * Replace Package with Schema as the top-level JADN type 
-> * Replace `info` / `Information` with `meta` / `Metadata` in JADN schema packages
-> * Updates Type and Field Options for greater flexibility and improved alignment with JSON and XML schema terminology
-> * Incorporates Type Options to support the use of inheritance concepts in developing information models
-> 
-> The text and figures in this CN use the JADN v2.0 terminology; this does not
-> reflect alteration of the underlying concepts.
-
-> NOTE: The [[JADN Specification](#jadn-v10)] is the authoritative normative
+> NOTE: The [[JADN Specification](#jadn-v20)] is the authoritative normative
 > definition of the JADN language. Any discrepancies between that specification
 > and this committee note should be resolved based on the specification.
 
@@ -1011,8 +995,9 @@ options (field options only apply to compound and union types).
 ###### Figure 3-1 -- JADN Type Definition Components
 ![Figure 3-1 -- JADN Concepts](images/JADN-Type-Definitions.drawio.png)
 
-A JADN schema in its native form is a JSON document with a single object that contains an optional map labeled
-"meta" and an array labeled "types".
+A JADN schema in its native form is a collection of one or more JSON documents,
+each containing a single JSON object consisting of an optional map labeled
+"meta" and an array labeled "types". Each document is called a "package".
 
 * The "meta" map contains metadata about the schema contained in the document,
 including the types exported from this schema and namespace information to
@@ -1031,8 +1016,8 @@ also an array, with three items in an element array and five items in a field
 array. 
 
 These structures are illustrated and explained in more detail 
-in [Section&nbsp;3.1.3.1, Native JSON Representation](#3131-native-json-representation).
-JADN can also be represented in multiple formats, both textual and
+in [Section&nbsp;3.1.3.1, Native JSON Representation](#3131-native-json-representation-normative).
+JADN can be represented in multiple formats, both textual and
 graphical, and automated tooling can transform a JADN model
 between the different representations without loss of
 information. The Native JADN representation as JSON data is
@@ -1042,19 +1027,19 @@ The examples that follow in subsequent sections are typically illustrated using
 both normative JADN (i.e., JSON data) for precision and the JADN Interface
 Definition Language (JIDL) format for its easy readability.
 
-The [[JADN Specification](#jadn-v10)], Section&nbsp;4, defines twelve core types:
+The [[JADN Specification](#jadn-v20)], Section&nbsp;4, defines twelve core types:
 
 | **Primitive** | **Compound** | **Union** |
 |:-------------:|:------------:|:-------------------------:|
-|     Binary    |     Array    |         Enumerated        |
-|    Boolean    |    ArrayOf   |           Choice          |
-|    Integer    |      Map     |                           |
-|     Number    |     MapOf    |                           |
-|     String    |    Record    |                           |
+|    Boolean    |     Array    |         Enumerated        |
+|    Integer    |    ArrayOf   |           Choice          |
+|     Number    |      Map     |                           |
+|     String    |     MapOf    |                           |
+|     Binary    |    Record    |                           |
 
 ### 3.1.1 Type Definitions
 
-Figure 3-2 summarizes the structure of a JADN Type Definition, and identifies
+Figure 3-2 illustrates the components of a JADN Type Definition, and identifies
 values for each of the five elements in the definition. As noted above, a Type
 Definition is an array; the elements must appear in the order listed here. The
 five elements are:
@@ -1068,10 +1053,8 @@ that type.
  4. An optional **TypeDescription** string that provides
     additional information about the type.
  5. For structured compound types and union types, a set
-    of **Item** or **Field** options that define the items that
+    of **Item** or **Field** definitions for the items or fields that
     comprise the compound type.
-
-> **TO-DO:** Determine whether including the ASCII code numbers for type and field options in Figure 3-2 is worthwhile
 
 ###### Figure 3-2 -- JADN V2 Type Definition Structure
 ![JADN V2 Type Definition Structure](images/JADN-Type-Def-Structure.drawio.png)
@@ -1081,10 +1064,10 @@ that type.
 The first two elements of a type definition are the **TypeName** and **CoreType**. 
 A firm requirement of JADN is that a TypeName in a schema must not be a JADN
 predefined (i.e., core) type. There are also name formatting conventions intended to improve
-the consistency and readability of JADN specifications. These
-conventions are defined in JADN but can be overridden within a
-JADN schema if desired (see "Name Formats" in Section&nbsp;3.1.2 of the
-[[JADN Specification](#jadn-v10)]):
+the consistency and readability of JADN schemas. These
+conventions are defined in the JADN Specification but can be overridden within a
+JADN schema package if desired (see "Name Formats" in Section&nbsp;3.1.2 of the
+[[JADN Specification](#jadn-v20)]):
 
  - **TypeNames** are written in PascalCase or Train-Case (using
    hyphens) with an initial upper case letter, and are limited to
@@ -1109,14 +1092,15 @@ The CoreType must be one of the twelve JADN core types previously identified.
 #### 3.1.1.2 TypeOptions
 
 The third element of a JADN type definition is an array of zero or more of the
-TypeOptions as described in Section&nbsp;4.1.4 of the [[JADN
-Specification](#jadn-v10)]. JADN includes options for both _types_ (discussed in
+**TypeOptions** as described in Section&nbsp;4.1.4 of the [[JADN
+Specification](#jadn-v20)]. JADN includes options for both _types_ (discussed in
 this section) and _fields_ (discussed in
 [Section&nbsp;3.1.1.4](#3114-field-options)). As explained in the JADN
 Specification, options are presented in the normative JSON format as text
 strings containing the option ID character concatenated with the option value:
 
 As an example the TypeOption "minLength = 1" is represented as:
+
 ```
 +----+-----------+     Option ID = 0x7b (Left Curley Bracket) = "minLength"
 | ID | Value     |     Value = 1
@@ -1132,52 +1116,65 @@ grammar.
 
 Table 3-1 lists the complete set of type options, including the option name,
 type, ID character, and description. Note that the ID characters are the normative form and are used in
-standard JADN representation ([Section&nbsp;3.1.3.1](#3131-native-json-representation)) 
+standard JADN representation ([Section&nbsp;3.1.3.1](#3131-native-json-representation-normative)) 
 when specifying type options. The text labels for the options (e.g., vtype,
 ktype, pattern) are non-normative and intended to be human friendly. Many of the
-Type and Field options labels have JSON Schema and XML Schema equivalents.
+Type and Field options labels have JSON Schema and XML Schema equivalents. An
+option whose type is Boolean is True if the option ID appears in a type
+definition. Options whose type is String, Integer, or Number indicate the type
+of information expected as the option's value.
 
 ###### Table 3-1 -- JADN Type Options
 
-|  **Option**  | **Type** | **ID** | **Description**                                                   |
+|  **Option**  | **Type** | **ID** | **Description**                                                  |
 |:------------:|:--------:|:------:|-------------------------------------------------------------------|
 |      id      |  Boolean |   `=`  | Items and Fields are denoted by FieldID rather than FieldName     |
 |     vtype    |  String  |   `*`  | Value type for ArrayOf and MapOf                                  |
 |     ktype    |  String  |   `+`  | Key type for MapOf                                                |
-|     enum     |  String  |   `#`  | Extension: Enumerated type derived from a specified type          |
-|    pointer   |  String  |   `>`  | Extension: Enumerated type pointers derived from a specified type |
-|    format    |  String  |   `/`  | Semantic validation keyword                                       |
+|     enum     |  String  |   `#`  | Shortcut: Enumerated type derived from a specified type           |
+|    pointer   |  String  |   `>`  | Shortcut: Enumerated type pointers derived from a specified type  |
+|    format    |  String  |   `/`  | Semantic validation keyword identifying data value boundaries     |
 |    pattern   |  String  |   `%`  | Regular expression used to validate a String type                 |
 | minExclusive |  Number  |   `w`  | Minimum numeric/string value, excluding bound                     |
 | maxExclusive |  Number  |   `x`  | Maximum numeric/string value, excluding bound                     |
-| minInclusive |  Number  |   `y`  | Minimum numeric/string value                                      |
-| maxInclusive |  Number  |   `z`  | Maximum numeric/string value                                      |
+| minInclusive |  Number  |   `y`  | Minimum numeric/string value, including bound                     |
+| maxInclusive |  Number  |   `z`  | Maximum numeric/string value, including bound                     |
 |   minLength  |  Integer |   `{`  | Minimum byte or text string length, collection item count         |
 |   maxLength  |  Integer |   `}`  | Maximum byte or text string length, collection item count         |
 |    unique    |  Boolean |   `q`  | ArrayOf instance must not contain duplicate values                |
+|    ordered   |  Boolean |   `q`  | MapOf, Map, Record instance is an ordered set                     |
 |      set     |  Boolean |   `s`  | ArrayOf instance is unordered and unique                          |
 |   unordered  |  Boolean |   `b`  | ArrayOf instance is unordered and not unique (bag)                |
 |   sequence   |  Boolean |   `o`  | Map, MapOr or Record instance is ordered and unique (ordered set) |
 |    combine   |  Boolean |   `C`  | Choice instance is a logical combination (anyOf, allOf, oneOf)    |
-|   abstract   |  Boolean |   `a`  | Inheritance: abstract, non-instantiatable                         |
-|   restricts  |  Boolean |   `r`  | Inheritance: restriction - subset of referenced type              |
 |    extends   |  Boolean |   `e`  | Inheritance: extension - superset of referenced type              |
+|   restricts  |  Boolean |   `r`  | Inheritance: restriction - subset of referenced type              |
+|   abstract   |  Boolean |   `a`  | Inheritance: abstract, non-instantiatable                         |
 |     final    |  Boolean |   `f`  | Inheritance: final - cannot have subtype                          |
-|    default   |  String  |   `!`  | Default value                                                     |
+|    default   |  String  |   `u`  | Default value                                                     |
+|     const    |  String  |   `v`  | Constant value                                                    |
 
 Detailed explanations of each type option can be found in Table 4-1, Table 4-2 
-and Sections 4.2.3 and 4.2.4 of the [[JADN Specification](#jadn-v10)]. Table 3-2 summarizes
+and Sections 4.2.3 and 4.2.4 of the [[JADN Specification](#jadn-v20)]. Table 3-2 summarizes
 the applicability of type options to JADN core types. The `ArrayOf` and `MapOf`
 types have required options, as indicated. Other type options can be applied to
 individual types where the option is relevant, as indicated by table cells with an "X".
 
-> **TO-DO:** Add clarification text regarding min/maxLength as _size_ options
-> versus min/max Inclusive/Exclusive as _value_ options.
-
-
 ###### Table 3-2 -- Type Option Applicability
 
 ![Table 3-2 -- Type Option Applicability](images/table-3-2.png)
+
+The `min / max` type options fall into two groups:
+
+- `minLength / maxLength` apply to the *size* of a Binary or String type; an
+  instance of either of those types must be of at least the specified
+  `minLength` and not longer than the specified `maxLength`, but these options
+  place no constraints on the value contained in that instance.
+
+- `min / max / Inclusive / Exclusive` apply to the *value* that an instance that
+  a numeric or String type can contain. These type options imply that there is
+  an ordering of possible values for the type they are applied to, but place no
+  constraints on the size of an instance of the type, only its possible values.
 
 #### 3.1.1.3 Item Or Field Definitions
 
@@ -1209,6 +1206,8 @@ pertaining to the **Fields** array are as follows:
        or **TypeOption** applicable to the field
     5. **FieldDescription:** a non-normative comment
 
+Note that the JADN Specification constrains the ItemID and FieldID values to be Integers.
+
 The selection of Map or Record for a type definition carries 
 serialization implications, which are discussed in 
 [Section&nbsp;3.1.4.2](#3142-selection-and-use-of-jadn-compound-types).
@@ -1220,19 +1219,18 @@ in addition to the type options described in [Section&nbsp;3.1.1.2](#3112-typeop
 JADN defines six field options. As with
 the type options described in Section&nbsp;3.1.1.2,
 the ID characters are normative and used in standard JADN representation
-([Section&nbsp;3.1.3.1](#3131-native-json-representation)) when
-specifying field options. Table 3-3 lists the JADN field options.
+([Section&nbsp;3.1.3.1](#3131-native-json-representation-normative)) when
+specifying field options. Table 3-3 lists the JADN **FieldOptions**.
 
 ###### Table 3-3 -- JADN Field Options
 
 | **Option** |  **Type**  | **ID** | **Description**                                               | **JADN Spec Section** |
 |:----------:|:----------:|:------:|---------------------------------------------------------------|:---------------------:|
-|  minOccurs |   Integer  |   `[`  | Minimum cardinality, default = 1, 0 = optional                |                       |
-|  maxOccurs |   Integer  |   `]`  | Maximum cardinality, default = 1, 0 = default max, >1 = array |                       |
-|    tagid   | Enumerated |   `&`  | Field containing an explicit tag for this Choice type         |                       |
-|     dir    |   Boolean  |   `<`  | Pointer enumeration treats field as a group of items          |                       |
-|     key    |   Boolean  |   `K`  | Field is a primary key for this type                          |                       |
-|    link    |   Boolean  |   `L`  | Field is a foreign key reference to a type instance           |                       |
+|  minOccurs |   Integer  |   `[`  | Minimum cardinality, default = 1, 0 = optional                |     4.2.2.2           |
+|  maxOccurs |   Integer  |   `]`  | Maximum cardinality, default = 1, 0 = default max, >1 = array |     4.2.2.2           |
+|    tagid   | Enumerated |   `&`  | Field containing an explicit tag for this Choice type         |     4.2.3.4           |
+|     key    |   Boolean  |   `K`  | Field is a primary key for this type                          |     4.2.2.3           |
+|    link    |   Boolean  |   `L`  | Field is a foreign key reference to a type instance           |     4.2.2.3           |
 
 The type options described in [Section&nbsp;3.1.1.2](#3112-typeoptions) can also apply
 to fields, with the constraint that the type option must be applicable to the
@@ -1241,12 +1239,15 @@ The application of a type option to a field
 triggers an "anonymous" type definition when the JADN model is processed, as
 described in [Section&nbsp;3.1.4.1](#3141-anonymous-type-definitions).
 
-### 3.1.2 Core Type Examples
+### 3.1.2 Core Type Examples 
 
 This section provides illustrative examples of the JADN core types. For each
-type, the relevant [[JADN Specification](#jadn-v10)] section is identified, the
+type, the relevant [[JADN Specification](#jadn-v20)] section is identified, the
 definition from the JADN Specification is quoted, the relevant type options are
-listed, and an example is provided using the JADN and JIDL formats.
+listed, and an example is provided using the JADN and JIDL formats. The
+inheritance type options described in [Section&nbsp;3.1.4.5](#3145-inheritance)
+are applicable to all JADN types and so are not included in the type option
+lists in this section.
 
 #### 3.1.2.1 Boolean
 
@@ -1263,7 +1264,9 @@ listed, and an example is provided using the JADN and JIDL formats.
         A Boolean instance is one of the predefined values *true* and *false*.
       </td>
       <td class="td">
-          <center>None</center>
+        <i>
+          <center>const, default</center>
+        </i>
       </td>
     </tr>
   </tbody>
@@ -1300,7 +1303,7 @@ The corresponding JIDL representation would be:
       </td>
       <td class="td">
         <i>
-          <center>format, minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
+          <center>const, default, format,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
@@ -1323,10 +1326,7 @@ The corresponding JIDL representation would be:
 ```
 
 The *minInclusive/maxInclusive* and *minExclusive/maxExclusive* TypeOptions are used to specify minimum and/or maximum
-value that may be assigned to an Integer type. The JADN Integer primitive type
-encompasses the UML UnlimitedNatural primitive type through the use the *minInclusive*
-Type Option: an Integer with a *minInclusive* of `0` has the same range of values as an
-UnlimitedNatural.
+values that may be assigned to an Integer type.
 
 Table 3-5 lists the *format* options applicable to the Integer type:
 
@@ -1338,15 +1338,22 @@ Table 3-5 lists the *format* options applicable to the Integer type:
 | u\<*n*\> | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1. |
 | d\<*n*\> | Integer | _n_-bit fixed precision integer.                                                          |
 
-The "i\<*n*\>" format option provides flexible scaling for size of an Integer
-type and its associated value range. The "d\<*n*\>" format option allows using
-performing fixed point math against Integer types without rounding errors or
-loss of precision. For example, the Integer option /d3 specifies an integer that
-is scaled by 10^3, providing three decimal digits after a "decimal point".  So
-an integer Time with no option would be seconds before or after the Posix epoch,
-and with /d3 it would be milliseconds, or /d6 would be microseconds. If an
-integer temperature is documented to be degrees Celsius, its type could use the
-option /d1 or /d2 to give precision of tenths or hundredths of a degree.
+These format options provide flexibility in defining Integer types in an IM:
+
+* The "i\<*n*\>" format option provides flexible scaling of the size of an Integer
+type and its associated value range
+* The "u\<*n*\>" format option provides for specifying unsigned (i.e., positive-only)
+  Integers or creating bit fields
+* The "d\<*n*\>" format option allows using performing fixed point math against
+Integer types without rounding errors or loss of precision.
+
+The "d\<*n*\>" option supports arbitrary fixed point representation of
+values. For example, the Integer option `/d3` specifies an integer that is scaled
+by 10^3, providing three decimal digits after a "decimal point".  So an integer
+Time with no option would be seconds before or after the POSIX epoch, and with
+`/d3` it would be milliseconds, or `/d6` would be microseconds. If an integer
+temperature is documented to be degrees Celsius, its type could use the option
+`/d1` or `/d2` to give precision of tenths or hundredths of a degree.
 
 #### 3.1.2.3 Number
 
@@ -1364,7 +1371,7 @@ option /d1 or /d2 to give precision of tenths or hundredths of a degree.
       </td>
       <td class="td">
         <i>
-          <center>format, minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
+          <center>const, default, format,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
@@ -1388,10 +1395,10 @@ The corresponding JIDL representation would be:
 
 > **TO-DO:** should the "only relevant" language be expanded to cite serializing with binary formats?
 
-The *minInclusive* and *maxInclusive* TypeOptions are used to specify a minimum and/or maximum
+The *minInclusive/maxInclusive* and *minExclusive/maxExclusive* TypeOptions are used to specify a minimum and/or maximum
 value that may be assigned to a Number type. Table 3-6 lists the *format*
 options applicable to the Number type. These *format* options are only relevant
-when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&nbsp;6.4:
+when serializing using CBOR; see the [[JADN Specification](#jadn-v20)], Section&nbsp;6.4:
 
 ###### Table 3-6 -- Number Type Format Options
 
@@ -1405,7 +1412,7 @@ when serializing using CBOR; see the [[JADN Specification](#jadn-v10)], Section&
 The parenthetical (#7.2x) references in the above table identify the CBOR major
 type (7) and associated additional information (25/26/27) as defined in the
 Concise Data Definition Language (CDDL) Standard Prelude specified in Apppendix&nbsp;D 
-of [[RFC8610](#rfc8610)].
+of [[RFC 8610](#rfc8610)].
 
 
 #### 3.1.2.4 String
@@ -1424,7 +1431,7 @@ of [[RFC8610](#rfc8610)].
       </td>
       <td class="td">
         <i>
-          <center>pattern, const, default, format,<br>minLength, maxLength,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
+          <center>const, default, pattern, format,<br>minLength, maxLength,<br>minInclusive, maxInclusive,<br>minExclusive, maxExclusive</center>
         </i>
       </td>
     </tr>
@@ -1447,7 +1454,7 @@ The corresponding JIDL representation would be:
 ```
 
 Strings have a large variety of applicable type options that have the potential
-for overlapping meanings. As stated in the [[JADN](#jadn-v10)] specification:
+for overlapping meanings. As stated in the [[JADN Specification](#jadn-v20)]:
 "The pattern, length, and range options are not normally used together, but if
 more than one kind is present in a type definition an instance must satisfy all
 conditions." In particular:
@@ -1495,11 +1502,11 @@ emails, hostnames, etc.
   <tbody>
     <tr>
       <td class="td">
-        A Binary instance is sequence of octets. Binary values are not ordered so range options do not apply.
+        A Binary instance is sequence of octets.
       </td>
       <td class="td">
         <i>
-          <center>format, minLength, maxlength</center>
+          <center>const, default, format,<br>minLength, maxlength</center>
         </i>
       </td>
     </tr>
@@ -1521,6 +1528,7 @@ The corresponding JIDL representation would be:
   FileData = Binary   // Binary contents of file
 ```
 
+Binary values are not ordered so the range Type Options are not applicable. 
 The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
 number of octets for a binary type. If *minLength* equals *maxLength* the size of the
 binary type is fixed. Table 3-4 lists the *format* options applicable to the
@@ -1563,11 +1571,11 @@ information item fitting the Enumerated type would be defined as
 follows:
 
 ```json
-["L4-Protocol", "Enumerated", [], "Value of the protocol (IPv4) or next header (IPv6) field in an IP packet. Any IANA value, [RFC5237]", [
-    [1, "icmp", "Internet Control Message Protocol - [RFC0792]"],
-    [6, "tcp", "Transmission Control Protocol - [RFC0793]"],
-    [17, "udp", "User Datagram Protocol - [RFC0768]"],
-    [132, "sctp", "Stream Control Transmission Protocol - [RFC4960]"]
+["L4-Protocol", "Enumerated", [], "Value of the protocol (IPv4) or next header (IPv6) field in an IP packet. Any IANA value, [RFC 5237]", [
+    [1, "icmp", "Internet Control Message Protocol - [RFC 0792]"],
+    [6, "tcp", "Transmission Control Protocol - [RFC 0793]"],
+    [17, "udp", "User Datagram Protocol - [RFC 0768]"],
+    [132, "sctp", "Stream Control Transmission Protocol - [RFC 4960]"]
 ]]
 ```
 
@@ -1576,11 +1584,11 @@ The corresponding JIDL representation would be:
 ```
 // Example JIDL definition of an Enumerated datatype
 L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
-                          // field in an IP packet. Any IANA value per RFC5237
-   1 icmp                 // Internet Control Message Protocol - [RFC0792]
-   6 tcp                  // Transmission Control Protocol - [RFC0793]
-  17 udp                  // User Datagram Protocol - [RFC0768]
- 132 sctp                 // Stream Control Transmission Protocol - [RFC4960]
+                          // field in an IP packet. Any IANA value per RFC 5237
+   1 icmp                 // Internet Control Message Protocol - [RFC 0792]
+   6 tcp                  // Transmission Control Protocol - [RFC 0793]
+  17 udp                  // User Datagram Protocol - [RFC 0768]
+ 132 sctp                 // Stream Control Transmission Protocol - [RFC 4960]
 ```
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
@@ -1609,9 +1617,9 @@ L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
   </tbody>
 </table>
 
-The **Choice** core type is used to represent information
+The **Choice** core type, without any `combine` option is used to represent information
 limited to selecting one type from a defined set of named or
-labeled types. An information item fitting the Choice type would
+labeled types. An information item fitting such a Choice type would
 be defined as follows:
 
 ```json
@@ -1631,6 +1639,20 @@ IdentityType = Choice                // Nature of the referenced identity
    2 organization     Organization   // Identity refers to an organization
    3 tool             Tool           // Identity refers to an automated tool
 ```
+
+The `combine` option provides additional flexibility in applying the **Choice**
+type by specifying a required combination of the field types in the Choice. Any
+one of three values can be applied to a Choice using the `combine` option:
+
+- `A`: value must be an instance of `allOf` the types
+- `O`: value must be an instance of `anyOf` the types, tried in field order until a match is found
+- `X`: value must be an instance of `oneOf` the types and no others
+
+When either the `allOf` or `oneOf` values is used, the order of the fields in
+the Choice is irrelevant as the value of an instance must be compared to all of
+the possible types to determine its validity. In contrast, order is significant
+for the `anyOf` option value because the instance values are checked against the
+Choice fields in the order they are defined. 
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions include the v2.0 enhancements.
 
@@ -1668,28 +1690,60 @@ field options described in [Section&nbsp;3.1.4](#3114-field-options).
 An information item fitting the Array core type would be defined
 as follows:
 
+```
+["License-Data", "Array", [], "Driver's license data based on Real ID requirements", [
+    [1, "last_name", "String", [], "family name of license holder"],
+    [2, "given_names", "String", [], "given (first and zero or more middle) names of license holder"],
+    [3, "issuing_state", "String", ["%[A-Z]{2}"], "State of issuance (pattern matching pairs of capital letters)"],
+    [4, "license_number", "String", [], "License identification number per format used by issuing state"],
+    [5, "vision_correction", "Boolean", [], "Is license holder required to use vision correction?"],
+    [6, "dob", "Integer", ["/date"], "License holder's date of birth"],
+    [7, "exp_date", "Integer", ["/date"], "License expiration date"],
+    [8, "photo", "Binary", [], "Photo of license holder (JPEG format)"]
+  ]]
+```
+
+and the corresponding JIDL representation:
+
+```
+License-Data = Array  // Driver's license data based on Real ID requirements
+   1  String                      // last_name:: family name of license holder
+   2  String                      // given_names:: given (first and zero or more middle) names of license holder
+   3  String{pattern="[A-Z]{2}"}  // issuing_state:: State of issuance (pattern matching pairs of capital letters)
+   4  String                      // license_number:: License identification number per format used by issuing state
+   5  Boolean                     // vision_correction:: Is license holder required to use vision correction?
+   6  Integer /date               // dob:: License holder's date of birth (/date)
+   7  Integer /date               // exp_date:: License expiration date (/date)
+   8  Binary                      // photo:: Photo of license holder (JPEG format)
+```
+
+Note that in the JIDL representationn the Array field names are moved into the
+description field, as described in
+[Section&nbsp;3.1.3.2](#3132-jadn-interface-definition-language-jidl).
+
+JADN provides several semantic validation keywords for the Array type which invoke
+pre-defined Array structures that fit specific information modeling needs. The
+following example shows the `/ipv4-net` keyword, which defines an array that
+conveys the address in CIDR form with a 32-bit binary field and an integer
+prefix.
+
 ```json
   ["IPv4-Net", "Array", ["/ipv4-net"], "IPv4 address and prefix length", [
-    [1, "ipv4_addr", "IPv4-Addr", [], "IPv4 address as defined in [RFC0791]"],
+    [1, "ipv4_addr", "Binary", ["/ipv4-addr], "32-bit IPv4 address as defined in [RFC 791]"],
     [2, "prefix_length", "Integer", ["[0"], "CIDR prefix-length. If omitted, refers to a single host address."]
   ]]
 ```
 
-Note this example also uses a type option for semantic validation
-(the `ipv4-net` keyword). The corresponding JIDL representation
-would be:
+The corresponding JIDL representation would be:
 
 ```
 // Example JIDL definition of an Array datatype with heterogenous elements
 // the IPv4-Net type is an array used to represent a CIDR block
 
 IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
-   1  IPv4-Addr              // ipv4_addr:: IPv4 address as defined in RFC0791
+   1  Binary /ipv4-addr      // ipv4_addr:: 32-bit IPv4 address as defined in RFC 791
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
-
-The example above illustrates the positioning of Array "field names" within the
-JIDL comments, as described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
 
 Table 3-7 lists the *format* options applicable to the Array type:
 
@@ -1701,9 +1755,10 @@ Table 3-7 lists the *format* options applicable to the Array type:
 | ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [[RFC 4291](#rfc4291)] Section 2.3 |
 | tag-uuid     | Array  | Tag portion is a String, UUID portion is a 128-bit (16 byte) binary value |
 
-The `ipv4-net` and `ipv6-net` format options impose several constraints when applied to an Array type:
+The `ipv4-net` and `ipv6-net` format options impose constraints appropriate for
+their respective address type:
 
-* Specifies that the Binary element of the Array to be 32 or 128 bits, respectively
+* Specifies the Binary element of the Array to be 32 or 128 bits, respectively
 * Constrains the Integer prefix value to a range of 0..32 or 0..128, respectively
 * Specifies that text representations of the type will use CIDR notation
 
@@ -1716,7 +1771,7 @@ The `tag-uuid` format option imposes similar constraints:
 
 The `tag-uuid` format for identifiers is used in the [[STIX](#stix-v21)] and
 [[CACAO](#cacao-security-playbooks-v20)] specifications (see sections 2.9 and
-10.10, respectively).
+10.10, respectively, of those specifications).
 
 #### 3.1.2.9 ArrayOf(vtype)
 
@@ -1735,7 +1790,7 @@ The `tag-uuid` format for identifiers is used in the [[STIX](#stix-v21)] and
       </td>
       <td class="td">
         <i>
-          <center>vtype, minLength, maxLength, unique, set, unordered</center>
+          <center>vtype, minLength, maxLength,<br>unique, set, unordered</center>
         </i>
       </td>
     </tr>
@@ -1792,7 +1847,7 @@ Track = Record                                    // for each track there's a fi
       </td>
       <td class="td">
         <i>
-          <center>id, minLength, maxLength, sequence</center>
+          <center>id, ordered, sequence,<br>minLength, maxLength</center>
         </i>
       </td>
     </tr>
@@ -1816,9 +1871,9 @@ follows:
 
 ```json
   ["Hashes", "Map", ["{1"], "Cryptographic hash values", [
-    [1, "md5", "Binary", ["/x", "{16", "}16", "[0"], "MD5 hash as defined in [RFC1321]"],
-    [2, "sha1", "Binary", ["/x", "{20", "}20", "[0"], "SHA1 hash as defined in [RFC6234]"],
-    [3, "sha256", "Binary", ["/x", "{32", "}32", "[0"], "SHA256 hash as defined in [RFC6234]"]
+    [1, "md5", "Binary", ["/x", "{16", "}16", "[0"], "MD5 hash as defined in [RFC 1321]"],
+    [2, "sha1", "Binary", ["/x", "{20", "}20", "[0"], "SHA1 hash as defined in [RFC 6234]"],
+    [3, "sha256", "Binary", ["/x", "{32", "}32", "[0"], "SHA256 hash as defined in [RFC 6234]"]
   ]]
 ```
 
@@ -1827,9 +1882,9 @@ The corresponding JIDL representation would be:
 ```
 // Example JIDL definition of an Map datatype
 Hashes = Map{1..*}    // Cryptographic hash values
-   1 md5        Binary{16..16} /x optional   // MD5 hash as defined in RFC1321
-   2 sha1       Binary{20..20} /x optional   // SHA1 hash as defined in RFC6234
-   3 sha256     Binary{32..32} /x optional   // SHAs26 hash as defined in RFC6234
+   1 md5        Binary{16..16} /x optional   // MD5 hash as defined in RFC 1321
+   2 sha1       Binary{20..20} /x optional   // SHA1 hash as defined in RFC 6234
+   3 sha256     Binary{32..32} /x optional   // SHAs26 hash as defined in RFC 6234
 ```
 
 In the example above, note the combination of the `{minLength..maxLength}`
@@ -1859,7 +1914,7 @@ _maxLength_, as described above in [Section&nbsp;3.1.4.4](#3144-application-of-m
       </td>
       <td class="td">
         <i>
-          <center>ktype, vtype, minLength, maxLength, sequence</center>
+          <center>ktype, vtype, minLength, maxLength, ordered, sequence</center>
         </i>
       </td>
     </tr>
@@ -1930,7 +1985,7 @@ Date = String /date
       </td>
       <td class="td">
         <i>
-          <center>minLength, maxLength, sequence</center>
+          <center>minLength, maxLength, ordered, sequence</center>
         </i>
       </td>
     </tr>
@@ -1945,9 +2000,9 @@ Record type for the common 5-tuple often used to describe a network connection.
 ```json
   ["IPv4-Connection", "Record", ["{1"], "5-tuple that specifies a tcp/ip connection", [
     [1, "src_addr", "IPv4-Net", ["[0"], "IPv4 source address range"],
-    [2, "src_port", "Port", ["[0"], "Source service per RFC6335"],
+    [2, "src_port", "Port", ["[0"], "Source service per RFC 6335"],
     [3, "dst_addr", "IPv4-Net", ["[0"], "IPv4 destination address range"],
-    [4, "dst_port", "Port", ["[0"], "Destination service per RFC6335"],
+    [4, "dst_port", "Port", ["[0"], "Destination service per RFC 6335"],
     [5, "protocol", "L4-Protocol", ["[0"], "Layer 4 protocol (e.g., TCP)"]
   ]]
   ```
@@ -1960,9 +2015,9 @@ The corresponding JIDL representation would be:
 
 IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tcp/ip connection
    1 src_addr         IPv4-Net optional           // IPv4 source address range
-   2 src_port         Port optional               // Source service per RFC6335
+   2 src_port         Port optional               // Source service per RFC 6335
    3 dst_addr         IPv4-Net optional           // IPv4 destination address range
-   4 dst_port         Port optional               // Destination service per RFC6335
+   4 dst_port         Port optional               // Destination service per RFC 6335
    5 protocol         L4-Protocol optional        // Layer 4 protocol (e.g., TCP)
 ```
 
@@ -1982,11 +2037,26 @@ useful for documentation. This section describes the JSON content
 used for each of the JADN basic types, and then illustrates the
 other representations using a simple example.
 
-#### 3.1.3.1 Native JSON Representation
+The [[JADN Specification](#jadn-v20)] identifies three presentation formats
+in addition to the native JSON format:
+
+ - JADN Interface Definition Language (JIDL, Section 7.1)
+ - Property Tables (Section 7.2)
+ - Entity Relationship Diagrams (ERDs, Section 7.3)
+
+Figure 3-7 identifies the various representations. Each of the four
+representations is described below. 
+
+###### Figure 3-7 -- JADN Representations
+![JADN Representations](images/JADN-Representations.drawio.png)
+
+
+
+#### 3.1.3.1 Native JSON Representation (Normative)
 
 This section illustrates the JSON representations of the Base
 Types described in [Section&nbsp;3.1](#31-jadn-overview). Depictions
-are provided for overall structure of a JADN schema and for 
+are provided for the overall structure of a JADN schema and for 
 each of three ways that the **Fields** array is
 used, depending on the core type used in a particular type
 definition.
@@ -1997,14 +2067,14 @@ as described in [Section&nbsp;3.1](#31-jadn-overview).
 ###### Figure 3-3 -- JADN Schema Top-Level Structure
 ![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
 
-Figure 3-4 illustrates the structure of JADN for defining any
+Figure 3-4 illustrates the JADN structure for defining any
 Primitive **CoreType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
 ###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
 ![JADN for Primitive, ArrayOf, MapOf Types](images/JADN-primitive-json.drawio.png)
 
-Figure 3-5 illustrates the structure of JADN for defining an
+Figure 3-5 illustrates the JADN structure for defining an
 Enumerated **CoreType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
@@ -2012,7 +2082,7 @@ Enumerated **CoreType**; for enumerations each item definition in the
 ![JADN for Enumerated Types](images/JADN-with-items-json.drawio.png)
 
 
-Figure 3-6 illustrates the structure of JADN for defining a
+Figure 3-6 illustrates the JADN structure for defining a
 **CoreType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
@@ -2020,19 +2090,86 @@ field definition in the **Fields** array has five elements:
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
-#### 3.1.3.2 Alternative JADN Representations
+#### 3.1.3.2 JADN Interface Definition Language (JIDL)
 
-The [[JADN Specification](#jadn-v10)] identifies three presentation formats
-in addition to the native JSON format:
+JIDL is a compact representation of JADN that is both easily readable, even for
+those with a minimal familiarity with JADN, and easy to edit. JIDL combines each
+type and its options into a single string formatted for readability, and
+lossless conversion between the normative JSON format and JIDL is
+straightforward. The basic structure of a simple type in JIDL is:
 
- - JADN Interface Definition Language (JIDL, Section 7.1)
- - Property Tables (Section 7.2)
- - Entity Relationship Diagrams (ERDs, Section 7.3)
+```
+TypeName = <Primitive Core Type or IM-defined type> <type options> // <description>
+```
 
-Figure 3-7 identifies the various representations. 
+Types with fields or items show those indented underneath the TypeName being
+defined, for example:
 
-###### Figure 3-7 -- JADN Representations
-![JADN Representations](images/JADN-Representations.drawio.png)
+```
+ARecordType = Record <type options> // an illustrative record type
+  1 fieldName FieldType <field options>  // field description
+  ...
+```  
+
+The field or items definitions in the JIDL convey all of the same information as
+the normative JSON illustrated in Figures 3-5 and 3-6. The Information Modeling
+Examples in [Section 3.3](#33-information-modeling-examples) include numerous
+examples of JIDL representation of a variety of JADN types.
+
+When defining elements of type Array or Enum.ID in JIDL, no field
+names are used. These types are defined using a field ID and a
+TypeName. For documentation and debugging purposes a FieldName
+can be included in the JIDL comment field, immediately following
+the `//` and followed by a double colon delimiter (i.e., `::`).
+For more information see the [[JADN Specification](#jadn-v20)]
+discussion of fields in Compound types (Section&nbsp;4.2.2) and JADN-IDL
+format (section 7.1). Here is a brief JIDL example of this format:
+
+```
+Publication-Data = Array         // who and when of publication
+    1 String          // label:: name of record label 
+    2 String /date    // rel_date:: and when did they let this drop
+```
+
+#### 3.1.3.3 Property Tables
+
+Property tables commonly used in specifications to describe the format of, e.g.,
+database records or protocol data units provide a structured representation that
+is easy to read but less efficient for editing. The JADN Specification describes
+the characteristics of property tables but does not define a normative format
+for them. 
+
+A typical property table for a JADN type with fields will have columns for:
+
+- Identifier (ID), a number
+- Name
+- Type (with field options)
+- Cardinality constraints
+- Description
+
+where the Type column will also convey field options other than cardinality
+constraints. The multiple representations example in
+[Section&nbsp;3.3.3](#333-multiple-representations-example) and the tables for
+the music library example in [Appendix&nbsp;E.1.3](#e13-music-library-tables)
+illustrate the use of property table presentation of JADN type definitions.
+
+#### 3.1.3.4 Entity Relationship Diagrams (ERDs)
+
+Entity relationship diagrams (ERDs) are used to visually display the structure
+of an IM and can convey varying levels of detail. A normative JADN schema can be
+translated into a diagram-as-code representation such as [[GraphViz](#graphviz)]
+or [[PlantUML](#plantuml)] to generate ERDs, at any of three levels of detail:
+
+- Conceptual: A top-level overview of the IM showing the organization of types
+- Logical: A more detailed illustration of the IM including attributes of its types
+- Informational: A complete illustration with all of the details of the constituent types
+
+The music library example in [Section&nbsp;3.3.1](#331-digital-music-library)
+and the multiple representation examples in
+[Section&nbsp;3.3.3](#333-multiple-representations-example) both provide
+examples of ERDs generated from JADN models at various levels of detail.
+
+#### 3.1.3.5 Translation Among JADN Representations
 
 Automated tooling makes it straightforward to translate among all
 four of these formats in a lossless manner, and each format has
@@ -2057,38 +2194,15 @@ created using Markdown or HTML code, and ERDs can be created from
 code for rendering engines such as [[Graphviz](#graphviz)] or
 [[PlantUML](#plantuml)].
 
-##### 3.1.3.2.1  Array "Field Names" in JIDL
-
-When defining elements of type Array or Enum.ID in JIDL, no field
-names are used. These types are defined using a field ID and a
-TypeName. For documentation and debugging purposes a FieldName
-can be included in the JIDL comment field, immediately following
-the `//` and followed by a double colon delimiter (i.e., `::`).
-For more information see the [[JADN Specification](#jadn-v10)]
-discussion of fields in Compound types (Section&nbsp;4.2.2) and JADN-IDL
-format (section 7.1). Here is a brief JIDL example of this format:
-
-```
-Publication-Data = Array         // who and when of publication
-    1 String          // label:: name of record label 
-    2 String /date    // rel_date:: and when did they let this drop
-```
-
-
-
 ### 3.1.4 Type Definition Nuances
 
 > EDITOR'S NOTE: section heading subject to change
 
-This section describes JADN usage details that add flexibility or simplify the
-development of IMs.
-
-#### 3.1.4.1 "Anonymous" Type Definitions
-
-The [[JADN Specification](#jadn-v10)] conformance statement
+This section describes JADN shortcuts and other usage details that add flexibility or simplify the
+development of IMs. The [[JADN Specification](#jadn-v20)] conformance statement
 (section 8) separates the definition of JADN into "Core JADN"
-(sections 3.1, 3.2, 4, and 6) and "JADN Shortcuts" (section
-3.3). Section&nbsp;3.3 explains that shortcuts "make type definitions
+(sections 3.1, 3.2, 4, and 6) and "JADN Shortcuts" (section&nbsp;3.3).
+Section&nbsp;3.3 explains that shortcuts "make type definitions
 more compact or support the Don't Repeat Yourself (DRY) software
 design principle. Shortcuts are syntactic sugar that can be
 replaced by core definitions without changing their meaning."
@@ -2098,14 +2212,18 @@ the level of effort required by a JADN schema author and can make
 a schema more compact and understandable.
 
 The JADN Specification also defines a "system character" (by
-default the period, `.`) and in the Name Formats (section
-3.1.2) reserves the use of that character to automated tooling,
+default the period, `.`) and in the Name Formats (section&nbsp;3.1.2)
+reserves the use of that character to automated tooling,
 saying "Schema authors should not create TypeNames containing the
 System character, but schema processing tools may do so".
 
 Examples of the use of shortcuts and the role of the system
 character are provided in sections 3.3.1, 3.3.2, and 3.3.2 of the
-JADN Specification. As noted in [Section&nbsp;3.1.1.4](#3114-field-options), 
+JADN Specification.
+
+#### 3.1.4.1 "Anonymous" Type Definitions
+
+As noted in [Section&nbsp;3.1.1.4](#3114-field-options), 
 JADN Type Options can be applied to
 fields in compound types, but as explained in Section&nbsp;3.3.1 of
 the JADN Specification, this is an shortcut that leads to the
@@ -2115,15 +2233,17 @@ tooling. The example provided there is:
 ```
 Member = Record
   1 name         String
-  2 email        String /email
+  2 email        String /email   // email is a type option for String types
 ```
-Unfolding replaces this with:
+
+Expanding replaces this with:
+
 ```
 Member = Record
   1 name         String
-  2 email        Member.email
+  2 email        Member.email   // email is a type option for String types
     
-Member.email = String /email    // Tool-generated type definition.
+Member.email = String /email    // email type option triggers tool-generated type definition.
 ```
 The type definition for `Member.email` was generated by the
 tooling, as both noted in the comment and indicated by the
@@ -2150,9 +2270,9 @@ necessary types.
 
 #### 3.1.4.2 Selection and Use of JADN Compound Types
 
-Each of the compound types is a *container*, a named group of related items
+As described in Section 4.2.2 of the JADN Specification, each of the compound types defines a *collection* of related items
 such as the latitude and longitude of a geographic coordinate, or the set of
-properties of an object. In addition to its individual items, every container
+properties of an object. In addition to its individual items, every collection
 has *multiplicity* attributes, including limits on the number of items,
 whether the items have a sequential ordering, and whether duplicate items
 are allowed.
@@ -2165,16 +2285,13 @@ information characteristics to be modeled:
 * All items in ArrayOf and MapOf groups have the same value (and key) type
 * Each item in Array, Map, and Record groups has an individual value (and key) type
 
-and the decision tree for which compound type to use is shown in Table 3-8:
+and the decision tree for which compound type to use is shown in Figure 3-8X:
 
-###### Table 3-8 -- Compound Type Decision Tree
+###### Figure 3-8X -- Compound Type Decision Tree
 
-|                     |      **Value**     |       **Key:Value**       |
-|:-------------------:|:------------------:|:-------------------------:|
-|    **Same Type**    | ArrayOf(ValueType) | MapOf(KeyType, ValueType) |
-| **Individual Type** |        Array       |       Map or Record       |
+![Figure 3-8X -- Compound Type Decision Tree](./images/JADN-Compound-Type-Decision-Tree.drawio.png)
 
-For the last information type - containers of individually-defined key:value pairs -
+For the last information type - collections of individually-defined key:value pairs -
 JADN provides two types: Map and Record. The difference is that Record keys have a
 sequential ordering while Map keys do not. Map instances are always serialized as
 key:value pairs, while Record instances may be serialized as either key:value pairs
@@ -2243,8 +2360,8 @@ datatype, and recognizes the idea of generalization ([[UML](#uml)],
 
 Beyond these UML concepts, JADN recognizes that information
 models are directed graphs with a small predefined set of core
-datatypes and only two kinds of relationship: "contain" and
-"reference".
+datatypes and only two kinds of relationship: "collection" and
+"reference" (Section 4.2.2.3 of the JADN Specification).
 
 #### 3.1.4.4 Application of minLength / maxLength
 
@@ -2264,7 +2381,7 @@ meaning in these two applications:
    
 For example, the following specifies an Integer type that can be
 assigned values between `1` and `1000`, using both JADN (see
-[Section&nbsp;3.1.3.1](#3131-native-json-representation)) and JIDL
+[Section&nbsp;3.1.3.1](#3131-native-json-representation-normative)) and JIDL
 notation (see 
 [Section&nbsp;3.1.3.2](#3132-alternative-jadn-representations)):
 
@@ -2307,7 +2424,7 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
 
 JADN supports inheritance in information modeling, providing for class /
 subclass relationships. There are four type options to manage the class
-relationships among types, which are defined in Section 4.2.4 of [[JADN](#jadn-v10)].
+relationships among types, which are defined in Section 4.2.4 of [[JADN Specification](#jadn-v20)].
 
 - `abstract`: The `abstract` option indicates that a type definition is only a
   basis for defining sub-classes and should never be instantiated in data. 
@@ -2327,7 +2444,7 @@ relationships among types, which are defined in Section 4.2.4 of [[JADN](#jadn-v
   defined based on it.
 
 Type inheritance is static and can be applied both to primitive and compound
-types. However, as explained in the [JADNv2] specification, there are other
+types. However, as explained in the JADN Specification, there are other
 mechanisms applicable to primitive and some compound types to achieve equivalent
 results. The primary applications on inheritance identified in the specification are: 
 
@@ -2340,11 +2457,13 @@ geography markup language concepts can be found in [Section&nbsp;3.3.5](#335-inh
 ### 3.1.5 Reference Relationships: Keys and Links
 
 As explained in [Section&nbsp;3](#3-creating-information-models-with-jadn), JADN recognizes
-only two kinds of relationship: "contain" and "reference". The
-relationships shown in previous examples are all of the "contain"
-variety. The "reference" relationship type applies either when using the
-"contain" relationship would create a cycle or loop in the graph
-of the information model or when using "contain" relationships would create data duplication.
+only two kinds of relationship: "collections" and "references". The
+relationships shown in previous examples are all of the "collection"
+variety. The "reference" relationship type applies when using a "collection" relationship would either 
+
+  1) create a cycle or loop in the graph of the information model, or 
+  2) create data duplication.
+
 An example of cycle creation might occur, for
 example, in an IM for an SBOM format: because software components
 often incorporate other components a recursive situation arises
@@ -2358,13 +2477,13 @@ Component - Record
 ```
 
 When recursion is used in programming it is terminated by a base
-condition, but an IM has no corresponding concept to terminate
+condition, but as a declarative specification an IM has no corresponding concept to terminate
 recursion. JADN uses "reference" relationships in situations
 where cycles occur in order to address this need. The method to
 define reference relationships is explained in Section&nbsp;3.3.6,
-*Links*, of the [[JADN Specification](#jadn-v10)]. 
+*Links*, of the [[JADN Specification](#jadn-v20)]. 
 
-Figure 3-8 illustrates permissible and impermissible "contains"
+Figure 3-8 illustrates permissible and impermissible "collection"
 relationships, and the use of the `key` and `link` keywords
 combined with an identifier field to establish permissible
 "reference" relationships. The green lines show permissible
@@ -2379,9 +2498,9 @@ field option in `Record G` when referring to such objects; the
 generates the correct key type when extensions are removed by
 JADN tooling.
 
-###### Figure 3-8 -- Contains and References Relationships
+###### Figure 3-8 -- Collection and Reference Relationships
 
-![Contains and References Relationships](images/JADN-contains-references.drawio.png)
+![Collection and Reference Relationships](images/JADN-contains-references.drawio.png)
 
 `Record J` in the lower right portion of the figure shows a self-referential
 `key / link` application. This is a generalization of the example from
@@ -2407,9 +2526,12 @@ likely be registered for multiple classes. By *referencing* students records, on
 record per student need appear in the data set regardless of how many classes
 they are registered for.
 
+While is it common to use a primitive type such as `Integer` for a key, JADN
+permits the use of a compound type to support composite keys.
+
 ### 3.1.6 Schemas, Packages and Namespaces
 
-Section 6 of the [[JADN Specification](#jadn-v10)] introduces the
+Section 6 of the [[JADN Specification](#jadn-v20)] introduces the
 use of packages as the mechanism for organizing JADN schemas.
 This section provides additional information on the use of
 packages, along with the associated concept of namespaces.
@@ -2418,7 +2540,7 @@ packages, along with the associated concept of namespaces.
 
 At the simplest level, a package is a file containing a JADN
 schema in the form of JSON data, as described in 
-[Section&nbsp;3.1.3.1](#3131-native-json-representation).
+[Section&nbsp;3.1.3.1](#3131-native-json-representation-normative).
 A JADN package document may contain a complete JADN schema 
 or a portion of a schema. 
 The file has two top-level components: 
@@ -2438,10 +2560,10 @@ library package), and a schema might also import one or more
 packages from a different schema (e.g., to use information
 objects defined in the official schema for a standard).
 
-The `exports` portion of the package information is
+The `roots` portion of the package information is
 informational; JADN packages aren't intended to enforce a
 rigorous distinction between public and private types
-distinction. The `exports` list provides a means for schema
+distinction. The `roots` list provides a means for schema
 authors to indicate the intended public types, and a basis for
 JADN schema tools to detect discrepancies.
 
@@ -2469,11 +2591,11 @@ Metadata = Map                     // Information about this package
    8 namespaces   Namespaces optional // Referenced packages
      ...
 
-Namespaces = Choice(anyOf)            // anyOf v1.1 or v1.0, in priority order
-   1  NsArr                           // ns_arr:: [prefix, namespace] syntax - v1.1
+Namespaces = Choice(anyOf)            // anyOf v2.0 or v1.0, in priority order
+   1  NsArr                           // ns_arr:: [prefix, namespace] syntax - v2.0
    2  NsObj                           // ns_obj:: {prefix: namespace} syntax - v1.0
 
-NsArr = ArrayOf(PrefixNs){1..*}       // Type references to other packages - v1.1
+NsArr = ArrayOf(PrefixNs){1..*}       // Type references to other packages - v2.0
 
 PrefixNs = Array                      // Prefix corresponding to a namespace IRI
    1  NSID                            // prefix::
@@ -2489,7 +2611,7 @@ Namespace Identifiers (`NSID`) with the `Namespace` other packages declare for
 themselves. A Namespace Identifier (NSID) is, by default, a 1-8 character string
 beginning with a letter and containing only letters and numbers (the default
 formatting can be overridden by inserting an alternative definition into a JADN
-schema's `Metadata` map's `config` section). The JADN v1.1 `NsAr / PrefixNS` structure enables multiple schema
+schema's `Metadata` map's `config` section). The JADN v2.0 `NsAr / PrefixNS` structure enables multiple schema
 packages to be mapped to one NSID to group all of the types defined in that
 collection of packages into a single namespace. For any array element where the
 `NSID` field is blank, the types in the referenced package are made available in
@@ -2534,7 +2656,7 @@ collection, along with the OpenC2 Language Specification:
 "meta": {
 	  "package": "http://acme.com/schemas/device-base/pacf/v3",
 	  "title": "OpenC2 base device schema for the PACE collection service and packet filter",
-	  "exports": ["OpenC2-Command", "OpenC2-Response"],
+	  "roots": ["OpenC2-Command", "OpenC2-Response"],
 	  "namespaces": {
 	   "ls": "http://docs.oasis-open.org/openc2/ns/types/v2.0",
 	   "slpf": "http://docs.oasis-open.org/openc2/ns/ap-slpf/v2.0",
@@ -2643,7 +2765,9 @@ modeling and the application of JADN. The example IMs are:
    described in [Section 3.1.3](#313-jadn-representations)
  - A calendar event model: an example of developing a JADN model from an existing
    JSON schema
- - An example applying the new JADN v2.0 inheritance features
+ - An example applying the new JADN v2.0 inheritance features, loosely inspired
+by the [[CityGML](#citygml)] and [[CityJSON](#cityjson)] geographic modeling
+languages
 
 These examples use a mixture of the various JADN representation formats
 described in [Section&nbsp;3.1.3](#313-jadn-representations), and the university
@@ -2682,7 +2806,7 @@ The JADN package for the music library IM provides basic metadata:
               each track. It is modeled on the types of library data 
               maintained by common websites and music file tag editors."
      license: "CC0-1.0"
-     exports: ["Library"]
+     roots: ["Library"]
 ```
 
 At the top level, the library is map of barcodes to albums. The barcode serves
@@ -2886,7 +3010,7 @@ Diff-Svcs-Code-Point = Enumerated       // Differentiated Services Code Point, 6
   44 va          // Voice Admit (RFC 5865)
   46 ef          // Expedited Routing (RFC 3246)
 
-ECN = Enumerated // Explicit Congestion Notification (RFC 3168)
+ECN = Enumerated // Explicit Congestion Notification (RF 3168)
    0 not_ect     // Not ECN-Capable Transport, Not-ECT
    1 ect_1       // ECN Capable Transport(1), ECT(1)
    2 ect_0       // ECN Capable Transport(0), ECT(0)
@@ -2900,9 +3024,7 @@ field values that would be the usual approach in a more design-oriented modeling
 
 ### 3.3.3 Multiple Representations Example
 
-> EDITOR'S NOTE: intro text may need revision if examples are removed from the JADN Specification
-
-The [[JADN Specification](#jadn-v10)], section 7.3,
+The [[JADN Specification](#jadn-v20)], section 7.3,
 uses a simple example of an IM for a university to illustrate the
 use of ERDs for IMs. This section uses that ERD as a starting
 point for an example to illustrate the various JADN
@@ -2922,7 +3044,7 @@ containing the JADN corresponding to the above ERD is shown here:
 {
  "info": {
   "package": "http://example.com/uni",
-  "exports": ["University"]
+  "roots": ["University"]
  },
 
  "types": [
@@ -2958,7 +3080,7 @@ more readable and easier to edit:
 
 ```
      package: "http://example.com/uni"
-     exports: ["University"]
+     roots: ["University"]
 
 University = Record                               // A place of learning
    1 name             String                      // University Name
@@ -3038,7 +3160,7 @@ detailed informational ERD at the start of this section
 
 ```
 # package: http://example.com/uni
-# exports: ['University']
+# roots: ['University']
 
 digraph G {
   graph [fontname=Arial, fontsize=12];
@@ -3094,7 +3216,7 @@ was used to convert the JSON scheme to JADN, leading to an initial JADN schema
 
 ```
      package: "https://example.com/calendar.schema.json"
-     exports: ["$Root"]
+     roots: ["$Root"]
       config: {"$FieldName": "^[$a-z][-_$A-Za-z0-9]{0,63}$", "$MaxString": 1000}
 
 $Root = Record                          // A representation of an event
@@ -3110,23 +3232,23 @@ $Root = Record                          // A representation of an event
   10 description      String optional
 ```
 
-The JADN schema reflects the original JSON schema with regard to field type and
+This initial JADN schema reflects the original JSON schema with regard to field type and
 optionality but also presents multiple opportunities for fine tuning:
 
-1) The `startDate`, `endDate`, `url`, and `recurrenceDate` fields could have
+1) The `startDate`, `endDate`, `url`, and `recurrenceDate` fields can have
    validation keywords applied to limit their content to appropriate values
    (this is also possible in JSON schema but was not a feature of original
    example)
-2) The `duration` field could be changed to an `Integer` representing duration
+2) The `duration` field can be changed to an `Integer` representing duration
    in a time unit (e.g., minutes) to simplify automated processing
-3) Guidance could be provided for the format of the recurrenceRule field
+3) Guidance can be provided for the format of the recurrenceRule field
 4) The automatically generated `"$Root"` name for record in the schema can be
    changed to something more meaningful (e.g., `Event`)
-5) Comments could be added to fields that lack them to further clarify their
+5) Comments can be added to fields that lack them to further clarify their
    intent
 
 The starting JSON schema appears to have been modeled on the iCalendar standard
-[[RFC5545](#rfc5545)] so that can be used as a source for refinements:
+[[RFC 5545](#rfc5545)] which also can be used as a source for refinements:
 
 1) The `summary` field can have a character limit applied to align with its
       intended use as "a short summary or subject for the calendar component"
@@ -3142,7 +3264,7 @@ Applying these changes leads to a refined model for the event schema:
 
 ```
      package: "https://example.com/calendar.schema.json"
-     exports: ["Event"]
+     roots: ["Event"]
       config: {"$FieldName": "^[$a-z][-_$A-Za-z0-9]{0,63}$", "$MaxString": 1000}
 
 Event = Record                                   // A representation of an event
@@ -3167,11 +3289,12 @@ complete IM for describing calendar information for exchange among systems.
 ### 3.3.5 Inheritance Example
 
 JADN v2.0 introduces inheritance features to support constructing DataType
-inheritance hierarchies. This example uses concepts inspired by the 
-[[CityGML](#citygml)] and [[CityJSON](#cityjson)] geographic modeling languages to
-provide an introduction to the use of inheritance in JADN. An overview of the
+inheritance hierarchies. This example uses concepts inspired by the
+[[CityGML](#citygml)] and [[CityJSON](#cityjson)] geographic modeling languages
+to provide an introduction to the use of inheritance in JADN. An overview of the
 key types defined in this example and their inheritance relationships is shown
-in Figure 3-18.
+in Figure 3-18. This description focuses on the inheritance-related aspects of the
+model; the JIDL for the complete model is provided in [Appendix&nbsp;E.2](#e2-inheritance-example-jidl).
 
 ###### Figure 3-18 -- Basic Inheritance Example Overview
 
@@ -3228,8 +3351,9 @@ OpenSpace = Record extends(Location)  // a defined area of open space
                               // the array MUST match
 ```
 
-In this case `OpenSpace` adds a field to the referenced `Location` type so a new
-identifier is required for the new field.
+Because the `OpenSpace` type is adding a field to the referenced `Location` type a new
+identifier (`3`) is required for the new field
+(in contrast with the `Endpoint` restriction re-using the field identifier for `politicalUnit`).
 
 The `Location` type is more extensively extended by the `Road`, `Bridge`,
 `Tunnel`, and `Building` types. The latter three types are grouped under the
@@ -3335,12 +3459,10 @@ ISO/IEC/IEEE 31320-2:2012 _Information technology — Modeling Languages — Par
 ###### [Info-Theory]
 "Entropy (information theory)", https://en.wikipedia.org/wiki/Entropy_(information_theory)
 
-###### [JADN-v1.0]
-JSON Abstract Data Notation Version 1.0. Edited by David Kemp. 17
-August 2021. OASIS Committee Specification 01.
-https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html.
-Latest stage:
-https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
+###### [JADN-v2.0]
+_JSON Abstract Data Notation Version 2.0_. Edited by David Kemp. 19 February 2025. 
+OASIS Committee Specification Draft 01. https://docs.oasis-open.org/openc2/jadn/v2.0/csd01/jadn-v2.0-csd01.html. 
+Latest version: https://docs.oasis-open.org/openc2/jadn/v2.0/jadn-v2.0.html.
 
 ###### [JSONSCHEMA]
 Wright, A., Andrews, H., Hutton, B., *"JSON Schema Validation"*,
@@ -3359,14 +3481,6 @@ NTIA Multistakeholder Process on Software Component Transparency, "SBOM At A Gla
 
 ###### [OSCAL]
 OSCAL: the Open Security Controls Assessment Language, https://pages.nist.gov/OSCAL/
-
-###### [OpenC2-Arch-v1.0]
-
-Open Command and Control (OpenC2) Architecture Specification Version 1.0. Edited by Duncan Sparrell. 30 September 2022. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/oc2arch/v1.0/cs01/oc2arch-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/oc2arch/v1.0/oc2arch-v1.0.html
-
-###### [OpenC2-Lang-v1.0]
-
-Open Command and Control (OpenC2) Language Specification Version 1.0. Edited by Jason Romano and Duncan Sparrell. 24 November 2019. OASIS Committee Specification 02. https://docs.oasis-open.org/openc2/oc2ls/v1.0/cs02/oc2ls-v1.0-cs02.html. Latest version: https://docs.oasis-open.org/openc2/oc2ls/v1.0/oc2ls-v1.0.html.
 
 ###### [OWL-Primer]
 "OWL 2 Web Ontology Language Primer (Second Edition)", retrieved
@@ -3465,11 +3579,9 @@ https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=821265
 The OpenC2 TC thanks the following individuals for their
 assistance in the development of this Committee Note:
 
+ - Larry Feldman, HII
  - Kevin Cressman, Praxis Engineering
  - Matthew Roberts, Bestgate Engineering
- - Kaitlyn Hsu, Bestgate Engineering
- - Kouloum Abidji, HII Mission Technologies
- - Jerome Czachor, HII Mission Technologies
 
 ## B.2 Participants
 
@@ -3527,7 +3639,8 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Incorporate "elevator speech" into abstract and section 1.0 (PR #93) |
 | imjadn-v1.0-cn03.md      | 2025-02-12 | David Lemire | New content addressing inheritance features added in JADV v2 (PRs #92 & #97) |
 | imjadn-v1.0-cn03.md      | 2025-02-18 | David Lemire | Update discussion of String type options for JADV v2 (PR #98) |
-| imjadn-v1.0-cn03.md      | 2025-03-05 | David Lemire | Update JADN Spec references, reorder primitive types to match |
+| imjadn-v1.0-cn03.md      | 2025-03-05 | David Lemire | Update JADN Spec references, reorder primitive types to match (PR #102) |
+| imjadn-v1.0-cn03.md      | 2025-03-xx | David Lemire | Updates throughout CN for alignment with JADN v2 specification and improved presentation (PR #106) |
 
 ## C.2 JADN Version 2 Changes
 
@@ -3537,7 +3650,7 @@ This section details differences between versions 1 and 2 of JADN.
 
 In JADN v2.0 the "unlimited" value for the `maxOccurs` (formerly `maxc`)
 sentinel is changed from 0 to -1. *This minor but incompatible change required a
-new major version.* Two options are provided for an unspecified `maxOccurs` value:
+new major version.* Two options are defined for an unspecified `maxOccurs` value:
 
 - `maxOccurs` = -1 denotes an upper size limit defined by the JADN default value or package-specified upper value
 - `maxOccurs` = -2 denotes an unbounded upper size limit
@@ -3546,26 +3659,28 @@ new major version.* Two options are provided for an unspecified `maxOccurs` valu
 
 The following general changes were made:
 
-- The "namespaces" prefix list was change from mappings to pairings to provide greater flexibility in managing namespaces and packages.
-- The package "Information" element was renamed to "Metadata" to avoid conflation with information modeling.
-- The package "exports" element was renamed to "roots" to better describe its purpose and effect.
+- The `namespaces` prefix list was change from mappings to pairings to provide greater flexibility in managing namespaces and packages.
+- The package `Information` element was renamed to `Metadata` to avoid conflation with information modeling.
+- The package `exports` element was renamed to `roots` to better describe its purpose and effect.
 - Type Options have been revised and expanded to support defining both size and content (value) range limits for primitive types
 
-### C.2.3 Type Option Changes
+### C.2.3 Type and Field Option Changes
 
 The following changes were made to JADN type options:
 
 - New options:
-  - `minExclusive, maxExclusive`: used to specify number ranges that don't include the stated minimum or maximum values
-  - `minLength, maxLength`: a distinct option from `minv, maxv`; with this new option strings can have both `minInclusive` and `minLength`
+  - `minExclusive`, `maxExclusive`, `minInclusive`, `maxInclusive`: used to specify allowable value ranges for instances of types
+  - `const`: specifies a pre-set value used as a classifier, equivalent to setting both `minInclusive` and `maxInclusive` to that value.
+  - `minLength, maxLength`: used to specify the allowable size range for a binary or string type and to specify the number of items in a collection type
   - `sequence`: enables specifying that `Map, MapOf, Record` types have a required field order 
   - `combine`: provides greater flexibility for `Choice` types with `oneOf, anyOf, allOf, not` sub-options
-  - `abstract, extends, restricts, final`: options related to defining and controlling types using inheritance
+  - `abstract`, `extends`, `restricts`, `final`: options related to defining and controlling types using inheritance
 - Replaced options:
-  - `minv, maxv`: these options have been renamed to `minInclusive, maxInclusive`
-  - `minf, maxf`: these floating-point specific options have been replaced by `minInclusive, maxInclusive`
-- Removed option:
-  - `extend`: this option has been deprecated
+  - `minc`, `maxc`: these options have been renamed to `minOccurs, maxOccurs`
+  - `minv`, `maxv`: these options have been separated into `minInclusive`, `maxInclusive` to specify value ranges and `minLength`, `maxLength` to specify size and item count ranges
+  - `minf`, `maxf`: these floating-point specific options have been replaced by `minInclusive`, `maxInclusive`
+- Removed options:
+  - `extend`, `dir`
 
 ### C.2.4 Inheritance
 
@@ -3587,14 +3702,7 @@ The `extends` and `restricts` options are complementary: if B `extends` A then
 every instance of A MUST be an instance of B.  If B `restricts` A then every
 instance of B MUST be an instance of A. 
 
-### C.2.5 Field Option Changes
-
-The following changes were made to JADN type options:
-
-- Replaced option:
-  - `minc, maxc`: these options have been renamed to `minOccurs, maxOccurs`
-
-### C.2.6 Format and Validation Options Changes
+### C.2.5 Format and Validation Options Changes
 
 The following changes were made to format and validation options:
 
@@ -3664,7 +3772,7 @@ Neo4j, and non-database artifacts such as protocol messages and documents.
 
 The *Guide* points out that:
 > A declarative approach is an abstraction based on our interaction with the system.
-> When you look under the hood, all systems depend on a set of [imperative] instructions.
+> When you look under the hood, all systems depend on a set of imperative instructions.
 > Instead of the system depending on you to supply those instructions, they are predefined. 
 
 An information model combines the abstraction of declarative specifications with
@@ -3710,8 +3818,11 @@ review](https://lists.oasis-open.org/archives/openc2/202106/msg00019.html):
 > consideration.*
 
 ### Response
+
+> NOTE: Need to update the following as the JADN v2 Spec does not contain the quoted wording.
+
 The short answer (RDF models *knowledge* while JADN models
-*information*) is provided in the [[JADN Specification](#jadn-v10)] introduction:
+*information*) is provided in the [[JADN Specification](#jadn-v20)] introduction:
 
 > *UML class models and diagrams are commonly referred to as
 > "Data Models", but they model knowledge of real-world entities
@@ -4108,7 +4219,7 @@ constructing an information graph from an ontology graph:
     "version": "1.1",
     "description": "This information model defines a library of audio tracks, organized by album, with associated metadata regarding each track. It is modeled on the types of library data maintained by common websites and music file tag editors.",
     "license": "CC0-1.0",
-    "exports": ["Library"]
+    "roots": ["Library"]
   },
   "types": [
     ["Library", "MapOf", ["+Barcode", "*Album", "{1"], "Top level of the library is a map of CDs by barcode", []],
@@ -4195,7 +4306,7 @@ constructing an information graph from an ontology graph:
                with associated metadata regarding each track. It is modeled on the types of 
                library data maintained by common websites and music file tag editors."
      license: "CC0-1.0"
-     exports: ["Library"]
+     roots: ["Library"]
 
 Library = MapOf(Barcode, Album){1..*}  // Top level of the library is a map of CDs by barcode
 
@@ -4285,7 +4396,7 @@ Information Header
                  track. It is modeled on the types of library data maintained 
                  by common websites and music file tag editors."
        license: "CC0-1.0"
-       exports: ["Library"]
+       roots: ["Library"]
 ```
 
 | Type Name   | Type Definition             | Description                                         |
