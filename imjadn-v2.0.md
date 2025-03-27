@@ -2055,10 +2055,10 @@ in addition to the native JSON format:
  - Property Tables (Section 7.2)
  - Entity Relationship Diagrams (ERDs, Section 7.3)
 
-Figure 3-7 identifies the various representations. Each of the four
+Figure 3-3 identifies the various representations. Each of the four
 representations is described below. 
 
-###### Figure 3-7 -- JADN Representations
+###### Figure 3-3 -- JADN Representations
 ![JADN Representations](images/JADN-Representations.drawio.png)
 
 
