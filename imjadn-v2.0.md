@@ -1231,9 +1231,9 @@ JADN defines six field options. As with
 the type options described in Section&nbsp;3.1.1.2,
 the ID characters are normative and used in standard JADN representation
 ([Section&nbsp;3.1.3.1](#3131-native-json-representation-normative)) when
-specifying field options. Table 3-3 lists the JADN **FieldOptions**.
+specifying field options. Table 3-4 lists the JADN **FieldOptions**.
 
-###### Table 3-3 -- JADN Field Options
+###### Table 3-4 -- JADN Field Options
 
 | **Option** |  **Type**  | **ID** | **Description**                                               | **JADN Spec Section** |
 |:----------:|:----------:|:------:|---------------------------------------------------------------|:---------------------:|
