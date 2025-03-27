@@ -2799,10 +2799,10 @@ consolidated JADN, JIDL, and property tables can be found in
 The model assumes that each track is stored as a file with its audio in one of
 several recognized formats. The library organizes tracks into albums, which are
 associated with a barcode identifier. The model is loosely based
-on the ID3 metadata used with MP3 audio files. Figure 3-9 provides a
+on the ID3 metadata used with MP3 audio files. Figure 3-10 provides a
 conceptual overview of the music library's structure.
 
-###### Figure 3-9 -- Music Library Conceptual Overview
+###### Figure 3-10 -- Music Library Conceptual Overview
 
 <img src="images/music_lib_v1_1_puml_conceptual.png" height="500px">
 
@@ -2925,10 +2925,10 @@ File-Path = String                         // local storage location of file wit
                                            // from root, filename, and extension
 ```
 
-The entity relationship diagram in Figure 3-10 illustrates how
+The entity relationship diagram in Figure 3-11 illustrates how
 the model components connect.
 
-###### Figure 3-10 -- Music Library Example ERD
+###### Figure 3-11 -- Music Library Example ERD
 
 <img src="images/music-library-v1_1-detailed-ERD-GV.png" height="720px">
 
@@ -2952,12 +2952,12 @@ three Wikipedia pages related to the IPv4 packet header:
 
 The model comprises a JADN Array type containing all of the fields of the IPv4
 packet header (except the `options` field), supported by two Enumerated types to
-explicate the meanings of particular fields. Figure 3-11 shows the
+explicate the meanings of particular fields. Figure 3-12 shows the
 packet header array in JIDL form. In this representation the field "names" are
 embedded in the JIDL comment field between the `//` and `::` delimiters, as
 described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
 
-###### Figure 3-11 -- IPv4 Header (JIDL)
+###### Figure 3-12 -- IPv4 Header (JIDL)
 
 ```
 IPv4-Packet-Header = Array    // fields in an IPv4 packet header, per RFC 791 and subsequent contributions
@@ -2999,9 +2999,9 @@ Three fields of the IPv4 packet header are functionally enumerations:
 The values for the `Protocol` field are managed by the Internet Assigned Numbers
 Authority (IANA); this model does not include an explicit enumeration of the
 IANA-assigned values. The model makes the meaning and use of the DSCP and ECN fields 
-clearer by definiting associated enumerations, as illustrated in Figure 3-12.
+clearer by definiting associated enumerations, as illustrated in Figure 3-13.
 
-###### Figure 3-12 -- IPv4 Packet Header Enumerations
+###### Figure 3-13 -- IPv4 Packet Header Enumerations
 
 ```
 Diff-Svcs-Code-Point = Enumerated       // Differentiated Services Code Point, 6 bits
@@ -3042,14 +3042,14 @@ point for an example to illustrate the various JADN
 representations described in [Section 3.1.3.2](#3132-alternative-jadn-representations). The example
 begins with the ERD for the model:
 
-###### Figure 3-13 -- Simple University Example ERD
+###### Figure 3-14 -- Simple University Example ERD
 
 <img src="images/university-erd.png" height="600px">
 
 The package (see [Section 3.1.6.1](#3161-packages)) 
 containing the JADN corresponding to the above ERD is shown here:
 
-###### Figure 3-14 -- Simple University Example JADN (JSON format)
+###### Figure 3-15 -- Simple University Example JADN (JSON format)
 
 ```json
 {
@@ -3087,7 +3087,7 @@ containing the JADN corresponding to the above ERD is shown here:
 Converting the JSON to JIDL yields a representation that is both
 more readable and easier to edit:
 
-###### Figure 3-15 -- Simple University Example JADN (JIDL format)
+###### Figure 3-16 -- Simple University Example JADN (JIDL format)
 
 ```
      package: "http://example.com/uni"
@@ -3121,7 +3121,7 @@ Each property table is preceeded by the comment on the type definition that
 created that table (e.g., the University Record type has the comment "A place of
 learning"). Those comments are set in italics in this example for clarity.
 
-###### Figure 3-16 -- Simple University Example JADN (table format)
+###### Figure 3-17 -- Simple University Example JADN (table format)
 
 *A place of learning*
 
@@ -3163,11 +3163,11 @@ is easily generated from the JADN model.  In this specific example code for the
 widely-used GraphViz tool is provided. JADN tooling can created "diagram as
 text" code for GraphVIZ and PlantUML with varying levels of detail (i.e., Conceptual, Logical, Informational). 
 For example, contrast the simple conceptual view of the music libary in 
-[Figure 3-9](#figure-3-9----music-library-conceptual-overview) with the
+[Figure 3-10](#figure-3-10----music-library-conceptual-overview) with the
 detailed informational ERD at the start of this section 
-([Figure 3-13](#figure-3-13----simple-university-example-erd)).
+([Figure 3-14](#figure-3-14----simple-university-example-erd)).
 
-###### Figure 3-17 -- Simple University Example ERD Source Code (GraphViz)
+###### Figure 3-18 -- Simple University Example ERD Source Code (GraphViz)
 
 ```
 # package: http://example.com/uni
