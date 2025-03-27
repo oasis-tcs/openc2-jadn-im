@@ -136,11 +136,11 @@ For complete copyright information please see the full Notices section in [Appen
           - [Table 3-6 -- Number Type Format Options](#table-3-6----number-type-format-options)
       - [3.1.2.4 String](#3124-string)
       - [3.1.2.5 Binary](#3125-binary)
-          - [Table 3-4 -- Binary Type Format Options](#table-3-4----binary-type-format-options)
+          - [Table 3-7 -- Binary Type Format Options](#table-3-7----binary-type-format-options)
       - [3.1.2.6 Enumerated](#3126-enumerated)
       - [3.1.2.7 Choice (Tagged / Untagged)](#3127-choice-tagged--untagged)
       - [3.1.2.8 Array](#3128-array)
-          - [Table 3-7 -- Array Type Format Options](#table-3-7----array-type-format-options)
+          - [Table 3-8 -- Array Type Format Options](#table-3-8----array-type-format-options)
       - [3.1.2.9 ArrayOf(vtype)](#3129-arrayofvtype)
       - [3.1.2.10 Map](#31210-map)
       - [3.1.2.11 MapOf(ktype,vtype)](#31211-mapofktypevtype)
@@ -1639,10 +1639,10 @@ The corresponding JIDL representation would be:
 Binary values are not ordered so the range Type Options are not applicable. 
 The *minLength* and *maxLength* TypeOptions are used to specify a minimum and/or maximum
 number of octets for a binary type. If *minLength* equals *maxLength* the size of the
-binary type is fixed. Table 3-4 lists the *format* options applicable to the
+binary type is fixed. Table 3-7 lists the *format* options applicable to the
 Binary type:
 
-###### Table 3-4 -- Binary Type Format Options
+###### Table 3-7 -- Binary Type Format Options
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
@@ -1853,9 +1853,9 @@ IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
 ```
 
-Table 3-7 lists the *format* options applicable to the Array type:
+Table 3-8 lists the *format* options applicable to the Array type:
 
-###### Table 3-7 -- Array Type Format Options
+###### Table 3-8 -- Array Type Format Options
 
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
