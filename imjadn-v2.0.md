@@ -138,7 +138,6 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.4.1 "Anonymous" Type Definitions](#3141-anonymous-type-definitions)
       - [3.1.4.2 Selection and Use of JADN Compound Types](#3142-selection-and-use-of-jadn-compound-types)
       - [3.1.4.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
-          - [Table 3-9 -- Multiplicity Types](#table-3-9----multiplicity-types)
       - [3.1.4.4 Application of minLength / maxLength](#3144-application-of-minlength--maxlength)
       - [3.1.4.5 Inheritance](#3145-inheritance)
     - [3.1.5 Reference Relationships: Keys and Links](#315-reference-relationships-keys-and-links)
@@ -156,79 +155,58 @@ For complete copyright information please see the full Notices section in [Appen
     - [3.3.5 Inheritance Example](#335-inheritance-example)
 - [Appendix A. Informative References](#appendix-a-informative-references)
 - [Appendix B. Acknowledgments](#appendix-b-acknowledgments)
-  - [B.1 Special Thanks](#b1-special-thanks)
-  - [B.2 Participants](#b2-participants)
 - [Appendix C. Revision History](#appendix-c-revision-history)
   - [C.1 Revision History Table](#c1-revision-history-table)
   - [C.2 JADN Version 2 Changes](#c2-jadn-version-2-changes)
-    - [C.2.1 Breaking Change](#c21-breaking-change)
-    - [C.2.2 General Changes](#c22-general-changes)
-    - [C.2.3 Type and Field Option Changes](#c23-type-and-field-option-changes)
-    - [C.2.4 Inheritance](#c24-inheritance)
-    - [C.2.5 Format and Validation Options Changes](#c25-format-and-validation-options-changes)
 - [Appendix D. Frequently Asked Questions (FAQ)](#appendix-d-frequently-asked-questions-faq)
   - [D.1 JADN vs. UML Primitive Data Types](#d1-jadn-vs-uml-primitive-data-types)
-  - [D.1 Declarative Specifications](#d1-declarative-specifications)
-  - [D.2 Applications](#d2-applications)
-  - [D.2 Why JADN and not RDF?](#d2-why-jadn-and-not-rdf)
-    - [Comment](#comment)
-    - [Response](#response)
-    - [Extreme Example](#extreme-example)
-    - [Practical Example](#practical-example)
-    - [Measuring Information](#measuring-information)
-  - [D.3 Why JADN and not OWL?](#d3-why-jadn-and-not-owl)
-    - [Directionality:](#directionality)
-    - [Multiplicity:](#multiplicity)
-    - [Referenceability:](#referenceability)
-    - [Individuality:](#individuality)
+  - [D.2 Declarative Specifications](#d2-declarative-specifications)
+  - [D.3 Applications](#d3-applications)
+  - [D.4 Why JADN and not RDF?](#d4-why-jadn-and-not-rdf)
+  - [D.5 Why JADN and not OWL?](#d5-why-jadn-and-not-owl)
 - [Appendix E. Example Information Model Source](#appendix-e-example-information-model-source)
   - [E.1 Music Library](#e1-music-library)
-    - [E.1.1 Music Library JADN](#e11-music-library-jadn)
-    - [E.1.2 Music Library JIDL](#e12-music-library-jidl)
-    - [E.1.3 Music Library Tables](#e13-music-library-tables)
   - [E.2 Inheritance Example JIDL](#e2-inheritance-example-jidl)
 - [Appendix F. Notices](#appendix-f-notices)
 
 **List of Figures**
-          - [Figure 1-1 -- Music Track Metadata Example (JIDL)](#figure-1-1----music-track-metadata-example-jidl)
-          - [Figure 1-2 -- Music Track Metadata JSON Schema](#figure-1-2----music-track-metadata-json-schema)
-          - [Figure 1-3 -- Music Track Metadata XML Schema](#figure-1-3----music-track-metadata-xml-schema)
-          - [Figure 2-1 -- Parsing and Serializing With An IM](#figure-2-1----parsing-and-serializing-with-an-im)
-          - [Figure 2-2 -- Serialization / Deserialization](#figure-2-2----serialization--deserialization)
-          - [Figure 3-1 -- JADN Type Definition Components](#figure-3-1----jadn-type-definition-components)
-          - [Figure 3-2 -- JADN V2 Type Definition Structure](#figure-3-2----jadn-v2-type-definition-structure)
-          - [Figure 3-3 -- JADN Representations](#figure-3-3----jadn-representations)
-          - [Figure 3-4 -- JADN Schema Top-Level Structure](#figure-3-4----jadn-schema-top-level-structure)
-          - [Figure 3-5 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-5----jadn-for-primitive-arrayof-mapof-types)
-          - [Figure 3-6 -- JADN Fields for Enumerated Types](#figure-3-6----jadn-fields-for-enumerated-types)
-          - [Figure 3-7 -- JADN Fields for Structured Compound Types](#figure-3-7----jadn-fields-for-structured-compound-types)
-          - [Figure 3-8 -- Compound Type Decision Tree](#figure-3-8----compound-type-decision-tree)
-          - [Figure 3-9 -- Collection and Reference Relationships](#figure-3-9----collection-and-reference-relationships)
-          - [Figure 3-10 -- Music Library Conceptual Overview](#figure-3-10----music-library-conceptual-overview)
-          - [Figure 3-11 -- Music Library Example ERD](#figure-3-11----music-library-example-erd)
-          - [Figure 3-12 -- IPv4 Header (JIDL)](#figure-3-12----ipv4-header-jidl)
-          - [Figure 3-13 -- IPv4 Packet Header Enumerations](#figure-3-13----ipv4-packet-header-enumerations)
-          - [Figure 3-14 -- Simple University Example ERD](#figure-3-14----simple-university-example-erd)
-          - [Figure 3-15 -- Simple University Example JADN (JSON format)](#figure-3-15----simple-university-example-jadn-json-format)
-          - [Figure 3-16 -- Simple University Example JADN (JIDL format)](#figure-3-16----simple-university-example-jadn-jidl-format)
-          - [Figure 3-17 -- Simple University Example JADN (table format)](#figure-3-17----simple-university-example-jadn-table-format)
-          - [Figure 3-18 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-18----simple-university-example-erd-source-code-graphviz)
-          - [Figure 3-19 -- Basic Inheritance Example Overview](#figure-3-19----basic-inheritance-example-overview)
-
-
+- [Figure 1-1 -- Music Track Metadata Example (JIDL)](#figure-1-1----music-track-metadata-example-jidl)
+- [Figure 1-2 -- Music Track Metadata JSON Schema](#figure-1-2----music-track-metadata-json-schema)
+- [Figure 1-3 -- Music Track Metadata XML Schema](#figure-1-3----music-track-metadata-xml-schema)
+- [Figure 2-1 -- Parsing and Serializing With An IM](#figure-2-1----parsing-and-serializing-with-an-im)
+- [Figure 2-2 -- Serialization / Deserialization](#figure-2-2----serialization--deserialization)
+- [Figure 3-1 -- JADN Type Definition Components](#figure-3-1----jadn-type-definition-components)
+- [Figure 3-2 -- JADN V2 Type Definition Structure](#figure-3-2----jadn-v2-type-definition-structure)
+- [Figure 3-3 -- JADN Representations](#figure-3-3----jadn-representations)
+- [Figure 3-4 -- JADN Schema Top-Level Structure](#figure-3-4----jadn-schema-top-level-structure)
+- [Figure 3-5 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-5----jadn-for-primitive-arrayof-mapof-types)
+- [Figure 3-6 -- JADN Fields for Enumerated Types](#figure-3-6----jadn-fields-for-enumerated-types)
+- [Figure 3-7 -- JADN Fields for Structured Compound Types](#figure-3-7----jadn-fields-for-structured-compound-types)
+- [Figure 3-8 -- Compound Type Decision Tree](#figure-3-8----compound-type-decision-tree)
+- [Figure 3-9 -- Collection and Reference Relationships](#figure-3-9----collection-and-reference-relationships)
+- [Figure 3-10 -- Music Library Conceptual Overview](#figure-3-10----music-library-conceptual-overview)
+- [Figure 3-11 -- Music Library Example ERD](#figure-3-11----music-library-example-erd)
+- [Figure 3-12 -- IPv4 Header (JIDL)](#figure-3-12----ipv4-header-jidl)
+- [Figure 3-13 -- IPv4 Packet Header Enumerations](#figure-3-13----ipv4-packet-header-enumerations)
+- [Figure 3-14 -- Simple University Example ERD](#figure-3-14----simple-university-example-erd)
+- [Figure 3-15 -- Simple University Example JADN (JSON format)](#figure-3-15----simple-university-example-jadn-json-format)
+- [Figure 3-16 -- Simple University Example JADN (JIDL format)](#figure-3-16----simple-university-example-jadn-jidl-format)
+- [Figure 3-17 -- Simple University Example JADN (table format)](#figure-3-17----simple-university-example-jadn-table-format)
+- [Figure 3-18 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-18----simple-university-example-erd-source-code-graphviz)
+- [Figure 3-19 -- Basic Inheritance Example Overview](#figure-3-19----basic-inheritance-example-overview)
 
 **List of Tables**
-          - [Table 2-1 -- Modeling Approach Comparison](#table-2-1----modeling-approach-comparison)
-          - [Table 2-2 -- Serialization Styles](#table-2-2----serialization-styles)
-          - [Table 3-1 -- JADN Core Types](#table-3-1----jadn-core-types)
-          - [Table 3-2 -- JADN Type Options](#table-3-2----jadn-type-options)
-          - [Table 3-3 -- Type Option Applicability](#table-3-3----type-option-applicability)
-          - [Table 3-4 -- JADN Field Options](#table-3-4----jadn-field-options)
-          - [Table 3-5 -- Integer Type Format Options](#table-3-5----integer-type-format-options)
-          - [Table 3-6 -- Number Type Format Options](#table-3-6----number-type-format-options)
-          - [Table 3-7 -- Binary Type Format Options](#table-3-7----binary-type-format-options)
-          - [Table 3-8 -- Array Type Format Options](#table-3-8----array-type-format-options)
-          - [Table D-1 -- UML and JADN Primitive Type Equivalence](#table-d-1----uml-and-jadn-primitive-type-equivalence)
+- [Table 2-1 -- Modeling Approach Comparison](#table-2-1----modeling-approach-comparison)
+- [Table 2-2 -- Serialization Styles](#table-2-2----serialization-styles)
+- [Table 3-1 -- JADN Core Types](#table-3-1----jadn-core-types)
+- [Table 3-2 -- JADN Type Options](#table-3-2----jadn-type-options)
+- [Table 3-3 -- Type Option Applicability](#table-3-3----type-option-applicability)
+- [Table 3-4 -- JADN Field Options](#table-3-4----jadn-field-options)
+- [Table 3-5 -- Integer Type Format Options](#table-3-5----integer-type-format-options)
+- [Table 3-6 -- Number Type Format Options](#table-3-6----number-type-format-options)
+- [Table 3-7 -- Binary Type Format Options](#table-3-7----binary-type-format-options)
+- [Table 3-8 -- Array Type Format Options](#table-3-8----array-type-format-options)
+- [Table D-1 -- UML and JADN Primitive Type Equivalence](#table-d-1----uml-and-jadn-primitive-type-equivalence)
 
 
 
@@ -414,7 +392,7 @@ IM is to model *data*, not managed objects, at both conceptually- and formally-d
 This allows IMs to model any kind of data, from simple structures such as value ranges
 or coordinates, to protocol messages, APIs, and method signatures, to complete documents,
 without the complexity of also modeling programming languages and techniques.
-An IM is a [declarative](#d1-declarative-specifications)
+An IM is a [declarative](#d2-declarative-specifications)
 specification that defines desired outcomes (data item validity and equivalence)
 without describing control flow.
 Protocol models can use IMs to define and validate messages exchanged over the wire.
@@ -3796,7 +3774,7 @@ Table D-1 lists the UML and JADN Primitive types.
 |      String      |     String     |
 | UnlimitedNatural | Integer {0..*} |
 
-## D.1 Declarative Specifications
+## D.2 Declarative Specifications
 
 *Editor's Note: Ignore numbering; Primitives will be moved into document body. Declarative
 may as well, or FAQ appendix may be renamed to something like "Notes"*
@@ -3828,7 +3806,7 @@ Its predefined instructions implement the behavior of its built-in datatypes,
 which can be extended with application-specific imperative validation
 and translation functions.
 
-## D.2 Applications
+## D.3 Applications
 
 Examples of other possible JADN applications include
 defining:
@@ -3841,7 +3819,7 @@ defining:
    are described by
    [NIEM](https://github.com/niemopen/oasis-open-project#readme)
 
-## D.2 Why JADN and not RDF?
+## D.4 Why JADN and not RDF?
 
 This section discusses the relationship between JADN and RDF, and why RDF does not serve the purpose of an Information Model
 
@@ -4059,7 +4037,7 @@ includes a slightly larger information model example with three
 types and four container and reference relationships among them.
 
 
-## D.3 Why JADN and not OWL?
+## D.5 Why JADN and not OWL?
 
 Capture from Google Doc at https://docs.google.com/document/d/1gY8ZaQJmJTpx8468Conchc2XVzTKE8x0WFSQT1qtB8o/edit#heading=h.ru8h2khtb5aw
 
