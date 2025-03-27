@@ -2494,7 +2494,7 @@ where cycles occur in order to address this need. The method to
 define reference relationships is explained in Section&nbsp;3.3.6,
 *Links*, of the [[JADN Specification](#jadn-v20)]. 
 
-Figure 3-8 illustrates permissible and impermissible "collection"
+Figure 3-9 illustrates permissible and impermissible "collection"
 relationships, and the use of the `key` and `link` keywords
 combined with an identifier field to establish permissible
 "reference" relationships. The green lines show permissible
@@ -2509,7 +2509,7 @@ field option in `Record G` when referring to such objects; the
 generates the correct key type when extensions are removed by
 JADN tooling.
 
-###### Figure 3-8 -- Collection and Reference Relationships
+###### Figure 3-9 -- Collection and Reference Relationships
 
 ![Collection and Reference Relationships](images/JADN-contains-references.drawio.png)
 
