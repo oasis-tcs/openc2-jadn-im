@@ -161,7 +161,7 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.4.2 Selection and Use of JADN Compound Types](#3142-selection-and-use-of-jadn-compound-types)
           - [Figure 3-8 -- Compound Type Decision Tree](#figure-3-8----compound-type-decision-tree)
       - [3.1.4.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
-          - [Table 3-8 -- Multiplicity Types](#table-3-8----multiplicity-types)
+          - [Table 3-9 -- Multiplicity Types](#table-3-9----multiplicity-types)
       - [3.1.4.4 Application of minLength / maxLength](#3144-application-of-minlength--maxlength)
       - [3.1.4.5 Inheritance](#3145-inheritance)
     - [3.1.5 Reference Relationships: Keys and Links](#315-reference-relationships-keys-and-links)
@@ -187,7 +187,7 @@ For complete copyright information please see the full Notices section in [Appen
           - [Figure 3-18 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-18----simple-university-example-erd-source-code-graphviz)
     - [3.3.4 Converting JSON Schema to JADN](#334-converting-json-schema-to-jadn)
     - [3.3.5 Inheritance Example](#335-inheritance-example)
-          - [Figure 3-18 -- Basic Inheritance Example Overview](#figure-3-18----basic-inheritance-example-overview)
+          - [Figure 3-19 -- Basic Inheritance Example Overview](#figure-3-19----basic-inheritance-example-overview)
 - [Appendix A. Informative References](#appendix-a-informative-references)
           - [\[ASN.1\]](#asn1)
           - [\[CityGML\]](#citygml)
@@ -261,41 +261,10 @@ For complete copyright information please see the full Notices section in [Appen
 
 **List of Figures**
 
- - [Figure 2-1 -- Serialization / Deserialization](#figure-2-2----serialization--deserialization)
- - [Figure 2-2 -- Parsing and Serializing With An IM](#figure-2-1----parsing-and-serializing-with-an-im)
- - [Figure 3-1 -- JADN Type Definition Components](#figure-3-1----jadn-type-definition-components)
- - [Figure 3-2 -- JADN V2 Type Definition Structure](#figure-3-2----jadn-v2-type-definition-structure)
- - [Figure 3-3 -- JADN Schema Top-Level Structure](#figure-3-3----jadn-schema-top-level-structure)
- - [Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types](#figure-3-4----jadn-for-primitive-arrayof-mapof-types)
- - [Figure 3-5 -- JADN Fields for Enumerated Types](#figure-3-5----jadn-fields-for-enumerated-types)
- - [Figure 3-6 -- JADN Fields for Structured Compound Types](#figure-3-6----jadn-fields-for-structured-compound-types)
- - [Figure 3-7 -- JADN Representations](#figure-3-7----jadn-representations)
- - [Figure 3-8 -- Contains and References Relationships](#figure-3-8----contains-and-references-relationships)
- - [Figure 3-9 -- Music Library Conceptual Overview](#figure-3-9----music-library-conceptual-overview)
- - [Figure 3-10 -- Music Library Example ERD](#figure-3-10----music-library-example-erd)
- - [Figure 3-11 -- IPv4 Header (JIDL)](#figure-3-11----ipv4-header-jidl)
- - [Figure 3-12 -- IPv4 Packet Header Enumerations](#figure-3-12----ipv4-packet-header-enumerations)
- - [Figure 3-13 -- Simple University Example ERD](#figure-3-13----simple-university-example-erd)
- - [Figure 3-14 -- Simple University Example JADN (JSON format)](#figure-3-14----simple-university-example-jadn-json-format)
- - [Figure 3-15 -- Simple University Example JADN (JIDL format)](#figure-3-15----simple-university-example-jadn-jidl-format)
- - [Figure 3-16 -- Simple University Example JADN (table format)](#figure-3-16----simple-university-example-jadn-table-format)
- - [Figure 3-17 -- Simple University Example ERD Source Code (GraphViz)](#figure-3-17----simple-university-example-erd-source-code-graphviz)
- - [Figure 3-18 -- Basic Inheritance Example Overview](#figure-3-18----basic-inheritance-example-overview)
 
 
 **List of Tables**
 
- - [Table 2-1 -- Modeling Approach Comparison](#table-2-1----modeling-approach-comparison)
- - [Table 3-1 -- JADN Type Options](#table-3-1----jadn-type-options)
- - [Table 3-2 -- Type Option Applicability](#table-3-2----type-option-applicability)
- - [Table 3-3 -- JADN Field Options](#table-3-3----jadn-field-options)
- - [Table 3-4 -- Binary Type Format Options](#table-3-4----binary-type-format-options)
- - [Table 3-5 -- Integer Type Format Options](#table-3-5----integer-type-format-options)
- - [Table 3-6 -- Number Type Format Options](#table-3-6----number-type-format-options)
- - [Table 3-7 -- Array Type Format Options](#table-3-7----array-type-format-options)
- - [Table 3-8 -- Compound Type Decision Tree](#table-3-8----compound-type-decision-tree)
- - [Table 3-9 -- Multiplicity Types](#table-3-9----multiplicity-types)
- - [Table D-1 -- UML and JADN Primitive Type Equivalence](#table-d-1----uml-and-jadn-primitive-type-equivalence)
 
 
 -------
