@@ -3401,10 +3401,10 @@ inheritance hierarchies. This example uses concepts inspired by the
 [[CityGML](#citygml)] and [[CityJSON](#cityjson)] geographic modeling languages
 to provide an introduction to the use of inheritance in JADN. An overview of the
 key types defined in this example and their inheritance relationships is shown
-in Figure 3-18. This description focuses on the inheritance-related aspects of the
+in Figure 3-19. This description focuses on the inheritance-related aspects of the
 model; the JIDL for the complete model is provided in [Appendix&nbsp;E.2](#e2-inheritance-example-jidl).
 
-###### Figure 3-18 -- Basic Inheritance Example Overview
+###### Figure 3-19 -- Basic Inheritance Example Overview
 
 <img src="images/Inheritance-Example-Vert.drawio.png">
 
