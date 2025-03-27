@@ -1135,7 +1135,7 @@ option whose type is Boolean is True if the option ID appears in a type
 definition. Options whose type is String, Integer, or Number indicate the type
 of information expected as the option's value.
 
-###### Table 3-1 -- JADN Type Options
+###### Table 3-2 -- JADN Type Options
 
 |  **Option**  | **Type** | **ID** | **Description**                                                  |
 |:------------:|:--------:|:------:|-------------------------------------------------------------------|
