@@ -2296,11 +2296,11 @@ information characteristics to be modeled:
 * All items in ArrayOf and MapOf groups have the same value (and key) type
 * Each item in Array, Map, and Record groups has an individual value (and key) type
 
-and the decision tree for which compound type to use is shown in Figure 3-8X:
+and the decision tree for which compound type to use is shown in Figure 3-8:
 
-###### Figure 3-8X -- Compound Type Decision Tree
+###### Figure 3-8 -- Compound Type Decision Tree
 
-![Figure 3-8X -- Compound Type Decision Tree](./images/JADN-Compound-Type-Decision-Tree.drawio.png)
+![Figure 3-8 -- Compound Type Decision Tree](./images/JADN-Compound-Type-Decision-Tree.drawio.png)
 
 For the last information type - collections of individually-defined key:value pairs -
 JADN provides two types: Map and Record. The difference is that Record keys have a
@@ -2349,12 +2349,12 @@ in verbose JSON.
 
 Another significant UML concept is that JADN distinguishes among
 all four multiplicity types ([[UML](#uml)], Table 7.1), while
-logical models typically support only sets. Table 3-9 replicates
+logical models typically support only sets. Table 3-8 replicates
 the information from UML Table 7.1 and adds the equivalent JADN
 types. Note that the UML Specification cites the "traditional
 names" in its "Collection Type" column.
 
-###### Table 3-9 -- Multiplicity Types
+###### Table 3-8 -- Multiplicity Types
 
 | **isOrdered** | **isUnique** | **Collection<br>Type** |    **JADN Type**   |
 |:-------------:|:------------:|:----------------------:|:------------------:|
