@@ -260,12 +260,14 @@ Track-Info = Record                          // information about the individual
 The JIDL presentation is concise and easily understood. Each element is defined
 by its meaning (e.g., the track number is an _integer_, not a string containing
 only digits). The details of `Artist`, `Image`, and other types referenced in
-this metadata record are defined in other similar structures. The JADN from which the
-JIDL is generated can be readily translated into JSON schema or XML schema forms for
-use with existing tooling for those formats but the readability of the JIDL format simplifies
-development, examination, and refinement of the model.
-
-> NOTE: Comments have been omitted from the JSON and XML schemas below for space reasons.
+this metadata record are defined in other similar structures. The JADN from
+which the JIDL is generated can be readily translated into JSON schema
+([Figure&nbsp;1-2](#figure-1-2----music-track-metadata-json-schema)) or XML schema 
+([Figure&nbsp;1-3](#figure-1-3----music-track-metadata-xml-schema)) forms for use with
+existing tooling for those formats but the readability of the JIDL format
+simplifies development, examination, and refinement of the model. (The
+descriptive comments have been omitted from the JSON and XML schemas below for
+space reasons.)
 
 ###### Figure 1-2 -- Music Track Metadata JSON Schema
 
@@ -314,7 +316,7 @@ development, examination, and refinement of the model.
       }
     },
 ```
-<br><br>
+
 ###### Figure 1-3 -- Music Track Metadata XML Schema
 
 ```xml
