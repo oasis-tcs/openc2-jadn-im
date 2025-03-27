@@ -875,7 +875,10 @@ JADN defines three kinds of information that have alternate representations:
 2. Enumerations: string value or numeric id (Enumerated vocabularies and field identifiers)
 3. Table rows: column name or position (Records)
 
-These alternatives can be grouped into distinct serialization styles:
+These alternatives can be grouped into distinct serialization styles
+([Table&nbsp;2-2](#table-2-2----serialization-styles)).
+
+###### Table 2-2 -- Serialization Styles
 
 |         Style             |           **Verbose**          |              **Compact**             |            **Concise**            |
 |--------------------------:|:------------------------------:|:------------------------------------:|:---------------------------------:|
@@ -1032,7 +1035,10 @@ The examples that follow in subsequent sections are typically illustrated using
 both normative JADN (i.e., JSON data) for precision and the JADN Interface
 Definition Language (JIDL) format for its easy readability.
 
-The [[JADN Specification](#jadn-v20)], Section&nbsp;4, defines twelve core types:
+The [[JADN Specification](#jadn-v20)], Section&nbsp;4, defines twelve core types
+([Table&nbsp;3-1](#table-3-1----jadn-core-types)).
+
+###### Table 3-1 -- JADN Core Types
 
 | **Primitive** | **Compound** | **Union** |
 |:-------------:|:------------:|:-------------------------:|
