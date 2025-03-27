@@ -243,6 +243,8 @@ in [Section&nbsp;3.3.1](#331-digital-music-library)
 helps to illustrate. Each music track in the library is described by a collection of metadata
 (presented here in JADN Interface Definition Language [JIDL] format):
 
+###### Figure 1-1 -- Music Track Metadata Example (JIDL)
+
 ```
 Track-Info = Record                          // information about the individual audio tracks
    1 track_number     Integer                // track sequence number
@@ -265,7 +267,8 @@ development, examination, and refinement of the model.
 
 > NOTE: Comments have been omitted from the JSON and XML schemas below for space reasons.
 
-**Track-Info in JSON Schema**
+###### Figure 1-2 -- Music Track Metadata JSON Schema
+
 ```json
     "Track-Info": {
       "title": "Track Info",
@@ -312,7 +315,7 @@ development, examination, and refinement of the model.
     },
 ```
 <br><br>
-**Track-Info in XML Schema**
+###### Figure 1-3 -- Music Track Metadata XML Schema
 
 ```xml
 	<xs:complexType name="Track-Info">
