@@ -2109,6 +2109,23 @@ field definition in the **Fields** array has five elements:
 ###### Figure 3-7 -- JADN Fields for Structured Compound Types
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
+For each of the type definition formats illustrated in Figures 3-5, 3-6, and
+3-7, only the initial elements are required to create a valid type or field
+definition, and unused elements default to an empty value of the relevant type. For
+a JADN schema in normative JSON format this means the optional fields at the end
+of a type or field definition can either be represented by empty elements
+(arrays or strings, as appropriate) or simply omitted. As an illustration, all
+of the following are legimate representations of a primitive type definition
+where none of the optional fields are used:
+
+```json
+["Counter", "Integer",[],"",[]]  <-- empty arrays and string for unused optional elements
+["Counter", "Integer",[],""]     <-- field array omitted
+["Counter", "Integer",[]]        <-- description string and field array omitted
+["Counter", "Integer"]           <-- all optional fields omitted
+```
+
+The same principle applies to item and field definitions for union and compound types. 
 
 #### 3.1.3.2 JADN Interface Definition Language (JIDL)
 
