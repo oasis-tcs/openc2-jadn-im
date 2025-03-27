@@ -2072,32 +2072,32 @@ each of three ways that the **Fields** array is
 used, depending on the core type used in a particular type
 definition.
 
-Figure 3-3 illustrates the top-level structure of a native JADN schema document,
+Figure 3-4 illustrates the top-level structure of a native JADN schema document,
 as described in [Section&nbsp;3.1](#31-jadn-overview).
 
-###### Figure 3-3 -- JADN Schema Top-Level Structure
+###### Figure 3-4 -- JADN Schema Top-Level Structure
 ![JADN Schema Top-Level Structure](images/JADN-schema-overview-json.drawio.png)
 
-Figure 3-4 illustrates the JADN structure for defining any
+Figure 3-5 illustrates the JADN structure for defining any
 Primitive **CoreType**, or ArrayOf or MapOf type; for all of these
 the **Fields** array is empty:
 
-###### Figure 3-4 -- JADN for Primitive, ArrayOf, MapOf Types
+###### Figure 3-5 -- JADN for Primitive, ArrayOf, MapOf Types
 ![JADN for Primitive, ArrayOf, MapOf Types](images/JADN-primitive-json.drawio.png)
 
-Figure 3-5 illustrates the JADN structure for defining an
+Figure 3-6 illustrates the JADN structure for defining an
 Enumerated **CoreType**; for enumerations each item definition in the
 **Fields** array has three elements:
 
-###### Figure 3-5 -- JADN Fields for Enumerated Types
+###### Figure 3-6 -- JADN Fields for Enumerated Types
 ![JADN for Enumerated Types](images/JADN-with-items-json.drawio.png)
 
 
-Figure 3-6 illustrates the JADN structure for defining a
+Figure 3-7 illustrates the JADN structure for defining a
 **CoreType** of Array, Choice, Map, or Record; for these types each
 field definition in the **Fields** array has five elements:
 
-###### Figure 3-6 -- JADN Fields for Structured Compound Types
+###### Figure 3-7 -- JADN Fields for Structured Compound Types
 ![JADN for Types With Fields](images/JADN-with-fields-json.drawio.png)
 
 
