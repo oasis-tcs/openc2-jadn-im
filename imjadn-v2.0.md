@@ -2050,7 +2050,6 @@ field is optional. An empty IPv4-Connection record is invalid,
 but an IPv4-Connection record where any one or more of the five
 fields exists is valid.
 
-
 ### 3.1.3 JADN Representations
 
 The native format of JADN is JSON, but JADN content can be
@@ -2071,8 +2070,6 @@ representations is described below.
 
 ###### Figure 3-3 -- JADN Representations
 ![JADN Representations](images/JADN-Representations.drawio.png)
-
-
 
 #### 3.1.3.1 Native JSON Representation (Normative)
 
