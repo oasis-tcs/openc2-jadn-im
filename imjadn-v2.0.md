@@ -2238,10 +2238,11 @@ System character, but schema processing tools may do so".
 
 As noted in [Section&nbsp;3.1.1.4](#3114-field-options), 
 JADN Type Options can be applied to
-fields in compound types, but as explained in Section&nbsp;3.3.1 of
+fields in compound types, but as explained in Section&nbsp;5.1 of
 the JADN Specification, this is an shortcut that leads to the
 anonymous definition of a new type when processed by automated
-tooling. The example provided there is:
+tooling. An example of this is the application of the `/email` 
+format type option in this record specification:
 
 ```
 Member = Record
@@ -2249,7 +2250,8 @@ Member = Record
   2 email        String /email   // email is a type option for String types
 ```
 
-Expanding replaces this with:
+Expanding replaces the type specification in field 2 of the record with a
+reference to the automatically generated type `Member.email`:
 
 ```
 Member = Record
