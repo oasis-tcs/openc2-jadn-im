@@ -1038,8 +1038,8 @@ JADN can be represented in multiple formats, both textual and
 graphical, and automated tooling can transform a JADN model
 between the different representations without loss of
 information. The Native JADN representation as JSON data is
-authoritative, but each representation has advantages. The other representations are described in 
-[Section&nbsp;3.1.3.2, Alternative JSON Representation](#3132-alternative-jadn-representations). 
+authoritative, but each representation has advantages. The other representations are described in
+sections 3.1.3.2, 3.1.3.3, and 3.1.3.4.
 The examples that follow in subsequent sections are typically illustrated using
 both normative JADN (i.e., JSON data) for precision and the JADN Interface
 Definition Language (JIDL) format for its easy readability.
