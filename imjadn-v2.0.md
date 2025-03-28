@@ -361,21 +361,21 @@ level, independent of any specific implementations or protocols used
 to transport the data.  The degree of specificity (or detail) of the
 abstractions defined in the IM depends on the modeling needs of its
 designers. (Section 2)
-> 
-> 
+>
 > * The terms "conceptual models" and "abstract models", which are often
 used in the literature, relate to IMs.  IMs can be implemented in different
 ways and mapped on different protocols.
+>
 > * IMs can be defined in an informal way, using natural languages such
 as English. Alternatively, IMs can be defined using a formal language
 or a semi-formal structured language.  One of the possibilities to formally
 specify IMs is to use class diagrams of the Unified Modeling Language (UML).
+>
 > * In general, it seems advisable to use object-oriented techniques to
 describe an IM. In particular, the notions of abstraction and
 encapsulation, as well as the possibility that object definitions
 include methods, are considered to be important. (Section&nbsp;3)
 >
-> 
 > * Compared to IMs, [Data Models] define managed objects at a lower level
 of abstraction.  They include implementation- and
 protocol-specific details, e.g., rules that explain how to map
