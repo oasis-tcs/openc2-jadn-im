@@ -2057,7 +2057,7 @@ The native format of JADN is JSON, but JADN content can be
 represented in other ways that are often easier to edit or more
 useful for documentation. This section describes the JSON content
 used for each of the JADN basic types, and then illustrates the
-other representations using a simple example.
+other representations using a simple example or reference.
 
 The [[JADN Specification](#jadn-v20)] identifies three presentation formats
 in addition to the native JSON format:
