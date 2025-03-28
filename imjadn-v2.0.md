@@ -4025,9 +4025,8 @@ format, with RDF statements generated from it dynamically if
 needed to satisfy queries. Although this Person example does not
 include Bob's friends or interests, relationships can be defined
 within the information model or specified independently with RDF.
-[JADN section
-5.3](https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html#53-entity-relationship-diagrams)
-includes a slightly larger information model example with three
+[Section&nbsp;3.3.3](#333-multiple-representations-example)
+provides a slightly larger information model example with three
 types and four container and reference relationships among them.
 
 
