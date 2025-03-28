@@ -988,7 +988,7 @@ The edges of an information model must be acyclic in order to ensure that:
 2) every path from a root to any leaf has finite length, and equivalently
 3) every instance has finite nesting depth.
 
-There is no restriction on reference edges, so any cycles among colleciton type in a model can be
+There is no restriction on reference edges, so any cycles among collection type in a model can be
 broken by converting one or more collections to references.
 
 From UML JADN takes the concept of modeling information/data
