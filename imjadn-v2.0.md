@@ -899,7 +899,7 @@ These alternatives can be grouped into distinct serialization styles
 A data format is a serialization style applied to a data language: "Compact JSON",
 "Concise JSON", "Compact XML", "Verbose CBOR", etc. 
 
-The [[JADN Specification](#jadn-v20)] defines 12 core types, which
+The [[JADN Specification](#jadn-v20)] defines 12 core types, each of which
 are described in [Section&nbsp;3.1.2](#312-core-type-examples) of this
 CN. The JADN Specification, Section&nbsp;6, also defines serialization rules for
 JSON (with three levels of verbosity) and CBOR
