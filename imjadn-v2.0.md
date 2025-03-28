@@ -1508,7 +1508,7 @@ The preferred pattern grammar for JADN is defined in the 15th edition of the
 [[ECMAScript](#ecmascript)] specification (June 2024).
 
 Semantic validation keywords for Strings are defined in Sections 4.2.5.2 and
-54.2.5.3 the JADN Specification. These keywords support constraining a String
+4.2.5.3 the JADN Specification. These keywords support constraining a String
 type to represent a variety of commonly used formats, such as dates and times,
 emails, hostnames, etc.
 
