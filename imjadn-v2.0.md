@@ -2625,7 +2625,7 @@ Namespace Identifiers (`NSID`) with the `Namespace` other packages declare for
 themselves. A Namespace Identifier (NSID) is, by default, a 1-8 character string
 beginning with a letter and containing only letters and numbers (the default
 formatting can be overridden by inserting an alternative definition into a JADN
-schema's `Metadata` map's `config` section). The JADN v2.0 `NsAr / PrefixNS` structure enables multiple schema
+schema's `Metadata` map's `Config` section). The JADN v2.0 `NsAr / PrefixNS` structure enables multiple schema
 packages to be mapped to one NSID to group all of the types defined in that
 collection of packages into a single namespace. For any array element where the
 `NSID` field is blank, the types in the referenced package are made available in
