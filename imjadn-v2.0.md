@@ -134,7 +134,7 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.3.3 Property Tables](#3133-property-tables)
       - [3.1.3.4 Entity Relationship Diagrams (ERDs)](#3134-entity-relationship-diagrams-erds)
       - [3.1.3.5 Translation Among JADN Representations](#3135-translation-among-jadn-representations)
-    - [3.1.4 Type Definition Nuances](#314-type-definition-nuances)
+    - [3.1.4 Type Definition Nuances](#314-type-definition-shortcuts-and-nuances)
       - [3.1.4.1 "Anonymous" Type Definitions](#3141-anonymous-type-definitions)
       - [3.1.4.2 Selection and Use of JADN Compound Types](#3142-selection-and-use-of-jadn-compound-types)
       - [3.1.4.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
@@ -2214,9 +2214,7 @@ created using Markdown or HTML code, and ERDs can be created from
 code for rendering engines such as [[Graphviz](#graphviz)] or
 [[PlantUML](#plantuml)].
 
-### 3.1.4 Type Definition Nuances
-
-> EDITOR'S NOTE: section heading subject to change
+### 3.1.4 Type Definition Shortcuts and Nuances
 
 This section describes JADN shortcuts and other usage details that add flexibility or simplify the
 development of IMs. The [[JADN Specification](#jadn-v20)] conformance statement
