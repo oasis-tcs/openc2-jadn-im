@@ -1044,7 +1044,7 @@ The examples that follow in subsequent sections are typically illustrated using
 both normative JADN (i.e., JSON data) for precision and the JADN Interface
 Definition Language (JIDL) format for its easy readability.
 
-The [[JADN Specification](#jadn-v20)], Section&nbsp;4, defines twelve core types
+The [[JADN Specification](#jadn-v20)], Section&nbsp;4.2, defines twelve core types
 ([Table&nbsp;3-1](#table-3-1----jadn-core-types)).
 
 ###### Table 3-1 -- JADN Core Types
