@@ -2563,7 +2563,7 @@ The file has two top-level components:
  - the schema content itself, labeled as `types`.
 
 Definitions of all of the `Metadata` fields are provided in
-the JADN specification. 
+the JADN specification (sections 3.1.1 and 3.1.2). 
 
 The metadata portion is entirely optional, but if present must
 include the `package` field providing a URI for the package to
