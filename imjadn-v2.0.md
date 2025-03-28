@@ -2784,7 +2784,7 @@ by the [[CityGML](#citygml)] and [[CityJSON](#cityjson)] geographic modeling
 languages
 
 These examples use a mixture of the various JADN representation formats
-described in [Section&nbsp;3.1.3](#313-jadn-representations), and the university
+described in [Section&nbsp;3.1.3](#313-jadn-representations). The university
 example in [Section&nbsp;3.3.3](#333-multiple-representations-example)
 specifically incorporates all of the representations describing a
 single information model.
