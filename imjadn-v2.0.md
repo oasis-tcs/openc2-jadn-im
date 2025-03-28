@@ -2518,7 +2518,7 @@ JADN tooling.
 
 `Record J` in the lower right portion of the figure shows a self-referential
 `key / link` application. This is a generalization of the example from
-Section&nbsp;3.3.6 of the JADN Specification, which allows for numerous
+Section&nbsp;4.2.2.3 of the JADN Specification, which allows for numerous
 relationships between objects of type `Person`:
 
 ```
