@@ -1248,8 +1248,9 @@ specifying field options. Table 3-4 lists the JADN **FieldOptions**.
 | **Option** |  **Type**  | **ID** | **Description**                                               | **JADN Spec Section** |
 |:----------:|:----------:|:------:|---------------------------------------------------------------|:---------------------:|
 |  minOccurs |   Integer  |   `[`  | Minimum cardinality, default = 1, 0 = optional                |     4.2.2.2           |
-|  maxOccurs |   Integer  |   `]`  | Maximum cardinality, default = 1, 0 = default max, >1 = array |     4.2.2.2           |
-|    tagid   | Enumerated |   `&`  | Field containing an explicit tag for this Choice type         |     4.2.3.4           |
+|  maxOccurs |   Integer  |   `]`  | Maximum cardinality, default = 1, <0 = inherited or none      |     4.2.2.2           |
+|    tagId   | Enumerated |   `&`  | Field containing an explicit tag for this Choice type         |     4.2.3.4           |
+|    not     |   Boolean  |   `N`  | Value is not an instance of the FieldType in an untagged union |    4.2.3.4           |
 |     key    |   Boolean  |   `K`  | Field is a primary key for this type                          |     4.2.2.3           |
 |    link    |   Boolean  |   `L`  | Field is a foreign key reference to a type instance           |     4.2.2.3           |
 
