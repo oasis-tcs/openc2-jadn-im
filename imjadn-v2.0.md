@@ -3042,7 +3042,7 @@ The [[JADN Specification](#jadn-v20)], section 7.3,
 uses a simple example of an IM for a university to illustrate the
 use of ERDs for IMs. This section uses that ERD as a starting
 point for an example to illustrate the various JADN
-representations described in [Section 3.1.3.2](#3132-alternative-jadn-representations). The example
+representations described in [Section 3.1.3](#313-jadn-representations). The example
 begins with the ERD for the model:
 
 ###### Figure 3-14 -- Simple University Example ERD
