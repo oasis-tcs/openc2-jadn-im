@@ -2397,7 +2397,7 @@ For example, the following specifies an Integer type that can be
 assigned values between `1` and `1000`, using both JADN (see
 [Section&nbsp;3.1.3.1](#3131-native-json-representation-normative)) and JIDL
 notation (see 
-[Section&nbsp;3.1.3.2](#3132-alternative-jadn-representations)):
+[Section&nbsp;3.1.3.2](#3132-jadn-interface-definition-language-jidl)):
 
 ```
 ["count","integer",["{1", "}1000"], "count of objects",[]]
