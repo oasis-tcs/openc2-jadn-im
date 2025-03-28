@@ -2545,7 +2545,7 @@ permits the use of a compound type to support composite keys.
 
 ### 3.1.6 Schemas, Packages and Namespaces
 
-Section 6 of the [[JADN Specification](#jadn-v20)] introduces the
+Section 3 of the [[JADN Specification](#jadn-v20)] introduces the
 use of packages as the mechanism for organizing JADN schemas.
 This section provides additional information on the use of
 packages, along with the associated concept of namespaces.
