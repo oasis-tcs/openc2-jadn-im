@@ -2225,17 +2225,14 @@ design principle. Shortcuts are syntactic sugar that can be
 replaced by core definitions without changing their meaning."
 These shortcuts can reduce
 the level of effort required by a JADN schema author and can make
-a schema more compact and understandable.
+a schema more compact and understandable. Each shortcut description
+in the JADN Specification include a brief example.
 
 The JADN Specification also defines a "system character" (by
-default the period, `.`) and in the Name Formats (section&nbsp;3.1.2)
+default the period, `.`) and in the Name Formats discussion (section&nbsp;3.1.2)
 reserves the use of that character to automated tooling,
 saying "Schema authors should not create TypeNames containing the
 System character, but schema processing tools may do so".
-
-Examples of the use of shortcuts and the role of the system
-character are provided in sections 3.3.1, 3.3.2, and 3.3.2 of the
-JADN Specification.
 
 #### 3.1.4.1 "Anonymous" Type Definitions
 
