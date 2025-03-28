@@ -976,19 +976,20 @@ against specific objectives:
  4) Specification is data that can be serialized
  5) Specification has a fixed structure designed for extensibility
 
-A JADN information model is a set of type definitions. Each field in a compound
+A JADN information model is a set of type definitions, where each definition is 
+either a primitive, compound, or union type. Each field in a compound
 type may be associated with another model-defined type, and the set of
 associations between types forms a directed graph.  Each association is either a
-container or a reference, and the direction of each edge is toward the contained
-or referenced type.
+collection or a reference, and the direction of each edge is toward the values that are contained
+or referenced.
 
-The container edges of an information model must be acyclic in order to ensure that:
+The edges of an information model must be acyclic in order to ensure that:
 1) every model has one or more roots,
 2) every path from a root to any leaf has finite length, and equivalently
 3) every instance has finite nesting depth.
 
-There is no restriction on reference edges, so any container cycles in a model can be
-broken by converting one or more containers to references.
+There is no restriction on reference edges, so any cycles among colleciton type in a model can be
+broken by converting one or more collections to references.
 
 From UML JADN takes the concept of modeling information/data
 using Simple Classifiers (see [[UML](#uml)], 10.2 Datatypes) as
