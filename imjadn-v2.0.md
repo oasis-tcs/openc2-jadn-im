@@ -1086,7 +1086,8 @@ A firm requirement of JADN is that a TypeName in a schema must not be a JADN
 predefined (i.e., core) type. There are also name formatting conventions intended to improve
 the consistency and readability of JADN schemas. These
 conventions are defined in the JADN Specification but can be overridden within a
-JADN schema package if desired (see "Name Formats" in Section&nbsp;3.1.2 of the
+JADN schema package if desired (see the "Name Formats" item of 
+Functional Metadata in Section&nbsp;3.1.2 of the
 [[JADN Specification](#jadn-v20)]):
 
  - **TypeNames** are written in PascalCase or Train-Case (using
