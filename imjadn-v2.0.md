@@ -2494,7 +2494,7 @@ When recursion is used in programming it is terminated by a base
 condition, but as a declarative specification an IM has no corresponding concept to terminate
 recursion. JADN uses "reference" relationships in situations
 where cycles occur in order to address this need. The method to
-define reference relationships is explained in Section&nbsp;3.3.6,
+define reference relationships is explained in Section&nbsp;4.2.2.3,
 *Links*, of the [[JADN Specification](#jadn-v20)]. 
 
 Figure 3-9 illustrates permissible and impermissible "collection"
