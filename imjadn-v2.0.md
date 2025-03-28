@@ -3512,7 +3512,7 @@ Google Developers, *"Protocol Buffers"*, https://developers.google.com/protocol-
 https://www.w3.org/TR/rdf12-concepts/#section-Datatypes
 
 ###### [RELAXNG]
-OASIS Technical Committee, *"RELAX NG"*, November 2002, https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=relax-ng.
+https://relaxng.org/
 
 ###### [RFC0791]
 "Internet Protocol - DARPA Internet Program Protocol Specification", RFC 791, September 1981,
