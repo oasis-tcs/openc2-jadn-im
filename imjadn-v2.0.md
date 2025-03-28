@@ -2216,16 +2216,14 @@ code for rendering engines such as [[Graphviz](#graphviz)] or
 
 ### 3.1.4 Type Definition Shortcuts and Nuances
 
-This section describes JADN shortcuts and other usage details that add flexibility or simplify the
-development of IMs. The [[JADN Specification](#jadn-v20)] conformance statement
-(section 8) separates the definition of JADN into "Core JADN"
-(sections 3.1, 3.2, 4, and 6) and "JADN Shortcuts" (section&nbsp;3.3).
-Section&nbsp;3.3 explains that shortcuts "make type definitions
+This section describes JADN shortcuts and other usage details that 
+add flexibility or simplify the
+development of IMs. [[JADN Specification](#jadn-v20)] section&nbsp;5 
+defines a collection of shortcuts that "make type definitions
 more compact or support the Don't Repeat Yourself (DRY) software
 design principle. Shortcuts are syntactic sugar that can be
 replaced by core definitions without changing their meaning."
-While the implementation of shortcuts by JADN tools is optional,
-in a conformance sense, the availability of shortcuts reduces
+These shortcuts can reduce
 the level of effort required by a JADN schema author and can make
 a schema more compact and understandable.
 
