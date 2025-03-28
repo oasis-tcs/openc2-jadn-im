@@ -2772,14 +2772,14 @@ This CN provides several examples to illustrate approaches to information
 modeling and the application of JADN. The example IMs are:
 
  - A digital music library: an example of top-down analysis to develop an IM
- - An IP version 4 packet header: an example of developing an IM from a
+ - The IP version 4 packet header: an example of developing an IM from a
    well-defined data structure
  - A university with classes and people (teachers and students): an example to
    illustrate the relationship among the available JADN representations
    described in [Section 3.1.3](#313-jadn-representations)
  - A calendar event model: an example of developing a JADN model from an existing
    JSON schema
- - An example applying the new JADN v2.0 inheritance features, loosely inspired
+ - An example applying JADN inheritance features, loosely inspired
 by the [[CityGML](#citygml)] and [[CityJSON](#cityjson)] geographic modeling
 languages
 
