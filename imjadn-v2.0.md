@@ -2958,7 +2958,7 @@ packet header (except the `options` field), supported by two Enumerated types to
 explicate the meanings of particular fields. Figure 3-12 shows the
 packet header array in JIDL form. In this representation the field "names" are
 embedded in the JIDL comment field between the `//` and `::` delimiters, as
-described in [Section&nbsp;3.1.3.2.1](#31321--array-field-names-in-jidl).
+described in [Section&nbsp;3.1.3.2](#3132-jadn-interface-definition-language-jidl).
 
 ###### Figure 3-12 -- IPv4 Header (JIDL)
 
