@@ -1384,8 +1384,8 @@ Integer types without rounding errors or loss of precision.
 The "d\<*n*\>" option supports arbitrary fixed point representation of
 values. For example, the Integer option `/d3` specifies an integer that is scaled
 by 10^3, providing three decimal digits after a "decimal point".  So an integer
-Time with no option would be seconds before or after the POSIX epoch, and with
-`/d3` it would be milliseconds, or `/d6` would be microseconds. If an integer
+formatted as `/time` with no scaling option would be valued as seconds before or after the POSIX epoch. The same integer with
+the `/d3` option would be valued to milliseconds, or with `/d6` would valued to microseconds. If an integer
 temperature is documented to be degrees Celsius, its type could use the option
 `/d1` or `/d2` to give precision of tenths or hundredths of a degree.
 
