@@ -1572,7 +1572,7 @@ Binary type:
 | ipv4-addr    | Binary | IPv4 address as specified in [[RFC 791](#rfc0791)] Section&nbsp;3.1 |
 | ipv6-addr    | Binary | IPv6 address as specified in [[RFC 8200](#rfc8200)]  Section&nbsp;3 |
 | x, X         | Binary | Binary value represented as hexidecimal (pairs of characters [0-9a-fA-F]) |
-| b64          | Binary | Binary value represented with base64 encoding as defined in [RFC 3548] |
+| b64          | Binary | Binary value represented with base64 encoding as defined in [RFC 4648] |
 
 #### 3.1.2.6 Enumerated
 
@@ -3542,6 +3542,11 @@ RFC 4291, DOI 10.17487/RFC4291, February 2006, <https://www.rfc-editor.org/info/
 
 Fuller, V. and T. Li, *"Classless Inter-domain Routing (CIDR): The Internet Address Assignment and Aggregation Plan"*,
 BCP 122, RFC 4632, DOI 10.17487/RFC4632, August 2006, <https://www.rfc-editor.org/info/rfc4632>.
+
+###### [RFC4648]
+
+Josefsson, S., *"The Base16, Base32, and Base64 Data Encodings"*, 
+RFC 4648, DOI 10.17487/RFC4648, October 2006, <https://www.rfc-editor.org/info/rfc4648>.
 
 ###### [RFC7049]
 Bormann, C., Hoffman, P., *"Concise Binary Object Representation
