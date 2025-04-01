@@ -913,14 +913,13 @@ A data format is a serialization style applied to a data language: "Compact JSON
 
 The [[JADN Specification](#jadn-v20)] defines 12 core types, each of which
 are described in [Section&nbsp;3.1.2](#312-core-type-examples) of this
-CN. The JADN Specification, Section&nbsp;6, also defines serialization rules for
-JSON (with three levels of verbosity) and CBOR
-[[RFC 7409](#rfc7049)]:
+CN. The JADN Specification, Section&nbsp;6, also defines serialization rules for multiple representation formats:
 
  - Verbose JSON
  - Compact JSON
  - Concise JSON
- - CBOR
+ - CBOR [[RFC 7409](#rfc7049)]
+ - XML
 
 The name "Verbose" here is intended to be descriptive rather than pejorative. An
 information model allows designers to compare Verbose and Compact styles for
