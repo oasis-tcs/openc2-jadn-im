@@ -1586,7 +1586,7 @@ Binary type:
   <tbody>
     <tr>
       <td class="td">
-        A vocabulary of items where each item has an id and a string value.
+        A vocabulary of items where each item has an id and a tag (i.e., a string value).
       </td>
       <td class="td">
         <i>
