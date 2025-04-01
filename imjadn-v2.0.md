@@ -1423,7 +1423,7 @@ a Number type would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of an Number datatype
+// Example JIDL definition of a Number datatype
   Temperature = Number   // Current temperature observation in degrees C
 ```
 
