@@ -1179,9 +1179,9 @@ the types to which they apply throughout section 4 of the [[JADN
 Specification](#jadn-v20)]. In general, any type option can only be applied once
 in a type definition, using the format of concatenating the Option ID with the
 Option Value described above. The semantic validation `format` option is an
-exception to this, as explained in Section 4.2.5 of the specification: "format
+exception to this, as explained in Section&nbsp;4.2.5 of the specification: "format
 options have no value; the keyword is part of the key so a type may include
-multiple format options". An example is provided in the specification applying
+multiple format options". An example is provided in the specification of applying
 both the `/date-time` format and the `/d3` format to an `Integer` type to
 specify a time resolution in milliseconds:
 
