@@ -1317,7 +1317,6 @@ item fitting a Boolean type would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of a boolean datatype
   AccessGranted = Boolean   // Result of access control decision
 ```
 
@@ -1355,7 +1354,6 @@ fitting an Integer type would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of an Integer datatype
   TrackNumber = Integer   // Track number for current song
 ```
 
@@ -1423,7 +1421,6 @@ a Number type would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of a Number datatype
   Temperature = Number   // Current temperature observation in degrees C
 ```
 
@@ -1481,7 +1478,6 @@ a String type would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of a String datatype
   TrackTitle = String   // Title of the song in the selected track
 ```
 
@@ -1556,7 +1552,6 @@ would be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of a binary datatype
   FileData = Binary   // Binary contents of file
 ```
 
@@ -1614,7 +1609,6 @@ follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of an Enumerated datatype
 L4-Protocol = Enumerated  // Value of the protocol (IPv4) or next header (IPv6)
                           // field in an IP packet. Any IANA value per RFC 5237
    1 icmp                 // Internet Control Message Protocol - [RFC 0792]
@@ -1665,7 +1659,6 @@ be defined as follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of a Choice datatype
 IdentityType = Choice                // Nature of the referenced identity
    1 person           Person         // Identity refers to a person
    2 organization     Organization   // Identity refers to an organization
@@ -1774,9 +1767,6 @@ prefix.
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of an Array datatype with heterogenous elements
-// the IPv4-Net type is an array used to represent a CIDR block
-
 IPv4-Net = Array /ipv4-net   // IPv4 address and prefix length
    1  Binary /ipv4-addr      // ipv4_addr:: 32-bit IPv4 address as defined in RFC 791
    2  Integer optional       // prefix_length:: CIDR prefix-length. If omitted, refers to a single host address.
@@ -1917,7 +1907,6 @@ follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of an Map datatype
 Hashes = Map{1..*}    // Cryptographic hash values
    1 md5        Binary{16..16} /x optional   // MD5 hash as defined in RFC 1321
    2 sha1       Binary{20..20} /x optional   // SHA1 hash as defined in RFC 6234
@@ -1988,7 +1977,6 @@ follows:
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of a MapOf datatype
 // Maps employee identifier numbers to employee information
 Employees = MapOf(EID, Employee)
 
@@ -2047,9 +2035,6 @@ Record type for the common 5-tuple often used to describe a network connection.
 The corresponding JIDL representation would be:
 
 ```
-// Example JIDL definition of a record datatype
-// the IPv4-Connection type is a record
-
 IPv4-Connection = Record{1..*}                    // 5-tuple that specifies a tcp/ip connection
    1 src_addr         IPv4-Net optional           // IPv4 source address range
    2 src_port         Port optional               // Source service per RFC 6335
