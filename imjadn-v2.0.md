@@ -823,6 +823,7 @@ the associated data.
 <img src="images/parse-serialize.png" alt="Figure 2-1 -- Parsing and Serializing with an IM" width="750" />
 
 The internal representation, illustrated in Figure 2-1 as a graph,
+is the focal point for the validation of information against the model and
 is guided by rules associated with applying the IM:
 
  - the internal representation conforms to the IM
@@ -830,6 +831,12 @@ is guided by rules associated with applying the IM:
    type from the IM
  - each core type has associated serialization rules for each
    external representation format
+
+Serialization and deserialization, as discussed in the next section, are
+essential operations for the transmission, reception, storage, and retrieval of
+information. It is the responsibility of the application to connect its internal
+information representation to externally usable formats but the validation of
+the information is performed using the internal representation.
 
 As an example, consider an information element defined as a
 boolean type, which is the simplest core type. The essential
