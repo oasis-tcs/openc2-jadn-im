@@ -508,6 +508,11 @@ of the communication engineers training.
 Shannon's original article was later published as a book and gave
 rise to the field of Information Theory [[Shannon](#shannon)].
 
+A DataType is a UML classifier, an instance of a DataType is a value.  For
+IMs, DataTypes have two kinds of instances: (logical) values from
+the type's value space (values represented by program variables), and lexical
+values from the type's lexical space (serialized data).
+
 The [[Resource Description Framework (RDF)](#rdf)] 
 defines the concept of _lexical-to-value mapping_, which
 provides a precise vocabulary for describing the relationship between
