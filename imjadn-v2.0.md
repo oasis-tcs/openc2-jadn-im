@@ -909,22 +909,22 @@ These alternatives can be grouped into distinct serialization styles
 |                Table Rows |           Column Name          |            Column Position           |          Column Position          |
 
 A data format is a serialization style applied to a data language: "Compact JSON",
-"Concise JSON", "Compact XML", "Verbose CBOR", etc. 
+"Concise JSON", "Compact XML", "Verbose CBOR", etc. The name "Verbose" here is
+intended to be descriptive rather than pejorative. An
+information model allows designers to compare Verbose and Compact styles for
+usability, and allows data to be validated and successfully round tripped
+between a readable JSON style and an actually concise CBOR style.
 
 The [[JADN Specification](#jadn-v20)] defines 12 core types, each of which
 are described in [Section&nbsp;3.1.2](#312-core-type-examples) of this
-CN. The JADN Specification, Section&nbsp;6, also defines serialization rules for multiple representation formats:
+CN. The JADN Specification, Section&nbsp;6, also defines serialization rules
+for multiple representation formats:
 
  - Verbose JSON
  - Compact JSON
  - Concise JSON
- - CBOR [[RFC 7409](#rfc7049)]
+ - CBOR
  - XML
-
-The name "Verbose" here is intended to be descriptive rather than pejorative. An
-information model allows designers to compare Verbose and Compact styles for
-usability, and allows data to be validated and successfully round tripped
-between a readable JSON style and an actually concise CBOR style.
 
 Supporting a new data format ("external representation") requires defining
 serialization rules to translate each core type to that data format. The JADN
