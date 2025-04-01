@@ -1368,9 +1368,9 @@ Table 3-5 lists the *format* options applicable to the Integer type:
 
 | Keyword  | Type    | Requirement                                                                               |
 |----------|---------|-------------------------------------------------------------------------------------------|
-| i\<*n*\> | Integer | Signed _n_-byte integer; the value of _n_ must be a power of 2.                           |
-| u\<*n*\> | Integer | Unsigned integer or bit field of \<*n*\> bits, value must be between 0 and 2^\<*n*\> - 1. |
-| d\<*n*\> | Integer | _n_-bit fixed precision integer.                                                          |
+| i\<*n*\> | Integer | Signed n-bit integer, value must be between -2^(n-1) and 2^(n-1) - 1                      |
+| u\<*n*\> | Integer | Unsigned integer or bit field of n bits, value must be between 0 and 2^n - 1. |
+| d\<*n*\> | Integer | Decimal integer scale factor of 10^n: for n>0 value has n fractional digits.              |
 
 These format options provide flexibility in defining Integer types in an IM:
 
