@@ -1190,6 +1190,17 @@ Timestamp = Integer /date-time          // 1727877600 sec:     2024-10-02T15:00:
 Timestamp-ms = Integer /date-time /d3   // 1727877600000 msec: 2024-10-02T15:00:00.000Z
 ```
 
+Format options have two important characteristics:
+
+- Each format option is applicable only to one or more specific JADN primitive types
+- The implications of format options vary with the serialization format being used
+
+As noted in section&nbsp;6 of the JADN Specification, the definition of a new
+serialization format must "specify how each option applicable to a type affects
+serialized values". The various serialization formats defines in that section of
+the specification include tables documenting how format options apply to that
+format.
+
 Table 3-2 summarizes the applicability of type options to JADN core types. The
 `ArrayOf` and `MapOf` types have required options, as indicated. Other type
 options can be applied to individual types where the option is relevant, as
