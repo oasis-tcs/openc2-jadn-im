@@ -1511,7 +1511,10 @@ Barcode = String{pattern="^\d{12}$"}    // A UPC-A barcode is 12 digits
 ```
 
 The preferred pattern grammar for JADN is defined in the 15th edition of the
-[[ECMAScript](#ecmascript)] specification (June 2024).
+[[ECMAScript](#ecmascript)] specification (June 2024). Note that the `pattern`
+type option is distinct from the `/regex` format type option: the former
+specifies a regular expression used to validate a string value where as the
+latter specifies that the string value must _be_ a regular expression.
 
 Semantic validation keywords for Strings are defined in Sections 4.2.5.2 and
 4.2.5.3 the JADN Specification. These keywords support constraining a String
