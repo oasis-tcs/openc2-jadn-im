@@ -1571,6 +1571,8 @@ Binary type:
 | eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [[EUI](#eui)] |
 | ipv4-addr    | Binary | IPv4 address as specified in [[RFC 791](#rfc0791)] Section&nbsp;3.1 |
 | ipv6-addr    | Binary | IPv6 address as specified in [[RFC 8200](#rfc8200)]  Section&nbsp;3 |
+| x, X         | Binary | Binary value represented as hexidecimal (pairs of characters [0-9a-fA-F]) |
+| b64          | Binary | Binary value represented with base64 encoding as defined in [RFC 3548] |
 
 #### 3.1.2.6 Enumerated
 
