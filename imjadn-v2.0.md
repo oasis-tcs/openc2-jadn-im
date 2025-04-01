@@ -1675,6 +1675,9 @@ IdentityType = Choice                // Nature of the referenced identity
    3 tool             Tool           // Identity refers to an automated tool
 ```
 
+When validating a `choice` the tag in the value (e.g., `peron`, `organization`,
+`tool` in this example) is used to identify which option has been chosen.
+
 The `combine` option provides additional flexibility in applying the **Choice**
 type by specifying a required combination of the field types in the Choice. Any
 one of three values can be applied to a Choice using the `combine` option:
@@ -1683,10 +1686,12 @@ one of three values can be applied to a Choice using the `combine` option:
 - `O`: value must be an instance of `anyOf` the types, tried in field order until a match is found
 - `X`: value must be an instance of `oneOf` the types and no others
 
-When either the `allOf` or `oneOf` values is used, the order of the fields in
-the Choice is irrelevant as the value of an instance must be compared to all of
-the possible types to determine its validity. In contrast, order is significant
-for the `anyOf` option value because the instance values are checked against the
+When validating a `choice` with a `combine` option, the `combine` option guides
+the evaluation of the value against the types defined to determine a match. When
+either the `allOf` or `oneOf` values is used, the order of the fields in the
+Choice is irrelevant as the value of an instance must be compared to all of the
+possible types to determine its validity. In contrast, order is significant for
+the `anyOf` option value because the instance values are checked against the
 Choice fields in the order they are defined. 
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions include the v2.0 enhancements.
