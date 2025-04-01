@@ -1829,9 +1829,7 @@ The `tag-uuid` format for identifiers is used in the [[STIX](#stix-v21)] and
   </thead>
   <tbody>
     <tr>
-      <td class="td">A collection of fields with the same semantics.
-        Each field has type <i>vtype</i>. Ordering and uniqueness are
-        specified by a collection option.
+      <td class="td">A collection of items, each of which is of the type <i>vtype</i>.
       </td>
       <td class="td">
         <i>
@@ -1871,6 +1869,10 @@ Track = Record                                    // for each track there's a fi
    1 location         String                      // path to the file audio location in local storage
    2 metadata         TrackInfo                   // description of the track
 ```
+
+By default an ArrayOf is a sequence: an ordered collection of items with no
+requirement the items be unique. The `set`, `unique`, and `unordered` type
+options can be used to modify those properties.
 
 > EDITOR'S NOTE:  need examples of applying the TypeOptions
 
