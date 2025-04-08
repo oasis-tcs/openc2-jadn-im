@@ -1178,7 +1178,6 @@ of information expected as the option's value.
 |    ordered   |  Boolean |   `q`  | MapOf, Map, Record instance is an ordered set                     |
 |      set     |  Boolean |   `s`  | ArrayOf instance is unordered and unique                          |
 |   unordered  |  Boolean |   `b`  | ArrayOf instance is unordered and not unique (bag)                |
-|   sequence   |  Boolean |   `o`  | Map, MapOr or Record instance is ordered and unique (ordered set) |
 |    combine   |  Boolean |   `C`  | Choice instance is a logical combination (anyOf, allOf, oneOf)    |
 |    extends   |  Boolean |   `e`  | Inheritance: extension - superset of referenced type              |
 |   restricts  |  Boolean |   `r`  | Inheritance: restriction - subset of referenced type              |
@@ -1894,7 +1893,7 @@ options can be used to modify those properties.
       </td>
       <td class="td">
         <i>
-          <center>id, ordered, sequence,<br>minLength, maxLength</center>
+          <center>id, ordered,<br>minLength, maxLength</center>
         </i>
       </td>
     </tr>
@@ -1960,7 +1959,7 @@ _maxLength_, as described above in [Section&nbsp;3.1.4.4](#3144-application-of-m
       </td>
       <td class="td">
         <i>
-          <center>ktype, vtype, minLength, maxLength, ordered, sequence</center>
+          <center>ktype, vtype, minLength, maxLength, ordered</center>
         </i>
       </td>
     </tr>
@@ -2030,7 +2029,7 @@ Date = String /date
       </td>
       <td class="td">
         <i>
-          <center>minLength, maxLength, ordered, sequence</center>
+          <center>minLength, maxLength, ordered</center>
         </i>
       </td>
     </tr>
@@ -3711,7 +3710,6 @@ The following changes were made to JADN type options:
   - `minExclusive`, `maxExclusive`, `minInclusive`, `maxInclusive`: used to specify allowable value ranges for instances of types
   - `const`: specifies a pre-set value used as a classifier, equivalent to setting both `minInclusive` and `maxInclusive` to that value.
   - `minLength, maxLength`: used to specify the allowable size range for a binary or string type and to specify the number of items in a collection type
-  - `sequence`: enables specifying that `Map, MapOf, Record` types have a required field order 
   - `combine`: provides greater flexibility for `Choice` types with `oneOf, anyOf, allOf, not` sub-options
   - `abstract`, `extends`, `restricts`, `final`: options related to defining and controlling types using inheritance
 - Replaced options:
