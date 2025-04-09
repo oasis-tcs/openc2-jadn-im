@@ -2524,11 +2524,11 @@ where cycles occur in order to address this need. The method to
 define reference relationships is explained in Section&nbsp;4.2.2.3,
 *Links*, of the [[JADN Specification](#jadn-v20)]. 
 
-Figure 3-9 illustrates permissible and impermissible "collection"
+Figure 3-9 illustrates preferred (non-recursive) and problematic (recursive) "collection"
 relationships, and the use of the `key` and `link` keywords
-combined with an identifier field to establish permissible
-"reference" relationships. The green lines show permissible
-relationships, the red lines impermissible ones that create
+combined with an identifier field to establish
+"reference" relationships. The green lines show preferred
+relationships, the red lines the problematic ones that create
 cycles in the graph. The dotted green line in the lower left
 portion is a "reference" relationship enabled by the inclusion of
 a unique identifier in `Record H`, created by the use of the
