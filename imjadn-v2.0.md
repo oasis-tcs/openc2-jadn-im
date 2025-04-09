@@ -1174,11 +1174,37 @@ of information expected as the option's value.
 |    default   |  String  |   `u`  | Default value                                                     |
 |     const    |  String  |   `v`  | Constant value                                                    |
 
-Detailed explanations of each type option can be found in Table 4-1, Table 4-2 
-and Sections 4.2.3 and 4.2.4 of the [[JADN Specification](#jadn-v20)]. Table 3-2 summarizes
-the applicability of type options to JADN core types. The `ArrayOf` and `MapOf`
-types have required options, as indicated. Other type options can be applied to
-individual types where the option is relevant, as indicated by table cells with an "X".
+Detailed explanations of each type option can be found with the descriptions of
+the types to which they apply throughout section 4 of the [[JADN
+Specification](#jadn-v20)]. In general, any type option can only be applied once
+in a type definition, using the format of concatenating the Option ID with the
+Option Value described above. The semantic validation `format` option is an
+exception to this, as explained in Section&nbsp;4.2.5 of the specification: "format
+options have no value; the keyword is part of the key so a type may include
+multiple format options". An example is provided in the specification of applying
+both the `/date-time` format and the `/d3` format to an `Integer` type to
+specify a time resolution in milliseconds:
+
+```
+Timestamp = Integer /date-time          // 1727877600 sec:     2024-10-02T15:00:00Z
+Timestamp-ms = Integer /date-time /d3   // 1727877600000 msec: 2024-10-02T15:00:00.000Z
+```
+
+Format options have two important characteristics:
+
+- Each format option is applicable only to one or more specific JADN primitive types
+- The implications of format options vary with the serialization format being used
+
+As noted in section&nbsp;6 of the JADN Specification, the definition of a new
+serialization format must "specify how each option applicable to a type affects
+serialized values". The various serialization formats defines in that section of
+the specification include tables documenting how format options apply to that
+format.
+
+Table 3-2 summarizes the applicability of type options to JADN core types. The
+`ArrayOf` and `MapOf` types have required options, as indicated. Other type
+options can be applied to individual types where the option is relevant, as
+indicated by table cells with an "X".
 
 ###### Table 3-3 -- Type Option Applicability
 
