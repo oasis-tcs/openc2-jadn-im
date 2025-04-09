@@ -2500,7 +2500,7 @@ geography markup language concepts can be found in [Section&nbsp;3.3.5](#335-inh
 As explained in [Section&nbsp;3](#3-creating-information-models-with-jadn), JADN recognizes
 only two kinds of relationship: "collections" and "references". The
 relationships shown in previous examples are all of the "collection"
-variety. The "reference" relationship type applies when using a "collection" relationship would either 
+variety. The "reference" relationship type applies when using a "collection" relationship would either: 
 
   1) create a cycle or loop in the graph of the information model, or 
   2) create data duplication.
