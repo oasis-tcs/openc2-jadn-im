@@ -2465,9 +2465,9 @@ relationships among types, which are defined in Section 4.2.4 of [[JADN Specific
 
 - `extends`: The `extends` option indicates that the associated type definition
   is adding to the super-type on which it is based. An extending sub-type can
-  add new fields to its supertype. An extending sub-type can modify the cardinality 
-  of a field in the super-type but cannot redefine other aspects of existing, inherited
-  fields.
+  add new fields to its supertype or modify the
+  cardinality of a field in the super-type but cannot redefine other aspects of
+  existing, inherited fields. 
 
 - `restricts`: The `restricts` option indicates that the associated type
   definition is subtracting from the super-type on which it is based. A
@@ -2476,6 +2476,13 @@ relationships among types, which are defined in Section 4.2.4 of [[JADN Specific
 
 - `final`: The `final` type option identifies a type that cannot have sub-types
   defined based on it.
+
+The ability to use `extend` to modify a sub-type field's cardinality is only
+permitted if every instance of the base type is also an instance of the extended
+type (i.e., it cannot make the cardinality or length more restrictive). For
+example, the `extend` type option cannot change a base type cardinality of
+`[3,&nbsp;10]` to a more restrictive cardinality of `[3,&nbsp;5]` in the
+sub-type.
 
 Type inheritance is static and can be applied both to primitive and compound
 types. However, as explained in the JADN Specification, there are other
