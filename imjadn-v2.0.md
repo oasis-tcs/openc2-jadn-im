@@ -809,7 +809,7 @@ storage or transmission.
 Two general approaches can be used to implement IM-based protocol specifications:
 
 1) Translate the IM to a data-format-specific schema language such as [[XSD](#xsd)],
-[[Relax-NG](#relaxng)], [[JSON Schema](#jsonschema)], [[Protobuf](#proto)], or [[CDDL](#rfc8610)],
+[[JSON Schema](#jsonschema)], [[Protobuf](#proto)], or [[CDDL](#rfc8610)],
 then use format-specific serialization and validation libraries to process data in the selected format.
 Applications use data objects specific to each serialization format.
 
@@ -3528,9 +3528,6 @@ Google Developers, *"Protocol Buffers"*, https://developers.google.com/protocol-
 ###### [RDF]
 "Resource Description Framework (RDF) 1.2 Concepts and Abstract Syntax", W3C Working Draft, 22 August 2024,
 https://www.w3.org/TR/rdf12-concepts/#section-Datatypes
-
-###### [RELAXNG]
-https://relaxng.org/
 
 ###### [RFC0791]
 "Internet Protocol - DARPA Internet Program Protocol Specification", RFC 791, September 1981,
