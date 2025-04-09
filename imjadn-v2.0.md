@@ -2456,33 +2456,32 @@ RecordType = Record {2..*} // requires field_1 and either or both field_2 and fi
 > NOTE 2: The JADN v2 inheritance-oriented `extends` type option is unrelated to
 > deprecated `extend` type option in JADN v1.
 
-JADN supports inheritance in information modeling, providing for class /
-subclass relationships. There are four type options to manage the class
-relationships among types, which are defined in Section 4.2.4 of [[JADN Specification](#jadn-v20)].
+JADN supports inheritance in information modeling, providing for referenced type /
+subtype relationships. There are four type options defined in Section 4.2.4 of the 
+[[JADN Specification](#jadn-v20)] to manage the inheritance relationships among types:
 
 - `abstract`: The `abstract` option indicates that a type definition is only a
-  basis for defining sub-classes and should never be instantiated in data. 
+  basis for defining subtypes and should never be instantiated in data. 
 
-- `extends`: The `extends` option indicates that the associated type definition
-  is adding to the super-type on which it is based. An extending sub-type can
-  add new fields to its supertype or modify the
-  cardinality of a field in the super-type but cannot redefine other aspects of
-  existing, inherited fields. 
+- `extends`: The `extends` option indicates that the associated subtype definition
+  is adding to the reference type on which it is based. An extending subtype can
+  add new fields to or modify the cardinality of a field in the reference type 
+  but cannot redefine other aspects of existing, inherited fields. 
 
 - `restricts`: The `restricts` option indicates that the associated type
-  definition is subtracting from the super-type on which it is based. A
-  restricting sub-type can remove optional fields defined in its supertype,
+  definition is subtracting from the reference type on which it is based. A
+  restricting subtype can remove optional fields defined in its reference type,
   however required fields cannot be removed.
 
-- `final`: The `final` type option identifies a type that cannot have sub-types
+- `final`: The `final` type option identifies a type that cannot have subtypes
   defined based on it.
 
-The ability to use `extend` to modify a sub-type field's cardinality is only
+The ability to use `extend` to modify a subtype field's cardinality is only
 permitted if every instance of the base type is also an instance of the extended
 type (i.e., it cannot make the cardinality or length more restrictive). For
 example, the `extend` type option cannot change a base type cardinality of
-`[3,&nbsp;10]` to a more restrictive cardinality of `[3,&nbsp;5]` in the
-sub-type.
+`[3,&nbsp;10]` in a referenced type to a more restrictive cardinality of `[3,&nbsp;5]` in the
+subtype.
 
 Type inheritance is static and can be applied both to primitive and compound
 types. However, as explained in the JADN Specification, there are other
