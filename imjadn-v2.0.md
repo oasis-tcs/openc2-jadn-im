@@ -2465,10 +2465,10 @@ subtype relationships. There are four type options defined in Section 4.2.4 of t
 
 - `extends`: The `extends` option indicates that the associated subtype definition
   is adding to the reference type on which it is based. An extending subtype can
-  add new fields to or modify the cardinality of a field in the reference type 
+  add new fields to or modify the cardinality of existing fields in the reference type 
   but cannot redefine other aspects of existing, inherited fields. 
 
-- `restricts`: The `restricts` option indicates that the associated type
+- `restricts`: The `restricts` option indicates that the associated subtype
   definition is subtracting from the reference type on which it is based. A
   restricting subtype can remove optional fields defined in its reference type,
   however required fields cannot be removed.
@@ -2480,7 +2480,7 @@ The ability to use `extend` to modify a subtype field's cardinality is only
 permitted if every instance of the base type is also an instance of the extended
 type (i.e., it cannot make the cardinality or length more restrictive). For
 example, the `extend` type option cannot change a base type cardinality of
-`[3,&nbsp;10]` in a referenced type to a more restrictive cardinality of `[3,&nbsp;5]` in the
+`[3,10]` in a referenced type to a more restrictive cardinality of `[3,5]` in the
 subtype.
 
 Type inheritance is static and can be applied both to primitive and compound
