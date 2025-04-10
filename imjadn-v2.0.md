@@ -1823,7 +1823,7 @@ Table 3-8 lists the *format* options applicable to the Array type:
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
 | ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [[RFC 4632](#rfc4632)] Section&nbsp;3.1 |
-| ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [[RFC 4291](#rfc4291)] Section 2.3 |
+| ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [[RFC 4291](#rfc4291)] Section&nbsp;2.3 |
 | tag-uuid     | Array  | Tag portion is a String, UUID portion is a 128-bit (16 byte) binary value |
 
 The `ipv4-net` and `ipv6-net` format options impose constraints appropriate for
