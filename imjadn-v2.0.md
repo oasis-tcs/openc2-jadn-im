@@ -7,7 +7,7 @@
 
 ## Committee Note 01
 
-## 27 March 2025
+## 16 April 2025
 
 #### This stage:
 https://docs.oasis-open.org/openc2/imjadn/v2.0/cn01/imjadn-v2.0-cn01.md (Authoritative) \
@@ -134,7 +134,7 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.3.3 Property Tables](#3133-property-tables)
       - [3.1.3.4 Entity Relationship Diagrams (ERDs)](#3134-entity-relationship-diagrams-erds)
       - [3.1.3.5 Translation Among JADN Representations](#3135-translation-among-jadn-representations)
-    - [3.1.4 Type Definition Nuances](#314-type-definition-shortcuts-and-nuances)
+    - [3.1.4 Type Definition Shortcuts and Nuances](#314-type-definition-shortcuts-and-nuances)
       - [3.1.4.1 "Anonymous" Type Definitions](#3141-anonymous-type-definitions)
       - [3.1.4.2 Selection and Use of JADN Compound Types](#3142-selection-and-use-of-jadn-compound-types)
       - [3.1.4.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
@@ -206,6 +206,7 @@ For complete copyright information please see the full Notices section in [Appen
 - [Table 3-6 -- Number Type Format Options](#table-3-6----number-type-format-options)
 - [Table 3-7 -- Binary Type Format Options](#table-3-7----binary-type-format-options)
 - [Table 3-8 -- Array Type Format Options](#table-3-8----array-type-format-options)
+- [Table 3-9 -- Multiplicity Types](#table-3-9----multiplicity-types)
 - [Table D-1 -- UML and JADN Primitive Type Equivalence](#table-d-1----uml-and-jadn-primitive-type-equivalence)
 
 
@@ -671,7 +672,7 @@ example of an abstract schema language. ​ASN.1 is a formal notation used for d
 by telecommunications protocols, regardless of language
 implementation and physical representation of these data,
 whatever the application, whether complex or very simple. The
-notation provides a certain number of pre-defined basic types,
+notation provides a certain number of predefined basic types,
 and makes it possible to define constructed types. Subtyping
 constraints can be also applied on any ASN.1 type in order to
 restrict its set of values. Data described in ASN.1 is serialized
@@ -682,7 +683,7 @@ with ASN.1, as well as less closely tied standards such as XML
 and JSON.
 
 Other languages have been used for information modeling, although
-that is not their primary purposes.  Some examples are 
+that is not their primary purpose.  Some examples are 
 Unified Modeling Language [[UML](#uml)], and 
 Integration DEFinition for information modeling [[IDEF1X](#idef1x)].
 
@@ -1136,7 +1137,7 @@ strings containing the option ID character concatenated with the option value:
 As an example the TypeOption "minLength = 1" is represented as:
 
 ```
-+----+-----------+     Option ID = 0x7b (Left Curley Bracket) = "minLength"
++----+-----------+     Option ID = 0x7b (Left Curly Bracket) = "minLength"
 | ID | Value     |     Value = 1
 +----+-----------+     TypeOption string = "{1"
 ```
@@ -1409,7 +1410,7 @@ The "d\<*n*\>" option supports arbitrary fixed point representation of
 values. For example, the Integer option `/d3` specifies an integer that is scaled
 by 10^3, providing three decimal digits after a "decimal point".  So an integer
 formatted as `/time` with no scaling option would be valued as seconds before or after the POSIX epoch. The same integer with
-the `/d3` option would be valued to milliseconds, or with `/d6` would valued to microseconds. If an integer
+the `/d3` option would be valued to milliseconds, or with `/d6` would be valued to microseconds. If an integer
 temperature is documented to be degrees Celsius, its type could use the option
 `/d1` or `/d2` to give precision of tenths or hundredths of a degree.
 
@@ -1539,7 +1540,7 @@ Barcode = String{pattern="^\d{12}$"}    // A UPC-A barcode is 12 digits
 The preferred pattern grammar for JADN is defined in the 15th edition of the
 [[ECMAScript](#ecmascript)] specification (June 2024). Note that the `pattern`
 type option is distinct from the `/regex` format type option: the former
-specifies a regular expression used to validate a string value where as the
+specifies a regular expression used to validate a string value whereas the
 latter specifies that the string value must _be_ a regular expression.
 
 Semantic validation keywords for Strings are defined in Sections 4.2.5.2 and
@@ -1597,7 +1598,7 @@ Binary type:
 | eui          | Binary | IEEE Extended Unique Identifier (MAC Address), EUI-48 or EUI-64 as specified in [[EUI](#eui)] |
 | ipv4-addr    | Binary | IPv4 address as specified in [[RFC 791](#rfc0791)] Section&nbsp;3.1 |
 | ipv6-addr    | Binary | IPv6 address as specified in [[RFC 8200](#rfc8200)]  Section&nbsp;3 |
-| x, X         | Binary | Binary value represented as hexidecimal (pairs of characters [0-9a-fA-F]) |
+| x, X         | Binary | Binary value represented as hexadecimal (pairs of characters [0-9a-fA-F]) |
 | b64          | Binary | Binary value represented with base64 encoding as defined in [RFC 4648] |
 
 #### 3.1.2.6 Enumerated
@@ -1791,12 +1792,12 @@ License-Data = Array  // Driver's license data based on Real ID requirements
    8  Binary                      // photo:: Photo of license holder (JPEG format)
 ```
 
-Note that in the JIDL representationn the Array field names are moved into the
+Note that in the JIDL representation the Array field names are moved into the
 description field, as described in
 [Section&nbsp;3.1.3.2](#3132-jadn-interface-definition-language-jidl).
 
 JADN provides several semantic validation keywords for the Array type which invoke
-pre-defined Array structures that fit specific information modeling needs. The
+predefined Array structures that fit specific information modeling needs. The
 following example shows the `/ipv4-net` keyword, which defines an array that
 conveys the address in CIDR form with a 32-bit binary field and an integer
 prefix.
@@ -1823,7 +1824,7 @@ Table 3-8 lists the *format* options applicable to the Array type:
 | Keyword      | Type   | Requirement |
 | ------------ | ------ | ------------|
 | ipv4-net     | Array  | Binary IPv4 address and Integer prefix length as specified in [[RFC 4632](#rfc4632)] Section&nbsp;3.1 |
-| ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [[RFC 4291](#rfc4291)] Section 2.3 |
+| ipv6-net     | Array  | Binary IPv6 address and Integer prefix length as specified in [[RFC 4291](#rfc4291)] Section&nbsp;2.3 |
 | tag-uuid     | Array  | Tag portion is a String, UUID portion is a 128-bit (16 byte) binary value |
 
 The `ipv4-net` and `ipv6-net` format options impose constraints appropriate for
@@ -2160,7 +2161,7 @@ definition, and unused elements default to an empty value of the relevant type. 
 a JADN schema in normative JSON format this means the optional fields at the end
 of a type or field definition can either be represented by empty elements
 (arrays or strings, as appropriate) or simply omitted. As an illustration, all
-of the following are legimate representations of a primitive type definition
+of the following are legitimate representations of a primitive type definition
 where none of the optional fields are used:
 
 ```json
@@ -2338,7 +2339,7 @@ Email = String /email
 
 The author(s) of an IM can determine whether the use of anonymous
 type definitions generated by JADN tooling improves the clarity
-of an model. For the example above, defining an email type that
+of a model. For the example above, defining an email type that
 can be referenced throughout the model would likely be better
 than multiple, equivalent anonymous email types. In other cases
 the readability of the model can benefit from concisely written
@@ -2447,7 +2448,7 @@ can apply to both primitive and compound types, with a different
 meaning in these two applications:
 
  - When applied to a primitive type (Binary, Integer or String),
-   the `minLength` and `maxLength` type options constrain the *values* an
+   the `minLength` and `maxLength` type options constrain the *values* that an
    instance of that type may hold. Specifically, when applied to:
    - An Integer type, the `minLength` and `maxLength` type options constrain
      the numeric values an instance of that type may hold.
@@ -2601,7 +2602,7 @@ Person = Record
 ```
 
 The "references" relationship is also useful to reduce duplication when an
-information item may apprear multiple times in a data structure. This use of the
+information item may appear multiple times in a data structure. This use of the
 `key` / `link` structure is demonstrated in [Section&nbsp;3.3.3](#333-multiple-representations-example).
 In that example university classes are linked to students by a reference
 relationship to account for the likelihood that any individual student will most
@@ -3071,7 +3072,7 @@ Three fields of the IPv4 packet header are functionally enumerations:
 The values for the `Protocol` field are managed by the Internet Assigned Numbers
 Authority (IANA); this model does not include an explicit enumeration of the
 IANA-assigned values. The model makes the meaning and use of the DSCP and ECN fields 
-clearer by definiting associated enumerations, as illustrated in Figure 3-13.
+clearer by defining associated enumerations, as illustrated in Figure 3-13.
 
 ###### Figure 3-13 -- IPv4 Packet Header Enumerations
 
@@ -3102,7 +3103,7 @@ ECN = Enumerated // Explicit Congestion Notification (RF 3168)
 
 In order to align with the various RFCs documenting the use of DCSP, the DSCP
 enumeration defines its field values in terms of the IETF's recommended values
-as documented in the Wikipedia article, rather than a simple monontic sequence of
+as documented in the Wikipedia article, rather than a simple monotonic sequence of
 field values that would be the usual approach in a more design-oriented modeling activity.
 
 ### 3.3.3 Multiple Representations Example
@@ -3189,7 +3190,7 @@ Property tables are a common representation of data structures in
 specifications. JADN is easily converted to property tables, which are quite
 readable but somewhat more challenging to edit than JIDL (the package
 information has been omitted from the set of property tables illustrated here).
-Each property table is preceeded by the comment on the type definition that
+Each property table is preceded by the comment on the type definition that
 created that table (e.g., the University Record type has the comment "A place of
 learning"). Those comments are set in italics in this example for clarity.
 
@@ -3234,7 +3235,7 @@ Finally, the code to generate the ERD presented at the beginning of the example
 is easily generated from the JADN model.  In this specific example code for the
 widely-used GraphViz tool is provided. JADN tooling can created "diagram as
 text" code for GraphVIZ and PlantUML with varying levels of detail (i.e., Conceptual, Logical, Informational). 
-For example, contrast the simple conceptual view of the music libary in 
+For example, contrast the simple conceptual view of the music library in 
 [Figure 3-10](#figure-3-10----music-library-conceptual-overview) with the
 detailed informational ERD at the start of this section 
 ([Figure 3-14](#figure-3-14----simple-university-example-erd)).
@@ -3674,20 +3675,11 @@ The following individuals have participated in the creation of this document and
 
 | First Name | Last Name  | Company                                        |
 |------------|------------|------------------------------------------------|
-| Marco      | Caselli    | Siemens AG                                     |
 | Toby       | Considine  | University of North Carolina at Chapel Hill    |
-| Alex       | Everett    | University of North Carolina at Chapel Hill    |
-| Jane       | Ginn       | Cyber Threat Intelligence Network, Inc. (CTIN) |
-| Andreas    | Hverven    | University of Oslo                             |
-| David      | Kemp       | National Security Agency                       |
-| David      | Lemire     | National Security Agency                       |
 | Patrick    | Maroney    | AT&T                                           |
-| Vasileios  | Mavroeidis | University of Oslo                             |
 | Michael    | Rosa       | National Security Agency                       |
 | Duane      | Skeen      | Northrop Grumman                               |
 | Duncan     | Sparrell   | sFractal Consulting LLC                        |
-| Gerald     | Stueve     | Fornetix                                       |
-| Drew       | Varner     | NineFX, Inc.                                   |
 
 -------
 
@@ -3724,8 +3716,12 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Incorporate "elevator speech" into abstract and section 1.0 (PR #93) |
 | imjadn-v1.0-cn03.md      | 2025-02-12 | David Lemire | New content addressing inheritance features added in JADV v2 (PRs #92 & #97) |
 | imjadn-v1.0-cn03.md      | 2025-02-18 | David Lemire | Update discussion of String type options for JADV v2 (PR #98) |
-| imjadn-v1.0-cn03.md      | 2025-03-05 | David Lemire | Update JADN Spec references, reorder primitive types to match (PR #102) |
-| imjadn-v1.0-cn03.md      | 2025-03-26 | David Lemire | Updates throughout CN for alignment with JADN v2 specification and improved presentation (PR #106) |
+| imjadn-v2.0-cn01.md      | 2025-03-05 | David Lemire | Update JADN Spec references, reorder primitive types to match (PR #102) |
+| imjadn-v2.0-cn01.md      | 2025-03-26 | David Lemire | Updates throughout CN for alignment with JADN v2 specification and improved presentation (PR #106) |
+| imjadn-v2.0-cn01.md      | 2025-04-09 | David Lemire | Explain omitting optional elements in type and field definitions (PR #108) |
+| imjadn-v2.0-cn01.md      | 2025-04-09 | David Lemire | Explain use of multiple format options in type definitions (PR #109) |
+| imjadn-v2.0-cn01.md      | 2025-04-09 | David Lemire | General updates throughout to improve JADN v2 specification alignment (PR #110) |
+| imjadn-v2.0-cn01.md      | 2025-04-09 | David Lemire | Administrative and editorial updates for document package preparation  (PR #111) |
 
 ## C.2 JADN Version 2 Changes
 
@@ -3744,7 +3740,7 @@ new major version.* Two options are defined for an unspecified `maxOccurs` value
 
 The following general changes were made:
 
-- The `namespaces` prefix list was change from mappings to pairings to provide greater flexibility in managing namespaces and packages.
+- The `namespaces` prefix list was changed from mappings to pairings to provide greater flexibility in managing namespaces and packages.
 - The package `Information` element was renamed to `Metadata` to avoid conflation with information modeling.
 - The package `exports` element was renamed to `roots` to better describe its purpose and effect.
 - Type Options have been revised and expanded to support defining both size and content (value) range limits for primitive types
@@ -3791,7 +3787,7 @@ instance of B MUST be an instance of A.
 The following changes were made to format and validation options:
 
 - `/d#` was added as an option for the time-oriented format options (i.e., `date-time`, `date`, `time`, `duration`) to allow for sub-second precision for the time aspect.
-- `i<n>` replaces the `i8`, `i16`, `i32` format options to provide greater flexibility in specifying signed integer types; the permissable values are between -2^(n-1) and 2^(n-1)-1.
+- `i<n>` replaces the `i8`, `i16`, `i32` format options to provide greater flexibility in specifying signed integer types; the permissible values are between -2^(n-1) and 2^(n-1)-1.
 - `d<n>` applies a decimal integer scale factor of 10^n: value has n digits after decimal point, n > 0.
 
 
