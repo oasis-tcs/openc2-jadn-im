@@ -3675,20 +3675,11 @@ The following individuals have participated in the creation of this document and
 
 | First Name | Last Name  | Company                                        |
 |------------|------------|------------------------------------------------|
-| Marco      | Caselli    | Siemens AG                                     |
 | Toby       | Considine  | University of North Carolina at Chapel Hill    |
-| Alex       | Everett    | University of North Carolina at Chapel Hill    |
-| Jane       | Ginn       | Cyber Threat Intelligence Network, Inc. (CTIN) |
-| Andreas    | Hverven    | University of Oslo                             |
-| David      | Kemp       | National Security Agency                       |
-| David      | Lemire     | National Security Agency                       |
 | Patrick    | Maroney    | AT&T                                           |
-| Vasileios  | Mavroeidis | University of Oslo                             |
 | Michael    | Rosa       | National Security Agency                       |
 | Duane      | Skeen      | Northrop Grumman                               |
 | Duncan     | Sparrell   | sFractal Consulting LLC                        |
-| Gerald     | Stueve     | Fornetix                                       |
-| Drew       | Varner     | NineFX, Inc.                                   |
 
 -------
 
