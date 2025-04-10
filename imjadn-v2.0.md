@@ -1804,7 +1804,7 @@ prefix.
 
 ```json
   ["IPv4-Net", "Array", ["/ipv4-net"], "IPv4 address and prefix length", [
-    [1, "ipv4_addr", "Binary", ["/ipv4-addr], "32-bit IPv4 address as defined in [RFC 791]"],
+    [1, "ipv4_addr", "Binary", ["/ipv4-addr"], "32-bit IPv4 address as defined in [RFC 791]"],
     [2, "prefix_length", "Integer", ["[0"], "CIDR prefix-length. If omitted, refers to a single host address."]
   ]]
 ```
