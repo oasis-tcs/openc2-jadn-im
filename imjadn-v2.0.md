@@ -1149,7 +1149,7 @@ CoreType to define valid instances of that string type using a
 regular expression conforming to [[ECMAScript](#ecmascript)]
 grammar.
 
-Table 3-1 lists the complete set of type options, including the option name,
+Table 3-2 lists the complete set of type options, including the option name,
 type, ID character, and description. Note that the ID characters are the normative form and are used in
 standard JADN representation ([Section&nbsp;3.1.3.1](#3131-native-json-representation-normative)) 
 when specifying type options. The text labels for the options (e.g., vtype,
@@ -1215,7 +1215,7 @@ serialized values". The various serialization formats defines in that section of
 the specification include tables documenting how format options apply to that
 format.
 
-Table 3-2 summarizes the applicability of type options to JADN core types. The
+Table 3-3 summarizes the applicability of type options to JADN core types. The
 `ArrayOf` and `MapOf` types have required options, as indicated. Other type
 options can be applied to individual types where the option is relevant, as
 indicated by table cells with an "X".
