@@ -1224,14 +1224,14 @@ indicated by table cells with an "X".
 
 ![Table 3-3 -- Type Option Applicability](images/table-3-2.png)
 
-The `min / max` type options fall into two groups:
+The `min/max` type options fall into two groups:
 
-- `minLength / maxLength` apply to the *size* of a Binary or String type; an
+- `minLength/maxLength` apply to the *size* of a Binary or String type; an
   instance of either of those types must be of at least the specified
   `minLength` and not longer than the specified `maxLength`, but these options
   place no constraints on the value contained in that instance.
 
-- `min / max / Inclusive / Exclusive` apply to the *value* that an instance that
+- `min/max/Inclusive/Exclusive` apply to the *value* that an instance that
   a numeric or String type can contain. These type options imply that there is
   an ordering of possible values for the type they are applied to, but place no
   constraints on the size of an instance of the type, only its possible values.
