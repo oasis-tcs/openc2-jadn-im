@@ -3724,8 +3724,12 @@ The following individuals have participated in the creation of this document and
 | imjadn-v1.0-cn03.md      | 2025-01-08 | David Lemire | Incorporate "elevator speech" into abstract and section 1.0 (PR #93) |
 | imjadn-v1.0-cn03.md      | 2025-02-12 | David Lemire | New content addressing inheritance features added in JADV v2 (PRs #92 & #97) |
 | imjadn-v1.0-cn03.md      | 2025-02-18 | David Lemire | Update discussion of String type options for JADV v2 (PR #98) |
-| imjadn-v1.0-cn03.md      | 2025-03-05 | David Lemire | Update JADN Spec references, reorder primitive types to match (PR #102) |
-| imjadn-v1.0-cn03.md      | 2025-03-26 | David Lemire | Updates throughout CN for alignment with JADN v2 specification and improved presentation (PR #106) |
+| imjadn-v2.0-cn01.md      | 2025-03-05 | David Lemire | Update JADN Spec references, reorder primitive types to match (PR #102) |
+| imjadn-v2.0-cn01.md      | 2025-03-26 | David Lemire | Updates throughout CN for alignment with JADN v2 specification and improved presentation (PR #106) |
+| imjadn-v2.0-cn01.md      | 2025-04-09 | David Lemire | Explain omitting optional elements in type and field definitions (PR #108) |
+| imjadn-v2.0-cn01.md      | 2025-04-09 | David Lemire | Explain use of multiple format options in type definitions (PR #109) |
+| imjadn-v2.0-cn01.md      | 2025-04-09 | David Lemire | General updates throughout to improve JADN v2 specification alignment (PR #110) |
+| imjadn-v2.0-cn01.md      | 2025-04-09 | David Lemire | Administrative and editorial updates for document package preparation  (PR #111) |
 
 ## C.2 JADN Version 2 Changes
 
