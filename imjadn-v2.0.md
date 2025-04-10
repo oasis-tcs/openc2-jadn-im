@@ -3937,8 +3937,7 @@ Information models define the information capacity of data
 instances; two data formats are *equivalent* if conversion
 between them is lossless.
 
-![The Mona Lisa](images/JADN-RDF-Mona-Lisa.png)
-
+<img src="images/JADN-RDF-Mona-Lisa.png" alt="The Mona Lisa" width="750" />
 
 Resources can be physical or digital entities. Both can be
 subjects of knowledge model statements, but only digital
