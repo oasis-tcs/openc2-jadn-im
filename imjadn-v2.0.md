@@ -134,7 +134,7 @@ For complete copyright information please see the full Notices section in [Appen
       - [3.1.3.3 Property Tables](#3133-property-tables)
       - [3.1.3.4 Entity Relationship Diagrams (ERDs)](#3134-entity-relationship-diagrams-erds)
       - [3.1.3.5 Translation Among JADN Representations](#3135-translation-among-jadn-representations)
-    - [3.1.4 Type Definition Nuances](#314-type-definition-shortcuts-and-nuances)
+    - [3.1.4 Type Definition Shortcuts and Nuances](#314-type-definition-shortcuts-and-nuances)
       - [3.1.4.1 "Anonymous" Type Definitions](#3141-anonymous-type-definitions)
       - [3.1.4.2 Selection and Use of JADN Compound Types](#3142-selection-and-use-of-jadn-compound-types)
       - [3.1.4.3  JADN Handling of UML Multiplicity Options](#3143--jadn-handling-of-uml-multiplicity-options)
@@ -206,6 +206,7 @@ For complete copyright information please see the full Notices section in [Appen
 - [Table 3-6 -- Number Type Format Options](#table-3-6----number-type-format-options)
 - [Table 3-7 -- Binary Type Format Options](#table-3-7----binary-type-format-options)
 - [Table 3-8 -- Array Type Format Options](#table-3-8----array-type-format-options)
+- [Table 3-9 -- Multiplicity Types](#table-3-9----multiplicity-types)
 - [Table D-1 -- UML and JADN Primitive Type Equivalence](#table-d-1----uml-and-jadn-primitive-type-equivalence)
 
 
