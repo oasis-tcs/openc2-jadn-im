@@ -1792,7 +1792,7 @@ License-Data = Array  // Driver's license data based on Real ID requirements
    8  Binary                      // photo:: Photo of license holder (JPEG format)
 ```
 
-Note that in the JIDL representa the Array field names are moved into the
+Note that in the JIDL representation the Array field names are moved into the
 description field, as described in
 [Section&nbsp;3.1.3.2](#3132-jadn-interface-definition-language-jidl).
 
