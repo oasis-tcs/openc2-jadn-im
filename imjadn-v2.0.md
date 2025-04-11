@@ -1,7 +1,6 @@
 ![OASIS Logo](https://docs.oasis-open.org/templates/OASISLogo-v3.0.png)
 
 # OASIS Committee Note
--------
 
 # Information Modeling with JADN Version 2.0
 
@@ -3937,7 +3936,7 @@ Information models define the information capacity of data
 instances; two data formats are *equivalent* if conversion
 between them is lossless.
 
-<img src="images/JADN-RDF-Mona-Lisa.png" alt="The Mona Lisa" width="750" />
+<img src="images/JADN-RDF-Mona-Lisa.png" alt="The Mona Lisa" />
 
 Resources can be physical or digital entities. Both can be
 subjects of knowledge model statements, but only digital
@@ -4476,18 +4475,19 @@ Information Header
        license: "CC0-1.0"
        roots: ["Library"]
 ```
+<br>
 
 | Type Name   | Type Definition             | Description                                         |
 |-------------|-----------------------------|-----------------------------------------------------|
 | **Library** | MapOf(Barcode, Album){1..*} | Top level of the library is a map of CDs by barcode |
 
-**********
+<br>
 
 | Type Name   | Type Definition            | Description                  |
 |-------------|----------------------------|------------------------------|
 | **Barcode** | String{pattern="^\d{12}$"} | A UPC-A barcode is 12 digits |
 
-**********
+<br>
 
 model for the album
 
@@ -4502,7 +4502,7 @@ model for the album
 | 5  | **total_tracks** | Integer{1..\*}   | 1     | total track count                         |
 | 6  | **cover_art**    | Image            | 0..1  | cover art image for this album            |
 
-**********
+<br>
 
 who and when of publication
 
@@ -4513,7 +4513,7 @@ who and when of publication
 | 1  | **publisher**    | String       | 1  | record label that released this album |
 | 2  | **release_date** | String /date | 1  | and when did they let this drop       |
 
-**********
+<br>
 
 pretty picture for the album or track
 
@@ -4524,7 +4524,7 @@ pretty picture for the album or track
 | 1  | **image_format**  | Image-Format | 1  | what type of image file?                |
 | 2  | **image_content** | Binary       | 1  | the image data in the identified format |
 
-**********
+<br>
 
 can only be one, but can extend list
 
@@ -4536,7 +4536,7 @@ can only be one, but can extend list
 | 2  | **JPG** |             |
 | 3  | **GIF** |             |
 
-**********
+<br>
 
 interesting information about a performer
 
@@ -4547,7 +4547,7 @@ interesting information about a performer
 | 1  | **artist_name** | String            | 1     | who is this person    |
 | 2  | **instruments** | Instrument unique | 1..\* | and what do they play |
 
-**********
+<br>
 
 collection of instruments (non-exhaustive)
 
@@ -4565,7 +4565,7 @@ collection of instruments (non-exhaustive)
 | 8  | **woodwinds**  |             |
 | 9  | **harmonica**  |             |
 
-**********
+<br>
 
 for each track there's a file with the audio and a metadata record
 
@@ -4576,7 +4576,7 @@ for each track there's a file with the audio and a metadata record
 | 1  | **location** | File-Path  | 1  | path to the audio file location in local storage |
 | 2  | **metadata** | Track-Info | 1  | description of the track                         |
 
-**********
+<br>
 
 information about the individual audio tracks
 
@@ -4592,13 +4592,13 @@ information about the individual audio tracks
 | 6  | **track_art**       | Image          | 0..1  | each track can have optionally have individual artwork                                    |
 | 7  | **genre**           | Genre          | 1     |                                                                                           |
 
-**********
+<br>
 
 | Type Name     | Type Definition | Description                                                                           |
 |---------------|-----------------|---------------------------------------------------------------------------------------|
 | **File-Path** | String          | local storage location of file with directory path from root, filename, and extension |
 
-**********
+<br>
 
 can only be one, but can extend list
 
@@ -4614,7 +4614,7 @@ can only be one, but can extend list
 | 6  | **WMA**  |             |
 | 7  | **WAV**  |             |
 
-**********
+<br>
 
 Enumeration of common genres
 
