@@ -1,7 +1,6 @@
 ![OASIS Logo](https://docs.oasis-open.org/templates/OASISLogo-v3.0.png)
 
 # OASIS Committee Note
--------
 
 # Information Modeling with JADN Version 2.0
 
@@ -1149,7 +1148,7 @@ CoreType to define valid instances of that string type using a
 regular expression conforming to [[ECMAScript](#ecmascript)]
 grammar.
 
-Table 3-1 lists the complete set of type options, including the option name,
+Table 3-2 lists the complete set of type options, including the option name,
 type, ID character, and description. Note that the ID characters are the normative form and are used in
 standard JADN representation ([Section&nbsp;3.1.3.1](#3131-native-json-representation-normative)) 
 when specifying type options. The text labels for the options (e.g., vtype,
@@ -1215,7 +1214,7 @@ serialized values". The various serialization formats defines in that section of
 the specification include tables documenting how format options apply to that
 format.
 
-Table 3-2 summarizes the applicability of type options to JADN core types. The
+Table 3-3 summarizes the applicability of type options to JADN core types. The
 `ArrayOf` and `MapOf` types have required options, as indicated. Other type
 options can be applied to individual types where the option is relevant, as
 indicated by table cells with an "X".
@@ -1224,14 +1223,14 @@ indicated by table cells with an "X".
 
 ![Table 3-3 -- Type Option Applicability](images/table-3-2.png)
 
-The `min / max` type options fall into two groups:
+The `min/max` type options fall into two groups:
 
-- `minLength / maxLength` apply to the *size* of a Binary or String type; an
+- `minLength/maxLength` apply to the *size* of a Binary or String type; an
   instance of either of those types must be of at least the specified
   `minLength` and not longer than the specified `maxLength`, but these options
   place no constraints on the value contained in that instance.
 
-- `min / max / Inclusive / Exclusive` apply to the *value* that an instance that
+- `min/max/Inclusive/Exclusive` apply to the *value* that an instance that
   a numeric or String type can contain. These type options imply that there is
   an ordering of possible values for the type they are applied to, but place no
   constraints on the size of an instance of the type, only its possible values.
@@ -1804,7 +1803,7 @@ prefix.
 
 ```json
   ["IPv4-Net", "Array", ["/ipv4-net"], "IPv4 address and prefix length", [
-    [1, "ipv4_addr", "Binary", ["/ipv4-addr], "32-bit IPv4 address as defined in [RFC 791]"],
+    [1, "ipv4_addr", "Binary", ["/ipv4-addr"], "32-bit IPv4 address as defined in [RFC 791]"],
     [2, "prefix_length", "Integer", ["[0"], "CIDR prefix-length. If omitted, refers to a single host address."]
   ]]
 ```
@@ -3937,8 +3936,7 @@ Information models define the information capacity of data
 instances; two data formats are *equivalent* if conversion
 between them is lossless.
 
-![The Mona Lisa](images/JADN-RDF-Mona-Lisa.png)
-
+<img src="images/JADN-RDF-Mona-Lisa.png" alt="The Mona Lisa" />
 
 Resources can be physical or digital entities. Both can be
 subjects of knowledge model statements, but only digital
@@ -4477,18 +4475,19 @@ Information Header
        license: "CC0-1.0"
        roots: ["Library"]
 ```
+<br>
 
 | Type Name   | Type Definition             | Description                                         |
 |-------------|-----------------------------|-----------------------------------------------------|
 | **Library** | MapOf(Barcode, Album){1..*} | Top level of the library is a map of CDs by barcode |
 
-**********
+<br>
 
 | Type Name   | Type Definition            | Description                  |
 |-------------|----------------------------|------------------------------|
 | **Barcode** | String{pattern="^\d{12}$"} | A UPC-A barcode is 12 digits |
 
-**********
+<br>
 
 model for the album
 
@@ -4503,7 +4502,7 @@ model for the album
 | 5  | **total_tracks** | Integer{1..\*}   | 1     | total track count                         |
 | 6  | **cover_art**    | Image            | 0..1  | cover art image for this album            |
 
-**********
+<br>
 
 who and when of publication
 
@@ -4514,7 +4513,7 @@ who and when of publication
 | 1  | **publisher**    | String       | 1  | record label that released this album |
 | 2  | **release_date** | String /date | 1  | and when did they let this drop       |
 
-**********
+<br>
 
 pretty picture for the album or track
 
@@ -4525,7 +4524,7 @@ pretty picture for the album or track
 | 1  | **image_format**  | Image-Format | 1  | what type of image file?                |
 | 2  | **image_content** | Binary       | 1  | the image data in the identified format |
 
-**********
+<br>
 
 can only be one, but can extend list
 
@@ -4537,7 +4536,7 @@ can only be one, but can extend list
 | 2  | **JPG** |             |
 | 3  | **GIF** |             |
 
-**********
+<br>
 
 interesting information about a performer
 
@@ -4548,7 +4547,7 @@ interesting information about a performer
 | 1  | **artist_name** | String            | 1     | who is this person    |
 | 2  | **instruments** | Instrument unique | 1..\* | and what do they play |
 
-**********
+<br>
 
 collection of instruments (non-exhaustive)
 
@@ -4566,7 +4565,7 @@ collection of instruments (non-exhaustive)
 | 8  | **woodwinds**  |             |
 | 9  | **harmonica**  |             |
 
-**********
+<br>
 
 for each track there's a file with the audio and a metadata record
 
@@ -4577,7 +4576,7 @@ for each track there's a file with the audio and a metadata record
 | 1  | **location** | File-Path  | 1  | path to the audio file location in local storage |
 | 2  | **metadata** | Track-Info | 1  | description of the track                         |
 
-**********
+<br>
 
 information about the individual audio tracks
 
@@ -4593,13 +4592,13 @@ information about the individual audio tracks
 | 6  | **track_art**       | Image          | 0..1  | each track can have optionally have individual artwork                                    |
 | 7  | **genre**           | Genre          | 1     |                                                                                           |
 
-**********
+<br>
 
 | Type Name     | Type Definition | Description                                                                           |
 |---------------|-----------------|---------------------------------------------------------------------------------------|
 | **File-Path** | String          | local storage location of file with directory path from root, filename, and extension |
 
-**********
+<br>
 
 can only be one, but can extend list
 
@@ -4615,7 +4614,7 @@ can only be one, but can extend list
 | 6  | **WMA**  |             |
 | 7  | **WAV**  |             |
 
-**********
+<br>
 
 Enumeration of common genres
 
